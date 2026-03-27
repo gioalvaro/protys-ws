@@ -11,6 +11,7 @@ Desarrollado como parte de la tesis doctoral:
 > Alvaro Luis Fraga — UTN, Facultad Regional Santa Fe
 >
 > Director: Dr. Horacio Leone (INGAR CONICET-UTN)
+> 
 > Co-Directora: Dra. María Marcela Vegetti (INGAR CONICET-UTN)
 
 ## Arquitectura
