@@ -8,7 +8,7 @@ Desarrollado como parte de la tesis doctoral:
 
 > **"Red de Ontologías para la Interoperabilidad Semántica en Sistemas de Información de Manufactura"**
 >
-> Álvaro Giovanny Pinto — UTN, Facultad Regional Santa Fe
+> Álvaro Luis Fraga — UTN, Facultad Regional Santa Fe
 >
 > Directora: Dra. María Marcela Vegetti (INGAR CONICET-UTN)
 
