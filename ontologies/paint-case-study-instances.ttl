@@ -1,0 +1,663 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix protys: <http://protys.ingar.conicet.gob.ar/ontology#> .
+
+# ========================================
+# PAINT MANUFACTURING CASE STUDY INSTANCES
+# ========================================
+
+# ========================================
+# MATERIALS
+# ========================================
+
+protys:TiO2_Material
+    rdf:type protys:Raw_Material ;
+    rdfs:label "Titanium Dioxide (TiO2)"@en ;
+    rdfs:label "Dióxido de Titanio (TiO2)"@es ;
+    protys:hasName "TiO2 Pigment" ;
+    protys:hasDescription "High-purity titanium dioxide for white paint formulations" ;
+    protys:carbonFootprintKgCO2eq 5.3 ;
+    protys:waterFootprintLiters 45.0 ;
+    protys:particleSize 0.25 ;
+    protys:purityPercent 98.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/TiO2_001"^^xsd:anyURI .
+
+protys:AcrylicResin
+    rdf:type protys:Chemical_Compound ;
+    rdfs:label "Acrylic Resin"@en ;
+    rdfs:label "Resina Acrílica"@es ;
+    protys:hasName "Acrylic Binder Resin" ;
+    protys:hasDescription "Water-soluble acrylic resin for paint binder formulation" ;
+    protys:waterFootprintLiters 127.0 ;
+    protys:volatileOrganicCompounds 2.5 ;
+    protys:solidContent 45.0 ;
+    protys:viscosity 500.0 ;
+    protys:shelfLifeMonths 12 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/AcrylicResin_001"^^xsd:anyURI .
+
+protys:AqueousSolvent
+    rdf:type protys:Raw_Material ;
+    rdfs:label "Aqueous Solvent"@en ;
+    rdfs:label "Disolvente Acuoso"@es ;
+    protys:hasName "Water Solvent" ;
+    protys:hasDescription "Deionized water used as primary solvent" ;
+    protys:waterFootprintLiters 100.0 ;
+    protys:solidContent 0.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/H2O_001"^^xsd:anyURI .
+
+protys:DispersantAdditive
+    rdf:type protys:Chemical_Compound ;
+    rdfs:label "Dispersant Additive"@en ;
+    rdfs:label "Aditivo Dispersante"@es ;
+    protys:hasName "Pigment Dispersant" ;
+    protys:hasDescription "Additive to improve pigment dispersion and stability" ;
+    protys:volatileOrganicCompounds 0.5 ;
+    protys:solidContent 85.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/Dispersant_001"^^xsd:anyURI .
+
+protys:AntifoamAdditive
+    rdf:type protys:Chemical_Compound ;
+    rdfs:label "Antifoam Additive"@en ;
+    rdfs:label "Aditivo Antiespuma"@es ;
+    protys:hasName "Silicone-based Antifoam" ;
+    protys:hasDescription "Reduces foam formation during mixing and application" ;
+    protys:solidContent 80.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/Antifoam_001"^^xsd:anyURI .
+
+protys:Biocide
+    rdf:type protys:Chemical_Compound ;
+    rdfs:label "Biocide"@en ;
+    rdfs:label "Biocida"@es ;
+    protys:hasName "Preservative Biocide" ;
+    protys:hasDescription "Antimicrobial agent for product preservation" ;
+    protys:solidContent 100.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/Biocide_001"^^xsd:anyURI .
+
+protys:RheologyModifier
+    rdf:type protys:Chemical_Compound ;
+    rdfs:label "Rheology Modifier"@en ;
+    rdfs:label "Modificador de Reología"@es ;
+    protys:hasName "Viscosity Control Agent" ;
+    protys:hasDescription "Controls paint viscosity and flow properties" ;
+    protys:solidContent 75.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/material/RheologyMod_001"^^xsd:anyURI .
+
+# ========================================
+# EQUIPMENT/MACHINERY
+# ========================================
+
+protys:PearlMill_01
+    rdf:type protys:Equipment ;
+    rdfs:label "Pearl Mill Unit 01"@en ;
+    rdfs:label "Molino de Perlas Unidad 01"@es ;
+    protys:hasName "PearlMill_01" ;
+    protys:hasDescription "Horizontal pearl mill for fine grinding and pigment dispersion" ;
+    protys:energyConsumptionKW 75.0 ;
+    protys:capacityLitersPerHour 500.0 ;
+    protys:availabilityPercent 85.0 ;
+    protys:OEEPercent 82.0 ;
+    protys:hasCapability protys:Fine_Grinding ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/equipment/PearlMill_01"^^xsd:anyURI ;
+    protys:belongsTo protys:Cell_Dispersion .
+
+protys:Fine_Grinding
+    rdf:type protys:ManufacturingCapability ;
+    rdfs:label "Fine Grinding"@en ;
+    rdfs:label "Molienda Fina"@es ;
+    protys:hasName "Fine_Grinding_Capability" .
+
+protys:MixingReactor_02
+    rdf:type protys:Equipment ;
+    rdfs:label "Mixing Reactor Unit 02"@en ;
+    rdfs:label "Reactor Mezclador Unidad 02"@es ;
+    protys:hasName "MixingReactor_02" ;
+    protys:hasDescription "5000L capacity batch mixing reactor with temperature and speed control" ;
+    protys:capacityLitersPerHour 5000.0 ;
+    protys:availabilityPercent 90.0 ;
+    protys:OEEPercent 88.0 ;
+    protys:hasCapability protys:Batch_Mixing ;
+    protys:temperatureCelsius 40.0 ;
+    protys:speedRPM 150.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/equipment/MixingReactor_02"^^xsd:anyURI ;
+    protys:belongsTo protys:Cell_Mixing .
+
+protys:Batch_Mixing
+    rdf:type protys:ManufacturingCapability ;
+    rdfs:label "Batch Mixing"@en ;
+    rdfs:label "Mezcla por Lotes"@es ;
+    protys:hasName "Batch_Mixing_Capability" .
+
+protys:DosingSystem_03
+    rdf:type protys:Equipment ;
+    rdfs:label "Dosing System Unit 03"@en ;
+    rdfs:label "Sistema de Dosificación Unidad 03"@es ;
+    protys:hasName "DosingSystem_03" ;
+    protys:hasDescription "Precision metering system for additive dosing with ±0.1% accuracy" ;
+    protys:capacityLitersPerHour 100.0 ;
+    protys:availabilityPercent 95.0 ;
+    protys:OEEPercent 92.0 ;
+    protys:hasCapability protys:Precision_Metering ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/equipment/DosingSystem_03"^^xsd:anyURI ;
+    protys:belongsTo protys:Cell_Mixing .
+
+protys:Precision_Metering
+    rdf:type protys:ManufacturingCapability ;
+    rdfs:label "Precision Metering"@en ;
+    rdfs:label "Dosificación Precisa"@es ;
+    protys:hasName "Precision_Metering_Capability" .
+
+protys:DryingDrum_04
+    rdf:type protys:Equipment ;
+    rdfs:label "Drying Drum Unit 04"@en ;
+    rdfs:label "Tambor de Secado Unidad 04"@es ;
+    protys:hasName "DryingDrum_04" ;
+    protys:hasDescription "Industrial drying drum with temperature control 60-120°C and 5-20 rpm rotation" ;
+    protys:temperatureCelsius 90.0 ;
+    protys:speedRPM 10.0 ;
+    protys:availabilityPercent 88.0 ;
+    protys:OEEPercent 85.0 ;
+    protys:hasCapability protys:Thermal_Drying ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/equipment/DryingDrum_04"^^xsd:anyURI .
+
+protys:Thermal_Drying
+    rdf:type protys:ManufacturingCapability ;
+    rdfs:label "Thermal Drying"@en ;
+    rdfs:label "Secado Térmico"@es ;
+    protys:hasName "Thermal_Drying_Capability" .
+
+protys:PackagingMachine_05
+    rdf:type protys:Equipment ;
+    rdfs:label "Packaging Machine Unit 05"@en ;
+    rdfs:label "Máquina de Empaque Unidad 05"@es ;
+    protys:hasName "PackagingMachine_05" ;
+    protys:hasDescription "Automatic packaging machine for 30-120 units per minute with ±0.5% precision" ;
+    protys:capacityUnitsPerMinute 75.0 ;
+    protys:availabilityPercent 92.0 ;
+    protys:OEEPercent 90.0 ;
+    protys:hasCapability protys:Auto_Packaging ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/equipment/PackagingMachine_05"^^xsd:anyURI ;
+    protys:belongsTo protys:Cell_Packaging .
+
+protys:Auto_Packaging
+    rdf:type protys:ManufacturingCapability ;
+    rdfs:label "Automatic Packaging"@en ;
+    rdfs:label "Empaquetado Automático"@es ;
+    protys:hasName "Auto_Packaging_Capability" .
+
+# ========================================
+# MANUFACTURING PROCESSES
+# ========================================
+
+protys:RawMaterialInspection
+    rdf:type protys:Inspection ;
+    rdfs:label "Raw Material Inspection"@en ;
+    rdfs:label "Inspección de Materia Prima"@es ;
+    protys:hasName "RawMaterialInspection" ;
+    protys:hasDescription "Quality inspection of incoming raw materials" ;
+    protys:durationMinutes 15.0 ;
+    protys:precedes protys:PigmentDispersion ;
+    protys:belongsTo protys:Workshop_QC ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/RawMatInsp_001"^^xsd:anyURI .
+
+protys:PigmentDispersion
+    rdf:type protys:Procedure_Activity ;
+    rdfs:label "Pigment Dispersion"@en ;
+    rdfs:label "Dispersión de Pigmento"@es ;
+    protys:hasName "PigmentDispersion" ;
+    protys:hasDescription "Fine grinding and dispersion of TiO2 pigment using pearl mill" ;
+    protys:durationMinutes 45.0 ;
+    protys:inputQuantity 500.0 ;
+    protys:outputQuantity 485.0 ;
+    protys:yieldPercent 97.0 ;
+    protys:speedRPM 1500.0 ;
+    protys:throughput 11.1 ;
+    protys:requiresResource protys:PearlMill_01 ;
+    protys:inputMaterial protys:TiO2_Material ;
+    protys:outputProduct protys:PigmentPaste_Intermediate ;
+    protys:precedes protys:MainMixing ;
+    protys:belongsTo protys:Cell_Dispersion ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/PigmentDisp_001"^^xsd:anyURI .
+
+protys:MainMixing
+    rdf:type protys:BatchProcess ;
+    rdfs:label "Main Mixing"@en ;
+    rdfs:label "Mezcla Principal"@es ;
+    protys:hasName "MainMixing" ;
+    protys:hasDescription "Batch mixing of pigment paste with acrylic resin and solvents" ;
+    protys:durationMinutes 25.0 ;
+    protys:inputQuantity 485.0 ;
+    protys:outputQuantity 510.0 ;
+    protys:yieldPercent 105.0 ;
+    protys:temperatureCelsius 45.0 ;
+    protys:speedRPM 250.0 ;
+    protys:throughput 20.4 ;
+    protys:requiresResource protys:MixingReactor_02 ;
+    protys:inputMaterial protys:PigmentPaste_Intermediate ;
+    protys:inputMaterial protys:AcrylicResin ;
+    protys:inputMaterial protys:AqueousSolvent ;
+    protys:outputProduct protys:AdjustedMix_Intermediate ;
+    protys:precedes protys:ViscosityAdjustment ;
+    protys:belongsTo protys:Cell_Mixing ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/MainMix_001"^^xsd:anyURI .
+
+protys:ViscosityAdjustment
+    rdf:type protys:Procedure_Activity ;
+    rdfs:label "Viscosity Adjustment"@en ;
+    rdfs:label "Ajuste de Viscosidad"@es ;
+    protys:hasName "ViscosityAdjustment" ;
+    protys:hasDescription "Fine-tuning of paint viscosity to specifications using rheology modifiers" ;
+    protys:durationMinutes 15.0 ;
+    protys:inputQuantity 510.0 ;
+    protys:outputQuantity 515.0 ;
+    protys:yieldPercent 101.0 ;
+    protys:requiresResource protys:DosingSystem_03 ;
+    protys:inputMaterial protys:RheologyModifier ;
+    protys:precedes protys:Filtration ;
+    protys:belongsTo protys:Cell_Mixing ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/ViscAdj_001"^^xsd:anyURI .
+
+protys:Filtration
+    rdf:type protys:Procedure_Activity ;
+    rdfs:label "Filtration"@en ;
+    rdfs:label "Filtración"@es ;
+    protys:hasName "Filtration" ;
+    protys:hasDescription "Removal of coarse particles and agglomerates through filtration" ;
+    protys:durationMinutes 10.0 ;
+    protys:inputQuantity 515.0 ;
+    protys:outputQuantity 512.0 ;
+    protys:yieldPercent 99.4 ;
+    protys:throughput 51.2 ;
+    protys:precedes protys:QualityControl ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/Filtration_001"^^xsd:anyURI .
+
+protys:QualityControl
+    rdf:type protys:QualityControl ;
+    rdfs:label "Quality Control"@en ;
+    rdfs:label "Control de Calidad"@es ;
+    protys:hasName "QualityControl" ;
+    protys:hasDescription "Comprehensive quality testing and verification of final paint formulation" ;
+    protys:durationMinutes 30.0 ;
+    protys:inputQuantity 512.0 ;
+    protys:requiresResource protys:Workshop_QC ;
+    protys:precedes protys:Packaging ;
+    protys:belongsTo protys:Workshop_QC ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/QC_001"^^xsd:anyURI .
+
+protys:Packaging
+    rdf:type protys:Packaging ;
+    rdfs:label "Packaging"@en ;
+    rdfs:label "Empaquetado"@es ;
+    protys:hasName "Packaging" ;
+    protys:hasDescription "Automatic packaging of finished paint into containers" ;
+    protys:durationMinutes 20.0 ;
+    protys:inputQuantity 500.0 ;
+    protys:outputQuantity 500.0 ;
+    protys:yieldPercent 100.0 ;
+    protys:capacityUnitsPerMinute 75.0 ;
+    protys:throughput 25.0 ;
+    protys:requiresResource protys:PackagingMachine_05 ;
+    protys:outputProduct protys:WhitePaint_WaterBased ;
+    protys:belongsTo protys:Cell_Packaging ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/process/Packaging_001"^^xsd:anyURI .
+
+# ========================================
+# PRODUCTS
+# ========================================
+
+protys:PigmentPaste_Intermediate
+    rdf:type protys:Intermediate_Product ;
+    rdfs:label "Pigment Paste (Intermediate)"@en ;
+    rdfs:label "Pasta de Pigmento (Intermedia)"@es ;
+    protys:hasName "PigmentPaste_001" ;
+    protys:hasDescription "Finely dispersed titanium dioxide pigment paste" ;
+    protys:solidContent 40.0 ;
+    protys:particleSize 0.25 ;
+    protys:purityPercent 97.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/product/PigmentPaste_001"^^xsd:anyURI .
+
+protys:AdjustedMix_Intermediate
+    rdf:type protys:Intermediate_Product ;
+    rdfs:label "Adjusted Mix (Intermediate)"@en ;
+    rdfs:label "Mezcla Ajustada (Intermedia)"@es ;
+    protys:hasName "AdjustedMix_001" ;
+    protys:hasDescription "Pre-final paint formulation after main mixing and adjustment" ;
+    protys:viscosity 85.0 ;
+    protys:solidContent 42.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/product/AdjustedMix_001"^^xsd:anyURI .
+
+protys:WhitePaint_WaterBased
+    rdf:type protys:Final_Product ;
+    rdfs:label "White Water-Based Paint"@en ;
+    rdfs:label "Pintura Blanca a Base de Agua"@es ;
+    protys:hasName "WhitePaint_WaterBased_Final" ;
+    protys:hasDescription "Final water-based acrylic white paint ready for market" ;
+    protys:viscosity 85.0 ;
+    protys:volatileOrganicCompounds 2.5 ;
+    protys:solidContent 42.0 ;
+    protys:shelfLifeMonths 12 ;
+    protys:hasFunction "Interior/Exterior Wall Coating" ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/product/WhitePaint_Final_001"^^xsd:anyURI .
+
+# ========================================
+# QUALITY SPECIFICATIONS
+# ========================================
+
+protys:Viscosity_KU_Spec
+    rdf:type protys:QualitySpec ;
+    rdfs:label "Viscosity Specification (KU)"@en ;
+    rdfs:label "Especificación de Viscosidad (KU)"@es ;
+    protys:hasName "Viscosity_85±5_KU" ;
+    protys:hasDescription "Viscosity must be 85 ± 5 Krebs Units" ;
+    protys:hasValue 85.0 ;
+    protys:impactUnit "KU (Krebs Units)" ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/spec/Viscosity_001"^^xsd:anyURI .
+
+protys:ParticleSize_Hegman_Spec
+    rdf:type protys:QualitySpec ;
+    rdfs:label "Particle Size Specification (Hegman)"@en ;
+    rdfs:label "Especificación de Tamaño de Partícula (Hegman)"@es ;
+    protys:hasName "ParticleSize_Hegman_7plus" ;
+    protys:hasDescription "Hegman grind gauge reading must be 7 or greater (finer than 25 micrometers)" ;
+    protys:hasValue 7.0 ;
+    protys:impactUnit "Hegman Gauge Points" ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/spec/ParticleSize_001"^^xsd:anyURI .
+
+# ========================================
+# ENTERPRISE STRUCTURE
+# ========================================
+
+protys:PaintPlant_LatAm
+    rdf:type protys:Plant ;
+    rdfs:label "Latin America Paint Plant"@en ;
+    rdfs:label "Planta de Pintura América Latina"@es ;
+    protys:hasName "PaintPlant_LatAm" ;
+    protys:hasDescription "Main paint manufacturing facility in Latin America" ;
+    protys:location "Venezuela" ;
+    protys:capacityTonsPerMonth 5000.0 ;
+    protys:numberOfEmployees 250 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/enterprise/PaintPlant_LatAm"^^xsd:anyURI ;
+    protys:hasProcess protys:PigmentDispersion ;
+    protys:hasProcess protys:MainMixing ;
+    protys:hasProcess protys:ViscosityAdjustment ;
+    protys:hasProcess protys:Filtration ;
+    protys:hasProcess protys:QualityControl ;
+    protys:hasProcess protys:Packaging .
+
+protys:Workshop_Production
+    rdf:type protys:Workshop ;
+    rdfs:label "Production Workshop"@en ;
+    rdfs:label "Taller de Producción"@es ;
+    protys:hasName "Workshop_Production" ;
+    protys:hasDescription "Main production workshop for paint manufacturing" ;
+    protys:partOfOrganization protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/enterprise/Workshop_Production"^^xsd:anyURI ;
+    protys:manages protys:Cell_Dispersion ;
+    protys:manages protys:Cell_Mixing ;
+    protys:manages protys:Cell_Packaging .
+
+protys:Workshop_QC
+    rdf:type protys:Workshop ;
+    rdfs:label "Quality Control Workshop"@en ;
+    rdfs:label "Taller de Control de Calidad"@es ;
+    protys:hasName "Workshop_QC" ;
+    protys:hasDescription "Quality control and testing laboratory" ;
+    protys:partOfOrganization protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/enterprise/Workshop_QC"^^xsd:anyURI .
+
+protys:Cell_Dispersion
+    rdf:type protys:ProductionCell ;
+    rdfs:label "Pigment Dispersion Cell"@en ;
+    rdfs:label "Celda de Dispersión de Pigmento"@es ;
+    protys:hasName "Cell_Dispersion" ;
+    protys:hasDescription "Production cell dedicated to pigment dispersion and grinding" ;
+    protys:capacityTonsPerMonth 1200.0 ;
+    protys:partOfOrganization protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/enterprise/Cell_Dispersion"^^xsd:anyURI ;
+    protys:hasProcess protys:PigmentDispersion ;
+    protys:hasResource protys:PearlMill_01 .
+
+protys:Cell_Mixing
+    rdf:type protys:ProductionCell ;
+    rdfs:label "Mixing and Adjustment Cell"@en ;
+    rdfs:label "Celda de Mezcla y Ajuste"@es ;
+    protys:hasName "Cell_Mixing" ;
+    protys:hasDescription "Production cell for main mixing and viscosity adjustment" ;
+    protys:capacityTonsPerMonth 1500.0 ;
+    protys:partOfOrganization protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/enterprise/Cell_Mixing"^^xsd:anyURI ;
+    protys:hasProcess protys:MainMixing ;
+    protys:hasProcess protys:ViscosityAdjustment ;
+    protys:hasProcess protys:Filtration ;
+    protys:hasResource protys:MixingReactor_02 ;
+    protys:hasResource protys:DosingSystem_03 .
+
+protys:Cell_Packaging
+    rdf:type protys:ProductionCell ;
+    rdfs:label "Packaging Cell"@en ;
+    rdfs:label "Celda de Empaquetado"@es ;
+    protys:hasName "Cell_Packaging" ;
+    protys:hasDescription "Automated packaging and labeling cell" ;
+    protys:capacityTonsPerMonth 2000.0 ;
+    protys:partOfOrganization protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/enterprise/Cell_Packaging"^^xsd:anyURI ;
+    protys:hasProcess protys:Packaging ;
+    protys:hasResource protys:PackagingMachine_05 .
+
+# ========================================
+# PERSONNEL
+# ========================================
+
+protys:Operator_John
+    rdf:type protys:HumanResource ;
+    rdfs:label "Machine Operator John"@en ;
+    rdfs:label "Operador de Máquinas John"@es ;
+    protys:hasName "John Smith" ;
+    protys:hasDescription "Experienced mill and mixer operator" ;
+    protys:yearOfExperience 10 ;
+    protys:hasSkill protys:Machine_Operation ;
+    protys:hasSkill protys:Equipment_Maintenance ;
+    protys:hasCertification "Level II - Equipment Operation" ;
+    protys:belongsTo protys:Cell_Dispersion ;
+    protys:employedBy protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/personnel/Operator_John_001"^^xsd:anyURI .
+
+protys:Machine_Operation
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Machine Operation"@en ;
+    rdfs:label "Operación de Máquinas"@es ;
+    protys:hasName "Machine_Operation_Skill" ;
+    protys:certificationLevel "Advanced" .
+
+protys:Equipment_Maintenance
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Equipment Maintenance"@en ;
+    rdfs:label "Mantenimiento de Equipos"@es ;
+    protys:hasName "Equipment_Maintenance_Skill" ;
+    protys:certificationLevel "Intermediate" .
+
+protys:Chemist_Maria
+    rdf:type protys:HumanResource ;
+    rdfs:label "Quality Chemist Maria"@en ;
+    rdfs:label "Química de Calidad María"@es ;
+    protys:hasName "Maria García López" ;
+    protys:hasDescription "Analytical chemist specializing in paint formulation and testing" ;
+    protys:yearOfExperience 8 ;
+    protys:hasSkill protys:Quality_Analysis ;
+    protys:hasSkill protys:Formulation_Development ;
+    protys:hasCertification "Level III - Chemical Analysis" ;
+    protys:belongsTo protys:Workshop_QC ;
+    protys:employedBy protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/personnel/Chemist_Maria_001"^^xsd:anyURI .
+
+protys:Quality_Analysis
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Quality Analysis"@en ;
+    rdfs:label "Análisis de Calidad"@es ;
+    protys:hasName "Quality_Analysis_Skill" ;
+    protys:certificationLevel "Expert" .
+
+protys:Formulation_Development
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Formulation Development"@en ;
+    rdfs:label "Desarrollo de Formulaciones"@es ;
+    protys:hasName "Formulation_Development_Skill" ;
+    protys:certificationLevel "Expert" .
+
+protys:Supervisor_Carlos
+    rdf:type protys:HumanResource ;
+    rdfs:label "Production Supervisor Carlos"@en ;
+    rdfs:label "Supervisor de Producción Carlos"@es ;
+    protys:hasName "Carlos Rodríguez Martínez" ;
+    protys:hasDescription "Senior production supervisor overseeing all manufacturing operations" ;
+    protys:yearOfExperience 15 ;
+    protys:hasSkill protys:Production_Management ;
+    protys:hasSkill protys:Team_Leadership ;
+    protys:hasSkill protys:Process_Optimization ;
+    protys:hasCertification "Level III - Production Management" ;
+    protys:belongsTo protys:Workshop_Production ;
+    protys:employedBy protys:PaintPlant_LatAm ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/personnel/Supervisor_Carlos_001"^^xsd:anyURI .
+
+protys:Production_Management
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Production Management"@en ;
+    rdfs:label "Gestión de Producción"@es ;
+    protys:hasName "Production_Management_Skill" ;
+    protys:certificationLevel "Expert" .
+
+protys:Team_Leadership
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Team Leadership"@en ;
+    rdfs:label "Liderazgo de Equipo"@es ;
+    protys:hasName "Team_Leadership_Skill" ;
+    protys:certificationLevel "Advanced" .
+
+protys:Process_Optimization
+    rdf:type protys:SkillLevel ;
+    rdfs:label "Process Optimization"@en ;
+    rdfs:label "Optimización de Procesos"@es ;
+    protys:hasName "Process_Optimization_Skill" ;
+    protys:certificationLevel "Advanced" .
+
+# ========================================
+# LCA - LIFE CYCLE ASSESSMENT DATA
+# ========================================
+
+protys:LCA_WhitePaint_Study
+    rdf:type protys:LifeCycleAssessment ;
+    rdfs:label "White Paint LCA Study"@en ;
+    rdfs:label "Estudio ACV Pintura Blanca"@es ;
+    protys:hasName "LCA_WhitePaint_001" ;
+    protys:hasDescription "Comprehensive life cycle assessment of water-based white paint" ;
+    protys:hasCarbonFootprint protys:CF_WhitePaint ;
+    protys:hasWaterFootprint protys:WF_WhitePaint ;
+    protys:hasVOCContent protys:VOC_WhitePaint ;
+    protys:hasSystemBoundary protys:SystemBoundary_CradleToGate ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/lca/WhitePaint_001"^^xsd:anyURI .
+
+protys:CF_WhitePaint
+    rdf:type protys:EnvironmentalImpact ;
+    rdfs:label "Carbon Footprint - White Paint"@en ;
+    rdfs:label "Huella de Carbono - Pintura Blanca"@es ;
+    protys:hasValue 3.8 ;
+    protys:impactUnit "kg CO2-eq/kg paint" ;
+    protys:hasCategory protys:ClimateChange_Category ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/impact/CF_WhitePaint_001"^^xsd:anyURI .
+
+protys:ClimateChange_Category
+    rdf:type protys:ImpactCategory ;
+    rdfs:label "Climate Change"@en ;
+    rdfs:label "Cambio Climático"@es ;
+    protys:hasName "ClimateChange_ImpactCategory" .
+
+protys:WF_WhitePaint
+    rdf:type protys:EnvironmentalImpact ;
+    rdfs:label "Water Footprint - White Paint"@en ;
+    rdfs:label "Huella Hídrica - Pintura Blanca"@es ;
+    protys:hasValue 85.5 ;
+    protys:impactUnit "L/kg paint" ;
+    protys:hasCategory protys:WaterConsumption_Category ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/impact/WF_WhitePaint_001"^^xsd:anyURI .
+
+protys:WaterConsumption_Category
+    rdf:type protys:ImpactCategory ;
+    rdfs:label "Water Consumption"@en ;
+    rdfs:label "Consumo de Agua"@es ;
+    protys:hasName "WaterConsumption_ImpactCategory" .
+
+protys:VOC_WhitePaint
+    rdf:type protys:EnvironmentalImpact ;
+    rdfs:label "VOC Emissions - White Paint"@en ;
+    rdfs:label "Emisiones de COV - Pintura Blanca"@es ;
+    protys:hasValue 2.5 ;
+    protys:impactUnit "g/L" ;
+    protys:hasCategory protys:PhotochemicalSmog_Category ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/impact/VOC_WhitePaint_001"^^xsd:anyURI .
+
+protys:PhotochemicalSmog_Category
+    rdf:type protys:ImpactCategory ;
+    rdfs:label "Photochemical Smog Potential"@en ;
+    rdfs:label "Potencial de Esmog Fotoquímico"@es ;
+    protys:hasName "PhotochemicalSmog_ImpactCategory" .
+
+protys:SystemBoundary_CradleToGate
+    rdf:type protys:SystemBoundary ;
+    rdfs:label "Cradle-to-Gate Boundary"@en ;
+    rdfs:label "Límite Cuna a Puerta"@es ;
+    protys:hasName "SystemBoundary_CradleToGate" ;
+    protys:hasDescription "Includes raw material extraction through manufacturing gate" ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/boundary/CradleToGate_001"^^xsd:anyURI .
+
+# ========================================
+# PRODUCT BATCH INSTANCE
+# ========================================
+
+protys:WhitePaint_Batch_20250223
+    rdf:type protys:ProductBatch ;
+    rdfs:label "White Paint Batch (2025-02-23)"@en ;
+    rdfs:label "Lote de Pintura Blanca (2025-02-23)"@es ;
+    protys:hasName "WhitePaint_Batch_20250223" ;
+    protys:hasDescription "Production batch manufactured on 2025-02-23" ;
+    protys:batchQuantity 500.0 ;
+    protys:viscosity 85.0 ;
+    protys:volatileOrganicCompounds 2.5 ;
+    protys:solidContent 42.0 ;
+    protys:hasURI "http://protys.ingar.conicet.gob.ar/batch/WhitePaint_20250223_001"^^xsd:anyURI .
+
+# ========================================
+# CROSS-REFERENCES AND RELATIONSHIPS
+# ========================================
+
+# Enterprise to Personnel
+protys:PaintPlant_LatAm protys:employs protys:Operator_John .
+protys:PaintPlant_LatAm protys:employs protys:Chemist_Maria .
+protys:PaintPlant_LatAm protys:employs protys:Supervisor_Carlos .
+
+# Personnel to Enterprise (alternative view)
+protys:Operator_John protys:belongsTo protys:Cell_Dispersion .
+protys:Chemist_Maria protys:belongsTo protys:Workshop_QC .
+protys:Supervisor_Carlos protys:belongsTo protys:Workshop_Production .
+
+# Process Sequence Chain
+protys:RawMaterialInspection protys:precedes protys:PigmentDispersion .
+protys:PigmentDispersion protys:precedes protys:MainMixing .
+protys:MainMixing protys:precedes protys:ViscosityAdjustment .
+protys:ViscosityAdjustment protys:precedes protys:Filtration .
+protys:Filtration protys:precedes protys:QualityControl .
+protys:QualityControl protys:precedes protys:Packaging .
+
+# Product to Process Mappings
+protys:WhitePaint_WaterBased protys:hasProcessPlan protys:MainMixing .
+protys:PigmentPaste_Intermediate protys:hasProcessPlan protys:PigmentDispersion .
+
+# Equipment Capabilities Linkage
+protys:PearlMill_01 protys:hasCapability protys:Fine_Grinding .
+protys:MixingReactor_02 protys:hasCapability protys:Batch_Mixing .
+protys:DosingSystem_03 protys:hasCapability protys:Precision_Metering .
+protys:PackagingMachine_05 protys:hasCapability protys:Auto_Packaging .
+
+# Quality Specification Links
+protys:WhitePaint_WaterBased protys:hasShelfLife protys:Viscosity_KU_Spec .
+protys:WhitePaint_WaterBased protys:hasShelfLife protys:ParticleSize_Hegman_Spec .

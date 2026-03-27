@@ -1,0 +1,130 @@
+spring:
+  application:
+    name: protys-ws-docker
+
+  # Database Configuration
+  datasource:
+    url: jdbc:postgresql://protys-postgres:5432/protys
+    username: protys_user
+    password: protys_password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 3
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1200000
+
+  # JPA/Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        format_sql: false
+        use_sql_comments: false
+        jdbc:
+          batch_size: 30
+          fetch_size: 100
+        order_inserts: true
+        order_updates: true
+    show-sql: false
+    open-in-view: false
+
+  # Fuseki Configuration
+  fuseki:
+    url: http://protys-fuseki:3030
+    dataset-name: protys
+    username: admin
+    password: ${FUSEKI_PASSWORD:admin-password}
+
+  # Jackson Configuration
+  jackson:
+    serialization:
+      indent-output: false
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+  # Multipart Configuration
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  # Web Configuration
+  web:
+    cors:
+      allowed-origins: http://protys-frontend:3000,https://*.example.com
+      allowed-methods: GET,POST,PUT,DELETE,OPTIONS,PATCH
+      allowed-headers: "*"
+      allow-credentials: true
+      max-age: 3600
+
+# Server Configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  compression:
+    enabled: true
+    min-response-size: 1024
+  error:
+    include-message: always
+    include-stacktrace: never
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    ve.edu.uc.protys: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.hibernate.SQL: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: /var/log/protys/protys-app.log
+    max-size: 50MB
+    max-history: 30
+
+# Application Configuration
+app:
+  name: PROTYS-WS
+  version: 1.0.0
+  description: Semantic Web Application for ERP Integration
+  security:
+    jwt:
+      secret: ${JWT_SECRET:change-this-secret-in-production-12345678901234567890}
+      expiration: 86400000 # 24 hours
+      refresh-expiration: 604800000 # 7 days
+  cors:
+    enabled: true
+    allowed-origins: http://protys-frontend:3000
+  file-upload:
+    max-size: 100MB
+    allowed-types: .owl,.rdf,.ttl,.n3
+    storage-path: /data/protys-uploads
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+
+# Production Settings
+springdoc:
+  swagger-ui:
+    enabled: false
+  api-docs:
+    path: /v3/api-docs

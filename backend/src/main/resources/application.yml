@@ -1,0 +1,139 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: protys-ws
+
+  # DataSource Configuration for PostgreSQL
+  datasource:
+    url: jdbc:postgresql://localhost:5432/protys_db
+    username: protys_user
+    password: protys_password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 20000
+
+  # JPA / Hibernate Configuration
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        use_sql_comments: true
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+    show-sql: false
+    open-in-view: false
+
+  # Spring Security Configuration
+  security:
+    filter:
+      order: 5
+
+  # File Upload Configuration
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+  # CORS Configuration
+  web:
+    cors:
+      allowed-origins: "http://localhost:3000,http://localhost:4200"
+      allowed-methods: "GET,POST,PUT,DELETE,OPTIONS,PATCH"
+      allowed-headers: "Content-Type,Authorization"
+      allow-credentials: true
+      max-age: 3600
+
+  # Jackson Configuration
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      indent-output: true
+    deserialization:
+      fail-on-unknown-properties: false
+
+# Logging Configuration
+logging:
+  level:
+    root: INFO
+    ve.edu.uc.protys: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/protys-ws.log
+    max-size: 10MB
+    max-history: 30
+
+# Actuator Configuration
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      simple:
+        enabled: true
+
+# SpringDoc OpenAPI / Swagger Configuration
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    operations-sorter: method
+    tags-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  show-actuator: true
+
+# PROTYS Custom Configuration
+protys:
+  # Fuseki Triple Store Configuration
+  fuseki:
+    endpoint: http://localhost:3030/protys
+    dataset: protys
+
+  # Ontologies Configuration
+  ontologies:
+    base-uri: http://protys.ingar.conicet.gob.ar/ontology#
+    path: classpath:ontologies/
+
+  # R2RML Mapping Configuration
+  r2rml:
+    path: classpath:r2rml/
+
+  # Semantic Reasoning Configuration
+  reasoning:
+    engine: hermit
+    timeout: 30000
+    enable-validation: true
+    enable-consistency-check: true
+
+  # Query Configuration
+  query:
+    timeout: 60000
+    page-size: 100
+
+  # Cache Configuration
+  cache:
+    enabled: true
+    ttl: 3600
+    max-size: 1000

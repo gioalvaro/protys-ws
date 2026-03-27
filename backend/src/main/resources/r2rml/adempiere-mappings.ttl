@@ -1,0 +1,450 @@
+@prefix rr: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rrml: <http://semweb.mmlab.be/ns/rrml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ex: <http://example.org/> .
+@prefix protys: <http://www.protys.org/ontology/protys#> .
+@prefix protys-kb: <http://www.protys.org/ontology/protys-kb#> .
+
+# ============================================================================
+# ADEMPIERE 4.x R2RML MAPPINGS FOR PROTYS-WS
+# ============================================================================
+# This file contains R2RML mappings to transform ADempiere relational data
+# into RDF triples conforming to the PROTYS(KB) ontology network.
+# Case study: Paint manufacturing with TiO2, Acrylic Resin, PearlMill_01
+# ============================================================================
+
+# TriplesMap 1: M_Product → protys:Raw_Material / protys:Final_Product
+<#ProductMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				p.M_Product_ID,
+				p.Name,
+				p.Description,
+				p.Value,
+				c.Name as CategoryName,
+				p.ProductType,
+				p.CreatedDate
+			FROM M_Product p
+			LEFT JOIN M_Product_Category c
+				ON p.M_Product_Category_ID = c.M_Product_Category_ID
+			WHERE p.IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/product/{M_Product_ID}" ;
+		rr:class protys:Material ;
+		rr:class [
+			rr:condition "ProductType = 'M'" ;
+			rr:class protys:Raw_Material ;
+		] ;
+		rr:class [
+			rr:condition "ProductType = 'P'" ;
+			rr:class protys:Final_Product ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate rdfs:label ;
+		rr:objectMap [ rml:reference "Name" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasDescription ;
+		rr:objectMap [ rml:reference "Description" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasCode ;
+		rr:objectMap [ rml:reference "Value" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasCategory ;
+		rr:objectMap [ rml:reference "CategoryName" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:createdAt ;
+		rr:objectMap [
+			rml:reference "CreatedDate" ;
+			rr:datatype xsd:dateTime ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .
+
+# TriplesMap 2: M_Production → protys:Artificial_Process / protys:BatchProcess
+<#ProductionMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				pr.M_Production_ID,
+				pr.M_Product_ID,
+				pr.DocumentNo,
+				pr.MovementDate,
+				pr.DatePromised,
+				pr.QtyOrdered,
+				pr.QtyDelivered,
+				pr.DocStatus,
+				pl.M_ProductionLine_ID,
+				pl.Line,
+				pl.M_Locator_ID,
+				pl.QtyBOM,
+				pl.IsActive
+			FROM M_Production pr
+			LEFT JOIN M_ProductionLine pl
+				ON pr.M_Production_ID = pl.M_Production_ID
+			WHERE pr.IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/production/{M_Production_ID}" ;
+		rr:class protys:Artificial_Process ;
+		rr:class protys:BatchProcess ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate rdfs:label ;
+		rr:objectMap [ rml:reference "DocumentNo" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasProduct ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/product/{M_Product_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasStartTime ;
+		rr:objectMap [
+			rml:reference "MovementDate" ;
+			rr:datatype xsd:dateTime ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasEndTime ;
+		rr:objectMap [
+			rml:reference "DatePromised" ;
+			rr:datatype xsd:dateTime ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasPlannedQuantity ;
+		rr:objectMap [
+			rml:reference "QtyOrdered" ;
+			rr:datatype xsd:decimal ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasActualQuantity ;
+		rr:objectMap [
+			rml:reference "QtyDelivered" ;
+			rr:datatype xsd:decimal ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasStatus ;
+		rr:objectMap [ rml:reference "DocStatus" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasProductionLine ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/productionline/{M_ProductionLine_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .
+
+# TriplesMap 3: M_BOM + M_BOM_Component → protys:Formulation
+<#BOMMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				b.M_BOM_ID,
+				b.M_Product_ID as FinalProductID,
+				b.Name,
+				b.Description,
+				b.BOMType,
+				b.BOMUse,
+				bc.M_BOM_Component_ID,
+				bc.Line,
+				bc.M_Product_ID as ComponentProductID,
+				bc.BOMQty,
+				bc.IsActive
+			FROM M_BOM b
+			LEFT JOIN M_BOM_Component bc
+				ON b.M_BOM_ID = bc.M_BOM_ID
+			WHERE b.IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/bom/{M_BOM_ID}" ;
+		rr:class protys:Formulation ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate rdfs:label ;
+		rr:objectMap [ rml:reference "Name" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasDescription ;
+		rr:objectMap [ rml:reference "Description" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasFinalProduct ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/product/{FinalProductID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasComponent ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/bom-component/{M_BOM_Component_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasBOMType ;
+		rr:objectMap [ rml:reference "BOMType" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .
+
+# TriplesMap 4: M_BOM_Component Details
+<#BOMComponentMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				bc.M_BOM_Component_ID,
+				bc.M_BOM_ID,
+				bc.M_Product_ID,
+				bc.Line,
+				bc.BOMQty,
+				bc.M_UOM_ID,
+				bc.Description
+			FROM M_BOM_Component bc
+			WHERE bc.IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/bom-component/{M_BOM_Component_ID}" ;
+		rr:class protys:Component ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasProduct ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/product/{M_Product_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasQuantity ;
+		rr:objectMap [
+			rml:reference "BOMQty" ;
+			rr:datatype xsd:decimal ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasUnitOfMeasure ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/uom/{M_UOM_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasDescription ;
+		rr:objectMap [ rml:reference "Description" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .
+
+# TriplesMap 5: AD_Org → protys:Organization / protys:Plant
+<#OrganizationMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				AD_Org_ID,
+				Name,
+				Description,
+				AD_Org_Parent_ID,
+				IsActive,
+				CreatedDate
+			FROM AD_Org
+			WHERE IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/organization/{AD_Org_ID}" ;
+		rr:class protys:Organization ;
+		rr:class protys:Plant ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate rdfs:label ;
+		rr:objectMap [ rml:reference "Name" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasDescription ;
+		rr:objectMap [ rml:reference "Description" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasParentOrganization ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/organization/{AD_Org_Parent_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:createdAt ;
+		rr:objectMap [
+			rml:reference "CreatedDate" ;
+			rr:datatype xsd:dateTime ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .
+
+# TriplesMap 6: M_Warehouse → protys:Warehouse
+<#WarehouseMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				M_Warehouse_ID,
+				Name,
+				Description,
+				AD_Org_ID,
+				IsActive
+			FROM M_Warehouse
+			WHERE IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/warehouse/{M_Warehouse_ID}" ;
+		rr:class protys:Warehouse ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate rdfs:label ;
+		rr:objectMap [ rml:reference "Name" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasDescription ;
+		rr:objectMap [ rml:reference "Description" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:belongsToOrganization ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/organization/{AD_Org_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .
+
+# TriplesMap 7: M_Inventory → Stock Levels
+<#InventoryMapping>
+	a rr:TriplesMap ;
+	rml:logicalSource [
+		rml:source "jdbc:postgresql://localhost:5432/adempiere" ;
+		rml:sqlVersion rml:SQL2008 ;
+		rml:query """
+			SELECT
+				M_Inventory_ID,
+				M_Warehouse_ID,
+				M_Product_ID,
+				MovementDate,
+				QtyCount,
+				M_Locator_ID,
+				Description
+			FROM M_Inventory
+			WHERE IsActive = 'Y'
+		"""
+	] ;
+	rr:subjectMap [
+		rr:template "http://example.org/adempiere/inventory/{M_Inventory_ID}" ;
+		rr:class protys:Inventory ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasProduct ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/product/{M_Product_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:inWarehouse ;
+		rr:objectMap [
+			rr:template "http://example.org/adempiere/warehouse/{M_Warehouse_ID}" ;
+			rr:termType rr:IRI ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasQuantity ;
+		rr:objectMap [
+			rml:reference "QtyCount" ;
+			rr:datatype xsd:decimal ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:measuredAt ;
+		rr:objectMap [
+			rml:reference "MovementDate" ;
+			rr:datatype xsd:dateTime ;
+		] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:hasDescription ;
+		rr:objectMap [ rml:reference "Description" ] ;
+	] ;
+	rr:predicateObjectMap [
+		rr:predicate protys:source ;
+		rr:objectMap [
+			rr:constant "http://example.org/source/adempiere" ;
+			rr:termType rr:IRI ;
+		] ;
+	] .

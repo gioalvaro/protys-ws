@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+         xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+         xmlns:protys="http://protys.ingar.conicet.gob.ar/ontology#"
+         xml:base="http://protys.ingar.conicet.gob.ar/ontology#">
+
+    <owl:Ontology rdf:about="http://protys.ingar.conicet.gob.ar/ontology/alignment-rules">
+        <rdfs:label>PROTYS Alignment Rules</rdfs:label>
+        <rdfs:comment>SWRL rules for aligning ISO 15531, ISO 14040, and core PROTYS modules</rdfs:comment>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/core-concepts"/>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/product-module"/>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/process-module"/>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/resource-module"/>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/enterprise-module"/>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/iso14040-module"/>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/iso15531-module"/>
+        <owl:imports rdf:resource="http://www.w3.org/2003/11/swrl#"/>
+    </owl:Ontology>
+
+    <!-- ========================================
+         R01-R08: ISO 15531 ↔ ResourceMod/ProcessMod Mappings
+         ======================================== -->
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R01_ManufacturingResource_isDevice">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R01: ManufacturingResource ↔ Device</rdfs:label>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingResource"/>
+                        <swrl:argument1 rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#AtomList"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Device"/>
+                        <swrl:argument1 rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#_x"/>
+                    </rdf:Description>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+        </swrl:head>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R02_ProcessPlan_isArtificialProcess">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R02: ProcessPlan ↔ Artificial_Process</rdfs:label>
+        <rdfs:comment>A ProcessPlan from ISO15531 maps to an Artificial_Process in the core ontology</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R03_ManufacturingCapability_isCapability">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R03: ManufacturingCapability ↔ Capability</rdfs:label>
+        <rdfs:comment>Manufacturing capabilities align with abstract Capability class</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R04_Operation_isProcedure">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R04: Operation ↔ Procedure_Activity</rdfs:label>
+        <rdfs:comment>ISO15531 Operation aligns with Procedure_Activity</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R05_SkillLevel_hasCapability">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R05: SkillLevel defines hasCapability</rdfs:label>
+        <rdfs:comment>A SkillLevel corresponds to a Capability</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R06_ResourceAllocation_requiresResource">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R06: ResourceAllocation → requiresResource</rdfs:label>
+        <rdfs:comment>Resource allocations result in requiresResource relationships</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R07_ProductionSchedule_precedes">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R07: ProductionSchedule establishes precedes ordering</rdfs:label>
+        <rdfs:comment>Process sequences in ProductionSchedule establish precedes relationships</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R08_WorkOrder_mapsProcess">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R08: WorkOrder links ProcessPlan execution</rdfs:label>
+        <rdfs:comment>WorkOrders instantiate ProcessPlans</rdfs:comment>
+    </rdf:Description>
+
+    <!-- ========================================
+         R09-R15: ISO 14040 ↔ ProductMod/ProcessMod Mappings
+         ======================================== -->
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R09_ElementaryFlow_isMaterial">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R09: ElementaryFlow ↔ Material</rdfs:label>
+        <rdfs:comment>LCA ElementaryFlows correspond to Materials</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R10_ImpactCategory_isEnvironmentalIndicator">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R10: ImpactCategory ↔ EnvironmentalIndicator</rdfs:label>
+        <rdfs:comment>LCA impact categories align with environmental indicators</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R11_LifeCycleStage_isProcess">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R11: LifeCycleStage ↔ Manufacturing_Stage</rdfs:label>
+        <rdfs:comment>LCA stages align with manufacturing stages</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R12_FunctionalUnit_definesProduct">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R12: FunctionalUnit references Product</rdfs:label>
+        <rdfs:comment>LCA functional units are based on products</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R13_SystemBoundary_constrainsProcess">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R13: SystemBoundary defines process scope</rdfs:label>
+        <rdfs:comment>LCA system boundaries limit relevant processes</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R14_CarbonFootprint_fromProcesses">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R14: Carbon footprint aggregates from processes</rdfs:label>
+        <rdfs:comment>Process energy consumption drives carbon footprint</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R15_WaterFootprint_fromConsumption">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R15: Water footprint from material consumption</rdfs:label>
+        <rdfs:comment>Material water content contributes to water footprint</rdfs:comment>
+    </rdf:Description>
+
+    <!-- ========================================
+         R16-R22: Cross-Module Bridges
+         ======================================== -->
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R16_Product_consistsOf_Material">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R16: Product composition from input materials</rdfs:label>
+        <rdfs:comment>Products are composed of consumed materials</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R17_Process_requiresEquipment">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R17: Process execution requires equipment</rdfs:label>
+        <rdfs:comment>Processes require equipment as resources</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R18_Enterprise_owns_Equipment">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R18: Enterprise owns equipment resources</rdfs:label>
+        <rdfs:comment>Equipment belongs to enterprises</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R19_Person_performs_Process">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R19: Personnel execute processes</rdfs:label>
+        <rdfs:comment>People with appropriate skills perform manufacturing processes</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R20_Process_produces_Product">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R20: Process output produces product</rdfs:label>
+        <rdfs:comment>Process outputs map to product instances</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R21_Material_hasCertification">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R21: Material quality parameters</rdfs:label>
+        <rdfs:comment>Material properties are quality parameters</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R22_Equipment_allocatedToCell">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R22: Equipment allocated to production cell</rdfs:label>
+        <rdfs:comment>Equipment is allocated to specific production cells</rdfs:comment>
+    </rdf:Description>
+
+    <!-- ========================================
+         R23-R26: Transversal Rules
+         ======================================== -->
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R23_EcoEfficiency_YieldVsImpact">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R23: Eco-efficiency (yield vs environmental impact)</rdfs:label>
+        <rdfs:comment>High yield processes with low environmental impact are more eco-efficient</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R24_Resource_hasEnvironmentalCost">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R24: Resource energy consumption drives environmental impact</rdfs:label>
+        <rdfs:comment>Equipment energy consumption contributes to environmental indicators</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R25_Quality_impactsYield">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R25: Quality parameters affect process yield</rdfs:label>
+        <rdfs:comment>Meeting quality specs improves process yield</rdfs:comment>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#R26_Capability_enables_Process">
+        <rdf:type rdf:resource="http://www.w3.org/2003/11/swrl#Rule"/>
+        <rdfs:label>R26: Capabilities enable process execution</rdfs:label>
+        <rdfs:comment>Required capabilities must be available for process execution</rdfs:comment>
+    </rdf:Description>
+
+    <!-- ========================================
+         EQUIVALENCE STATEMENTS
+         ======================================== -->
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingResource">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Equipment"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ProcessPlan">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Artificial_Process"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingCapability">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Capability"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#Operation">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Procedure_Activity"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ElementaryFlow">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Material"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ImpactCategory">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalIndicator"/>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleStage">
+        <owl:equivalentClass rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Manufacturing_Stage"/>
+    </rdf:Description>
+
+</rdf:RDF>

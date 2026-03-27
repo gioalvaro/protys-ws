@@ -1,0 +1,54 @@
+@prefix :        <#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix tdb2:    <http://jena.apache.org/2016/tdb#> .
+
+# ============================================================================
+# PROTYS(KB) - Apache Jena Fuseki 4.10.0 Configuration
+# TDB2 Triple Store for Manufacturing Ontology Network
+# ============================================================================
+
+[] rdf:type fuseki:Server ;
+   fuseki:services (
+     :protys_service
+   ) .
+
+:protys_service rdf:type fuseki:Service ;
+    fuseki:name                "protys" ;
+    fuseki:serviceQuery        "sparql", "query" ;
+    fuseki:serviceUpdate       "update" ;
+    fuseki:serviceUpload       "upload" ;
+    fuseki:serviceReadWriteGraphStore "data" ;
+    fuseki:serviceReadGraphStore "get" ;
+    fuseki:dataset             :protys_dataset ;
+    .
+
+:protys_dataset rdf:type tdb2:DatasetTDB2 ;
+    tdb2:location "/fuseki/databases/protys" ;
+    tdb2:unionDefaultGraph true ;
+    .
+
+# ============================================================================
+# Named Graph Layout (loaded by init-fuseki.sh):
+#
+#   ONTOLOGY MODULES (TBox):
+#     urn:protys:kb          - Master ontology (imports all modules)
+#     urn:protys:core        - Core Concepts (12 classes, 8 object props)
+#     urn:protys:product     - Product Module (8 classes)
+#     urn:protys:process     - Process Module (10 classes)
+#     urn:protys:resource    - Resource Module (9 classes)
+#     urn:protys:enterprise  - Enterprise Module (7 classes)
+#     urn:protys:iso14040    - ISO 14040 LCA Module (15 classes)
+#     urn:protys:iso15531    - ISO 15531 MANDATE Module (18 classes)
+#     urn:protys:alignment   - SWRL Alignment Rules (26 rules R01-R26)
+#
+#   INSTANCE DATA (ABox):
+#     urn:protys:instances       - Paint case study instances (Chapter 4)
+#     urn:protys:erp:adempiere   - ADempiere R2RML materialized data
+#     urn:protys:erp:odoo        - Odoo R2RML materialized data
+#
+#   Total: 79 classes, 95+ properties, 26 SWRL rules, 180+ individuals
+#   unionDefaultGraph=true allows querying across all graphs by default
+# ============================================================================

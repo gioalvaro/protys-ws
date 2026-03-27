@@ -1,0 +1,128 @@
+version: '3.8'
+
+services:
+  # Apache Jena Fuseki - Triple Store for RDF data
+  protys-fuseki:
+    image: stain/jena-fuseki:4.10.0
+    container_name: protys-fuseki
+    ports:
+      - "3030:3030"
+    environment:
+      ADMIN_PASSWORD: admin123
+      FUSEKI_DATASET_1: protys
+    volumes:
+      - fuseki-data:/fuseki
+      - ./fuseki-config.ttl:/etc/fuseki/config.ttl:ro
+      - ../ontologies:/ontologies:ro
+    networks:
+      - protys-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3030/protys"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    command: ["/docker-entrypoint.sh", "server"]
+
+  # PostgreSQL Database - For ADempiere and Odoo data
+  protys-postgres:
+    image: postgres:15
+    container_name: protys-postgres
+    environment:
+      POSTGRES_DB: protys_db
+      POSTGRES_USER: protys_user
+      POSTGRES_PASSWORD: protys_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ../sql/adempiere-schema.sql:/docker-entrypoint-initdb.d/01-adempiere-schema.sql
+      - ../sql/odoo-schema.sql:/docker-entrypoint-initdb.d/02-odoo-schema.sql
+    networks:
+      - protys-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U protys_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Spring Boot Backend - R2RML Mapping Engine
+  protys-backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: protys-backend
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://protys-postgres:5432/protys_db
+      SPRING_DATASOURCE_USERNAME: protys_user
+      SPRING_DATASOURCE_PASSWORD: protys_password
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      FUSEKI_ENDPOINT: http://protys-fuseki:3030/protys
+      FUSEKI_QUERY_ENDPOINT: http://protys-fuseki:3030/protys/sparql
+      FUSEKI_UPDATE_ENDPOINT: http://protys-fuseki:3030/protys/update
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      LOGGING_LEVEL_ROOT: INFO
+      LOGGING_LEVEL_COM_PROTYS: DEBUG
+    depends_on:
+      protys-postgres:
+        condition: service_healthy
+      protys-fuseki:
+        condition: service_healthy
+    networks:
+      - protys-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - ../backend/src/main/resources/r2rml:/app/r2rml:ro
+
+  # Ontology Loader - Loads PROTYS(KB) into Fuseki on startup
+  protys-init:
+    image: curlimages/curl:8.5.0
+    container_name: protys-init
+    volumes:
+      - ../ontologies:/ontologies:ro
+      - ./init-fuseki.sh:/init-fuseki.sh:ro
+    environment:
+      FUSEKI_URL: http://protys-fuseki:3030
+      ONTOLOGY_DIR: /ontologies
+    entrypoint: ["/bin/sh", "/init-fuseki.sh"]
+    depends_on:
+      protys-fuseki:
+        condition: service_healthy
+    networks:
+      - protys-network
+    restart: "no"
+
+  # React Frontend
+  protys-frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: protys-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      protys-backend:
+        condition: service_healthy
+    networks:
+      - protys-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+
+networks:
+  protys-network:
+    driver: bridge
+
+volumes:
+  fuseki-data:
+    driver: local
+  postgres-data:
+    driver: local

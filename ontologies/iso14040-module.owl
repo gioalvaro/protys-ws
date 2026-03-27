@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:protys="http://protys.ingar.conicet.gob.ar/ontology#"
+         xml:base="http://protys.ingar.conicet.gob.ar/ontology#">
+
+    <owl:Ontology rdf:about="http://protys.ingar.conicet.gob.ar/ontology/iso14040-module">
+        <rdfs:label>PROTYS ISO 14040 Life Cycle Assessment Module</rdfs:label>
+        <rdfs:comment>Environmental assessment and life cycle impact analysis according to ISO 14040/14044 standards</rdfs:comment>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/core-concepts"/>
+    </owl:Ontology>
+
+    <!-- ========================================
+         LCA CLASSES
+         ======================================== -->
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment">
+        <rdfs:label>Life Cycle Assessment</rdfs:label>
+        <rdfs:comment>A comprehensive environmental impact analysis of a product's life cycle</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleStage">
+        <rdfs:label>Life Cycle Stage</rdfs:label>
+        <rdfs:comment>A distinct phase in a product's life cycle (raw material, production, use, end-of-life)</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#GoalAndScope">
+        <rdfs:label>Goal And Scope</rdfs:label>
+        <rdfs:comment>The goal definition and scope of an LCA study</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleInventory">
+        <rdfs:label>Life Cycle Inventory</rdfs:label>
+        <rdfs:comment>Data collection and analysis of material and energy flows</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ImpactAssessment">
+        <rdfs:label>Impact Assessment</rdfs:label>
+        <rdfs:comment>Evaluation of environmental impacts from life cycle inventory</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#Interpretation">
+        <rdfs:label>Interpretation</rdfs:label>
+        <rdfs:comment>Analysis and interpretation of LCA results</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ElementaryFlow">
+        <rdfs:label>Elementary Flow</rdfs:label>
+        <rdfs:comment>Material or energy extracted from or released to the environment</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact">
+        <rdfs:label>Environmental Impact</rdfs:label>
+        <rdfs:comment>A quantified environmental impact or effect</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ImpactCategory">
+        <rdfs:label>Impact Category</rdfs:label>
+        <rdfs:comment>A category of environmental impact (e.g., climate change, water use, acidification)</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalIndicator"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#CharacterizationFactor">
+        <rdfs:label>Characterization Factor</rdfs:label>
+        <rdfs:comment>A factor used to convert inventory data to impact category results</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#SystemBoundary">
+        <rdfs:label>System Boundary</rdfs:label>
+        <rdfs:comment>The defined boundaries of the product system in an LCA</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#FunctionalUnit">
+        <rdfs:label>Functional Unit</rdfs:label>
+        <rdfs:comment>The reference unit for LCA calculations</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#AllocationMethod">
+        <rdfs:label>Allocation Method</rdfs:label>
+        <rdfs:comment>Method for allocating impacts among co-products or joint processes</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#DataQualityIndicator">
+        <rdfs:label>Data Quality Indicator</rdfs:label>
+        <rdfs:comment>Metric for assessing the quality of LCA data</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#NormalizationFactor">
+        <rdfs:label>Normalization Factor</rdfs:label>
+        <rdfs:comment>A factor used to normalize impact assessment results</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <!-- ========================================
+         LCA OBJECT PROPERTIES
+         ======================================== -->
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasCarbonFootprint">
+        <rdfs:label>has Carbon Footprint</rdfs:label>
+        <rdfs:comment>The carbon footprint impact measure</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasWaterFootprint">
+        <rdfs:label>has Water Footprint</rdfs:label>
+        <rdfs:comment>The water footprint impact measure</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasVOCContent">
+        <rdfs:label>has VOC Content</rdfs:label>
+        <rdfs:comment>Volatile Organic Compound content measure</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasEnergyConsumptionImpact">
+        <rdfs:label>has Energy Consumption Impact</rdfs:label>
+        <rdfs:comment>Energy consumption related environmental impact</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasCategory">
+        <rdfs:label>has Category</rdfs:label>
+        <rdfs:comment>Relates an impact to its category</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ImpactCategory"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasIndicator">
+        <rdfs:label>has Indicator</rdfs:label>
+        <rdfs:comment>An indicator associated with environmental assessment</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalIndicator"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasValue">
+        <rdfs:label>has Value</rdfs:label>
+        <rdfs:comment>A measured or calculated value</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasSystemBoundary">
+        <rdfs:label>has System Boundary</rdfs:label>
+        <rdfs:comment>The system boundary definition of an LCA</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#SystemBoundary"/>
+    </owl:ObjectProperty>
+
+    <!-- ========================================
+         LCA DATA PROPERTIES
+         ======================================== -->
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#carbonFootprintKgCO2eq">
+        <rdfs:label>carbon Footprint Kg CO2 Equivalent</rdfs:label>
+        <rdfs:comment>Carbon footprint in kg CO2 equivalent</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#waterFootprintLiters">
+        <rdfs:label>water Footprint Liters</rdfs:label>
+        <rdfs:comment>Water footprint in liters</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#VOCContentGperLiter">
+        <rdfs:label>VOC Content G per Liter</rdfs:label>
+        <rdfs:comment>VOC content in grams per liter</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#energyConsumptionMJ">
+        <rdfs:label>energy Consumption MJ</rdfs:label>
+        <rdfs:comment>Energy consumption in megajoules</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#impactValue">
+        <rdfs:label>impact Value</rdfs:label>
+        <rdfs:comment>Numeric value of environmental impact</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#impactUnit">
+        <rdfs:label>impact Unit</rdfs:label>
+        <rdfs:comment>Unit of measurement for impact value</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+</rdf:RDF>

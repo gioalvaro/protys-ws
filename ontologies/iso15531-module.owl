@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:protys="http://protys.ingar.conicet.gob.ar/ontology#"
+         xml:base="http://protys.ingar.conicet.gob.ar/ontology#">
+
+    <owl:Ontology rdf:about="http://protys.ingar.conicet.gob.ar/ontology/iso15531-module">
+        <rdfs:label>PROTYS ISO 15531 Manufacturing Data Management Module</rdfs:label>
+        <rdfs:comment>Manufacturing resource management and production planning according to ISO 15531 standard</rdfs:comment>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/core-concepts"/>
+    </owl:Ontology>
+
+    <!-- ========================================
+         MANUFACTURING MANAGEMENT CLASSES
+         ======================================== -->
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingResource">
+        <rdfs:label>Manufacturing Resource</rdfs:label>
+        <rdfs:comment>A resource that participates in manufacturing operations</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ProcessPlan">
+        <rdfs:label>Process Plan</rdfs:label>
+        <rdfs:comment>A detailed plan for manufacturing a product</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Process"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingCapability">
+        <rdfs:label>Manufacturing Capability</rdfs:label>
+        <rdfs:comment>An operational capability for manufacturing processes</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Capability"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#TimeModel">
+        <rdfs:label>Time Model</rdfs:label>
+        <rdfs:comment>A model for temporal characteristics of manufacturing processes</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingFlow">
+        <rdfs:label>Manufacturing Flow</rdfs:label>
+        <rdfs:comment>The sequence and flow of manufacturing operations</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#MaterialFlow"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#Operation">
+        <rdfs:label>Operation</rdfs:label>
+        <rdfs:comment>A discrete manufacturing operation or task</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Process"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingSetup">
+        <rdfs:label>Manufacturing Setup</rdfs:label>
+        <rdfs:comment>Configuration and preparation for manufacturing operations</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Setup_Activity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ResourceType">
+        <rdfs:label>Resource Type</rdfs:label>
+        <rdfs:comment>Classification of resource types</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#CapabilityType">
+        <rdfs:label>Capability Type</rdfs:label>
+        <rdfs:comment>Classification of manufacturing capability types</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#SkillLevel">
+        <rdfs:label>Skill Level</rdfs:label>
+        <rdfs:comment>Level of proficiency in a skill</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#CertificationLevel">
+        <rdfs:label>Certification Level</rdfs:label>
+        <rdfs:comment>Level or grade of professional certification</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#OperationalParameter">
+        <rdfs:label>Operational Parameter</rdfs:label>
+        <rdfs:comment>Parameters defining operational conditions</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#QualityParameter"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ProductionSchedule">
+        <rdfs:label>Production Schedule</rdfs:label>
+        <rdfs:comment>A schedule for production activities</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#WorkOrder">
+        <rdfs:label>Work Order</rdfs:label>
+        <rdfs:comment>An order to perform specific manufacturing work</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ResourceAllocation">
+        <rdfs:label>Resource Allocation</rdfs:label>
+        <rdfs:comment>Allocation of resources to manufacturing operations</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#MaintenanceRecord">
+        <rdfs:label>Maintenance Record</rdfs:label>
+        <rdfs:comment>Documentation of maintenance activities</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#PerformanceMetric">
+        <rdfs:label>Performance Metric</rdfs:label>
+        <rdfs:comment>A metric for measuring manufacturing performance</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingConstraint">
+        <rdfs:label>Manufacturing Constraint</rdfs:label>
+        <rdfs:comment>A constraint or limitation in manufacturing operations</rdfs:comment>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    </owl:Class>
+
+    <!-- ========================================
+         MANUFACTURING MANAGEMENT OBJECT PROPERTIES
+         ======================================== -->
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasManufacturingCapability">
+        <rdfs:label>has Manufacturing Capability</rdfs:label>
+        <rdfs:comment>Relates a resource to its manufacturing capabilities</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingResource"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingCapability"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasProcessPlan">
+        <rdfs:label>has Process Plan</rdfs:label>
+        <rdfs:comment>A product has an associated process plan</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Product"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ProcessPlan"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#requiresManufacturingResource">
+        <rdfs:label>requires Manufacturing Resource</rdfs:label>
+        <rdfs:comment>A process plan requires specific manufacturing resources</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ProcessPlan"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ManufacturingResource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasTimeModel">
+        <rdfs:label>has Time Model</rdfs:label>
+        <rdfs:comment>A process has an associated time model</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#Operation"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#TimeModel"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasParameter">
+        <rdfs:label>has Parameter</rdfs:label>
+        <rdfs:comment>An operational parameter of a process</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#OperationalParameter"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasSkill">
+        <rdfs:label>has Skill</rdfs:label>
+        <rdfs:comment>A person possesses a skill with a certain level</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#HumanResource"/>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#SkillLevel"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasExperience">
+        <rdfs:label>has Experience</rdfs:label>
+        <rdfs:comment>A person has work experience in a specific area</rdfs:comment>
+        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#HumanResource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasSchedule">
+        <rdfs:label>has Schedule</rdfs:label>
+        <rdfs:comment>A production schedule for operations</rdfs:comment>
+        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ProductionSchedule"/>
+    </owl:ObjectProperty>
+
+    <!-- ========================================
+         MANUFACTURING DATA PROPERTIES
+         ======================================== -->
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#operationSequence">
+        <rdfs:label>operation Sequence</rdfs:label>
+        <rdfs:comment>Sequence number in process plan</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#setupTimeMinutes">
+        <rdfs:label>setup Time Minutes</rdfs:label>
+        <rdfs:comment>Setup time in minutes</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#cycleTimeMinutes">
+        <rdfs:label>cycle Time Minutes</rdfs:label>
+        <rdfs:comment>Cycle time in minutes</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#skillCode">
+        <rdfs:label>skill Code</rdfs:label>
+        <rdfs:comment>Code identifying a skill type</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#experienceYears">
+        <rdfs:label>experience Years</rdfs:label>
+        <rdfs:comment>Years of experience in a specific area</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#certificationCode">
+        <rdfs:label>certification Code</rdfs:label>
+        <rdfs:comment>Code for a certification or qualification</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+</rdf:RDF>

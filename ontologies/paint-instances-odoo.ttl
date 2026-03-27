@@ -1,0 +1,322 @@
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+@prefix protys:    <http://www.protys.org/ontology/> .
+@prefix core:      <http://www.protys.org/ontology/core#> .
+@prefix product:   <http://www.protys.org/ontology/product#> .
+@prefix process:   <http://www.protys.org/ontology/process#> .
+@prefix resource:  <http://www.protys.org/ontology/resource#> .
+@prefix enterprise: <http://www.protys.org/ontology/enterprise#> .
+@prefix iso14040:  <http://www.protys.org/ontology/iso14040#> .
+@prefix iso15531:  <http://www.protys.org/ontology/iso15531#> .
+@prefix odoo:      <http://www.protys.org/data/odoo/> .
+
+# ============================================================================
+# PROTYS(KB) - Materialized RDF Instances from Odoo 17 ERP
+# Paint Manufacturing Case Study - Chapter 4
+# Source: Odoo 17 via R2RML Mapping (odoo-mappings.ttl)
+# Demonstrates semantic interoperability: same factory, different ERP
+# ============================================================================
+
+# --- Company (from res.company) ---
+odoo:company_1 a enterprise:Organization ;
+    core:hasName "Pinturas LatAm C.A."@es ;
+    core:hasDescription "Empresa dedicada a la fabricación de pinturas industriales y decorativas"@es ;
+    enterprise:organizationCode "PLATAM-ODOO" ;
+    enterprise:location "Valencia, Carabobo, Venezuela" ;
+    enterprise:numberOfEmployees 85 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/org_1000000> .
+
+# --- Stock Warehouse (from stock.warehouse) ---
+odoo:warehouse_1 a enterprise:Plant ;
+    core:hasName "Planta Principal Valencia"@es ;
+    enterprise:location "Zona Industrial Castillito, Valencia" ;
+    enterprise:capacityTonsPerMonth 150.0 ;
+    enterprise:partOfOrganization odoo:company_1 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/warehouse_1000001> .
+
+odoo:warehouse_mp a enterprise:Warehouse ;
+    core:hasName "Almacén Materia Prima"@es ;
+    enterprise:partOfOrganization odoo:company_1 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/warehouse_1000002> .
+
+odoo:warehouse_pt a enterprise:Warehouse ;
+    core:hasName "Almacén Producto Terminado"@es ;
+    enterprise:partOfOrganization odoo:company_1 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/warehouse_1000003> .
+
+# --- Products (from product.template + product.product) ---
+odoo:product_TiO2 a product:Raw_Material ;
+    core:hasName "Dióxido de Titanio (TiO₂) Kronos 2190"@es ;
+    rdfs:label "Titanium Dioxide TiO2 Kronos 2190"@en ;
+    product:purityPercent 93.5 ;
+    product:particleSize 0.21 ;
+    iso14040:carbonFootprintKgCO2eq 6.2 ;
+    iso14040:waterFootprintLiters 120.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000001> .
+
+odoo:product_resina a product:Raw_Material ;
+    core:hasName "Resina Acrílica Acronal 290D"@es ;
+    rdfs:label "Acrylic Resin Acronal 290D"@en ;
+    product:solidContent 50.0 ;
+    product:glassTransitionTemp 4.0 ;
+    product:viscosity 1500.0 ;
+    iso14040:carbonFootprintKgCO2eq 2.1 ;
+    iso14040:VOCContentGperLiter 3.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000002> .
+
+odoo:product_agua a product:Raw_Material ;
+    core:hasName "Agua Desmineralizada"@es ;
+    rdfs:label "Demineralized Water"@en ;
+    product:purityPercent 99.9 ;
+    iso14040:carbonFootprintKgCO2eq 0.001 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000003> .
+
+odoo:product_dispersante a product:Raw_Material ;
+    core:hasName "Dispersante Tego 752W"@es ;
+    rdfs:label "Dispersant Tego 752W"@en ;
+    product:solidContent 52.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000004> .
+
+odoo:product_antiespumante a product:Raw_Material ;
+    core:hasName "Antiespumante BYK-024"@es ;
+    rdfs:label "Antifoam BYK-024"@en ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000005> .
+
+odoo:product_biocida a product:Raw_Material ;
+    core:hasName "Biocida Acticide MBS"@es ;
+    rdfs:label "Biocide Acticide MBS"@en ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000006> .
+
+odoo:product_reologia a product:Raw_Material ;
+    core:hasName "Modificador Reológico Natrosol 250HBR"@es ;
+    rdfs:label "Rheology Modifier Natrosol 250HBR"@en ;
+    product:viscosity 5000.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000007> .
+
+odoo:product_pasta a product:Intermediate_Product ;
+    core:hasName "Pasta de Pigmento TiO₂"@es ;
+    rdfs:label "TiO2 Pigment Paste"@en ;
+    product:solidContent 72.0 ;
+    product:particleSize 0.015 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000010> .
+
+odoo:product_mezcla a product:Intermediate_Product ;
+    core:hasName "Mezcla Ajustada Base Agua"@es ;
+    rdfs:label "Adjusted Water-Based Mix"@en ;
+    product:viscosity 95.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000011> .
+
+odoo:product_pintura a product:Final_Product ;
+    core:hasName "Pintura Blanca Base Agua Línea Premium"@es ;
+    rdfs:label "Premium White Water-Based Paint"@en ;
+    product:solidContent 55.0 ;
+    product:viscosity 98.0 ;
+    product:volatileOrganicCompounds 2.5 ;
+    iso14040:carbonFootprintKgCO2eq 3.8 ;
+    iso14040:waterFootprintLiters 85.5 ;
+    iso14040:VOCContentGperLiter 2.5 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/product_2000020> .
+
+# --- BOM / Bill of Materials (from mrp.bom + mrp.bom.line) ---
+odoo:bom_pintura a product:Formulation ;
+    core:hasName "Lista de Materiales - Pintura Blanca Premium"@es ;
+    rdfs:label "BOM - Premium White Paint"@en ;
+    core:hasDescription "BOM Odoo para 1000 kg de pintura blanca base agua"@es ;
+    core:produces odoo:product_pintura ;
+    core:consumes odoo:product_TiO2 ,
+                  odoo:product_resina ,
+                  odoo:product_agua ,
+                  odoo:product_dispersante ,
+                  odoo:product_antiespumante ,
+                  odoo:product_biocida ,
+                  odoo:product_reologia ;
+    owl:sameAs <http://www.protys.org/data/adempiere/formulation_3000001> .
+
+# --- Manufacturing Operations (from mrp.routing.workcenter) ---
+odoo:operation_10 a process:Inspection ;
+    core:hasName "Inspección de Materia Prima"@es ;
+    rdfs:label "Raw Material Inspection"@en ;
+    process:durationMinutes 45 ;
+    process:yieldPercent 99.5 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000001> .
+
+odoo:operation_20 a process:Manufacturing_Stage ;
+    core:hasName "Dispersión de Pigmento"@es ;
+    rdfs:label "Pigment Dispersion"@en ;
+    process:durationMinutes 120 ;
+    process:temperatureCelsius 45.0 ;
+    process:speedRPM 2800 ;
+    process:yieldPercent 97.0 ;
+    process:throughput 175.0 ;
+    core:inputMaterial odoo:product_TiO2 , odoo:product_agua , odoo:product_dispersante ;
+    core:outputProduct odoo:product_pasta ;
+    core:hasResource odoo:workcenter_molino ;
+    core:precedes odoo:operation_30 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000002> .
+
+odoo:operation_30 a process:Manufacturing_Stage ;
+    core:hasName "Mezcla Principal"@es ;
+    rdfs:label "Main Mixing"@en ;
+    process:durationMinutes 90 ;
+    process:temperatureCelsius 30.0 ;
+    process:speedRPM 800 ;
+    process:yieldPercent 99.0 ;
+    process:throughput 533.0 ;
+    core:inputMaterial odoo:product_pasta , odoo:product_resina , odoo:product_agua ,
+                       odoo:product_antiespumante , odoo:product_biocida ;
+    core:hasResource odoo:workcenter_reactor ;
+    core:precedes odoo:operation_40 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000003> .
+
+odoo:operation_40 a process:Manufacturing_Stage ;
+    core:hasName "Ajuste de Viscosidad y pH"@es ;
+    rdfs:label "Viscosity and pH Adjustment"@en ;
+    process:durationMinutes 30 ;
+    process:temperatureCelsius 25.0 ;
+    process:yieldPercent 99.8 ;
+    core:inputMaterial odoo:product_reologia , odoo:product_agua ;
+    core:outputProduct odoo:product_mezcla ;
+    core:hasResource odoo:workcenter_reactor ;
+    core:precedes odoo:operation_50 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000004> .
+
+odoo:operation_50 a process:Manufacturing_Stage ;
+    core:hasName "Filtración 100 mesh"@es ;
+    rdfs:label "100 Mesh Filtration"@en ;
+    process:durationMinutes 20 ;
+    process:yieldPercent 99.5 ;
+    core:precedes odoo:operation_60 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000005> .
+
+odoo:operation_60 a process:QualityControl ;
+    core:hasName "Control de Calidad"@es ;
+    rdfs:label "Quality Control"@en ;
+    process:durationMinutes 60 ;
+    core:hasResource odoo:workcenter_lab ;
+    core:precedes odoo:operation_70 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000006> .
+
+odoo:operation_70 a process:Packaging ;
+    core:hasName "Envasado"@es ;
+    rdfs:label "Packaging"@en ;
+    process:durationMinutes 40 ;
+    process:yieldPercent 99.2 ;
+    core:outputProduct odoo:product_pintura ;
+    core:hasResource odoo:workcenter_envasado ;
+    owl:sameAs <http://www.protys.org/data/adempiere/process_4000007> .
+
+# --- Work Centers (from mrp.workcenter) ---
+odoo:workcenter_molino a resource:Equip ;
+    core:hasName "Molino de Perlas Netzsch MiniCer"@es ;
+    rdfs:label "Pearl Mill Netzsch MiniCer"@en ;
+    resource:capacityLitersPerHour 200.0 ;
+    resource:energyConsumptionKW 15.0 ;
+    resource:availabilityPercent 92.0 ;
+    resource:OEEPercent 85.0 ;
+    iso15531:setupTimeMinutes 25 ;
+    iso15531:cycleTimeMinutes 120 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/resource_5000001> .
+
+odoo:workcenter_reactor a resource:Equip ;
+    core:hasName "Reactor de Mezcla 2000L"@es ;
+    rdfs:label "2000L Mixing Reactor"@en ;
+    resource:capacityLitersPerHour 800.0 ;
+    resource:energyConsumptionKW 22.0 ;
+    resource:availabilityPercent 95.0 ;
+    resource:OEEPercent 88.0 ;
+    iso15531:setupTimeMinutes 15 ;
+    iso15531:cycleTimeMinutes 90 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/resource_5000002> .
+
+odoo:workcenter_dosificacion a resource:Equip ;
+    core:hasName "Sistema de Dosificación"@es ;
+    rdfs:label "Dosing System"@en ;
+    resource:capacityLitersPerHour 500.0 ;
+    resource:energyConsumptionKW 5.0 ;
+    resource:availabilityPercent 98.0 ;
+    resource:OEEPercent 92.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/resource_5000003> .
+
+odoo:workcenter_envasado a resource:Equip ;
+    core:hasName "Línea de Envasado"@es ;
+    rdfs:label "Packaging Line"@en ;
+    resource:capacityUnitsPerMinute 12.0 ;
+    resource:energyConsumptionKW 8.0 ;
+    resource:availabilityPercent 90.0 ;
+    resource:OEEPercent 82.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/resource_5000004> .
+
+odoo:workcenter_lab a resource:Equip ;
+    core:hasName "Laboratorio QC"@es ;
+    rdfs:label "QC Laboratory"@en ;
+    resource:energyConsumptionKW 3.0 ;
+    resource:availabilityPercent 100.0 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/resource_5000005> .
+
+# --- Employees (from hr.employee) ---
+odoo:employee_1 a resource:HumanResource ;
+    core:hasName "Juan Pérez"@es ;
+    rdfs:label "Juan Pérez - Senior Mill Operator"@en ;
+    resource:skillCategory "Dispersión y Molienda" ;
+    resource:yearOfExperience 12 ;
+    resource:certificationLevel "ISO 9001:2015 Internal Auditor" ;
+    iso15531:skillCode "DISP-SR-001" ;
+    enterprise:manages odoo:workcenter_molino ;
+    owl:sameAs <http://www.protys.org/data/adempiere/hr_6000001> .
+
+odoo:employee_2 a resource:HumanResource ;
+    core:hasName "María González"@es ;
+    rdfs:label "María González - Formulation Chemist"@en ;
+    resource:skillCategory "Formulación y QC" ;
+    resource:yearOfExperience 8 ;
+    resource:certificationLevel "ISO 17025:2017 Lab Analyst" ;
+    iso15531:skillCode "FORM-QC-001" ;
+    enterprise:manages odoo:workcenter_lab ;
+    owl:sameAs <http://www.protys.org/data/adempiere/hr_6000002> .
+
+odoo:employee_3 a resource:HumanResource ;
+    core:hasName "Carlos Rodríguez"@es ;
+    rdfs:label "Carlos Rodríguez - Production Supervisor"@en ;
+    resource:skillCategory "Gestión de Producción" ;
+    resource:yearOfExperience 15 ;
+    resource:certificationLevel "ISO 14001:2015 Environmental Auditor" ;
+    iso15531:skillCode "PROD-SUP-001" ;
+    owl:sameAs <http://www.protys.org/data/adempiere/hr_6000003> .
+
+# --- Manufacturing Order (from mrp.production) ---
+odoo:mo_001 a product:ProductBatch ;
+    core:hasName "MO/2025/00001 - Pintura Blanca Premium"@es ;
+    rdfs:label "MO/2025/00001 - Premium White Paint"@en ;
+    product:batchQuantity 500.0 ;
+    core:produces odoo:product_pintura ;
+    core:hasProcess odoo:operation_10 , odoo:operation_20 , odoo:operation_30 ,
+                    odoo:operation_40 , odoo:operation_50 , odoo:operation_60 ,
+                    odoo:operation_70 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/batch_7000001> .
+
+# --- Work Order (from ISO 15531 enrichment of mrp.workorder) ---
+odoo:workorder_001 a iso15531:WorkOrder ;
+    core:hasName "Orden de Trabajo - Dispersión Lote 001"@es ;
+    rdfs:label "Work Order - Dispersion Batch 001"@en ;
+    iso15531:operationSequence 2 ;
+    core:hasProcess odoo:operation_20 ;
+    core:hasResource odoo:workcenter_molino .
+
+odoo:workorder_002 a iso15531:WorkOrder ;
+    core:hasName "Orden de Trabajo - Mezcla Lote 001"@es ;
+    rdfs:label "Work Order - Mixing Batch 001"@en ;
+    iso15531:operationSequence 3 ;
+    core:hasProcess odoo:operation_30 ;
+    core:hasResource odoo:workcenter_reactor .
+
+# --- LCA Study (from ISO 14040 enrichment) ---
+odoo:lca_pintura a iso14040:LifeCycleAssessment ;
+    core:hasName "ACV Pintura Blanca Premium - Odoo MRP"@es ;
+    rdfs:label "LCA Premium White Paint - Odoo MRP"@en ;
+    iso14040:carbonFootprintKgCO2eq 3.8 ;
+    iso14040:waterFootprintLiters 85.5 ;
+    iso14040:VOCContentGperLiter 2.5 ;
+    iso14040:energyConsumptionMJ 42.3 ;
+    owl:sameAs <http://www.protys.org/data/adempiere/lca_A000001> .
