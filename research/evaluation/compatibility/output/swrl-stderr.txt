@@ -1,0 +1,1 @@
+[main] INFO org.semanticweb.owlapi.rdf.rdfxml.parser.AbstractState - Notice: root element does not have an xml:base. Relative IRIs will be resolved against file:/Users/gioalvaro/tesis/protys-ws-repo/research/evaluation/compatibility/output/combined.owl

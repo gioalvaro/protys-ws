@@ -1,0 +1,16 @@
+@base <urn:protys:example:r2rml:> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix ex: <urn:protys:example:> .
+# Plantilla documental; no extracción ERP ejecutada.
+<#ProductMap> a rr:TriplesMap ;
+  rr:logicalTable [ rr:sqlQuery
+    "SELECT M_Product_ID, Name, Weight FROM M_Product" ] ;
+  rr:subjectMap [
+    rr:template "urn:protys:example:erp:product/{M_Product_ID}" ;
+    rr:class c:Product ] ;
+  rr:predicateObjectMap [ rr:predicate ex:hasName ;
+    rr:objectMap [ rr:column "Name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate ex:hasWeight ;
+    rr:objectMap [ rr:column "Weight" ; rr:datatype xsd:decimal ] ] .

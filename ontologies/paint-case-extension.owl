@@ -1,0 +1,326 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:core="http://w3id.org/protys/ontology/core#" xmlns:product="http://w3id.org/protys/ontology/product#" xmlns:process="http://w3id.org/protys/ontology/process#" xmlns:resource="http://w3id.org/protys/ontology/resource#" xmlns:enterprise="http://w3id.org/protys/ontology/enterprise#" xmlns:iso14040="http://w3id.org/protys/ontology/iso14040#" xmlns:iso15531="http://w3id.org/protys/ontology/iso15531#" xmlns:paint="http://w3id.org/protys/ontology/paint-ext#" xml:base="http://w3id.org/protys/ontology/paint-ext">
+
+    <owl:Ontology rdf:about="http://w3id.org/protys/ontology/paint-ext">
+        <rdfs:label xml:lang="es">PROTYS(KB) - Extensión del caso de estudio (fabricación de pinturas)</rdfs:label>
+        <rdfs:comment xml:lang="es">Ontología derivada que encapsula las especializaciones del caso de estudio de fabricación de pinturas (Cap. 4, §4.4.1: "las extensiones quedan encapsuladas como ontología derivada"). Cada clase del caso se declara como subclase de las clases conceptuales de PROTYS(KB) (Cap. 3, §3.3.1-3.3.2), sin modificar los módulos base. Incluye además las propiedades de datos operativas del caso.</rdfs:comment>
+        <owl:versionInfo>1.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/core"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/product"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/process"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/resource"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/enterprise"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/iso14040"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/iso15531"/>
+    </owl:Ontology>
+
+    <!-- ============ CLASES DEL CASO: dominio de producto ============ -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Intermediate_Product">
+        <rdfs:label xml:lang="en">Intermediate_Product</rdfs:label>
+        <rdfs:comment xml:lang="es">Producto intermedio (p. ej., pasta de pigmento). Subclase de core:Product: es un producto en un estadio intermedio del plan de proceso.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Final_Product">
+        <rdfs:label xml:lang="en">Final_Product</rdfs:label>
+        <rdfs:comment xml:lang="es">Producto terminado listo para el cliente. Subclase de core:Product.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Chemical_Compound">
+        <rdfs:label xml:lang="en">Chemical_Compound</rdfs:label>
+        <rdfs:comment xml:lang="es">Especialización local del caso simulado de pintura para compuestos químicos, como resinas, aditivos o biocidas. Se declara como subclase de product:Substance dentro de PROTYS(KB); esa relación no se atribuye a una generalización universal de los estándares ISO ni a Bruno (2015).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Formulation">
+        <rdfs:label xml:lang="en">Formulation</rdfs:label>
+        <rdfs:comment xml:lang="es">Fórmula/receta de una pintura. Subclase de product:Instruction: es información funcional sobre cómo fabricar el producto (§3.3.2).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Instruction"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#QualitySpec">
+        <rdfs:label xml:lang="en">QualitySpec</rdfs:label>
+        <rdfs:comment xml:lang="es">Especificación de calidad (viscosidad KU, finura Hegman). Subclase de product:Product_Information: describe el producto (datos verificables y requisitos).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Product_Information"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ProductBatch">
+        <rdfs:label xml:lang="en">ProductBatch</rdfs:label>
+        <rdfs:comment xml:lang="es">Lote de producto fabricado. Subclase de iso15531:Lot: el lote es el concepto MANDATE canónico de agrupación de producción.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#Lot"/>
+    </owl:Class>
+
+    <!-- ============ CLASES DEL CASO: dominio de proceso ============ -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#BatchProcess">
+        <rdfs:label xml:lang="en">BatchProcess</rdfs:label>
+        <rdfs:comment xml:lang="es">Proceso por lotes de la fabricación de pinturas. Subclase de process:Artificial_Process (transformación industrial planificada, §3.3.2).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Artificial_Process"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ContinuousProcess">
+        <rdfs:label xml:lang="en">ContinuousProcess</rdfs:label>
+        <rdfs:comment xml:lang="es">Proceso continuo. Subclase de process:Artificial_Process.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Artificial_Process"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Manufacturing_Stage">
+        <rdfs:label xml:lang="en">Manufacturing_Stage</rdfs:label>
+        <rdfs:comment xml:lang="es">Etapa de fabricación (dispersión, molienda, mezcla...). Subclase de process:Process_Activity: paso u operación dentro del proceso (§3.3.2).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Setup_Activity">
+        <rdfs:label xml:lang="en">Setup_Activity</rdfs:label>
+        <rdfs:comment xml:lang="es">Actividad de preparación/cambio de formato. Subclase de process:Process_Activity.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#QualityControl">
+        <rdfs:label xml:lang="en">QualityControl</rdfs:label>
+        <rdfs:comment xml:lang="es">Actividad de control de calidad. Subclase de process:Process_Activity y de iso15531:Quality_Control_Activity (clase usada por el patrón de validación R19).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Inspection">
+        <rdfs:label xml:lang="en">Inspection</rdfs:label>
+        <rdfs:comment xml:lang="es">Inspección de materiales/producto. Subclase de paint:QualityControl.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/paint-ext#QualityControl"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Packaging">
+        <rdfs:label xml:lang="en">Packaging</rdfs:label>
+        <rdfs:comment xml:lang="es">Actividad de envasado. Subclase de process:Process_Activity.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#CleaningOperation">
+        <rdfs:label xml:lang="en">CleaningOperation</rdfs:label>
+        <rdfs:comment xml:lang="es">Operación de limpieza entre campañas de color/familia. Subclase de process:Process_Activity y de iso15531:CleaningOperation (patrón de validación R26).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#CleaningOperation"/>
+    </owl:Class>
+
+    <!-- ============ CLASES DEL CASO: dominio de recurso ============ -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#EnergyResource">
+        <rdfs:label xml:lang="en">EnergyResource</rdfs:label>
+        <rdfs:comment xml:lang="es">Recurso energético consumido por las actividades. Subclase directa de core:Resource (no es Tool/Equip/Device ni Material sólido).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Sensor">
+        <rdfs:label xml:lang="en">Sensor</rdfs:label>
+        <rdfs:comment xml:lang="es">Sensor de proceso. Subclase de resource:Device (dispositivo de medición y control, §3.3.2).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Device"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Consumable">
+        <rdfs:label xml:lang="en">Consumable</rdfs:label>
+        <rdfs:comment xml:lang="es">Material consumible auxiliar. Subclase de resource:Material.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Material"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Standard">
+        <rdfs:label xml:lang="en">Standard</rdfs:label>
+        <rdfs:comment xml:lang="es">Documento normativo utilizado en manufactura. Subclase de resource:File: se gestiona como recurso documental/digital (Fig. 3.12).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#File"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#MaterialFlow">
+        <rdfs:label xml:lang="en">MaterialFlow</rdfs:label>
+        <rdfs:comment xml:lang="es">Flujo de materiales a través de los procesos. Subclase de iso15531:ManufacturingFlow.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingFlow"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#QualityParameter">
+        <rdfs:label xml:lang="en">QualityParameter</rdfs:label>
+        <rdfs:comment xml:lang="es">Característica medible de producto o proceso. Subclase de iso15531:QualityAttribute.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#QualityAttribute"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#EnvironmentalIndicator">
+        <rdfs:label xml:lang="en">EnvironmentalIndicator</rdfs:label>
+        <rdfs:comment xml:lang="es">Aspecto medible de desempeño ambiental. Subclase de iso14040:ImpactIndicator.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+    </owl:Class>
+
+    <!-- ============ CLASES DEL CASO: dominio de empresa ============ -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Organization">
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+        <rdfs:comment xml:lang="es">Organización empresarial (mapeada desde AD_Org de ADempiere / res.company de Odoo). Subclase de core:Enterprise.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Enterprise"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Supplier">
+        <rdfs:label xml:lang="en">Supplier</rdfs:label>
+        <rdfs:comment xml:lang="es">Proveedor externo de materias primas. Subclase de core:Enterprise (organización con metas de ofrecer productos/servicios, ISO 10303-239).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Enterprise"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Plant">
+        <rdfs:label xml:lang="en">Plant</rdfs:label>
+        <rdfs:comment xml:lang="es">Planta de fabricación. Subclase de enterprise:Factory (jerarquía de Zhao et al. 1999, Fig. 3.13).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Factory"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Workshop">
+        <rdfs:label xml:lang="en">Workshop</rdfs:label>
+        <rdfs:comment xml:lang="es">Taller/área de producción. Subclase de enterprise:Shop.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Shop"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Department">
+        <rdfs:label xml:lang="en">Department</rdfs:label>
+        <rdfs:comment xml:lang="es">Departamento funcional. Subclase de enterprise:Shop.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Shop"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ProductionCell">
+        <rdfs:label xml:lang="en">ProductionCell</rdfs:label>
+        <rdfs:comment xml:lang="es">Célula de producción. Subclase de enterprise:Cell.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Cell"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#WorkCell">
+        <rdfs:label xml:lang="en">WorkCell</rdfs:label>
+        <rdfs:comment xml:lang="es">Célula de trabajo. Subclase de enterprise:Cell.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Cell"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ProductionLine">
+        <rdfs:label xml:lang="en">ProductionLine</rdfs:label>
+        <rdfs:comment xml:lang="es">Línea de producción: agrupación de estaciones/equipos. Subclase de enterprise:Cell.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Cell"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Warehouse">
+        <rdfs:label xml:lang="en">Warehouse</rdfs:label>
+        <rdfs:comment xml:lang="es">Almacén de materias primas/producto terminado. Subclase de enterprise:Shop (área funcional dentro de la fábrica).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/enterprise#Shop"/>
+    </owl:Class>
+
+    <!-- ============ PROPIEDADES DE OBJETO DEL CASO ============ -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#belongsTo">
+        <rdfs:label>belongsTo</rdfs:label>
+        <rdfs:comment xml:lang="es">Pertenencia de un recurso/actividad a una unidad organizacional. Subpropiedad de core:isHeldBy.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/protys/ontology/core#isHeldBy"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#partOfOrganization">
+        <rdfs:label>partOfOrganization</rdfs:label>
+        <rdfs:comment xml:lang="es">Una unidad organizacional es parte de otra. Subpropiedad de enterprise:isPartOf.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#employs">
+        <rdfs:label>employs</rdfs:label>
+        <rdfs:comment xml:lang="es">Una organización emplea personas.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Person"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#employedBy">
+        <rdfs:label>employedBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Inversa de employs.</rdfs:comment>
+        <owl:inverseOf rdf:resource="http://w3id.org/protys/ontology/paint-ext#employs"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#manages">
+        <rdfs:label>manages</rdfs:label>
+        <rdfs:comment xml:lang="es">Una unidad organizacional o persona gestiona otra entidad.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#suppliesTo">
+        <rdfs:label>suppliesTo</rdfs:label>
+        <rdfs:comment xml:lang="es">Un proveedor suministra a una organización.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/paint-ext#Supplier"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasSkill">
+        <rdfs:label>hasSkill</rdfs:label>
+        <rdfs:comment xml:lang="es">Habilidad de un recurso humano, modelada como capacidad de manufactura. Subpropiedad de iso15531:hasCapability.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/protys/ontology/iso15531#hasCapability"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingCapability"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasCertification">
+        <rdfs:label>hasCertification</rdfs:label>
+        <rdfs:comment xml:lang="es">Certificación de un recurso humano.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasProcessPlan">
+        <rdfs:label>hasProcessPlan</rdfs:label>
+        <rdfs:comment xml:lang="es">Vincula un producto con el proceso/plan que lo fabrica.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasCarbonFootprint">
+        <rdfs:label>hasCarbonFootprint</rdfs:label>
+        <rdfs:comment xml:lang="es">Indicador de huella de carbono asociado a un producto (individuo de iso14040:ImpactIndicator).</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasWaterFootprint">
+        <rdfs:label>hasWaterFootprint</rdfs:label>
+        <rdfs:comment xml:lang="es">Indicador de huella hídrica asociado a un producto.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasVOCContent">
+        <rdfs:label>hasVOCContent</rdfs:label>
+        <rdfs:comment xml:lang="es">Indicador de contenido de VOC asociado a un producto.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasCategory">
+        <rdfs:label>hasCategory</rdfs:label>
+        <rdfs:comment xml:lang="es">Categoría de impacto de un indicador ambiental.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactCategory"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasShelfLife">
+        <rdfs:label>hasShelfLife</rdfs:label>
+        <rdfs:comment xml:lang="es">Especificación de vida útil asociada a un producto.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <!-- ============ PROPIEDADES DE DATOS DEL CASO ============ -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasURI"><rdfs:label>hasURI</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasFunction"><rdfs:label>hasFunction</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasValue"><rdfs:label>hasValue</rdfs:label><rdfs:comment xml:lang="es">Valor numérico de un indicador o especificación del caso.</rdfs:comment><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#impactUnit"><rdfs:label>impactUnit</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#viscosity"><rdfs:label>viscosity</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#solidContent"><rdfs:label>solidContent</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#volatileOrganicCompounds"><rdfs:label>volatileOrganicCompounds</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#particleSize"><rdfs:label>particleSize</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#purityPercent"><rdfs:label>purityPercent</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#glassTransitionTemp"><rdfs:label>glassTransitionTemp</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#batchQuantity"><rdfs:label>batchQuantity</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#shelfLifeMonths"><rdfs:label>shelfLifeMonths</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#durationMinutes"><rdfs:label>durationMinutes</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#temperatureCelsius"><rdfs:label>temperatureCelsius</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#speedRPM"><rdfs:label>speedRPM</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#yieldPercent"><rdfs:label>yieldPercent</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#inputQuantity"><rdfs:label>inputQuantity</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#outputQuantity"><rdfs:label>outputQuantity</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#throughput"><rdfs:label>throughput</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#energyConsumptionKW"><rdfs:label>energyConsumptionKW</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#availabilityPercent"><rdfs:label>availabilityPercent</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#OEEPercent"><rdfs:label>OEEPercent</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#capacityLitersPerHour"><rdfs:label>capacityLitersPerHour</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#capacityUnitsPerMinute"><rdfs:label>capacityUnitsPerMinute</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#maintenanceFrequencyDays"><rdfs:label>maintenanceFrequencyDays</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#yearOfExperience"><rdfs:label>yearOfExperience</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#certificationLevel"><rdfs:label>certificationLevel</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#skillCategory"><rdfs:label>skillCategory</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#location"><rdfs:label>location</rdfs:label><rdfs:comment xml:lang="es">Ubicación textual; la versión conceptual es enterprise:locatedAt hacia enterprise:Location.</rdfs:comment><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#organizationCode"><rdfs:label>organizationCode</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#establishedDate"><rdfs:label>establishedDate</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#numberOfEmployees"><rdfs:label>numberOfEmployees</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/></owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#capacityTonsPerMonth"><rdfs:label>capacityTonsPerMonth</rdfs:label><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty>
+
+</rdf:RDF>

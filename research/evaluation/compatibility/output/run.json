@@ -1,0 +1,32 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "swrl_rule_count" : 22,
+  "profile_violations" : [ ],
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 335.299458,
+  "swrl" : {
+    "status" : "EXECUTED",
+    "engine" : "SWRLAPI Drools",
+    "swrlapi" : "2.1.3",
+    "owlapi" : "4.5.27",
+    "drools" : "7.74.1.Final",
+    "input_rule_count" : 22,
+    "active_rule_count" : 22,
+    "imported_rule_count" : 22,
+    "new_axiom_count" : 158,
+    "engine_inferred_axiom_count" : 1218,
+    "load_ms" : 1318.704208,
+    "swrl_ms" : 423.199542,
+    "total_ms" : 1812.157
+  },
+  "queries" : [ ],
+  "input_triples" : 2530,
+  "materialized_triples" : 2530,
+  "load_ms" : 334.063917,
+  "reasoning_stage_ms" : 2608.824625,
+  "query_stage_ms" : 0.015916,
+  "total_ms" : 2960.446542,
+  "peak_heap_bytes" : 117879072,
+  "java" : "17.0.20.1"
+}

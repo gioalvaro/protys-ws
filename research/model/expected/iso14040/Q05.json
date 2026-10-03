@@ -1,0 +1,119 @@
+{
+  "head": {
+    "vars": [
+      "material",
+      "carbonFactor",
+      "waterFactor",
+      "exceedsDeclaredCarbonThreshold"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "carbonFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5.6"
+        },
+        "waterFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "40"
+        },
+        "exceedsDeclaredCarbonThreshold": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "value": "true"
+        }
+      },
+      {
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "carbonFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "3.8"
+        },
+        "waterFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "127"
+        },
+        "exceedsDeclaredCarbonThreshold": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "value": "false"
+        }
+      },
+      {
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        },
+        "carbonFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "3.5"
+        },
+        "waterFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "15"
+        },
+        "exceedsDeclaredCarbonThreshold": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "value": "false"
+        }
+      },
+      {
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Coalescent"
+        },
+        "carbonFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "4.2"
+        },
+        "waterFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "10"
+        },
+        "exceedsDeclaredCarbonThreshold": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "value": "false"
+        }
+      },
+      {
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#ThresholdMaterial"
+        },
+        "carbonFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5"
+        },
+        "waterFactor": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "50"
+        },
+        "exceedsDeclaredCarbonThreshold": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#boolean",
+          "value": "false"
+        }
+      }
+    ]
+  }
+}

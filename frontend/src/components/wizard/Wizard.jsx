@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import CleaningContextStatus from '../alignment/CleaningContextStatus';
+import ContextIntegrityStatus from '../alignment/ContextIntegrityStatus';
+import NumericIntegrityStatus from '../alignment/NumericIntegrityStatus';
 import { useMutation } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import {
@@ -7,7 +10,8 @@ import {
   CheckCircleIcon,
   DocumentPlusIcon,
 } from '@heroicons/react/24/outline';
-import { wizardAPI } from '../../services/api';
+import { wizardAPI, alignmentAPI } from '../../services/api';
+import { validationState, canProceedValidation, canProceedVerification, stateMessage } from '../../services/validationState';
 
 function Wizard() {
   const [step, setStep] = useState(1);
@@ -21,10 +25,13 @@ function Wizard() {
 
   // Step 1: Upload
   const step1Mutation = useMutation({
-    mutationFn: (file) => wizardAPI.step1Upload(file),
+    mutationFn: (file) => wizardAPI.step1Upload(file, file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]/g, '_')),
     onSuccess: (data) => {
-      setSessionId(data.sessionId);
-      setUploadedFile(data.fileName);
+      if (!data.tempModuleId || data.step1_parsed !== true || data.step1_error) { toast.error('Upload was not verified'); return; }
+      setSessionId(data.tempModuleId);
+      setUploadedFile(selectedFile?.name || data.standardName);
+      setValidationResult(null);
+      setVerificationResult(null);
       toast.success('File uploaded successfully');
       setStep(2);
     },
@@ -36,11 +43,14 @@ function Wizard() {
   // Step 2: Validate
   const step2Mutation = useMutation({
     mutationFn: () => wizardAPI.step2Validate(sessionId),
-    onSuccess: (data) => {
+    onSuccess: async (data) => {
       setValidationResult(data);
-      setAvailableRules(data.suggestedRules || []);
-      setStep(3);
-      toast.success('Validation complete');
+      if (canProceedValidation(data)) {
+        try { setAvailableRules(await alignmentAPI.getRules()); }
+        catch { setAvailableRules([]); }
+      }
+      if (canProceedValidation(data)) { setStep(3); if (data.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR') toast.warning('OWL consistency checked; declared context links require review'); else toast.success('OWL consistency checked'); }
+      else { toast.error(data.step2_message || stateMessage(data)); }
     },
     onError: () => {
       toast.error('Validation failed');
@@ -49,8 +59,10 @@ function Wizard() {
 
   // Step 3: Alignment
   const step3Mutation = useMutation({
-    mutationFn: () => wizardAPI.step3DefineAlignments(sessionId, selectedRules),
-    onSuccess: () => {
+    mutationFn: () => wizardAPI.step3DefineAlignments(sessionId, availableRules.filter((rule) => selectedRules.includes(rule.id))),
+    onSuccess: (data) => {
+      if (data.step3_error) { toast.error(data.step3_message || 'Alignment definition failed'); return; }
+      setVerificationResult(null);
       setStep(4);
       toast.success('Alignments configured');
     },
@@ -64,7 +76,8 @@ function Wizard() {
     mutationFn: () => wizardAPI.step4VerifyInferences(sessionId),
     onSuccess: (data) => {
       setVerificationResult(data);
-      toast.success('Verification complete');
+      if (canProceedVerification(data)) { setStep(5); if (data.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR') toast.warning('OWL reasoning checked; declared context links require review'); else toast.success('OWL reasoning configuration checked'); }
+      else { toast.error(data.step4_message || stateMessage(data)); }
     },
     onError: () => {
       toast.error('Verification failed');
@@ -74,7 +87,8 @@ function Wizard() {
   // Complete Wizard
   const completeMutation = useMutation({
     mutationFn: () => wizardAPI.completeIncorporation(sessionId),
-    onSuccess: () => {
+    onSuccess: (data) => {
+      if (data.status !== 'COMPLETED' || !data.finalModuleId) { toast.error(data.message || 'Incorporation could not be completed'); return; }
       toast.success('Ontology successfully created!');
       resetWizard();
     },
@@ -105,6 +119,7 @@ function Wizard() {
   };
 
   const handleComplete = () => {
+    if (!canProceedValidation(validationResult) || !canProceedVerification(verificationResult)) { toast.error('A completed, consistent verification is required'); return; }
     completeMutation.mutate();
   };
 
@@ -120,6 +135,7 @@ function Wizard() {
   };
 
   const toggleRule = (ruleId) => {
+    setVerificationResult(null);
     setSelectedRules((prev) =>
       prev.includes(ruleId)
         ? prev.filter((id) => id !== ruleId)
@@ -178,6 +194,7 @@ function Wizard() {
         {step === 2 && (
           <Step2Validate
             uploadedFile={uploadedFile}
+            validationResult={validationResult}
             onValidate={handleProceedToValidate}
             isLoading={step2Mutation.isPending}
             onBack={() => setStep(1)}
@@ -273,7 +290,9 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading }) {
   );
 }
 
-function Step2Validate({ uploadedFile, onValidate, isLoading, onBack }) {
+export function Step2Validate({ uploadedFile, onValidate, isLoading, onBack, validationResult }) {
+  const status = validationState(validationResult);
+  const indicator = status === 'CONSISTENT' ? 'success' : status === 'PENDING' ? 'pending' : 'error';
   return (
     <div className="space-y-6">
       <div>
@@ -287,9 +306,9 @@ function Step2Validate({ uploadedFile, onValidate, isLoading, onBack }) {
       </div>
 
       <div className="space-y-3">
-        <ValidationStep label="Syntax Check" description="Verifying RDF/OWL syntax" status="success" />
-        <ValidationStep label="Integrity Check" description="Checking logical consistency" status="success" />
-        <ValidationStep label="Completeness Check" description="Analyzing coverage" status="pending" />
+        <ValidationStep label="Syntax Check" description="RDF parsed during upload; OWL profile evaluated on validation" status={indicator} />
+        <ValidationStep label="Integrity Check" description={stateMessage(validationResult)} status={indicator} />
+        <ValidationStep label="Coverage evaluation" description="Domain coverage requires the separate competency-query fixtures" status="pending" />
       </div>
 
       <div className="flex justify-between gap-2 pt-4">
@@ -310,7 +329,7 @@ function Step2Validate({ uploadedFile, onValidate, isLoading, onBack }) {
   );
 }
 
-function Step3Alignment({
+export function Step3Alignment({
   availableRules,
   selectedRules,
   toggleRule,
@@ -326,13 +345,16 @@ function Step3Alignment({
         <p className="text-gray-600">Select alignment rules to apply to your ontology</p>
       </div>
 
-      {validationResult && (
+      <CleaningContextStatus evaluation={validationResult?.cleaningEvaluation} />
+      <ContextIntegrityStatus evaluation={validationResult?.contextEvaluation} />
+      <NumericIntegrityStatus evaluation={validationResult?.numericEvaluation} owlStatus={validationResult?.owlValidationStatus} />
+      {canProceedValidation(validationResult) && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-4">
           <p className="text-sm font-medium text-green-900">
-            ✓ Ontology validated successfully
+            ✓ OWL profile and consistency checked
           </p>
           <p className="text-xs text-green-800 mt-1">
-            Found {validationResult.classCount} classes and {validationResult.propertyCount} properties
+            {validationResult.step2_message}
           </p>
         </div>
       )}
@@ -380,7 +402,7 @@ function Step3Alignment({
   );
 }
 
-function Step4Verify({
+export function Step4Verify({
   validationResult,
   selectedRules,
   onVerify,
@@ -423,13 +445,16 @@ function Step4Verify({
         )}
       </div>
 
-      {verificationResult && (
+      <CleaningContextStatus evaluation={verificationResult?.cleaningEvaluation} />
+      <ContextIntegrityStatus evaluation={verificationResult?.contextEvaluation} />
+      <NumericIntegrityStatus evaluation={verificationResult?.numericEvaluation} owlStatus={verificationResult?.owlValidationStatus} />
+      {canProceedVerification(verificationResult) && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-4">
           <p className="text-sm font-medium text-green-900">
-            ✓ Configuration verified
+            ✓ OWL reasoning configuration checked
           </p>
           <p className="text-xs text-green-800 mt-1">
-            {verificationResult.message}
+            {verificationResult.step4_message}
           </p>
         </div>
       )}
@@ -452,22 +477,27 @@ function Step4Verify({
   );
 }
 
-function Step5Complete({ verificationResult, onComplete, isLoading, onReset }) {
+export function Step5Complete({ verificationResult, onComplete, isLoading, onReset }) {
+  const verified = canProceedVerification(verificationResult);
+  const recordWarning = verificationResult?.numericEvaluation?.status === 'NOT_EVALUABLE' || verificationResult?.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR' || ['NOT_EVALUABLE', 'MISSING_CLEANING_RECORD'].includes(verificationResult?.cleaningEvaluation?.status);
   return (
     <div className="space-y-6 text-center">
       <div>
-        <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Ontology Ready</h2>
-        <p className="text-gray-600">Your ontology is configured and ready to use</p>
+        {verified && !recordWarning && <CheckCircleIcon className="w-16 h-16 text-green-500 mx-auto mb-4" />}
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">{verified ? recordWarning ? 'OWL checks complete; record review required' : 'OWL reasoning checks complete' : 'Verification required'}</h2>
+        <p className="text-gray-600">{verified ? 'The configured OWL profile, consistency and inference checks completed. Review the separate record statuses below.' : stateMessage(verificationResult)}</p>
       </div>
 
-      {verificationResult && (
+      <CleaningContextStatus evaluation={verificationResult?.cleaningEvaluation} />
+      <ContextIntegrityStatus evaluation={verificationResult?.contextEvaluation} />
+      <NumericIntegrityStatus evaluation={verificationResult?.numericEvaluation} owlStatus={verificationResult?.owlValidationStatus} />
+      {canProceedVerification(verificationResult) && (
         <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-left">
           <h3 className="font-semibold text-green-900 mb-3">Summary</h3>
           <div className="space-y-2 text-sm text-green-800">
-            <p>✓ Ontology validated successfully</p>
+            <p>✓ OWL profile and consistency checked</p>
             <p>✓ Alignment rules configured</p>
-            <p>✓ All checks passed</p>
+            <p>✓ OWL consistency and configured inference execution verified</p>
           </div>
         </div>
       )}
@@ -475,7 +505,7 @@ function Step5Complete({ verificationResult, onComplete, isLoading, onReset }) {
       <div className="flex flex-col gap-2 pt-4">
         <button
           onClick={onComplete}
-          disabled={isLoading}
+          disabled={isLoading || !canProceedVerification(verificationResult)}
           className="btn-success w-full disabled:opacity-50"
         >
           {isLoading ? 'Creating...' : 'Create Ontology'}

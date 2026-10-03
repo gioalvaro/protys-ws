@@ -1,0 +1,14 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK { { SELECT ?factor ?version ?process ?indicator ?value
+WHERE { ?factor a t:EmissionFactor ; c:hasVersion ?version .
+?indicator a e:ImpactIndicator ; t:usesEmissionFactor ?factor ; e:hasIndicatorValue ?value ; e:computedForProcess ?lci . ?process a:hasInventoryRepresentation ?lci . }
+ORDER BY ?process } FILTER(?process=f:BatchA_Process && ?indicator=f:BatchB_Indicator) }

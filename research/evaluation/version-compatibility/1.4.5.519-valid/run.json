@@ -1,0 +1,28 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "dl_materialized_triples" : 3,
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 152.876125,
+  "constructs" : [ ],
+  "construct_added_triples" : 0,
+  "raw_input_triples" : 5,
+  "input_named_individuals" : 1,
+  "materialized_named_individuals" : 1,
+  "queries" : [ {
+    "id" : "DL_CLASSIFICATION",
+    "query_ms" : 22.895584,
+    "result_count" : 0,
+    "boolean" : true
+  } ],
+  "input_triples" : 5,
+  "materialized_triples" : 8,
+  "load_ms" : 239.547708,
+  "reasoning_stage_ms" : 172.045417,
+  "query_stage_ms" : 31.07725,
+  "total_ms" : 443.3075,
+  "peak_heap_bytes" : 50062544,
+  "java" : "17.0.20.1"
+}

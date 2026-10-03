@@ -1,202 +1,226 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-         xmlns:owl="http://www.w3.org/2002/07/owl#"
-         xmlns:protys="http://protys.ingar.conicet.gob.ar/ontology#"
-         xml:base="http://protys.ingar.conicet.gob.ar/ontology#">
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:iso14040="http://w3id.org/protys/ontology/iso14040#" xml:base="http://w3id.org/protys/ontology/iso14040">
 
-    <owl:Ontology rdf:about="http://protys.ingar.conicet.gob.ar/ontology/iso14040-module">
-        <rdfs:label>PROTYS ISO 14040 Life Cycle Assessment Module</rdfs:label>
-        <rdfs:comment>Environmental assessment and life cycle impact analysis according to ISO 14040/14044 standards</rdfs:comment>
-        <owl:versionInfo>1.0</owl:versionInfo>
-        <owl:imports rdf:resource="http://protys.ingar.conicet.gob.ar/ontology/core-concepts"/>
+    <owl:Ontology rdf:about="http://w3id.org/protys/ontology/iso14040">
+        <rdfs:label xml:lang="es">PROTYS(KB) - Módulo ISO 14040 (Life Cycle Assessment)</rdfs:label>
+        <rdfs:comment xml:lang="es">Formalización parcial propuesta a partir de conceptos de ISO14040 para interoperabilidad. El cálculo ejecutado es un inventario parcial de emisiones asociadas a electricidad, con supuestos declarados; no es un ACV completo. La consistencia OWL y ejecución SWRL se verifican por separado en research/evaluation.</rdfs:comment>
+        <owl:versionInfo>2.0</owl:versionInfo>
     </owl:Ontology>
 
-    <!-- ========================================
-         LCA CLASSES
-         ======================================== -->
+    <!-- ============ CLASES: declaraciones explícitas del módulo ============ -->
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment">
-        <rdfs:label>Life Cycle Assessment</rdfs:label>
-        <rdfs:comment>A comprehensive environmental impact analysis of a product's life cycle</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#LCAStudy">
+        <rdfs:label xml:lang="es">Estudio de ACV</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleStage">
-        <rdfs:label>Life Cycle Stage</rdfs:label>
-        <rdfs:comment>A distinct phase in a product's life cycle (raw material, production, use, end-of-life)</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#GoalAndScopeDefinition">
+        <rdfs:label xml:lang="es">Definición de objetivo y alcance</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#GoalAndScope">
-        <rdfs:label>Goal And Scope</rdfs:label>
-        <rdfs:comment>The goal definition and scope of an LCA study</rdfs:comment>
-        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#FunctionalUnit">
+        <rdfs:label xml:lang="es">Unidad funcional</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleInventory">
-        <rdfs:label>Life Cycle Inventory</rdfs:label>
-        <rdfs:comment>Data collection and analysis of material and energy flows</rdfs:comment>
-        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#SystemBoundary">
+        <rdfs:label xml:lang="es">Frontera del sistema</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ImpactAssessment">
-        <rdfs:label>Impact Assessment</rdfs:label>
-        <rdfs:comment>Evaluation of environmental impacts from life cycle inventory</rdfs:comment>
-        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#LifeCycleInventory">
+        <rdfs:label xml:lang="es">Inventario de ciclo de vida</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#Interpretation">
-        <rdfs:label>Interpretation</rdfs:label>
-        <rdfs:comment>Analysis and interpretation of LCA results</rdfs:comment>
-        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow">
+        <rdfs:label xml:lang="es">Flujo elemental</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ElementaryFlow">
-        <rdfs:label>Elementary Flow</rdfs:label>
-        <rdfs:comment>Material or energy extracted from or released to the environment</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow">
+        <rdfs:label xml:lang="es">Flujo de producto</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact">
-        <rdfs:label>Environmental Impact</rdfs:label>
-        <rdfs:comment>A quantified environmental impact or effect</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#UnitProcess">
+        <rdfs:label xml:lang="es">Proceso unitario LCA</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#ImpactCategory">
-        <rdfs:label>Impact Category</rdfs:label>
-        <rdfs:comment>A category of environmental impact (e.g., climate change, water use, acidification)</rdfs:comment>
-        <rdfs:subClassOf rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalIndicator"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#LifeCycleImpactAssessment">
+        <rdfs:label xml:lang="es">Evaluación de impacto</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#CharacterizationFactor">
-        <rdfs:label>Characterization Factor</rdfs:label>
-        <rdfs:comment>A factor used to convert inventory data to impact category results</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ImpactCategory">
+        <rdfs:label xml:lang="es">Categoría de impacto</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#SystemBoundary">
-        <rdfs:label>System Boundary</rdfs:label>
-        <rdfs:comment>The defined boundaries of the product system in an LCA</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#CharacterizationFactor">
+        <rdfs:label xml:lang="es">Factor de caracterización</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#FunctionalUnit">
-        <rdfs:label>Functional Unit</rdfs:label>
-        <rdfs:comment>The reference unit for LCA calculations</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ImpactIndicator">
+        <rdfs:label xml:lang="es">Indicador de impacto</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#AllocationMethod">
-        <rdfs:label>Allocation Method</rdfs:label>
-        <rdfs:comment>Method for allocating impacts among co-products or joint processes</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#EnvironmentalAspect">
+        <rdfs:label xml:lang="es">Aspecto ambiental</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#DataQualityIndicator">
-        <rdfs:label>Data Quality Indicator</rdfs:label>
-        <rdfs:comment>Metric for assessing the quality of LCA data</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#AllocationProcedure">
+        <rdfs:label xml:lang="es">Procedimiento de asignación</rdfs:label>
     </owl:Class>
 
-    <owl:Class rdf:about="http://protys.ingar.conicet.gob.ar/ontology#NormalizationFactor">
-        <rdfs:label>Normalization Factor</rdfs:label>
-        <rdfs:comment>A factor used to normalize impact assessment results</rdfs:comment>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#Interpretation">
+        <rdfs:label xml:lang="es">Interpretación</rdfs:label>
     </owl:Class>
 
-    <!-- ========================================
-         LCA OBJECT PROPERTIES
-         ======================================== -->
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+            <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasCarbonFootprint">
-        <rdfs:label>has Carbon Footprint</rdfs:label>
-        <rdfs:comment>The carbon footprint impact measure</rdfs:comment>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    <!-- ============ PROPIEDADES DE OBJETO ============ -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:label>hasFunctionalUnit</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad funcional: como máximo una unidad funcional por sujeto. La clase LCAStudy incorpora además una cardinalidad exacta1; bajo mundo abierto eso no prueba que exista un registro nombrado completo en la instantánea.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#LCAStudy"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#FunctionalUnit"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasWaterFootprint">
-        <rdfs:label>has Water Footprint</rdfs:label>
-        <rdfs:comment>The water footprint impact measure</rdfs:comment>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasSystemBoundary">
+        <rdfs:label>hasSystemBoundary</rdfs:label>
+        <rdfs:comment xml:lang="es">Frontera del sistema de un estudio de ACV.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#LCAStudy"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#SystemBoundary"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasVOCContent">
-        <rdfs:label>has VOC Content</rdfs:label>
-        <rdfs:comment>Volatile Organic Compound content measure</rdfs:comment>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#emits">
+        <rdfs:label>emits</rdfs:label>
+        <rdfs:comment xml:lang="es">Salida elemental de un proceso unitario hacia la naturaleza; no se utiliza para representar compras de materias primas del escenario.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#UnitProcess"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasEnergyConsumptionImpact">
-        <rdfs:label>has Energy Consumption Impact</rdfs:label>
-        <rdfs:comment>Energy consumption related environmental impact</rdfs:comment>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasEmissionFactor">
+        <rdfs:label>hasEmissionFactor</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad histórica del vocabulario que refiere a CharacterizationFactor; los factores eléctricos/materiales del escenario se representan por research:hasEmissionFactor sin reclasificarlos como factoresLCIA.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#CharacterizationFactor"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasCategory">
-        <rdfs:label>has Category</rdfs:label>
-        <rdfs:comment>Relates an impact to its category</rdfs:comment>
-        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalImpact"/>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#ImpactCategory"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasInventoryFlow">
+        <rdfs:label>hasInventoryFlow</rdfs:label>
+        <rdfs:comment xml:lang="es">Flujo registrado del inventario: puede ser intercambio elemental con naturaleza o ProductFlow dentro de la tecnosfera, con tipo y dirección explicitados en cada caso.</rdfs:comment>
+        <rdfs:range><owl:Class><owl:unionOf rdf:parseType="Collection"><owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/><owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/></owl:unionOf></owl:Class></rdfs:range></owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasImpact">
+        <rdfs:label>hasImpact</rdfs:label>
+        <rdfs:comment xml:lang="es">Asocia un proceso o lote con un indicador de impacto de su proceso (R05); la asociación no calcula una suma. Las contribuciones eléctricas se identifican por operación con research:hasGHGContribution y se agregan en consultas.</rdfs:comment>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasIndicator">
-        <rdfs:label>has Indicator</rdfs:label>
-        <rdfs:comment>An indicator associated with environmental assessment</rdfs:comment>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#EnvironmentalIndicator"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#refersToMaterial">
+        <rdfs:label>refersToMaterial</rdfs:label>
+        <rdfs:comment xml:lang="es">Un flujo de inventario refiere a un material concreto (reglas R06 y R20, Anexo C).</rdfs:comment>
+        <rdfs:domain><owl:Class><owl:unionOf rdf:parseType="Collection"><owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/><owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/></owl:unionOf></owl:Class></rdfs:domain></owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasCharacterizationFactor">
+        <rdfs:label>hasCharacterizationFactor</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad histórica con rango CharacterizationFactor para asociar un sujeto con un factor de caracterización LCIA. R06 utiliza research:hasEmissionFactor y research:usesEmissionFactor para los factores del escenario; no utiliza esta propiedad para convertirlos en factores de caracterización.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#CharacterizationFactor"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasValue">
-        <rdfs:label>has Value</rdfs:label>
-        <rdfs:comment>A measured or calculated value</rdfs:comment>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#usesCharacterizationFactor">
+        <rdfs:label>usesCharacterizationFactor</rdfs:label>
+        <rdfs:comment xml:lang="es">Asocia un flujo de inventario o un indicador con su factor de caracterización; la fabricación de materias primas queda fuera del inventario eléctrico de Q06.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#CharacterizationFactor"/>
     </owl:ObjectProperty>
 
-    <owl:ObjectProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#hasSystemBoundary">
-        <rdfs:label>has System Boundary</rdfs:label>
-        <rdfs:comment>The system boundary definition of an LCA</rdfs:comment>
-        <rdfs:domain rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#LifeCycleAssessment"/>
-        <rdfs:range rdf:resource="http://protys.ingar.conicet.gob.ar/ontology#SystemBoundary"/>
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#computedForProcess">
+        <rdfs:label>computedForProcess</rdfs:label>
+        <rdfs:comment xml:lang="es">Indicador de impacto calculado para un proceso (patrón de validación R07, alignment-queries.sparql).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
     </owl:ObjectProperty>
 
-    <!-- ========================================
-         LCA DATA PROPERTIES
-         ======================================== -->
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#appliesTo">
+        <rdfs:label>appliesTo</rdfs:label>
+        <rdfs:comment xml:lang="es">Un impacto o aspecto ambiental aplica a un componente o proceso (ejemplo ilustrativo §3.3.3.4).</rdfs:comment>
+    </owl:ObjectProperty>
 
-    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#carbonFootprintKgCO2eq">
-        <rdfs:label>carbon Footprint Kg CO2 Equivalent</rdfs:label>
-        <rdfs:comment>Carbon footprint in kg CO2 equivalent</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
+    <!-- ============ PROPIEDADES DE DATOS ============ -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#factorValue">
+        <rdfs:label>factorValue</rdfs:label>
+        <rdfs:comment xml:lang="es">Valor numérico decimal de un CharacterizationFactor, declarado como dominio de esta propiedad histórica. Los factores eléctricos y materiales del escenario usan research:factorValue; R01 y R21 no usan esta propiedad de caracterización LCIA.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#CharacterizationFactor"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
     </owl:DatatypeProperty>
 
-    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#waterFootprintLiters">
-        <rdfs:label>water Footprint Liters</rdfs:label>
-        <rdfs:comment>Water footprint in liters</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#VOCContentGperLiter">
-        <rdfs:label>VOC Content G per Liter</rdfs:label>
-        <rdfs:comment>VOC content in grams per liter</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#energyConsumptionMJ">
-        <rdfs:label>energy Consumption MJ</rdfs:label>
-        <rdfs:comment>Energy consumption in megajoules</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#impactValue">
-        <rdfs:label>impact Value</rdfs:label>
-        <rdfs:comment>Numeric value of environmental impact</rdfs:comment>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#double"/>
-    </owl:DatatypeProperty>
-
-    <owl:DatatypeProperty rdf:about="http://protys.ingar.conicet.gob.ar/ontology#impactUnit">
-        <rdfs:label>impact Unit</rdfs:label>
-        <rdfs:comment>Unit of measurement for impact value</rdfs:comment>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#factorUnit">
+        <rdfs:label>factorUnit</rdfs:label>
+        <rdfs:comment xml:lang="es">Unidad textual de un CharacterizationFactor, declarado como dominio de esta propiedad histórica. Los factores eléctricos y materiales del escenario usan research:factorUnit, con unidades del alcance declarado.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#CharacterizationFactor"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
 
-</rdf:RDF>
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasGHGImpactKgCO2e">
+        <rdfs:label>hasGHGImpactKgCO2e</rdfs:label>
+        <rdfs:comment xml:lang="es">Indicador GHG en kg CO2e derivado del consumo energético y el factor de emisión (cabeza de la regla R01, Anexo C).</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasIndicatorValue">
+        <rdfs:label>hasIndicatorValue</rdfs:label>
+        <rdfs:comment xml:lang="es">Valor numérico de un indicador de impacto (regla R04, Anexo C).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+        <owl:equivalentProperty rdf:resource="http://w3id.org/protys/ontology/iso14040#indicatorValue"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#indicatorValue">
+        <rdfs:label>indicatorValue</rdfs:label>
+        <rdfs:comment xml:lang="es">Valor numérico de un indicador de impacto (variante léxica usada por la regla R23 del Fragmento de código 3.4; equivalente a hasIndicatorValue).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnitQuantity">
+        <rdfs:label>hasFunctionalUnitQuantity</rdfs:label>
+        <rdfs:comment xml:lang="es">Cantidad expresada en la unidad funcional, para comparación entre lotes (cabeza de la regla R08, Anexo C).</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasEnvironmentalImpact">
+        <rdfs:label>hasEnvironmentalImpact</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad histórica para un valor ambiental numérico agregado. La consulta Q01 actual calcula la suma de contribuciones eléctricas por operación; no materializa esta propiedad como resultado ni representa un ACV completo.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#carbonFootprintKgCO2eq">
+        <rdfs:label>carbonFootprintKgCO2eq</rdfs:label>
+        <rdfs:comment xml:lang="es">Huella de carbono en kg CO2-eq por kg de material (usada por las instancias del caso de estudio, Cap. 4).</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#waterFootprintLiters">
+        <rdfs:label>waterFootprintLiters</rdfs:label>
+        <rdfs:comment xml:lang="es">Huella hídrica en litros (usada por las instancias del caso de estudio, Cap. 4).</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#VOCContentGperLiter">
+        <rdfs:label>VOCContentGperLiter</rdfs:label>
+        <rdfs:comment xml:lang="es">Contenido de compuestos orgánicos volátiles en g/L (usada por las instancias del caso de estudio, Cap. 4).</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#energyConsumptionMJ">
+        <rdfs:label>energyConsumptionMJ</rdfs:label>
+        <rdfs:comment xml:lang="es">Consumo energético en MJ (usada por las instancias del caso de estudio, Cap. 4).</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#energyInputKWh"><rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/></owl:DatatypeProperty></rdf:RDF>

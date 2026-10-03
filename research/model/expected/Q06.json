@@ -1,0 +1,90 @@
+{
+  "head": {
+    "vars": [
+      "product",
+      "lot",
+      "liters",
+      "ghgKgCO2e",
+      "kgCO2ePerL"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "liters": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "98.4"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "57.6666665"
+        },
+        "kgCO2ePerL": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0.5860433587398373983739837398"
+        }
+      },
+      {
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "liters": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "195.2"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "115.3333335"
+        },
+        "kgCO2ePerL": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0.5908469953893442622950819672"
+        }
+      },
+      {
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "liters": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "97.392"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "57.6666665"
+        },
+        "kgCO2ePerL": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0.5921088641777558731723344833"
+        }
+      }
+    ]
+  }
+}

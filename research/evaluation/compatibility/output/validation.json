@@ -1,0 +1,8 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "swrl_rule_count" : 22,
+  "profile_violations" : [ ],
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 335.299458
+}

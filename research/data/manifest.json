@@ -1,0 +1,487 @@
+{
+  "seed": 42,
+  "generator_sha256": "9f0cf4217d0a27e45b64ab254a14d482996ed09783b6770988894685509e45ab",
+  "files": [
+    {
+      "path": "research/data/functional.ttl",
+      "individuals": 159,
+      "asserted_triples": 1787,
+      "serialized_statements": 1788,
+      "sha256": "4bd554207cb9c0231205b7a33ac8665738aedd4bde731c8864ed01faa5886e3c"
+    },
+    {
+      "path": "research/data/functional-manufacturing.ttl",
+      "individuals": 158,
+      "asserted_triples": 1568,
+      "serialized_statements": 1568,
+      "sha256": "367de10ea90e5fb9fdb4ce3f95391eda7b30c05d6e0de4d18f23c73b08ae3c95"
+    },
+    {
+      "path": "research/data/functional-environmental.ttl",
+      "individuals": 95,
+      "asserted_triples": 493,
+      "serialized_statements": 493,
+      "sha256": "716e98326acf3b2e82883051e77ca017ded78e00a3d617d7eee7a8d9b3b6e29e"
+    },
+    {
+      "path": "research/data/functional-union.ttl",
+      "individuals": 158,
+      "asserted_triples": 1785,
+      "serialized_statements": 1785,
+      "sha256": "dab52c8c436613c94dcebb259cb6d10bcd38874bab6f5e6496bd2b1235af7d7b"
+    },
+    {
+      "path": "research/data/load-small.ttl",
+      "individuals": 662,
+      "asserted_triples": 8345,
+      "serialized_statements": 8346,
+      "sha256": "c108cf91a277ec536612ad437978c867fffea1bd35cf960bc7d27df073307b60",
+      "batches": 20
+    },
+    {
+      "path": "research/data/load-small-manufacturing.ttl",
+      "individuals": 661,
+      "asserted_triples": 7342,
+      "serialized_statements": 7342,
+      "sha256": "a709319c24164517a8c2b585bf92180e5b9d38c2b0a60c3a8f4976417e97164d",
+      "batches": 20
+    },
+    {
+      "path": "research/data/load-small-environmental.ttl",
+      "individuals": 365,
+      "asserted_triples": 2025,
+      "serialized_statements": 2025,
+      "sha256": "00054dd8cf810827c72bd7fe87609a39905a231e5fa5081b231f9580dca87f82",
+      "batches": 20
+    },
+    {
+      "path": "research/data/load-small-union.ttl",
+      "individuals": 661,
+      "asserted_triples": 8343,
+      "serialized_statements": 8343,
+      "sha256": "f6368d7c765a8c5a7583605d56e167f3347858563a690ddcb8841e93cbe14415",
+      "batches": 20
+    },
+    {
+      "path": "research/data/load-medium.ttl",
+      "individuals": 3212,
+      "asserted_triples": 41235,
+      "serialized_statements": 41236,
+      "sha256": "6b686e1c9dabbb83f6c1bcfc7557f118ac50039878b4aa7c68eefb3723568042",
+      "batches": 100
+    },
+    {
+      "path": "research/data/load-medium-manufacturing.ttl",
+      "individuals": 3211,
+      "asserted_triples": 36312,
+      "serialized_statements": 36312,
+      "sha256": "1db1a85aec52b4171975df758acdc29fc996395e81b8b59763e912ee128d0fee",
+      "batches": 100
+    },
+    {
+      "path": "research/data/load-medium-environmental.ttl",
+      "individuals": 1725,
+      "asserted_triples": 9705,
+      "serialized_statements": 9705,
+      "sha256": "1421ae3bc774064bc0f8622d4009be4e6f30eea84a0dcd043fa0c38bda91e646",
+      "batches": 100
+    },
+    {
+      "path": "research/data/load-medium-union.ttl",
+      "individuals": 3211,
+      "asserted_triples": 41233,
+      "serialized_statements": 41233,
+      "sha256": "e3e8146c6e34ffa73021a5fd7bb968723c87cca30ab10c606c5d26f344c121c1",
+      "batches": 100
+    },
+    {
+      "path": "research/data/load-large.ttl",
+      "individuals": 6404,
+      "asserted_triples": 82379,
+      "serialized_statements": 82380,
+      "sha256": "07bf828dcd9583e6e9829a1c4a1d7a1702c549be97dcb6b0bc3bee5e960917de",
+      "batches": 200
+    },
+    {
+      "path": "research/data/load-large-manufacturing.ttl",
+      "individuals": 6403,
+      "asserted_triples": 72556,
+      "serialized_statements": 72556,
+      "sha256": "7ddd9186fd76d0733a1655e982e1204dbde84aa2f203d2e11e1b598cf3dbcca8",
+      "batches": 200
+    },
+    {
+      "path": "research/data/load-large-environmental.ttl",
+      "individuals": 3425,
+      "asserted_triples": 19305,
+      "serialized_statements": 19305,
+      "sha256": "fd3127e22f12885986d3f5cd8d16b81ff0a43235200bddd8902a3c440262c914",
+      "batches": 200
+    },
+    {
+      "path": "research/data/load-large-union.ttl",
+      "individuals": 6403,
+      "asserted_triples": 82377,
+      "serialized_statements": 82377,
+      "sha256": "4a14f2be85145bc9bce9c6dace24d3858af3a898f2de697659e14e90d432133c",
+      "batches": 200
+    },
+    {
+      "path": "research/data/automotive.ttl",
+      "individuals": 53,
+      "asserted_triples": 203,
+      "serialized_statements": 203,
+      "sha256": "8e99de37fa5920c7779a50fd5179033ca68ea729ca0a1e4df837ac6477b8cd5a"
+    }
+  ],
+  "csv_exports": [
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/mes_operations.csv",
+      "domain": "MES",
+      "table": "mes_operations",
+      "rows": 28,
+      "sha256": "94d5d6c475f0c39597e618eccb17dab18cbc8395c1f8c22092ad9ad9658df412",
+      "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/mes_events.csv",
+      "domain": "MES",
+      "table": "mes_events",
+      "rows": 8,
+      "sha256": "2e5acb93157c89357dcc6e47eb7e5ef1b54ddfe5392de2d2760cd2c8fa8d1767",
+      "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/mes_subloads.csv",
+      "domain": "MES",
+      "table": "mes_subloads",
+      "rows": 8,
+      "sha256": "f5c24c3c4b51e722dcbf08f7e1211c90c187679f1ea1f65d90f714ddada9d67b",
+      "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/erp_lots.csv",
+      "domain": "ERP",
+      "table": "erp_lots",
+      "rows": 4,
+      "sha256": "88207a5731779d3135942d43536c5ee60e0afb2a73a98838855f2e00ead7756f",
+      "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/erp_recipe_inputs.csv",
+      "domain": "ERP",
+      "table": "erp_recipe_inputs",
+      "rows": 16,
+      "sha256": "a25ce777258c14d073763e3de81d2b8229888330f5aa89407f6e940ed25a8ff2",
+      "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/erp_equipment.csv",
+      "domain": "ERP",
+      "table": "erp_equipment",
+      "rows": 5,
+      "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+      "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/lci_electricity_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_inputs",
+      "rows": 28,
+      "sha256": "1610f8ff2d5b663fb5ddea9d4a43a9bdbc32b0da03e0cffab85d649c62cc004d",
+      "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/lci_material_flow_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_material_flow_inputs",
+      "rows": 16,
+      "sha256": "ed047641c33e6d7ddbc9781e2c209ab28761c060774d30275fa872dd33823778",
+      "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+    },
+    {
+      "dataset": "functional",
+      "path": "research/data/csv/functional/lci_electricity_factors.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_factors",
+      "rows": 1,
+      "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+      "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/mes_operations.csv",
+      "domain": "MES",
+      "table": "mes_operations",
+      "rows": 140,
+      "sha256": "214d5e6db1fd80a900c6efe48ac9bbecde2e56f9c4abc49ba0516061aefcf9c7",
+      "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/mes_events.csv",
+      "domain": "MES",
+      "table": "mes_events",
+      "rows": 40,
+      "sha256": "d34d51fa442c770a023727d6266a3b3361b748374d84d8c32491703f6d36060e",
+      "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/mes_subloads.csv",
+      "domain": "MES",
+      "table": "mes_subloads",
+      "rows": 55,
+      "sha256": "8f8701fab259a659be0424223b4bfd7baf540bd8b873cf558233d4cd61c4e904",
+      "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/erp_lots.csv",
+      "domain": "ERP",
+      "table": "erp_lots",
+      "rows": 20,
+      "sha256": "822397ff5bde47c856ca77d91f9b03939d1319f204d166875ee66b328e969d8f",
+      "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/erp_recipe_inputs.csv",
+      "domain": "ERP",
+      "table": "erp_recipe_inputs",
+      "rows": 80,
+      "sha256": "0f1d703721668cbc34977c74dd0db531262c0d1cda0663212be7eb798109bb0b",
+      "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/erp_equipment.csv",
+      "domain": "ERP",
+      "table": "erp_equipment",
+      "rows": 5,
+      "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+      "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/lci_electricity_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_inputs",
+      "rows": 140,
+      "sha256": "48610bf579ec3f969aae35f8ebc662e3a4630edc153beda1b066c9f82a38b0e2",
+      "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/lci_material_flow_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_material_flow_inputs",
+      "rows": 80,
+      "sha256": "a527644464b01559cf4bb8f20ada41bec8cc5fd7010b8cd40e47472b420650e7",
+      "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+    },
+    {
+      "dataset": "load-small",
+      "path": "research/data/csv/load-small/lci_electricity_factors.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_factors",
+      "rows": 1,
+      "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+      "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/mes_operations.csv",
+      "domain": "MES",
+      "table": "mes_operations",
+      "rows": 700,
+      "sha256": "9890948365d4138c4f665252513f222cc73e23a820cefcbd379c98fe0a44267e",
+      "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/mes_events.csv",
+      "domain": "MES",
+      "table": "mes_events",
+      "rows": 200,
+      "sha256": "12ecc4bd2c4e86921bf12240f63297b23a46ae3cf8164a323f2ef50e78988b24",
+      "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/mes_subloads.csv",
+      "domain": "MES",
+      "table": "mes_subloads",
+      "rows": 285,
+      "sha256": "a9dffc12c42b2118db226e6ed4fcf61f6f16c8aacd6cc1d34985da698754b430",
+      "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/erp_lots.csv",
+      "domain": "ERP",
+      "table": "erp_lots",
+      "rows": 100,
+      "sha256": "5042ecdde646e688b1b302a032dcf3c65bd2b89e8a33076fe042e11b77cdedb2",
+      "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/erp_recipe_inputs.csv",
+      "domain": "ERP",
+      "table": "erp_recipe_inputs",
+      "rows": 400,
+      "sha256": "5169fbd30b6a3c3e893368ff296c81c6da4868d2cb017e8f6e00c46016f970c9",
+      "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/erp_equipment.csv",
+      "domain": "ERP",
+      "table": "erp_equipment",
+      "rows": 5,
+      "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+      "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/lci_electricity_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_inputs",
+      "rows": 700,
+      "sha256": "915bd541133696f45bf6a1913002ac0b26d7604ebdc0dcb0db55d5da8de31432",
+      "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/lci_material_flow_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_material_flow_inputs",
+      "rows": 400,
+      "sha256": "39eff83edad813838e3c01c3fa70500e41900d0d3d67481a671aa10666057855",
+      "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+    },
+    {
+      "dataset": "load-medium",
+      "path": "research/data/csv/load-medium/lci_electricity_factors.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_factors",
+      "rows": 1,
+      "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+      "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/mes_operations.csv",
+      "domain": "MES",
+      "table": "mes_operations",
+      "rows": 1400,
+      "sha256": "9c9773a95f11f1aff5abbf433426868732d8701c7d73c7b99229a8f2230c92bf",
+      "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/mes_events.csv",
+      "domain": "MES",
+      "table": "mes_events",
+      "rows": 400,
+      "sha256": "7c6e324f9609cdad0157aa0eb56d68958f246165167d74ff80c2994eacf3773d",
+      "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/mes_subloads.csv",
+      "domain": "MES",
+      "table": "mes_subloads",
+      "rows": 577,
+      "sha256": "8cfb2a687c3cfee6ab5e56d09287cbc40445a1769a15e7d896059f904b65e53b",
+      "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/erp_lots.csv",
+      "domain": "ERP",
+      "table": "erp_lots",
+      "rows": 200,
+      "sha256": "9ca426590dd19043176d49cc2155cc788663d8e431d897201d3a8a159b9067c2",
+      "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/erp_recipe_inputs.csv",
+      "domain": "ERP",
+      "table": "erp_recipe_inputs",
+      "rows": 800,
+      "sha256": "d5e25afce9d0e1deb2a9cc21d28ff61cbac6644401ee2f711a18c8f9adc12633",
+      "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/erp_equipment.csv",
+      "domain": "ERP",
+      "table": "erp_equipment",
+      "rows": 5,
+      "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+      "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/lci_electricity_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_inputs",
+      "rows": 1400,
+      "sha256": "271528fb77bf308fe658aa2f964c6bf2c16f95444b535d6a5bf9091a61a13581",
+      "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/lci_material_flow_inputs.csv",
+      "domain": "LCI",
+      "table": "lci_material_flow_inputs",
+      "rows": 800,
+      "sha256": "7aee0279b22c7324f1a6803e3223e02d2920e18762a87ff4b77503dbb2bf5800",
+      "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+    },
+    {
+      "dataset": "load-large",
+      "path": "research/data/csv/load-large/lci_electricity_factors.csv",
+      "domain": "LCI",
+      "table": "lci_electricity_factors",
+      "rows": 1,
+      "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+      "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+    }
+  ],
+  "simulated_source_record_counts": {
+    "functional": {
+      "MES": 44,
+      "ERP": 25,
+      "LCI": 45
+    },
+    "load-small": {
+      "MES": 235,
+      "ERP": 105,
+      "LCI": 221
+    },
+    "load-medium": {
+      "MES": 1185,
+      "ERP": 505,
+      "LCI": 1101
+    },
+    "load-large": {
+      "MES": 2377,
+      "ERP": 1005,
+      "LCI": 2201
+    }
+  },
+  "csv_scope": "Companion source representations of the same simulated scenario. Runtime loadsTTL; no CSV-to-ERP/MES industrial integration is asserted. Row counts may repeatIRIs across representations and are distinct from individuals/triples. No inferred operationGHG is exported as input.",
+  "counts_policy": "asserted named fixture individuals and asserted triples; no padding to historical target counts"
+}

@@ -1,0 +1,1797 @@
+{
+  "status": "PASS",
+  "method": "Explicit OWL declarations deduplicated by full IRI; assertions counted from generator without target padding; arithmetic independently checked from fixture specification, not SPARQL outputs",
+  "components": [
+    {
+      "path": "ontologies/core-concepts.owl",
+      "sha256": "f5017c95edaa914d2f1d21b41a2635a9f2ed40bbe163e355be429e4e7a1d0be6",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/core#Enterprise",
+          "http://w3id.org/protys/ontology/core#Process",
+          "http://w3id.org/protys/ontology/core#Product",
+          "http://w3id.org/protys/ontology/core#Resource"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/core#hasProcess",
+          "http://w3id.org/protys/ontology/core#hasResource",
+          "http://w3id.org/protys/ontology/core#involve",
+          "http://w3id.org/protys/ontology/core#isHeldBy",
+          "http://w3id.org/protys/ontology/core#precedes",
+          "http://w3id.org/protys/ontology/core#producedBy",
+          "http://w3id.org/protys/ontology/core#produces",
+          "http://w3id.org/protys/ontology/core#usedBy"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/core#hasDescription",
+          "http://w3id.org/protys/ontology/core#hasName",
+          "http://w3id.org/protys/ontology/core#hasPriorVersion",
+          "http://w3id.org/protys/ontology/core#hasVersion"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 4,
+          "new_unique_in_this_order": 4,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 8,
+          "new_unique_in_this_order": 8,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 4,
+          "new_unique_in_this_order": 4,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/product-module.owl",
+      "sha256": "013cbc78c438bf547e94684cfc3dbc5492c51149b02516481c02b618d37c301e",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/product#Concept",
+          "http://w3id.org/protys/ontology/product#Customer",
+          "http://w3id.org/protys/ontology/product#Fact",
+          "http://w3id.org/protys/ontology/product#Instruction",
+          "http://w3id.org/protys/ontology/product#Physical_Characteristics",
+          "http://w3id.org/protys/ontology/product#Product",
+          "http://w3id.org/protys/ontology/product#Product_Information",
+          "http://w3id.org/protys/ontology/product#Production_Component",
+          "http://w3id.org/protys/ontology/product#Production_Item",
+          "http://w3id.org/protys/ontology/product#Substance",
+          "http://w3id.org/protys/ontology/product#Thing"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/product#acquiredBy",
+          "http://w3id.org/protys/ontology/product#composes",
+          "http://w3id.org/protys/ontology/product#definedBy",
+          "http://w3id.org/protys/ontology/product#isComposedOF"
+        ],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 11,
+          "new_unique_in_this_order": 11,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 4,
+          "new_unique_in_this_order": 4,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 1,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/process-module.owl",
+      "sha256": "82cc6799989e635473fac4d5377b66306c567c0eae4add16896b5a1255b28263",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/process#Artificial_Process",
+          "http://w3id.org/protys/ontology/process#Natural_Process",
+          "http://w3id.org/protys/ontology/process#Parameters",
+          "http://w3id.org/protys/ontology/process#Procedure",
+          "http://w3id.org/protys/ontology/process#Procedure_Activity",
+          "http://w3id.org/protys/ontology/process#Process_Activity",
+          "http://w3id.org/protys/ontology/process#Process_Plan",
+          "http://w3id.org/protys/ontology/process#Process_Plant"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/process#composedBy",
+          "http://w3id.org/protys/ontology/process#hasParameter",
+          "http://w3id.org/protys/ontology/process#specifiedBy"
+        ],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 8,
+          "new_unique_in_this_order": 8,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 3,
+          "new_unique_in_this_order": 3,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/resource-module.owl",
+      "sha256": "4f750efe55a1021b2a8d01e347fd02c6c0e7a59f367d144649faa9d5de462f6b",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/resource#Activity",
+          "http://w3id.org/protys/ontology/resource#Behaviour",
+          "http://w3id.org/protys/ontology/resource#Capability",
+          "http://w3id.org/protys/ontology/resource#Device",
+          "http://w3id.org/protys/ontology/resource#Equip",
+          "http://w3id.org/protys/ontology/resource#File",
+          "http://w3id.org/protys/ontology/resource#Material",
+          "http://w3id.org/protys/ontology/resource#Person",
+          "http://w3id.org/protys/ontology/resource#Process_Material",
+          "http://w3id.org/protys/ontology/resource#Product_Material",
+          "http://w3id.org/protys/ontology/resource#Product_Related_File",
+          "http://w3id.org/protys/ontology/resource#Raw_Material",
+          "http://w3id.org/protys/ontology/resource#Resource_Related_File",
+          "http://w3id.org/protys/ontology/resource#Role",
+          "http://w3id.org/protys/ontology/resource#Tool"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/resource#canBeConsultedBy",
+          "http://w3id.org/protys/ontology/resource#consumesResource",
+          "http://w3id.org/protys/ontology/resource#executedByResource",
+          "http://w3id.org/protys/ontology/resource#hasBehaviour",
+          "http://w3id.org/protys/ontology/resource#hasCapability",
+          "http://w3id.org/protys/ontology/resource#hasRole",
+          "http://w3id.org/protys/ontology/resource#isInputToActivity",
+          "http://w3id.org/protys/ontology/resource#isOutputOfActivity",
+          "http://w3id.org/protys/ontology/resource#producesResource",
+          "http://w3id.org/protys/ontology/resource#requiresResource",
+          "http://w3id.org/protys/ontology/resource#usesResource"
+        ],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 15,
+          "new_unique_in_this_order": 15,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 11,
+          "new_unique_in_this_order": 11,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/enterprise-module.owl",
+      "sha256": "ce34be0c66b35025fd4bde708f48d0ab6cd23d61eb87c65035073f3bea1e2b3e",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/enterprise#Cell",
+          "http://w3id.org/protys/ontology/enterprise#Factory",
+          "http://w3id.org/protys/ontology/enterprise#Location",
+          "http://w3id.org/protys/ontology/enterprise#Shop",
+          "http://w3id.org/protys/ontology/enterprise#Station"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/enterprise#isPartOf",
+          "http://w3id.org/protys/ontology/enterprise#locatedAt"
+        ],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 5,
+          "new_unique_in_this_order": 5,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 2,
+          "new_unique_in_this_order": 2,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/iso15531-module.owl",
+      "sha256": "928d2aa16437b3c28e356a4213b6955b9c291b8d7c040b71c345bb5648e60400",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/iso15531#CostAttribute",
+          "http://w3id.org/protys/ontology/iso15531#EquipmentResource",
+          "http://w3id.org/protys/ontology/iso15531#HumanResource",
+          "http://w3id.org/protys/ontology/iso15531#Lot",
+          "http://w3id.org/protys/ontology/iso15531#ManufacturingCapability",
+          "http://w3id.org/protys/ontology/iso15531#ManufacturingData",
+          "http://w3id.org/protys/ontology/iso15531#ManufacturingFacility",
+          "http://w3id.org/protys/ontology/iso15531#ManufacturingFlow",
+          "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+          "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+          "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+          "http://w3id.org/protys/ontology/iso15531#ProcessPlan",
+          "http://w3id.org/protys/ontology/iso15531#ProcessState",
+          "http://w3id.org/protys/ontology/iso15531#ProductionOrder",
+          "http://w3id.org/protys/ontology/iso15531#QualityAttribute",
+          "http://w3id.org/protys/ontology/iso15531#ResourceState",
+          "http://w3id.org/protys/ontology/iso15531#TimeAttribute",
+          "http://w3id.org/protys/ontology/iso15531#WorkOrder"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/iso15531#assignsResource",
+          "http://w3id.org/protys/ontology/iso15531#consumesMaterial",
+          "http://w3id.org/protys/ontology/iso15531#executedBy",
+          "http://w3id.org/protys/ontology/iso15531#executesActivity",
+          "http://w3id.org/protys/ontology/iso15531#hasActivity",
+          "http://w3id.org/protys/ontology/iso15531#hasCapability",
+          "http://w3id.org/protys/ontology/iso15531#hasInput",
+          "http://w3id.org/protys/ontology/iso15531#hasMaintenance",
+          "http://w3id.org/protys/ontology/iso15531#hasNonConformity",
+          "http://w3id.org/protys/ontology/iso15531#hasProcess",
+          "http://w3id.org/protys/ontology/iso15531#includesActivity",
+          "http://w3id.org/protys/ontology/iso15531#partOfProcess",
+          "http://w3id.org/protys/ontology/iso15531#precedes",
+          "http://w3id.org/protys/ontology/iso15531#precedesEvent",
+          "http://w3id.org/protys/ontology/iso15531#processedOn",
+          "http://w3id.org/protys/ontology/iso15531#producesLot",
+          "http://w3id.org/protys/ontology/iso15531#requiresCleaningBetween",
+          "http://w3id.org/protys/ontology/iso15531#requiresResource",
+          "http://w3id.org/protys/ontology/iso15531#resourceCurrentState",
+          "http://w3id.org/protys/ontology/iso15531#responsibleOperator",
+          "http://w3id.org/protys/ontology/iso15531#usesResource"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/iso15531#consumesEnergyKWh",
+          "http://w3id.org/protys/ontology/iso15531#consumesWaterL",
+          "http://w3id.org/protys/ontology/iso15531#cycleTime",
+          "http://w3id.org/protys/ontology/iso15531#cycleTimeMinutes",
+          "http://w3id.org/protys/ontology/iso15531#duration",
+          "http://w3id.org/protys/ontology/iso15531#experienceYears",
+          "http://w3id.org/protys/ontology/iso15531#functionalUnit",
+          "http://w3id.org/protys/ontology/iso15531#hasQualityStatus",
+          "http://w3id.org/protys/ontology/iso15531#operationSequence",
+          "http://w3id.org/protys/ontology/iso15531#producesQuantity",
+          "http://w3id.org/protys/ontology/iso15531#productFamily",
+          "http://w3id.org/protys/ontology/iso15531#propagatedQualityStatus",
+          "http://w3id.org/protys/ontology/iso15531#setupTimeMinutes",
+          "http://w3id.org/protys/ontology/iso15531#skillCode",
+          "http://w3id.org/protys/ontology/iso15531#timestamp",
+          "http://w3id.org/protys/ontology/iso15531#yield"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 18,
+          "new_unique_in_this_order": 18,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 21,
+          "new_unique_in_this_order": 21,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 16,
+          "new_unique_in_this_order": 16,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/iso14040-module.owl",
+      "sha256": "a9fb3f9be4d918d414b5c1b3e358e7ece86fa704ca06a744285233eebe36038e",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/iso14040#AllocationProcedure",
+          "http://w3id.org/protys/ontology/iso14040#CharacterizationFactor",
+          "http://w3id.org/protys/ontology/iso14040#ElementaryFlow",
+          "http://w3id.org/protys/ontology/iso14040#EnvironmentalAspect",
+          "http://w3id.org/protys/ontology/iso14040#FunctionalUnit",
+          "http://w3id.org/protys/ontology/iso14040#GoalAndScopeDefinition",
+          "http://w3id.org/protys/ontology/iso14040#ImpactCategory",
+          "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+          "http://w3id.org/protys/ontology/iso14040#Interpretation",
+          "http://w3id.org/protys/ontology/iso14040#LCAStudy",
+          "http://w3id.org/protys/ontology/iso14040#LifeCycleImpactAssessment",
+          "http://w3id.org/protys/ontology/iso14040#LifeCycleInventory",
+          "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+          "http://w3id.org/protys/ontology/iso14040#SystemBoundary",
+          "http://w3id.org/protys/ontology/iso14040#UnitProcess"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/iso14040#appliesTo",
+          "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+          "http://w3id.org/protys/ontology/iso14040#emits",
+          "http://w3id.org/protys/ontology/iso14040#hasCharacterizationFactor",
+          "http://w3id.org/protys/ontology/iso14040#hasEmissionFactor",
+          "http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit",
+          "http://w3id.org/protys/ontology/iso14040#hasImpact",
+          "http://w3id.org/protys/ontology/iso14040#hasInventoryFlow",
+          "http://w3id.org/protys/ontology/iso14040#hasSystemBoundary",
+          "http://w3id.org/protys/ontology/iso14040#refersToMaterial",
+          "http://w3id.org/protys/ontology/iso14040#usesCharacterizationFactor"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/iso14040#VOCContentGperLiter",
+          "http://w3id.org/protys/ontology/iso14040#carbonFootprintKgCO2eq",
+          "http://w3id.org/protys/ontology/iso14040#energyConsumptionMJ",
+          "http://w3id.org/protys/ontology/iso14040#energyInputKWh",
+          "http://w3id.org/protys/ontology/iso14040#factorUnit",
+          "http://w3id.org/protys/ontology/iso14040#factorValue",
+          "http://w3id.org/protys/ontology/iso14040#hasEnvironmentalImpact",
+          "http://w3id.org/protys/ontology/iso14040#hasFunctionalUnitQuantity",
+          "http://w3id.org/protys/ontology/iso14040#hasGHGImpactKgCO2e",
+          "http://w3id.org/protys/ontology/iso14040#hasIndicatorValue",
+          "http://w3id.org/protys/ontology/iso14040#indicatorValue",
+          "http://w3id.org/protys/ontology/iso14040#waterFootprintLiters"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 15,
+          "new_unique_in_this_order": 15,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 11,
+          "new_unique_in_this_order": 11,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 12,
+          "new_unique_in_this_order": 12,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/alignment-rules.owl",
+      "sha256": "50944ff37c746fde0bb38b0a15fd0d0342774bd058d6573a6af3b908a414f366",
+      "scope": "base eight modules",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/alignment#SPARQLValidationPattern",
+          "http://w3id.org/protys/ontology/core#BottleneckResource",
+          "http://w3id.org/protys/ontology/core#CoverageGap",
+          "http://w3id.org/protys/ontology/core#HighImpactIndicator",
+          "http://w3id.org/protys/ontology/core#Hotspot",
+          "http://w3id.org/protys/ontology/core#MissingEnvironmentalData",
+          "http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators",
+          "http://w3id.org/protys/ontology/iso15531#CleaningOperation",
+          "http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity",
+          "http://w3id.org/protys/ontology/iso15531#requiresReprocess",
+          "http://w3id.org/protys/ontology/iso15531#temporarilyUnavailable"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/alignment#allocationForOperation",
+          "http://w3id.org/protys/ontology/alignment#facilityInBoundary",
+          "http://w3id.org/protys/ontology/alignment#flowRefersToProduct",
+          "http://w3id.org/protys/ontology/alignment#hasEmittedFlow",
+          "http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation",
+          "http://w3id.org/protys/ontology/alignment#hasRecordedInputFlowForLot",
+          "http://w3id.org/protys/ontology/alignment#indicatorForLot",
+          "http://w3id.org/protys/ontology/alignment#inputFlowForResource",
+          "http://w3id.org/protys/ontology/alignment#inventoryForPlan",
+          "http://w3id.org/protys/ontology/alignment#qualityForLot",
+          "http://w3id.org/protys/ontology/core#bridgesFlowToActivity",
+          "http://w3id.org/protys/ontology/iso15531#hasMeasurement",
+          "http://w3id.org/protys/ontology/research#allocationForOperation",
+          "http://w3id.org/protys/ontology/research#facilityInBoundary",
+          "http://w3id.org/protys/ontology/research#flowRefersToProduct",
+          "http://w3id.org/protys/ontology/research#hasInventoryRepresentation",
+          "http://w3id.org/protys/ontology/research#hasRecordedInputFlowForLot",
+          "http://w3id.org/protys/ontology/research#indicatorForLot",
+          "http://w3id.org/protys/ontology/research#inputFlowForResource",
+          "http://w3id.org/protys/ontology/research#inventoryForPlan",
+          "http://w3id.org/protys/ontology/research#qualityForLot"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/alignment#hasEcoScore",
+          "http://w3id.org/protys/ontology/alignment#hasEfficiency",
+          "http://w3id.org/protys/ontology/alignment#impactThreshold",
+          "http://w3id.org/protys/ontology/core#hasEfficiency",
+          "http://w3id.org/protys/ontology/core#hasLotGHGImpact",
+          "http://w3id.org/protys/ontology/core#modifiedInVersion"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 11,
+          "new_unique_in_this_order": 11,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 21,
+          "new_unique_in_this_order": 21,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 6,
+          "new_unique_in_this_order": 6,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 22
+    },
+    {
+      "path": "ontologies/paint-case-extension.owl",
+      "sha256": "fc955149247e89a835ec0a005e945b53b9e2dffe550f28d04eea1ac0aef1b053",
+      "scope": "case/research/AP242 extension",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/paint-ext#BatchProcess",
+          "http://w3id.org/protys/ontology/paint-ext#Chemical_Compound",
+          "http://w3id.org/protys/ontology/paint-ext#CleaningOperation",
+          "http://w3id.org/protys/ontology/paint-ext#Consumable",
+          "http://w3id.org/protys/ontology/paint-ext#ContinuousProcess",
+          "http://w3id.org/protys/ontology/paint-ext#Department",
+          "http://w3id.org/protys/ontology/paint-ext#EnergyResource",
+          "http://w3id.org/protys/ontology/paint-ext#EnvironmentalIndicator",
+          "http://w3id.org/protys/ontology/paint-ext#Final_Product",
+          "http://w3id.org/protys/ontology/paint-ext#Formulation",
+          "http://w3id.org/protys/ontology/paint-ext#Inspection",
+          "http://w3id.org/protys/ontology/paint-ext#Intermediate_Product",
+          "http://w3id.org/protys/ontology/paint-ext#Manufacturing_Stage",
+          "http://w3id.org/protys/ontology/paint-ext#MaterialFlow",
+          "http://w3id.org/protys/ontology/paint-ext#Organization",
+          "http://w3id.org/protys/ontology/paint-ext#Packaging",
+          "http://w3id.org/protys/ontology/paint-ext#Plant",
+          "http://w3id.org/protys/ontology/paint-ext#ProductBatch",
+          "http://w3id.org/protys/ontology/paint-ext#ProductionCell",
+          "http://w3id.org/protys/ontology/paint-ext#ProductionLine",
+          "http://w3id.org/protys/ontology/paint-ext#QualityControl",
+          "http://w3id.org/protys/ontology/paint-ext#QualityParameter",
+          "http://w3id.org/protys/ontology/paint-ext#QualitySpec",
+          "http://w3id.org/protys/ontology/paint-ext#Sensor",
+          "http://w3id.org/protys/ontology/paint-ext#Setup_Activity",
+          "http://w3id.org/protys/ontology/paint-ext#Standard",
+          "http://w3id.org/protys/ontology/paint-ext#Supplier",
+          "http://w3id.org/protys/ontology/paint-ext#Warehouse",
+          "http://w3id.org/protys/ontology/paint-ext#WorkCell",
+          "http://w3id.org/protys/ontology/paint-ext#Workshop"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/paint-ext#belongsTo",
+          "http://w3id.org/protys/ontology/paint-ext#employedBy",
+          "http://w3id.org/protys/ontology/paint-ext#employs",
+          "http://w3id.org/protys/ontology/paint-ext#hasCarbonFootprint",
+          "http://w3id.org/protys/ontology/paint-ext#hasCategory",
+          "http://w3id.org/protys/ontology/paint-ext#hasCertification",
+          "http://w3id.org/protys/ontology/paint-ext#hasProcessPlan",
+          "http://w3id.org/protys/ontology/paint-ext#hasShelfLife",
+          "http://w3id.org/protys/ontology/paint-ext#hasSkill",
+          "http://w3id.org/protys/ontology/paint-ext#hasVOCContent",
+          "http://w3id.org/protys/ontology/paint-ext#hasWaterFootprint",
+          "http://w3id.org/protys/ontology/paint-ext#manages",
+          "http://w3id.org/protys/ontology/paint-ext#partOfOrganization",
+          "http://w3id.org/protys/ontology/paint-ext#suppliesTo"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/paint-ext#OEEPercent",
+          "http://w3id.org/protys/ontology/paint-ext#availabilityPercent",
+          "http://w3id.org/protys/ontology/paint-ext#batchQuantity",
+          "http://w3id.org/protys/ontology/paint-ext#capacityLitersPerHour",
+          "http://w3id.org/protys/ontology/paint-ext#capacityTonsPerMonth",
+          "http://w3id.org/protys/ontology/paint-ext#capacityUnitsPerMinute",
+          "http://w3id.org/protys/ontology/paint-ext#certificationLevel",
+          "http://w3id.org/protys/ontology/paint-ext#durationMinutes",
+          "http://w3id.org/protys/ontology/paint-ext#energyConsumptionKW",
+          "http://w3id.org/protys/ontology/paint-ext#establishedDate",
+          "http://w3id.org/protys/ontology/paint-ext#glassTransitionTemp",
+          "http://w3id.org/protys/ontology/paint-ext#hasFunction",
+          "http://w3id.org/protys/ontology/paint-ext#hasURI",
+          "http://w3id.org/protys/ontology/paint-ext#hasValue",
+          "http://w3id.org/protys/ontology/paint-ext#impactUnit",
+          "http://w3id.org/protys/ontology/paint-ext#inputQuantity",
+          "http://w3id.org/protys/ontology/paint-ext#location",
+          "http://w3id.org/protys/ontology/paint-ext#maintenanceFrequencyDays",
+          "http://w3id.org/protys/ontology/paint-ext#numberOfEmployees",
+          "http://w3id.org/protys/ontology/paint-ext#organizationCode",
+          "http://w3id.org/protys/ontology/paint-ext#outputQuantity",
+          "http://w3id.org/protys/ontology/paint-ext#particleSize",
+          "http://w3id.org/protys/ontology/paint-ext#purityPercent",
+          "http://w3id.org/protys/ontology/paint-ext#shelfLifeMonths",
+          "http://w3id.org/protys/ontology/paint-ext#skillCategory",
+          "http://w3id.org/protys/ontology/paint-ext#solidContent",
+          "http://w3id.org/protys/ontology/paint-ext#speedRPM",
+          "http://w3id.org/protys/ontology/paint-ext#temperatureCelsius",
+          "http://w3id.org/protys/ontology/paint-ext#throughput",
+          "http://w3id.org/protys/ontology/paint-ext#viscosity",
+          "http://w3id.org/protys/ontology/paint-ext#volatileOrganicCompounds",
+          "http://w3id.org/protys/ontology/paint-ext#yearOfExperience",
+          "http://w3id.org/protys/ontology/paint-ext#yieldPercent"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 30,
+          "new_unique_in_this_order": 30,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 14,
+          "new_unique_in_this_order": 14,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 33,
+          "new_unique_in_this_order": 33,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/iso10303-ap242-fragment.owl",
+      "sha256": "30488c54cf62da7563f560d375df960b19a39798f8b02f9b40991ca144a01113",
+      "scope": "case/research/AP242 extension",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/iso10303#Configuration_Item",
+          "http://w3id.org/protys/ontology/iso10303#Product_Definition",
+          "http://w3id.org/protys/ontology/iso10303#Product_Definition_Formation",
+          "http://w3id.org/protys/ontology/iso10303#Shape_Representation",
+          "http://w3id.org/protys/ontology/research#PilotComponentRecord",
+          "http://w3id.org/protys/ontology/research#PilotProductRecord"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/iso10303#definesFormation",
+          "http://w3id.org/protys/ontology/iso10303#hasShapeRepresentation",
+          "http://w3id.org/protys/ontology/iso10303#managesConfigurationOf"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/iso10303#definitionId",
+          "http://w3id.org/protys/ontology/iso10303#versionId"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 6,
+          "new_unique_in_this_order": 6,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 3,
+          "new_unique_in_this_order": 3,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 2,
+          "new_unique_in_this_order": 2,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "ontologies/iso10303-alignment-rules.owl",
+      "sha256": "9c5044ef35c41794c03197b59b048f97f760f3f2b047fc97816a779537563dc2",
+      "scope": "case/research/AP242 extension",
+      "declared_iris": {
+        "Class": [],
+        "ObjectProperty": [],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 3
+    },
+    {
+      "path": "research/model/environmental-profile.owl",
+      "sha256": "8217a8c49cb1fbc13739a76eb721bd47eeb89563095fa314cf07fd8f19165fe0",
+      "scope": "case/research/AP242 extension",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/research#EnvironmentalEnergyRecord"
+        ],
+        "ObjectProperty": [],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 1,
+          "new_unique_in_this_order": 1,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "research/model/manufacturing-profile.owl",
+      "sha256": "de46a12ffbb0ab1f096d215da7844a09dd1ca5bc1c35aa5b859a2358de07e8f6",
+      "scope": "case/research/AP242 extension",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/core#BottleneckResource",
+          "http://w3id.org/protys/ontology/iso15531#CleaningOperation",
+          "http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity",
+          "http://w3id.org/protys/ontology/research#FineGrindingOperation"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/iso15531#hasMeasurement"
+        ],
+        "DatatypeProperty": []
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 4,
+          "new_unique_in_this_order": 1,
+          "duplicates_of_previous": 3
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 1,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 1
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 0,
+          "new_unique_in_this_order": 0,
+          "duplicates_of_previous": 0
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    },
+    {
+      "path": "research/model/research-profile.owl",
+      "sha256": "f3efbc0a8195f6e3ad85011448110d0160307b9e13aa0134882e0e0206752f2d",
+      "scope": "case/research/AP242 extension",
+      "declared_iris": {
+        "Class": [
+          "http://w3id.org/protys/ontology/research#ElectricityEmissionFactor",
+          "http://w3id.org/protys/ontology/research#EmissionFactor",
+          "http://w3id.org/protys/ontology/research#MaterialEmissionFactor",
+          "http://w3id.org/protys/ontology/research#Measurement",
+          "http://w3id.org/protys/ontology/research#NumericInputValid",
+          "http://w3id.org/protys/ontology/research#RatioObservation",
+          "http://w3id.org/protys/ontology/research#Subload",
+          "http://w3id.org/protys/ontology/research#Supplier",
+          "http://w3id.org/protys/ontology/research#ThresholdRecord"
+        ],
+        "ObjectProperty": [
+          "http://w3id.org/protys/ontology/research#allocationForOperation",
+          "http://w3id.org/protys/ontology/research#belongsToProcess",
+          "http://w3id.org/protys/ontology/research#cleanedResource",
+          "http://w3id.org/protys/ontology/research#componentOf",
+          "http://w3id.org/protys/ontology/research#eventForProcess",
+          "http://w3id.org/protys/ontology/research#facilityInBoundary",
+          "http://w3id.org/protys/ontology/research#flowRefersToProduct",
+          "http://w3id.org/protys/ontology/research#forIndicator",
+          "http://w3id.org/protys/ontology/research#forLot",
+          "http://w3id.org/protys/ontology/research#forOperation",
+          "http://w3id.org/protys/ontology/research#hasEmissionFactor",
+          "http://w3id.org/protys/ontology/research#hasFormulation",
+          "http://w3id.org/protys/ontology/research#hasGHGContribution",
+          "http://w3id.org/protys/ontology/research#hasInventoryRepresentation",
+          "http://w3id.org/protys/ontology/research#hasMeasurement",
+          "http://w3id.org/protys/ontology/research#hasPlan",
+          "http://w3id.org/protys/ontology/research#hasStageResource",
+          "http://w3id.org/protys/ontology/research#hasThreshold",
+          "http://w3id.org/protys/ontology/research#indicatorForLot",
+          "http://w3id.org/protys/ontology/research#inputFlowForResource",
+          "http://w3id.org/protys/ontology/research#inventoryForPlan",
+          "http://w3id.org/protys/ontology/research#inventoryForProcess",
+          "http://w3id.org/protys/ontology/research#nextLot",
+          "http://w3id.org/protys/ontology/research#planProduces",
+          "http://w3id.org/protys/ontology/research#producesProduct",
+          "http://w3id.org/protys/ontology/research#providedBy",
+          "http://w3id.org/protys/ontology/research#qualityForLot",
+          "http://w3id.org/protys/ontology/research#subloadOfOperation",
+          "http://w3id.org/protys/ontology/research#usesEmissionFactor"
+        ],
+        "DatatypeProperty": [
+          "http://w3id.org/protys/ontology/core#modifiedInVersion",
+          "http://w3id.org/protys/ontology/research#availabilityPercent",
+          "http://w3id.org/protys/ontology/research#capacityLiters",
+          "http://w3id.org/protys/ontology/research#capacityUnitsPerMinute",
+          "http://w3id.org/protys/ontology/research#densityKgPerL",
+          "http://w3id.org/protys/ontology/research#endTimeSeconds",
+          "http://w3id.org/protys/ontology/research#energyKWh",
+          "http://w3id.org/protys/ontology/research#eventTimeSeconds",
+          "http://w3id.org/protys/ontology/research#factorUnit",
+          "http://w3id.org/protys/ontology/research#factorValue",
+          "http://w3id.org/protys/ontology/research#ghgKgCO2e",
+          "http://w3id.org/protys/ontology/research#indicatorCategory",
+          "http://w3id.org/protys/ontology/research#inputMassKg",
+          "http://w3id.org/protys/ontology/research#lifecycleStage",
+          "http://w3id.org/protys/ontology/research#maintenanceStatus",
+          "http://w3id.org/protys/ontology/research#materialFactorKgCO2ePerKg",
+          "http://w3id.org/protys/ontology/research#materialQuantityKg",
+          "http://w3id.org/protys/ontology/research#oeePercent",
+          "http://w3id.org/protys/ontology/research#operationIndicatorRatio",
+          "http://w3id.org/protys/ontology/research#outputMassKg",
+          "http://w3id.org/protys/ontology/research#outputVolumeL",
+          "http://w3id.org/protys/ontology/research#powerKW",
+          "http://w3id.org/protys/ontology/research#productFamilyCode",
+          "http://w3id.org/protys/ontology/research#qualityStatus",
+          "http://w3id.org/protys/ontology/research#registeredLossKg",
+          "http://w3id.org/protys/ontology/research#scenarioRole",
+          "http://w3id.org/protys/ontology/research#stageIndex",
+          "http://w3id.org/protys/ontology/research#startTimeSeconds",
+          "http://w3id.org/protys/ontology/research#subloadDurationMinutes",
+          "http://w3id.org/protys/ontology/research#subloadVolumeL",
+          "http://w3id.org/protys/ontology/research#thresholdCategory",
+          "http://w3id.org/protys/ontology/research#thresholdUnit",
+          "http://w3id.org/protys/ontology/research#thresholdValue",
+          "http://w3id.org/protys/ontology/research#unit",
+          "http://w3id.org/protys/ontology/research#waterFootprintLPerKg",
+          "http://w3id.org/protys/ontology/research#waterL",
+          "http://w3id.org/protys/ontology/research#yieldPercent"
+        ]
+      },
+      "counts": {
+        "Class": {
+          "local_declared_unique": 9,
+          "new_unique_in_this_order": 9,
+          "duplicates_of_previous": 0
+        },
+        "ObjectProperty": {
+          "local_declared_unique": 29,
+          "new_unique_in_this_order": 21,
+          "duplicates_of_previous": 8
+        },
+        "DatatypeProperty": {
+          "local_declared_unique": 37,
+          "new_unique_in_this_order": 36,
+          "duplicates_of_previous": 1
+        }
+      },
+      "equivalentClass_axioms": 0,
+      "SWRL_Imp": 0
+    }
+  ],
+  "base_eight_unique_counts": {
+    "Class": 87,
+    "ObjectProperty": 81,
+    "DatatypeProperty": 38
+  },
+  "complete_explicit_union_counts": {
+    "Class": 134,
+    "ObjectProperty": 119,
+    "DatatypeProperty": 109
+  },
+  "duplicate_declarations_base": {
+    "Class": 0,
+    "ObjectProperty": 0,
+    "DatatypeProperty": 0
+  },
+  "base_alignment_equivalences": 0,
+  "contextual_correspondences": 7,
+  "mechanisms": {
+    "SWRL": 22,
+    "ASK": 4,
+    "H3_SWRL": 3,
+    "additional_temporal_checks": 2,
+    "SELECT": 21,
+    "additional_cleaning_context_checks": 1,
+    "additional_context_integrity_checks": 1,
+    "additional_numeric_contract_checks": 1,
+    "additional_control_count": 3,
+    "additional_ASK_artifact_count": 6,
+    "pre_inference_construct_count": 2,
+    "additional_controls": [
+      {
+        "id": "C26",
+        "path": "research/model/validations/C26-context-completeness.sparql",
+        "scope": "Additional required-pair context check, outside the four canonical ASK; true means cleaning context not evaluable, never OWL inconsistency or observed contamination.",
+        "kind": "SPARQL ASK",
+        "included_in_canonical_counts": false
+      },
+      {
+        "id": "CCTX",
+        "path": "research/model/validations/CCTX-context-completeness.sparql",
+        "scope": "Additional lot-operation-process and plan context integrity control, outside the four canonical ASK. True means a declared activity, contribution or plan activity lacks a matching manufacturing process; not OWL inconsistency.",
+        "kind": "SPARQL ASK",
+        "included_in_canonical_counts": false
+      },
+      {
+        "id": "CNUM",
+        "path": "research/model/validations/CNUM-input-invalid.sparql",
+        "scope": "One numeric energy and one selected factor IRI per matching lot/process operation. Value-equivalent literals count once. Contradictions block numeric inference; missing data is separately not evaluable. Foreign links remain visible through CCTX and are excluded from the numeric scope. Totals require every selected same-process operation, never a partial sum.",
+        "kind": "SPARQL ASK",
+        "states": [
+          "VALID",
+          "AMBIGUOUS_INPUT",
+          "NOT_EVALUABLE",
+          "NOT_APPLICABLE"
+        ],
+        "applicable_configurations": [
+          "integrated",
+          "h3_extended"
+        ],
+        "stage_paths": {
+          "applicable": "research/model/validations/CNUM-applicable.sparql",
+          "ambiguous_input": "research/model/validations/CNUM-input-ambiguous.sparql",
+          "invalid_output": "research/model/validations/CNUM-output-invalid.sparql"
+        },
+        "included_in_canonical_counts": false
+      }
+    ],
+    "counting_scope": "Canonical base: 22 SWRL, four ASK and 21 SELECT. C26 (cleaning context evaluability) and CCTX (lot-operation-process/plan integrity) and CNUM (numeric input/output contract) are separate auxiliary snapshot controls; they do not increase canonical counts or assert OWL inconsistency."
+  },
+  "semantic_projection_foreign_vocabulary_errors": [],
+  "functional_subload_checks": [
+    {
+      "operation": "f:BatchA_Op2",
+      "subload_count": 2,
+      "checks": {
+        "volume_each_at_most50L": true,
+        "sequential_nonoverlap": true,
+        "duration_matches_operation": true,
+        "volume_matches_input_density": true,
+        "energy_matches30kW": true
+      }
+    },
+    {
+      "operation": "f:BatchB_Op2",
+      "subload_count": 4,
+      "checks": {
+        "volume_each_at_most50L": true,
+        "sequential_nonoverlap": true,
+        "duration_matches_operation": true,
+        "volume_matches_input_density": true,
+        "energy_matches30kW": true
+      }
+    },
+    {
+      "operation": "f:BatchC_Op2",
+      "subload_count": 2,
+      "checks": {
+        "volume_each_at_most50L": true,
+        "sequential_nonoverlap": true,
+        "duration_matches_operation": true,
+        "volume_matches_input_density": true,
+        "energy_matches30kW": true
+      }
+    }
+  ],
+  "catalog_sha256": "95211a31353972c3b2e03a9d8d55ae515458bcfb2e3817b62ced8dc7bb65f159",
+  "configuration_sources": [
+    {
+      "id": "iso15531",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional-manufacturing.ttl"
+      ],
+      "rules_paths": [],
+      "enabled_rule_ids": [],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [],
+      "expected_results_configuration": "iso15531",
+      "numeric_controls_enabled": false,
+      "run_pre_inference_constructs": false,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium-manufacturing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "iso14040",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional-environmental.ttl"
+      ],
+      "rules_paths": [],
+      "enabled_rule_ids": [],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [],
+      "expected_results_configuration": "iso14040",
+      "numeric_controls_enabled": false,
+      "run_pre_inference_constructs": false,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium-environmental.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "union",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional-union.ttl"
+      ],
+      "rules_paths": [],
+      "enabled_rule_ids": [],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [],
+      "expected_results_configuration": "union",
+      "numeric_controls_enabled": false,
+      "run_pre_inference_constructs": false,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium-union.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "integrated",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional.ttl"
+      ],
+      "rules_paths": [
+        "ontologies/alignment-rules.owl"
+      ],
+      "enabled_rule_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25"
+      ],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [
+        "R07",
+        "R16",
+        "R19",
+        "R26"
+      ],
+      "expected_results_configuration": "integrated",
+      "numeric_controls_enabled": true,
+      "run_pre_inference_constructs": true,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25"
+      ],
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "h3_extended",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/iso10303-ap242-fragment.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional.ttl",
+        "research/data/automotive.ttl"
+      ],
+      "rules_paths": [
+        "ontologies/alignment-rules.owl",
+        "ontologies/iso10303-alignment-rules.owl"
+      ],
+      "enabled_rule_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R27",
+        "R28",
+        "R29"
+      ],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [
+        "R07",
+        "R16",
+        "R19",
+        "R26"
+      ],
+      "expected_results_configuration": "integrated",
+      "numeric_controls_enabled": true,
+      "run_pre_inference_constructs": true,
+      "skip_golden": false,
+      "benchmark": false,
+      "benchmark_abox": [],
+      "enabled_rules": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R27",
+        "R28",
+        "R29"
+      ],
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    }
+  ],
+  "dataset_manifest": {
+    "seed": 42,
+    "generator_sha256": "9f0cf4217d0a27e45b64ab254a14d482996ed09783b6770988894685509e45ab",
+    "files": [
+      {
+        "path": "research/data/functional.ttl",
+        "individuals": 159,
+        "asserted_triples": 1787,
+        "serialized_statements": 1788,
+        "sha256": "4bd554207cb9c0231205b7a33ac8665738aedd4bde731c8864ed01faa5886e3c"
+      },
+      {
+        "path": "research/data/functional-manufacturing.ttl",
+        "individuals": 158,
+        "asserted_triples": 1568,
+        "serialized_statements": 1568,
+        "sha256": "367de10ea90e5fb9fdb4ce3f95391eda7b30c05d6e0de4d18f23c73b08ae3c95"
+      },
+      {
+        "path": "research/data/functional-environmental.ttl",
+        "individuals": 95,
+        "asserted_triples": 493,
+        "serialized_statements": 493,
+        "sha256": "716e98326acf3b2e82883051e77ca017ded78e00a3d617d7eee7a8d9b3b6e29e"
+      },
+      {
+        "path": "research/data/functional-union.ttl",
+        "individuals": 158,
+        "asserted_triples": 1785,
+        "serialized_statements": 1785,
+        "sha256": "dab52c8c436613c94dcebb259cb6d10bcd38874bab6f5e6496bd2b1235af7d7b"
+      },
+      {
+        "path": "research/data/load-small.ttl",
+        "individuals": 662,
+        "asserted_triples": 8345,
+        "serialized_statements": 8346,
+        "sha256": "c108cf91a277ec536612ad437978c867fffea1bd35cf960bc7d27df073307b60",
+        "batches": 20
+      },
+      {
+        "path": "research/data/load-small-manufacturing.ttl",
+        "individuals": 661,
+        "asserted_triples": 7342,
+        "serialized_statements": 7342,
+        "sha256": "a709319c24164517a8c2b585bf92180e5b9d38c2b0a60c3a8f4976417e97164d",
+        "batches": 20
+      },
+      {
+        "path": "research/data/load-small-environmental.ttl",
+        "individuals": 365,
+        "asserted_triples": 2025,
+        "serialized_statements": 2025,
+        "sha256": "00054dd8cf810827c72bd7fe87609a39905a231e5fa5081b231f9580dca87f82",
+        "batches": 20
+      },
+      {
+        "path": "research/data/load-small-union.ttl",
+        "individuals": 661,
+        "asserted_triples": 8343,
+        "serialized_statements": 8343,
+        "sha256": "f6368d7c765a8c5a7583605d56e167f3347858563a690ddcb8841e93cbe14415",
+        "batches": 20
+      },
+      {
+        "path": "research/data/load-medium.ttl",
+        "individuals": 3212,
+        "asserted_triples": 41235,
+        "serialized_statements": 41236,
+        "sha256": "6b686e1c9dabbb83f6c1bcfc7557f118ac50039878b4aa7c68eefb3723568042",
+        "batches": 100
+      },
+      {
+        "path": "research/data/load-medium-manufacturing.ttl",
+        "individuals": 3211,
+        "asserted_triples": 36312,
+        "serialized_statements": 36312,
+        "sha256": "1db1a85aec52b4171975df758acdc29fc996395e81b8b59763e912ee128d0fee",
+        "batches": 100
+      },
+      {
+        "path": "research/data/load-medium-environmental.ttl",
+        "individuals": 1725,
+        "asserted_triples": 9705,
+        "serialized_statements": 9705,
+        "sha256": "1421ae3bc774064bc0f8622d4009be4e6f30eea84a0dcd043fa0c38bda91e646",
+        "batches": 100
+      },
+      {
+        "path": "research/data/load-medium-union.ttl",
+        "individuals": 3211,
+        "asserted_triples": 41233,
+        "serialized_statements": 41233,
+        "sha256": "e3e8146c6e34ffa73021a5fd7bb968723c87cca30ab10c606c5d26f344c121c1",
+        "batches": 100
+      },
+      {
+        "path": "research/data/load-large.ttl",
+        "individuals": 6404,
+        "asserted_triples": 82379,
+        "serialized_statements": 82380,
+        "sha256": "07bf828dcd9583e6e9829a1c4a1d7a1702c549be97dcb6b0bc3bee5e960917de",
+        "batches": 200
+      },
+      {
+        "path": "research/data/load-large-manufacturing.ttl",
+        "individuals": 6403,
+        "asserted_triples": 72556,
+        "serialized_statements": 72556,
+        "sha256": "7ddd9186fd76d0733a1655e982e1204dbde84aa2f203d2e11e1b598cf3dbcca8",
+        "batches": 200
+      },
+      {
+        "path": "research/data/load-large-environmental.ttl",
+        "individuals": 3425,
+        "asserted_triples": 19305,
+        "serialized_statements": 19305,
+        "sha256": "fd3127e22f12885986d3f5cd8d16b81ff0a43235200bddd8902a3c440262c914",
+        "batches": 200
+      },
+      {
+        "path": "research/data/load-large-union.ttl",
+        "individuals": 6403,
+        "asserted_triples": 82377,
+        "serialized_statements": 82377,
+        "sha256": "4a14f2be85145bc9bce9c6dace24d3858af3a898f2de697659e14e90d432133c",
+        "batches": 200
+      },
+      {
+        "path": "research/data/automotive.ttl",
+        "individuals": 53,
+        "asserted_triples": 203,
+        "serialized_statements": 203,
+        "sha256": "8e99de37fa5920c7779a50fd5179033ca68ea729ca0a1e4df837ac6477b8cd5a"
+      }
+    ],
+    "csv_exports": [
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/mes_operations.csv",
+        "domain": "MES",
+        "table": "mes_operations",
+        "rows": 28,
+        "sha256": "94d5d6c475f0c39597e618eccb17dab18cbc8395c1f8c22092ad9ad9658df412",
+        "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/mes_events.csv",
+        "domain": "MES",
+        "table": "mes_events",
+        "rows": 8,
+        "sha256": "2e5acb93157c89357dcc6e47eb7e5ef1b54ddfe5392de2d2760cd2c8fa8d1767",
+        "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/mes_subloads.csv",
+        "domain": "MES",
+        "table": "mes_subloads",
+        "rows": 8,
+        "sha256": "f5c24c3c4b51e722dcbf08f7e1211c90c187679f1ea1f65d90f714ddada9d67b",
+        "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/erp_lots.csv",
+        "domain": "ERP",
+        "table": "erp_lots",
+        "rows": 4,
+        "sha256": "88207a5731779d3135942d43536c5ee60e0afb2a73a98838855f2e00ead7756f",
+        "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/erp_recipe_inputs.csv",
+        "domain": "ERP",
+        "table": "erp_recipe_inputs",
+        "rows": 16,
+        "sha256": "a25ce777258c14d073763e3de81d2b8229888330f5aa89407f6e940ed25a8ff2",
+        "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/erp_equipment.csv",
+        "domain": "ERP",
+        "table": "erp_equipment",
+        "rows": 5,
+        "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+        "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/lci_electricity_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_inputs",
+        "rows": 28,
+        "sha256": "1610f8ff2d5b663fb5ddea9d4a43a9bdbc32b0da03e0cffab85d649c62cc004d",
+        "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/lci_material_flow_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_material_flow_inputs",
+        "rows": 16,
+        "sha256": "ed047641c33e6d7ddbc9781e2c209ab28761c060774d30275fa872dd33823778",
+        "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+      },
+      {
+        "dataset": "functional",
+        "path": "research/data/csv/functional/lci_electricity_factors.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_factors",
+        "rows": 1,
+        "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+        "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/mes_operations.csv",
+        "domain": "MES",
+        "table": "mes_operations",
+        "rows": 140,
+        "sha256": "214d5e6db1fd80a900c6efe48ac9bbecde2e56f9c4abc49ba0516061aefcf9c7",
+        "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/mes_events.csv",
+        "domain": "MES",
+        "table": "mes_events",
+        "rows": 40,
+        "sha256": "d34d51fa442c770a023727d6266a3b3361b748374d84d8c32491703f6d36060e",
+        "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/mes_subloads.csv",
+        "domain": "MES",
+        "table": "mes_subloads",
+        "rows": 55,
+        "sha256": "8f8701fab259a659be0424223b4bfd7baf540bd8b873cf558233d4cd61c4e904",
+        "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/erp_lots.csv",
+        "domain": "ERP",
+        "table": "erp_lots",
+        "rows": 20,
+        "sha256": "822397ff5bde47c856ca77d91f9b03939d1319f204d166875ee66b328e969d8f",
+        "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/erp_recipe_inputs.csv",
+        "domain": "ERP",
+        "table": "erp_recipe_inputs",
+        "rows": 80,
+        "sha256": "0f1d703721668cbc34977c74dd0db531262c0d1cda0663212be7eb798109bb0b",
+        "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/erp_equipment.csv",
+        "domain": "ERP",
+        "table": "erp_equipment",
+        "rows": 5,
+        "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+        "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/lci_electricity_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_inputs",
+        "rows": 140,
+        "sha256": "48610bf579ec3f969aae35f8ebc662e3a4630edc153beda1b066c9f82a38b0e2",
+        "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/lci_material_flow_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_material_flow_inputs",
+        "rows": 80,
+        "sha256": "a527644464b01559cf4bb8f20ada41bec8cc5fd7010b8cd40e47472b420650e7",
+        "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+      },
+      {
+        "dataset": "load-small",
+        "path": "research/data/csv/load-small/lci_electricity_factors.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_factors",
+        "rows": 1,
+        "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+        "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/mes_operations.csv",
+        "domain": "MES",
+        "table": "mes_operations",
+        "rows": 700,
+        "sha256": "9890948365d4138c4f665252513f222cc73e23a820cefcbd379c98fe0a44267e",
+        "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/mes_events.csv",
+        "domain": "MES",
+        "table": "mes_events",
+        "rows": 200,
+        "sha256": "12ecc4bd2c4e86921bf12240f63297b23a46ae3cf8164a323f2ef50e78988b24",
+        "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/mes_subloads.csv",
+        "domain": "MES",
+        "table": "mes_subloads",
+        "rows": 285,
+        "sha256": "a9dffc12c42b2118db226e6ed4fcf61f6f16c8aacd6cc1d34985da698754b430",
+        "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/erp_lots.csv",
+        "domain": "ERP",
+        "table": "erp_lots",
+        "rows": 100,
+        "sha256": "5042ecdde646e688b1b302a032dcf3c65bd2b89e8a33076fe042e11b77cdedb2",
+        "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/erp_recipe_inputs.csv",
+        "domain": "ERP",
+        "table": "erp_recipe_inputs",
+        "rows": 400,
+        "sha256": "5169fbd30b6a3c3e893368ff296c81c6da4868d2cb017e8f6e00c46016f970c9",
+        "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/erp_equipment.csv",
+        "domain": "ERP",
+        "table": "erp_equipment",
+        "rows": 5,
+        "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+        "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/lci_electricity_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_inputs",
+        "rows": 700,
+        "sha256": "915bd541133696f45bf6a1913002ac0b26d7604ebdc0dcb0db55d5da8de31432",
+        "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/lci_material_flow_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_material_flow_inputs",
+        "rows": 400,
+        "sha256": "39eff83edad813838e3c01c3fa70500e41900d0d3d67481a671aa10666057855",
+        "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+      },
+      {
+        "dataset": "load-medium",
+        "path": "research/data/csv/load-medium/lci_electricity_factors.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_factors",
+        "rows": 1,
+        "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+        "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/mes_operations.csv",
+        "domain": "MES",
+        "table": "mes_operations",
+        "rows": 1400,
+        "sha256": "9c9773a95f11f1aff5abbf433426868732d8701c7d73c7b99229a8f2230c92bf",
+        "row_semantics": "One row per operation and lot; recorded simulated electricity/mass/duration inputs, not inferred GHG."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/mes_events.csv",
+        "domain": "MES",
+        "table": "mes_events",
+        "rows": 400,
+        "sha256": "7c6e324f9609cdad0157aa0eb56d68958f246165167d74ff80c2994eacf3773d",
+        "row_semantics": "One start/end event record per process execution, with common temporal origin; R13 derives precedence."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/mes_subloads.csv",
+        "domain": "MES",
+        "table": "mes_subloads",
+        "rows": 577,
+        "sha256": "8cfb2a687c3cfee6ab5e56d09287cbc40445a1769a15e7d896059f904b65e53b",
+        "row_semantics": "One sequential mill subload record, <=50L, belonging to operation2; durations sum to its duration."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/erp_lots.csv",
+        "domain": "ERP",
+        "table": "erp_lots",
+        "rows": 200,
+        "sha256": "9ca426590dd19043176d49cc2155cc788663d8e431d897201d3a8a159b9067c2",
+        "row_semantics": "One simulated lot/order/plan/product record; quantities inL. Negative functional records explicitly identified."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/erp_recipe_inputs.csv",
+        "domain": "ERP",
+        "table": "erp_recipe_inputs",
+        "rows": 800,
+        "sha256": "d5e25afce9d0e1deb2a9cc21d28ff61cbac6644401ee2f711a18c8f9adc12633",
+        "row_semantics": "One purchased recipe ingredient per process, inventoried once; not fresh addition at each stage."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/erp_equipment.csv",
+        "domain": "ERP",
+        "table": "erp_equipment",
+        "rows": 5,
+        "sha256": "27f97d820d40f826b28230cb50c4fe5038abd35486142068a57b3087ee6e62cb",
+        "row_semantics": "Five reusable scenario equipment records; not actualERP master data."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/lci_electricity_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_inputs",
+        "rows": 1400,
+        "sha256": "271528fb77bf308fe658aa2f964c6bf2c16f95444b535d6a5bf9091a61a13581",
+        "row_semantics": "One operation electricity input linked to separately identified inventory representation and factor; NO emissions precalculated."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/lci_material_flow_inputs.csv",
+        "domain": "LCI",
+        "table": "lci_material_flow_inputs",
+        "rows": 800,
+        "sha256": "7aee0279b22c7324f1a6803e3223e02d2920e18762a87ff4b77503dbb2bf5800",
+        "row_semantics": "One purchased product flow per recipe ingredient/process; outside the electricity GHG sum, not ElementaryFlow."
+      },
+      {
+        "dataset": "load-large",
+        "path": "research/data/csv/load-large/lci_electricity_factors.csv",
+        "domain": "LCI",
+        "table": "lci_electricity_factors",
+        "rows": 1,
+        "sha256": "ef1d12f486d5c32ef7d4048dd91f4e30b79f0ef6f7d6975e7c461f4a0dd7e976",
+        "row_semantics": "One declared electricity factor reused by operations, not LCIA CharacterizationFactor or measured plant value."
+      }
+    ],
+    "simulated_source_record_counts": {
+      "functional": {
+        "MES": 44,
+        "ERP": 25,
+        "LCI": 45
+      },
+      "load-small": {
+        "MES": 235,
+        "ERP": 105,
+        "LCI": 221
+      },
+      "load-medium": {
+        "MES": 1185,
+        "ERP": 505,
+        "LCI": 1101
+      },
+      "load-large": {
+        "MES": 2377,
+        "ERP": 1005,
+        "LCI": 2201
+      }
+    },
+    "csv_scope": "Companion source representations of the same simulated scenario. Runtime loadsTTL; no CSV-to-ERP/MES industrial integration is asserted. Row counts may repeatIRIs across representations and are distinct from individuals/triples. No inferred operationGHG is exported as input.",
+    "counts_policy": "asserted named fixture individuals and asserted triples; no padding to historical target counts"
+  },
+  "scope": "Static census is distinct from HermiT consistency, SWRL execution, functional checks and new timing measurements. Seven contextual correspondences replace universal cross-standard class equivalences. No claim of industrial validation, full LCA, optimized eco-index, or formal DL-safety. Temporal precedes/follows remain simple; no new transitivity axiom."
+}

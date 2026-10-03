@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://w3id.org/protys/ontology/research/manufacturing">
+    <owl:versionInfo>2.0.0</owl:versionInfo>
+    <owl:imports rdf:resource="http://w3id.org/protys/ontology/iso15531"/>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#FineGrindingOperation">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/core#BottleneckResource">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#EquipmentResource"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#CleaningOperation">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#hasMeasurement"/>
+</rdf:RDF>

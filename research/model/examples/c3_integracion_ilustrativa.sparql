@@ -1,0 +1,6 @@
+PREFIX step: <urn:protys:example:step:>
+PREFIX env: <urn:protys:example:environment:>
+SELECT ?component ?impact WHERE {
+  ?component a step:Component .
+  ?impact env:appliesTo ?component .
+} LIMIT 5

@@ -1,3 +1,4 @@
+import { reasoningSucceeded } from '../services/validationState';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 import { alignmentAPI } from '../services/api';
@@ -108,9 +109,15 @@ export const useExecuteReasoning = () => {
     },
     onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['alignment', 'stats'] });
-      toast.success(
-        `Reasoning completed: ${result.newInferences || 0} new inferences generated`
-      );
+      if (reasoningSucceeded(result)) {
+        if (result.numericEvaluation?.status === 'NOT_EVALUABLE') toast.warning('OWL reasoning completed; some numerical records cannot support complete lot totals');
+        else if (result.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR') toast.warning('OWL reasoning completed; declared lot activity, contribution or plan links have context conflicts that require review');
+        else if (result.cleaningEvaluation?.status === 'NOT_EVALUABLE') toast.warning('Ontology reasoning completed; cleaning records cannot be evaluated because equipment or interval context is incomplete');
+        else if (result.cleaningEvaluation?.status === 'MISSING_CLEANING_RECORD') toast.warning('Ontology reasoning completed; a required cleaning record is missing');
+        else toast.success(result.cacheHit ? 'Verified result reused from cache; no new reasoning time measured' : `Reasoning verified: ${result.inferredTripleCount || 0} materialized triples`);
+      } else {
+        toast.error(`Reasoning ${result.validationStatus || 'NOT_EVALUATED'}: ${result.errorMessage || 'Evaluation could not be completed'}`);
+      }
     },
     onError: (error) => {
       const message = error.response?.data?.message || 'Reasoning execution failed';

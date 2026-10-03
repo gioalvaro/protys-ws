@@ -1,0 +1,15 @@
+@prefix : <urn:protys:example:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Estados y categorías
+:hasQualityStatus rdf:type owl:DatatypeProperty , owl:FunctionalProperty ;
+rdfs:domain :Batch ;
+rdfs:range [ rdf:type rdfs:Datatype ;
+owl:oneOf ("Approved" "Rejected" "Quarantine" "Rework") ] ;
+rdfs:comment "Quality control status of a batch"@en .
+:hasHazardClassification rdf:type owl:DatatypeProperty ;
+rdfs:domain :Chemical ;
+rdfs:range xsd:string ;
+rdfs:comment "GHS hazard classification code"@en .

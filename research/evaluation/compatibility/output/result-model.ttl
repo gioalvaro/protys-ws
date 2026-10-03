@@ -1,0 +1,3029 @@
+@prefix :          <http://w3id.org/protys/ontology/alignment#> .
+@prefix alignment: <http://w3id.org/protys/ontology/alignment#> .
+@prefix iso14040:  <http://w3id.org/protys/ontology/iso14040#> .
+@prefix iso15531:  <http://w3id.org/protys/ontology/iso15531#> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix research:  <http://w3id.org/protys/ontology/research#> .
+@prefix swrl:      <http://www.w3.org/2003/11/swrl#> .
+@prefix swrlb:     <http://www.w3.org/2003/11/swrlb#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/protys/ontology/paint-ext#throughput>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "throughput";
+        rdfs:range  xsd:decimal .
+
+iso15531:ManufacturingFacility
+        rdf:type         owl:Class;
+        rdfs:label       "Instalación de manufactura"@es;
+        rdfs:subClassOf  iso14040:SystemBoundary .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R01: GHG de electricidad por operación";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_op;
+                             swrl:classPredicate  iso15531:ProcessOperation
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_op;
+                                          swrl:argument2          alignment:var_kwh;
+                                          swrl:propertyPredicate  iso15531:consumesEnergyKWh
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_factor;
+                                                       swrl:propertyPredicate  iso14040:hasEmissionFactor
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                    swrl:argument1          alignment:var_factor;
+                                                                    swrl:argument2          alignment:var_f;
+                                                                    swrl:propertyPredicate  iso14040:factorValue
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                 swrl:arguments  [ rdf:type   rdf:List;
+                                                                                                   rdf:first  alignment:var_kwh;
+                                                                                                   rdf:rest   [ rdf:type   rdf:List;
+                                                                                                                rdf:first  "0"^^xsd:decimal;
+                                                                                                                rdf:rest   ()
+                                                                                                              ]
+                                                                                                 ];
+                                                                                 swrl:builtin    swrlb:greaterThanOrEqual
+                                                                               ];
+                                                                    rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                 rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                              swrl:arguments  [ rdf:type   rdf:List;
+                                                                                                                rdf:first  alignment:var_f;
+                                                                                                                rdf:rest   [ rdf:type   rdf:List;
+                                                                                                                             rdf:first  "0"^^xsd:decimal;
+                                                                                                                             rdf:rest   ()
+                                                                                                                           ]
+                                                                                                              ];
+                                                                                              swrl:builtin    swrlb:greaterThanOrEqual
+                                                                                            ];
+                                                                                 rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                              rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                                           swrl:arguments  ( alignment:var_ghg alignment:var_kwh alignment:var_f );
+                                                                                                           swrl:builtin    swrlb:multiply
+                                                                                                         ];
+                                                                                              rdf:rest   ()
+                                                                                            ]
+                                                                               ]
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                             swrl:argument1          alignment:var_op;
+                             swrl:argument2          alignment:var_ghg;
+                             swrl:propertyPredicate  iso14040:hasGHGImpactKgCO2e
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+<http://w3id.org/protys/ontology/paint-ext#Department>
+        rdf:type         owl:Class;
+        rdfs:comment     "Departamento funcional. Subclase de enterprise:Shop."@es;
+        rdfs:label       "Department"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Shop>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Factory>
+                         ] .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R04: Indicador de alto impacto por umbral del escenario";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_indicator;
+                             swrl:classPredicate  iso14040:ImpactIndicator
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_indicator;
+                                          swrl:argument2          alignment:var_value;
+                                          swrl:propertyPredicate  iso14040:hasIndicatorValue
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                       swrl:argument1          alignment:GlobalConfig;
+                                                       swrl:argument2          alignment:var_threshold;
+                                                       swrl:propertyPredicate  alignment:impactThreshold
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                    swrl:arguments  ( alignment:var_value alignment:var_threshold );
+                                                                    swrl:builtin    swrlb:greaterThan
+                                                                  ];
+                                                       rdf:rest   ()
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_indicator;
+                             swrl:classPredicate  <http://w3id.org/protys/ontology/core#HighImpactIndicator>
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R06: Asociar factor al flujo del material correspondiente";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_flow;
+                             swrl:classPredicate  iso14040:ElementaryFlow
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_flow;
+                                          swrl:argument2          alignment:var_material;
+                                          swrl:propertyPredicate  iso14040:refersToMaterial
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_material;
+                                                       swrl:argument2          alignment:var_factor;
+                                                       swrl:propertyPredicate  iso14040:hasCharacterizationFactor
+                                                     ];
+                                          rdf:rest   ()
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_flow;
+                             swrl:argument2          alignment:var_factor;
+                             swrl:propertyPredicate  iso14040:usesCharacterizationFactor
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+<http://w3id.org/protys/ontology/paint-ext#Inspection>
+        rdf:type         owl:Class;
+        rdfs:comment     "Inspección de materiales/producto. Subclase de paint:QualityControl."@es;
+        rdfs:label       "Inspection"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/paint-ext#QualityControl> , iso15531:Quality_Control_Activity .
+
+iso15531:partOfProcess
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una operación es parte de un proceso de manufactura (regla R02, Anexo C)."@es;
+        rdfs:domain   iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "partOfProcess";
+        rdfs:range    iso15531:ManufacturingProcess , iso14040:UnitProcess .
+
+<http://w3id.org/protys/ontology/paint-ext#capacityTonsPerMonth>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "capacityTonsPerMonth";
+        rdfs:range  xsd:decimal .
+
+iso14040:emits  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Un proceso unitario emite flujos elementales (usada por la regla R03, Listado 3.4)."@es;
+        rdfs:domain   iso15531:ManufacturingProcess , iso14040:UnitProcess;
+        rdfs:label    "emits";
+        rdfs:range    iso15531:ManufacturingResource , iso14040:ElementaryFlow;
+        rdfs:range    [ rdf:type        owl:Restriction;
+                        owl:hasValue    alignment:Consumed;
+                        owl:onProperty  iso15531:resourceCurrentState
+                      ];
+        rdfs:range    [ rdf:type            owl:Class;
+                        owl:intersectionOf  ( iso15531:ManufacturingResource
+                                              [ rdf:type        owl:Restriction;
+                                                owl:hasValue    alignment:Consumed;
+                                                owl:onProperty  iso15531:resourceCurrentState
+                                              ]
+                                            )
+                      ] .
+
+alignment:var_lot  rdf:type  swrl:Variable .
+
+research:forLot  rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/core#Process>
+        rdf:type      owl:Class;
+        rdfs:comment  "Procedimiento particular para hacer algo que involucra uno o más pasos u operaciones, y que puede producir un producto, una propiedad de un producto o un aspecto de un producto (ISO 10303-49). Se refina en el Módulo de Proceso (ProcessMod)."@es;
+        rdfs:label    "Process"@en , "Proceso"@es .
+
+iso15531:duration  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Duración de una actividad (regla R11, Anexo C)."@es;
+        rdfs:label    "duration";
+        rdfs:range    xsd:decimal .
+
+alignment:var_t1  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/core#hasPriorVersion>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Versión anterior de un término o entidad (soporta la CQ P5 de versionado, Anexo B Q21)."@es;
+        rdfs:label    "hasPriorVersion";
+        rdfs:range    xsd:string .
+
+alignment:Consumed  rdf:type  iso15531:ResourceState , owl:NamedIndividual;
+        rdfs:comment  "Estado 'consumido' de un recurso (axioma A3 del Listado 3.3)."@es .
+
+iso15531:precedesEvent
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Secuencia temporal entre eventos MES (cabeza de la regla R13, Anexo C)."@es;
+        rdfs:domain   iso15531:ManufacturingData;
+        rdfs:label    "precedesEvent";
+        rdfs:range    iso15531:ManufacturingData .
+
+iso14040:ImpactCategory
+        rdf:type    owl:Class;
+        rdfs:label  "Categoría de impacto"@es .
+
+iso15531:resourceCurrentState
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Estado actual de un recurso (usada por el axioma A3 del Listado 3.3: ElementaryFlow equivale a ManufacturingResource en estado Consumed)."@es;
+        rdfs:domain   iso15531:ManufacturingResource;
+        rdfs:label    "resourceCurrentState";
+        rdfs:range    iso15531:ResourceState .
+
+<http://w3id.org/protys/ontology/product#Product>
+        rdf:type         owl:Class;
+        rdfs:comment     "Especialización de Production_Item (ISO 10303-214, ISO 10303-239). Equivalente al concepto Product del Nivel Principal, que este módulo refina (IRI usado por el axioma A1 del Listado 3.3)."@es;
+        rdfs:label       "Product"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Production_Item> .
+
+<http://w3id.org/protys/ontology/product#Substance>
+        rdf:type         owl:Class;
+        rdfs:comment     "Generalización de Production_Item: sustancia producida por procesos naturales o artificiales (Fig. 3.8)."@es;
+        rdfs:label       "Substance"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Thing> .
+
+iso14040:CharacterizationFactor
+        rdf:type    owl:Class;
+        rdfs:label  "Factor de caracterización"@es .
+
+<http://w3id.org/protys/ontology/core#CoverageGap>
+        rdf:type      owl:Class;
+        rdfs:comment  "Brecha de cobertura de mapeos puente (cabeza de R24)."@es;
+        rdfs:label    "CoverageGap" .
+
+research:availabilityPercent
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/process#Process_Plant>
+        rdf:type      owl:Class;
+        rdfs:comment  "Instalación física donde ocurre la transformación; en ella se ejecuta el Process_Plan."@es;
+        rdfs:label    "Process_Plant"@en .
+
+<http://w3id.org/protys/ontology/paint-ext#hasWaterFootprint>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Indicador de huella hídrica asociado a un producto."@es;
+        rdfs:label    "hasWaterFootprint";
+        rdfs:range    iso15531:QualityAttribute , iso14040:ImpactIndicator .
+
+iso15531:hasNonConformity
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un lote presenta una no conformidad de calidad (regla R18, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "hasNonConformity";
+        rdfs:range    iso15531:QualityAttribute , iso14040:ImpactIndicator .
+
+iso15531:usesResource
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una actividad usa un recurso (cabeza de la regla R09, Anexo C)."@es;
+        rdfs:domain   iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "usesResource";
+        rdfs:range    iso15531:ManufacturingResource .
+
+<http://w3id.org/protys/ontology/paint-ext#QualityParameter>
+        rdf:type         owl:Class;
+        rdfs:comment     "Característica medible de producto o proceso. Subclase de iso15531:QualityAttribute."@es;
+        rdfs:label       "QualityParameter"@en;
+        rdfs:subClassOf  iso15531:QualityAttribute , iso14040:ImpactIndicator .
+
+<http://w3id.org/protys/ontology/paint-ext#glassTransitionTemp>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "glassTransitionTemp";
+        rdfs:range  xsd:decimal .
+
+research:hasPlan  rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#yearOfExperience>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "yearOfExperience";
+        rdfs:range  xsd:integer .
+
+iso15531:assignsResource
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un plan de proceso asigna recursos (regla R09, Anexo C)."@es;
+        rdfs:domain   iso15531:ProcessPlan , iso14040:LifeCycleInventory;
+        rdfs:label    "assignsResource";
+        rdfs:range    iso15531:ManufacturingResource .
+
+<http://w3id.org/protys/ontology/paint-ext#location>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Ubicación textual; la versión conceptual es enterprise:locatedAt hacia enterprise:Location."@es;
+        rdfs:label    "location";
+        rdfs:range    xsd:string .
+
+<http://w3id.org/protys/ontology/core#HighImpactIndicator>
+        rdf:type      owl:Class;
+        rdfs:comment  "Indicador de alto impacto inferido por la regla R04."@es;
+        rdfs:label    "HighImpactIndicator" .
+
+<http://w3id.org/protys/ontology/enterprise#Cell>
+        rdf:type         owl:Class;
+        rdfs:comment     "Agrupación lógica de estaciones que realizan operaciones relacionadas dentro del flujo de producción."@es;
+        rdfs:label       "Cell"@en;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Shop>
+                         ] .
+
+<http://w3id.org/protys/fixture#lot>
+        rdf:type                     iso15531:Lot , owl:NamedIndividual;
+        alignment:hasEmittedFlow     <http://w3id.org/protys/fixture#flow>;
+        iso15531:hasActivity         <http://w3id.org/protys/fixture#op>;
+        iso15531:hasProcess          <http://w3id.org/protys/fixture#process>;
+        research:hasGHGContribution  <http://w3id.org/protys/fixture#op> .
+
+<http://w3id.org/protys/ontology/paint-ext#hasCarbonFootprint>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Indicador de huella de carbono asociado a un producto (individuo de iso14040:ImpactIndicator)."@es;
+        rdfs:label    "hasCarbonFootprint";
+        rdfs:range    iso15531:QualityAttribute , iso14040:ImpactIndicator .
+
+<http://w3id.org/protys/fixture#ratio>
+        rdf:type               research:RatioObservation , owl:NamedIndividual;
+        research:forIndicator  <http://w3id.org/protys/fixture#indicator>;
+        research:forOperation  <http://w3id.org/protys/fixture#op>;
+        research:operationIndicatorRatio
+                "2"^^xsd:decimal .
+
+iso14040:computedForProcess
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Indicador de impacto calculado para un proceso (patrón de validación R07, alignment-queries.sparql)."@es;
+        rdfs:domain   iso15531:QualityAttribute , iso14040:ImpactIndicator;
+        rdfs:label    "computedForProcess" .
+
+iso14040:UnitProcess  rdf:type  owl:Class;
+        rdfs:label           "Proceso unitario LCA"@es;
+        rdfs:subClassOf      iso15531:ManufacturingProcess;
+        owl:equivalentClass  iso15531:ManufacturingProcess .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R05: Vincular al lote los indicadores de sus procesos, sin sumar";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_lot;
+                                          swrl:argument2          alignment:var_process;
+                                          swrl:propertyPredicate  iso15531:hasProcess
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_process;
+                                                       swrl:argument2          alignment:var_indicator;
+                                                       swrl:propertyPredicate  iso14040:hasImpact
+                                                     ];
+                                          rdf:rest   ()
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_lot;
+                             swrl:argument2          alignment:var_indicator;
+                             swrl:propertyPredicate  iso14040:hasImpact
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso15531:ManufacturingCapability
+        rdf:type    owl:Class;
+        rdfs:label  "Capacidad de manufactura"@es .
+
+alignment:R19_ValidationPattern
+        rdf:type      alignment:SPARQLValidationPattern , owl:NamedIndividual;
+        rdfs:comment  "Detectar ausencia de medición crítica para QC en etapa de control. Reformulada como consulta SPARQL ASK con FILTER NOT EXISTS (el built-in swrlb:notBound no existe en SWRL); no es una regla de inferencia. Consulta completa en ontologies/alignment-queries.sparql (R19)."@es;
+        rdfs:label    "R19: patrón de validación SPARQL ASK" .
+
+alignment:var_e1  rdf:type  swrl:Variable .
+
+research:registeredLossKg
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+research:nextLot  rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#suppliesTo>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un proveedor suministra a una organización."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/paint-ext#Supplier> , <http://w3id.org/protys/ontology/core#Enterprise>;
+        rdfs:label    "suppliesTo" .
+
+<http://w3id.org/protys/ontology/paint-ext#capacityUnitsPerMinute>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "capacityUnitsPerMinute";
+        rdfs:range  xsd:decimal .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R09: Uso del recurso requerido y asignado en el mismo plan";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_plan;
+                             swrl:classPredicate  iso15531:ProcessPlan
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_plan;
+                                          swrl:argument2          alignment:var_resource;
+                                          swrl:propertyPredicate  iso15531:assignsResource
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_plan;
+                                                       swrl:argument2          alignment:var_op;
+                                                       swrl:propertyPredicate  iso15531:includesActivity
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_op;
+                                                                    swrl:argument2          alignment:var_resource;
+                                                                    swrl:propertyPredicate  iso15531:requiresResource
+                                                                  ];
+                                                       rdf:rest   ()
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_op;
+                             swrl:argument2          alignment:var_resource;
+                             swrl:propertyPredicate  iso15531:usesResource
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso14040:hasCharacterizationFactor
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Asocia un material con su factor de caracterización (regla R06, Anexo C)."@es;
+        rdfs:label    "hasCharacterizationFactor";
+        rdfs:range    iso14040:CharacterizationFactor .
+
+<http://w3id.org/protys/ontology/paint-ext#maintenanceFrequencyDays>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "maintenanceFrequencyDays";
+        rdfs:range  xsd:integer .
+
+alignment:hasEmittedFlow
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Flujo emitido asociado a un lote (cabeza de R03, Listado 3.4)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "hasEmittedFlow";
+        rdfs:range    iso15531:ManufacturingResource , iso14040:ElementaryFlow;
+        rdfs:range    [ rdf:type        owl:Restriction;
+                        owl:hasValue    alignment:Consumed;
+                        owl:onProperty  iso15531:resourceCurrentState
+                      ];
+        rdfs:range    [ rdf:type            owl:Class;
+                        owl:intersectionOf  ( iso15531:ManufacturingResource
+                                              [ rdf:type        owl:Restriction;
+                                                owl:hasValue    alignment:Consumed;
+                                                owl:onProperty  iso15531:resourceCurrentState
+                                              ]
+                                            )
+                      ] .
+
+iso15531:setupTimeMinutes
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Tiempo de preparación en minutos (instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "setupTimeMinutes";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/resource#hasBehaviour>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Resource se define por sus comportamientos (ISO 10303-49)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Resource>;
+        rdfs:label    "hasBehaviour";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Behaviour> .
+
+<http://w3id.org/protys/ontology/paint-ext#Packaging>
+        rdf:type         owl:Class;
+        rdfs:comment     "Actividad de envasado. Subclase de process:Process_Activity."@es;
+        rdfs:label       "Packaging"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+iso15531:ManufacturingData
+        rdf:type      owl:Class;
+        rdfs:comment  "Registro de datos de manufactura; los eventos MES (regla R13, Anexo C) se representan como individuos de esta clase."@es;
+        rdfs:label    "Dato de manufactura"@es .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R11: Razón rendimiento sobre duración positiva de operación";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_op;
+                             swrl:classPredicate  iso15531:ProcessOperation
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_op;
+                                          swrl:argument2          alignment:var_yield;
+                                          swrl:propertyPredicate  iso15531:yield
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_duration;
+                                                       swrl:propertyPredicate  iso15531:duration
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                    swrl:arguments  [ rdf:type   rdf:List;
+                                                                                      rdf:first  alignment:var_duration;
+                                                                                      rdf:rest   [ rdf:type   rdf:List;
+                                                                                                   rdf:first  "0"^^xsd:decimal;
+                                                                                                   rdf:rest   ()
+                                                                                                 ]
+                                                                                    ];
+                                                                    swrl:builtin    swrlb:greaterThan
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                 swrl:arguments  ( alignment:var_efficiency alignment:var_yield alignment:var_duration );
+                                                                                 swrl:builtin    swrlb:divide
+                                                                               ];
+                                                                    rdf:rest   ()
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                             swrl:argument1          alignment:var_op;
+                             swrl:argument2          alignment:var_efficiency;
+                             swrl:propertyPredicate  alignment:hasEfficiency
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+<http://w3id.org/protys/ontology/paint-ext#BatchProcess>
+        rdf:type         owl:Class;
+        rdfs:comment     "Proceso por lotes de la fabricación de pinturas. Subclase de process:Artificial_Process (transformación industrial planificada, §3.3.2)."@es;
+        rdfs:label       "BatchProcess"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Artificial_Process> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/paint-ext#ContinuousProcess>
+        rdf:type         owl:Class;
+        rdfs:comment     "Proceso continuo. Subclase de process:Artificial_Process."@es;
+        rdfs:label       "ContinuousProcess"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Artificial_Process> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/paint-ext#inputQuantity>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "inputQuantity";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/fixture#indicator>
+        rdf:type                     iso15531:QualityAttribute , iso14040:ImpactIndicator , <http://w3id.org/protys/ontology/core#HighImpactIndicator> , owl:NamedIndividual;
+        iso14040:computedForProcess  <http://w3id.org/protys/fixture#process>;
+        iso14040:hasIndicatorValue   "10"^^xsd:decimal;
+        iso14040:indicatorValue      "10"^^xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#shelfLifeMonths>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "shelfLifeMonths";
+        rdfs:range  xsd:integer .
+
+alignment:var_yield  rdf:type  swrl:Variable .
+
+iso14040:hasEnvironmentalImpact
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Impacto ambiental numérico agregado de un proceso (consulta Q01, Anexo B)."@es;
+        rdfs:label    "hasEnvironmentalImpact";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#energyConsumptionKW>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "energyConsumptionKW";
+        rdfs:range  xsd:decimal .
+
+iso14040:LifeCycleImpactAssessment
+        rdf:type    owl:Class;
+        rdfs:label  "Evaluación de impacto"@es .
+
+<http://w3id.org/protys/ontology/paint-ext#Final_Product>
+        rdf:type         owl:Class;
+        rdfs:comment     "Producto terminado listo para el cliente. Subclase de core:Product."@es;
+        rdfs:label       "Final_Product"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Product> .
+
+<http://w3id.org/protys/ontology/paint-ext#QualitySpec>
+        rdf:type         owl:Class;
+        rdfs:comment     "Especificación de calidad (viscosidad KU, finura Hegman). Subclase de product:Product_Information: describe el producto (datos verificables y requisitos)."@es;
+        rdfs:label       "QualitySpec"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Product_Information> .
+
+research:capacityLiters
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#Plant>
+        rdf:type         owl:Class;
+        rdfs:comment     "Planta de fabricación. Subclase de enterprise:Factory (jerarquía de Zhao et al. 1999, Fig. 3.13)."@es;
+        rdfs:label       "Plant"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Factory>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/core#Enterprise>
+                         ] .
+
+research:powerKW  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/resource#isInputToActivity>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un File es entrada de una Activity (Fig. 3.12; se adopta isInputToActivity según el texto del capítulo)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#File> , <http://w3id.org/protys/ontology/core#Resource>;
+        rdfs:label    "isInputToActivity";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Activity> .
+
+<http://w3id.org/protys/ontology/core#hasDescription>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Descripción textual de una entidad."@es;
+        rdfs:label    "hasDescription";
+        rdfs:range    xsd:string .
+
+alignment:var_l1  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/resource#Device>
+        rdf:type         owl:Class;
+        rdfs:comment     "Dispositivo de medición y control que supervisa variables del proceso (sensores, manómetros, válvulas inteligentes). Especialización directa de Resource (Fig. 3.9)."@es;
+        rdfs:label       "Device"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+iso15531:hasCapability
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un recurso posee una capacidad de manufactura (cabeza de la regla R12, Listado 3.4)."@es;
+        rdfs:domain   iso15531:ManufacturingResource;
+        rdfs:label    "hasCapability";
+        rdfs:range    iso15531:ManufacturingCapability .
+
+iso15531:functionalUnit
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Unidad funcional declarada de un lote (regla R08, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "functionalUnit";
+        rdfs:range    xsd:string .
+
+research:providedBy  rdf:type  owl:ObjectProperty .
+
+alignment:R26_ValidationPattern
+        rdf:type      alignment:SPARQLValidationPattern , owl:NamedIndividual;
+        rdfs:comment  "Detectar riesgo de contaminación cruzada / mapeos puente faltantes cuando no existe operación de limpieza entre campañas incompatibles. Nota: en el Anexo C este patrón aparece bajo el encabezado de R24; reconciliar la numeración R24/R26 en el Anexo C. Reformulada como consulta SPARQL ASK con FILTER NOT EXISTS (el built-in swrlb:notBound no existe en SWRL); no es una regla de inferencia. Consulta completa en ontologies/alignment-queries.sparql (R26)."@es;
+        rdfs:label    "R26: patrón de validación SPARQL ASK" .
+
+research:planProduces
+        rdf:type  owl:ObjectProperty .
+
+iso15531:ProcessState
+        rdf:type    owl:Class;
+        rdfs:label  "Estado de proceso"@es .
+
+<http://w3id.org/protys/ontology/resource#Capability>
+        rdf:type      owl:Class;
+        rdfs:comment  "Capacidad que define a un Resource (ISO 10303-49)."@es;
+        rdfs:label    "Capability"@en .
+
+iso15531:TimeAttribute
+        rdf:type    owl:Class;
+        rdfs:label  "Atributo temporal"@es .
+
+<http://w3id.org/protys/ontology/paint-ext#Consumable>
+        rdf:type         owl:Class;
+        rdfs:comment     "Material consumible auxiliar. Subclase de resource:Material."@es;
+        rdfs:label       "Consumable"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/core#Resource> .
+
+iso14040:hasGHGImpactKgCO2e
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Indicador GHG en kg CO2e derivado del consumo energético y el factor de emisión (cabeza de la regla R01, Anexo C)."@es;
+        rdfs:label    "hasGHGImpactKgCO2e";
+        rdfs:range    xsd:decimal .
+
+iso15531:includesActivity
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un plan de proceso incluye operaciones/actividades (regla R09, Anexo C)."@es;
+        rdfs:domain   iso15531:ProcessPlan , iso14040:LifeCycleInventory;
+        rdfs:label    "includesActivity";
+        rdfs:range    iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+alignment:var_value  rdf:type  swrl:Variable .
+
+research:materialFactorKgCO2ePerKg
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+alignment:var_resource
+        rdf:type  swrl:Variable .
+
+alignment:GlobalConfig
+        rdf:type                   owl:NamedIndividual;
+        rdfs:comment               "Individuo de configuración global; porta align:impactThreshold para la regla R04."@es;
+        alignment:impactThreshold  "5"^^xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#usedBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Resource es usado por un Process (Fig. 3.6)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Resource>;
+        rdfs:label    "usedBy";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Process> .
+
+research:inputMassKg  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/resource#consumesResource>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "La actividad consume el recurso durante su ejecución (Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Activity>;
+        rdfs:label    "consumesResource";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Resource> .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R10: Registrar estado propagable del mismo lote";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_lot;
+                                          swrl:argument2          alignment:var_status;
+                                          swrl:propertyPredicate  iso15531:hasQualityStatus
+                                        ];
+                             rdf:rest   ()
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                             swrl:argument1          alignment:var_lot;
+                             swrl:argument2          alignment:var_status;
+                             swrl:propertyPredicate  iso15531:propagatedQualityStatus
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+alignment:var_nonconformity
+        rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/resource#Role>
+        rdf:type      owl:Class;
+        rdfs:comment  "Rol que determina las capacidades específicas de una Person y sus permisos de acceso a las actividades del sistema (Fig. 3.11)."@es;
+        rdfs:label    "Role"@en .
+
+alignment:var_f2  rdf:type  swrl:Variable .
+
+research:hasFormulation
+        rdf:type  owl:ObjectProperty .
+
+alignment:var_threshold
+        rdf:type  swrl:Variable .
+
+alignment:var_op  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#Manufacturing_Stage>
+        rdf:type         owl:Class;
+        rdfs:comment     "Etapa de fabricación (dispersión, molienda, mezcla...). Subclase de process:Process_Activity: paso u operación dentro del proceso (§3.3.2)."@es;
+        rdfs:label       "Manufacturing_Stage"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+iso15531:hasActivity  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Trazabilidad lote a actividades/operaciones (regla R21, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "hasActivity";
+        rdfs:range    iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+<http://w3id.org/protys/ontology/resource#Raw_Material>
+        rdf:type         owl:Class;
+        rdfs:comment     "Materia prima de entrada a las actividades productivas (Fig. 3.10)."@es;
+        rdfs:label       "Raw_Material"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/product#Thing>
+        rdf:type      owl:Class;
+        rdfs:comment  "Generalización de Production_Item: distintos estándares (ISO 10303, ISO 15531, ISO 15926) describen Product como una cosa producida por procesos naturales o artificiales."@es;
+        rdfs:label    "Thing"@en .
+
+<http://w3id.org/protys/ontology/paint-ext#hasSkill>
+        rdf:type            owl:ObjectProperty;
+        rdfs:comment        "Habilidad de un recurso humano, modelada como capacidad de manufactura. Subpropiedad de iso15531:hasCapability."@es;
+        rdfs:domain         iso15531:ManufacturingResource;
+        rdfs:label          "hasSkill";
+        rdfs:range          iso15531:ManufacturingCapability;
+        rdfs:subPropertyOf  iso15531:hasCapability .
+
+<http://w3id.org/protys/ontology/core#involve>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una Enterprise involucra (planifica y ejecuta) procesos productivos (Fig. 3.6; ISO 15531, ISO 18629 vinculan Process con Enterprise)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Enterprise>;
+        rdfs:label    "involve";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Process> .
+
+alignment:var_time  rdf:type  swrl:Variable .
+
+alignment:var_process
+        rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#outputQuantity>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "outputQuantity";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#MaterialFlow>
+        rdf:type         owl:Class;
+        rdfs:comment     "Flujo de materiales a través de los procesos. Subclase de iso15531:ManufacturingFlow."@es;
+        rdfs:label       "MaterialFlow"@en;
+        rdfs:subClassOf  iso15531:ManufacturingFlow .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R25: Marcar factor modificado que requiere recálculo";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_factor;
+                             swrl:classPredicate  iso14040:CharacterizationFactor
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_factor;
+                                          swrl:argument2          alignment:var_version;
+                                          swrl:propertyPredicate  <http://w3id.org/protys/ontology/core#hasVersion>
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                       swrl:argument1          alignment:var_factor;
+                                                       swrl:argument2          alignment:var_version;
+                                                       swrl:propertyPredicate  <http://w3id.org/protys/ontology/core#modifiedInVersion>
+                                                     ];
+                                          rdf:rest   ()
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_factor;
+                             swrl:classPredicate  <http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators>
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso15531:hasInput  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Entrada material de una actividad (patrón de validación R16, alignment-queries.sparql)."@es;
+        rdfs:domain   iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "hasInput";
+        rdfs:range    iso15531:ManufacturingResource .
+
+alignment:var_order  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#Chemical_Compound>
+        rdf:type         owl:Class;
+        rdfs:comment     "Compuesto químico (resinas, aditivos, biocidas). Subclase de product:Substance: los estándares describen las sustancias como generalización de los ítems de producción (Fig. 3.8)."@es;
+        rdfs:label       "Chemical_Compound"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance> .
+
+<http://w3id.org/protys/ontology/enterprise#locatedAt>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Relaciona Enterprise (y sus instalaciones) con Location para especificar la ubicación geográfica."@es;
+        rdfs:label    "locatedAt";
+        rdfs:range    <http://w3id.org/protys/ontology/enterprise#Location> .
+
+<http://w3id.org/protys/ontology/enterprise#Factory>
+        rdf:type         owl:Class;
+        rdfs:comment     "Instalación completa que alberga múltiples áreas de producción (shops) y cuenta con la infraestructura necesaria para la manufactura integral de productos."@es;
+        rdfs:label       "Factory"@en;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/core#Enterprise>
+                         ] .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R03: Vincular flujo emitido al lote del mismo proceso LCA";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_order;
+                                          swrl:argument2          alignment:var_lot;
+                                          swrl:propertyPredicate  iso15531:producesLot
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_lot;
+                                                       swrl:argument2          alignment:var_process;
+                                                       swrl:propertyPredicate  iso15531:hasProcess
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type             swrl:ClassAtom;
+                                                                    swrl:argument1       alignment:var_process;
+                                                                    swrl:classPredicate  iso14040:UnitProcess
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                 swrl:argument1          alignment:var_process;
+                                                                                 swrl:argument2          alignment:var_flow;
+                                                                                 swrl:propertyPredicate  iso14040:emits
+                                                                               ];
+                                                                    rdf:rest   ()
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_lot;
+                             swrl:argument2          alignment:var_flow;
+                             swrl:propertyPredicate  alignment:hasEmittedFlow
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso15531:EquipmentResource
+        rdf:type          owl:Class;
+        rdfs:label        "Recurso de equipamiento"@es;
+        rdfs:subClassOf   iso15531:ManufacturingResource;
+        owl:disjointWith  iso15531:HumanResource .
+
+iso14040:VOCContentGperLiter
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Contenido de compuestos orgánicos volátiles en g/L (usada por las instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "VOCContentGperLiter";
+        rdfs:range    xsd:decimal .
+
+alignment:var_efficiency
+        rdf:type  swrl:Variable .
+
+iso15531:timestamp  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Marca temporal de un evento MES (regla R13, Anexo C)."@es;
+        rdfs:domain   iso15531:ManufacturingData;
+        rdfs:label    "timestamp";
+        rdfs:range    xsd:dateTime .
+
+iso15531:requiresResource
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una operación requiere un recurso de manufactura (regla R12, Listado 3.4)."@es;
+        rdfs:domain   iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "requiresResource";
+        rdfs:range    iso15531:ManufacturingResource .
+
+<http://w3id.org/protys/ontology/resource#hasCapability>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Resource se define por sus capacidades (ISO 10303-49)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Resource>;
+        rdfs:label    "hasCapability";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Capability> .
+
+<http://w3id.org/protys/ontology/enterprise#Shop>
+        rdf:type         owl:Class;
+        rdfs:comment     "Área o departamento de producción donde se coordinan múltiples células para completar una fase significativa del proceso manufacturero."@es;
+        rdfs:label       "Shop"@en;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Factory>
+                         ] .
+
+<http://w3id.org/protys/ontology/enterprise#Location>
+        rdf:type      owl:Class;
+        rdfs:comment  "Ubicación geográfica de las instalaciones empresariales; una misma localización puede albergar múltiples entidades organizacionales (parques industriales o complejos compartidos)."@es;
+        rdfs:label    "Location"@en .
+
+<http://w3id.org/protys/ontology/resource#Tool>
+        rdf:type         owl:Class;
+        rdfs:comment     "Herramienta manual o consumible empleada en operaciones puntuales (p. ej., cepillos o raspadores). Especialización directa de Resource (Fig. 3.9; ISO 15531, ISO 18629)."@es;
+        rdfs:label       "Tool"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/paint-ext#partOfOrganization>
+        rdf:type            owl:ObjectProperty;
+        rdfs:comment        "Una unidad organizacional es parte de otra. Subpropiedad de enterprise:isPartOf."@es;
+        rdfs:label          "partOfOrganization";
+        rdfs:subPropertyOf  <http://w3id.org/protys/ontology/enterprise#isPartOf> .
+
+<http://w3id.org/protys/ontology/core#Product>
+        rdf:type             owl:Class;
+        rdfs:comment         "Cosa o sustancia producida por procesos naturales o artificiales (ISO 10303, ISO 15531, ISO 15926). Se refina en el Módulo de Producto (ProductMod)."@es;
+        rdfs:label           "Producto"@es , "Product"@en;
+        owl:equivalentClass  <http://w3id.org/protys/ontology/product#Product> , iso14040:ProductFlow .
+
+[ rdf:type     owl:AllDisjointClasses;
+  owl:members  ( <http://w3id.org/protys/ontology/resource#Device> <http://w3id.org/protys/ontology/resource#Equip> <http://w3id.org/protys/ontology/resource#Tool> )
+] .
+
+iso14040:indicatorValue
+        rdf:type            owl:DatatypeProperty;
+        rdfs:comment        "Valor numérico de un indicador de impacto (variante léxica usada por la regla R23 del Listado 3.4; equivalente a hasIndicatorValue)."@es;
+        rdfs:domain         iso15531:QualityAttribute , iso14040:ImpactIndicator;
+        rdfs:label          "indicatorValue";
+        rdfs:range          xsd:decimal;
+        rdfs:subPropertyOf  iso14040:hasIndicatorValue .
+
+research:hasStageResource
+        rdf:type  owl:ObjectProperty .
+
+iso15531:hasMaintenance
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un recurso tiene mantenimiento programado (regla R15, Anexo C)."@es;
+        rdfs:domain   iso15531:ManufacturingResource;
+        rdfs:label    "hasMaintenance" .
+
+<http://w3id.org/protys/ontology/paint-ext#ProductionLine>
+        rdf:type         owl:Class;
+        rdfs:comment     "Línea de producción: agrupación de estaciones/equipos. Subclase de enterprise:Cell."@es;
+        rdfs:label       "ProductionLine"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Cell>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Shop>
+                         ] .
+
+iso15531:Lot  rdf:type  owl:Class;
+        rdfs:label  "Lote"@es .
+
+alignment:var_status  rdf:type  swrl:Variable .
+
+alignment:var_kwh  rdf:type  swrl:Variable .
+
+research:stageIndex  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:integer .
+
+<http://w3id.org/protys/ontology/product#Physical_Characteristics>
+        rdf:type         owl:Class;
+        rdfs:comment     "Características físicas del producto: propiedades tangibles como dimensiones, peso, forma, material o color."@es;
+        rdfs:label       "Physical_Characteristics"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Product_Information> .
+
+iso15531:cycleTimeMinutes
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Tiempo de ciclo en minutos (instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "cycleTimeMinutes";
+        rdfs:range    xsd:decimal .
+
+alignment:var_version
+        rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#yieldPercent>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "yieldPercent";
+        rdfs:range  xsd:decimal .
+
+alignment:var_water  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/resource#usesResource>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "La actividad utiliza el recurso sin consumirlo (Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Activity>;
+        rdfs:label    "usesResource";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Resource> .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R02: Presencia de inventario de agua del proceso";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_op;
+                             swrl:classPredicate  iso15531:ProcessOperation
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_op;
+                                          swrl:argument2          alignment:var_water;
+                                          swrl:propertyPredicate  iso15531:consumesWaterL
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_process;
+                                                       swrl:propertyPredicate  iso15531:partOfProcess
+                                                     ];
+                                          rdf:rest   ()
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_process;
+                             swrl:argument2          <http://w3id.org/protys/ontology/core#WaterFlow>;
+                             swrl:propertyPredicate  iso14040:hasInventoryFlow
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+<http://w3id.org/protys/ontology/alignment>
+        rdf:type         owl:Ontology;
+        rdfs:comment     "Módulo del Nivel de Refinamiento que profundiza el concepto Resource del Nivel Principal (Cap. 3, §3.3.2, Figs. 3.9 a 3.12). Según ISO 10303-49 un Resource se define por sus comportamientos (Behaviour) y capacidades (Capability); integra Tool, Equip y Device (ISO 15531, ISO 18629), la especialización de Material (ISO 10303-232, ISO 10303-227, ISO 10303-1082), los recursos humanos (Person, Role) y los recursos digitales (File)."@es , "Módulo del Nivel de Refinamiento que profundiza el concepto Product del Nivel Principal (Cap. 3, §3.3.2, Fig. 3.8). Basado en ISO 10303-1, ISO 10303-41, ISO 10303-214 e ISO 10303-239. Production_Item es la abstracción que encapsula las propiedades esenciales de Product (Bruno, 2015) y se especializa en Product y Production_Component."@es , "Módulo del Nivel de Refinamiento que profundiza el concepto Process del Nivel Principal (Cap. 3, §3.3.2, Fig. 3.7). Categorías derivadas de ISO 8000, ISO 10303, ISO 13584, ISO 15531, ISO 15926 e ISO 18629. Los recursos requeridos por una Process_Activity (Process_Material) se definen en el Módulo de Recursos (Fig. 3.10) y se referencian sin redefinirse."@es , "Capa de Alineamiento de PROTYS(KB) (Cap. 3, §3.3.3.5-3.3.3.6): los siete axiomas owl:equivalentClass del Listado 3.3 y las 26 reglas de alineamiento R01-R26 (Anexo C) en el fragmento DL-safe de SWRL. R03, R12 y R23 siguen la redacción canónica del Listado 3.4. R07, R16, R19 y R26 están reformuladas como patrones de validación SPARQL ASK (ver ontologies/alignment-queries.sparql) porque requieren negación (FILTER NOT EXISTS), no expresable en SWRL."@es , "Nivel Principal de la red de ontologías PROTYS(KB) (Cap. 3, §3.3.1, Fig. 3.6).\nPor decisión arquitectónica contiene únicamente los cuatro conceptos fundamentales de la industria\nmanufacturera según Zhao et al. (1999), Lin y Harding (2007), Chungoora et al. (2013) y Usman et al. (2013):\nProcess, Product, Resource y Enterprise, junto con las relaciones producedBy, usedBy, isHeldBy e involve."@es , "Módulo del Nivel de Refinamiento que profundiza el concepto Enterprise del Nivel Principal (Cap. 3, §3.3.2, Fig. 3.13), según el modelo de manufactura jerárquico de cuatro niveles de Zhao et al. (1999): Station - Cell - Shop - Factory - Enterprise, más el concepto Location."@es , "Ontología derivada que encapsula las especializaciones del caso de estudio de fabricación de pinturas (Cap. 4, §4.4.1: \"las extensiones quedan encapsuladas como ontología derivada\"). Cada clase del caso se declara como subclase de las clases conceptuales de PROTYS(KB) (Cap. 3, §3.3.1-3.3.2), sin modificar los módulos base. Incluye además las propiedades de datos operativas del caso."@es , "Formalización OWL 2 DL del estándar ISO 15531 MANDATE (Industrial Manufacturing Management Data), Nivel de Estándares de PROTYS(KB). Corresponde al Listado 3.2 del Capítulo 3 (18 clases); validado con HermiT 1.4.3 y Pellet 2.4.0 sin contradicciones. Namespace canónico http://w3id.org/protys/ontology/iso15531#."@es , "Formalización OWL 2 DL del estándar ISO 14040 (Análisis de Ciclo de Vida), Nivel de Estándares de PROTYS(KB). Corresponde al Listado 3.1 del Capítulo 3 (15 clases); validado con HermiT 1.4.3 y Pellet 2.4.0 sin contradicciones. Namespace canónico http://w3id.org/protys/ontology/iso14040#."@es;
+        rdfs:label       "PROTYS(KB) - Módulo ISO 14040 (Life Cycle Assessment)"@es , "PROTYS(KB) - Módulo de Proceso (ProcessMod)"@es , "PROTYS(KB) - Capa de Alineamiento"@es , "PROTYS(KB) - Módulo ISO 15531 (MANDATE)"@es , "PROTYS(KB) - Core Concepts Module"@en , "PROTYS(KB) - Extensión del caso de estudio (fabricación de pinturas)"@es , "PROTYS(KB) - Módulo de Recurso (ResourceMod)"@es , "PROTYS(KB) - Módulo de Producto (ProductMod)"@es , "PROTYS(KB) - Módulo Principal (CoreConcepts)"@es , "PROTYS(KB) - Módulo de Empresa (EnterpriseMod)"@es;
+        owl:versionInfo  "1.0" , "2.0.0" , "2.0" .
+
+<http://w3id.org/protys/ontology/resource#executedByResource>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "El recurso ejecuta directamente la actividad (Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Activity>;
+        rdfs:label    "executedByResource";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/fixture#order>
+        rdf:type              iso15531:WorkOrder , owl:NamedIndividual;
+        rdf:type              [ rdf:type            owl:Restriction;
+                                owl:minCardinality  "1"^^xsd:nonNegativeInteger;
+                                owl:onProperty      iso15531:executedBy
+                              ];
+        iso15531:producesLot  <http://w3id.org/protys/fixture#lot> .
+
+iso14040:ElementaryFlow
+        rdf:type             owl:Class;
+        rdfs:label           "Flujo elemental"@es;
+        rdfs:subClassOf      [ rdf:type            owl:Class;
+                               owl:intersectionOf  ( iso15531:ManufacturingResource
+                                                     [ rdf:type        owl:Restriction;
+                                                       owl:hasValue    alignment:Consumed;
+                                                       owl:onProperty  iso15531:resourceCurrentState
+                                                     ]
+                                                   )
+                             ];
+        owl:disjointWith     iso14040:ProductFlow;
+        owl:equivalentClass  [ rdf:type            owl:Class;
+                               owl:intersectionOf  ( iso15531:ManufacturingResource
+                                                     [ rdf:type        owl:Restriction;
+                                                       owl:hasValue    alignment:Consumed;
+                                                       owl:onProperty  iso15531:resourceCurrentState
+                                                     ]
+                                                   )
+                             ] .
+
+research:belongsToProcess
+        rdf:type  owl:ObjectProperty .
+
+research:forOperation
+        rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#durationMinutes>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "durationMinutes";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#employedBy>
+        rdf:type       owl:ObjectProperty;
+        rdfs:comment   "Inversa de employs."@es;
+        rdfs:label     "employedBy";
+        owl:inverseOf  <http://w3id.org/protys/ontology/paint-ext#employs> .
+
+iso15531:ManufacturingProcess
+        rdf:type         owl:Class;
+        rdfs:label       "Proceso de manufactura"@es;
+        rdfs:subClassOf  iso14040:UnitProcess .
+
+iso15531:CleaningOperation
+        rdf:type         owl:Class;
+        rdfs:comment     "Operación de limpieza entre campañas. Declarada en la capa de alineamiento para soportar el patrón de validación R26 sin alterar el conteo de 18 clases del módulo ISO 15531 (Listado 3.2)."@es;
+        rdfs:label       "CleaningOperation";
+        rdfs:subClassOf  iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+iso15531:consumesWaterL
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Consumo de agua de una actividad en litros (regla R02, Anexo C)."@es;
+        rdfs:label    "consumesWaterL";
+        rdfs:range    xsd:decimal .
+
+iso14040:SystemBoundary
+        rdf:type             owl:Class;
+        rdfs:label           "Frontera del sistema"@es;
+        rdfs:subClassOf      iso15531:ManufacturingFacility;
+        owl:equivalentClass  iso15531:ManufacturingFacility .
+
+alignment:var_operator
+        rdf:type  swrl:Variable .
+
+iso15531:processedOn  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Un lote se procesa sobre un equipo (regla R17, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "processedOn";
+        rdfs:range    iso15531:ManufacturingResource , iso15531:EquipmentResource .
+
+<http://w3id.org/protys/ontology/resource#Product_Material>
+        rdf:type         owl:Class;
+        rdfs:comment     "Material que forma parte del producto (Fig. 3.10)."@es;
+        rdfs:label       "Product_Material"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/core#Resource> .
+
+iso15531:responsibleOperator
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Operador responsable de una actividad, para trazabilidad (cabeza de la regla R14, Anexo C)."@es;
+        rdfs:domain   iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "responsibleOperator";
+        rdfs:range    iso15531:ManufacturingResource , iso15531:HumanResource .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R08: Cantidad de unidad funcional del lote";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                          swrl:argument1          alignment:var_lot;
+                                          swrl:argument2          alignment:var_unit;
+                                          swrl:propertyPredicate  iso15531:functionalUnit
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                       swrl:argument1          alignment:var_lot;
+                                                       swrl:argument2          alignment:var_qty;
+                                                       swrl:propertyPredicate  iso15531:producesQuantity
+                                                     ];
+                                          rdf:rest   ()
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                             swrl:argument1          alignment:var_lot;
+                             swrl:argument2          alignment:var_qty;
+                             swrl:propertyPredicate  iso14040:hasFunctionalUnitQuantity
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+alignment:var_duration
+        rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/resource#canBeConsultedBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una Activity puede ser consultada por un Role; establece los permisos de acceso a las actividades del sistema y a otras entidades relevantes (relación n:n, Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Activity>;
+        rdfs:label    "canBeConsultedBy";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Role> .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R21: Contribución eléctrica identificable por operación del lote";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_lot;
+                                          swrl:argument2          alignment:var_op;
+                                          swrl:propertyPredicate  iso15531:hasActivity
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_process;
+                                                       swrl:propertyPredicate  iso15531:partOfProcess
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_lot;
+                                                                    swrl:argument2          alignment:var_process;
+                                                                    swrl:propertyPredicate  iso15531:hasProcess
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                 swrl:argument1          alignment:var_op;
+                                                                                 swrl:argument2          alignment:var_ghg;
+                                                                                 swrl:propertyPredicate  iso14040:hasGHGImpactKgCO2e
+                                                                               ];
+                                                                    rdf:rest   ()
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_lot;
+                             swrl:argument2          alignment:var_op;
+                             swrl:propertyPredicate  research:hasGHGContribution
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso14040:hasInventoryFlow
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Asocia un proceso con un flujo de inventario (regla R02, Anexo C)."@es;
+        rdfs:label    "hasInventoryFlow";
+        rdfs:range    iso15531:ManufacturingResource , iso14040:ElementaryFlow;
+        rdfs:range    [ rdf:type        owl:Restriction;
+                        owl:hasValue    alignment:Consumed;
+                        owl:onProperty  iso15531:resourceCurrentState
+                      ];
+        rdfs:range    [ rdf:type            owl:Class;
+                        owl:intersectionOf  ( iso15531:ManufacturingResource
+                                              [ rdf:type        owl:Restriction;
+                                                owl:hasValue    alignment:Consumed;
+                                                owl:onProperty  iso15531:resourceCurrentState
+                                              ]
+                                            )
+                      ] .
+
+<http://w3id.org/protys/ontology/process#Process_Activity>
+        rdf:type      owl:Class;
+        rdfs:comment  "Paso u operación atómica dentro de un proceso."@es;
+        rdfs:label    "Process_Activity"@en .
+
+alignment:var_t2  rdf:type  swrl:Variable .
+
+iso14040:factorUnit  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Unidad de un factor de emisión/caracterización."@es;
+        rdfs:domain   iso14040:CharacterizationFactor;
+        rdfs:label    "factorUnit";
+        rdfs:range    xsd:string .
+
+<http://w3id.org/protys/fixture#flow>
+        rdf:type                       iso15531:ManufacturingResource , iso14040:ElementaryFlow , owl:NamedIndividual;
+        rdf:type                       [ rdf:type        owl:Restriction;
+                                         owl:hasValue    alignment:Consumed;
+                                         owl:onProperty  iso15531:resourceCurrentState
+                                       ];
+        rdf:type                       [ rdf:type            owl:Class;
+                                         owl:intersectionOf  ( iso15531:ManufacturingResource
+                                                               [ rdf:type        owl:Restriction;
+                                                                 owl:hasValue    alignment:Consumed;
+                                                                 owl:onProperty  iso15531:resourceCurrentState
+                                                               ]
+                                                             )
+                                       ];
+        iso15531:resourceCurrentState  alignment:Consumed .
+
+<http://w3id.org/protys/ontology/core#hasProcess>
+        rdf:type            owl:ObjectProperty;
+        rdfs:comment        "Propiedad de conveniencia: relaciona una entidad con un proceso que contiene o realiza. Subpropiedad de involve para el caso Enterprise-Process."@es;
+        rdfs:domain         <http://w3id.org/protys/ontology/core#Enterprise>;
+        rdfs:label          "hasProcess";
+        rdfs:range          <http://w3id.org/protys/ontology/core#Process>;
+        rdfs:subPropertyOf  <http://w3id.org/protys/ontology/core#involve> .
+
+<http://w3id.org/protys/ontology/paint-ext#hasCertification>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Certificación de un recurso humano."@es;
+        rdfs:label    "hasCertification" .
+
+research:unit  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:string .
+
+iso15531:ProcessOperation
+        rdf:type         owl:Class;
+        rdfs:comment     "Operación o actividad atómica de manufactura. En el Anexo C las reglas la referencian también como \"Activity\" (p. ej., R01, R02, R11); esta clase es su representación canónica."@es;
+        rdfs:label       "Operación de proceso"@es;
+        rdfs:subClassOf  iso14040:AllocationProcedure .
+
+<http://w3id.org/protys/ontology/core#BottleneckResource>
+        rdf:type      owl:Class;
+        rdfs:comment  "Recurso cuello de botella (referida por R22; la variante del Anexo C de R12 la poblaba — ver comentario de R22)."@es;
+        rdfs:label    "BottleneckResource" .
+
+iso14040:ImpactIndicator
+        rdf:type             owl:Class;
+        rdfs:label           "Indicador de impacto"@es;
+        rdfs:subClassOf      iso15531:QualityAttribute;
+        owl:equivalentClass  iso15531:QualityAttribute .
+
+iso15531:ManufacturingResource
+        rdf:type    owl:Class;
+        rdfs:label  "Recurso de manufactura"@es .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R12: Capacidad FineGrinding por operación de molienda explícita";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_resource;
+                             swrl:classPredicate  iso15531:EquipmentResource
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type             swrl:ClassAtom;
+                                          swrl:argument1       alignment:var_op;
+                                          swrl:classPredicate  research:FineGrindingOperation
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_resource;
+                                                       swrl:propertyPredicate  iso15531:requiresResource
+                                                     ];
+                                          rdf:rest   ()
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_resource;
+                             swrl:argument2          alignment:FineGrinding;
+                             swrl:propertyPredicate  iso15531:hasCapability
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+research:Supplier  rdf:type  owl:Class .
+
+research:forIndicator
+        rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#volatileOrganicCompounds>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "volatileOrganicCompounds";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/resource#Activity>
+        rdf:type      owl:Class;
+        rdfs:comment  "Concepto genérico de actividad usado para las relaciones Activity-Resource (Figs. 3.11 y 3.12). Process_Activity del Módulo de Proceso se corresponde con esta clase."@es;
+        rdfs:label    "Activity"@en .
+
+iso14040:ProductFlow  rdf:type  owl:Class;
+        rdfs:label           "Flujo de producto"@es;
+        owl:equivalentClass  <http://w3id.org/protys/ontology/product#Product> .
+
+<http://w3id.org/protys/ontology/product#Production_Component>
+        rdf:type         owl:Class;
+        rdfs:comment     "Especialización de Production_Item: componente que compone un Product y puede descomponerse en subcomponentes (ISO 10303-214, ISO 10303-239)."@es;
+        rdfs:label       "Production_Component"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/product#Production_Item> .
+
+alignment:hasEfficiency
+        rdf:type  owl:DatatypeProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#Workshop>
+        rdf:type         owl:Class;
+        rdfs:comment     "Taller/área de producción. Subclase de enterprise:Shop."@es;
+        rdfs:label       "Workshop"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Shop>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Factory>
+                         ] .
+
+<http://w3id.org/protys/ontology/paint-ext#QualityControl>
+        rdf:type         owl:Class;
+        rdfs:comment     "Actividad de control de calidad. Subclase de process:Process_Activity y de iso15531:Quality_Control_Activity (clase usada por el patrón de validación R19)."@es;
+        rdfs:label       "QualityControl"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity> , iso15531:Quality_Control_Activity .
+
+<http://w3id.org/protys/ontology/product#Concept>
+        rdf:type         owl:Class;
+        rdfs:comment     "Característica funcional: noción o idea asociada al producto, como su función prevista o su papel en un sistema mayor (p. ej., \"pieza de repuesto\")."@es;
+        rdfs:label       "Concept"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Product_Information> .
+
+<http://w3id.org/protys/ontology/core#produces>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Inversa de producedBy: un Process produce un Product."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Process>;
+        rdfs:label    "produces";
+        rdfs:range    <http://w3id.org/protys/ontology/product#Substance> , iso14040:ProductFlow , <http://w3id.org/protys/ontology/core#Product> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/product#Production_Item> .
+
+alignment:var_e2  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#impactUnit>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "impactUnit";
+        rdfs:range  xsd:string .
+
+iso15531:productFamily
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Familia o color del producto de un lote (regla R17, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "productFamily";
+        rdfs:range    xsd:string .
+
+<http://w3id.org/protys/ontology/core#hasVersion>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Versión vigente de un término o entidad (soporta la CQ P5 de versionado, Anexo B Q21 y regla R25)."@es;
+        rdfs:label    "hasVersion";
+        rdfs:range    xsd:string .
+
+alignment:var_qty  rdf:type  swrl:Variable .
+
+research:capacityUnitsPerMinute
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#hasLotGHGImpact>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Impacto GHG agregado por lote (cabeza de R21)."@es;
+        rdfs:label    "hasLotGHGImpact";
+        rdfs:range    xsd:decimal .
+
+research:hasMeasurement
+        rdf:type  owl:ObjectProperty .
+
+research:cleanedResource
+        rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#Supplier>
+        rdf:type         owl:Class;
+        rdfs:comment     "Proveedor externo de materias primas. Subclase de core:Enterprise (organización con metas de ofrecer productos/servicios, ISO 10303-239)."@es;
+        rdfs:label       "Supplier"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Enterprise> .
+
+research:RatioObservation
+        rdf:type  owl:Class .
+
+iso14040:EnvironmentalAspect
+        rdf:type    owl:Class;
+        rdfs:label  "Aspecto ambiental"@es .
+
+<http://w3id.org/protys/ontology/core#hasEfficiency>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Eficiencia de proceso (cabeza de R11; usada por R23 del Anexo C y Q01)."@es;
+        rdfs:label    "hasEfficiency";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#Resource>
+        rdf:type      owl:Class;
+        rdfs:comment  "Entidad definida por sus comportamientos y capacidades, utilizada por los procesos productivos (ISO 10303-49, ISO 15531). Se refina en el Módulo de Recurso (ResourceMod)."@es;
+        rdfs:label    "Resource"@en , "Recurso"@es .
+
+<http://w3id.org/protys/ontology/paint-ext#organizationCode>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "organizationCode";
+        rdfs:range  xsd:string .
+
+iso15531:ProcessPlan  rdf:type  owl:Class;
+        rdfs:label       "Plan de proceso"@es;
+        rdfs:subClassOf  iso14040:LifeCycleInventory .
+
+<http://w3id.org/protys/ontology/paint-ext#manages>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una unidad organizacional o persona gestiona otra entidad."@es;
+        rdfs:label    "manages" .
+
+<http://w3id.org/protys/ontology/paint-ext#speedRPM>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "speedRPM";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#Sensor>
+        rdf:type         owl:Class;
+        rdfs:comment     "Sensor de proceso. Subclase de resource:Device (dispositivo de medición y control, §3.3.2)."@es;
+        rdfs:label       "Sensor"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#Device> , <http://w3id.org/protys/ontology/core#Resource> .
+
+research:hasGHGContribution
+        rdf:type  owl:ObjectProperty .
+
+iso14040:energyConsumptionMJ
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Consumo energético en MJ (usada por las instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "energyConsumptionMJ";
+        rdfs:range    xsd:decimal .
+
+alignment:var_material
+        rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/core#bridgesFlowToActivity>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Puente entre un flujo de inventario ISO 14040 y una actividad ISO 15531 (cabeza de R20)."@es;
+        rdfs:domain   iso15531:ManufacturingResource , iso14040:ElementaryFlow;
+        rdfs:domain   [ rdf:type        owl:Restriction;
+                        owl:hasValue    alignment:Consumed;
+                        owl:onProperty  iso15531:resourceCurrentState
+                      ];
+        rdfs:domain   [ rdf:type            owl:Class;
+                        owl:intersectionOf  ( iso15531:ManufacturingResource
+                                              [ rdf:type        owl:Restriction;
+                                                owl:hasValue    alignment:Consumed;
+                                                owl:onProperty  iso15531:resourceCurrentState
+                                              ]
+                                            )
+                      ];
+        rdfs:label    "bridgesFlowToActivity";
+        rdfs:range    iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+iso14040:hasSystemBoundary
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Frontera del sistema de un estudio de ACV."@es;
+        rdfs:domain   iso14040:LCAStudy;
+        rdfs:domain   [ rdf:type         owl:Restriction;
+                        owl:cardinality  "1"^^xsd:nonNegativeInteger;
+                        owl:onProperty   iso14040:hasFunctionalUnit
+                      ];
+        rdfs:label    "hasSystemBoundary";
+        rdfs:range    iso15531:ManufacturingFacility , iso14040:SystemBoundary .
+
+<http://w3id.org/protys/ontology/enterprise#Station>
+        rdf:type         owl:Class;
+        rdfs:comment     "Estación de trabajo individual donde se ejecuta una operación o tarea específica del proceso productivo (nivel más básico de la jerarquía)."@es;
+        rdfs:label       "Station"@en;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Cell>
+                         ] .
+
+research:outputMassKg
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#hasResource>
+        rdf:type       owl:ObjectProperty;
+        rdfs:comment   "Propiedad de conveniencia: un Process dispone de un Resource. Inversa de usedBy."@es;
+        rdfs:label     "hasResource";
+        rdfs:range     <http://w3id.org/protys/ontology/core#Resource>;
+        owl:inverseOf  <http://w3id.org/protys/ontology/core#usedBy> .
+
+<http://w3id.org/protys/ontology/resource#hasRole>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una Person se relaciona con Role para determinar sus capacidades específicas (agregación 1..n, Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Person> , <http://w3id.org/protys/ontology/core#Resource>;
+        rdfs:label    "hasRole";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Role> .
+
+alignment:var_ratio  rdf:type  swrl:Variable .
+
+iso15531:consumesMaterial
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una actividad consume un material (regla R20, Anexo C)."@es;
+        rdfs:domain   iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "consumesMaterial";
+        rdfs:range    iso15531:ManufacturingResource .
+
+<http://w3id.org/protys/ontology/resource#Material>
+        rdf:type         owl:Class;
+        rdfs:comment     "Recurso material gestionado según las necesidades de cada fase del ciclo de producción (Fig. 3.10; ISO 10303-232, ISO 10303-227, ISO 10303-1082)."@es;
+        rdfs:label       "Material"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/product#Fact>
+        rdf:type         owl:Class;
+        rdfs:comment     "Característica funcional: dato objetivo y verificable sobre el producto (p. ej., \"peso: 2,5 kg\" o \"resistencia térmica: hasta 120 °C\")."@es;
+        rdfs:label       "Fact"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Product_Information> .
+
+<http://w3id.org/protys/ontology/resource#producesResource>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "La actividad genera o modifica el recurso como resultado (Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Activity>;
+        rdfs:label    "producesResource";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/fixture#op>
+        rdf:type                     research:FineGrindingOperation , iso15531:ProcessOperation , iso14040:AllocationProcedure , owl:NamedIndividual;
+        alignment:hasEfficiency      "5"^^xsd:decimal;
+        iso14040:hasEmissionFactor   <http://w3id.org/protys/fixture#factor>;
+        iso14040:hasGHGImpactKgCO2e  5.0;
+        iso15531:consumesEnergyKWh   "10"^^xsd:decimal;
+        iso15531:cycleTime           "20"^^xsd:decimal;
+        iso15531:duration            "20"^^xsd:decimal;
+        iso15531:partOfProcess       <http://w3id.org/protys/fixture#process>;
+        iso15531:requiresResource    <http://w3id.org/protys/fixture#mill>;
+        iso15531:yield               "98"^^xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#producedBy>
+        rdf:type       owl:ObjectProperty;
+        rdfs:comment   "Un Product es producido por un Process (Fig. 3.6)."@es;
+        rdfs:domain    <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/core#Product> , <http://w3id.org/protys/ontology/product#Product> , iso14040:ProductFlow , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance>;
+        rdfs:label     "producedBy";
+        rdfs:range     <http://w3id.org/protys/ontology/core#Process>;
+        owl:inverseOf  <http://w3id.org/protys/ontology/core#produces> .
+
+iso14040:LifeCycleInventory
+        rdf:type             owl:Class;
+        rdfs:label           "Inventario de ciclo de vida"@es;
+        rdfs:subClassOf      iso15531:ProcessPlan;
+        owl:equivalentClass  iso15531:ProcessPlan .
+
+iso15531:requiresCleaningBetween
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Se requiere limpieza entre dos lotes de familias incompatibles procesados en el mismo equipo (cabeza de la regla R17, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "requiresCleaningBetween";
+        rdfs:range    iso15531:Lot .
+
+<http://w3id.org/protys/ontology/paint-ext#Standard>
+        rdf:type         owl:Class;
+        rdfs:comment     "Documento normativo utilizado en manufactura. Subclase de resource:File: se gestiona como recurso documental/digital (Fig. 3.12)."@es;
+        rdfs:label       "Standard"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#File> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/fixture#mill>
+        rdf:type                iso15531:ManufacturingResource , iso15531:EquipmentResource , owl:NamedIndividual;
+        iso15531:hasCapability  alignment:FineGrinding .
+
+<http://w3id.org/protys/ontology/process#Natural_Process>
+        rdf:type         owl:Class;
+        rdfs:comment     "Proceso natural, derivado de la definición de Process en ISO 8000, ISO 10303, ISO 13584, ISO 15531, ISO 15926 e ISO 18629."@es;
+        rdfs:label       "Natural_Process"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/paint-ext#hasVOCContent>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Indicador de contenido de VOC asociado a un producto."@es;
+        rdfs:label    "hasVOCContent";
+        rdfs:range    iso15531:QualityAttribute , iso14040:ImpactIndicator .
+
+alignment:var_l2  rdf:type  swrl:Variable .
+
+research:Measurement  rdf:type  owl:Class .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R20: Puente flujo y operación de consumo del mismo proceso";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_op;
+                             swrl:classPredicate  iso15531:ProcessOperation
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_op;
+                                          swrl:argument2          alignment:var_material;
+                                          swrl:propertyPredicate  iso15531:consumesMaterial
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_process;
+                                                       swrl:propertyPredicate  iso15531:partOfProcess
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type             swrl:ClassAtom;
+                                                                    swrl:argument1       alignment:var_flow;
+                                                                    swrl:classPredicate  iso14040:ElementaryFlow
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                 swrl:argument1          alignment:var_flow;
+                                                                                 swrl:argument2          alignment:var_material;
+                                                                                 swrl:propertyPredicate  iso14040:refersToMaterial
+                                                                               ];
+                                                                    rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                 rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                              swrl:argument1          alignment:var_flow;
+                                                                                              swrl:argument2          alignment:var_process;
+                                                                                              swrl:propertyPredicate  research:belongsToProcess
+                                                                                            ];
+                                                                                 rdf:rest   ()
+                                                                               ]
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_flow;
+                             swrl:argument2          alignment:var_op;
+                             swrl:propertyPredicate  <http://w3id.org/protys/ontology/core#bridgesFlowToActivity>
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+alignment:var_indicator
+        rdf:type  swrl:Variable .
+
+alignment:SPARQLValidationPattern
+        rdf:type      owl:Class;
+        rdfs:comment  "Clase de anotación para los patrones de validación SPARQL ASK (R07, R16, R19, R26) documentados en ontologies/alignment-queries.sparql."@es;
+        rdfs:label    "SPARQLValidationPattern" .
+
+iso15531:ResourceState
+        rdf:type    owl:Class;
+        rdfs:label  "Estado de recurso"@es .
+
+<http://w3id.org/protys/ontology/process#Procedure>
+        rdf:type         owl:Class;
+        rdfs:comment     "Método o protocolo específico para ejecutar un proceso; se asocia con Process según ISO 10303."@es;
+        rdfs:label       "Procedure"@en;
+        rdfs:subClassOf  [ rdf:type     owl:Class;
+                           owl:unionOf  ( <http://w3id.org/protys/ontology/process#Procedure> <http://w3id.org/protys/ontology/process#Procedure_Activity> )
+                         ] .
+
+alignment:var_f  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/product#Product_Information>
+        rdf:type      owl:Class;
+        rdfs:comment  "Información del producto (ISO 10303-1): captura la dimensión física (Physical_Characteristics) y funcional (Instruction, Fact, Concept) de los productos."@es;
+        rdfs:label    "Product_Information"@en .
+
+<http://w3id.org/protys/ontology/core#Enterprise>
+        rdf:type      owl:Class;
+        rdfs:comment  "Una o más organizaciones con un conjunto de metas y objetivos para ofrecer productos y/o servicios (ISO 10303-239). Se refina en el Módulo de Empresa (EnterpriseMod)."@es;
+        rdfs:label    "Enterprise"@en , "Empresa"@es .
+
+<http://w3id.org/protys/ontology/paint-ext#hasProcessPlan>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Vincula un producto con el proceso/plan que lo fabrica."@es;
+        rdfs:label    "hasProcessPlan" .
+
+research:yieldPercent
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R22: Hotspot vinculado al mismo proceso y recurso cuello de botella";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_indicator;
+                             swrl:classPredicate  <http://w3id.org/protys/ontology/core#HighImpactIndicator>
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_indicator;
+                                          swrl:argument2          alignment:var_process;
+                                          swrl:propertyPredicate  iso14040:computedForProcess
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_op;
+                                                       swrl:argument2          alignment:var_process;
+                                                       swrl:propertyPredicate  iso15531:partOfProcess
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_op;
+                                                                    swrl:argument2          alignment:var_resource;
+                                                                    swrl:propertyPredicate  iso15531:requiresResource
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type             swrl:ClassAtom;
+                                                                                 swrl:argument1       alignment:var_resource;
+                                                                                 swrl:classPredicate  <http://w3id.org/protys/ontology/core#BottleneckResource>
+                                                                               ];
+                                                                    rdf:rest   ()
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_resource;
+                             swrl:classPredicate  <http://w3id.org/protys/ontology/core#Hotspot>
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+research:eventTimeSeconds
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#hasName>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Nombre o identificador textual de una entidad."@es;
+        rdfs:label    "hasName";
+        rdfs:range    xsd:string .
+
+iso15531:Quality_Control_Activity
+        rdf:type         owl:Class;
+        rdfs:comment     "Actividad de control de calidad. Declarada en la capa de alineamiento para soportar el patrón de validación R19 sin alterar el conteo de 18 clases del módulo ISO 15531 (Listado 3.2)."@es;
+        rdfs:label       "Quality_Control_Activity";
+        rdfs:subClassOf  iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+<http://w3id.org/protys/ontology/core#Hotspot>
+        rdf:type      owl:Class;
+        rdfs:comment  "Hotspot: combinación de alto impacto ambiental y baja eficiencia (cabeza de R22)."@es;
+        rdfs:label    "Hotspot" .
+
+<http://w3id.org/protys/ontology/paint-ext#capacityLitersPerHour>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "capacityLitersPerHour";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/process#Artificial_Process>
+        rdf:type          owl:Class;
+        rdfs:comment      "Proceso artificial (industrial), derivado de la definición de Process en los estándares ISO TC184/SC4."@es;
+        rdfs:label        "Artificial_Process"@en;
+        rdfs:subClassOf   <http://w3id.org/protys/ontology/core#Process>;
+        owl:disjointWith  <http://w3id.org/protys/ontology/process#Natural_Process> .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R18: Marcar lote candidato a reproceso por no conformidad";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_lot;
+                                          swrl:argument2          alignment:var_nonconformity;
+                                          swrl:propertyPredicate  iso15531:hasNonConformity
+                                        ];
+                             rdf:rest   ()
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:requiresReprocess
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+<http://w3id.org/protys/ontology/process#composedBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Process está compuesto por sus Process_Activities (agregación 1..n, Fig. 3.7)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Process>;
+        rdfs:label    "composedBy";
+        rdfs:range    <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+iso14040:hasImpact  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Asocia un proceso o lote con un impacto/indicador de impacto (regla R05, Anexo C: agregación de impactos por etapa hacia el lote)."@es;
+        rdfs:label    "hasImpact" .
+
+alignment:var_flow  rdf:type  swrl:Variable .
+
+iso15531:operationSequence
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Secuencia de una operación dentro del plan (instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "operationSequence";
+        rdfs:range    xsd:integer .
+
+iso15531:hasProcess  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Un lote se asocia a los procesos por los que transita (regla R05, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "hasProcess";
+        rdfs:range    iso15531:ManufacturingProcess , iso14040:UnitProcess .
+
+<http://w3id.org/protys/ontology/process#Parameters>
+        rdf:type      owl:Class;
+        rdfs:comment  "Valores concretos de configuración (temperatura, presión, tiempo) necesarios para la correcta ejecución de actividades y procedimientos."@es;
+        rdfs:label    "Parameters"@en .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R14: Operador responsable de la operación de su orden";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_order;
+                             swrl:classPredicate  iso15531:WorkOrder
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_order;
+                                          swrl:argument2          alignment:var_operator;
+                                          swrl:propertyPredicate  iso15531:executedBy
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type             swrl:ClassAtom;
+                                                       swrl:argument1       alignment:var_operator;
+                                                       swrl:classPredicate  iso15531:HumanResource
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_order;
+                                                                    swrl:argument2          alignment:var_op;
+                                                                    swrl:propertyPredicate  iso15531:executesActivity
+                                                                  ];
+                                                       rdf:rest   ()
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_op;
+                             swrl:argument2          alignment:var_operator;
+                             swrl:propertyPredicate  iso15531:responsibleOperator
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso14040:usesCharacterizationFactor
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un flujo de inventario usa un factor de caracterización (cabeza de la regla R06, Anexo C)."@es;
+        rdfs:domain   iso15531:ManufacturingResource , iso14040:ElementaryFlow;
+        rdfs:domain   [ rdf:type        owl:Restriction;
+                        owl:hasValue    alignment:Consumed;
+                        owl:onProperty  iso15531:resourceCurrentState
+                      ];
+        rdfs:domain   [ rdf:type            owl:Class;
+                        owl:intersectionOf  ( iso15531:ManufacturingResource
+                                              [ rdf:type        owl:Restriction;
+                                                owl:hasValue    alignment:Consumed;
+                                                owl:onProperty  iso15531:resourceCurrentState
+                                              ]
+                                            )
+                      ];
+        rdfs:label    "usesCharacterizationFactor";
+        rdfs:range    iso14040:CharacterizationFactor .
+
+<http://w3id.org/protys/ontology/paint-ext#certificationLevel>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "certificationLevel";
+        rdfs:range  xsd:string .
+
+<http://w3id.org/protys/ontology/product#Instruction>
+        rdf:type         owl:Class;
+        rdfs:comment     "Característica funcional: información sobre cómo fabricar, ensamblar o utilizar el producto (p. ej., un manual de montaje o una guía de usuario)."@es;
+        rdfs:label       "Instruction"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Product_Information> .
+
+<http://w3id.org/protys/ontology/paint-ext#EnvironmentalIndicator>
+        rdf:type         owl:Class;
+        rdfs:comment     "Aspecto medible de desempeño ambiental. Subclase de iso14040:ImpactIndicator."@es;
+        rdfs:label       "EnvironmentalIndicator"@en;
+        rdfs:subClassOf  iso15531:QualityAttribute , iso14040:ImpactIndicator .
+
+<http://w3id.org/protys/ontology/paint-ext#Setup_Activity>
+        rdf:type         owl:Class;
+        rdfs:comment     "Actividad de preparación/cambio de formato. Subclase de process:Process_Activity."@es;
+        rdfs:label       "Setup_Activity"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/ontology/core#MissingEnvironmentalData>
+        rdf:type      owl:Class;
+        rdfs:comment  "Proceso con datos ambientales faltantes; se asserta a partir del resultado del patrón de validación R07 (alignment-queries.sparql)."@es;
+        rdfs:label    "MissingEnvironmentalData" .
+
+iso15531:producesQuantity
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Cantidad producida por un lote (regla R08, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "producesQuantity";
+        rdfs:range    xsd:decimal .
+
+research:materialQuantityKg
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+research:waterFootprintLPerKg
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#purityPercent>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "purityPercent";
+        rdfs:range  xsd:decimal .
+
+iso15531:hasMeasurement
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Medición asociada a una actividad de control de calidad (patrón de validación R19). Declarada en la capa de alineamiento para no alterar el módulo ISO 15531."@es;
+        rdfs:domain   iso15531:Quality_Control_Activity , iso15531:ProcessOperation , iso14040:AllocationProcedure;
+        rdfs:label    "hasMeasurement" .
+
+<http://w3id.org/protys/ontology/paint-ext#hasFunction>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "hasFunction";
+        rdfs:range  xsd:string .
+
+<http://w3id.org/protys/fixture#factor>
+        rdf:type              iso14040:CharacterizationFactor , owl:NamedIndividual;
+        iso14040:factorUnit   "kg CO2e/kWh";
+        iso14040:factorValue  0.5 .
+
+<http://w3id.org/protys/ontology/paint-ext#OEEPercent>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "OEEPercent";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/fixture#process>
+        rdf:type        iso15531:ManufacturingProcess , iso14040:UnitProcess , owl:NamedIndividual;
+        iso14040:emits  <http://w3id.org/protys/fixture#flow> .
+
+<http://w3id.org/protys/ontology/process#Procedure_Activity>
+        rdf:type         owl:Class;
+        rdfs:comment     "Instanciación o ejecución concreta de una Process_Activity; permite diferenciar entre la definición abstracta de una actividad y su realización específica."@es;
+        rdfs:label       "Procedure_Activity"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity>;
+        rdfs:subClassOf  [ rdf:type     owl:Class;
+                           owl:unionOf  ( <http://w3id.org/protys/ontology/process#Procedure> <http://w3id.org/protys/ontology/process#Procedure_Activity> )
+                         ] .
+
+<http://w3id.org/protys/ontology/enterprise#isPartOf>
+        rdf:type      owl:TransitiveProperty , owl:ObjectProperty;
+        rdfs:comment  "Agregación jerárquica entre niveles organizacionales (Station en Cell, Cell en Shop, Shop en Factory, Factory en Enterprise)."@es;
+        rdfs:label    "isPartOf" .
+
+<http://w3id.org/protys/ontology/resource#Resource_Related_File>
+        rdf:type         owl:Class;
+        rdfs:comment     "Archivo asociado a recursos específicos (Fig. 3.12)."@es;
+        rdfs:label       "Resource_Related_File"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#File> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/resource#Process_Material>
+        rdf:type         owl:Class;
+        rdfs:comment     "Material requerido para llevar a cabo una Process_Activity; vincula el Módulo de Proceso con el Módulo de Recursos (definición canónica en ResourceMod, Fig. 3.10)."@es;
+        rdfs:label       "Process_Material"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/product#Production_Item>
+        rdf:type         owl:Class;
+        rdfs:comment     "Abstracción que representa la forma general del producto (ISO 10303-1, ISO 10303-41); se especializa en Product y Production_Component."@es;
+        rdfs:label       "Production_Item"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance> .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R17: Requerir limpieza entre lotes consecutivos de familia distinta";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_l1;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type             swrl:ClassAtom;
+                                          swrl:argument1       alignment:var_l2;
+                                          swrl:classPredicate  iso15531:Lot
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_l1;
+                                                       swrl:argument2          alignment:var_equipment;
+                                                       swrl:propertyPredicate  iso15531:processedOn
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_l2;
+                                                                    swrl:argument2          alignment:var_equipment;
+                                                                    swrl:propertyPredicate  iso15531:processedOn
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                 swrl:argument1          alignment:var_l1;
+                                                                                 swrl:argument2          alignment:var_l2;
+                                                                                 swrl:propertyPredicate  research:nextLot
+                                                                               ];
+                                                                    rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                 rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                              swrl:argument1          alignment:var_l1;
+                                                                                              swrl:argument2          alignment:var_f1;
+                                                                                              swrl:propertyPredicate  iso15531:productFamily
+                                                                                            ];
+                                                                                 rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                              rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                                           swrl:argument1          alignment:var_l2;
+                                                                                                           swrl:argument2          alignment:var_f2;
+                                                                                                           swrl:propertyPredicate  iso15531:productFamily
+                                                                                                         ];
+                                                                                              rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                           rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                                                        swrl:arguments  ( alignment:var_f1 alignment:var_f2 );
+                                                                                                                        swrl:builtin    swrlb:notEqual
+                                                                                                                      ];
+                                                                                                           rdf:rest   ()
+                                                                                                         ]
+                                                                                            ]
+                                                                               ]
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_l1;
+                             swrl:argument2          alignment:var_l2;
+                             swrl:propertyPredicate  iso15531:requiresCleaningBetween
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+research:lifecycleStage
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:string .
+
+<http://w3id.org/protys/ontology/product#isComposedOF>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Product puede estar compuesto por múltiples Production_Components (ISO 10303-214, ISO 10303-239). Inversa de composes."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Product> , <http://w3id.org/protys/ontology/product#Thing> , iso14040:ProductFlow , <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/product#Substance>;
+        rdfs:label    "isComposedOF";
+        rdfs:range    <http://w3id.org/protys/ontology/product#Production_Component> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/product#Substance> .
+
+iso14040:hasEmissionFactor
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Vincula una actividad/proceso con su factor de emisión, modelado como CharacterizationFactor (reglas R01 y R21, Anexo C)."@es;
+        rdfs:label    "hasEmissionFactor";
+        rdfs:range    iso14040:CharacterizationFactor .
+
+<http://w3id.org/protys/ontology/resource#Person>
+        rdf:type         owl:Class;
+        rdfs:comment     "Recurso humano dentro de la industria; especialización de Resource. Los individuos de Person se relacionan con Role para determinar sus capacidades específicas (Fig. 3.11)."@es;
+        rdfs:label       "Person"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+iso14040:appliesTo  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Un impacto o aspecto ambiental aplica a un componente o proceso (ejemplo ilustrativo §3.3.3.4)."@es;
+        rdfs:label    "appliesTo" .
+
+iso14040:hasFunctionalUnitQuantity
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Cantidad expresada en la unidad funcional, para comparación entre lotes (cabeza de la regla R08, Anexo C)."@es;
+        rdfs:label    "hasFunctionalUnitQuantity";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#hasURI>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "hasURI";
+        rdfs:range  xsd:anyURI .
+
+iso15531:cycleTime  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Tiempo de ciclo de una operación (reglas R12 y R23, Listado 3.4)."@es;
+        rdfs:label    "cycleTime";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#hasValue>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Valor numérico de un indicador o especificación del caso."@es;
+        rdfs:label    "hasValue";
+        rdfs:range    xsd:decimal .
+
+research:oeePercent  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+alignment:R07_ValidationPattern
+        rdf:type      alignment:SPARQLValidationPattern , owl:NamedIndividual;
+        rdfs:comment  "Detectar faltantes de datos ambientales requeridos (completitud). Reformulada como consulta SPARQL ASK con FILTER NOT EXISTS (el built-in swrlb:notBound no existe en SWRL); no es una regla de inferencia. Consulta completa en ontologies/alignment-queries.sparql (R07)."@es;
+        rdfs:label    "R07: patrón de validación SPARQL ASK" .
+
+<http://w3id.org/protys/ontology/resource#File>
+        rdf:type         owl:Class;
+        rdfs:comment     "Archivo digital general, gestionado como un tipo particular de recurso (Fig. 3.12)."@es;
+        rdfs:label       "File"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+alignment:var_ghg  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/resource#isOutputOfActivity>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un File es salida de una Activity (Fig. 3.12)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#File> , <http://w3id.org/protys/ontology/core#Resource>;
+        rdfs:label    "isOutputOfActivity";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Activity> .
+
+<http://w3id.org/protys/ontology/paint-ext#CleaningOperation>
+        rdf:type         owl:Class;
+        rdfs:comment     "Operación de limpieza entre campañas de color/familia. Subclase de process:Process_Activity y de iso15531:CleaningOperation (patrón de validación R26)."@es;
+        rdfs:label       "CleaningOperation"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/process#Process_Activity> , iso15531:CleaningOperation .
+
+<http://w3id.org/protys/ontology/product#Customer>
+        rdf:type      owl:Class;
+        rdfs:comment  "Cliente que adquiere productos. La asociación Product-Customer se modela como relación binaria muchos-a-muchos (simplificación de ISO 10303-41; no se importan Product_relationship ni Person_organization)."@es;
+        rdfs:label    "Customer"@en .
+
+iso15531:precedes  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Precedencia entre lotes u operaciones en la campaña de producción (reglas R17 y patrón R26)."@es;
+        rdfs:label    "precedes" .
+
+iso15531:ManufacturingFlow
+        rdf:type    owl:Class;
+        rdfs:label  "Flujo de manufactura"@es .
+
+<http://w3id.org/protys/ontology/paint-ext#hasCategory>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Categoría de impacto de un indicador ambiental."@es;
+        rdfs:label    "hasCategory";
+        rdfs:range    iso14040:ImpactCategory .
+
+<http://w3id.org/protys/ontology/product#composes>
+        rdf:type       owl:ObjectProperty;
+        rdfs:comment   "Un Production_Component compone un Product (relación n:n, Fig. 3.8)."@es;
+        rdfs:domain    <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label     "composes";
+        rdfs:range     <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Production_Item> , iso14040:ProductFlow , <http://w3id.org/protys/ontology/core#Product> , <http://w3id.org/protys/ontology/product#Substance>;
+        owl:inverseOf  <http://w3id.org/protys/ontology/product#isComposedOF> .
+
+<http://w3id.org/protys/ontology/core#isHeldBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Vincula una entidad (típicamente un Resource) con la Enterprise o instalación que la posee o alberga (Figs. 3.6 y 3.7)."@es;
+        rdfs:label    "isHeldBy" .
+
+research:FineGrindingOperation
+        rdf:type         owl:Class;
+        rdfs:subClassOf  iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+iso15531:CostAttribute
+        rdf:type    owl:Class;
+        rdfs:label  "Atributo de costo"@es .
+
+alignment:R16_ValidationPattern
+        rdf:type      alignment:SPARQLValidationPattern , owl:NamedIndividual;
+        rdfs:comment  "Validar consistencia: toda actividad debe consumir al menos un input material. Reformulada como consulta SPARQL ASK con FILTER NOT EXISTS (el built-in swrlb:notBound no existe en SWRL); no es una regla de inferencia. Consulta completa en ontologies/alignment-queries.sparql (R16)."@es;
+        rdfs:label    "R16: patrón de validación SPARQL ASK" .
+
+<http://w3id.org/protys/ontology/resource#Equip>
+        rdf:type         owl:Class;
+        rdfs:comment     "Equipo industrial fijo que ejecuta operaciones de transformación (molinos, reactores, dosificadores). Especialización directa de Resource (Fig. 3.9). Relevante para el caso de estudio del Capítulo 4, donde los equipos de molienda son instancias de Equip."@es;
+        rdfs:label       "Equip"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/paint-ext#particleSize>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "particleSize";
+        rdfs:range  xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#viscosity>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "viscosity";
+        rdfs:range  xsd:decimal .
+
+research:ghgKgCO2e  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+iso15531:executedBy  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Una WorkOrder es ejecutada por al menos un recurso (restricción del Listado 3.2; también usada por R14 para el operador responsable)."@es;
+        rdfs:domain   iso15531:WorkOrder;
+        rdfs:domain   [ rdf:type            owl:Restriction;
+                        owl:minCardinality  "1"^^xsd:nonNegativeInteger;
+                        owl:onProperty      iso15531:executedBy
+                      ];
+        rdfs:label    "executedBy";
+        rdfs:range    iso15531:ManufacturingResource .
+
+iso15531:consumesEnergyKWh
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Consumo energético de una actividad en kWh (reglas R01 y R21, Anexo C)."@es;
+        rdfs:label    "consumesEnergyKWh";
+        rdfs:range    xsd:decimal .
+
+research:endTimeSeconds
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+alignment:var_factor  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/resource#Behaviour>
+        rdf:type      owl:Class;
+        rdfs:comment  "Comportamiento que define a un Resource (ISO 10303-49)."@es;
+        rdfs:label    "Behaviour"@en .
+
+iso14040:Interpretation
+        rdf:type    owl:Class;
+        rdfs:label  "Interpretación"@es .
+
+research:producesProduct
+        rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/process#specifiedBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Process está especificado por un Procedure (Fig. 3.7)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Process>;
+        rdfs:label    "specifiedBy";
+        rdfs:range    <http://w3id.org/protys/ontology/process#Procedure>;
+        rdfs:range    [ rdf:type     owl:Class;
+                        owl:unionOf  ( <http://w3id.org/protys/ontology/process#Procedure> <http://w3id.org/protys/ontology/process#Procedure_Activity> )
+                      ] .
+
+iso14040:FunctionalUnit
+        rdf:type    owl:Class;
+        rdfs:label  "Unidad funcional"@es .
+
+<http://w3id.org/protys/ontology/paint-ext#WorkCell>
+        rdf:type         owl:Class;
+        rdfs:comment     "Célula de trabajo. Subclase de enterprise:Cell."@es;
+        rdfs:label       "WorkCell"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Cell>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Shop>
+                         ] .
+
+<http://w3id.org/protys/ontology/paint-ext#skillCategory>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "skillCategory";
+        rdfs:range  xsd:string .
+
+<http://w3id.org/protys/ontology/paint-ext#hasShelfLife>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Especificación de vida útil asociada a un producto."@es;
+        rdfs:label    "hasShelfLife" .
+
+research:eventForProcess
+        rdf:type  owl:ObjectProperty .
+
+<http://w3id.org/protys/ontology/paint-ext#temperatureCelsius>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "temperatureCelsius";
+        rdfs:range  xsd:decimal .
+
+alignment:var_maintenance
+        rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#solidContent>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "solidContent";
+        rdfs:range  xsd:decimal .
+
+alignment:var_f1  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators>
+        rdf:type      owl:Class;
+        rdfs:comment  "Factor de caracterización cuyos indicadores dependientes deben recomputarse (cabeza de R25)."@es;
+        rdfs:label    "RequiresRecomputeIndicators" .
+
+<http://w3id.org/protys/ontology/process#Process_Plan>
+        rdf:type         owl:Class;
+        rdfs:comment     "Conjunto ordenado de procesos requeridos para fabricar un producto."@es;
+        rdfs:label       "Process_Plan"@en;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/core#isHeldBy>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/process#Process_Plant>
+                         ] .
+
+alignment:var_unit  rdf:type  swrl:Variable .
+
+iso14040:carbonFootprintKgCO2eq
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Huella de carbono en kg CO2-eq por kg de material (usada por las instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "carbonFootprintKgCO2eq";
+        rdfs:range    xsd:decimal .
+
+iso14040:hasIndicatorValue
+        rdf:type                owl:DatatypeProperty;
+        rdfs:comment            "Valor numérico de un indicador de impacto (regla R04, Anexo C)."@es;
+        rdfs:domain             iso15531:QualityAttribute , iso14040:ImpactIndicator;
+        rdfs:label              "hasIndicatorValue";
+        rdfs:range              xsd:decimal;
+        rdfs:subPropertyOf      iso14040:indicatorValue;
+        owl:equivalentProperty  iso14040:indicatorValue .
+
+iso14040:factorValue  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Valor numérico de un factor de emisión/caracterización (reglas R01 y R21, Anexo C)."@es;
+        rdfs:domain   iso14040:CharacterizationFactor;
+        rdfs:label    "factorValue";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/paint-ext#Warehouse>
+        rdf:type         owl:Class;
+        rdfs:comment     "Almacén de materias primas/producto terminado. Subclase de enterprise:Shop (área funcional dentro de la fábrica)."@es;
+        rdfs:label       "Warehouse"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Shop>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Factory>
+                         ] .
+
+<http://w3id.org/protys/ontology/paint-ext#Formulation>
+        rdf:type         owl:Class;
+        rdfs:comment     "Fórmula/receta de una pintura. Subclase de product:Instruction: es información funcional sobre cómo fabricar el producto (§3.3.2)."@es;
+        rdfs:label       "Formulation"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/product#Product_Information> , <http://w3id.org/protys/ontology/product#Instruction> .
+
+<http://w3id.org/protys/ontology/paint-ext#availabilityPercent>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "availabilityPercent";
+        rdfs:range  xsd:decimal .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R23: Razón por operación e indicador vinculados, sin normalización";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_lot;
+                             swrl:classPredicate  iso15531:Lot
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type             swrl:ClassAtom;
+                                          swrl:argument1       alignment:var_order;
+                                          swrl:classPredicate  iso15531:WorkOrder
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_order;
+                                                       swrl:argument2          alignment:var_lot;
+                                                       swrl:propertyPredicate  iso15531:producesLot
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_lot;
+                                                                    swrl:argument2          alignment:var_op;
+                                                                    swrl:propertyPredicate  iso15531:hasActivity
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                 swrl:argument1          alignment:var_lot;
+                                                                                 swrl:argument2          alignment:var_process;
+                                                                                 swrl:propertyPredicate  iso15531:hasProcess
+                                                                               ];
+                                                                    rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                 rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                              swrl:argument1          alignment:var_op;
+                                                                                              swrl:argument2          alignment:var_process;
+                                                                                              swrl:propertyPredicate  iso15531:partOfProcess
+                                                                                            ];
+                                                                                 rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                              rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                                           swrl:argument1          alignment:var_op;
+                                                                                                           swrl:argument2          alignment:var_time;
+                                                                                                           swrl:propertyPredicate  iso15531:cycleTime
+                                                                                                         ];
+                                                                                              rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                           rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                                                        swrl:argument1          alignment:var_indicator;
+                                                                                                                        swrl:argument2          alignment:var_process;
+                                                                                                                        swrl:propertyPredicate  iso14040:computedForProcess
+                                                                                                                      ];
+                                                                                                           rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                                        rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                                                                     swrl:argument1          alignment:var_indicator;
+                                                                                                                                     swrl:argument2          alignment:var_value;
+                                                                                                                                     swrl:propertyPredicate  iso14040:indicatorValue
+                                                                                                                                   ];
+                                                                                                                        rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                                                     rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                                                                                  swrl:argument1          alignment:var_ratio;
+                                                                                                                                                  swrl:argument2          alignment:var_op;
+                                                                                                                                                  swrl:propertyPredicate  research:forOperation
+                                                                                                                                                ];
+                                                                                                                                     rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                                                                  rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                                                                                               swrl:argument1          alignment:var_ratio;
+                                                                                                                                                               swrl:argument2          alignment:var_indicator;
+                                                                                                                                                               swrl:propertyPredicate  research:forIndicator
+                                                                                                                                                             ];
+                                                                                                                                                  rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                                                                               rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                                                                                                            swrl:arguments  [ rdf:type   rdf:List;
+                                                                                                                                                                                              rdf:first  alignment:var_value;
+                                                                                                                                                                                              rdf:rest   [ rdf:type   rdf:List;
+                                                                                                                                                                                                           rdf:first  "0"^^xsd:decimal;
+                                                                                                                                                                                                           rdf:rest   ()
+                                                                                                                                                                                                         ]
+                                                                                                                                                                                            ];
+                                                                                                                                                                            swrl:builtin    swrlb:greaterThan
+                                                                                                                                                                          ];
+                                                                                                                                                               rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                                                                                            rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                                                                                                                         swrl:arguments  ( alignment:var_result alignment:var_time alignment:var_value );
+                                                                                                                                                                                         swrl:builtin    swrlb:divide
+                                                                                                                                                                                       ];
+                                                                                                                                                                            rdf:rest   ()
+                                                                                                                                                                          ]
+                                                                                                                                                             ]
+                                                                                                                                                ]
+                                                                                                                                   ]
+                                                                                                                      ]
+                                                                                                         ]
+                                                                                            ]
+                                                                               ]
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                             swrl:argument1          alignment:var_ratio;
+                             swrl:argument2          alignment:var_result;
+                             swrl:propertyPredicate  research:operationIndicatorRatio
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+<http://w3id.org/protys/ontology/core#WaterFlow>
+        rdf:type                       iso15531:ManufacturingResource , iso14040:ElementaryFlow , owl:NamedIndividual;
+        rdf:type                       [ rdf:type        owl:Restriction;
+                                         owl:hasValue    alignment:Consumed;
+                                         owl:onProperty  iso15531:resourceCurrentState
+                                       ];
+        rdf:type                       [ rdf:type            owl:Class;
+                                         owl:intersectionOf  ( iso15531:ManufacturingResource
+                                                               [ rdf:type        owl:Restriction;
+                                                                 owl:hasValue    alignment:Consumed;
+                                                                 owl:onProperty  iso15531:resourceCurrentState
+                                                               ]
+                                                             )
+                                       ];
+        rdfs:comment                   "Flujo elemental de agua (cabeza de R02; IRI protys:WaterFlow tal como figura en el Anexo C)."@es;
+        iso15531:resourceCurrentState  alignment:Consumed .
+
+<http://w3id.org/protys/ontology/paint-ext#numberOfEmployees>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "numberOfEmployees";
+        rdfs:range  xsd:integer .
+
+<http://w3id.org/protys/ontology/core#precedes>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Orden entre procesos: un Process precede a otro Process en el plan de proceso."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/core#Process>;
+        rdfs:label    "precedes";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Process> .
+
+iso15531:skillCode  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Código de habilidad de un recurso humano (instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:domain   iso15531:ManufacturingResource , iso15531:HumanResource;
+        rdfs:label    "skillCode";
+        rdfs:range    xsd:string .
+
+<http://w3id.org/protys/ontology/product#definedBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un Production_Item está definido por su Product_Information (agregación 1..n, Fig. 3.8)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/product#Production_Item>;
+        rdfs:label    "definedBy";
+        rdfs:range    <http://w3id.org/protys/ontology/product#Product_Information> .
+
+alignment:hasEcoScore
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "EcoScore normalizado por lote (cabeza de R23, Listado 3.4)."@es;
+        rdfs:label    "hasEcoScore";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/core#modifiedInVersion>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Versión en la que un término fue modificado (usada por R25, versionado P5)."@es;
+        rdfs:label    "modifiedInVersion";
+        rdfs:range    xsd:string .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R13: Precedencia de eventos MES del mismo lote y proceso";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_e1;
+                             swrl:classPredicate  iso15531:ManufacturingData
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type             swrl:ClassAtom;
+                                          swrl:argument1       alignment:var_e2;
+                                          swrl:classPredicate  iso15531:ManufacturingData
+                                        ];
+                             rdf:rest   [ rdf:type   swrl:AtomList;
+                                          rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                       swrl:argument1          alignment:var_e1;
+                                                       swrl:argument2          alignment:var_lot;
+                                                       swrl:propertyPredicate  research:forLot
+                                                     ];
+                                          rdf:rest   [ rdf:type   swrl:AtomList;
+                                                       rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                    swrl:argument1          alignment:var_e2;
+                                                                    swrl:argument2          alignment:var_lot;
+                                                                    swrl:propertyPredicate  research:forLot
+                                                                  ];
+                                                       rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                    rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                 swrl:argument1          alignment:var_e1;
+                                                                                 swrl:argument2          alignment:var_process;
+                                                                                 swrl:propertyPredicate  research:eventForProcess
+                                                                               ];
+                                                                    rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                 rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                                                                              swrl:argument1          alignment:var_e2;
+                                                                                              swrl:argument2          alignment:var_process;
+                                                                                              swrl:propertyPredicate  research:eventForProcess
+                                                                                            ];
+                                                                                 rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                              rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                                           swrl:argument1          alignment:var_e1;
+                                                                                                           swrl:argument2          alignment:var_t1;
+                                                                                                           swrl:propertyPredicate  research:eventTimeSeconds
+                                                                                                         ];
+                                                                                              rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                           rdf:first  [ rdf:type                swrl:DatavaluedPropertyAtom;
+                                                                                                                        swrl:argument1          alignment:var_e2;
+                                                                                                                        swrl:argument2          alignment:var_t2;
+                                                                                                                        swrl:propertyPredicate  research:eventTimeSeconds
+                                                                                                                      ];
+                                                                                                           rdf:rest   [ rdf:type   swrl:AtomList;
+                                                                                                                        rdf:first  [ rdf:type        swrl:BuiltinAtom;
+                                                                                                                                     swrl:arguments  ( alignment:var_t1 alignment:var_t2 );
+                                                                                                                                     swrl:builtin    swrlb:lessThan
+                                                                                                                                   ];
+                                                                                                                        rdf:rest   ()
+                                                                                                                      ]
+                                                                                                         ]
+                                                                                            ]
+                                                                               ]
+                                                                  ]
+                                                     ]
+                                        ]
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                             swrl:argument1          alignment:var_e1;
+                             swrl:argument2          alignment:var_e2;
+                             swrl:propertyPredicate  iso15531:precedesEvent
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+iso15531:yield  rdf:type  owl:DatatypeProperty;
+        rdfs:comment  "Rendimiento de una actividad (regla R11, Anexo C)."@es;
+        rdfs:label    "yield";
+        rdfs:range    xsd:decimal .
+
+<http://w3id.org/protys/ontology/resource#requiresResource>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "La actividad requiere el recurso pero no necesariamente lo ejecuta (Fig. 3.11)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/resource#Activity>;
+        rdfs:label    "requiresResource";
+        rdfs:range    <http://w3id.org/protys/ontology/core#Resource> .
+
+alignment:var_plan  rdf:type  swrl:Variable .
+
+<http://w3id.org/protys/ontology/paint-ext#Intermediate_Product>
+        rdf:type         owl:Class;
+        rdfs:comment     "Producto intermedio (p. ej., pasta de pigmento). Subclase de core:Product: es un producto en un estadio intermedio del plan de proceso."@es;
+        rdfs:label       "Intermediate_Product"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Product> .
+
+research:waterL  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+alignment:impactThreshold
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Umbral configurable de impacto (usado por R04 sobre el individuo align:GlobalConfig)."@es;
+        rdfs:label    "impactThreshold";
+        rdfs:range    xsd:decimal .
+
+iso15531:producesLot  rdf:type  owl:ObjectProperty;
+        rdfs:comment  "Una WorkOrder produce un Lot (reglas R03 y R23, Listado 3.4)."@es;
+        rdfs:domain   iso15531:WorkOrder;
+        rdfs:domain   [ rdf:type            owl:Restriction;
+                        owl:minCardinality  "1"^^xsd:nonNegativeInteger;
+                        owl:onProperty      iso15531:executedBy
+                      ];
+        rdfs:label    "producesLot";
+        rdfs:range    iso15531:Lot .
+
+research:energyKWh  rdf:type  owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+iso14040:AllocationProcedure
+        rdf:type             owl:Class;
+        rdfs:label           "Procedimiento de asignación"@es;
+        rdfs:subClassOf      iso15531:ProcessOperation;
+        owl:equivalentClass  iso15531:ProcessOperation .
+
+iso15531:ProductionOrder
+        rdf:type    owl:Class;
+        rdfs:label  "Orden de producción"@es .
+
+research:operationIndicatorRatio
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R15: Marcar indisponibilidad temporal con mantenimiento registrado";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_resource;
+                             swrl:classPredicate  iso15531:ManufacturingResource
+                           ];
+                rdf:rest   [ rdf:type   swrl:AtomList;
+                             rdf:first  [ rdf:type                swrl:IndividualPropertyAtom;
+                                          swrl:argument1          alignment:var_resource;
+                                          swrl:argument2          alignment:var_maintenance;
+                                          swrl:propertyPredicate  iso15531:hasMaintenance
+                                        ];
+                             rdf:rest   ()
+                           ]
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_resource;
+                             swrl:classPredicate  iso15531:temporarilyUnavailable
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+alignment:FineGrinding
+        rdf:type      iso15531:ManufacturingCapability , owl:NamedIndividual;
+        rdfs:comment  "Capacidad de molienda fina (cabeza de R12, Listado 3.4)."@es .
+
+iso15531:temporarilyUnavailable
+        rdf:type         owl:Class;
+        rdfs:comment     "Recurso temporalmente no disponible (cabeza de R15; IRI tal como figura en el Anexo C)."@es;
+        rdfs:label       "temporarilyUnavailable";
+        rdfs:subClassOf  iso15531:ManufacturingResource .
+
+<http://w3id.org/protys/ontology/process#hasParameter>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Procedure y Procedure_Activity están vinculados a Parameters (agregación, Fig. 3.7)."@es;
+        rdfs:domain   [ rdf:type     owl:Class;
+                        owl:unionOf  ( <http://w3id.org/protys/ontology/process#Procedure> <http://w3id.org/protys/ontology/process#Procedure_Activity> )
+                      ];
+        rdfs:label    "hasParameter";
+        rdfs:range    <http://w3id.org/protys/ontology/process#Parameters> .
+
+<http://w3id.org/protys/ontology/paint-ext#belongsTo>
+        rdf:type            owl:ObjectProperty;
+        rdfs:comment        "Pertenencia de un recurso/actividad a una unidad organizacional. Subpropiedad de core:isHeldBy."@es;
+        rdfs:label          "belongsTo";
+        rdfs:subPropertyOf  <http://w3id.org/protys/ontology/core#isHeldBy> .
+
+iso15531:executesActivity
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una orden de trabajo (ejecución de actividad) ejecuta una operación (regla R14, Anexo C)."@es;
+        rdfs:domain   iso15531:WorkOrder;
+        rdfs:domain   [ rdf:type            owl:Restriction;
+                        owl:minCardinality  "1"^^xsd:nonNegativeInteger;
+                        owl:onProperty      iso15531:executedBy
+                      ];
+        rdfs:label    "executesActivity";
+        rdfs:range    iso15531:ProcessOperation , iso14040:AllocationProcedure .
+
+iso15531:experienceYears
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Años de experiencia de un recurso humano (instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:domain   iso15531:ManufacturingResource , iso15531:HumanResource;
+        rdfs:label    "experienceYears";
+        rdfs:range    xsd:integer .
+
+<http://w3id.org/protys/ontology/paint-ext#ProductionCell>
+        rdf:type         owl:Class;
+        rdfs:comment     "Célula de producción. Subclase de enterprise:Cell."@es;
+        rdfs:label       "ProductionCell"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/enterprise#Cell>;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:onProperty      <http://w3id.org/protys/ontology/enterprise#isPartOf>;
+                           owl:someValuesFrom  <http://w3id.org/protys/ontology/enterprise#Shop>
+                         ] .
+
+iso14040:waterFootprintLiters
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Huella hídrica en litros (usada por las instancias del caso de estudio, Cap. 4)."@es;
+        rdfs:label    "waterFootprintLiters";
+        rdfs:range    xsd:decimal .
+
+research:scenarioRole
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:string .
+
+iso14040:LCAStudy  rdf:type  owl:Class;
+        rdfs:label       "Estudio de ACV"@es;
+        rdfs:subClassOf  [ rdf:type         owl:Restriction;
+                           owl:cardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onProperty   iso14040:hasFunctionalUnit
+                         ] .
+
+iso15531:hasQualityStatus
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Estado de calidad de un lote (regla R10, Anexo C)."@es;
+        rdfs:domain   iso15531:Lot;
+        rdfs:label    "hasQualityStatus";
+        rdfs:range    xsd:string .
+
+<http://w3id.org/protys/ontology/paint-ext#establishedDate>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "establishedDate";
+        rdfs:range  xsd:dateTime .
+
+<http://w3id.org/protys/ontology/product#acquiredBy>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un producto puede ser adquirido por múltiples clientes y un cliente puede adquirir varios productos (relación n:n)."@es;
+        rdfs:domain   <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/core#Product> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/product#Thing> , iso14040:ProductFlow , <http://w3id.org/protys/ontology/product#Product>;
+        rdfs:label    "acquiredBy";
+        rdfs:range    <http://w3id.org/protys/ontology/product#Customer> .
+
+<http://w3id.org/protys/ontology/paint-ext#employs>
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Una organización emplea personas."@es;
+        rdfs:label    "employs";
+        rdfs:range    <http://w3id.org/protys/ontology/resource#Person> , <http://w3id.org/protys/ontology/core#Resource> .
+
+alignment:var_result  rdf:type  swrl:Variable .
+
+iso15531:HumanResource
+        rdf:type         owl:Class;
+        rdfs:label       "Recurso humano"@es;
+        rdfs:subClassOf  iso15531:ManufacturingResource .
+
+iso15531:requiresReprocess
+        rdf:type         owl:Class;
+        rdfs:comment     "Lote que requiere reproceso (cabeza de R18; IRI tal como figura en el Anexo C)."@es;
+        rdfs:label       "requiresReprocess";
+        rdfs:subClassOf  iso15531:Lot .
+
+<http://w3id.org/protys/ontology/paint-ext#Organization>
+        rdf:type         owl:Class;
+        rdfs:comment     "Organización empresarial (mapeada desde AD_Org de ADempiere / res.company de Odoo). Subclase de core:Enterprise."@es;
+        rdfs:label       "Organization"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Enterprise> .
+
+<http://w3id.org/protys/ontology/paint-ext#ProductBatch>
+        rdf:type         owl:Class;
+        rdfs:comment     "Lote de producto fabricado. Subclase de iso15531:Lot: el lote es el concepto MANDATE canónico de agrupación de producción."@es;
+        rdfs:label       "ProductBatch"@en;
+        rdfs:subClassOf  iso15531:Lot .
+
+[ rdf:type    swrl:Imp;
+  rdfs:label  "R24: Marcar brecha de cobertura desde faltante ambiental detectado";
+  swrl:body   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_process;
+                             swrl:classPredicate  <http://w3id.org/protys/ontology/core#MissingEnvironmentalData>
+                           ];
+                rdf:rest   ()
+              ];
+  swrl:head   [ rdf:type   swrl:AtomList;
+                rdf:first  [ rdf:type             swrl:ClassAtom;
+                             swrl:argument1       alignment:var_process;
+                             swrl:classPredicate  <http://w3id.org/protys/ontology/core#CoverageGap>
+                           ];
+                rdf:rest   ()
+              ]
+] .
+
+[ rdf:type            owl:Class;
+  rdfs:subClassOf     iso14040:ElementaryFlow;
+  owl:intersectionOf  ( iso15531:ManufacturingResource
+                        [ rdf:type        owl:Restriction;
+                          owl:hasValue    alignment:Consumed;
+                          owl:onProperty  iso15531:resourceCurrentState
+                        ]
+                      )
+] .
+
+iso15531:WorkOrder  rdf:type  owl:Class;
+        rdfs:label       "Orden de trabajo"@es;
+        rdfs:subClassOf  [ rdf:type            owl:Restriction;
+                           owl:minCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onProperty      iso15531:executedBy
+                         ] .
+
+iso14040:hasFunctionalUnit
+        rdf:type      owl:FunctionalProperty , owl:ObjectProperty;
+        rdfs:comment  "Todo estudio de ACV tiene exactamente una unidad funcional (Listado 3.1)."@es;
+        rdfs:domain   iso14040:LCAStudy;
+        rdfs:domain   [ rdf:type         owl:Restriction;
+                        owl:cardinality  "1"^^xsd:nonNegativeInteger;
+                        owl:onProperty   iso14040:hasFunctionalUnit
+                      ];
+        rdfs:label    "hasFunctionalUnit";
+        rdfs:range    iso14040:FunctionalUnit .
+
+iso15531:propagatedQualityStatus
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Estado de calidad propagado desde el lote hacia el producto final (cabeza de la regla R10, Anexo C)."@es;
+        rdfs:label    "propagatedQualityStatus";
+        rdfs:range    xsd:string .
+
+<http://w3id.org/protys/ontology/paint-ext#EnergyResource>
+        rdf:type         owl:Class;
+        rdfs:comment     "Recurso energético consumido por las actividades. Subclase directa de core:Resource (no es Tool/Equip/Device ni Material sólido)."@es;
+        rdfs:label       "EnergyResource"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/core#Resource> .
+
+research:startTimeSeconds
+        rdf:type    owl:DatatypeProperty;
+        rdfs:range  xsd:decimal .
+
+iso14040:refersToMaterial
+        rdf:type      owl:ObjectProperty;
+        rdfs:comment  "Un flujo de inventario refiere a un material concreto (reglas R06 y R20, Anexo C)."@es;
+        rdfs:domain   iso15531:ManufacturingResource , iso14040:ElementaryFlow;
+        rdfs:domain   [ rdf:type        owl:Restriction;
+                        owl:hasValue    alignment:Consumed;
+                        owl:onProperty  iso15531:resourceCurrentState
+                      ];
+        rdfs:domain   [ rdf:type            owl:Class;
+                        owl:intersectionOf  ( iso15531:ManufacturingResource
+                                              [ rdf:type        owl:Restriction;
+                                                owl:hasValue    alignment:Consumed;
+                                                owl:onProperty  iso15531:resourceCurrentState
+                                              ]
+                                            )
+                      ];
+        rdfs:label    "refersToMaterial" .
+
+<http://w3id.org/protys/ontology/resource#Product_Related_File>
+        rdf:type         owl:Class;
+        rdfs:comment     "Archivo relacionado con productos, p. ej. diseños CAD (Fig. 3.12)."@es;
+        rdfs:label       "Product_Related_File"@en;
+        rdfs:subClassOf  <http://w3id.org/protys/ontology/resource#File> , <http://w3id.org/protys/ontology/core#Resource> .
+
+iso14040:GoalAndScopeDefinition
+        rdf:type    owl:Class;
+        rdfs:label  "Definición de objetivo y alcance"@es .
+
+alignment:var_equipment
+        rdf:type  swrl:Variable .
+
+iso15531:QualityAttribute
+        rdf:type         owl:Class;
+        rdfs:label       "Atributo de calidad"@es;
+        rdfs:subClassOf  iso14040:ImpactIndicator .
+
+<http://w3id.org/protys/ontology/paint-ext#batchQuantity>
+        rdf:type    owl:DatatypeProperty;
+        rdfs:label  "batchQuantity";
+        rdfs:range  xsd:decimal .

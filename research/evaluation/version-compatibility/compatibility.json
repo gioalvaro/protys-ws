@@ -1,0 +1,50 @@
+{
+  "status": "PASS",
+  "selected_HermiT": "1.4.5.519",
+  "checks": [
+    {
+      "HermiT": "1.4.5.456",
+      "OWLAPI": "5.1.20",
+      "case": "valid",
+      "exit_code": 3,
+      "validation": {
+        "status": "NOT_EVALUATED",
+        "profile_valid": true,
+        "swrl_rule_count": 0,
+        "profile_violations": [],
+        "error": "java.lang.NoSuchMethodError: 'com.google.common.base.Optional org.semanticweb.owlapi.model.OWLOntologyID.getDefaultDocumentIRI()'",
+        "dl_ms": 109.962667
+      }
+    },
+    {
+      "HermiT": "1.4.5.519",
+      "OWLAPI": "5.1.20",
+      "case": "valid",
+      "exit_code": 0,
+      "validation": {
+        "status": "CONSISTENT",
+        "profile_valid": true,
+        "swrl_rule_count": 0,
+        "profile_violations": [],
+        "dl_materialized_triples": 3,
+        "unsatisfiable_classes": [],
+        "dl_ms": 152.876125
+      },
+      "classified_parent_type": true
+    },
+    {
+      "HermiT": "1.4.5.519",
+      "OWLAPI": "5.1.20",
+      "case": "inconsistent",
+      "exit_code": 3,
+      "validation": {
+        "status": "INCONSISTENT",
+        "profile_valid": true,
+        "swrl_rule_count": 0,
+        "profile_violations": [],
+        "unsatisfiable_classes": [],
+        "dl_ms": 149.756666
+      }
+    }
+  ]
+}

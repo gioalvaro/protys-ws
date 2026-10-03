@@ -1,0 +1,99 @@
+{
+  "sources": [
+    "https://eplca.pages.code.europa.eu/ilcd_docs/common/enumerations/FlowType.html",
+    "https://eplca.jrc.ec.europa.eu/LCDN/downloads/ILCD_Format_1.1_Documentation/ILCD_ProcessDataSet.html"
+  ],
+  "correspondences": [
+    {
+      "id": "A1",
+      "before": "ProductFlow ≡ Product",
+      "after": "http://w3id.org/protys/ontology/alignment#flowRefersToProduct",
+      "domain": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+      "range": "http://w3id.org/protys/ontology/core#Product",
+      "scientific_scope": "Flow record refers to a distinct product/material entity; a purchased commodity flow is not the commodity itself.",
+      "counterexample_entity": "f:CE_Product",
+      "must_not_infer_type": "e:ProductFlow",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    },
+    {
+      "id": "A2",
+      "before": "UnitProcess ≡ ManufacturingProcess",
+      "after": "http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation",
+      "domain": "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+      "range": "http://w3id.org/protys/ontology/iso14040#UnitProcess",
+      "scientific_scope": "A manufacturing execution has a separately identified LCI black-box representation, only for the declared production boundary. No universal class inclusion.",
+      "counterexample_entity": "f:CE_Manufacturing",
+      "must_not_infer_type": "e:UnitProcess",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    },
+    {
+      "id": "A3",
+      "before": "ElementaryFlow ≡ ManufacturingResource consumed",
+      "after": "http://w3id.org/protys/ontology/alignment#inputFlowForResource",
+      "domain": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+      "range": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "scientific_scope": "Purchased inputs are technosphere ProductFlow records linked to consumed material resources; consumption never implies an elementary nature exchange.",
+      "counterexample_entity": "f:CE_ConsumedResource",
+      "must_not_infer_type": "e:ElementaryFlow",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    },
+    {
+      "id": "A4",
+      "before": "SystemBoundary ≡ ManufacturingFacility",
+      "after": "http://w3id.org/protys/ontology/alignment#facilityInBoundary",
+      "domain": "http://w3id.org/protys/ontology/iso15531#ManufacturingFacility",
+      "range": "http://w3id.org/protys/ontology/iso14040#SystemBoundary",
+      "scientific_scope": "A separately identified boundary describes the selected scope for an assessed facility; a facility is not the boundary criteria.",
+      "counterexample_entity": "f:CE_Facility",
+      "must_not_infer_type": "e:SystemBoundary",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    },
+    {
+      "id": "A5",
+      "before": "ImpactIndicator ≡ QualityAttribute",
+      "after": "http://w3id.org/protys/ontology/alignment#indicatorForLot",
+      "domain": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "range": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "scientific_scope": "Environmental indicator and quality record independently refer to the same lot via indicatorForLot and qualityForLot. Their values and types remain distinct.",
+      "counterexample_entity": "f:CE_Quality",
+      "must_not_infer_type": "e:ImpactIndicator",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    },
+    {
+      "id": "A6",
+      "before": "AllocationProcedure ≡ ProcessOperation",
+      "after": "http://w3id.org/protys/ontology/alignment#allocationForOperation",
+      "domain": "http://w3id.org/protys/ontology/iso14040#AllocationProcedure",
+      "range": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "scientific_scope": "Optional relation for an explicitly supplied allocation procedure. Painting scenario performs no allocation among coproducts; only a separate illustrative fixture exercises the relation.",
+      "counterexample_entity": "f:CE_Operation",
+      "must_not_infer_type": "e:AllocationProcedure",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    },
+    {
+      "id": "A7",
+      "before": "LifeCycleInventory ≡ ProcessPlan",
+      "after": "http://w3id.org/protys/ontology/alignment#inventoryForPlan",
+      "domain": "http://w3id.org/protys/ontology/iso14040#LifeCycleInventory",
+      "range": "http://w3id.org/protys/ontology/iso15531#ProcessPlan",
+      "scientific_scope": "A partial production inventory record refers to its manufacturing plan; planning and inventory records are separately identified.",
+      "counterexample_entity": "f:CE_Plan",
+      "must_not_infer_type": "e:LifeCycleInventory",
+      "policy": "Distinct named endpoints, no equivalentClass/owl:sameAs or universal subclass implication",
+      "source": "ontologies/alignment-rules.owl",
+      "status": "approved human correction; execution results recorded separately"
+    }
+  ]
+}

@@ -78,7 +78,7 @@ server:
 logging:
   level:
     root: INFO
-    ve.edu.uc.protys: DEBUG
+    org.protys.ws: DEBUG
     org.springframework.web: DEBUG
     org.hibernate.SQL: DEBUG
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE

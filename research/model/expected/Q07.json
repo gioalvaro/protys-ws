@@ -1,0 +1,884 @@
+{
+  "head": {
+    "vars": [
+      "operation",
+      "inputMassKg",
+      "outputMassKg",
+      "registeredLossKg",
+      "residueKg",
+      "status"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op1"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op2"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op3"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op4"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op5"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op6"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op7"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "123"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "2"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op1"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op2"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op3"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op4"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op5"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op6"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op7"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "250"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "244"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "3.5"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "2.5"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op1"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op2"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op3"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op4"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op5"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op6"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "OK"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op7"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "125"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "121.74"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "2"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "1.26"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "REVISAR"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op1"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op2"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op3"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op4"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op5"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op6"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op7"
+        },
+        "inputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "outputMassKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "registeredLossKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "residueKg": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "status": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "INVALID_INPUT"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:Manufacturing_Process a owl:Class ;
+  owl:disjointWith ex:Quality_Process , ex:Support_Process .
+ex:Quality_Process a owl:Class .
+ex:Support_Process a owl:Class .

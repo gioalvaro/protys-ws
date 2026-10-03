@@ -1,0 +1,145 @@
+{
+  "status": "IMPLEMENTED_AWAITING_REAL_EXECUTION",
+  "human_authorization": "C030-C033 recorded by thesis coordinator; no pending choice is substituted",
+  "canonical_counts": {
+    "SWRL": 22,
+    "ASK": 4,
+    "SELECT": 21,
+    "H3_SWRL": 3
+  },
+  "additional_controls": {
+    "control_count": 3,
+    "ASK_artifact_count": 6,
+    "pre_inference_constructs": 2,
+    "controls": [
+      {
+        "id": "C26",
+        "path": "research/model/validations/C26-context-completeness.sparql",
+        "scope": "Additional required-pair context check, outside the four canonical ASK; true means cleaning context not evaluable, never OWL inconsistency or observed contamination."
+      },
+      {
+        "id": "CCTX",
+        "path": "research/model/validations/CCTX-context-completeness.sparql",
+        "scope": "Additional lot-operation-process and plan context integrity control, outside the four canonical ASK. True means a declared activity, contribution or plan activity lacks a matching manufacturing process; not OWL inconsistency."
+      },
+      {
+        "id": "CNUM",
+        "path": "research/model/validations/CNUM-input-invalid.sparql",
+        "scope": "One numeric energy and one selected factor IRI per matching lot/process operation. Value-equivalent literals count once. Contradictions block numeric inference; missing data is separately not evaluable. Foreign links remain visible through CCTX and are excluded from the numeric scope. Totals require every selected same-process operation, never a partial sum.",
+        "kind": "snapshot numeric contract",
+        "states": [
+          "VALID",
+          "AMBIGUOUS_INPUT",
+          "NOT_EVALUABLE",
+          "NOT_APPLICABLE"
+        ],
+        "applicable_configurations": [
+          "integrated",
+          "h3_extended"
+        ],
+        "stage_paths": {
+          "applicable": "research/model/validations/CNUM-applicable.sparql",
+          "ambiguous_input": "research/model/validations/CNUM-input-ambiguous.sparql",
+          "invalid_output": "research/model/validations/CNUM-output-invalid.sparql"
+        }
+      }
+    ]
+  },
+  "C030_R04": {
+    "effect": "Classify HighImpactIndicator only when its value exceeds an explicitly linked ThresholdRecord matching the same unit and category. Tuple fields belong to the same threshold IRI.",
+    "record": "f:ElectricityGHGThreshold",
+    "scenario_value": 5,
+    "unit": "kg CO2e",
+    "category": "GHG_ELECTRICITY_PRODUCTION",
+    "threshold_scope": "Hypothetical declared scenario value, not normative threshold or measured industrial limit",
+    "OWL_constraint": "thresholdValue/thresholdUnit/thresholdCategory are functional: at most one value, not an existence guarantee. Numerically equivalent decimal values are compatible; unequal values contradict OWL.",
+    "tests": [
+      "R04_contract_above",
+      "R04_contract_equal",
+      "R04_contract_below",
+      "R04_contract_zero",
+      "R04_contract_wrong_unit",
+      "R04_contract_wrong_category",
+      "R04_contract_missing_indicator_unit",
+      "R04_contract_missing_indicator_category",
+      "R04_contract_missing_threshold_value",
+      "R04_contract_missing_threshold_unit",
+      "R04_contract_missing_threshold_category",
+      "R04_contract_unlinked_record",
+      "R04_contract_numeric_equivalent_threshold",
+      "R04_contract_coupled_records",
+      "R04_contract_contradictory_threshold",
+      "R22_wrong_indicator_unit"
+    ]
+  },
+  "C031_R15": {
+    "effect": "Only ACTIVE maintenance in the declared snapshot classifies temporarilyUnavailable. PLANNED, COMPLETED, missing status or another resource do not.",
+    "time_scope": "No date-based activation or automatic retraction; rebuild a new snapshot after status changes. Class inference accumulates.",
+    "tests": [
+      "R15_contract_active",
+      "R15_contract_planned",
+      "R15_contract_completed",
+      "R15_contract_missing",
+      "R15_contract_unlinked_active",
+      "R15_contract_other_resource_active"
+    ]
+  },
+  "C032_numeric": {
+    "input": "One nonnegative numeric energy value and exactly one selected electricity factor IRI per operation. One nonnegative numeric factor value, explicit kg CO2e/kWh unit. The selected IRI is the declared scenario current factor, without automatic version selection.",
+    "scope": "Matching lot→process→operation. Foreign-process edges are excluded and independently exposed by CCTX. Orphan records do not invalidate an unrelated lot.",
+    "equivalence": "Numeric equality, not RDF term identity or COUNT literals. Factor IRIs remain distinct selections even when their numeric values match.",
+    "output": "One numeric GHG amount per operation, agreeing with energy×factor. Arithmetic agreement tolerance 1e-9 is computational; input uniqueness uses exact numeric equality.",
+    "aggregation": "Validate uniqueness, then MIN chooses one representative numeric value per operation. SUM retains equal amounts from different operation IRIs. A selected incomplete operation prevents a complete lot/process total, rather than being dropped silently.",
+    "preparation": "CNUM-materialize.sparql marks NumericInputValid on valid input. It creates no individuals and is an explicit snapshot preparation, not an OWL axiom or SWRL conclusion. R01/R21 require this marker.",
+    "states": {
+      "VALID": "All scoped inputs are evaluable; after inference all operation outputs are coherent.",
+      "AMBIGUOUS_INPUT": "Conflicting energy/factor/contribution numeric values, or more than one selected factor IRI. Block numeric inference before SWRL.",
+      "NOT_EVALUABLE": "Missing, negative or unit-incompatible values, missing/mismatched post-inference output. Preserve structural validation and informational missing-data status; numerical totals are not certified.",
+      "NOT_APPLICABLE": "No integrated numerical operation scope or configuration intentionally lacks that capability."
+    },
+    "configuration_flag": "numeric_controls_enabled is true only in integrated/h3_extended",
+    "tests": [
+      "CNUM_equivalent_energy",
+      "CNUM_equivalent_factor_value",
+      "CNUM_equivalent_preasserted_ghg",
+      "CNUM_equivalent_output_quantity",
+      "Q06_numeric_equivalent_quantity",
+      "CNUM_zero_energy",
+      "CNUM_zero_factor",
+      "CNUM_conflicting_energy",
+      "CNUM_conflicting_factor_value",
+      "CNUM_two_factor_iris_equal_value",
+      "CNUM_conflicting_preasserted_ghg",
+      "CNUM_preasserted_ghg_mismatch",
+      "CNUM_negative_energy",
+      "CNUM_negative_factor",
+      "CNUM_missing_energy",
+      "CNUM_missing_factor_link",
+      "CNUM_missing_factor_value",
+      "CNUM_missing_factor_unit",
+      "CNUM_wrong_factor_unit",
+      "CNUM_equivalent_100_and_factor",
+      "CNUM_partial_lot_rejected",
+      "CNUM_orphan_outside_scope",
+      "CNUM_distinct_operations_equal_contributions",
+      "CNUM_foreign_operation_excluded"
+    ]
+  },
+  "C033_C26": {
+    "effect": "Each required cleaning pair has one numeric lot-A end and one numeric lot-B start. Missing or conflicting endpoints yield NOT_EVALUABLE; equivalent100/100.0 values count once.",
+    "time_origin": "Negative seconds are permitted with a common arbitrary origin. Ordering, not sign, determines validity.",
+    "equipment": "Every shared equipment must have a coherent cleaning record inside the unique interval; unshared equipment is outside this pair.",
+    "relationship_to_R26": "C26 evaluates the pair context separately. R26 false cannot certify cleaning if C26 is true. No physical contamination is inferred.",
+    "tests": [
+      "C26_contract_equivalent_end",
+      "C26_contract_equivalent_start",
+      "C26_contract_conflicting_end",
+      "C26_contract_conflicting_start",
+      "C26_contract_mixed_valid_invalid_end",
+      "C26_two_common_equipment_one_missing",
+      "C26_two_common_equipment_complete",
+      "C26_unshared_equipment_ignored"
+    ]
+  },
+  "execution_evidence": "No new engine/query execution is claimed by this authored contract; the runtime agent produces separate receipts."
+}

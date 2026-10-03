@@ -1,0 +1,143 @@
+{
+  "status": "AUTHORED_PROPOSAL_PENDING_FINAL_OUTPUTS",
+  "stage_scope": "Production stage formalized by this fixture; absence in a standard-specific projection is not a universal limitation of that standard.",
+  "P1_P5": [
+    {
+      "id": "P1",
+      "question": "Recursos requeridos por un proceso X",
+      "query": "Q04",
+      "query_path": "research/model/queries/Q04.sparql",
+      "expected_path": "research/model/expected/Q04.json",
+      "minimal_data": [
+        "Operation partOfProcess Process",
+        "Operation requiresResource Equipment or hasInput Material"
+      ],
+      "expected_answer": "Process=BatchA_Process → PearlMill_01, Operator_01 and recorded material inputs",
+      "interpretation_and_limit": "Resources required and formally linked inputs; no claim of industrial physical use or full lifecycle.",
+      "authored_tests": [
+        "Q04_row_positive",
+        "Q04_row_negative"
+      ],
+      "real_result_status": "PENDING_FINAL_RUNTIME_COTEJO"
+    },
+    {
+      "id": "P2",
+      "question": "Recursos para ejecutar un plan de proceso X",
+      "query": "Q02",
+      "query_path": "research/model/queries/Q02.sparql",
+      "expected_path": "research/model/expected/Q02.json",
+      "minimal_data": [
+        "Lot hasPlan Plan and hasProcess Process",
+        "Plan includesActivity Operation; Operation partOfProcess Process",
+        "Operation requiresResource Equipment or hasInput Material"
+      ],
+      "expected_answer": "Plan=BatchA_Plan → requested equipment/human resource and formalized inputs",
+      "interpretation_and_limit": "Q02 answers required/assigned resources; Q16 additionally reports duration only when usesResource is materialized. A plan is not an execution guarantee.",
+      "authored_tests": [
+        "Q02_row_positive",
+        "Q02_row_negative"
+      ],
+      "real_result_status": "PENDING_FINAL_RUNTIME_COTEJO"
+    },
+    {
+      "id": "P3",
+      "question": "Productos que usan un recurso X",
+      "query": "Q02",
+      "query_path": "research/model/queries/Q02.sparql",
+      "expected_path": "research/model/expected/Q02.json",
+      "minimal_data": [
+        "Lot producesProduct WhitePaint and hasPlan Plan",
+        "Plan planProduces WhitePaint and includesActivity Operation",
+        "Operation requiresResource PearlMill_01; Plan assignsResource PearlMill_01; R09 produces usesResource"
+      ],
+      "expected_answer": "Resource=PearlMill_01 → product WhitePaint",
+      "interpretation_and_limit": "The canonical Q02 traces the product through required resources and inputs. In this fixture R09 also gives an actual formal usesResource witness. This is a represented use, not a plant observation; Q02 alone does not establish physical execution.",
+      "authored_tests": [
+        "Q02_row_positive",
+        "Q02_row_negative",
+        "P3_WhitePaint_PearlMill_formal_use",
+        "P3_WhitePaint_PearlMill_without_R09"
+      ],
+      "real_result_status": "PENDING_FINAL_RUNTIME_COTEJO",
+      "formal_use_witness": {
+        "mechanism": "R09",
+        "path": "research/data/fixtures/assertions/P3_WhitePaint_PearlMill_formal_use.sparql",
+        "expected_boolean": true,
+        "without_R09_path": "research/data/fixtures/assertions/P3_WhitePaint_PearlMill_without_R09.sparql",
+        "without_R09_expected_boolean": false,
+        "identities": [
+          "f:WhitePaint",
+          "f:PearlMill_01",
+          "f:BatchA",
+          "f:BatchA_Plan",
+          "f:BatchA_Op2"
+        ],
+        "input_asserts_usesResource": false,
+        "scope": "Complementary authored ASK fixture, outside21SELECT/fourASK canonical mechanisms. Actual execution pending final runtime."
+      }
+    },
+    {
+      "id": "P4",
+      "question": "Actividades de un plan de proceso X",
+      "query": "Q18",
+      "query_path": "research/model/queries/Q18.sparql",
+      "expected_path": "research/model/expected/Q18.json",
+      "minimal_data": [
+        "Plan includesActivity Operation",
+        "Lot hasPlan Plan and hasProcess Process; Operation partOfProcess Process",
+        "StageIndex, stageName, lifecycleStage and duration recorded"
+      ],
+      "expected_answer": "BatchA_Plan → seven declared stages; totalDurationMinutes=110",
+      "interpretation_and_limit": "Explicit linear sequence and sum of recorded durations, not critical-path scheduling or arbitrary graph makespan.",
+      "authored_tests": [
+        "Q18_row_positive",
+        "Q18_row_negative"
+      ],
+      "real_result_status": "PENDING_FINAL_RUNTIME_COTEJO"
+    },
+    {
+      "id": "P5",
+      "question": "Producto generado por un plan de proceso X",
+      "query": "Q02",
+      "query_path": "research/model/queries/Q02.sparql",
+      "expected_path": "research/model/expected/Q02.json",
+      "minimal_data": [
+        "Lot hasPlan Plan and producesProduct Product",
+        "Plan planProduces same Product and includesActivity Operation",
+        "Operation required resource/input and same process"
+      ],
+      "expected_answer": "BatchA_Plan → WhitePaint",
+      "interpretation_and_limit": "Declared product generated by the represented plan; no universal plan-product cardinality or industrial production result.",
+      "authored_tests": [
+        "Q02_row_positive",
+        "Q02_row_negative"
+      ],
+      "real_result_status": "PENDING_FINAL_RUNTIME_COTEJO"
+    }
+  ],
+  "H2": "Compare actual query bindings in isolated source projections, union without alignment axioms/rules, and integrated contextual model; no general speed superiority claim.",
+  "H3": {
+    "hypothesis": "Contextual extension preserves prior represented answers and adds cumulative classification on existing pilot identities.",
+    "new_sources": [
+      "ontologies/iso10303-ap242-fragment.owl",
+      "ontologies/iso10303-alignment-rules.owl",
+      "research/data/automotive.ttl"
+    ],
+    "scope": "Local AP242 information fragments with explicit PilotProductRecord/PilotComponentRecord context; not STEP/EXPRESS conformance or a universal physical-component mapping.",
+    "expected": "47 pilot component IRIs retain Configuration_Item and gain Production_Component; AlternatorAssembly retains Product_Definition and gains Product. Unmarked records are not classified by these pilot rules.",
+    "prior_answers": "All21 integrated expected multiset bindings remain identical in h3_extended. This demonstrates preservation only for the authored fixture/query set.",
+    "identity": "Compare complete source/post-inference NamedIndividual IRI sets in both directions, and same IRI for every47component. No new individual, replacement or class retraction.",
+    "tests": [
+      "H3_components_same_identity",
+      "H3_source_classes_preserved",
+      "H3_unmapped_negative",
+      "H3_configuration_without_pilot_marker",
+      "H3_product_definition_without_pilot_marker",
+      "H3_shape_without_pilot_product",
+      "H3_pre_extension_no_classification",
+      "H3_no_new_named_individuals",
+      "H3_same_named_individual_set"
+    ],
+    "real_result_status": "PENDING_FINAL_RUNTIME_COTEJO"
+  }
+}

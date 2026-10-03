@@ -1,0 +1,64 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK { { SELECT ?lot ?ghgKgCO2e ?numNC WHERE {
+{ SELECT ?lot (SUM(?ghg) AS ?ghgKgCO2e) WHERE {
+{ SELECT ?lot ?op (MIN(?inputEnergy) AS ?energy)
+(MIN(?inputGHG) AS ?ghg) WHERE {
+?lot a i:Lot ; i:hasProcess ?process ; i:hasActivity ?op .
+?op a i:ProcessOperation ; i:partOfProcess ?process .
+?lot t:hasGHGContribution ?op .
+?op i:consumesEnergyKWh ?inputEnergy .
+FILTER(isNumeric(?inputEnergy) && ?inputEnergy >= 0)
+FILTER NOT EXISTS { ?op i:consumesEnergyKWh ?rowEnergyOther .
+FILTER(!isNumeric(?rowEnergyOther) || ?rowEnergyOther != ?inputEnergy) }
+?op t:hasEmissionFactor ?rowFactor .
+FILTER(isIRI(?rowFactor))
+FILTER NOT EXISTS { ?op t:hasEmissionFactor ?rowOtherFactor .
+FILTER(!sameTerm(?rowOtherFactor,?rowFactor)) }
+?rowFactor a t:ElectricityEmissionFactor ; t:factorUnit "kg CO2e/kWh" .
+FILTER NOT EXISTS { ?rowFactor t:factorUnit ?rowOtherUnit .
+FILTER(STR(?rowOtherUnit) != "kg CO2e/kWh") }
+?rowFactor t:factorValue ?rowFactorValue .
+FILTER(isNumeric(?rowFactorValue) && ?rowFactorValue >= 0)
+FILTER NOT EXISTS { ?rowFactor t:factorValue ?rowFactorOther .
+FILTER(!isNumeric(?rowFactorOther) || ?rowFactorOther != ?rowFactorValue) }
+?op e:hasGHGImpactKgCO2e ?inputGHG .
+FILTER(isNumeric(?inputGHG) && ?inputGHG >= 0)
+FILTER NOT EXISTS { ?op e:hasGHGImpactKgCO2e ?rowGHGOther .
+FILTER(!isNumeric(?rowGHGOther) || ?rowGHGOther != ?inputGHG) }
+FILTER(ABS(?inputGHG - ?inputEnergy * ?rowFactorValue) <= 0.000000001)
+FILTER NOT EXISTS { ?lot a i:Lot ; i:hasProcess ?allProcess ; i:hasActivity ?allOperation .
+?allOperation a i:ProcessOperation ; i:partOfProcess ?allProcess .
+FILTER NOT EXISTS { ?allOperation i:consumesEnergyKWh ?allEnergy .
+FILTER(isNumeric(?allEnergy) && ?allEnergy >= 0)
+FILTER NOT EXISTS { ?allOperation i:consumesEnergyKWh ?allCheckEnergyOther .
+FILTER(!isNumeric(?allCheckEnergyOther) || ?allCheckEnergyOther != ?allEnergy) }
+?allOperation t:hasEmissionFactor ?allCheckFactor .
+FILTER(isIRI(?allCheckFactor))
+FILTER NOT EXISTS { ?allOperation t:hasEmissionFactor ?allCheckOtherFactor .
+FILTER(!sameTerm(?allCheckOtherFactor,?allCheckFactor)) }
+?allCheckFactor a t:ElectricityEmissionFactor ; t:factorUnit "kg CO2e/kWh" .
+FILTER NOT EXISTS { ?allCheckFactor t:factorUnit ?allCheckOtherUnit .
+FILTER(STR(?allCheckOtherUnit) != "kg CO2e/kWh") }
+?allCheckFactor t:factorValue ?allCheckFactorValue .
+FILTER(isNumeric(?allCheckFactorValue) && ?allCheckFactorValue >= 0)
+FILTER NOT EXISTS { ?allCheckFactor t:factorValue ?allCheckFactorOther .
+FILTER(!isNumeric(?allCheckFactorOther) || ?allCheckFactorOther != ?allCheckFactorValue) }
+?allOperation e:hasGHGImpactKgCO2e ?allGHG .
+FILTER(isNumeric(?allGHG) && ?allGHG >= 0)
+FILTER NOT EXISTS { ?allOperation e:hasGHGImpactKgCO2e ?allCheckGHGOther .
+FILTER(!isNumeric(?allCheckGHGOther) || ?allCheckGHGOther != ?allGHG) }
+FILTER(ABS(?allGHG - ?allEnergy * ?allCheckFactorValue) <= 0.000000001) } }
+}
+GROUP BY ?lot ?op } } GROUP BY ?lot }
+{ SELECT ?lot (COUNT(DISTINCT ?nc) AS ?numNC) WHERE {
+?lot a i:Lot . OPTIONAL { ?lot i:hasNonConformity ?nc }
+} GROUP BY ?lot } } ORDER BY ?lot } FILTER(?lot=f:BatchC && ?numNC=1) }

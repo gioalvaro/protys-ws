@@ -1,0 +1,14 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Umbral ilustrativo: no se atribuye carácter regulatorio al valor50.
+ex:Architectural_Paint a owl:Class ; rdfs:subClassOf [ a owl:Restriction ;
+  owl:onProperty ex:hasVOCContent ;
+  owl:allValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+    owl:withRestrictions ([xsd:maxExclusive 50.0]) ] ] .
+ex:hasVOCContent a owl:DatatypeProperty .
+ex:Critical_Process a owl:Class ; rdfs:subClassOf [ a owl:Restriction ;
+  owl:onProperty ex:executedBy ; owl:allValuesFrom ex:Certified_Operator ] .
+ex:executedBy a owl:ObjectProperty .
+ex:Certified_Operator a owl:Class .

@@ -1,0 +1,13 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "functionalUnit",
+      "outputLiters",
+      "impactPerFU"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

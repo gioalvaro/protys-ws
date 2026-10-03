@@ -1,0 +1,17 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Patrón ilustrativo, separado del artefacto ejecutable.
+ex:Process a owl:Class ;
+  owl:disjointUnionOf (ex:Manufacturing_Process ex:Quality_Process
+  ex:Support_Process) .
+ex:Manufacturing_Process a owl:Class .
+ex:Quality_Process a owl:Class .
+ex:Support_Process a owl:Class .
+ex:Grinding_Process a owl:Class ;
+  rdfs:subClassOf ex:Manufacturing_Process ,
+    [ a owl:Restriction ; owl:onProperty ex:requiresResource ;
+      owl:someValuesFrom ex:Grinding_Equipment ] .
+ex:Grinding_Equipment a owl:Class .
+ex:requiresResource a owl:ObjectProperty .

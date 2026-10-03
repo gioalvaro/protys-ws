@@ -1,0 +1,19 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+# Extracto de declaraciones nombradas y vínculos directos.
+# Fuente: ontologies/iso14040-module.owl; no reproduce todas sus restricciones.
+e:LCAStudy a owl:Class .
+e:GoalAndScopeDefinition a owl:Class .
+e:FunctionalUnit a owl:Class .
+e:SystemBoundary a owl:Class .
+e:LifeCycleInventory a owl:Class .
+e:ElementaryFlow a owl:Class .
+e:ProductFlow a owl:Class .
+e:UnitProcess a owl:Class .
+e:LifeCycleImpactAssessment a owl:Class .
+e:ImpactCategory a owl:Class .
+e:CharacterizationFactor a owl:Class .
+e:ImpactIndicator a owl:Class .
+e:EnvironmentalAspect a owl:Class .
+e:AllocationProcedure a owl:Class .
+e:Interpretation a owl:Class .

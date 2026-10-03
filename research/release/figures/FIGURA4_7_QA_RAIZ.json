@@ -1,0 +1,18 @@
+{
+  "status": "VISUAL_QA_PASS_SOURCE_UNALTERED",
+  "timestamp_utc": "2026-10-03T16:40:52.491529+00:00",
+  "reviewer": "Agente coordinador",
+  "png_sha256": "0a1664badfb8c9792c9f31b479e8ddc54900bc88c0668289c103ac65fc89886b",
+  "source_dimensions_pixels": [
+    3762,
+    3300
+  ],
+  "view": "Native original PNG requested via view_image; app rendered 3392x2975 from source3762x3300. No montage or image edit. Final placement in DOCX still pending.",
+  "findings": [
+    "Both panels readable; all four configurations labelled; title, axes and legend unobstructed.",
+    "Every30 conserved samples per configuration shown; boxes and medians agree with actual relative distributions.",
+    "Time units s and observed RSS MiB explicit; no clipping or overlapping labels.",
+    "Mean, median and observed point ranges checked independently against conserved runs; no equivalent-task speed claim."
+  ],
+  "remaining": "Inspect its actual page placement in final C4."
+}

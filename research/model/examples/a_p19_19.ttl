@@ -1,0 +1,20 @@
+@prefix : <urn:protys:example:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Material peligroso implica requisitos especiales de manejo
+:Hazardous_Material rdfs:subClassOf :Material .
+:Hazardous_Material rdfs:subClassOf [
+rdf:type owl:Class ;
+owl:intersectionOf (
+[ rdf:type owl:Restriction ;
+owl:onProperty :requiresHandling ;
+owl:hasValue :Special_Hazardous_Handling ]
+[ rdf:type owl:Restriction ;
+owl:onProperty :requiresStorage ;
+owl:hasValue :Segregated_Storage ]
+[ rdf:type owl:Restriction ;
+owl:onProperty :requiresDisposal ;
+owl:hasValue :Hazardous_Waste_Disposal ]
+) ] .

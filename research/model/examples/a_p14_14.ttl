@@ -1,0 +1,23 @@
+@prefix : <urn:protys:example:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Parámetro hipotético; no huella ambiental observada.
+:EnvironmentalImpact a owl:Class .
+:hasImpactValue a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+:High_Environmental_Impact a owl:Class ;
+  owl:equivalentClass [ a owl:Class ;
+    owl:intersectionOf ( :EnvironmentalImpact
+      [ a owl:Restriction ; owl:onProperty :hasImpactValue ;
+        owl:someValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+          owl:withRestrictions ([ xsd:minInclusive 5.0 ]) ] ]) ] .
+:Material a owl:Class .
+:hasEnvironmentalImpact a owl:ObjectProperty .
+:requiresAssessment a owl:ObjectProperty .
+:Environmental_Special_Assessment a owl:NamedIndividual .
+[ a owl:Class ; owl:intersectionOf ( :Material
+  [ a owl:Restriction ; owl:onProperty :hasEnvironmentalImpact ;
+    owl:someValuesFrom :High_Environmental_Impact ]) ]
+  rdfs:subClassOf [ a owl:Restriction ; owl:onProperty :requiresAssessment ;
+    owl:hasValue :Environmental_Special_Assessment ] .

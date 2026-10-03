@@ -53,7 +53,7 @@ protys-ws/
 │       ├── repository/      # Repositorios JPA
 │       └── exception/       # Manejo global de errores
 │
-├── frontend/                # React 18.2 + Tailwind CSS 3.4
+├── frontend/                # React 18 + Tailwind CSS 3.4
 │   ├── package.json
 │   ├── Dockerfile
 │   └── src/
@@ -251,11 +251,13 @@ mvn test -Dtest=ERPConnectorServiceTest
 | OWL API del proceso de reglas | OWL API | 4.5.27 |
 | R2RML | CARML Engine | 0.4.3 |
 | Base de datos | PostgreSQL | 15 |
-| Frontend | React | 18.2 |
-| Estilos | Tailwind CSS | 3.4 |
+| Frontend | React | 18.3.1 (entorno probado) |
+| Estilos | Tailwind CSS | 3.4.19 (entorno probado) |
 | Gráficos | Recharts | 2.10 |
 | Contenedores | Docker Compose | 3.8 |
 
 ## Licencia
 
 Este proyecto es parte de una tesis doctoral desarrollada en la Universidad Tecnológica Nacional (UTN), Facultad Regional Santa Fe, en colaboración con INGAR (CONICET-UTN). Distribuido bajo licencia MIT.
+
+El entorno probado de la interfaz y sus límites de reinstalación se documentan en `research/release/README.md`. Las dependencias académicas y las de la interfaz se identifican por separado.

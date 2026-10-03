@@ -1,0 +1,10 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:Material a owl:Class ;
+  owl:equivalentClass [ a owl:Class ;
+    owl:unionOf (ex:Raw_Material ex:Intermediate_Product ex:Finished_Product) ] .
+ex:Raw_Material a owl:Class .
+ex:Intermediate_Product a owl:Class .
+ex:Finished_Product a owl:Class .

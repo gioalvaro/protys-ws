@@ -1,0 +1,1 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix ex: <urn:strict:> . ex:A a owl:Class; owl:disjointWith ex:B . ex:B a owl:Class. ex:x a owl:NamedIndividual,ex:A,ex:B.

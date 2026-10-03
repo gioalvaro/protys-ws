@@ -1,0 +1,3759 @@
+{
+  "schema_version": "1.0",
+  "derivation": "Authored input predicates and independent arithmetic; no result exported as expectation",
+  "assertions": [
+    {
+      "id": "R01_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R01_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R01",
+      "case": "positive"
+    },
+    {
+      "id": "R01_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R01_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R01",
+      "case": "negative"
+    },
+    {
+      "id": "R02_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R02_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R02",
+      "case": "positive"
+    },
+    {
+      "id": "R02_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R02_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R02",
+      "case": "negative"
+    },
+    {
+      "id": "R03_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R03_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R03",
+      "case": "positive"
+    },
+    {
+      "id": "R03_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R03_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R03",
+      "case": "negative"
+    },
+    {
+      "id": "R04_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R04",
+      "case": "positive"
+    },
+    {
+      "id": "R04_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R04",
+      "case": "negative"
+    },
+    {
+      "id": "R05_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R05_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R05",
+      "case": "positive"
+    },
+    {
+      "id": "R05_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R05_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R05",
+      "case": "negative"
+    },
+    {
+      "id": "R06_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R06_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R06",
+      "case": "positive"
+    },
+    {
+      "id": "R06_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R06_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R06",
+      "case": "negative"
+    },
+    {
+      "id": "R08_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R08_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R08",
+      "case": "positive"
+    },
+    {
+      "id": "R08_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R08_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R08",
+      "case": "negative"
+    },
+    {
+      "id": "R09_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R09_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R09",
+      "case": "positive"
+    },
+    {
+      "id": "R09_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R09_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R09",
+      "case": "negative"
+    },
+    {
+      "id": "R10_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R10_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R10",
+      "case": "positive"
+    },
+    {
+      "id": "R10_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R10_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R10",
+      "case": "negative"
+    },
+    {
+      "id": "R11_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R11_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R11",
+      "case": "positive"
+    },
+    {
+      "id": "R11_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R11_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R11",
+      "case": "negative"
+    },
+    {
+      "id": "R12_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R12_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R12",
+      "case": "positive"
+    },
+    {
+      "id": "R12_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R12_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R12",
+      "case": "negative"
+    },
+    {
+      "id": "R13_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R13_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R13",
+      "case": "positive"
+    },
+    {
+      "id": "R13_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R13_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R13",
+      "case": "negative"
+    },
+    {
+      "id": "R14_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R14_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R14",
+      "case": "positive"
+    },
+    {
+      "id": "R14_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R14_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R14",
+      "case": "negative"
+    },
+    {
+      "id": "R15_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R15",
+      "case": "positive"
+    },
+    {
+      "id": "R15_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R15",
+      "case": "negative"
+    },
+    {
+      "id": "R17_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R17_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R17",
+      "case": "positive"
+    },
+    {
+      "id": "R17_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R17_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R17",
+      "case": "negative"
+    },
+    {
+      "id": "R18_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R18_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R18",
+      "case": "positive"
+    },
+    {
+      "id": "R18_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R18_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R18",
+      "case": "negative"
+    },
+    {
+      "id": "R20_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R20_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R20",
+      "case": "positive"
+    },
+    {
+      "id": "R20_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R20_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R20",
+      "case": "negative"
+    },
+    {
+      "id": "R21_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R21_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R21",
+      "case": "positive"
+    },
+    {
+      "id": "R21_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R21_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R21",
+      "case": "negative"
+    },
+    {
+      "id": "R22_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R22_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R22",
+      "case": "positive"
+    },
+    {
+      "id": "R22_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R22_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R22",
+      "case": "negative"
+    },
+    {
+      "id": "R23_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R23_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R23",
+      "case": "positive"
+    },
+    {
+      "id": "R23_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R23_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R23",
+      "case": "negative"
+    },
+    {
+      "id": "R24_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R24_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R24",
+      "case": "positive"
+    },
+    {
+      "id": "R24_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R24_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R24",
+      "case": "negative"
+    },
+    {
+      "id": "R25_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R25_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R25",
+      "case": "positive"
+    },
+    {
+      "id": "R25_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R25_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R25",
+      "case": "negative"
+    },
+    {
+      "id": "R23_zero_indicator",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R23_zero_indicator.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R23",
+      "case": "zero denominator"
+    },
+    {
+      "id": "R11_fractional_1",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R11_fractional_1.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R11",
+      "case": "Independent fractional arithmetic; decimal scale avoids integer-numerator rounding in SWRLAPI2.1.3; precision is computational, not physical accuracy"
+    },
+    {
+      "id": "R11_fractional_2",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R11_fractional_2.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R11",
+      "case": "Independent fractional arithmetic; decimal scale avoids integer-numerator rounding in SWRLAPI2.1.3; precision is computational, not physical accuracy"
+    },
+    {
+      "id": "R11_fractional_3",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R11_fractional_3.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R11",
+      "case": "Independent fractional arithmetic; decimal scale avoids integer-numerator rounding in SWRLAPI2.1.3; precision is computational, not physical accuracy"
+    },
+    {
+      "id": "R23_fractional_1",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R23_fractional_1.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R23",
+      "case": "Independent fractional arithmetic; decimal scale avoids integer-numerator rounding in SWRLAPI2.1.3; precision is computational, not physical accuracy"
+    },
+    {
+      "id": "R23_fractional_2",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R23_fractional_2.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R23",
+      "case": "Independent fractional arithmetic; decimal scale avoids integer-numerator rounding in SWRLAPI2.1.3; precision is computational, not physical accuracy"
+    },
+    {
+      "id": "R23_fractional_3",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R23_fractional_3.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R23",
+      "case": "Independent fractional arithmetic; decimal scale avoids integer-numerator rounding in SWRLAPI2.1.3; precision is computational, not physical accuracy"
+    },
+    {
+      "id": "R13_cross_lot",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R13_cross_lot.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R13",
+      "case": "different lot"
+    },
+    {
+      "id": "R01_WrongUnit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R01_WrongUnit.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R01",
+      "case": "Factor class alone is insufficient; explicit electrical unit required"
+    },
+    {
+      "id": "R01_MissingUnit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R01_MissingUnit.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "mechanism": "R01",
+      "case": "Factor class alone is insufficient; explicit electrical unit required"
+    },
+    {
+      "id": "R21_incompatible_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R21_incompatible_unit.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/incompatible-preasserted-contribution.ttl"
+      ],
+      "mechanism": "R21",
+      "case": "Even an imported GHG value is excluded when its factor unit is not electrical"
+    },
+    {
+      "id": "A1_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A1_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A1_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A1_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "A2_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A2_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A2_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A2_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "A3_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A3_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A3_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A3_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "A4_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A4_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A4_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A4_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "A5_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A5_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A5_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A5_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "A6_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A6_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A6_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A6_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "A7_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A7_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Directional context-property mapping with explicitly distinct endpoint identities"
+    },
+    {
+      "id": "A7_no_global_reclassification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/A7_no_global_reclassification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/contextual-correspondences.ttl"
+      ],
+      "case": "Non-entailment of old universal class mapping under open-world semantics; not asserted membership falsity"
+    },
+    {
+      "id": "PurchasedInputs_not_elementary",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/PurchasedInputs_not_elementary.sparql",
+      "expected_boolean": false,
+      "case": "Technosphere material inputs must not be reclassified as nature exchanges"
+    },
+    {
+      "id": "No_allocation_in_painting",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/No_allocation_in_painting.sparql",
+      "expected_boolean": false,
+      "case": "Main painting fixture has no supplied allocation procedure and executes no allocation algorithm"
+    },
+    {
+      "id": "Scenario_factor_not_LCIA",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Scenario_factor_not_LCIA.sparql",
+      "expected_boolean": false,
+      "case": "Declared electricity emission factor must not be reclassified as a LCIA characterization factor"
+    },
+    {
+      "id": "Indicator_matches_electric_sum",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Indicator_matches_electric_sum.sparql",
+      "expected_boolean": true,
+      "case": "Same boundary and magnitude recorded indicator agrees with sum of distinct SWRL operation contributions"
+    },
+    {
+      "id": "R07_missing",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R07_missing.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R07-missing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R07",
+      "case": "missing"
+    },
+    {
+      "id": "R07_complete",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R07_complete.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R07-complete.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R07",
+      "case": "complete"
+    },
+    {
+      "id": "R16_missing",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R16_missing.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R16-missing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R16",
+      "case": "missing"
+    },
+    {
+      "id": "R16_complete",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R16_complete.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R16-complete.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R16",
+      "case": "complete"
+    },
+    {
+      "id": "R19_missing",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R19_missing.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R19-missing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R19",
+      "case": "missing"
+    },
+    {
+      "id": "R19_complete",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R19_complete.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R19-complete.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R19",
+      "case": "complete"
+    },
+    {
+      "id": "R26_missing",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R26_missing.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R26-missing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R26",
+      "case": "missing",
+      "expected_cleaning_status": "MISSING_CLEANING_RECORD"
+    },
+    {
+      "id": "R26_valid",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R26_valid.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R26-valid.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R26",
+      "case": "valid",
+      "expected_cleaning_status": "COMPLETE_CLEANING_RECORD"
+    },
+    {
+      "id": "R26_wrong_equipment",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R26_wrong_equipment.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R26-wrong_equipment.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R26",
+      "case": "wrong_equipment",
+      "expected_cleaning_status": "MISSING_CLEANING_RECORD"
+    },
+    {
+      "id": "R26_historical",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R26_historical.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R26-historical.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R26",
+      "case": "historical",
+      "expected_cleaning_status": "MISSING_CLEANING_RECORD"
+    },
+    {
+      "id": "R26_overlaps_next_lot",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R26_overlaps_next_lot.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R26-overlaps_next_lot.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "mechanism": "R26",
+      "case": "overlaps_next_lot",
+      "expected_cleaning_status": "MISSING_CLEANING_RECORD"
+    },
+    {
+      "id": "C26_missing_end",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_missing_end.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-missing_end.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Required pair is not evaluable; canonical R26 false cannot approve cleaning",
+      "expected_cleaning_status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "C26_missing_start",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_missing_start.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-missing_start.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Required pair is not evaluable; canonical R26 false cannot approve cleaning",
+      "expected_cleaning_status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "C26_missing_equipment_a",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_missing_equipment_a.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-missing_equipment_a.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Required pair is not evaluable; canonical R26 false cannot approve cleaning",
+      "expected_cleaning_status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "C26_missing_equipment_b",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_missing_equipment_b.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-missing_equipment_b.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Required pair is not evaluable; canonical R26 false cannot approve cleaning",
+      "expected_cleaning_status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "C26_different_equipment",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_different_equipment.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-different_equipment.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Required pair is not evaluable; canonical R26 false cannot approve cleaning",
+      "expected_cleaning_status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "C26_reversed_interval",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_reversed_interval.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-reversed_interval.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Required pair is not evaluable; canonical R26 false cannot approve cleaning",
+      "expected_cleaning_status": "NOT_EVALUABLE"
+    },
+    {
+      "id": "C26_nonnumeric",
+      "configuration": "integrated",
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-nonnumeric.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_status": "INCONSISTENT",
+      "expected_cleaning_status": "NOT_EVALUABLE",
+      "case": "Non-numeric endpoint is also incompatible with the declared decimal range; case evaluability is reported separately from OWL inconsistency"
+    },
+    {
+      "id": "C26_negative_origin_valid",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_negative_origin_valid.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26-negative-origin.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Negative seconds may be valid with an arbitrary common origin; interval ordering and record scope determine evaluability",
+      "expected_cleaning_status": "COMPLETE_CLEANING_RECORD"
+    },
+    {
+      "id": "CCTX_complete",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CCTX_complete.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-complete.ttl"
+      ],
+      "case": "Declared lot/plan operations match manufacturing process; unrelated standalone operation does not violate integrity",
+      "expected_context_status": "CONTEXT_VALID"
+    },
+    {
+      "id": "CCTX_foreign_link",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CCTX_foreign_link.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "case": "Imported contradictory activity/contribution/plan links are visible as context errors; OWL consistency alone is insufficient",
+      "expected_context_status": "CONTEXT_INTEGRITY_ERROR"
+    },
+    {
+      "id": "CCTX_foreign_activity_only",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CCTX_foreign_activity_only.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign-activity-only.ttl"
+      ],
+      "control": "CCTX",
+      "isolated_branch": "activity",
+      "expected_isolated_branches": {
+        "activity": true,
+        "contribution": false,
+        "plan_activity": false
+      },
+      "case": "Exactly one declared activity edge refers to a foreign-process operation; the other CCTX branches must not trigger for this pair",
+      "expected_context_status": "CONTEXT_INTEGRITY_ERROR"
+    },
+    {
+      "id": "CCTX_foreign_contribution_only",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CCTX_foreign_contribution_only.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign-contribution-only.ttl"
+      ],
+      "control": "CCTX",
+      "isolated_branch": "contribution",
+      "expected_isolated_branches": {
+        "activity": false,
+        "contribution": true,
+        "plan_activity": false
+      },
+      "case": "Exactly one declared contribution edge refers to a foreign-process operation; the other CCTX branches must not trigger for this pair",
+      "expected_context_status": "CONTEXT_INTEGRITY_ERROR"
+    },
+    {
+      "id": "CCTX_foreign_plan_activity_only",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CCTX_foreign_plan_activity_only.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign-plan_activity-only.ttl"
+      ],
+      "control": "CCTX",
+      "isolated_branch": "plan_activity",
+      "expected_isolated_branches": {
+        "activity": false,
+        "contribution": false,
+        "plan_activity": true
+      },
+      "case": "Exactly one declared plan_activity edge refers to a foreign-process operation; the other CCTX branches must not trigger for this pair",
+      "expected_context_status": "CONTEXT_INTEGRITY_ERROR"
+    },
+    {
+      "id": "Q01_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q01_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q01",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?process=f:ScopeProcess && ?energyKWh=10 && ?ghgKgCO2e=5"
+    },
+    {
+      "id": "Q01_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q01_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q01",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?process=f:ForeignProcess"
+    },
+    {
+      "id": "Q02_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q02_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q02",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?lot=f:ScopeLot && ?resource=f:PearlMill_01"
+    },
+    {
+      "id": "Q02_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q02_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q02",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?lot=f:ScopeLot && ?resource=f:FilterSystem_04"
+    },
+    {
+      "id": "Q03_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q03_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q03",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?lot=f:ScopeLot && ?energyKWh=10 && ?ghgKgCO2e=5"
+    },
+    {
+      "id": "Q03_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q03_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q03",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e>5"
+    },
+    {
+      "id": "Q06_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q06",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e=5 && ?kgCO2ePerL=0.05"
+    },
+    {
+      "id": "Q06_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q06",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e>5"
+    },
+    {
+      "id": "Q11_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q11_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q11",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e=5 && ?numNC=0"
+    },
+    {
+      "id": "Q11_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q11_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q11",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e>5"
+    },
+    {
+      "id": "Q16_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q16_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q16",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?plan=f:ScopePlan && ?resource=f:PearlMill_01 && ?usedTimeMinutes=20"
+    },
+    {
+      "id": "Q16_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q16_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q16",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?plan=f:ScopePlan && ?resource=f:FilterSystem_04"
+    },
+    {
+      "id": "Q17_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q17_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q17",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?lot=f:ScopeLot && ?impactPerFU=0.05"
+    },
+    {
+      "id": "Q17_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q17_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q17",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?lot=f:ScopeLot && ?impactPerFU>0.05"
+    },
+    {
+      "id": "Q18_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q18_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q18",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?plan=f:ScopePlan && ?activity=f:ScopeOperation && ?totalDurationMinutes=20"
+    },
+    {
+      "id": "Q18_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q18_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q18",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?plan=f:ScopePlan && ?activity=f:ForeignOperation"
+    },
+    {
+      "id": "Q19_foreign_context_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q19_foreign_context_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q19",
+      "case": "Same process operation retains independent5kgCO2e contribution and20min duration despite an imported foreign link",
+      "expected_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e=5"
+    },
+    {
+      "id": "Q19_foreign_context_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q19_foreign_context_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/scope-context-foreign.ttl"
+      ],
+      "query": "Q19",
+      "case": "Foreign process operation must not contribute to this lot, product or plan aggregate",
+      "excluded_row_condition": "?lot=f:ScopeLot && ?ghgKgCO2e>5"
+    },
+    {
+      "id": "Q06_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q06_IncompatibleKgLot",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_IncompatibleKgLot.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q06_ZeroLitersLot",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_ZeroLitersLot.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q06_MissingQuantityLot",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_MissingQuantityLot.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q06_equal_contributions_preserved",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_equal_contributions_preserved.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "case": "Two distinct operations with equal 5kg CO2e contributions must sum to10, not5"
+    },
+    {
+      "id": "Q07_boundary_inclusive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_boundary_inclusive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q07_above_boundary",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_above_boundary.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q07_zero_invalid",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_zero_invalid.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q07_missing_mass",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_missing_mass.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "case": "Missing input mass has no fabricated balance"
+    },
+    {
+      "id": "Q07_gram_fields_not_canonical_kg",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_gram_fields_not_canonical_kg.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "case": "Explicit gram properties do not satisfy canonical kg fields. Q07 performs no unit conversion and cannot detect a physically mislabeled numeric value in a Kg property."
+    },
+    {
+      "id": "Q08_descriptive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q08_descriptive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q08_zero_volume",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q08_zero_volume.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ]
+    },
+    {
+      "id": "Q01_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q01_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q01",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?process=f:BatchA_Process && ABS(?ghgKgCO2e-57.6666665)<0.000000001"
+    },
+    {
+      "id": "Q01_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q01_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q01",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?process=f:MissingProcess"
+    },
+    {
+      "id": "Q02_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q02_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q02",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lot=f:BatchA && ?plan=f:BatchA_Plan && ?resource=f:TitaniumDioxide"
+    },
+    {
+      "id": "Q02_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q02_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q02",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lot=f:BatchA && ?plan=f:BatchB_Plan"
+    },
+    {
+      "id": "Q03_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q03_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q03",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lot=f:BatchB && ABS(?ghgKgCO2e-115.3333335)<0.000000001"
+    },
+    {
+      "id": "Q03_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q03_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q03",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lot=f:BatchA && ?ghgKgCO2e>100"
+    },
+    {
+      "id": "Q04_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q04_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q04",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?process=f:BatchA_Process && ?resource=f:PearlMill_01"
+    },
+    {
+      "id": "Q04_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q04_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q04",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?process=f:BatchA_Process && ?resource=f:UnrelatedBottleneck"
+    },
+    {
+      "id": "Q05_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q05_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q05",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?material=f:Coalescent && ?exceedsDeclaredCarbonThreshold=false"
+    },
+    {
+      "id": "Q05_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q05_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q05",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?material=f:Water"
+    },
+    {
+      "id": "Q06_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q06",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lot=f:BatchA && ?liters=98.4"
+    },
+    {
+      "id": "Q06_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q06",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lot=f:IncompatibleKgLot"
+    },
+    {
+      "id": "Q07_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q07",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?operation=f:BatchB_Op7 && ?residueKg=2.5 && ?status=\"OK\""
+    },
+    {
+      "id": "Q07_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q07_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q07",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?operation=f:BatchB_Op7 && ?status=\"REVISAR\""
+    },
+    {
+      "id": "Q08_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q08_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q08",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?operation=f:BatchA_Op2 && ?yieldPercent=100 && ?kgCO2ePerL=0.05"
+    },
+    {
+      "id": "Q08_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q08_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q08",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?operation=f:BatchZero_Op2"
+    },
+    {
+      "id": "Q09_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q09_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q09",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?process=f:BatchA_Process && ?indicator=f:BatchA_Indicator && ?factor=f:GridFactor"
+    },
+    {
+      "id": "Q09_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q09_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q09",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?process=f:BatchA_Process && ?indicator=f:BatchB_Indicator"
+    },
+    {
+      "id": "Q10_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q10_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q10",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?material=f:TitaniumDioxide && ?supplier=f:Supplier_A"
+    },
+    {
+      "id": "Q10_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q10_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q10",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?material=f:TitaniumDioxide && ?supplier=f:Supplier_B"
+    },
+    {
+      "id": "Q11_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q11_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q11",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lot=f:BatchC && ?numNC=1"
+    },
+    {
+      "id": "Q11_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q11_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q11",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lot=f:BatchA && ?numNC=1"
+    },
+    {
+      "id": "Q12_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q12_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q12",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?indicator=f:BatchA_Indicator && ?operation=f:BatchA_Op2 && ?resource=f:PearlMill_01"
+    },
+    {
+      "id": "Q12_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q12_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q12",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?indicator=f:BatchB_Indicator && ?operation=f:BatchA_Op2"
+    },
+    {
+      "id": "Q13_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q13_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q13",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?process=f:BatchA_Process && ?flow=f:BatchA_Flow_TitaniumDioxide && ?quantityKg=25"
+    },
+    {
+      "id": "Q13_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q13_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q13",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?process=f:BatchA_Process && ?flow=f:BatchB_Flow_TitaniumDioxide"
+    },
+    {
+      "id": "Q14_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q14_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q14",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lotA=f:BatchB && ?lotB=f:BatchC && ?equipment=f:PearlMill_01"
+    },
+    {
+      "id": "Q14_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q14_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q14",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lotA=f:BatchA && ?lotB=f:BatchB"
+    },
+    {
+      "id": "Q15_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q15_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q15",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?clean=f:ValidCleaning && ?waterL=5"
+    },
+    {
+      "id": "Q15_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q15_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q15",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?clean=f:BatchA_Op2"
+    },
+    {
+      "id": "Q16_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q16_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q16",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?plan=f:BatchA_Plan && ?resource=f:Operator_01 && !BOUND(?oeePercent)"
+    },
+    {
+      "id": "Q16_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q16_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q16",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?resource=f:Operator_01 && BOUND(?oeePercent)"
+    },
+    {
+      "id": "Q17_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q17_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q17",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lot=f:BatchA && ?outputLiters=98.4"
+    },
+    {
+      "id": "Q17_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q17_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q17",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lot=f:ZeroLitersLot"
+    },
+    {
+      "id": "Q18_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q18_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q18",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?plan=f:BatchA_Plan && ?activity=f:BatchA_Op2 && ?stageIndex=2 && ?totalDurationMinutes=110"
+    },
+    {
+      "id": "Q18_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q18_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q18",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?plan=f:BatchA_Plan && ?activity=f:BatchB_Op2"
+    },
+    {
+      "id": "Q19_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q19_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q19",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?lot=f:BatchB && ?ghgKgCO2e>100"
+    },
+    {
+      "id": "Q19_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q19_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q19",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?lot=f:BatchA && ?ghgKgCO2e>100"
+    },
+    {
+      "id": "Q20_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q20_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q20",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?entity=f:MissingProcess && ?kind=\"ManufacturingProcess\""
+    },
+    {
+      "id": "Q20_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q20_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q20",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?entity=f:BatchA_Process"
+    },
+    {
+      "id": "Q21_row_positive",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q21_row_positive.sparql",
+      "expected_boolean": true,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q21",
+      "case": "Specified positive row in nonempty functional snapshot",
+      "expected_row_condition": "?entity=f:GridFactor && STR(?currentVersion)=\"2\" && STR(?priorVersion)=\"1\""
+    },
+    {
+      "id": "Q21_row_negative",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q21_row_negative.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/fixtures/rule-boundaries.ttl"
+      ],
+      "query": "Q21",
+      "case": "Specified wrong-context, absent-critical-input, incompatible-unit or filter-boundary row must not appear",
+      "excluded_row_condition": "?entity=f:UnchangedVersionEntity"
+    },
+    {
+      "id": "Ablation_R03",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Ablation_R03.sparql",
+      "expected_boolean": false,
+      "enabled_rules": "OWL_ONLY",
+      "case": "same integrated TBox and CONSTRUCT, zero active SWRL"
+    },
+    {
+      "id": "Ablation_Q06",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Ablation_Q06.sparql",
+      "expected_boolean": false,
+      "enabled_rules": "OWL_ONLY",
+      "case": "same integrated TBox and CONSTRUCT, zero active SWRL"
+    },
+    {
+      "id": "Ablation_Q07",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Ablation_Q07.sparql",
+      "expected_boolean": true,
+      "enabled_rules": "OWL_ONLY",
+      "case": "same integrated TBox and CONSTRUCT, zero active SWRL"
+    },
+    {
+      "id": "Ablation_Q08",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Ablation_Q08.sparql",
+      "expected_boolean": false,
+      "enabled_rules": "OWL_ONLY",
+      "case": "same integrated TBox and CONSTRUCT, zero active SWRL"
+    },
+    {
+      "id": "H3_components_same_identity",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_components_same_identity.sparql",
+      "expected_boolean": true
+    },
+    {
+      "id": "H3_source_classes_preserved",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_source_classes_preserved.sparql",
+      "expected_boolean": true
+    },
+    {
+      "id": "H3_unmapped_negative",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_unmapped_negative.sparql",
+      "expected_boolean": false
+    },
+    {
+      "id": "H3_configuration_without_pilot_marker",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_configuration_without_pilot_marker.sparql",
+      "expected_boolean": false,
+      "case": "Real AP242 configuration record with structural context but no explicit pilot component role"
+    },
+    {
+      "id": "H3_product_definition_without_pilot_marker",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_product_definition_without_pilot_marker.sparql",
+      "expected_boolean": false,
+      "case": "An AP242 information view is not universally a PROTYS product"
+    },
+    {
+      "id": "H3_shape_without_pilot_product",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_shape_without_pilot_product.sparql",
+      "expected_boolean": false,
+      "case": "Shape information outside the explicitly selected product profile is not mapped by this pilot"
+    },
+    {
+      "id": "H3_pre_extension_no_classification",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/H3_pre_extension_no_classification.sparql",
+      "expected_boolean": false,
+      "additional_files": [
+        "research/data/automotive.ttl",
+        "ontologies/iso10303-ap242-fragment.owl"
+      ],
+      "enabled_rules": "OWL_ONLY"
+    },
+    {
+      "id": "H3_no_new_named_individuals",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_no_new_named_individuals.sparql",
+      "expected_boolean": true,
+      "case": "Independent unique source declaration census in fixture namespace; stronger all-namespace set equality is tested separately"
+    },
+    {
+      "id": "H3_same_named_individual_set",
+      "configuration": "h3_extended",
+      "query_path": "research/data/fixtures/assertions/H3_same_named_individual_set.sparql",
+      "expected_boolean": true,
+      "case": "Complete source and post-inference IRI sets must match in both directions, across all namespaces"
+    },
+    {
+      "id": "Failure_load_error",
+      "configuration": "integrated",
+      "files": [
+        "research/data/fixtures/invalid-syntax.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_status": "NOT_EVALUATED",
+      "case": "syntax load error"
+    },
+    {
+      "id": "Failure_profile_invalid",
+      "configuration": "integrated",
+      "files": [
+        "research/data/fixtures/invalid-owl2dl.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_status": "NOT_EVALUATED",
+      "case": "OWL2DL global restriction violation"
+    },
+    {
+      "id": "Failure_inconsistent",
+      "configuration": "integrated",
+      "files": [
+        "research/data/fixtures/inconsistent.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_status": "INCONSISTENT",
+      "case": "disjoint types contradiction"
+    },
+    {
+      "id": "Temporal_cycle",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Temporal_cycle.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/temporal-cycle.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Additional explicit graph cycle validation; outside four canonical ASK"
+    },
+    {
+      "id": "Temporal_acyclic",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Temporal_acyclic.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/temporal-acyclic.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "case": "Additional explicit graph cycle validation; outside four canonical ASK"
+    },
+    {
+      "id": "P3_WhitePaint_PearlMill_formal_use",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/P3_WhitePaint_PearlMill_formal_use.sparql",
+      "expected_boolean": true,
+      "mechanism": "R09",
+      "competency_question": "P3",
+      "case": "Exact formal witness: WhitePaint is the represented product and PearlMill_01 the required/assigned resource used by BatchA_Op2 after R09, not an industrial observation"
+    },
+    {
+      "id": "P3_WhitePaint_PearlMill_without_R09",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/P3_WhitePaint_PearlMill_without_R09.sparql",
+      "expected_boolean": false,
+      "enabled_rules": "OWL_ONLY",
+      "mechanism": "R09",
+      "competency_question": "P3",
+      "case": "Same source identities and snapshot without SWRL: the formal usesResource witness is absent; no asserted conclusion of use is supplied"
+    },
+    {
+      "id": "R04_contract_above",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_above.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_above.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_equal",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_equal.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_equal.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_below",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_below.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_below.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_zero",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_zero.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_zero.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_wrong_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_wrong_unit.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_wrong_unit.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_wrong_category",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_wrong_category.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_wrong_category.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_missing_indicator_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_missing_indicator_unit.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_missing_indicator_unit.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_missing_indicator_category",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_missing_indicator_category.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_missing_indicator_category.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_missing_threshold_value",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_missing_threshold_value.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_missing_threshold_value.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_missing_threshold_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_missing_threshold_unit.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_missing_threshold_unit.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_missing_threshold_category",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_missing_threshold_category.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_missing_threshold_category.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_unlinked_record",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_unlinked_record.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_unlinked_record.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_numeric_equivalent_threshold",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_numeric_equivalent_threshold.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_numeric_equivalent_threshold.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "mechanism": "R04",
+      "case": "Threshold tuple on same record IRI; same indicator unit/category and strict > boundary"
+    },
+    {
+      "id": "R04_contract_coupled_records",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R04_contract_coupled_records.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04_contract_coupled_records.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "case": "Cannot combine low value of one threshold record with unit of another"
+    },
+    {
+      "id": "R04_contract_contradictory_threshold",
+      "configuration": "integrated",
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R04-contract-contradictory-threshold.ttl"
+      ],
+      "enabled_rules": [
+        "R04"
+      ],
+      "expected_status": "INCONSISTENT",
+      "case": "Threshold value is functional: unequal values contradict OWL, not a successful classification"
+    },
+    {
+      "id": "R22_wrong_indicator_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R22_wrong_indicator_unit.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R22_wrong_indicator_unit.ttl"
+      ],
+      "enabled_rules": [
+        "R04",
+        "R22"
+      ],
+      "case": "An incompatible R04 threshold cannot seed R22 hotspot classification"
+    },
+    {
+      "id": "R15_contract_active",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_contract_active.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R15_contract_active.ttl"
+      ],
+      "enabled_rules": [
+        "R15"
+      ],
+      "case": "Only declared ACTIVE maintenance in this snapshot implies temporary unavailability; no date-based inference"
+    },
+    {
+      "id": "R15_contract_planned",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_contract_planned.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R15_contract_planned.ttl"
+      ],
+      "enabled_rules": [
+        "R15"
+      ],
+      "case": "Only declared ACTIVE maintenance in this snapshot implies temporary unavailability; no date-based inference"
+    },
+    {
+      "id": "R15_contract_completed",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_contract_completed.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R15_contract_completed.ttl"
+      ],
+      "enabled_rules": [
+        "R15"
+      ],
+      "case": "Only declared ACTIVE maintenance in this snapshot implies temporary unavailability; no date-based inference"
+    },
+    {
+      "id": "R15_contract_missing",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_contract_missing.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R15_contract_missing.ttl"
+      ],
+      "enabled_rules": [
+        "R15"
+      ],
+      "case": "Only declared ACTIVE maintenance in this snapshot implies temporary unavailability; no date-based inference"
+    },
+    {
+      "id": "R15_contract_unlinked_active",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_contract_unlinked_active.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R15_contract_unlinked_active.ttl"
+      ],
+      "enabled_rules": [
+        "R15"
+      ],
+      "case": "Unlinked active record cannot mark this resource"
+    },
+    {
+      "id": "R15_contract_other_resource_active",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/R15_contract_other_resource_active.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/R15_contract_other_resource_active.ttl"
+      ],
+      "enabled_rules": [
+        "R15"
+      ],
+      "case": "Active maintenance belongs to another resource"
+    },
+    {
+      "id": "CNUM_equivalent_energy",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_equivalent_energy.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-equivalent_energy.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_equivalent_factor_value",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_equivalent_factor_value.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-equivalent_factor_value.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_equivalent_preasserted_ghg",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_equivalent_preasserted_ghg.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-equivalent_preasserted_ghg.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_equivalent_output_quantity",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_equivalent_output_quantity.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-equivalent_output_quantity.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "Q06_numeric_equivalent_quantity",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/Q06_numeric_equivalent_quantity.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-equivalent_output_quantity.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "case": "100 and100.0 are one denominator and do not double the numerator"
+    },
+    {
+      "id": "CNUM_zero_energy",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_zero_energy.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-zero_energy.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_zero_factor",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_zero_factor.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-zero_factor.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_conflicting_energy",
+      "configuration": "integrated",
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-conflicting_energy.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_status": "NOT_EVALUATED",
+      "expected_numeric_status": "AMBIGUOUS_INPUT",
+      "expected_owl_status": "CONSISTENT",
+      "expected_failure_kind": "AMBIGUOUS_NUMERIC_INPUT",
+      "case": "Contradictory scoped input blocks numeric inference before SWRL; OWL consistency is reported separately"
+    },
+    {
+      "id": "CNUM_conflicting_factor_value",
+      "configuration": "integrated",
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-conflicting_factor_value.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_status": "NOT_EVALUATED",
+      "expected_numeric_status": "AMBIGUOUS_INPUT",
+      "expected_owl_status": "CONSISTENT",
+      "expected_failure_kind": "AMBIGUOUS_NUMERIC_INPUT",
+      "case": "Contradictory scoped input blocks numeric inference before SWRL; OWL consistency is reported separately"
+    },
+    {
+      "id": "CNUM_two_factor_iris_equal_value",
+      "configuration": "integrated",
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-two_factor_iris_equal_value.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_status": "NOT_EVALUATED",
+      "expected_numeric_status": "AMBIGUOUS_INPUT",
+      "expected_owl_status": "CONSISTENT",
+      "expected_failure_kind": "AMBIGUOUS_NUMERIC_INPUT",
+      "case": "Contradictory scoped input blocks numeric inference before SWRL; OWL consistency is reported separately"
+    },
+    {
+      "id": "CNUM_conflicting_preasserted_ghg",
+      "configuration": "integrated",
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-conflicting_preasserted_ghg.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_status": "NOT_EVALUATED",
+      "expected_numeric_status": "AMBIGUOUS_INPUT",
+      "expected_owl_status": "CONSISTENT",
+      "expected_failure_kind": "AMBIGUOUS_NUMERIC_INPUT",
+      "case": "Contradictory scoped input blocks numeric inference before SWRL; OWL consistency is reported separately"
+    },
+    {
+      "id": "CNUM_preasserted_ghg_mismatch",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_preasserted_ghg_mismatch.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-preasserted_ghg_mismatch.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_negative_energy",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_negative_energy.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-negative_energy.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_negative_factor",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_negative_factor.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-negative_factor.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_missing_energy",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_missing_energy.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-missing_energy.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_missing_factor_link",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_missing_factor_link.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-missing_factor_link.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_missing_factor_value",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_missing_factor_value.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-missing_factor_value.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_missing_factor_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_missing_factor_unit.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-missing_factor_unit.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_wrong_factor_unit",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_wrong_factor_unit.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM-wrong_factor_unit.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "control": "CNUM",
+      "case": "Independent10kWh×0.5=5kgCO2e; equivalent literals count once; missing/mismatched values cannot create a complete partial lot total"
+    },
+    {
+      "id": "CNUM_equivalent_100_and_factor",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_equivalent_100_and_factor.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM_equivalent_100_and_factor.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "case": "Numeric100/100.0 andfactor0.5/0.50 each denote one input value;100×0.5=50, not100 or200"
+    },
+    {
+      "id": "CNUM_partial_lot_rejected",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_partial_lot_rejected.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM_partial_lot_rejected.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "NOT_EVALUABLE",
+      "case": "Missing energy on a selected operation suppresses the entire lot total; no silent partial sum"
+    },
+    {
+      "id": "CNUM_orphan_outside_scope",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_orphan_outside_scope.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM_orphan_outside_scope.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "case": "Incomplete unselected orphan does not invalidate another lot"
+    },
+    {
+      "id": "CNUM_distinct_operations_equal_contributions",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_distinct_operations_equal_contributions.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM_distinct_operations_equal_contributions.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "case": "Two distinct operations each5kgCO2e produce10kgCO2e, neverSUM DISTINCT on values"
+    },
+    {
+      "id": "CNUM_foreign_operation_excluded",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/CNUM_foreign_operation_excluded.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/CNUM_foreign_operation_excluded.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R21"
+      ],
+      "expected_numeric_status": "VALID",
+      "expected_context_status": "CONTEXT_INTEGRITY_ERROR",
+      "case": "Foreign operation is visible in CCTX and excluded from the affected numeric scope"
+    },
+    {
+      "id": "C26_contract_equivalent_end",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_contract_equivalent_end.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_contract_equivalent_end.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "COMPLETE_CLEANING_RECORD",
+      "case": "A single numeric endpoint per lot: equivalent representations accepted; every contradictory extreme rejects the pair even when another combination fits the cleaning"
+    },
+    {
+      "id": "C26_contract_equivalent_start",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_contract_equivalent_start.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_contract_equivalent_start.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "COMPLETE_CLEANING_RECORD",
+      "case": "A single numeric endpoint per lot: equivalent representations accepted; every contradictory extreme rejects the pair even when another combination fits the cleaning"
+    },
+    {
+      "id": "C26_contract_conflicting_end",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_contract_conflicting_end.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_contract_conflicting_end.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "NOT_EVALUABLE",
+      "case": "A single numeric endpoint per lot: equivalent representations accepted; every contradictory extreme rejects the pair even when another combination fits the cleaning"
+    },
+    {
+      "id": "C26_contract_conflicting_start",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_contract_conflicting_start.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_contract_conflicting_start.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "NOT_EVALUABLE",
+      "case": "A single numeric endpoint per lot: equivalent representations accepted; every contradictory extreme rejects the pair even when another combination fits the cleaning"
+    },
+    {
+      "id": "C26_contract_mixed_valid_invalid_end",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_contract_mixed_valid_invalid_end.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_contract_mixed_valid_invalid_end.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "NOT_EVALUABLE",
+      "case": "A single numeric endpoint per lot: equivalent representations accepted; every contradictory extreme rejects the pair even when another combination fits the cleaning"
+    },
+    {
+      "id": "C26_two_common_equipment_one_missing",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_two_common_equipment_one_missing.sparql",
+      "expected_boolean": true,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_two_common_equipment_one_missing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "MISSING_CLEANING_RECORD",
+      "case": "Record for M does not cover second shared equipment M2"
+    },
+    {
+      "id": "C26_two_common_equipment_complete",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_two_common_equipment_complete.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_two_common_equipment_complete.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "COMPLETE_CLEANING_RECORD",
+      "case": "Separate cleaning records cover both common equipment resources"
+    },
+    {
+      "id": "C26_unshared_equipment_ignored",
+      "configuration": "integrated",
+      "query_path": "research/data/fixtures/assertions/C26_unshared_equipment_ignored.sparql",
+      "expected_boolean": false,
+      "files": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/alignment-rules.owl",
+        "research/data/fixtures/C26_unshared_equipment_ignored.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "expected_cleaning_status": "COMPLETE_CLEANING_RECORD",
+      "case": "Equipment absent from the next lot does not require an inter-lot cleaning record"
+    }
+  ]
+}

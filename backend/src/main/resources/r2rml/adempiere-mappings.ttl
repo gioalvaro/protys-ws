@@ -1,19 +1,21 @@
-@prefix rr: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix exp: <https://w3id.org/protys/experimental/mapping#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix rrml: <http://semweb.mmlab.be/ns/rrml#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix ex: <http://example.org/> .
-@prefix protys: <http://www.protys.org/ontology/protys#> .
-@prefix protys-kb: <http://www.protys.org/ontology/protys-kb#> .
+@prefix protys: <http://w3id.org/protys/ontology/protys#> .
+@prefix protys-kb: <http://w3id.org/protys/ontology/protys-kb#> .
 
 # ============================================================================
-# ADEMPIERE 4.x R2RML MAPPINGS FOR PROTYS-WS
-# ============================================================================
-# This file contains R2RML mappings to transform ADempiere relational data
-# into RDF triples conforming to the PROTYS(KB) ontology network.
-# Case study: Paint manufacturing with TiO2, Acrylic Resin, PearlMill_01
+# ADempiere4.x DOCUMENTARY EXPERIMENTAL MAPPING SKETCH
+# Preserved legacy target vocabulary and illustrative localhost source addresses.
+# This sketch mixes legacy RML with project-specific exp:condition; it is NOT
+# an executed or conformant W3C R2RML mapping. Turtle syntax alone is checked.
+# rr namespace corrected against https://www.w3.org/TR/r2rml/ .
+# No industrial ERP connection, SQL schema compatibility or RDF export verified.
 # ============================================================================
 
 # TriplesMap 1: M_Product → protys:Raw_Material / protys:Final_Product
@@ -41,11 +43,11 @@
 		rr:template "http://example.org/adempiere/product/{M_Product_ID}" ;
 		rr:class protys:Material ;
 		rr:class [
-			rr:condition "ProductType = 'M'" ;
+			exp:condition "ProductType = 'M'" ;
 			rr:class protys:Raw_Material ;
 		] ;
 		rr:class [
-			rr:condition "ProductType = 'P'" ;
+			exp:condition "ProductType = 'P'" ;
 			rr:class protys:Final_Product ;
 		] ;
 	] ;

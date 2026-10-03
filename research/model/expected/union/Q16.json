@@ -1,0 +1,13 @@
+{
+  "head": {
+    "vars": [
+      "plan",
+      "resource",
+      "usedTimeMinutes",
+      "oeePercent"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

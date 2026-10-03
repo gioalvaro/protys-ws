@@ -1,0 +1,21 @@
+@prefix : <urn:protys:example:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Porcentajes
+:hasSolidContent rdf:type owl:DatatypeProperty ;
+rdfs:domain :Coating ;
+rdfs:range [ rdf:type rdfs:Datatype ;
+owl:onDatatype xsd:decimal ;
+owl:withRestrictions ([xsd:minInclusive 0.0] [xsd:maxInclusive 100.0])
+] ;
+rdfs:comment "Solid content percentage by weight"@en .
+# pH con rango válido
+:hasPH rdf:type owl:DatatypeProperty ;
+rdfs:domain :AqueousSolution ;
+rdfs:range [ rdf:type rdfs:Datatype ;
+owl:onDatatype xsd:decimal ;
+owl:withRestrictions ([xsd:minInclusive 0.0] [xsd:maxInclusive 14.0])
+] ;
+rdfs:comment "pH value of the solution"@en .

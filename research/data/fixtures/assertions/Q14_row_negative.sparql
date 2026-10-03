@@ -1,0 +1,33 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK { { SELECT DISTINCT ?lotA ?lotB ?equipment WHERE {
+?lotA i:requiresCleaningBetween ?lotB ; i:processedOn ?equipment .
+?lotB i:processedOn ?equipment .
+?lotA t:endTimeSeconds ?endA .
+FILTER(isNumeric(?endA))
+FILTER NOT EXISTS { ?lotA t:endTimeSeconds ?pairEndOther .
+FILTER(!isNumeric(?pairEndOther) || ?pairEndOther != ?endA) }
+?lotB t:startTimeSeconds ?startB .
+FILTER(isNumeric(?startB))
+FILTER NOT EXISTS { ?lotB t:startTimeSeconds ?pairStartOther .
+FILTER(!isNumeric(?pairStartOther) || ?pairStartOther != ?startB) }
+FILTER(?endA <= ?startB)
+FILTER NOT EXISTS { ?clean a i:CleaningOperation ; t:cleanedResource ?equipment .
+?clean t:startTimeSeconds ?cleanStart .
+FILTER(isNumeric(?cleanStart))
+FILTER NOT EXISTS { ?clean t:startTimeSeconds ?cleanStartOther .
+FILTER(!isNumeric(?cleanStartOther) || ?cleanStartOther != ?cleanStart) }
+?clean t:endTimeSeconds ?cleanEnd .
+FILTER(isNumeric(?cleanEnd))
+FILTER NOT EXISTS { ?clean t:endTimeSeconds ?cleanEndOther .
+FILTER(!isNumeric(?cleanEndOther) || ?cleanEndOther != ?cleanEnd) }
+FILTER(?cleanStart >= ?endA && ?cleanEnd <= ?startB && ?cleanEnd >= ?cleanStart) }
+} ORDER BY ?lotA ?lotB ?equipment } FILTER(?lotA=f:BatchA && ?lotB=f:BatchB) }

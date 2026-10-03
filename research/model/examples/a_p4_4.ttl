@@ -1,0 +1,16 @@
+@prefix : <urn:protys:example:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Asociación de impacto ambiental
+:hasEnvironmentalImpact rdf:type owl:ObjectProperty ;
+rdfs:domain :Activity ;
+rdfs:range :EnvironmentalImpact ;
+rdfs:subPropertyOf :hasImpact ;
+rdfs:comment "Links activities to their environmental impacts"@en .
+# Categorización de impacto
+:belongsToImpactCategory rdf:type owl:ObjectProperty , owl:FunctionalProperty ;
+rdfs:domain :EnvironmentalImpact ;
+rdfs:range :ImpactCategory ;
+rdfs:comment "Categorizes environmental impacts"@en .

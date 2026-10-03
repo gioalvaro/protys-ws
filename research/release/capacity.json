@@ -1,0 +1,315 @@
+{
+  "status": "PASS",
+  "provisional": false,
+  "scope": "Technical capacity selection on complete synthetic lots; separate from statistical evaluation.",
+  "criterion": "Confirm the selected 100 complete lots finish all21SELECT/fourASK and consistency checks within240seconds, parent/worker heaps2GiB each. Historical200-lot timeout is preserved separately; it is not rerun or included among accepted metrics.",
+  "pilots": [
+    {
+      "dataset": "medium",
+      "lots": 100,
+      "pass": true,
+      "result": {
+        "status": "CONSISTENT",
+        "profile_valid": true,
+        "cleaning_evaluation": {
+          "required_pair_count": 0,
+          "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "context_evaluation": {
+          "declared_link_count": 2100,
+          "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+          "invalid_declared_link": false,
+          "status": "CONTEXT_VALID"
+        },
+        "numeric_evaluation": {
+          "selected_operation_count": 700,
+          "scope": "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+          "output_checked": true,
+          "ambiguous_input": false,
+          "invalid_input": false,
+          "invalid_output": false,
+          "status": "VALID"
+        },
+        "swrl_rule_count": 22,
+        "profile_violations": [],
+        "dl_materialized_triples": 5945,
+        "dl_axiom_preservation": {
+          "stage": "named_dl_export_reload_owlapi5",
+          "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+          "expected_anonymous_individual_count": 0,
+          "observed_anonymous_individual_count": 0,
+          "expected_axiom_count": 43137,
+          "observed_axiom_count": 49082,
+          "retained_axiom_count": 43137,
+          "lost_axiom_count": 0,
+          "status": "RETAINED"
+        },
+        "unsatisfiable_classes": [],
+        "dl_ms": 6440.418041,
+        "owl_validation_status": "CONSISTENT",
+        "exchange_loaded_non_swrl_axiom_count": 58807,
+        "exchange_input_axiom_preservation": {
+          "stage": "input_axioms_retained_in_worker_exchange_owlapi5",
+          "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+          "expected_anonymous_individual_count": 0,
+          "observed_anonymous_individual_count": 0,
+          "expected_axiom_count": 49082,
+          "observed_axiom_count": 58807,
+          "retained_axiom_count": 49082,
+          "lost_axiom_count": 0,
+          "status": "RETAINED"
+        },
+        "exchange_axiom_preservation": {
+          "stage": "complete_worker_file_loaded_jena_then_owlapi5",
+          "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+          "expected_anonymous_individual_count": 0,
+          "observed_anonymous_individual_count": 0,
+          "expected_axiom_count": 58807,
+          "observed_axiom_count": 58807,
+          "retained_axiom_count": 58807,
+          "lost_axiom_count": 0,
+          "status": "RETAINED"
+        },
+        "swrl": {
+          "status": "EXECUTED",
+          "engine": "SWRLAPI Drools",
+          "axiom_preservation": {
+            "status": "RETAINED",
+            "scope": "All non-SWRL axioms parsed from the local input ontology, including annotation axioms. Excludes deliberately deactivated SWRL rules, removed imports, ontology identifiers/header annotations and RDF not represented as parsed OWL axioms; no equivalence with complete ISO standards.",
+            "input_non_swrl_axiom_count": 49082,
+            "post_inference_non_swrl_axiom_count": 58807,
+            "input_anonymous_individual_count": 0,
+            "anonymous_identity_limit": "Exact structural comparison; no anonymous-individual renaming correspondence. A mismatch involving an anonymous individual is NOT_EVALUABLE, not a claim of scientific information loss. OWL anonymous expressions and RDF lists are compared as parsed axioms.",
+            "intentionally_removed_swrl_rule_count": 0,
+            "after_inference": {
+              "stage": "after_inference",
+              "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+              "expected_anonymous_individual_count": 0,
+              "observed_anonymous_individual_count": 0,
+              "expected_axiom_count": 49082,
+              "observed_axiom_count": 58807,
+              "retained_axiom_count": 49082,
+              "lost_axiom_count": 0,
+              "status": "RETAINED"
+            },
+            "saved_materialized_reload": {
+              "stage": "saved_complete_post_inference_reload_owlapi4",
+              "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+              "expected_anonymous_individual_count": 0,
+              "observed_anonymous_individual_count": 0,
+              "expected_axiom_count": 58807,
+              "observed_axiom_count": 58807,
+              "retained_axiom_count": 58807,
+              "lost_axiom_count": 0,
+              "status": "RETAINED"
+            },
+            "saved_deductions_reload": {
+              "stage": "saved_deductions_reload_owlapi4",
+              "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+              "expected_anonymous_individual_count": 0,
+              "observed_anonymous_individual_count": 0,
+              "expected_axiom_count": 9725,
+              "observed_axiom_count": 12250,
+              "retained_axiom_count": 9725,
+              "lost_axiom_count": 0,
+              "status": "RETAINED"
+            },
+            "verification_and_serialization_ms": 916.475209
+          },
+          "input_sha256": "a086d021c6b543376df07121c6907b53aaa685d70c2d6cf3a35cc4f72981581d",
+          "materialized_sha256": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+          "deductions_sha256": "883bfad65339704e2b8eddb10ddfd338426dc850086c3969e95460ea2f256731",
+          "swrlapi": "2.1.3",
+          "owlapi": "4.5.27",
+          "drools": "7.74.1.Final",
+          "input_rule_count": 22,
+          "active_rule_count": 22,
+          "imported_rule_count": 22,
+          "new_axiom_count": 9725,
+          "engine_inferred_axiom_count": 14028,
+          "peak_heap_bytes": 781130752,
+          "load_ms": 1755.633708,
+          "swrl_ms": 1327.728208,
+          "total_ms": 4093.881458
+        },
+        "exchange_hashes_verified": true,
+        "post_swrl_dl_materialized_triples": 0,
+        "post_swrl_dl_ms": 5856.112167,
+        "post_swrl_dl_axiom_preservation": {
+          "stage": "named_dl_export_reload_owlapi5",
+          "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+          "expected_anonymous_individual_count": 0,
+          "observed_anonymous_individual_count": 0,
+          "expected_axiom_count": 58807,
+          "observed_axiom_count": 58807,
+          "retained_axiom_count": 58807,
+          "lost_axiom_count": 0,
+          "status": "RETAINED"
+        },
+        "constructs": [
+          {
+            "added_triples": 0,
+            "path": "/Users/gioalvaro/tesis/protys-ws-repo/research/evaluation/current/capacity/snapshot/research/model/validations/R07-materialize.sparql",
+            "ms": 29.224375
+          },
+          {
+            "added_triples": 700,
+            "path": "/Users/gioalvaro/tesis/protys-ws-repo/research/evaluation/current/capacity/snapshot/research/model/validations/CNUM-materialize.sparql",
+            "ms": 34.1075
+          }
+        ],
+        "construct_added_triples": 700,
+        "raw_input_triples": 43744,
+        "input_named_individuals": 3218,
+        "materialized_named_individuals": 3218,
+        "queries": [
+          {
+            "id": "Q01",
+            "query_ms": 181.215875,
+            "result_count": 100
+          },
+          {
+            "id": "Q02",
+            "query_ms": 32.916833,
+            "result_count": 1000
+          },
+          {
+            "id": "Q03",
+            "query_ms": 82.750875,
+            "result_count": 100
+          },
+          {
+            "id": "Q04",
+            "query_ms": 11.456833,
+            "result_count": 1000
+          },
+          {
+            "id": "Q05",
+            "query_ms": 0.917167,
+            "result_count": 5
+          },
+          {
+            "id": "Q06",
+            "query_ms": 94.901834,
+            "result_count": 100
+          },
+          {
+            "id": "Q07",
+            "query_ms": 16.093959,
+            "result_count": 700
+          },
+          {
+            "id": "Q08",
+            "query_ms": 39.123125,
+            "result_count": 700
+          },
+          {
+            "id": "Q09",
+            "query_ms": 2.102458,
+            "result_count": 100
+          },
+          {
+            "id": "Q10",
+            "query_ms": 0.530417,
+            "result_count": 6
+          },
+          {
+            "id": "Q11",
+            "query_ms": 78.386208,
+            "result_count": 100
+          },
+          {
+            "id": "Q12",
+            "query_ms": 12.868917,
+            "result_count": 1300
+          },
+          {
+            "id": "Q13",
+            "query_ms": 5.656541,
+            "result_count": 400
+          },
+          {
+            "id": "Q14",
+            "query_ms": 0.657584,
+            "result_count": 0
+          },
+          {
+            "id": "Q15",
+            "query_ms": 0.58475,
+            "result_count": 0
+          },
+          {
+            "id": "Q16",
+            "query_ms": 13.931084,
+            "result_count": 600
+          },
+          {
+            "id": "Q17",
+            "query_ms": 88.874834,
+            "result_count": 100
+          },
+          {
+            "id": "Q18",
+            "query_ms": 18.131542,
+            "result_count": 700
+          },
+          {
+            "id": "Q19",
+            "query_ms": 71.56225,
+            "result_count": 100
+          },
+          {
+            "id": "Q20",
+            "query_ms": 1.9455,
+            "result_count": 0
+          },
+          {
+            "id": "Q21",
+            "query_ms": 0.55225,
+            "result_count": 1
+          },
+          {
+            "id": "R07",
+            "query_ms": 0.682708,
+            "result_count": 0,
+            "boolean": false
+          },
+          {
+            "id": "R16",
+            "query_ms": 1.18575,
+            "result_count": 0,
+            "boolean": false
+          },
+          {
+            "id": "R19",
+            "query_ms": 0.585,
+            "result_count": 0,
+            "boolean": false
+          },
+          {
+            "id": "R26",
+            "query_ms": 0.36025,
+            "result_count": 0,
+            "boolean": false
+          }
+        ],
+        "input_triples": 44444,
+        "materialized_triples": 62867,
+        "load_ms": 983.303417,
+        "reasoning_stage_ms": 18852.026166,
+        "query_stage_ms": 778.316417,
+        "total_ms": 20702.381125,
+        "peak_heap_bytes": 824251576,
+        "java": "17.0.20.1",
+        "exit_code": 0,
+        "wall_process_ms": 21337.467208,
+        "observed_peak_process_tree_rss_bytes": 1739571200,
+        "rss_sampling_interval_ms": 100
+      }
+    }
+  ],
+  "selected_dataset": "medium",
+  "source_hashes_unchanged": true,
+  "runtime_hashes_unchanged": true
+}

@@ -1,0 +1,22 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK {
+?lot a i:Lot ; i:hasProcess ?process ; i:hasActivity ?op .
+?op a i:ProcessOperation ; i:partOfProcess ?process .
+{ ?op i:consumesEnergyKWh ?left, ?right .
+FILTER(isNumeric(?left) && isNumeric(?right) && ?left != ?right) }
+UNION { ?op t:hasEmissionFactor ?leftFactor, ?rightFactor .
+FILTER(!sameTerm(?leftFactor,?rightFactor)) }
+UNION { ?op t:hasEmissionFactor ?factor . ?factor t:factorValue ?left, ?right .
+FILTER(isNumeric(?left) && isNumeric(?right) && ?left != ?right) }
+UNION { ?op e:hasGHGImpactKgCO2e ?left, ?right .
+FILTER(isNumeric(?left) && isNumeric(?right) && ?left != ?right) }
+}

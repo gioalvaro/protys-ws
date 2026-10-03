@@ -1,0 +1,2 @@
+@prefix f: <http://example.org/> .
+f:broken [ this is not Turtle

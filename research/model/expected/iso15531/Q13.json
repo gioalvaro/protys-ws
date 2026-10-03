@@ -1,0 +1,14 @@
+{
+  "head": {
+    "vars": [
+      "process",
+      "flow",
+      "material",
+      "quantityKg",
+      "unit"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

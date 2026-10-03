@@ -1,0 +1,9 @@
+{
+  "artifact": "net.sourceforge.owlapi:owlapi-parent:4.5.27",
+  "source_url": "https://raw.githubusercontent.com/owlcs/owlapi/bdd2bf391ece3b6233b82c9f63c4af60feaabd36/pom.xml",
+  "tag": "owlapi-parent-4.5.27",
+  "commit": "bdd2bf391ece3b6233b82c9f63c4af60feaabd36",
+  "sha256": "1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28",
+  "reason": "Maven Central has osgidistribution4.5.27 but missing parent POM; exact official descriptor retained, binary version unchanged",
+  "licenses": "LGPL2.1 or Apache2.0 (see official POM licenses)"
+}

@@ -1,0 +1,11 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:I a owl:NamedIndividual, e:ImpactIndicator ; e:hasIndicatorValue "6"^^xsd:decimal ; t:unit "kg CO2e"^^xsd:string ; t:indicatorCategory "WATER_USE"^^xsd:string ; t:hasThreshold f:T .f:T a owl:NamedIndividual, t:ThresholdRecord ; t:thresholdValue "5"^^xsd:decimal ; t:thresholdUnit "kg CO2e"^^xsd:string ; t:thresholdCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .

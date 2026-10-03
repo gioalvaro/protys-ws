@@ -1,0 +1,8 @@
+{
+  "status" : "NOT_EVALUATED",
+  "profile_valid" : true,
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "error" : "java.lang.NoSuchMethodError: 'com.google.common.base.Optional org.semanticweb.owlapi.model.OWLOntologyID.getDefaultDocumentIRI()'",
+  "dl_ms" : 109.962667
+}

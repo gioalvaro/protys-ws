@@ -1,0 +1,11 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:A a owl:NamedIndividual, i:Lot ; i:requiresCleaningBetween f:B ; i:processedOn f:M ; t:endTimeSeconds "100"^^xsd:decimal . f:B a owl:NamedIndividual, i:Lot ; i:processedOn f:M ; t:startTimeSeconds "200"^^xsd:decimal . f:M a owl:NamedIndividual, i:EquipmentResource . f:Clean a owl:NamedIndividual, i:CleaningOperation ; t:cleanedResource f:M ; t:startTimeSeconds "110"^^xsd:decimal ; t:endTimeSeconds "190"^^xsd:decimal . f:A t:endTimeSeconds "150"^^xsd:decimal .

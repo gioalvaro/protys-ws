@@ -1,0 +1,45 @@
+{
+  "head": {
+    "vars": [
+      "clean",
+      "waterL"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "clean": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#ValidCleaning"
+        },
+        "waterL": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5"
+        }
+      },
+      {
+        "clean": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WrongEquipmentCleaning"
+        },
+        "waterL": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5"
+        }
+      },
+      {
+        "clean": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#HistoricalCleaning"
+        },
+        "waterL": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5"
+        }
+      }
+    ]
+  }
+}

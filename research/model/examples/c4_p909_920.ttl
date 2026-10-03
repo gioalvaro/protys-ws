@@ -1,0 +1,13 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:Product a owl:Class .
+ex:HighParameterMaterial a owl:Class .
+ex:hasComponent a owl:ObjectProperty .
+ex:hasEnvironmentalConcern a owl:DatatypeProperty ; rdfs:range xsd:boolean .
+[ a owl:Class ; owl:intersectionOf (ex:Product
+  [ a owl:Restriction ; owl:onProperty ex:hasComponent ;
+    owl:someValuesFrom ex:HighParameterMaterial ]) ]
+  rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ex:hasEnvironmentalConcern ;
+    owl:hasValue true ] .

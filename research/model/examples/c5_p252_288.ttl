@@ -1,0 +1,36 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix prod: <http://w3id.org/protys/ontology/product#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix ap: <http://w3id.org/protys/ontology/iso10303#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:PearlMill_01 a owl:NamedIndividual .
+f:PearlMill_01 a i:EquipmentResource .
+f:PearlMill_01 a r:Equip .
+f:PearlMill_01 t:powerKW "30"^^xsd:decimal .
+f:PearlMill_01 t:capacityLiters "50"^^xsd:decimal .
+f:PearlMill_01 t:availabilityPercent "90"^^xsd:decimal .
+f:PearlMill_01 t:oeePercent "82"^^xsd:decimal .
+f:PearlMill_01 a owl:NamedIndividual .
+f:PearlMill_01 a c:BottleneckResource .
+  f:PearlMill_01 t:scenarioRole
+  "Entrada explícita de cuello de botella del escenario; no resultado de medición industrial"^^xsd:string
+  .
+f:TitaniumDioxide a owl:NamedIndividual .
+f:TitaniumDioxide a r:Raw_Material .
+f:TitaniumDioxide t:materialFactorKgCO2ePerKg "5.6"^^xsd:decimal .
+f:TitaniumDioxide t:waterFootprintLPerKg "40"^^xsd:decimal .
+f:TitaniumDioxide t:providedBy f:Supplier_A .
+f:TitaniumDioxide t:hasEmissionFactor f:TitaniumDioxide_Factor .
+f:AcrylicResin a owl:NamedIndividual .
+f:AcrylicResin a r:Raw_Material .
+f:AcrylicResin t:materialFactorKgCO2ePerKg "3.8"^^xsd:decimal .
+f:AcrylicResin t:waterFootprintLPerKg "127"^^xsd:decimal .
+f:AcrylicResin t:providedBy f:Supplier_B .
+f:AcrylicResin t:hasEmissionFactor f:AcrylicResin_Factor .

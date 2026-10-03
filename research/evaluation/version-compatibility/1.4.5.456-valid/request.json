@@ -1,0 +1,12 @@
+{
+  "files": [
+    "/Users/gioalvaro/tesis/protys-ws-repo/research/evaluation/version-compatibility/valid.ttl"
+  ],
+  "enabled_rules": "NONE",
+  "queries": [
+    {
+      "id": "DL_CLASSIFICATION",
+      "path": "/Users/gioalvaro/tesis/protys-ws-repo/research/evaluation/version-compatibility/classify.sparql"
+    }
+  ]
+}

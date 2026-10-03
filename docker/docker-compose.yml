@@ -8,8 +8,9 @@ services:
     ports:
       - "3030:3030"
     environment:
-      ADMIN_PASSWORD: admin123
-      FUSEKI_DATASET_1: protys
+      # Override via FUSEKI_ADMIN_PASSWORD in docker/.env (see .env.example)
+      ADMIN_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:-admin123}
+      FUSEKI_DATASET_1: protys_canonical
     volumes:
       - fuseki-data:/fuseki
       - ./fuseki-config.ttl:/etc/fuseki/config.ttl:ro
@@ -17,7 +18,7 @@ services:
     networks:
       - protys-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3030/protys"]
+      test: ["CMD", "curl", "-f", "http://localhost:3030/protys_canonical"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -28,9 +29,10 @@ services:
     image: postgres:15
     container_name: protys-postgres
     environment:
-      POSTGRES_DB: protys_db
-      POSTGRES_USER: protys_user
-      POSTGRES_PASSWORD: protys_password
+      # Override via docker/.env (see .env.example)
+      POSTGRES_DB: ${POSTGRES_DB:-protys_db}
+      POSTGRES_USER: ${POSTGRES_USER:-protys_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-protys_password}
     ports:
       - "5432:5432"
     volumes:
@@ -40,7 +42,7 @@ services:
     networks:
       - protys-network
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U protys_user"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-protys_user}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -54,13 +56,13 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://protys-postgres:5432/protys_db
-      SPRING_DATASOURCE_USERNAME: protys_user
-      SPRING_DATASOURCE_PASSWORD: protys_password
+      SPRING_DATASOURCE_URL: jdbc:postgresql://protys-postgres:5432/${POSTGRES_DB:-protys_db}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-protys_user}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-protys_password}
       SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
-      FUSEKI_ENDPOINT: http://protys-fuseki:3030/protys
-      FUSEKI_QUERY_ENDPOINT: http://protys-fuseki:3030/protys/sparql
-      FUSEKI_UPDATE_ENDPOINT: http://protys-fuseki:3030/protys/update
+      FUSEKI_ENDPOINT: http://protys-fuseki:3030/protys_canonical
+      FUSEKI_QUERY_ENDPOINT: http://protys-fuseki:3030/protys_canonical/sparql
+      FUSEKI_UPDATE_ENDPOINT: http://protys-fuseki:3030/protys_canonical/update
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
       SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
       LOGGING_LEVEL_ROOT: INFO
@@ -82,14 +84,18 @@ services:
 
   # Ontology Loader - Loads PROTYS(KB) into Fuseki on startup
   protys-init:
-    image: curlimages/curl:8.5.0
+    image: python:3.12-slim
     container_name: protys-init
     volumes:
-      - ../ontologies:/ontologies:ro
+      - ../:/workspace:ro
       - ./init-fuseki.sh:/init-fuseki.sh:ro
+      - ./load_canonical.py:/load_canonical.py:ro
     environment:
       FUSEKI_URL: http://protys-fuseki:3030
-      ONTOLOGY_DIR: /ontologies
+      PROTYS_REPOSITORY: /workspace
+      FUSEKI_DATASET: protys_canonical
+      FUSEKI_ADMIN_USER: admin
+      FUSEKI_ADMIN_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:-admin123}
     entrypoint: ["/bin/sh", "/init-fuseki.sh"]
     depends_on:
       protys-fuseki:

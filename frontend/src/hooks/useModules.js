@@ -62,10 +62,12 @@ export const useValidateModule = () => {
       return await ontologyAPI.validateModule(moduleId);
     },
     onSuccess: (result) => {
-      if (result.consistent) {
+      if (result.status === 'CONSISTENT') {
         toast.success('Module is consistent');
+      } else if (result.status === 'INCONSISTENT') {
+        toast.warning('Module is inconsistent');
       } else {
-        toast.warning('Module has consistency issues');
+        toast.error('Consistency could not be evaluated: ' + (result.error || 'Reasoning unavailable'));
       }
     },
     onError: (error) => {

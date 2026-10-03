@@ -1,0 +1,18 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Tres patrones genéricos de cardinalidad, no validación por ausencia.
+ex:Batch a owl:Class ; rdfs:subClassOf [ a owl:Restriction ;
+  owl:onProperty ex:hasBatchNumber ; owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+ex:hasBatchNumber a owl:DatatypeProperty .
+ex:Grinding_Process a owl:Class ; rdfs:subClassOf [ a owl:Restriction ;
+  owl:onProperty ex:requiresResource ;
+  owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+  owl:onClass ex:Grinding_Mill ] .
+ex:requiresResource a owl:ObjectProperty .
+ex:Grinding_Mill a owl:Class .
+ex:Product a owl:Class ; rdfs:subClassOf [ a owl:Restriction ;
+  owl:onProperty ex:hasActiveFormulation ;
+  owl:maxCardinality "1"^^xsd:nonNegativeInteger ] .
+ex:hasActiveFormulation a owl:ObjectProperty .

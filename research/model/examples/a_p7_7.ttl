@@ -1,0 +1,27 @@
+@prefix : <urn:protys:example:> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Medidas físicas
+:hasVolume rdf:type owl:DatatypeProperty ;
+rdfs:domain :Container ;
+rdfs:range xsd:decimal ;
+rdfs:comment "Volume in liters"@en .
+:hasTemperature rdf:type owl:DatatypeProperty ;
+rdfs:domain :Material ;
+rdfs:range xsd:decimal ;
+rdfs:comment "Temperature in Celsius"@en .
+:hasParticleSize rdf:type owl:DatatypeProperty ;
+rdfs:domain :PigmentedMaterial ;
+rdfs:range xsd:decimal ;
+rdfs:comment "Mean particle size in micrometers"@en .
+# Propiedades ambientales
+:hasCarbonFootprint rdf:type owl:DatatypeProperty ;
+rdfs:domain :Material ;
+rdfs:range xsd:decimal ;
+rdfs:comment "Carbon footprint in kg CO2-eq per kg"@en .
+:hasWaterConsumption rdf:type owl:DatatypeProperty ;
+rdfs:domain :Process ;
+rdfs:range xsd:decimal ;
+rdfs:comment "Water consumption in liters per batch"@en .

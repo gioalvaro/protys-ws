@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import CleaningContextStatus from './CleaningContextStatus';
+import ContextIntegrityStatus from './ContextIntegrityStatus';
+import NumericIntegrityStatus from './NumericIntegrityStatus';
 import { toast } from 'react-toastify';
 import {
   ArrowPathIcon,
@@ -90,6 +93,9 @@ function Alignment() {
       </div>
 
       {/* Upload Form */}
+      <CleaningContextStatus evaluation={executeReasoningMutation.data?.cleaningEvaluation} />
+      <ContextIntegrityStatus evaluation={executeReasoningMutation.data?.contextEvaluation} />
+      <NumericIntegrityStatus evaluation={executeReasoningMutation.data?.numericEvaluation} owlStatus={executeReasoningMutation.data?.owlValidationStatus} />
       {showUploadForm && (
         <div className="card p-6 space-y-4">
           <h2 className="text-lg font-semibold text-gray-900">Upload Alignment Rules</h2>
@@ -235,25 +241,10 @@ function Alignment() {
         )}
       </div>
 
-      {/* Inference Rules Preview */}
+      {/* The rule list above reflects the imported catalog. */}
       <div className="card p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Rule Examples</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gray-50 p-4 rounded-lg font-mono text-xs space-y-2">
-            <p className="font-semibold text-gray-900">SWRL Rule Example</p>
-            <pre className="text-gray-700 overflow-x-auto">{`Class(?c) ^
-Class(?d) ^
-subClassOf(?c, ?d) ->
-subClassOf(?d, ?c)`}</pre>
-          </div>
-          <div className="bg-gray-50 p-4 rounded-lg font-mono text-xs space-y-2">
-            <p className="font-semibold text-gray-900">OWL Reasoning Example</p>
-            <pre className="text-gray-700 overflow-x-auto">{`ObjectProperty(?p) ^
-inverseOf(?p, ?q) ^
-ObjectPropertyAssertion(?p, ?x, ?y) ->
-ObjectPropertyAssertion(?q, ?y, ?x)`}</pre>
-          </div>
-        </div>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">Imported rule catalog</h2>
+        <p className="text-gray-700">Review each imported rule and its description in the list above. The active rule selection determines which rules the reasoning engine executes.</p>
       </div>
     </div>
   );

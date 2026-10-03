@@ -1,0 +1,30 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+CONSTRUCT { ?op a t:NumericInputValid . } WHERE {
+?op a i:ProcessOperation .
+?op i:consumesEnergyKWh ?energy .
+FILTER(isNumeric(?energy) && ?energy >= 0)
+FILTER NOT EXISTS { ?op i:consumesEnergyKWh ?nEnergyOther .
+FILTER(!isNumeric(?nEnergyOther) || ?nEnergyOther != ?energy) }
+?op t:hasEmissionFactor ?factor .
+FILTER(isIRI(?factor))
+FILTER NOT EXISTS { ?op t:hasEmissionFactor ?nOtherFactor .
+FILTER(!sameTerm(?nOtherFactor,?factor)) }
+?factor a t:ElectricityEmissionFactor ; t:factorUnit "kg CO2e/kWh" .
+FILTER NOT EXISTS { ?factor t:factorUnit ?nOtherUnit .
+FILTER(STR(?nOtherUnit) != "kg CO2e/kWh") }
+?factor t:factorValue ?factorValue .
+FILTER(isNumeric(?factorValue) && ?factorValue >= 0)
+FILTER NOT EXISTS { ?factor t:factorValue ?nFactorOther .
+FILTER(!isNumeric(?nFactorOther) || ?nFactorOther != ?factorValue) }
+FILTER NOT EXISTS { ?op e:hasGHGImpactKgCO2e ?existing .
+FILTER(!isNumeric(?existing) || ABS(?existing - ?energy * ?factorValue)>0.000000001) }
+}

@@ -1,0 +1,9 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "dl_materialized_triples" : 3,
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 152.876125
+}

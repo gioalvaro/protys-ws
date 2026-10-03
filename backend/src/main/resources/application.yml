@@ -1,7 +1,7 @@
 server:
   port: 8080
   servlet:
-    context-path: /api
+    context-path: /
 
 spring:
   application:
@@ -66,7 +66,7 @@ spring:
 logging:
   level:
     root: INFO
-    ve.edu.uc.protys: DEBUG
+    org.protys.ws: DEBUG
     org.springframework.web: DEBUG
     org.springframework.security: DEBUG
     org.hibernate.SQL: DEBUG
@@ -113,7 +113,7 @@ protys:
 
   # Ontologies Configuration
   ontologies:
-    base-uri: http://protys.ingar.conicet.gob.ar/ontology#
+    base-uri: http://w3id.org/protys/ontology/core#
     path: classpath:ontologies/
 
   # R2RML Mapping Configuration
@@ -122,8 +122,10 @@ protys:
 
   # Semantic Reasoning Configuration
   reasoning:
-    engine: hermit
+    engine: hermit-swrlapi-drools
     timeout: 30000
+    # Reasoning timeout in milliseconds (used by ReasoningService)
+    timeout-ms: 180000
     enable-validation: true
     enable-consistency-check: true
 

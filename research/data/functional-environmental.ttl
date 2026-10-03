@@ -1,0 +1,506 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix prod: <http://w3id.org/protys/ontology/product#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix ap: <http://w3id.org/protys/ontology/iso10303#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+c:WaterFlow a owl:NamedIndividual .
+f:AcrylicResin a owl:NamedIndividual .
+f:AcrylicResin_Factor a owl:NamedIndividual .
+f:AssessedFacility a owl:NamedIndividual .
+f:BatchA_Flow_AcrylicResin a owl:NamedIndividual .
+f:BatchA_Flow_Biocide a owl:NamedIndividual .
+f:BatchA_Flow_TitaniumDioxide a owl:NamedIndividual .
+f:BatchA_Flow_Water a owl:NamedIndividual .
+f:BatchA_Indicator a owl:NamedIndividual .
+f:BatchA_Inventory a owl:NamedIndividual .
+f:BatchA_LCIProcess a owl:NamedIndividual .
+f:BatchA_Op1 a owl:NamedIndividual .
+f:BatchA_Op2 a owl:NamedIndividual .
+f:BatchA_Op3 a owl:NamedIndividual .
+f:BatchA_Op4 a owl:NamedIndividual .
+f:BatchA_Op5 a owl:NamedIndividual .
+f:BatchA_Op6 a owl:NamedIndividual .
+f:BatchA_Op7 a owl:NamedIndividual .
+f:BatchA_Plan a owl:NamedIndividual .
+f:BatchA_Process a owl:NamedIndividual .
+f:BatchA_QualityRecord a owl:NamedIndividual .
+f:BatchB_Flow_AcrylicResin a owl:NamedIndividual .
+f:BatchB_Flow_Biocide a owl:NamedIndividual .
+f:BatchB_Flow_TitaniumDioxide a owl:NamedIndividual .
+f:BatchB_Flow_Water a owl:NamedIndividual .
+f:BatchB_Indicator a owl:NamedIndividual .
+f:BatchB_Inventory a owl:NamedIndividual .
+f:BatchB_LCIProcess a owl:NamedIndividual .
+f:BatchB_Op1 a owl:NamedIndividual .
+f:BatchB_Op2 a owl:NamedIndividual .
+f:BatchB_Op3 a owl:NamedIndividual .
+f:BatchB_Op4 a owl:NamedIndividual .
+f:BatchB_Op5 a owl:NamedIndividual .
+f:BatchB_Op6 a owl:NamedIndividual .
+f:BatchB_Op7 a owl:NamedIndividual .
+f:BatchB_Plan a owl:NamedIndividual .
+f:BatchB_Process a owl:NamedIndividual .
+f:BatchB_QualityRecord a owl:NamedIndividual .
+f:BatchC a owl:NamedIndividual .
+f:BatchC_Flow_AcrylicResin a owl:NamedIndividual .
+f:BatchC_Flow_Biocide a owl:NamedIndividual .
+f:BatchC_Flow_TitaniumDioxide a owl:NamedIndividual .
+f:BatchC_Flow_Water a owl:NamedIndividual .
+f:BatchC_Indicator a owl:NamedIndividual .
+f:BatchC_Inventory a owl:NamedIndividual .
+f:BatchC_LCIProcess a owl:NamedIndividual .
+f:BatchC_Op1 a owl:NamedIndividual .
+f:BatchC_Op2 a owl:NamedIndividual .
+f:BatchC_Op3 a owl:NamedIndividual .
+f:BatchC_Op4 a owl:NamedIndividual .
+f:BatchC_Op5 a owl:NamedIndividual .
+f:BatchC_Op6 a owl:NamedIndividual .
+f:BatchC_Op7 a owl:NamedIndividual .
+f:BatchC_Plan a owl:NamedIndividual .
+f:BatchC_Process a owl:NamedIndividual .
+f:BatchC_QualityRecord a owl:NamedIndividual .
+f:BatchZero a owl:NamedIndividual .
+f:BatchZero_Flow_AcrylicResin a owl:NamedIndividual .
+f:BatchZero_Flow_Biocide a owl:NamedIndividual .
+f:BatchZero_Flow_TitaniumDioxide a owl:NamedIndividual .
+f:BatchZero_Flow_Water a owl:NamedIndividual .
+f:BatchZero_Indicator a owl:NamedIndividual .
+f:BatchZero_Inventory a owl:NamedIndividual .
+f:BatchZero_LCIProcess a owl:NamedIndividual .
+f:BatchZero_Op1 a owl:NamedIndividual .
+f:BatchZero_Op2 a owl:NamedIndividual .
+f:BatchZero_Op3 a owl:NamedIndividual .
+f:BatchZero_Op4 a owl:NamedIndividual .
+f:BatchZero_Op5 a owl:NamedIndividual .
+f:BatchZero_Op6 a owl:NamedIndividual .
+f:BatchZero_Op7 a owl:NamedIndividual .
+f:BatchZero_Plan a owl:NamedIndividual .
+f:BatchZero_Process a owl:NamedIndividual .
+f:BatchZero_QualityRecord a owl:NamedIndividual .
+f:Biocide a owl:NamedIndividual .
+f:Biocide_Factor a owl:NamedIndividual .
+f:Coalescent a owl:NamedIndividual .
+f:Coalescent_Factor a owl:NamedIndividual .
+f:DosingSystem_03 a owl:NamedIndividual .
+f:ElectricityGHGThreshold a owl:NamedIndividual .
+f:ElectricityOnlyBoundary a owl:NamedIndividual .
+f:FilterSystem_04 a owl:NamedIndividual .
+f:GridFactor a owl:NamedIndividual .
+f:MixingReactor_02 a owl:NamedIndividual .
+f:PackagingMachine_05 a owl:NamedIndividual .
+f:PearlMill_01 a owl:NamedIndividual .
+f:Supplier_A a owl:NamedIndividual .
+f:Supplier_B a owl:NamedIndividual .
+f:ThresholdMaterial a owl:NamedIndividual .
+f:ThresholdMaterial_Factor a owl:NamedIndividual .
+f:TitaniumDioxide a owl:NamedIndividual .
+f:TitaniumDioxide_Factor a owl:NamedIndividual .
+f:Water a owl:NamedIndividual .
+f:Water_Factor a owl:NamedIndividual .
+f:WhitePaint a owl:NamedIndividual .
+f:ElectricityGHGThreshold a t:ThresholdRecord .
+f:ElectricityGHGThreshold t:thresholdValue "5"^^xsd:decimal .
+f:ElectricityGHGThreshold t:thresholdUnit "kg CO2e"^^xsd:string .
+f:ElectricityGHGThreshold t:thresholdCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .
+f:ElectricityGHGThreshold t:scenarioRole "Umbral hipotético del escenario, no límite normativo ni industrial"^^xsd:string .
+c:WaterFlow a e:ProductFlow .
+c:WaterFlow t:scenarioRole "Presencia de suministro comprado de agua; no extracción directa de naturaleza ni suma cuantitativa"^^xsd:string .
+f:ElectricityOnlyBoundary a e:SystemBoundary .
+f:AssessedFacility owl:differentFrom f:ElectricityOnlyBoundary .
+f:ElectricityOnlyBoundary t:scenarioRole "Alcance de producción: emisiones asociadas a electricidad; excluye fabricación de materias primas y otras fuentes sin datos"^^xsd:string .
+f:WhitePaint c:hasName "Pintura blanca"^^xsd:string .
+f:PearlMill_01 a r:Equip .
+f:MixingReactor_02 a r:Equip .
+f:DosingSystem_03 a r:Equip .
+f:FilterSystem_04 a r:Equip .
+f:PackagingMachine_05 a r:Equip .
+f:PearlMill_01 t:scenarioRole "Entrada explícita de cuello de botella del escenario; no resultado de medición industrial"^^xsd:string .
+f:Supplier_A a t:Supplier .
+f:Supplier_B a t:Supplier .
+f:TitaniumDioxide a r:Raw_Material .
+f:TitaniumDioxide t:materialFactorKgCO2ePerKg "5.6"^^xsd:decimal .
+f:TitaniumDioxide t:waterFootprintLPerKg "40"^^xsd:decimal .
+f:TitaniumDioxide t:providedBy f:Supplier_A .
+f:TitaniumDioxide t:hasEmissionFactor f:TitaniumDioxide_Factor .
+f:TitaniumDioxide_Factor a t:MaterialEmissionFactor .
+f:TitaniumDioxide_Factor t:factorValue "5.6"^^xsd:decimal .
+f:TitaniumDioxide_Factor t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:TitaniumDioxide_Factor t:scenarioRole "Intensidad hipotética de material, sólo prueba funcional y excluida de Q06; no factor LCIA"^^xsd:string .
+f:AcrylicResin a r:Raw_Material .
+f:AcrylicResin t:materialFactorKgCO2ePerKg "3.8"^^xsd:decimal .
+f:AcrylicResin t:waterFootprintLPerKg "127"^^xsd:decimal .
+f:AcrylicResin t:providedBy f:Supplier_B .
+f:AcrylicResin t:hasEmissionFactor f:AcrylicResin_Factor .
+f:AcrylicResin_Factor a t:MaterialEmissionFactor .
+f:AcrylicResin_Factor t:factorValue "3.8"^^xsd:decimal .
+f:AcrylicResin_Factor t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:AcrylicResin_Factor t:scenarioRole "Intensidad hipotética de material, sólo prueba funcional y excluida de Q06; no factor LCIA"^^xsd:string .
+f:Water a r:Raw_Material .
+f:Water t:materialFactorKgCO2ePerKg "0"^^xsd:decimal .
+f:Water t:waterFootprintLPerKg "1"^^xsd:decimal .
+f:Water t:providedBy f:Supplier_A .
+f:Water t:hasEmissionFactor f:Water_Factor .
+f:Water_Factor a t:MaterialEmissionFactor .
+f:Water_Factor t:factorValue "0"^^xsd:decimal .
+f:Water_Factor t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:Water_Factor t:scenarioRole "Intensidad hipotética de material, sólo prueba funcional y excluida de Q06; no factor LCIA"^^xsd:string .
+f:Biocide a r:Raw_Material .
+f:Biocide t:materialFactorKgCO2ePerKg "3.5"^^xsd:decimal .
+f:Biocide t:waterFootprintLPerKg "15"^^xsd:decimal .
+f:Biocide t:providedBy f:Supplier_B .
+f:Biocide t:hasEmissionFactor f:Biocide_Factor .
+f:Biocide_Factor a t:MaterialEmissionFactor .
+f:Biocide_Factor t:factorValue "3.5"^^xsd:decimal .
+f:Biocide_Factor t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:Biocide_Factor t:scenarioRole "Intensidad hipotética de material, sólo prueba funcional y excluida de Q06; no factor LCIA"^^xsd:string .
+f:Coalescent a r:Raw_Material .
+f:Coalescent t:materialFactorKgCO2ePerKg "4.2"^^xsd:decimal .
+f:Coalescent t:waterFootprintLPerKg "10"^^xsd:decimal .
+f:Coalescent t:providedBy f:Supplier_B .
+f:Coalescent t:hasEmissionFactor f:Coalescent_Factor .
+f:Coalescent_Factor a t:MaterialEmissionFactor .
+f:Coalescent_Factor t:factorValue "4.2"^^xsd:decimal .
+f:Coalescent_Factor t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:Coalescent_Factor t:scenarioRole "Intensidad hipotética de material, sólo prueba funcional y excluida de Q06; no factor LCIA"^^xsd:string .
+f:ThresholdMaterial a r:Raw_Material .
+f:ThresholdMaterial t:materialFactorKgCO2ePerKg "5"^^xsd:decimal .
+f:ThresholdMaterial t:waterFootprintLPerKg "50"^^xsd:decimal .
+f:ThresholdMaterial t:providedBy f:Supplier_A .
+f:ThresholdMaterial t:hasEmissionFactor f:ThresholdMaterial_Factor .
+f:ThresholdMaterial_Factor a t:MaterialEmissionFactor .
+f:ThresholdMaterial_Factor t:factorValue "5"^^xsd:decimal .
+f:ThresholdMaterial_Factor t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:ThresholdMaterial_Factor t:scenarioRole "Intensidad hipotética de material, sólo prueba funcional y excluida de Q06; no factor LCIA"^^xsd:string .
+f:GridFactor a t:ElectricityEmissionFactor .
+f:GridFactor t:factorValue "0.5"^^xsd:decimal .
+f:GridFactor t:factorUnit "kg CO2e/kWh"^^xsd:string .
+f:GridFactor c:hasVersion "2"^^xsd:string .
+f:GridFactor c:hasPriorVersion "1"^^xsd:string .
+f:GridFactor c:modifiedInVersion "2"^^xsd:string .
+f:GridFactor t:scenarioRole "Factor declarado del escenario, no factor medido de planta"^^xsd:string .
+f:BatchA_LCIProcess a e:UnitProcess .
+f:BatchA_Process owl:differentFrom f:BatchA_LCIProcess .
+f:BatchA_LCIProcess t:scenarioRole "Representación de inventario parcial tipo black-box del proceso productivo; instancia distinta de ejecución manufacturera"^^xsd:string .
+f:BatchA_Inventory a e:LifeCycleInventory .
+f:BatchA_Inventory owl:differentFrom f:BatchA_Plan .
+f:BatchA_Inventory t:scenarioRole "Registro parcial de inventario de producción; no inventario completo del ciclo de vida ni plan"^^xsd:string .
+f:BatchA_QualityRecord owl:differentFrom f:BatchA_Indicator .
+f:BatchA_Indicator a e:ImpactIndicator .
+f:BatchA_Indicator e:computedForProcess f:BatchA_LCIProcess .
+f:BatchA_Indicator t:usesEmissionFactor f:GridFactor .
+f:BatchA_Indicator t:indicatorCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .
+f:BatchA_Indicator t:hasThreshold f:ElectricityGHGThreshold .
+f:BatchA_Indicator e:indicatorValue "57.6666665"^^xsd:decimal .
+f:BatchA_Indicator e:hasIndicatorValue "57.6666665"^^xsd:decimal .
+f:BatchA_LCIProcess e:hasImpact f:BatchA_Indicator .
+f:BatchA_Indicator t:unit "kg CO2e"^^xsd:string .
+f:BatchA_Indicator t:scenarioRole "Valor fuente calculado por generador como suma eléctrica de operaciones; cotejado con agregaciónSPARQL de contribucionesSWRL, no suma inferida porSWRL"^^xsd:string .
+f:BatchA_Op1 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op1 c:hasName "Recepción e inspección"^^xsd:string .
+f:BatchA_Op1 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op1 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchA_Op1 c:precedes f:BatchA_Op2 .
+f:BatchA_Op2 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op2 c:hasName "Dispersión de pigmentos"^^xsd:string .
+f:BatchA_Op2 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op2 e:energyInputKWh "10"^^xsd:decimal .
+f:BatchA_Op2 c:precedes f:BatchA_Op3 .
+f:BatchA_Op3 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op3 c:hasName "Mezcla principal"^^xsd:string .
+f:BatchA_Op3 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op3 e:energyInputKWh "75"^^xsd:decimal .
+f:BatchA_Op3 c:precedes f:BatchA_Op4 .
+f:BatchA_Op4 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op4 c:hasName "Ajuste de viscosidad"^^xsd:string .
+f:BatchA_Op4 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op4 e:energyInputKWh "26.666667"^^xsd:decimal .
+f:BatchA_Op4 c:precedes f:BatchA_Op5 .
+f:BatchA_Op5 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op5 c:hasName "Filtrado"^^xsd:string .
+f:BatchA_Op5 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op5 e:energyInputKWh "3.333333"^^xsd:decimal .
+f:BatchA_Op5 c:precedes f:BatchA_Op6 .
+f:BatchA_Op6 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op6 c:hasName "Control de calidad"^^xsd:string .
+f:BatchA_Op6 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op6 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchA_Op6 c:precedes f:BatchA_Op7 .
+f:BatchA_Op7 a t:EnvironmentalEnergyRecord .
+f:BatchA_Op7 c:hasName "Envasado"^^xsd:string .
+f:BatchA_Op7 t:hasEmissionFactor f:GridFactor .
+f:BatchA_Op7 e:energyInputKWh "0.333333"^^xsd:decimal .
+f:BatchA_Flow_TitaniumDioxide a e:ProductFlow .
+f:BatchA_LCIProcess e:hasInventoryFlow f:BatchA_Flow_TitaniumDioxide .
+f:BatchA_Flow_TitaniumDioxide t:belongsToProcess f:BatchA_Process .
+f:BatchA_Flow_TitaniumDioxide e:refersToMaterial f:TitaniumDioxide .
+f:BatchA_Flow_TitaniumDioxide owl:differentFrom f:TitaniumDioxide .
+f:BatchA_Flow_TitaniumDioxide t:materialQuantityKg "25"^^xsd:decimal .
+f:BatchA_Flow_TitaniumDioxide t:unit "kg"^^xsd:string .
+f:BatchA_Flow_AcrylicResin a e:ProductFlow .
+f:BatchA_LCIProcess e:hasInventoryFlow f:BatchA_Flow_AcrylicResin .
+f:BatchA_Flow_AcrylicResin t:belongsToProcess f:BatchA_Process .
+f:BatchA_Flow_AcrylicResin e:refersToMaterial f:AcrylicResin .
+f:BatchA_Flow_AcrylicResin owl:differentFrom f:AcrylicResin .
+f:BatchA_Flow_AcrylicResin t:materialQuantityKg "37.5"^^xsd:decimal .
+f:BatchA_Flow_AcrylicResin t:unit "kg"^^xsd:string .
+f:BatchA_Flow_Water a e:ProductFlow .
+f:BatchA_LCIProcess e:hasInventoryFlow f:BatchA_Flow_Water .
+f:BatchA_Flow_Water t:belongsToProcess f:BatchA_Process .
+f:BatchA_Flow_Water e:refersToMaterial f:Water .
+f:BatchA_Flow_Water owl:differentFrom f:Water .
+f:BatchA_Flow_Water t:materialQuantityKg "61.25"^^xsd:decimal .
+f:BatchA_Flow_Water t:unit "kg"^^xsd:string .
+f:BatchA_Flow_Biocide a e:ProductFlow .
+f:BatchA_LCIProcess e:hasInventoryFlow f:BatchA_Flow_Biocide .
+f:BatchA_Flow_Biocide t:belongsToProcess f:BatchA_Process .
+f:BatchA_Flow_Biocide e:refersToMaterial f:Biocide .
+f:BatchA_Flow_Biocide owl:differentFrom f:Biocide .
+f:BatchA_Flow_Biocide t:materialQuantityKg "1.25"^^xsd:decimal .
+f:BatchA_Flow_Biocide t:unit "kg"^^xsd:string .
+f:BatchB_LCIProcess a e:UnitProcess .
+f:BatchB_Process owl:differentFrom f:BatchB_LCIProcess .
+f:BatchB_LCIProcess t:scenarioRole "Representación de inventario parcial tipo black-box del proceso productivo; instancia distinta de ejecución manufacturera"^^xsd:string .
+f:BatchB_Inventory a e:LifeCycleInventory .
+f:BatchB_Inventory owl:differentFrom f:BatchB_Plan .
+f:BatchB_Inventory t:scenarioRole "Registro parcial de inventario de producción; no inventario completo del ciclo de vida ni plan"^^xsd:string .
+f:BatchB_QualityRecord owl:differentFrom f:BatchB_Indicator .
+f:BatchB_Indicator a e:ImpactIndicator .
+f:BatchB_Indicator e:computedForProcess f:BatchB_LCIProcess .
+f:BatchB_Indicator t:usesEmissionFactor f:GridFactor .
+f:BatchB_Indicator t:indicatorCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .
+f:BatchB_Indicator t:hasThreshold f:ElectricityGHGThreshold .
+f:BatchB_Indicator e:indicatorValue "115.3333335"^^xsd:decimal .
+f:BatchB_Indicator e:hasIndicatorValue "115.3333335"^^xsd:decimal .
+f:BatchB_LCIProcess e:hasImpact f:BatchB_Indicator .
+f:BatchB_Indicator t:unit "kg CO2e"^^xsd:string .
+f:BatchB_Indicator t:scenarioRole "Valor fuente calculado por generador como suma eléctrica de operaciones; cotejado con agregaciónSPARQL de contribucionesSWRL, no suma inferida porSWRL"^^xsd:string .
+f:BatchB_Op1 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op1 c:hasName "Recepción e inspección"^^xsd:string .
+f:BatchB_Op1 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op1 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchB_Op1 c:precedes f:BatchB_Op2 .
+f:BatchB_Op2 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op2 c:hasName "Dispersión de pigmentos"^^xsd:string .
+f:BatchB_Op2 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op2 e:energyInputKWh "20"^^xsd:decimal .
+f:BatchB_Op2 c:precedes f:BatchB_Op3 .
+f:BatchB_Op3 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op3 c:hasName "Mezcla principal"^^xsd:string .
+f:BatchB_Op3 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op3 e:energyInputKWh "150"^^xsd:decimal .
+f:BatchB_Op3 c:precedes f:BatchB_Op4 .
+f:BatchB_Op4 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op4 c:hasName "Ajuste de viscosidad"^^xsd:string .
+f:BatchB_Op4 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op4 e:energyInputKWh "53.333333"^^xsd:decimal .
+f:BatchB_Op4 c:precedes f:BatchB_Op5 .
+f:BatchB_Op5 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op5 c:hasName "Filtrado"^^xsd:string .
+f:BatchB_Op5 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op5 e:energyInputKWh "6.666667"^^xsd:decimal .
+f:BatchB_Op5 c:precedes f:BatchB_Op6 .
+f:BatchB_Op6 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op6 c:hasName "Control de calidad"^^xsd:string .
+f:BatchB_Op6 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op6 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchB_Op6 c:precedes f:BatchB_Op7 .
+f:BatchB_Op7 a t:EnvironmentalEnergyRecord .
+f:BatchB_Op7 c:hasName "Envasado"^^xsd:string .
+f:BatchB_Op7 t:hasEmissionFactor f:GridFactor .
+f:BatchB_Op7 e:energyInputKWh "0.666667"^^xsd:decimal .
+f:BatchB_Flow_TitaniumDioxide a e:ProductFlow .
+f:BatchB_LCIProcess e:hasInventoryFlow f:BatchB_Flow_TitaniumDioxide .
+f:BatchB_Flow_TitaniumDioxide t:belongsToProcess f:BatchB_Process .
+f:BatchB_Flow_TitaniumDioxide e:refersToMaterial f:TitaniumDioxide .
+f:BatchB_Flow_TitaniumDioxide owl:differentFrom f:TitaniumDioxide .
+f:BatchB_Flow_TitaniumDioxide t:materialQuantityKg "50"^^xsd:decimal .
+f:BatchB_Flow_TitaniumDioxide t:unit "kg"^^xsd:string .
+f:BatchB_Flow_AcrylicResin a e:ProductFlow .
+f:BatchB_LCIProcess e:hasInventoryFlow f:BatchB_Flow_AcrylicResin .
+f:BatchB_Flow_AcrylicResin t:belongsToProcess f:BatchB_Process .
+f:BatchB_Flow_AcrylicResin e:refersToMaterial f:AcrylicResin .
+f:BatchB_Flow_AcrylicResin owl:differentFrom f:AcrylicResin .
+f:BatchB_Flow_AcrylicResin t:materialQuantityKg "75"^^xsd:decimal .
+f:BatchB_Flow_AcrylicResin t:unit "kg"^^xsd:string .
+f:BatchB_Flow_Water a e:ProductFlow .
+f:BatchB_LCIProcess e:hasInventoryFlow f:BatchB_Flow_Water .
+f:BatchB_Flow_Water t:belongsToProcess f:BatchB_Process .
+f:BatchB_Flow_Water e:refersToMaterial f:Water .
+f:BatchB_Flow_Water owl:differentFrom f:Water .
+f:BatchB_Flow_Water t:materialQuantityKg "122.5"^^xsd:decimal .
+f:BatchB_Flow_Water t:unit "kg"^^xsd:string .
+f:BatchB_Flow_Biocide a e:ProductFlow .
+f:BatchB_LCIProcess e:hasInventoryFlow f:BatchB_Flow_Biocide .
+f:BatchB_Flow_Biocide t:belongsToProcess f:BatchB_Process .
+f:BatchB_Flow_Biocide e:refersToMaterial f:Biocide .
+f:BatchB_Flow_Biocide owl:differentFrom f:Biocide .
+f:BatchB_Flow_Biocide t:materialQuantityKg "2.5"^^xsd:decimal .
+f:BatchB_Flow_Biocide t:unit "kg"^^xsd:string .
+f:BatchC t:scenarioRole "Registro deliberadamente anómalo para pruebas negativas; no secuencia productiva válida"^^xsd:string .
+f:BatchC_LCIProcess a e:UnitProcess .
+f:BatchC_Process owl:differentFrom f:BatchC_LCIProcess .
+f:BatchC_LCIProcess t:scenarioRole "Representación de inventario parcial tipo black-box del proceso productivo; instancia distinta de ejecución manufacturera"^^xsd:string .
+f:BatchC_Inventory a e:LifeCycleInventory .
+f:BatchC_Inventory owl:differentFrom f:BatchC_Plan .
+f:BatchC_Inventory t:scenarioRole "Registro parcial de inventario de producción; no inventario completo del ciclo de vida ni plan"^^xsd:string .
+f:BatchC_QualityRecord owl:differentFrom f:BatchC_Indicator .
+f:BatchC_Indicator a e:ImpactIndicator .
+f:BatchC_Indicator e:computedForProcess f:BatchC_LCIProcess .
+f:BatchC_Indicator t:usesEmissionFactor f:GridFactor .
+f:BatchC_Indicator t:indicatorCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .
+f:BatchC_Indicator t:hasThreshold f:ElectricityGHGThreshold .
+f:BatchC_Indicator e:indicatorValue "57.6666665"^^xsd:decimal .
+f:BatchC_Indicator e:hasIndicatorValue "57.6666665"^^xsd:decimal .
+f:BatchC_LCIProcess e:hasImpact f:BatchC_Indicator .
+f:BatchC_Indicator t:unit "kg CO2e"^^xsd:string .
+f:BatchC_Indicator t:scenarioRole "Valor fuente calculado por generador como suma eléctrica de operaciones; cotejado con agregaciónSPARQL de contribucionesSWRL, no suma inferida porSWRL"^^xsd:string .
+f:BatchC_Op1 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op1 c:hasName "Recepción e inspección"^^xsd:string .
+f:BatchC_Op1 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op1 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchC_Op1 c:precedes f:BatchC_Op2 .
+f:BatchC_Op2 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op2 c:hasName "Dispersión de pigmentos"^^xsd:string .
+f:BatchC_Op2 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op2 e:energyInputKWh "10"^^xsd:decimal .
+f:BatchC_Op2 c:precedes f:BatchC_Op3 .
+f:BatchC_Op3 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op3 c:hasName "Mezcla principal"^^xsd:string .
+f:BatchC_Op3 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op3 e:energyInputKWh "75"^^xsd:decimal .
+f:BatchC_Op3 c:precedes f:BatchC_Op4 .
+f:BatchC_Op4 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op4 c:hasName "Ajuste de viscosidad"^^xsd:string .
+f:BatchC_Op4 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op4 e:energyInputKWh "26.666667"^^xsd:decimal .
+f:BatchC_Op4 c:precedes f:BatchC_Op5 .
+f:BatchC_Op5 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op5 c:hasName "Filtrado"^^xsd:string .
+f:BatchC_Op5 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op5 e:energyInputKWh "3.333333"^^xsd:decimal .
+f:BatchC_Op5 c:precedes f:BatchC_Op6 .
+f:BatchC_Op6 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op6 c:hasName "Control de calidad"^^xsd:string .
+f:BatchC_Op6 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op6 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchC_Op6 c:precedes f:BatchC_Op7 .
+f:BatchC_Op7 a t:EnvironmentalEnergyRecord .
+f:BatchC_Op7 c:hasName "Envasado"^^xsd:string .
+f:BatchC_Op7 t:hasEmissionFactor f:GridFactor .
+f:BatchC_Op7 e:energyInputKWh "0.333333"^^xsd:decimal .
+f:BatchC_Flow_TitaniumDioxide a e:ProductFlow .
+f:BatchC_LCIProcess e:hasInventoryFlow f:BatchC_Flow_TitaniumDioxide .
+f:BatchC_Flow_TitaniumDioxide t:belongsToProcess f:BatchC_Process .
+f:BatchC_Flow_TitaniumDioxide e:refersToMaterial f:TitaniumDioxide .
+f:BatchC_Flow_TitaniumDioxide owl:differentFrom f:TitaniumDioxide .
+f:BatchC_Flow_TitaniumDioxide t:materialQuantityKg "25"^^xsd:decimal .
+f:BatchC_Flow_TitaniumDioxide t:unit "kg"^^xsd:string .
+f:BatchC_Flow_AcrylicResin a e:ProductFlow .
+f:BatchC_LCIProcess e:hasInventoryFlow f:BatchC_Flow_AcrylicResin .
+f:BatchC_Flow_AcrylicResin t:belongsToProcess f:BatchC_Process .
+f:BatchC_Flow_AcrylicResin e:refersToMaterial f:AcrylicResin .
+f:BatchC_Flow_AcrylicResin owl:differentFrom f:AcrylicResin .
+f:BatchC_Flow_AcrylicResin t:materialQuantityKg "37.5"^^xsd:decimal .
+f:BatchC_Flow_AcrylicResin t:unit "kg"^^xsd:string .
+f:BatchC_Flow_Water a e:ProductFlow .
+f:BatchC_LCIProcess e:hasInventoryFlow f:BatchC_Flow_Water .
+f:BatchC_Flow_Water t:belongsToProcess f:BatchC_Process .
+f:BatchC_Flow_Water e:refersToMaterial f:Water .
+f:BatchC_Flow_Water owl:differentFrom f:Water .
+f:BatchC_Flow_Water t:materialQuantityKg "61.25"^^xsd:decimal .
+f:BatchC_Flow_Water t:unit "kg"^^xsd:string .
+f:BatchC_Flow_Biocide a e:ProductFlow .
+f:BatchC_LCIProcess e:hasInventoryFlow f:BatchC_Flow_Biocide .
+f:BatchC_Flow_Biocide t:belongsToProcess f:BatchC_Process .
+f:BatchC_Flow_Biocide e:refersToMaterial f:Biocide .
+f:BatchC_Flow_Biocide owl:differentFrom f:Biocide .
+f:BatchC_Flow_Biocide t:materialQuantityKg "1.25"^^xsd:decimal .
+f:BatchC_Flow_Biocide t:unit "kg"^^xsd:string .
+f:BatchZero t:scenarioRole "Registro deliberadamente anómalo para pruebas negativas; no secuencia productiva válida"^^xsd:string .
+f:BatchZero_LCIProcess a e:UnitProcess .
+f:BatchZero_Process owl:differentFrom f:BatchZero_LCIProcess .
+f:BatchZero_LCIProcess t:scenarioRole "Representación de inventario parcial tipo black-box del proceso productivo; instancia distinta de ejecución manufacturera"^^xsd:string .
+f:BatchZero_Inventory a e:LifeCycleInventory .
+f:BatchZero_Inventory owl:differentFrom f:BatchZero_Plan .
+f:BatchZero_Inventory t:scenarioRole "Registro parcial de inventario de producción; no inventario completo del ciclo de vida ni plan"^^xsd:string .
+f:BatchZero_QualityRecord owl:differentFrom f:BatchZero_Indicator .
+f:BatchZero_Indicator a e:ImpactIndicator .
+f:BatchZero_Indicator e:computedForProcess f:BatchZero_LCIProcess .
+f:BatchZero_Indicator t:usesEmissionFactor f:GridFactor .
+f:BatchZero_Indicator t:indicatorCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .
+f:BatchZero_Indicator t:hasThreshold f:ElectricityGHGThreshold .
+f:BatchZero_Indicator e:indicatorValue "0.0"^^xsd:decimal .
+f:BatchZero_Indicator e:hasIndicatorValue "0.0"^^xsd:decimal .
+f:BatchZero_LCIProcess e:hasImpact f:BatchZero_Indicator .
+f:BatchZero_Indicator t:unit "kg CO2e"^^xsd:string .
+f:BatchZero_Indicator t:scenarioRole "Valor fuente calculado por generador como suma eléctrica de operaciones; cotejado con agregaciónSPARQL de contribucionesSWRL, no suma inferida porSWRL"^^xsd:string .
+f:BatchZero_Op1 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op1 c:hasName "Recepción e inspección"^^xsd:string .
+f:BatchZero_Op1 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op1 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Op1 c:precedes f:BatchZero_Op2 .
+f:BatchZero_Op2 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op2 c:hasName "Dispersión de pigmentos"^^xsd:string .
+f:BatchZero_Op2 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op2 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Op2 c:precedes f:BatchZero_Op3 .
+f:BatchZero_Op3 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op3 c:hasName "Mezcla principal"^^xsd:string .
+f:BatchZero_Op3 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op3 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Op3 c:precedes f:BatchZero_Op4 .
+f:BatchZero_Op4 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op4 c:hasName "Ajuste de viscosidad"^^xsd:string .
+f:BatchZero_Op4 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op4 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Op4 c:precedes f:BatchZero_Op5 .
+f:BatchZero_Op5 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op5 c:hasName "Filtrado"^^xsd:string .
+f:BatchZero_Op5 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op5 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Op5 c:precedes f:BatchZero_Op6 .
+f:BatchZero_Op6 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op6 c:hasName "Control de calidad"^^xsd:string .
+f:BatchZero_Op6 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op6 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Op6 c:precedes f:BatchZero_Op7 .
+f:BatchZero_Op7 a t:EnvironmentalEnergyRecord .
+f:BatchZero_Op7 c:hasName "Envasado"^^xsd:string .
+f:BatchZero_Op7 t:hasEmissionFactor f:GridFactor .
+f:BatchZero_Op7 e:energyInputKWh "0"^^xsd:decimal .
+f:BatchZero_Flow_TitaniumDioxide a e:ProductFlow .
+f:BatchZero_LCIProcess e:hasInventoryFlow f:BatchZero_Flow_TitaniumDioxide .
+f:BatchZero_Flow_TitaniumDioxide t:belongsToProcess f:BatchZero_Process .
+f:BatchZero_Flow_TitaniumDioxide e:refersToMaterial f:TitaniumDioxide .
+f:BatchZero_Flow_TitaniumDioxide owl:differentFrom f:TitaniumDioxide .
+f:BatchZero_Flow_TitaniumDioxide t:materialQuantityKg "0"^^xsd:decimal .
+f:BatchZero_Flow_TitaniumDioxide t:unit "kg"^^xsd:string .
+f:BatchZero_Flow_AcrylicResin a e:ProductFlow .
+f:BatchZero_LCIProcess e:hasInventoryFlow f:BatchZero_Flow_AcrylicResin .
+f:BatchZero_Flow_AcrylicResin t:belongsToProcess f:BatchZero_Process .
+f:BatchZero_Flow_AcrylicResin e:refersToMaterial f:AcrylicResin .
+f:BatchZero_Flow_AcrylicResin owl:differentFrom f:AcrylicResin .
+f:BatchZero_Flow_AcrylicResin t:materialQuantityKg "0"^^xsd:decimal .
+f:BatchZero_Flow_AcrylicResin t:unit "kg"^^xsd:string .
+f:BatchZero_Flow_Water a e:ProductFlow .
+f:BatchZero_LCIProcess e:hasInventoryFlow f:BatchZero_Flow_Water .
+f:BatchZero_Flow_Water t:belongsToProcess f:BatchZero_Process .
+f:BatchZero_Flow_Water e:refersToMaterial f:Water .
+f:BatchZero_Flow_Water owl:differentFrom f:Water .
+f:BatchZero_Flow_Water t:materialQuantityKg "0"^^xsd:decimal .
+f:BatchZero_Flow_Water t:unit "kg"^^xsd:string .
+f:BatchZero_Flow_Biocide a e:ProductFlow .
+f:BatchZero_LCIProcess e:hasInventoryFlow f:BatchZero_Flow_Biocide .
+f:BatchZero_Flow_Biocide t:belongsToProcess f:BatchZero_Process .
+f:BatchZero_Flow_Biocide e:refersToMaterial f:Biocide .
+f:BatchZero_Flow_Biocide owl:differentFrom f:Biocide .
+f:BatchZero_Flow_Biocide t:materialQuantityKg "0"^^xsd:decimal .
+f:BatchZero_Flow_Biocide t:unit "kg"^^xsd:string .

@@ -4,7 +4,7 @@
 @prefix xsd:      <http://www.w3.org/2001/XMLSchema#> .
 @prefix dc:       <http://purl.org/dc/elements/1.1/> .
 @prefix dcterms:  <http://purl.org/dc/terms/> .
-@prefix protys:   <http://www.protys.org/ontology/> .
+@prefix protys:   <http://w3id.org/protys/ontology/> .
 
 # ============================================================================
 # PROTYS(KB) - Ontology Network for Semantic Interoperability in Manufacturing
@@ -12,7 +12,7 @@
 # ============================================================================
 
 protys:protys-kb a owl:Ontology ;
-    owl:versionIRI <http://www.protys.org/ontology/protys-kb/1.0> ;
+    owl:versionIRI <http://w3id.org/protys/ontology/protys-kb/1.0> ;
     dc:title "PROTYS(KB) - Knowledge Base for Manufacturing Interoperability"@en ;
     dc:title "PROTYS(KB) - Base de Conocimiento para Interoperabilidad en Manufactura"@es ;
     dc:creator "Álvaro Fraga Moreira" ;
@@ -21,47 +21,54 @@ protys:protys-kb a owl:Ontology ;
     SCADA, LIMS). It integrates domain concepts from international standards ISO 14040
     (Life Cycle Assessment) and ISO 15531 (MANDATE - Manufacturing Data) through a
     modular architecture with SWRL-based alignment rules."""@en ;
-    dc:date "2025-01-01"^^xsd:date ;
+    dc:date "2025-01-01T00:00:00Z"^^xsd:dateTime ;
     dc:rights "Academic Use - PhD Thesis, Universidad de Carabobo" ;
     dcterms:license <http://creativecommons.org/licenses/by-nc-sa/4.0/> ;
     owl:versionInfo "1.0" ;
 
     # Module imports
-    owl:imports protys:core-concepts ;
-    owl:imports protys:product-module ;
-    owl:imports protys:process-module ;
-    owl:imports protys:resource-module ;
-    owl:imports protys:enterprise-module ;
-    owl:imports protys:iso14040-module ;
-    owl:imports protys:iso15531-module ;
-    owl:imports protys:alignment-rules ;
+    owl:imports protys:core ;
+    owl:imports protys:product ;
+    owl:imports protys:process ;
+    owl:imports protys:resource ;
+    owl:imports protys:enterprise ;
+    owl:imports protys:iso14040 ;
+    owl:imports protys:iso15531 ;
+    owl:imports protys:alignment ;
+    owl:imports protys:paint-ext ;
 
     # Annotations about the network
     rdfs:comment """
-    Architecture: 7 domain modules + 1 alignment module = 8 OWL ontologies
+    Architecture (thesis Ch. 3, Table 3.4): 7 domain modules + 1 alignment module
+    = 8 OWL ontologies, plus the case-study extension (derived ontology, Ch. 4 4.4.1).
 
-    Core Layer:
-      - core-concepts.owl     : 12 foundational classes (Product, Process, Resource, etc.)
+    Core Layer (Nivel Principal):
+      - core-concepts.owl     : 4 classes (Product, Process, Resource, Enterprise)
 
-    Domain Modules:
-      - product-module.owl    : 8 classes (Raw_Material, Formulation, ProductBatch, etc.)
-      - process-module.owl    : 10 classes (Manufacturing_Stage, QualityControl, etc.)
-      - resource-module.owl   : 9 classes (Equipment, HumanResource, ProductionLine, etc.)
-      - enterprise-module.owl : 7 classes (Organization, Plant, Workshop, etc.)
+    Refinement Modules (Nivel de Refinamiento):
+      - product-module.owl    : Thing, Substance, Production_Item, Product, Production_Component,
+                                Product_Information, Physical_Characteristics, Instruction, Fact,
+                                Concept, Customer (Fig. 3.8)
+      - process-module.owl    : Natural_Process, Artificial_Process, Procedure, Process_Activity,
+                                Procedure_Activity, Process_Plan, Process_Plant, Parameters (Fig. 3.7)
+      - resource-module.owl   : Behaviour, Capability, Tool, Equip, Device, Material,
+                                Process_Material, Product_Material, Raw_Material, Person, Role,
+                                File, Resource_Related_File, Product_Related_File, Activity (Figs. 3.9-3.12)
+      - enterprise-module.owl : Station, Cell, Shop, Factory, Location (Fig. 3.13)
 
-    Standard Modules:
-      - iso14040-module.owl   : 15 classes (LCA, ImpactAssessment, ElementaryFlow, etc.)
-      - iso15531-module.owl   : 18 classes (ProcessPlan, WorkOrder, PerformanceMetric, etc.)
+    Standard Modules (Nivel de Estandares):
+      - iso14040-module.owl   : 15 classes (Listado 3.1: LCAStudy, ElementaryFlow, UnitProcess, ...)
+      - iso15531-module.owl   : 18 classes (Listado 3.2: ManufacturingResource, WorkOrder, Lot, ...)
 
-    Integration:
-      - alignment-rules.owl   : 26 SWRL rules (R01-R26) + 7 equivalence axioms
+    Alignment Layer (Capa de Alineamiento):
+      - alignment-rules.owl      : 7 owl:equivalentClass axioms (Listado 3.3) + SWRL rules R01-R26
+                                   (22 con cuerpo SWRL DL-safe; R07/R16/R19/R26 son patrones
+                                   SPARQL ASK en alignment-queries.sparql)
+      - iso10303-alignment-rules.owl : R27-R29 (extensibilidad AP242, thesis 5.4.3)
 
-    Metrics:
-      - Total classes: 79
-      - Total object properties: 51
-      - Total data properties: 44
-      - Total SWRL rules: 26
-      - Total equivalence axioms: 7
+    Case-study extension (derived ontology):
+      - paint-case-extension.owl : clases del caso de pinturas como subclases de los
+                                   conceptos de PROTYS(KB) (BatchProcess, Formulation, ...)
     """@en .
 
 # ============================================================================
@@ -75,6 +82,7 @@ protys:protys-kb a owl:Ontology ;
 # urn:protys:iso14040    → iso14040-module.owl
 # urn:protys:iso15531    → iso15531-module.owl
 # urn:protys:alignment   → alignment-rules.owl
+# urn:protys:paint-ext   → paint-case-extension.owl
 # urn:protys:kb          → protys-kb.ttl (this file)
 # urn:protys:instances   → paint-case-study-instances.ttl
 # urn:protys:erp:adempiere → paint-instances-adempiere.ttl

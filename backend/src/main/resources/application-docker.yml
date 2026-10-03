@@ -78,7 +78,7 @@ server:
 logging:
   level:
     root: INFO
-    ve.edu.uc.protys: INFO
+    org.protys.ws: INFO
     org.springframework.web: INFO
     org.springframework.security: INFO
     org.hibernate.SQL: WARN

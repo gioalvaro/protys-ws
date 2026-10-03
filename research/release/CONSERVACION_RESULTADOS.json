@@ -1,0 +1,43 @@
+{
+  "status": "IDENTICAL_RESULT_COPIES_PREPARED_FOR_PUBLICATION",
+  "timestamp_utc": "2026-10-03T16:42:24.093424+00:00",
+  "copies": [
+    {
+      "source": "research/evaluation/current/functional.json",
+      "copy": "research/release/functional.json",
+      "bytes": 525446,
+      "sha256": "45919e3b3ad032190db0452a4ff4e6f7f12420b15e6ecf8ad4495aed8cde4149"
+    },
+    {
+      "source": "research/evaluation/current/summary.json",
+      "copy": "research/release/summary.json",
+      "bytes": 14298,
+      "sha256": "a2699740f906669c04188c66db7e03c2bb1f1955166722e6912fed420d1853ae"
+    },
+    {
+      "source": "research/evaluation/current/summary.csv",
+      "copy": "research/release/summary.csv",
+      "bytes": 360,
+      "sha256": "587bc1a334577abba38f199521712f026f363bd019f475fa3e5095f79480f995"
+    },
+    {
+      "source": "research/evaluation/current/environment.json",
+      "copy": "research/release/environment.json",
+      "bytes": 1225,
+      "sha256": "6c2988545e70b472d09f34e4413dd470ade3c31d88b6148ed81c94f6ad423f91"
+    },
+    {
+      "source": "research/evaluation/current/demonstration.json",
+      "copy": "research/release/demonstration.json",
+      "bytes": 189899,
+      "sha256": "c965f2a7ba02623b1602858740e5d9e4fc43686df32ef0d41e620474f64b2d43"
+    },
+    {
+      "source": "research/evaluation/current/capacity/capacity.json",
+      "copy": "research/release/capacity.json",
+      "bytes": 11374,
+      "sha256": "1bcd7e607b669cc4f0afd39776874e56a32150021fe66901fadbf7b7396084e5"
+    }
+  ],
+  "limits": "Publication is verified separately against an actual source commit, tag and complete raw-evidence assets. Local copies do not by themselves prove remote availability."
+}

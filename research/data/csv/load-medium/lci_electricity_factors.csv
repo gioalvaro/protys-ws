@@ -1,0 +1,2 @@
+factor_iri,factor_value,factor_unit,current_version,prior_version,scenario_role
+http://w3id.org/protys/fixture#GridFactor,0.5,kg CO2e/kWh,2,1,DECLARED_SCENARIO_FACTOR_NO_PLANT_MEASUREMENT

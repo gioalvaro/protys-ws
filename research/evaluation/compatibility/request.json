@@ -1,0 +1,17 @@
+{
+  "files": [
+    "ontologies/core-concepts.owl",
+    "ontologies/product-module.owl",
+    "ontologies/process-module.owl",
+    "ontologies/resource-module.owl",
+    "ontologies/enterprise-module.owl",
+    "ontologies/iso14040-module.owl",
+    "ontologies/iso15531-module.owl",
+    "ontologies/paint-case-extension.owl",
+    "ontologies/alignment-rules.owl",
+    "research/model/research-profile.owl",
+    "research/data/fixtures/compatibility.ttl"
+  ],
+  "enabled_rules": "ALL",
+  "queries": []
+}

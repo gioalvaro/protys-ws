@@ -1,0 +1,13 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+# Umbral hipotético de un parámetro, no huella LCA observada.
+ex:Material a owl:Class .
+ex:declaredParameter a owl:DatatypeProperty ; rdfs:range xsd:decimal .
+ex:HighParameterMaterial a owl:Class ;
+  owl:equivalentClass [ a owl:Class ;
+    owl:intersectionOf (ex:Material
+      [ a owl:Restriction ; owl:onProperty ex:declaredParameter ;
+        owl:someValuesFrom [ a rdfs:Datatype ; owl:onDatatype xsd:decimal ;
+          owl:withRestrictions ([xsd:minInclusive 10.0]) ] ]) ] .

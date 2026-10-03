@@ -1,0 +1,9 @@
+@prefix ex: <urn:protys:example:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+ex:Process a owl:Class .
+ex:satisfiesMassBalance a owl:DatatypeProperty ; rdfs:range xsd:boolean .
+ex:Balanced_Process a owl:Class ; owl:equivalentClass [ a owl:Class ;
+  owl:intersectionOf (ex:Process [ a owl:Restriction ;
+    owl:onProperty ex:satisfiesMassBalance ; owl:hasValue true ]) ] .

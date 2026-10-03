@@ -1,0 +1,34 @@
+{
+  "status": "CREATED_PENDING_VISUAL_QA",
+  "source_runs_sha256": "14cad6055347368e6f084a1fef4f0ea97046fce6dfbb649b0bac5a8db22fabb8",
+  "independent_audit_sha256": "272e827a864e764aef8a72578fb5886b275e0626adf6db0c004e335e5ceb355c",
+  "plotter_script_sha256": "c02f7b31878c3497ae79adb04a5efdfea6fd6d16e1e6c61b9e926256a04aa09e",
+  "verifier_script_sha256": "a772245d60e3414cb5b4edf249b87be6b0ed59f4bc26a053f8a91d7707a11806",
+  "python_version": "3.12.14",
+  "matplotlib_version": "3.11.2",
+  "resolved_font": "/System/Library/Fonts/Supplemental/Arial.ttf",
+  "figure_size_inches": [
+    6.27,
+    5.5
+  ],
+  "minimum_font_pt": 9.5,
+  "outputs": [
+    {
+      "path": "/Users/gioalvaro/tesis/protys-ws-repo/research/release/figures/figura4_7_resultados_definitivos.png",
+      "sha256": "0a1664badfb8c9792c9f31b479e8ddc54900bc88c0668289c103ac65fc89886b",
+      "bytes": 348636
+    },
+    {
+      "path": "/Users/gioalvaro/tesis/protys-ws-repo/research/release/figures/figura4_7_resultados_definitivos.svg",
+      "sha256": "19d17b5d2a05994ae7049ad3a7ccf7c7283fcf4b8b94586a5a0f3e941e6f31ea",
+      "bytes": 53271
+    },
+    {
+      "path": "/Users/gioalvaro/tesis/protys-ws-repo/research/release/figures/figura4_7_resultados_definitivos.pdf",
+      "sha256": "c0dff7eeec6c89f8fa182ee8696c63938b11fbaf196eaab1d3f505b47ee3f14d",
+      "bytes": 30080
+    }
+  ],
+  "method": "All 30 conserved replicates per configuration; no bootstrap or fabricated values. Whiskers use 1.5 IQR; all observed points are shown. Fixed display offsets do not modify measurements.",
+  "interpretation": "Configurations perform different semantic tasks. Internal time excludes process startup. RSS is the sum sampled every 100 ms, not instantaneous memory peak. No industrial observations or speed superiority are inferred."
+}
