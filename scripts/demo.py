@@ -64,8 +64,12 @@ def compose(state, *args, log=None):
 
 def request(base, path, body=None, method=None, metadata=None, timeout=240):
     data = json.dumps(body).encode() if body is not None else None
+    # Browser mutations send Origin even through a same-origin reverse proxy.
+    headers = {'Origin': base}
+    if data is not None:
+        headers['Content-Type'] = 'application/json'
     req = urllib.request.Request(base + path, data=data, method=method,
-                                 headers={'Content-Type': 'application/json'} if data is not None else {})
+                                 headers=headers)
     with urllib.request.urlopen(req, timeout=timeout) as response:
         if metadata is not None:
             metadata.update(http_status=response.status, content_type=response.headers.get('Content-Type'))
@@ -151,7 +155,7 @@ def smoke(args):
     def observed(name, path, body=None, method=None):
         # Reject a stale state/port before every operation, especially mutations.
         verify_frontend(state, expected_frontend_id)
-        write(dest / (name + '-request.json'), dict(url=base + path, method=method or ('POST' if body is not None else 'GET'), body=body))
+        write(dest / (name + '-request.json'), dict(url=base + path, origin=base, method=method or ('POST' if body is not None else 'GET'), body=body))
         metadata = {}
         try:
             value = request(base, path, body, method, metadata)

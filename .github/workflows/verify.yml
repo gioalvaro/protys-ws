@@ -2,11 +2,16 @@ name: Verify prototype and research package
 
 on:
   push:
+    branches: ['**']
   pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: verify-${{ github.head_ref || github.ref_name }}
+  cancel-in-progress: true
 
 jobs:
   backend-and-research:
