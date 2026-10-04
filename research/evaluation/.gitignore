@@ -1,0 +1,2 @@
+# Raw runs are retained locally and may be archived separately; do not commit them.
+/runs/

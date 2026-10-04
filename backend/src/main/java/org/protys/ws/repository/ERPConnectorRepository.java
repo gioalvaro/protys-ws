@@ -7,6 +7,7 @@ import org.protys.ws.model.ERPConnector.ConnectorStatus;
 import org.protys.ws.model.ERPConnector.ERPType;
 
 import java.util.List;
+import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -54,4 +55,7 @@ public interface ERPConnectorRepository extends JpaRepository<ERPConnector, UUID
      * @return count of active connectors
      */
     long countByActiveTrue();
+
+    /** Count connectors whose recorded connection state is established. */
+    long countByStatusIn(Collection<ConnectorStatus> statuses);
 }

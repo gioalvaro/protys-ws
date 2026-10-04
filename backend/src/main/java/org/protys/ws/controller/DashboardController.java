@@ -40,7 +40,7 @@ public class DashboardController {
     }
 
     @GetMapping("/health")
-    @Operation(summary = "Check system health", description = "Verify system health status and availability of core services")
+    @Operation(summary = "Get API response and registered services", description = "Return API status and declared service registrations; this endpoint does not probe external dependencies or execute a reasoner")
     public ResponseEntity<Map<String, Object>> getSystemHealth() {
         log.info("Checking system health");
         try {

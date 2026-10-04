@@ -128,7 +128,7 @@ public class SPARQLController {
     // Export Endpoint
 
     @PostMapping("/export")
-    @Operation(summary = "Export query results", description = "Export SPARQL query results in specified format (CSV, JSON, JSONLD, XML)")
+    @Operation(summary = "Export query results", description = "Export SPARQL execution results as CSV or complete typed JSON; XML and JSONLD are not supported")
     public ResponseEntity<String> exportResults(
             @RequestParam("format") String format,
             @RequestBody SPARQLResponse response) {
@@ -136,7 +136,8 @@ public class SPARQLController {
         try {
             if (!isValidExportFormat(format)) {
                 log.warn("Invalid export format: {}", format);
-                return ResponseEntity.badRequest().build();
+                return ResponseEntity.badRequest()
+                        .body("Unsupported export format. Supported formats: CSV, JSON.");
             }
 
             String exportedData = sparqlService.exportResults(response, format);
@@ -156,16 +157,13 @@ public class SPARQLController {
 
     private boolean isValidExportFormat(String format) {
         return format != null && (format.equalsIgnoreCase("CSV") ||
-                format.equalsIgnoreCase("JSON") ||
-                format.equalsIgnoreCase("JSONLD") ||
-                format.equalsIgnoreCase("XML"));
+                format.equalsIgnoreCase("JSON"));
     }
 
     private String getContentType(String format) {
         return switch (format.toUpperCase()) {
             case "CSV" -> "text/csv";
-            case "XML" -> "application/xml";
-            case "JSON", "JSONLD" -> "application/json";
+            case "JSON" -> "application/json";
             default -> "text/plain";
         };
     }

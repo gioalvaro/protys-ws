@@ -9,6 +9,7 @@ import re
 import sys
 import tarfile
 from verificar_benchmark import audit, require_safe_output
+from output_paths import evaluation_dir
 
 if sys.flags.optimize:
     raise RuntimeError('Evidence packaging must run without Python optimization')
@@ -45,18 +46,19 @@ def main():
     parser.add_argument('--manifest', required=True, type=Path)
     parser.add_argument('--tag', required=True)
     parser.add_argument('--audit', required=True, type=Path)
+    parser.add_argument('--evaluation-dir',help='Raw evaluation directory relative to --repo; or PROTYS_EVALUATION_OUT (default: current)')
     args = parser.parse_args()
     repo = args.repo.resolve()
-    source = repo / 'research/evaluation/current'
-    require_safe_output(repo,args.manifest)
-    require_safe_output(repo,args.assets)
+    source = evaluation_dir(args.evaluation_dir,repo=repo)
+    require_safe_output(repo,args.manifest,source)
+    require_safe_output(repo,args.assets,source)
     assert re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*',args.tag) and '..' not in args.tag, 'Tag must be a simple safe archive identifier'
     assert not args.manifest.exists(), 'Preserve previous manifest'
     assert not args.manifest.resolve().is_relative_to(source.resolve()), 'Manifest must be outside raw evidence'
     assert not args.assets.resolve().is_relative_to(source.resolve()), 'Archives must be outside raw evidence'
     assert args.audit.is_file(), 'An independently conserved audit is required'
     proof = json.loads(args.audit.read_text())
-    assert proof == audit(repo), 'Inputs, binaries, requests, outputs or summaries differ from audited evidence'
+    assert proof == audit(repo,source), 'Inputs, binaries, requests, outputs or summaries differ from audited evidence'
     functional = json.loads((source / 'functional.json').read_text())
     summary = json.loads((source / 'summary.json').read_text())
     runs = [json.loads(line) for line in (source / 'runs.jsonl').read_text().splitlines() if line]
@@ -125,7 +127,7 @@ def main():
     # Re-read original files after packaging to prove that packaging did not
     # rewrite any output, log, request, model or measurement.
     assert records == inventory(source, repo), 'Original raw evidence inventory changed during packaging'
-    assert proof == audit(repo), 'Verified evidence, sources or binaries changed during packaging'
+    assert proof == audit(repo,source), 'Verified evidence, sources or binaries changed during packaging'
     manifest = {'schema': 'protys-research-evidence-v1', 'tag': args.tag,
                 'functional_status': 'PASS', 'replicates': 120,
                 'configuration_counts': dict(configs),
@@ -134,7 +136,7 @@ def main():
                 'global_evidence_hashes': proof['global_evidence_hashes'],
                 'verifier_script_sha256': digest(Path(__file__).with_name('verificar_benchmark.py')),
                 'packer_script_sha256': digest(Path(__file__)),
-                'coverage': 'All regular files in research/evaluation/current at packaging time',
+                'coverage': 'All regular files in '+str(source.relative_to(repo))+' at packaging time',
                 'originals_unchanged': True,
                 'publication_status': 'PACKAGED_PENDING_REMOTE_VERIFICATION'}
     write_json(args.manifest, manifest)

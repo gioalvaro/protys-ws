@@ -65,6 +65,7 @@ export const useToggleRule = () => {
     onSuccess: (rule) => {
       queryClient.invalidateQueries({ queryKey: ['alignment', 'rules'] });
       queryClient.invalidateQueries({ queryKey: ['alignment', 'rules', 'active'] });
+      queryClient.invalidateQueries({ queryKey: ['alignment', 'stats'] });
       const action = rule.active ? 'enabled' : 'disabled';
       toast.success(`Rule ${action}`);
     },

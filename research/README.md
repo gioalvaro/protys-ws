@@ -7,11 +7,22 @@ Este paquete comprueba el comportamiento de las formalizaciones, reglas y consul
 Se requieren un JDK 17, Python 3.9 o posterior y acceso a los repositorios de dependencias Maven durante la primera preparación. El repositorio incluye el envoltorio Maven en `backend/mvnw`. Desde la raíz del repositorio, configure `JAVA_HOME` para su JDK 17 y ejecute:
 
 ```sh
-./research/reproduce.sh --functional
-./research/reproduce.sh --benchmark
+# Una salida explícita permite continuar en otra terminal o sesión.
+./research/reproduce.sh --functional --output research/evaluation/runs/mi-ejecucion
+./research/reproduce.sh --benchmark --output research/evaluation/runs/mi-ejecucion
 ```
 
-Sin argumentos, `reproduce.sh` ejecuta ambas etapas en ese orden. La etapa de rendimiento exige un informe funcional `PASS` y los mismos hashes de entradas y binarios. Si se modifica el modelo, el catálogo, los datos o el ejecutor, se debe repetir la etapa funcional antes de medir. Las salidas de cada ejecución se escriben en `research/evaluation/current/`; conserve una copia de las salidas que quiera comparar antes de repetirla.
+Sin argumentos, `reproduce.sh` ejecuta ambas etapas en ese orden. La etapa de rendimiento exige un informe funcional `PASS` y los mismos hashes de entradas y binarios. Si se modifica el modelo, el catálogo, los datos o el ejecutor, se debe repetir la etapa funcional antes de medir. Sin una salida explícita, cada invocación crea una carpeta nueva `research/evaluation/runs/<fecha-UTC>-<UUID>/` y muestra su ruta absoluta. `--output` selecciona la carpeta, o puede fijarse `PROTYS_EVALUATION_OUT` para los productores y lectores. Las rutas relativas se resuelven desde el repositorio, aunque el comando se invoque desde otro directorio. `--output` tiene prioridad sobre esa variable.
+
+Cada fase se reserva antes de escribir. Una fase ya iniciada, completada o parcial se rechaza; no se elimina una carpeta previa ni se reinician sus archivos. La continuación `--benchmark` requiere `functional.json` en la carpeta seleccionada y conserva su entorno y sus resultados. Si la etapa queda interrumpida, conserve esa carpeta y elija otra para repetirla: no hay reanudación parcial. El bloqueo `.evaluation-lock` impide productores simultáneos sobre la misma carpeta. Si un proceso termina abruptamente y deja el bloqueo, no lo retire mientras exista un productor activo; conservar la carpeta y usar una nueva evita reutilizar evidencia incompleta.
+
+Para preparar los dos motores sin evaluar ni escribir resultados:
+
+```sh
+./research/reproduce.sh --prepare-only
+```
+
+Esta preparación compila en `research/runtime/*/target/` y ejecuta el smoke test del trabajador; requiere Java 17 y las dependencias Maven. No inicia el backend, la interfaz ni las 120 réplicas. `PYTHON` permite seleccionar el intérprete del punto de entrada. Las salidas publicadas en `research/evaluation/current/` y el manifiesto v1 de `research/release/` se preservan. Ese manifiesto describe las fuentes del tag `tesis-cierre-2026-10-03-v1`, no las modificaciones posteriores: la fuente de mantenimiento necesita su propia ejecución y manifiesto. La auditoría contra fuentes o binarios distintos debe rechazar el cotejo.
 
 La preparación compila dos procesos Java separados:
 
@@ -58,7 +69,7 @@ Las decisiones C030 a C033 delimitan cuatro contratos del caso. R04 compara un i
 
 Las 21 consultas se contrastan con archivos de respuestas esperadas en `research/model/expected/`. La comparación verifica variables y todas las filas como multiconjunto, con tolerancia numérica declarada. Una salida vacía sólo se acepta cuando corresponde al caso definido. Las pruebas adicionales de `research/data/fixtures/tests.json` cubren reglas, patrones ASK y condiciones de límite.
 
-Los contratos del modelo, `competency-contract.json`, `h3-extension-contract.json` y `approved-contracts.json`, describen el alcance, las decisiones y las expectativas preparados antes de la ejecución. Conservan sus estados de preparación; esos campos no acreditan resultados ni cierre. Las respuestas esperadas se definen desde el escenario y las consultas y se cotejan después con las salidas del motor. Los resultados observados se registran en `research/evaluation/current/functional.json` y en las auditorías de evidencia; la publicación conserva sus copias y manifiestos en `research/release/`. No se modifican las entradas para marcar un `PASS` a partir de la salida que deben contrastar.
+Los contratos del modelo, `competency-contract.json`, `h3-extension-contract.json` y `approved-contracts.json`, describen el alcance, las decisiones y las expectativas preparados antes de la ejecución. Conservan sus estados de preparación; esos campos no acreditan resultados ni cierre. Las respuestas esperadas se definen desde el escenario y las consultas y se cotejan después con las salidas del motor. Los resultados observados se registran en `functional.json` dentro de la carpeta de ejecución seleccionada y en las auditorías de evidencia; la publicación conserva sus copias y manifiestos en `research/release/`. No se modifican las entradas para marcar un `PASS` a partir de la salida que deben contrastar.
 
 Las configuraciones de ISO 15531, ISO 14040 y unión tienen respuestas esperadas propias, incluidas las ausencias definidas por la proyección de sus entradas y sus mecanismos disponibles. La diferencia entre esas respuestas y las del modelo integrado no demuestra una limitación universal de los estándares. Las consultas de ausencia de registros se interpretan dentro de su contexto de entrada.
 
@@ -99,6 +110,7 @@ Las réplicas caracterizan variabilidad computacional sobre un conjunto simulado
 | Archivo o carpeta | Contenido |
 |-------------------|-----------|
 | `environment.json` | Fecha, hardware, sistema y versiones ejecutadas |
+| `benchmark-environment.json` | Entorno de la sesión de medición, sin reemplazar el snapshot funcional |
 | `artifacts.json`, `runtime-binaries.json` | Hashes de fuentes y binarios |
 | `functional.json` | Comprobaciones funcionales y resultado global |
 | `functional/`, `assertion-groups/` | Peticiones, resultados, modelos y errores de las pruebas |
@@ -113,17 +125,19 @@ Después de completar las etapas funcional y de rendimiento, desde la raíz del 
 
 ```sh
 python3 research/evaluation/verificar_benchmark.py \
-  --repo . --output research/release/benchmark-audit.json
+  --repo . --evaluation-dir research/evaluation/runs/mi-ejecucion \
+  --output research/release/mi-ejecucion/benchmark-audit.json
 python3 research/evaluation/empaquetar_evidencia.py \
-  --repo . --audit research/release/benchmark-audit.json \
-  --assets ../protys-evidence/tesis-cierre-2026-10-03-v1 \
-  --manifest research/release/evidence-manifest.json \
-  --tag tesis-cierre-2026-10-03-v1
+  --repo . --evaluation-dir research/evaluation/runs/mi-ejecucion \
+  --audit research/release/mi-ejecucion/benchmark-audit.json \
+  --assets ../protys-evidence/mi-ejecucion \
+  --manifest research/release/mi-ejecucion/evidence-manifest.json \
+  --tag mi-ejecucion
 ```
 
-El verificador lee los archivos conservados y reconstruye las solicitudes, los grupos de pruebas, el orden de las réplicas, las estadísticas y los hashes. Comprueba los resultados esperados y los motivos de los fallos definidos, sin ejecutar nuevamente el modelo. El empaquetador repite esa auditoría, conserva todos los archivos regulares de `research/evaluation/current/`, comprueba cada miembro de los archivos comprimidos y vuelve a cotejar las entradas y las salidas. No use Python con optimización (`-O`): las utilidades rechazan esa modalidad para mantener sus condiciones de comprobación. Los informes y manifiestos anteriores se preservan; al repetir el procedimiento, elija nombres y destinos nuevos.
+El verificador lee los archivos conservados y reconstruye las solicitudes, los grupos de pruebas, el orden de las réplicas, las estadísticas y los hashes. Comprueba los resultados esperados y los motivos de los fallos definidos, sin ejecutar nuevamente el modelo. El empaquetador repite esa auditoría, conserva todos los archivos regulares de la carpeta seleccionada, comprueba cada miembro de los archivos comprimidos y vuelve a cotejar las entradas y las salidas. No use Python con optimización (`-O`): las utilidades rechazan esa modalidad para mantener sus condiciones de comprobación. Los informes y manifiestos anteriores se preservan; al repetir el procedimiento, elija nombres y destinos nuevos.
 
-La etiqueta de los comandos identifica la versión prevista para este cierre. La creación de archivos locales no demuestra que esa etiqueta o sus archivos estén publicados. La comprobación remota de commit, etiqueta y archivos se registra por separado.
+La etiqueta del ejemplo es un identificador nuevo para los archivos; no reemplaza la versión v1 publicada. La creación de archivos locales no demuestra que esa etiqueta o sus archivos estén publicados. La comprobación remota de commit, etiqueta y archivos se registra por separado.
 
 El gráfico científico se genera con las 120 mediciones conservadas y su auditoría. Su entorno de dibujo es opcional y separado del entorno requerido para ejecutar el modelo; la combinación comprobada usa Python 3.12 y las dependencias fijadas en `research/evaluation/figures-requirements.txt`. Por ejemplo:
 
@@ -132,11 +146,26 @@ python3.12 -m venv research/.cache/figures-venv
 research/.cache/figures-venv/bin/python -m pip install \
   -r research/evaluation/figures-requirements.txt
 research/.cache/figures-venv/bin/python research/evaluation/crear_figura4_7.py \
-  --runs research/evaluation/current/runs.jsonl \
-  --audit research/release/benchmark-audit.json \
-  --output-directory research/release/figures
+  --runs research/evaluation/runs/mi-ejecucion/runs.jsonl \
+  --audit research/release/mi-ejecucion/benchmark-audit.json \
+  --output-directory research/release/mi-ejecucion/figures
 ```
 
 El directorio de la figura debe ser nuevo. El generador conserva PNG, SVG, PDF y un registro de procedencia con hashes, versiones y fuente tipográfica. Muestra las 30 observaciones de cada configuración, mediana y rango intercuartílico; los desplazamientos horizontales de los puntos sólo facilitan la lectura. La fuente resuelta se registra y puede variar entre sistemas. Antes de incorporar o publicar las figuras se debe revisar su legibilidad y su correspondencia con las mediciones. Las cajas y puntos no implican observaciones industriales ni tareas equivalentes entre configuraciones.
 
 La publicación académica se identifica mediante commit y etiqueta. Los resúmenes y el manifiesto de todos los archivos de evidencia se conservarán en `research/release/`; las salidas crudas completas se publicarán como archivos de la misma versión. El manifiesto identifica cada miembro, su tamaño y SHA-256 y el archivo que lo contiene. La publicación y sus enlaces se comprobarán antes de declararlos disponibles. Las IRI del modelo son identificadores lógicos: su resolución pública y la disponibilidad FAIR completa no se presumen. El depósito con DOI queda para una etapa posterior. La herramienta semiautomática de conversión desde lenguaje natural y EXPRESS de Fraga, Vegetti y Leone (2017) sigue formando parte de la investigación; esta evaluación no atribuye su ejecución al paquete de pintura.
+
+## Piloto y demostración en la carpeta seleccionada
+
+Después de la fase funcional, los productores auxiliares comparten la selección:
+
+```sh
+python3 research/evaluation/capacity_pilot.py --output research/evaluation/runs/mi-ejecucion
+python3 research/evaluation/demonstrate.py --output research/evaluation/runs/mi-ejecucion
+```
+
+El piloto reserva `capacity/`; la demostración reserva `demonstration/` y `demonstration.json`. Repetir cualquiera de esas fases se rechaza, incluso si dejó archivos parciales. La demostración lee por defecto `functional/integrated/raw-input.owl` dentro de esa misma ejecución; `--case` o `PROTYS_DEMONSTRATION_CASE` permiten elegir un archivo explícito. Requiere además Docker activo y el backend compilado. La variable histórica `PROTYS_DEMONSTRATION_OUTPUT`, si se usa, debe señalar el subdirectorio `demonstration` de la ejecución y no debe contradecir `--output` ni `PROTYS_EVALUATION_OUT`.
+
+Los lectores `verificar_benchmark.py` y `empaquetar_evidencia.py` admiten `--evaluation-dir` o `PROTYS_EVALUATION_OUT`; sin selección explícita conservan el valor histórico `current` para lectura. Los destinos del informe, del manifiesto y de los archivos comprimidos deben ser nuevos y estar fuera de la evidencia leída. Para comprobar la evidencia v1 contra sus fuentes, use el tag v1 y sus binarios correspondientes; las nuevas herramientas no certifican una fuente histórica mediante los archivos modificados de mantenimiento.
+
+Los controles ligeros de conservación se ejecutan con `python3 -m unittest discover -s research/evaluation/tests -v`. Simulan procesos para probar rutas, exclusión de fases y ausencia de truncamientos; no sustituyen una ejecución funcional real ni las 120 réplicas.

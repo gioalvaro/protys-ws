@@ -252,4 +252,48 @@ class SPARQLControllerTest {
                         .content(objectMapper.writeValueAsString(template)))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    void exportCsvAcceptsTheCapturedExecutionDtoAndReturnsAnAttachment() throws Exception {
+        try (var input = getClass().getResourceAsStream("/sparql/q06-response.json")) {
+            String body = new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+            when(sparqlService.exportResults(any(SPARQLResponse.class), eq("CSV")))
+                    .thenReturn("lot,amount\r\nA,1\r\n");
+            mockMvc.perform(post("/api/sparql/export").param("format", "CSV")
+                            .contentType(MediaType.APPLICATION_JSON).content(body))
+                    .andExpect(status().isOk())
+                    .andExpect(content().contentTypeCompatibleWith("text/csv"))
+                    .andExpect(header().string("Content-Disposition", "attachment; filename=\"results.csv\""))
+                    .andExpect(content().string("lot,amount\r\nA,1\r\n"));
+            verify(sparqlService).exportResults(argThat(response -> response.getResultCount() == 3
+                    && response.getSparqlJson().at("/head/vars").size() == 5), eq("CSV"));
+        }
+    }
+
+    @Test
+    void exportJsonPreservesTheCompleteTypedServiceResponse() throws Exception {
+        try (var input = getClass().getResourceAsStream("/sparql/q06-response.json")) {
+            String body = new String(input.readAllBytes(), java.nio.charset.StandardCharsets.UTF_8);
+            when(sparqlService.exportResults(any(SPARQLResponse.class), eq("JSON"))).thenReturn(body);
+            mockMvc.perform(post("/api/sparql/export").param("format", "JSON")
+                            .contentType(MediaType.APPLICATION_JSON).content(body))
+                    .andExpect(status().isOk())
+                    .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+                    .andExpect(jsonPath("$.sparqlJson.results.bindings", hasSize(3)))
+                    .andExpect(jsonPath("$.sparqlJson.results.bindings[0].liters.datatype",
+                            equalTo("http://www.w3.org/2001/XMLSchema#decimal")))
+                    .andExpect(jsonPath("$.results", hasSize(3)));
+        }
+    }
+
+    @Test
+    void unsupportedHistoricalExportsReturnClear400WithoutCallingTheService() throws Exception {
+        for (String format : List.of("XML", "JSONLD", "unknown")) {
+            mockMvc.perform(post("/api/sparql/export").param("format", format)
+                            .contentType(MediaType.APPLICATION_JSON).content("{\"resultCount\":0}"))
+                    .andExpect(status().isBadRequest())
+                    .andExpect(content().string("Unsupported export format. Supported formats: CSV, JSON."));
+        }
+        verify(sparqlService, never()).exportResults(any(), anyString());
+    }
 }
