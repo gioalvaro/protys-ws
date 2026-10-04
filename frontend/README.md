@@ -1,177 +1,72 @@
 # PROTYS-WS Frontend
 
-A modern React 18 frontend for PROTYS-WS - a semantic web application for managing manufacturing ontologies.
+Interfaz React 18.3.1 del prototipo PROTYS-WS. Incluye pantallas para explorar ontologías, ejecutar consultas SPARQL, gestionar alineamientos y recorrer el asistente de configuración. Las pantallas ERP representan funciones del prototipo; su presencia no acredita un conector industrial validado.
 
-## Features
+## Entorno fijado
 
-- **Dashboard**: Overview of your ontology statistics, system health, and quick actions
-- **Ontology Explorer**: Browse and manage classes and individuals in your ontologies
-- **SPARQL Console**: Execute semantic queries with templates and competency questions
-- **Alignment & Reasoning**: Manage alignment rules and execute OWL reasoning
-- **ERP Integration**: Connect and materialize data from external systems
-- **Guided Wizard**: Step-by-step ontology creation and configuration
+- Node.js **24.18.0**, indicado en `.nvmrc`.
+- npm **11.16.0**, indicado en `packageManager` y `engines`.
+- Dependencias directas con versiones exactas y árbol completo en `package-lock.json`.
+- React Scripts 5.0.1 y TypeScript 4.9.5, compatible con su restricción de dependencias.
+- YAML 2.8.2 como dependencia de desarrollo explícita para satisfacer el peer opcional del cargador PostCSS de Tailwind.
 
-## Tech Stack
+Esta configuración corresponde al mantenimiento de instalación reproducible. No reemplaza la descripción del entorno histórico usado para los resultados de la tesis. `.npmrc` rechaza instalaciones con versiones de Node o npm diferentes; no usar `--legacy-peer-deps` para eludir conflictos.
 
-- **React 18.2** - UI framework
-- **React Router 6** - Client-side routing
-- **Tailwind CSS 3** - Styling
-- **Axios** - HTTP client
-- **React Query** - Server state management
-- **Recharts** - Data visualization
-- **CodeMirror** - Code editors
-- **React Toastify** - Notifications
-- **Heroicons** - Icons
+## Instalación y desarrollo
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 16+ and npm
-- Backend API running at `http://localhost:8080/api`
-
-### Installation
+Desde la raíz del repositorio, con [nvm](https://github.com/nvm-sh/nvm) instalado:
 
 ```bash
-# Install dependencies
-npm install
-
-# Start development server
+cd frontend
+nvm install
+nvm use
+npm --version
+npm ci
 npm start
-
-# Build for production
-npm build
-
-# Run tests
-npm test
 ```
 
-The app will open at `http://localhost:3000`
+La interfaz de desarrollo se sirve en `http://localhost:3000`. Requiere el backend en `http://localhost:8080`; el cliente usa `http://localhost:8080/api` por defecto. `npm ci` instala el árbol del archivo de bloqueo y reemplaza el directorio `node_modules` de esa copia de trabajo.
 
-## Project Structure
-
-```
-frontend/
-├── src/
-│   ├── components/
-│   │   ├── dashboard/
-│   │   ├── explorer/
-│   │   ├── sparql/
-│   │   ├── alignment/
-│   │   ├── erp/
-│   │   └── wizard/
-│   ├── services/
-│   │   └── api.js          # API client and endpoints
-│   ├── App.jsx             # Main app component
-│   ├── index.js            # Entry point
-│   └── index.css           # Global styles
-├── public/
-│   └── index.html
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
-└── README.md
-```
-
-## API Integration
-
-The frontend communicates with the backend REST API at `http://localhost:8080/api`. All endpoints are documented in `src/services/api.js`:
-
-- `/dashboard` - Dashboard statistics and health
-- `/ontology` - Module and class management
-- `/sparql` - Query execution and templates
-- `/alignment` - Rule management and reasoning
-- `/erp` - ERP connectors and materialization
-- `/wizard` - Guided setup workflow
-
-## Component Overview
-
-### Dashboard
-- System statistics cards
-- Health indicators
-- Module and triple distribution charts
-- Recent activity timeline
-- Quick action buttons
-
-### Ontology Explorer
-- Module selector
-- Hierarchical class tree with search
-- Class and individual details
-- Add/edit/delete individuals
-- Property display and navigation
-
-### SPARQL Console
-- Query editor with syntax support
-- Query templates and competency questions
-- Result table with export options
-- Query validation
-
-### Alignment
-- Rule management (upload, activate, delete)
-- Statistics display
-- Reasoning execution
-- Rule examples and documentation
-
-### ERP Integration
-- Connector management
-- Connection testing
-- Schema introspection
-- Data materialization
-- Integration guide
-
-### Wizard
-- 5-step guided process
-- File upload
-- Validation
-- Alignment rule selection
-- Configuration verification
-- Completion
-
-## Styling
-
-Uses Tailwind CSS with custom PROTYS theme colors:
-
-- **Primary**: Protys Blue (`#0ea5e9`)
-- **Semantic**: Teal accent (`#14b8a6`)
-- **Ontology**: Purple accent (`#a855f7`)
-
-Custom components are defined in `src/index.css` for consistent styling:
-- `.card` - Card containers
-- `.btn-*` - Button variants
-- `.input` - Form inputs
-- `.badge` - Badge components
-- `.label` - Form labels
-
-## State Management
-
-- **Server State**: React Query for API data
-- **Client State**: React hooks (useState)
-- **Form State**: Local component state with mutations
-
-## Error Handling
-
-All API requests include error handling with toast notifications. Network errors are automatically caught and displayed to the user.
-
-## Development
+Para un backend distinto, definir la URL **antes** de iniciar o compilar:
 
 ```bash
-# Start with hot reload
-npm start
-
-# Build optimized production bundle
-npm build
-
-# Run tests
-npm test -- --watch
+REACT_APP_API_URL=http://localhost:8080/api npm start
 ```
 
-## Browser Support
+Las variables `REACT_APP_*` se incorporan al JavaScript durante la compilación; no deben contener secretos. Cambiarlas en el contenedor Nginx ya construido no modifica el cliente.
 
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
+## Verificación y compilación
 
-## License
+```bash
+CI=true npm run test:ci
+CI=true REACT_APP_API_URL=/api npm run build
+```
+
+`test:ci` ejecuta las pruebas existentes una sola vez. `npm test` conserva el modo interactivo. La compilación genera `build/`; esta carpeta no se versiona. La comprobación de las pruebas y la compilación no sustituye una prueba del navegador contra el backend activo.
+
+## Docker y API
+
+El `Dockerfile` instala con `npm ci` y compila en Node 24.18.0. Las imágenes base de Node y Nginx están fijadas por versión y digest. `.dockerignore` excluye las dependencias locales, las compilaciones previas y los archivos de entorno.
+
+Nginx escucha en el **puerto 80** del contenedor. Su control de salud consulta `/health`. El backend debe estar disponible en la misma red Docker con el nombre `protys-backend`, puerto 8080; Nginx redirige `/api/`, `/swagger-ui/` y `/v3/api-docs` hacia él. Las rutas de React usan el fallback a `index.html`.
+
+La imagen compila con `REACT_APP_API_URL=/api` por defecto para que el navegador use el mismo origen y el proxy Nginx. Se puede cambiar mediante el argumento de compilación `REACT_APP_API_URL`; no mediante una variable de ejecución. Para iniciar el conjunto de servicios, seguir las instrucciones de la raíz del repositorio.
+
+## Estructura y bibliotecas
+
+- `src/components/`: panel, explorador, consultas, alineamientos, ERP y asistente.
+- `src/hooks/`: acceso a datos con React Query.
+- `src/services/api.js`: cliente Axios y rutas REST.
+- `src/services/validationState.js`: interpretación de estados de validación.
+- `src/index.css` y `tailwind.config.js`: estilos Tailwind.
+- `src/**/*.test.*`: pruebas de estados y componentes.
+
+React Router gestiona la navegación; Recharts representa gráficos, Heroicons aporta iconos y React Toastify muestra notificaciones. La consola SPARQL actual usa un área de texto. Las dependencias de CodeMirror se conservan en el árbol existente y no implican que ese editor esté integrado en la pantalla.
+
+## Límites de mantenimiento
+
+Se conserva la arquitectura React 18 con React Scripts 5.0.1. Algunas dependencias de esa cadena muestran avisos de deprecación. La actualización completa del sistema de compilación requiere una revisión separada; no está incluida en esta reparación de arranque.
+
+## Licencia
 
 Proprietary - PROTYS Team

@@ -1,0 +1,19 @@
+{
+  "totalModules" : 1,
+  "totalClasses" : 128,
+  "totalIndividuals" : 621,
+  "totalTriples" : 4316,
+  "activeAlignmentRules" : 0,
+  "totalInferences" : 0,
+  "connectedERPs" : 0,
+  "lastActivity" : "2026-10-04T02:40:09.765152828",
+  "moduleStats" : [ {
+    "moduleName" : "Canonical_Catalog_Integrated",
+    "baseUri" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+    "status" : "LOADED",
+    "classCount" : 128,
+    "individualCount" : 621,
+    "tripleCount" : 4316,
+    "loadedAt" : "2026-10-04T02:38:10.587569"
+  } ]
+}

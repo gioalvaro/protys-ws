@@ -1,127 +1,121 @@
-version: '3.8'
-
 services:
-  # Apache Jena Fuseki - Triple Store for RDF data
+  # Uses pinned Jena4.10 dependencies and a project-owned persistent dataset.
   protys-fuseki:
-    image: stain/jena-fuseki:4.10.0
-    container_name: protys-fuseki
+    image: ${COMPOSE_PROJECT_NAME:-protys}-backend:maintenance
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - >-
+        exec java -Xmx2g -Djava.awt.headless=true
+        -cp "/opt/protys/research/runtime/validator/target/classes:$$(cat /opt/protys/research/runtime/validator/target/fuseki-classpath.txt)"
+        org.apache.jena.fuseki.main.cmds.FusekiMainCmd
+        --port=3030 --config=/opt/protys/docker/fuseki-config.ttl
     ports:
-      - "3030:3030"
-    environment:
-      # Override via FUSEKI_ADMIN_PASSWORD in docker/.env (see .env.example)
-      ADMIN_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:-admin123}
-      FUSEKI_DATASET_1: protys_canonical
+      - "127.0.0.1:${PROTYS_FUSEKI_PORT:-3030}:3030"
     volumes:
       - fuseki-data:/fuseki
-      - ./fuseki-config.ttl:/etc/fuseki/config.ttl:ro
-      - ../ontologies:/ontologies:ro
-    networks:
-      - protys-network
+    networks: [protys-network]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3030/protys_canonical"]
-      interval: 10s
+      test: ["CMD", "curl", "-fsS", "http://localhost:3030/protys_canonical/query?query=ASK%7B%7D"]
+      interval: 5s
       timeout: 5s
-      retries: 5
-    command: ["/docker-entrypoint.sh", "server"]
+      retries: 20
+      start_period: 20s
 
-  # PostgreSQL Database - For ADempiere and Odoo data
   protys-postgres:
     image: postgres:15
-    container_name: protys-postgres
     environment:
-      # Override via docker/.env (see .env.example)
       POSTGRES_DB: ${POSTGRES_DB:-protys_db}
       POSTGRES_USER: ${POSTGRES_USER:-protys_user}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-protys_password}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:${PROTYS_POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
-      - ../sql/adempiere-schema.sql:/docker-entrypoint-initdb.d/01-adempiere-schema.sql
-      - ../sql/odoo-schema.sql:/docker-entrypoint-initdb.d/02-odoo-schema.sql
-    networks:
-      - protys-network
+    networks: [protys-network]
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-protys_user}"]
-      interval: 10s
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 20
 
-  # Spring Boot Backend - R2RML Mapping Engine
   protys-backend:
+    image: ${COMPOSE_PROJECT_NAME:-protys}-backend:maintenance
     build:
-      context: ../backend
-      dockerfile: Dockerfile
-    container_name: protys-backend
+      context: ..
+      dockerfile: backend/Dockerfile
     ports:
-      - "8080:8080"
+      - "127.0.0.1:${PROTYS_BACKEND_PORT:-8080}:8080"
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://protys-postgres:5432/${POSTGRES_DB:-protys_db}
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER:-protys_user}
       SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD:-protys_password}
-      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      PROTYS_RESEARCH_ROOT: /opt/protys
       FUSEKI_ENDPOINT: http://protys-fuseki:3030/protys_canonical
-      FUSEKI_QUERY_ENDPOINT: http://protys-fuseki:3030/protys_canonical/sparql
+      FUSEKI_QUERY_ENDPOINT: http://protys-fuseki:3030/protys_canonical/query
       FUSEKI_UPDATE_ENDPOINT: http://protys-fuseki:3030/protys_canonical/update
+      FUSEKI_GSP_ENDPOINT: http://protys-fuseki:3030/protys_canonical/data
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-      SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
       LOGGING_LEVEL_ROOT: INFO
-      LOGGING_LEVEL_COM_PROTYS: DEBUG
+      LOGGING_LEVEL_ORG_PROTYS_WS: INFO
+      LOGGING_LEVEL_ORG_HIBERNATE_SQL: WARN
     depends_on:
       protys-postgres:
         condition: service_healthy
       protys-fuseki:
         condition: service_healthy
-    networks:
-      - protys-network
+    networks: [protys-network]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
-      interval: 15s
+      test: ["CMD", "curl", "-fsS", "http://localhost:8080/actuator/health"]
+      interval: 5s
       timeout: 5s
-      retries: 5
-    volumes:
-      - ../backend/src/main/resources/r2rml:/app/r2rml:ro
+      retries: 30
+      start_period: 40s
 
-  # Ontology Loader - Loads PROTYS(KB) into Fuseki on startup
+  # Asserted sources go through API so modules and rules have SQL metadata too.
   protys-init:
-    image: python:3.12-slim
-    container_name: protys-init
-    volumes:
-      - ../:/workspace:ro
-      - ./init-fuseki.sh:/init-fuseki.sh:ro
-      - ./load_canonical.py:/load_canonical.py:ro
+    build:
+      context: ..
+      dockerfile_inline: |
+        FROM python:3.12-slim
+        RUN pip install --no-cache-dir rdflib==7.1.4
+        WORKDIR /opt/protys
+        COPY ontologies/ ontologies/
+        COPY research/catalog.json research/catalog.json
+        COPY research/model/ research/model/
+        COPY research/data/ research/data/
+        COPY docker/load_canonical.py docker/init-fuseki.sh docker/
+        ENV PROTYS_REPOSITORY=/opt/protys
+        ENTRYPOINT ["/bin/sh", "/opt/protys/docker/init-fuseki.sh"]
     environment:
       FUSEKI_URL: http://protys-fuseki:3030
-      PROTYS_REPOSITORY: /workspace
       FUSEKI_DATASET: protys_canonical
-      FUSEKI_ADMIN_USER: admin
-      FUSEKI_ADMIN_PASSWORD: ${FUSEKI_ADMIN_PASSWORD:-admin123}
-    entrypoint: ["/bin/sh", "/init-fuseki.sh"]
+      PROTYS_BACKEND_URL: http://protys-backend:8080
     depends_on:
       protys-fuseki:
         condition: service_healthy
-    networks:
-      - protys-network
+      protys-backend:
+        condition: service_healthy
+    networks: [protys-network]
     restart: "no"
 
-  # React Frontend
   protys-frontend:
     build:
       context: ../frontend
       dockerfile: Dockerfile
-    container_name: protys-frontend
     ports:
-      - "80:80"
+      - "127.0.0.1:${PROTYS_FRONTEND_PORT:-8081}:80"
     depends_on:
-      protys-backend:
-        condition: service_healthy
-    networks:
-      - protys-network
+      protys-init:
+        condition: service_completed_successfully
+    networks: [protys-network]
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 15s
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1:80/health"]
+      interval: 5s
       timeout: 5s
-      retries: 5
+      retries: 20
 
 networks:
   protys-network:
@@ -129,6 +123,4 @@ networks:
 
 volumes:
   fuseki-data:
-    driver: local
   postgres-data:
-    driver: local

@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
 """Reproducible academic evaluation. Golden outputs are authored independently."""
-import argparse,collections,csv,hashlib,json,math,os,platform,random,shutil,signal,statistics,subprocess,time
+import argparse,collections,csv,hashlib,json,math,os,platform,random,signal,statistics,subprocess,time
 from decimal import Decimal, DecimalException
 from pathlib import Path
+from output_paths import evaluation_dir,check_phases,reserve_phases
 ROOT=Path(__file__).resolve().parents[2]
-OUT=ROOT/'research/evaluation/current'
-JAVA=Path(os.environ['JAVA_HOME'])/'bin/java'
-CP=str(ROOT/'research/runtime/validator/target/classes')+os.pathsep+(ROOT/'research/runtime/validator/target/classpath.txt').read_text().strip()
+OUT=evaluation_dir()
+JAVA=None
+CP=None
+def configure_runtime():
+ global JAVA,CP
+ JAVA=Path(os.environ['JAVA_HOME'])/'bin/java'
+ CP=str(ROOT/'research/runtime/validator/target/classes')+os.pathsep+(ROOT/'research/runtime/validator/target/classpath.txt').read_text().strip()
 def save(path,value):
- path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(value,indent=2,ensure_ascii=False)+'\n')
+ path.parent.mkdir(parents=True,exist_ok=True)
+ with path.open('x') as stream:stream.write(json.dumps(value,indent=2,ensure_ascii=False)+'\n')
 def execute(spec,target):
  if not target.resolve().is_relative_to((ROOT/'research/evaluation').resolve()):raise RuntimeError('Output must belong to evaluation directory')
- if target.exists():shutil.rmtree(target)
- target.mkdir(parents=True,exist_ok=True);save(target/'request.json',spec)
+ target.mkdir(parents=True,exist_ok=False);save(target/'request.json',spec)
+ if JAVA is None:configure_runtime()
  cmd=[str(JAVA),'-Xmx2g','-Djava.awt.headless=true','-cp',CP,'org.protys.research.AcademicRunner',str(ROOT),str(target/'request.json'),str(target)]
  start=time.monotonic();peak=0;timed_out=False
- with (target/'stdout.txt').open('w') as stdout,(target/'stderr.txt').open('w') as stderr:
+ with (target/'stdout.txt').open('x') as stdout,(target/'stderr.txt').open('x') as stderr:
   proc=subprocess.Popen(cmd,stdout=stdout,stderr=stderr,start_new_session=True)
   try:
    while proc.poll() is None:
@@ -190,11 +196,12 @@ def benchmark(cat):
  if functional_report.get('runtime_hashes')!=execution_runtime_hashes():raise RuntimeError('Benchmark blocked: executed classes/dependency binaries changed since functional validation')
  configs=[x for x in cat['configurations'] if x.get('benchmark',False)]
  if len(configs)!=4:raise RuntimeError('Exactly four configurations required')
+ save(OUT/'benchmark-environment.json',environment_data())
  hashes_before=artifact_hashes();save(OUT/'benchmark-input-hashes.json',hashes_before)
  runtime_before=execution_runtime_hashes();save(OUT/'benchmark-runtime-hashes.json',runtime_before)
  seed=20261003;order=[(i,c['id']) for i in range(30) for c in configs];random.Random(seed).shuffle(order);save(OUT/'replicate-order.json',{'seed':seed,'pairs':order,'new_process_each_run':True})
  runs=[]
- (OUT/'runs.jsonl').write_text('')
+ with (OUT/'runs.jsonl').open('x'):pass
  for n,(replica,id) in enumerate(order,1):
   cfg=next(c for c in configs if c['id']==id);dest=OUT/'runs'/f'{n:03d}-{id}-r{replica:02d}'
   result=execute(specification(cat,cfg,cfg.get('benchmark_abox')),dest);result.update(configuration=id,replica=replica,order=n)
@@ -215,7 +222,7 @@ def benchmark(cat):
    vals=[r.get('swrl',{}).get(key,0) for r in sample];row['worker_'+key]={'mean':statistics.mean(vals),'sd':statistics.stdev(vals),'median':statistics.median(vals),'min':min(vals),'max':max(vals)}
   summary.append(row)
  save(OUT/'summary.json',{'replicates':120,'dataset_seed':42,'order_seed':seed,'descriptive_statistics':summary,'memory_method':'Maximum observed sum of RSS for parent JVM and SWRL subprocess sampled every100ms; not instantaneous peak or live heap. Parent peak_heap_bytes is separate.','cache_control':'Each run starts a fresh parent JVM and, where enabled, a fresh SWRL worker. Application caches are not reused; operating-system disk caches, thermal state and CPU scheduling are not controlled.','inference_counts':'DL pre/post counts are named RDF consequences exported by HermiT; worker new_axiom_count combines OWL2RL and active SWRL consequences. Only the same-input OWL_ONLY ablation attributes additional consequences to SWRL. CONSTRUCT counts are recorded separately.','interpretation':'Observed computation on synthetic case; configurations perform different semantic tasks; no automatic industrial benefit or normalized percentage.'})
- with (OUT/'summary.csv').open('w',newline='') as stream:
+ with (OUT/'summary.csv').open('x',newline='') as stream:
   writer=csv.DictWriter(stream,fieldnames=['configuration','n','mean_ms','sd_ms','median_ms','mean_rss_bytes']);writer.writeheader()
   for x in summary:writer.writerow(dict(configuration=x['configuration'],n=x['n'],mean_ms=x['total_ms']['mean'],sd_ms=x['total_ms']['sd'],median_ms=x['total_ms']['median'],mean_rss_bytes=x['observed_peak_process_tree_rss_bytes']['mean']))
 
@@ -242,18 +249,42 @@ def execution_runtime_hashes():
    hashes['maven/'+normalized]=hashlib.sha256(jar.read_bytes()).hexdigest()
  return hashes
 
-def environment():
+def environment_data():
  data={'timestamp_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'platform':platform.platform(),'machine':platform.machine(),'cpu_count':os.cpu_count(),'java_version':subprocess.check_output([str(JAVA),'-version'],stderr=subprocess.STDOUT,text=True),'python_version':platform.python_version(),'maven_version':subprocess.check_output([str(ROOT/'backend/mvnw'),'-v'],stderr=subprocess.STDOUT,text=True),'versions':{'OWLAPI-validator':'5.1.20','HermiT':'1.4.5.519','Jena':'4.10.0','SWRLAPI':'2.1.3','SWRLAPI-Drools-Engine':'2.1.3','Drools':'7.74.1.Final','OWLAPI-worker':'4.5.27'},'jvm_heap_limit':'2g parent +2g worker','headless':True}
  for key in ['hw.model','hw.memsize','machdep.cpu.brand_string']:
-  try:data[key]=subprocess.check_output(['sysctl','-n',key],text=True).strip()
-  except subprocess.SubprocessError:pass
- save(OUT/'environment.json',data)
+  try:data[key]=subprocess.check_output(['sysctl','-n',key],text=True,stderr=subprocess.DEVNULL).strip()
+  except (subprocess.SubprocessError,FileNotFoundError):pass
+ return data
+def environment():
+ save(OUT/'environment.json',environment_data())
  hashes=artifact_hashes()
  save(OUT/'artifacts.json',hashes)
  save(OUT/'runtime-binaries.json',execution_runtime_hashes())
-if __name__=='__main__':
- parser=argparse.ArgumentParser();parser.add_argument('--functional',action='store_true');parser.add_argument('--benchmark',action='store_true');args=parser.parse_args();OUT.mkdir(parents=True,exist_ok=True);cat=json.loads((ROOT/'research/catalog.json').read_text());environment()
- if args.functional:
-  report=functional(cat)
-  if report['status']!='PASS':raise SystemExit(1)
- if args.benchmark:benchmark(cat)
+ runtime=OUT/'runtime';runtime.mkdir()
+ for module in ['swrl-worker','validator']:
+  with (runtime/(module+'-dependencies.txt')).open('xb') as stream:stream.write((ROOT/'research/runtime'/module/'target/dependencies.txt').read_bytes())
+ with (runtime/'smoke.json').open('xb') as stream:stream.write((ROOT/'research/runtime/swrl-worker/target/smoke.json').read_bytes())
+ probe=runtime/'validation-failure-probe.json'
+ subprocess.run([str(JAVA),'-Djava.awt.headless=true','-cp',CP,'org.protys.research.ValidationFailureProbe',str(probe)],check=True)
+def main(argv=None):
+ global OUT
+ parser=argparse.ArgumentParser()
+ parser.add_argument('--functional',action='store_true');parser.add_argument('--benchmark',action='store_true')
+ parser.add_argument('--output',help='Evaluation directory, relative to repository; overrides PROTYS_EVALUATION_OUT')
+ parser.add_argument('--select-output',action='store_true',help='Validate requested phases and print destination, without execution or writes')
+ args=parser.parse_args(argv)
+ if not (args.functional or args.benchmark):parser.error('Select --functional and/or --benchmark')
+ OUT=evaluation_dir(args.output,fresh=True)
+ phases=[name for name in ['functional','benchmark'] if getattr(args,name)]
+ check_phases(OUT,phases)
+ if args.select_output:
+  print(OUT);raise SystemExit(0)
+ print('Evaluation output: '+str(OUT),flush=True)
+ with reserve_phases(OUT,phases):
+  configure_runtime();cat=json.loads((ROOT/'research/catalog.json').read_text())
+  if args.functional:
+   environment();report=functional(cat)
+   if report['status']!='PASS':raise SystemExit(1)
+  if args.benchmark:benchmark(cat)
+
+if __name__=='__main__':main()

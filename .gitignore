@@ -116,3 +116,10 @@ research/evaluation/provisional/
 # Raw definitive runs are published as verified release assets.
 # Compact evidence and the complete member/hash manifest live in research/release/.
 research/evaluation/current/
+
+# Reproducible frontend installation
+!frontend/package-lock.json
+!frontend/.nvmrc
+
+# Isolated local demonstration state
+.local-demo/

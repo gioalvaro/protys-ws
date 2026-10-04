@@ -3,6 +3,7 @@ package org.protys.ws.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.jena.ontology.OntClass;
+import org.apache.jena.ontology.OntDocumentManager;
 import org.apache.jena.ontology.OntModel;
 import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.ontology.OntProperty;
@@ -22,6 +23,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.protys.ws.model.OntologyModule;
+import org.protys.ws.model.AlignmentRule;
+import org.protys.ws.model.ERPConnector.ConnectorStatus;
 import org.protys.ws.dto.DashboardStats;
 import org.protys.ws.dto.OntologyClassDTO;
 import org.protys.ws.dto.OntologyIndividualDTO;
@@ -29,6 +32,8 @@ import org.protys.ws.dto.OntologyModuleDTO;
 import org.protys.ws.exception.ProtysFusekiException;
 import org.protys.ws.exception.ProtysMappingException;
 import org.protys.ws.repository.OntologyModuleRepository;
+import org.protys.ws.repository.AlignmentRuleRepository;
+import org.protys.ws.repository.ERPConnectorRepository;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -36,6 +41,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -51,6 +58,8 @@ public class OntologyService {
     private final FusekiService fusekiService;
     private final OntologyModuleRepository ontologyModuleRepository;
     private final ReasoningService reasoningService;
+    private final AlignmentRuleRepository alignmentRuleRepository;
+    private final ERPConnectorRepository erpConnectorRepository;
 
     /**
      * Loads an OWL ontology module from an uploaded file.
@@ -395,49 +404,52 @@ public class OntologyService {
 
         List<OntologyModule> modules = ontologyModuleRepository.findAll();
 
-        long totalTriples = 0;
-        long totalClasses = 0;
-        long totalIndividuals = 0;
+        Model registeredUnion = ModelFactory.createDefaultModel();
+        LocalDateTime lastActivity = null;
         List<DashboardStats.ModuleStatEntry> moduleStatEntries = new ArrayList<>();
 
         for (OntologyModule module : modules) {
-            totalTriples += module.getTripleCount();
-
             Model model = fusekiService.getModel(module.getNamedGraph());
-            OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, model);
+            registeredUnion.add(model);
+            OntModel ontModel = registeredOntologyView(model);
 
             long classCount = ontModel.listNamedClasses().toList().size();
-            totalClasses += classCount;
-
-            // Count individuals (resources with rdf:type)
-            long individualCount = model.listResourcesWithProperty(
-                    org.apache.jena.vocabulary.RDF.type).toList().stream()
-                    .filter(r -> !r.isAnon())
-                    .count();
-            totalIndividuals += individualCount;
+            long individualCount = namedIndividualCount(ontModel);
+            lastActivity = latest(lastActivity, module.getLoadedAt(), module.getUpdatedAt());
 
             // Build module stat entry
             DashboardStats.ModuleStatEntry entry = DashboardStats.ModuleStatEntry.builder()
                     .moduleName(module.getName())
                     .baseUri(module.getNamedGraph())
-                    .status("LOADED")
-                    .classCount((int) classCount)
-                    .individualCount((int) individualCount)
-                    .tripleCount((long) module.getTripleCount())
+                    .status(module.getStatus() != null ? module.getStatus().name() : null)
+                    .classCount(Math.toIntExact(classCount))
+                    .individualCount(Math.toIntExact(individualCount))
+                    .tripleCount(model.size())
                     .loadedAt(module.getLoadedAt())
                     .build();
             moduleStatEntries.add(entry);
         }
 
+        for (AlignmentRule rule : alignmentRuleRepository.findAll()) {
+            lastActivity = latest(lastActivity, rule.getCreatedAt(), rule.getUpdatedAt(),
+                    rule.getLastExecutedAt());
+        }
+        // Shared IRIs/triples in overlapping modules are counted once in totals.
+        OntModel unionOntology = registeredOntologyView(registeredUnion);
+        long totalTriples = registeredUnion.size();
+        long totalClasses = unionOntology.listNamedClasses().toList().size();
+        long totalIndividuals = namedIndividualCount(unionOntology);
         DashboardStats stats = DashboardStats.builder()
                 .totalModules(modules.size())
                 .totalTriples(totalTriples)
                 .totalClasses(totalClasses)
                 .totalIndividuals(totalIndividuals)
-                .activeAlignmentRules(0)
-                .totalInferences(0L)
-                .connectedERPs(0)
-                .lastActivity(LocalDateTime.now())
+                .activeAlignmentRules(Math.toIntExact(alignmentRuleRepository.countByActiveTrue()))
+                // No persisted inference-run ledger exists for this dashboard.
+                .totalInferences(null)
+                .connectedERPs(Math.toIntExact(erpConnectorRepository.countByStatusIn(
+                        List.of(ConnectorStatus.CONNECTED, ConnectorStatus.MATERIALIZED))))
+                .lastActivity(lastActivity)
                 .moduleStats(moduleStatEntries)
                 .build();
 
@@ -445,6 +457,49 @@ public class OntologyService {
                 stats.getTotalModules(), totalTriples, totalClasses, totalIndividuals);
 
         return stats;
+    }
+
+    /**
+     * Count named ontology instances rather than every rdf:type subject. Schema
+     * resources (including classes/properties with additional types) are excluded.
+     * This inventory concerns asserted registered modules, not the inference graph.
+     */
+    private long namedIndividualCount(OntModel model) {
+        Set<String> schemaResources = new HashSet<>();
+        model.listNamedClasses().forEachRemaining(resource -> schemaResources.add(resource.getURI()));
+        model.listAllOntProperties().filterDrop(Resource::isAnon)
+                .forEachRemaining(resource -> schemaResources.add(resource.getURI()));
+        model.listOntologies().filterDrop(Resource::isAnon)
+                .forEachRemaining(resource -> schemaResources.add(resource.getURI()));
+        Set<String> individuals = new HashSet<>();
+        model.listIndividuals().filterDrop(Resource::isAnon)
+                .filterDrop(resource -> schemaResources.contains(resource.getURI()))
+                .forEachRemaining(resource -> individuals.add(resource.getURI()));
+        // OWL_MEM has an OWL1 profile; retain explicit OWL2 NamedIndividual declarations.
+        model.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type,
+                model.createResource("http://www.w3.org/2002/07/owl#NamedIndividual"))
+                .filterDrop(Resource::isAnon)
+                .filterDrop(resource -> schemaResources.contains(resource.getURI()))
+                .forEachRemaining(resource -> individuals.add(resource.getURI()));
+        return individuals.size();
+    }
+
+    /** Inventory only the graphs retrieved above; imports are not fetched here. */
+    private OntModel registeredOntologyView(Model assertedModel) {
+        OntDocumentManager documents = new OntDocumentManager();
+        documents.setProcessImports(false);
+        OntModelSpec specification = new OntModelSpec(OntModelSpec.OWL_MEM);
+        specification.setDocumentManager(documents);
+        return ModelFactory.createOntologyModel(specification, assertedModel);
+    }
+
+    private LocalDateTime latest(LocalDateTime current, LocalDateTime... dates) {
+        for (LocalDateTime date : dates) {
+            if (date != null && (current == null || date.isAfter(current))) {
+                current = date;
+            }
+        }
+        return current;
     }
 
     /**

@@ -1,0 +1,11 @@
+{
+  "services" : {
+    "StandardIncorporationService" : "AVAILABLE",
+    "AlignmentService" : "AVAILABLE",
+    "OntologyService" : "AVAILABLE",
+    "ERPConnectorService" : "AVAILABLE",
+    "SPARQLService" : "AVAILABLE"
+  },
+  "status" : "UP",
+  "timestamp" : "2026-10-04T02:40:09.592573035"
+}

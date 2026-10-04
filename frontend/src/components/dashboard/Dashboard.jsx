@@ -30,7 +30,7 @@ const CHART_COLORS = ['#0ea5e9', '#14b8a6', '#a855f7', '#f59e0b', '#ef4444', '#0
 function Dashboard() {
   const { data: stats, isLoading: statsLoading, error: statsError } = useDashboardStats();
 
-  const { data: health, isLoading: healthLoading } = useSystemHealth();
+  const { data: health, isLoading: healthLoading, error: healthError } = useSystemHealth();
 
   const { data: activity, isLoading: activityLoading } = useRecentActivity();
 
@@ -91,14 +91,14 @@ function Dashboard() {
         />
         <StatCard
           label="Active Rules"
-          value={stats?.activeRules ?? '-'}
+          value={stats?.activeAlignmentRules ?? '-'}
           icon="⚡"
           loading={statsLoading}
           trend={stats?.rulesTrend}
         />
         <StatCard
           label="Connected ERPs"
-          value={stats?.connectedErps ?? '-'}
+          value={stats?.connectedERPs ?? '-'}
           icon="🔌"
           loading={statsLoading}
         />
@@ -106,7 +106,7 @@ function Dashboard() {
 
       {/* System Health */}
       <div className="card p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">System Health</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">API Status</h2>
         {healthLoading ? (
           <div className="space-y-3">
             {[1, 2, 3].map((i) => (
@@ -114,12 +114,7 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <div className="space-y-3">
-            <HealthIndicator label="API Server" status={health?.apiStatus} />
-            <HealthIndicator label="Triple Store" status={health?.tripleStoreStatus} />
-            <HealthIndicator label="Reasoning Engine" status={health?.reasoningStatus} />
-            <HealthIndicator label="ERP Connectors" status={health?.erpStatus} />
-          </div>
+          <ApiStatus health={health} error={healthError} />
         )}
       </div>
 
@@ -179,30 +174,15 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Activity */}
         <div className="lg:col-span-2 card p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Activity Snapshot</h2>
           {activityLoading ? (
             <div className="space-y-3">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="h-12 bg-gray-200 rounded skeleton"></div>
               ))}
             </div>
-          ) : activity?.length > 0 ? (
-            <div className="space-y-3">
-              {activity.slice(0, 5).map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3 pb-3 border-b border-gray-200 last:border-0"
-                >
-                  <div className="w-2 h-2 bg-protys-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-900">{item.description}</p>
-                    <p className="text-xs text-gray-500 mt-1">{item.timestamp}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           ) : (
-            <div className="text-center text-gray-500 py-8">No recent activity</div>
+            <ActivitySnapshot activity={activity} />
           )}
         </div>
 
@@ -270,27 +250,54 @@ function StatCard({ label, value, icon, loading, trend }) {
   );
 }
 
-function HealthIndicator({ label, status }) {
-  const statusColor = {
-    'healthy': 'bg-green-100 text-green-700',
-    'warning': 'bg-yellow-100 text-yellow-700',
-    'error': 'bg-red-100 text-red-700',
-  }[status] || 'bg-gray-100 text-gray-700';
-
-  const statusIcon = {
-    'healthy': '✓',
-    'warning': '⚠',
-    'error': '✕',
-  }[status] || '?';
-
+export function ApiStatus({ health, error }) {
+  const status = error ? 'Request failed' : health?.status ?? 'Not reported';
+  const services = !error && health?.services ? Object.entries(health.services) : [];
   return (
-    <div className="flex items-center justify-between py-2">
-      <span className="text-sm text-gray-700">{label}</span>
-      <span className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${statusColor}`}>
-        <span>{statusIcon}</span>
-        <span className="capitalize">{status || 'unknown'}</span>
-      </span>
+    <div className="space-y-3">
+      <div className="flex items-center justify-between py-2">
+        <span className="text-sm text-gray-700">API response</span>
+        <span className={`px-3 py-1 rounded-full text-xs font-medium ${error ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'}`}>
+          {status}
+        </span>
+      </div>
+      <h3 className="text-sm font-semibold text-gray-900">Registered services</h3>
+      <p className="text-xs text-gray-600">The API declares these services. Availability of the triple store, reasoning engine and ERP connections requires separate checks.</p>
+      {services.length > 0 ? (
+        <ul className="space-y-2">
+          {services.map(([name, declaredStatus]) => (
+            <li key={name} className="flex flex-wrap items-center justify-between gap-2 text-sm text-gray-700">
+              <span>{name}</span>
+              <span className="text-xs text-gray-500">Declared: {declaredStatus}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-gray-500">No service declaration received</p>
+      )}
     </div>
+  );
+}
+
+export function ActivitySnapshot({ activity }) {
+  if (!activity) return <p className="text-sm text-gray-500">No activity snapshot received</p>;
+  const entries = [
+    ['Snapshot timestamp', activity.timestamp],
+    ['Last updated', activity.lastUpdated],
+    ['Loaded modules', activity.loadedModules],
+    ['Classes', activity.totalClasses],
+    ['Individuals', activity.totalIndividuals],
+    ['Triples', activity.totalTriples],
+  ];
+  return (
+    <dl className="space-y-3">
+      {entries.map(([label, value]) => (
+        <div key={label} className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 pb-2">
+          <dt className="text-sm text-gray-600">{label}</dt>
+          <dd className="text-sm text-gray-900 break-all">{value ?? 'Not recorded'}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 

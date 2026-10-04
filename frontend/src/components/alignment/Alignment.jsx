@@ -77,17 +77,17 @@ function Alignment() {
         />
         <StatCard
           label="Active Rules"
-          value={stats?.activeRules ?? 0}
+          value={stats?.activeRules ?? '-'}
           icon="⚡"
         />
         <StatCard
-          label="Last Inferences"
-          value={stats?.lastInferences ?? 0}
+          label="Materialized Inferred Triples"
+          value={stats?.inferredTripleCount ?? '-'}
           icon="🧠"
         />
         <StatCard
-          label="Total Inferences"
-          value={stats?.totalInferences ?? 0}
+          label="Input Triples"
+          value={stats?.inputTripleCount ?? '-'}
           icon="📊"
         />
       </div>
@@ -204,12 +204,7 @@ function Alignment() {
                   {rule.description && (
                     <p className="text-sm text-gray-600 mb-2">{rule.description}</p>
                   )}
-                  <div className="flex gap-4 text-xs text-gray-500">
-                    <span>Uploaded: {new Date(rule.uploadedAt).toLocaleDateString()}</span>
-                    {rule.lastExecuted && (
-                      <span>Last executed: {new Date(rule.lastExecuted).toLocaleDateString()}</span>
-                    )}
-                  </div>
+                  <RuleDates rule={rule} />
                 </div>
 
                 <div className="flex gap-2 ml-4">
@@ -248,6 +243,24 @@ function Alignment() {
       </div>
     </div>
   );
+}
+
+export function RuleDates({ rule }) {
+  return (
+    <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+      <span>Created: <RecordedDate value={rule.createdAt} /></span>
+      <span>Updated: <RecordedDate value={rule.updatedAt} /></span>
+      {rule.lastExecutedAt && (
+        <span>Last executed: <RecordedDate value={rule.lastExecutedAt} /></span>
+      )}
+    </div>
+  );
+}
+
+function RecordedDate({ value }) {
+  const date = value ? new Date(value) : null;
+  if (!date || Number.isNaN(date.getTime())) return <>Not recorded</>;
+  return <time dateTime={value}>{date.toLocaleDateString()}</time>;
 }
 
 function StatCard({ label, value, icon }) {

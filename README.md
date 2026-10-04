@@ -4,6 +4,8 @@
 
 PROTYS-WS es el sistema prototipo que operacionaliza PROTYS(KB), una red de ontologías diseñada para abordar la interoperabilidad semántica entre sistemas de información heterogéneos en la industria manufacturera. Permite explorar, consultar y gestionar formalizaciones de subconjuntos de ISO 15531 (ISO/TC 184/SC 4) e ISO 14040 (ISO/TC 207/SC 5), con un piloto separado de ISO 10303, y ejecutar razonamiento semántico mediante reglas SWRL. Incluye conectores y ejemplos experimentales de mapeos para ERP; la evaluación nueva no acredita una integración con ERP industriales.
 
+Para revisar la evidencia de la tesis, comenzar por [research/release/README.md](research/release/README.md) y la [publicación `tesis-cierre-2026-10-03-v1`](https://github.com/gioalvaro/protys-ws/releases/tag/tesis-cierre-2026-10-03-v1). Esa etiqueta conserva el código y las 120 ejecuciones citadas en el manuscrito. Los ajustes posteriores de instalación y conservación de salidas se registran por separado; no sustituyen esos resultados ni resuelven la decisión pendiente C033/IC62.
+
 Desarrollado como parte de la tesis doctoral:
 
 > **"Modelo de Interoperabilidad Semántica entre Sistemas de Información de Ciclo de Vida de Productos para Empresas de Manufactura"**
@@ -69,14 +71,14 @@ protys-ws/
 │   ├── enterprise-module.owl # EnterpriseMod: Station, Cell, Shop, Factory, Location (Fig. 3.13)
 │   ├── iso14040-module.owl  # ISO 14040 LCA, 15 clases (Fragmento de código 3.1)
 │   ├── iso15531-module.owl  # ISO 15531 MANDATE, 18 clases (Fragmento de código 3.2)
-│   ├── alignment-rules.owl  # Correspondencias contextuales del caso + reglas SWRL R01–R26
+│   ├── alignment-rules.owl  # Correspondencias del caso y 22 reglas SWRL de R01–R26
 │   ├── alignment-queries.sparql      # Patrones de validación SPARQL ASK (R07, R16, R19, R26)
 │   ├── paint-case-extension.owl      # Extensión del caso de estudio (ontología derivada, §4.4.1)
 │   ├── iso10303-ap242-fragment.owl   # Fragmento local derivado de AP242 (§5.4.3)
 │   ├── iso10303-alignment-rules.owl  # Reglas SWRL R27–R29
 │   └── paint-*.ttl          # Instancias del caso de estudio
 │
-├── docker/                  # Docker Compose (4 servicios)
+├── docker/                  # Docker Compose (4 servicios persistentes y un inicializador)
 │   ├── docker-compose.yml
 │   ├── .env.example         # Credenciales (copiar a .env)
 │   ├── fuseki-config.ttl
@@ -91,20 +93,44 @@ protys-ws/
 │   ├── runtime/             # Validación OWL y ejecución SWRL en procesos separados
 │   └── evaluation/          # Evidencia de ejecución y mediciones
 │
-└── sql/                     # Esquemas ERP de ejemplo
+├── scripts/demo.py          # Arranque aislado, comprobaciones y parada de la aplicación
+├── .github/workflows/       # Comprobaciones funcionales y compilación
+└── sql/                     # Esquemas ERP ilustrativos que requieren adaptación
     ├── adempiere-schema.sql
     └── odoo-schema.sql
 ```
 
 ## Requisitos
 
-- Java 17 para la evaluación conservada
-- Maven 3.8+
-- Node.js 20+
-- Docker y Docker Compose
-- PostgreSQL 15 (o mediante Docker)
+Para la demostración completa en contenedores: Docker con Compose y Python 3.9 o posterior. Java, Node, PostgreSQL y Fuseki se preparan dentro de los contenedores; no se utilizan bases o almacenes existentes.
+
+Para trabajar sin contenedores se necesitan Java 17, Python 3.9 o posterior y Node.js 24.18.0 con npm 11.16.0. El envoltorio `backend/mvnw` prepara Maven. Las dependencias de la interfaz quedan fijadas en `frontend/package-lock.json`; las versiones de los dos motores académicos se fijan en sus POM.
 
 ## Inicio rápido
+
+### Aplicación completa con un caso simulado
+
+Desde una copia limpia del repositorio:
+
+```bash
+python3 scripts/demo.py up
+```
+
+El comando construye las imágenes, crea un proyecto aislado con puertos locales disponibles y carga el caso funcional canónico mediante la API. Al finalizar imprime la dirección de la interfaz y la ruta de un archivo de estado. La primera preparación descarga dependencias y puede tardar varios minutos. Las fuentes cargadas y sus hashes quedan registrados por el inicializador; la carga no utiliza inferencias precalculadas ni datos de una evaluación anterior.
+
+En la interfaz, abrir **Alignment & Reasoning** y ejecutar el razonamiento antes de consultar resultados inferidos. Para verificar automáticamente la materialización, la caché, la activación de R03 y las 21 consultas completas, usar el archivo de estado impreso:
+
+```bash
+python3 scripts/demo.py smoke --state .local-demo/IDENTIFICADOR/state.json
+```
+
+Cada comprobación crea una carpeta nueva con solicitudes, respuestas y un informe. Para detener sólo esa demostración, conservando sus datos y registros:
+
+```bash
+python3 scripts/demo.py down --state .local-demo/IDENTIFICADOR/state.json
+```
+
+La opción explícita `--remove-data` elimina además los volúmenes de esa demostración. El arranque y la parada no gestionan otros proyectos Docker. Esta ruta permite examinar la aplicación con datos simulados; no acredita integración industrial ni todas las funciones de los conectores y del asistente.
 
 ### Paquete académico reproducible
 
@@ -114,47 +140,32 @@ Desde la raíz del repositorio, con `JAVA_HOME` apuntando a un JDK 17:
 
 ```bash
 ./research/reproduce.sh --functional
-# Cuando las comprobaciones funcionales resulten PASS:
-./research/reproduce.sh --benchmark
+# El comando imprime el directorio nuevo de esta ejecución.
+# Cuando su fase funcional resulte PASS, continuar en ese mismo directorio:
+./research/reproduce.sh --output research/evaluation/runs/IDENTIFICADOR --benchmark
 ```
 
-El punto de entrada prepara los dos procesos, verifica la procedencia del descriptor de dependencia conservado y mantiene las salidas en `research/evaluation/current/`. Una medición no se reutiliza como resultado de otra configuración. Las réplicas describen ejecución computacional sobre datos simulados. El [protocolo académico](research/README.md) distingue los casos funcionales, las configuraciones y los límites de la evaluación.
-
-### Distribución auxiliar con Docker
-
-La distribución de la interfaz y los servicios en Docker se conserva como alternativa de desarrollo. La imagen histórica del backend no incluye aún los procesos del runtime académico nuevo; su razonamiento en contenedor requiere preparación y verificación adicionales. La evaluación debe seguir el punto de entrada académico y la ruta local del prototipo comprobada para esta versión.
-
-```bash
-# Configurar credenciales (opcional en desarrollo, obligatorio en producción)
-cd docker
-cp .env.example .env   # editar FUSEKI_ADMIN_PASSWORD, POSTGRES_PASSWORD, etc.
-
-# Levantar todos los servicios
-docker-compose up -d
-
-# Cargar ontologías en Fuseki
-chmod +x init-fuseki.sh
-./init-fuseki.sh
-
-# Verificar
-curl http://localhost:8080/api/dashboard      # Backend
-curl http://localhost:3030/protys/sparql       # Fuseki
-open http://localhost:3000                     # Frontend
-```
+El punto de entrada prepara los dos procesos, verifica la procedencia del descriptor de dependencia conservado y crea salidas identificadas en `research/evaluation/runs/`. Cada fase sólo se ejecuta una vez en un directorio; una repetición, incluso después de un fallo parcial, exige uno nuevo. `research/evaluation/current/` conserva la evaluación histórica y no se reemplaza. Una medición no se reutiliza como resultado de otra configuración. Las réplicas describen ejecución computacional sobre datos simulados. El [protocolo académico](research/README.md) distingue los casos funcionales, las configuraciones y los límites de la evaluación.
 
 ### Desarrollo local
+
+Esta ruta requiere preparar los motores y disponer de PostgreSQL y Fuseki propios. La demostración anterior reúne esos pasos para una primera lectura. Para desarrollo, preparar los motores sin ejecutar una evaluación:
+
+```bash
+./research/reproduce.sh --prepare-only
+```
 
 ```bash
 # Backend
 cd backend
-mvn clean install
-mvn spring-boot:run -Dspring-boot.run.profiles=dev
+./mvnw clean verify
+./mvnw spring-boot:run
 # API en http://localhost:8080/api
 # Swagger UI en http://localhost:8080/swagger-ui.html
 
 # Frontend (en otra terminal)
 cd frontend
-npm install
+npm ci
 npm start
 # Aplicación en http://localhost:3000
 ```
@@ -227,16 +238,19 @@ El caso formaliza la fase de producción. Las respuestas no se extienden a fases
 
 ## Tests
 
+El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ejecuta las pruebas del backend y los casos funcionales, reinstala, prueba y compila la interfaz, y arranca Docker para comprobar la API a través de Nginx. Las 120 réplicas de rendimiento se mantienen como una evaluación controlada separada.
+
 ```bash
+./research/reproduce.sh --prepare-only
 cd backend
-mvn test
+./mvnw test
 
 # Tests individuales
-mvn test -Dtest=OntologyControllerTest
-mvn test -Dtest=SPARQLControllerTest
-mvn test -Dtest=ERPControllerTest
-mvn test -Dtest=OntologyServiceTest
-mvn test -Dtest=ERPConnectorServiceTest
+./mvnw test -Dtest=OntologyControllerTest
+./mvnw test -Dtest=SPARQLControllerTest
+./mvnw test -Dtest=ERPControllerTest
+./mvnw test -Dtest=OntologyServiceTest
+./mvnw test -Dtest=ERPConnectorServiceTest
 ```
 
 ## Stack tecnológico
@@ -253,11 +267,11 @@ mvn test -Dtest=ERPConnectorServiceTest
 | Base de datos | PostgreSQL | 15 |
 | Frontend | React | 18.3.1 (entorno probado) |
 | Estilos | Tailwind CSS | 3.4.19 (entorno probado) |
-| Gráficos | Recharts | 2.10 |
-| Contenedores | Docker Compose | 3.8 |
+| Gráficos | Recharts | 2.15.4 |
+| Contenedores | Docker Compose | Con soporte de `dockerfile_inline`; versión probada en el informe de mantenimiento |
 
 ## Licencia
 
 Este proyecto es parte de una tesis doctoral desarrollada en la Universidad Tecnológica Nacional (UTN), Facultad Regional Santa Fe, en colaboración con INGAR (CONICET-UTN). Distribuido bajo licencia MIT.
 
-El entorno probado de la interfaz y sus límites de reinstalación se documentan en `research/release/README.md`. Las dependencias académicas y las de la interfaz se identifican por separado.
+El entorno histórico de la interfaz se documenta en `research/release/README.md`. El archivo de versiones y las comprobaciones de instalación posteriores se registran en [docs/MANTENIMIENTO_2026-10-03.md](docs/MANTENIMIENTO_2026-10-03.md). Las dependencias académicas y las de la interfaz se identifican por separado.
