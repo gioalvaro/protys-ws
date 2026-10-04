@@ -1,14 +1,11 @@
 package org.protys.ws.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.jena.query.Query;
 import org.apache.jena.query.QueryFactory;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
-import org.apache.jena.rdf.model.Model;
-import org.apache.jena.rdf.model.ModelFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.protys.ws.model.SPARQLQuery;
@@ -17,12 +14,12 @@ import org.protys.ws.dto.SPARQLResponse;
 import org.protys.ws.exception.ProtysFusekiException;
 import org.protys.ws.repository.SPARQLQueryRepository;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -149,7 +146,7 @@ public class SPARQLService {
      * Exports query results to specified format.
      *
      * @param response the SPARQLResponse
-     * @param format   the export format (CSV, JSON_LD)
+     * @param format   the supported export format (CSV or complete typed JSON)
      * @return String representation of exported results
      * @throws IOException if export fails
      */
@@ -160,9 +157,7 @@ public class SPARQLService {
             return switch (format.toUpperCase()) {
                 case "CSV" -> exportToCSV(response);
                 case "JSON" -> exportToJSON(response);
-                case "JSONLD" -> exportToJSONLD(response);
-                case "XML" -> exportToXML(response);
-                default -> throw new IllegalArgumentException("Unsupported format: " + format);
+                default -> throw new IllegalArgumentException("Unsupported format: " + format + ". Supported formats: CSV, JSON.");
             };
         } catch (Exception e) {
             log.error("Failed to export results", e);
@@ -175,22 +170,67 @@ public class SPARQLService {
      */
     private String exportToCSV(SPARQLResponse response) {
         log.debug("Exporting to CSV");
-
+        if (response.getAskResult() != null) {
+            return "askResult\r\n" + response.getAskResult() + "\r\n";
+        }
+        List<Map<String, Object>> rows = exportRows(response);
+        List<String> columns = exportColumns(response, rows);
         StringBuilder csv = new StringBuilder();
-
-        if (!response.getRows().isEmpty()) {
-            Map<String, Object> firstRow = response.getRows().get(0);
-            csv.append(String.join(",", firstRow.keySet())).append("\n");
-
-            for (Map<String, Object> row : response.getRows()) {
-                csv.append(row.values().stream()
-                        .map(v -> v != null ? v.toString() : "")
-                        .collect(java.util.stream.Collectors.joining(",")))
-                        .append("\n");
+        if (!columns.isEmpty()) {
+            csv.append(columns.stream().map(this::csvField).collect(Collectors.joining(",")))
+                    .append("\r\n");
+            for (Map<String, Object> row : rows) {
+                csv.append(columns.stream().map(column -> csvField(row.get(column)))
+                        .collect(Collectors.joining(","))).append("\r\n");
             }
         }
-
         return csv.toString();
+    }
+
+    private String csvField(Object value) {
+        String text = value == null ? "" : value.toString();
+        if (text.contains(",") || text.contains("\"") || text.contains("\n") || text.contains("\r")) {
+            return "\"" + text.replace("\"", "\"\"") + "\"";
+        }
+        return text;
+    }
+
+    /** SELECT responses from the execution API carry typed bindings, not necessarily rows. */
+    private List<Map<String, Object>> exportRows(SPARQLResponse response) {
+        JsonNode bindings = response.getSparqlJson() == null ? null
+                : response.getSparqlJson().path("results").path("bindings");
+        if (bindings != null && bindings.isArray()) {
+            List<Map<String, Object>> rows = new ArrayList<>();
+            for (JsonNode binding : bindings) {
+                Map<String, Object> row = new LinkedHashMap<>();
+                binding.fields().forEachRemaining(entry -> {
+                    JsonNode value = entry.getValue().get("value");
+                    row.put(entry.getKey(), value == null || value.isNull() ? null : value.asText());
+                });
+                rows.add(row);
+            }
+            return rows;
+        }
+        if (response.getRows() != null) return response.getRows();
+        List<Map<String, Object>> rows = new ArrayList<>();
+        if (response.getResults() != null) {
+            response.getResults().forEach(row -> rows.add(new LinkedHashMap<>(row)));
+        }
+        return rows;
+    }
+
+    private List<String> exportColumns(SPARQLResponse response, List<Map<String, Object>> rows) {
+        if (response.getColumns() != null) return response.getColumns();
+        JsonNode variables = response.getSparqlJson() == null ? null
+                : response.getSparqlJson().path("head").path("vars");
+        if (variables != null && variables.isArray()) {
+            List<String> columns = new ArrayList<>();
+            variables.forEach(variable -> columns.add(variable.asText()));
+            return columns;
+        }
+        LinkedHashSet<String> columns = new LinkedHashSet<>();
+        rows.forEach(row -> columns.addAll(row.keySet()));
+        return new ArrayList<>(columns);
     }
 
     /**
@@ -199,87 +239,8 @@ public class SPARQLService {
     private String exportToJSON(SPARQLResponse response) throws IOException {
         log.debug("Exporting to JSON");
 
-        Map<String, Object> jsonOutput = new HashMap<>();
-        jsonOutput.put("columns", response.getColumns());
-        jsonOutput.put("results", response.getRows());
-        jsonOutput.put("resultCount", response.getResultCount());
-        jsonOutput.put("executionTimeMs", response.getExecutionTimeMs());
-
-        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonOutput);
-    }
-
-    /**
-     * Exports results to JSON-LD format.
-     */
-    private String exportToJSONLD(SPARQLResponse response) {
-        log.debug("Exporting to JSON-LD");
-
-        // Create a minimal JSON-LD context
-        Map<String, Object> jsonLd = new HashMap<>();
-        jsonLd.put("@context", Map.of(
-                "@vocab", "http://w3id.org/protys/ontology/",
-                "results", "http://w3id.org/protys/ontology/results"
-        ));
-        jsonLd.put("@id", "http://protys.query/" + UUID.randomUUID());
-        jsonLd.put("results", response.getRows());
-
-        try {
-            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonLd);
-        } catch (IOException e) {
-            log.error("Failed to serialize JSON-LD", e);
-            return "{}";
-        }
-    }
-
-    /**
-     * Exports results to XML format.
-     */
-    private String exportToXML(SPARQLResponse response) {
-        log.debug("Exporting to XML");
-
-        StringBuilder xml = new StringBuilder();
-        xml.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        xml.append("<sparql xmlns=\"http://www.w3.org/2005/sparql-results#\">\n");
-        xml.append("  <head>\n");
-
-        if (!response.getRows().isEmpty()) {
-            Map<String, Object> firstRow = response.getRows().get(0);
-            for (String variable : firstRow.keySet()) {
-                xml.append("    <variable name=\"").append(variable).append("\"/>\n");
-            }
-        }
-
-        xml.append("  </head>\n");
-        xml.append("  <results>\n");
-
-        for (Map<String, Object> row : response.getRows()) {
-            xml.append("    <result>\n");
-            for (Map.Entry<String, Object> binding : row.entrySet()) {
-                xml.append("      <binding name=\"").append(binding.getKey()).append("\">\n");
-                if (binding.getValue() != null) {
-                    xml.append("        <literal>").append(escapeXml(binding.getValue().toString())).append("</literal>\n");
-                }
-                xml.append("      </binding>\n");
-            }
-            xml.append("    </result>\n");
-        }
-
-        xml.append("  </results>\n");
-        xml.append("</sparql>");
-
-        return xml.toString();
-    }
-
-    /**
-     * Escapes XML special characters.
-     */
-    private String escapeXml(String input) {
-        if (input == null) return "";
-        return input.replace("&", "&amp;")
-                .replace("<", "&lt;")
-                .replace(">", "&gt;")
-                .replace("\"", "&quot;")
-                .replace("'", "&apos;");
+        // Preserve the complete response, including RDF term types, datatypes and languages.
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
     }
 
     /**

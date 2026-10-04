@@ -12,8 +12,12 @@ export const useSparqlExecute = () => {
       return await sparqlAPI.executeQuery({ query });
     },
     onSuccess: (result) => {
-      if (result.results?.bindings?.length > 0) {
-        toast.success(`Query executed: ${result.results.bindings.length} results`);
+      if (typeof result.askResult === 'boolean') {
+        toast.success(`Query executed: ASK returned ${result.askResult}`);
+      } else if (result.constructResult != null) {
+        toast.success('Query executed: graph returned');
+      } else if (getSparqlTable(result).rows.length > 0) {
+        toast.success(`Query executed: ${getSparqlTable(result).rows.length} results`);
       } else {
         toast.info('Query executed: no results found');
       }
@@ -40,7 +44,7 @@ export const useSparqlTemplates = (options = {}) => {
 };
 
 /**
- * Fetches competency questions (CQ1-CQ5)
+ * Fetches saved query templates associated with competency identifiers P1-P5.
  */
 export const useCompetencyQueries = (options = {}) => {
   return useQuery({
@@ -52,6 +56,20 @@ export const useCompetencyQueries = (options = {}) => {
     ...options,
   });
 };
+
+/** Read the execution DTO without rewriting its typed SPARQL JSON or query. */
+export function getSparqlTable(response) {
+  const bindings = response?.sparqlJson?.results?.bindings;
+  const fallback = Array.isArray(response?.rows) ? response.rows
+    : Array.isArray(response?.results) ? response.results : [];
+  const columns = response?.columns ?? response?.sparqlJson?.head?.vars
+    ?? [...new Set(fallback.flatMap(row => Object.keys(row)))];
+  const rows = Array.isArray(bindings)
+    ? bindings.map(binding => Object.fromEntries(columns.map(column => [
+      column, binding[column]?.value ?? null,
+    ]))) : fallback;
+  return { columns, rows };
+}
 
 /**
  * Mutation for saving a new SPARQL template

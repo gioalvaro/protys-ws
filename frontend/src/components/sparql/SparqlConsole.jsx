@@ -11,6 +11,7 @@ import {
   useSparqlExecute,
   useValidateQuery,
   useExportResults,
+  getSparqlTable,
 } from '../../hooks/useSparql';
 
 function SparqlConsole() {
@@ -143,7 +144,7 @@ function SparqlConsole() {
                 onClick={() => setQuery(cq.queryText)}
                 className="text-left w-full p-3 border border-gray-200 rounded-lg hover:bg-semantic-50 hover:border-semantic-300 transition-colors duration-150"
               >
-                <p className="font-medium text-sm text-gray-900">{cq.question}</p>
+                <p className="font-medium text-sm text-gray-900">{competencyTitle(cq)}</p>
                 <p className="text-xs text-gray-500 mt-1">{cq.description}</p>
               </button>
             ))}
@@ -156,11 +157,12 @@ function SparqlConsole() {
         <div ref={resultsRef} className="card p-6 space-y-4">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold text-gray-900">
-              Results ({results.results?.length || 0})
+              Results ({getSparqlTable(results).rows.length})
             </h2>
             <div className="flex gap-2">
               <button
                 onClick={() => handleExportResults('csv')}
+                disabled={results.constructResult != null}
                 className="btn-secondary btn-sm flex items-center gap-1"
               >
                 <ArrowDownTrayIcon className="w-4 h-4" />
@@ -182,40 +184,11 @@ function SparqlConsole() {
             </div>
           </div>
 
-          {results.results && results.results.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-200 bg-gray-50">
-                    {results.headers?.map((header) => (
-                      <th key={header} className="text-left px-4 py-2 font-medium text-gray-900">
-                        {header}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {results.results.map((row, idx) => (
-                    <tr key={idx} className="border-b border-gray-200 hover:bg-gray-50">
-                      {results.headers?.map((header) => (
-                        <td key={header} className="px-4 py-2 text-gray-700">
-                          <ResultCell value={row[header]} />
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <div className="text-center py-8 text-gray-500">
-              <p className="text-sm">No results found</p>
-            </div>
-          )}
+          <SparqlResults results={results} />
 
-          {results.executionTime && (
+          {results.executionTimeMs != null && (
             <p className="text-xs text-gray-600 text-right">
-              Executed in {results.executionTime}ms
+              Executed in {results.executionTimeMs}ms
             </p>
           )}
         </div>
@@ -234,20 +207,54 @@ function SparqlConsole() {
   );
 }
 
+export function competencyTitle(template) {
+  let identifiers = template.competencyQuestion;
+  try { identifiers = JSON.parse(identifiers); } catch { /* Older templates may use a single identifier. */ }
+  const label = Array.isArray(identifiers) ? identifiers.join(', ') : identifiers;
+  return label ? `${label}: ${template.name}` : template.name;
+}
+
+export function SparqlResults({ results }) {
+  if (typeof results.askResult === 'boolean') {
+    return <p className="text-sm">ASK result: {String(results.askResult)}</p>;
+  }
+  if (results.constructResult != null) {
+    return <pre className="overflow-x-auto whitespace-pre-wrap text-sm">{results.constructResult}</pre>;
+  }
+  const { columns, rows } = getSparqlTable(results);
+  return (
+    <div className="overflow-x-auto">
+      <table className="w-full text-sm">
+        <thead><tr className="border-b border-gray-200 bg-gray-50">
+          {columns.map(column => <th key={column} className="text-left px-4 py-2 font-medium text-gray-900">{column}</th>)}
+        </tr></thead>
+        <tbody>{rows.map((row, index) => (
+          <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
+            {columns.map(column => <td key={column} className="px-4 py-2 text-gray-700"><ResultCell value={row[column]} /></td>)}
+          </tr>
+        ))}</tbody>
+      </table>
+      {rows.length === 0 && <p className="text-center py-8 text-sm text-gray-500">No results found</p>}
+      {results.truncated && <p className="text-sm text-amber-700">Results were truncated by the API.</p>}
+    </div>
+  );
+}
+
 function ResultCell({ value }) {
   if (value === null || value === undefined) {
     return <span className="text-gray-400 italic">null</span>;
   }
 
-  if (typeof value === 'object') {
+  const uri = typeof value === 'string' ? value : value.uri;
+  if (typeof uri === 'string' && /^https?:\/\//.test(uri)) {
     return (
-      <a href={value.uri} target="_blank" rel="noopener noreferrer" className="text-protys-600 hover:underline truncate inline-block max-w-xs">
-        {value.label || value.uri.split('/').pop()}
+      <a href={uri} target="_blank" rel="noopener noreferrer" className="text-protys-600 hover:underline truncate inline-block max-w-xs" title={uri}>
+        {typeof value === 'object' ? value.label || uri : uri}
       </a>
     );
   }
 
-  return <span className="truncate">{String(value)}</span>;
+  return <span className="truncate">{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>;
 }
 
 function getSampleQuery() {
