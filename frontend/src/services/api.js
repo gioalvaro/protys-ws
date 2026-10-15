@@ -34,7 +34,8 @@ apiClient.interceptors.response.use(
       localStorage.removeItem('authToken');
       window.location.href = '/login';
     }
-    console.error('API Error:', error.response?.data || error.message);
+    // Response bodies can contain submitted credentials echoed by an upstream error.
+    console.error('API request failed', error.response?.status || 'NETWORK_ERROR');
     return Promise.reject(error);
   }
 );
@@ -241,7 +242,10 @@ export const erpAPI = {
 
   // PUT /api/erp/connectors/{id}
   updateConnector: async (connectorId, connectorConfig) => {
-    const response = await apiClient.put(`/erp/connectors/${connectorId}`, connectorConfig);
+    const payload = { ...connectorConfig };
+    delete payload.hasPassword;
+    if (!payload.password) delete payload.password;
+    const response = await apiClient.put(`/erp/connectors/${connectorId}`, payload);
     return response.data;
   },
 
@@ -313,6 +317,11 @@ export const wizardAPI = {
   // POST /api/wizard/complete/{tempId}
   completeIncorporation: async (tempId) => {
     const response = await apiClient.post(`/wizard/complete/${tempId}`);
+    return response.data;
+  },
+
+  cancelIncorporation: async (tempId) => {
+    const response = await apiClient.delete(`/wizard/${tempId}`);
     return response.data;
   },
 };

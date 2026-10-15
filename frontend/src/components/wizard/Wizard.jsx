@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CleaningContextStatus from '../alignment/CleaningContextStatus';
 import ContextIntegrityStatus from '../alignment/ContextIntegrityStatus';
 import NumericIntegrityStatus from '../alignment/NumericIntegrityStatus';
@@ -13,29 +13,71 @@ import {
 import { wizardAPI, alignmentAPI } from '../../services/api';
 import { validationState, canProceedValidation, canProceedVerification, stateMessage } from '../../services/validationState';
 
+const SESSION_KEY = 'protys.wizard.session';
+function readSession() {
+  try {
+    const saved = JSON.parse(sessionStorage.getItem(SESSION_KEY));
+    return saved && typeof saved.id === 'string' && saved.id ? saved : null;
+  } catch { return null; }
+}
+function saveSession(session) {
+  try {
+    if (session) sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    else sessionStorage.removeItem(SESSION_KEY);
+  } catch { /* A blocked browser store does not change server session ownership. */ }
+}
+function sameRuleIds(expected, actual) {
+  return Array.isArray(actual) && JSON.stringify([...expected].sort()) === JSON.stringify([...actual].sort());
+}
+function executionMatchesSelection(result, selectedIds) {
+  return sameRuleIds(selectedIds, result?.selectedRuleIds) && Array.isArray(result?.executedRules)
+    && result.executedRules.every(rule => rule && typeof rule.id === 'string')
+    && sameRuleIds(selectedIds, result.executedRules.map(rule => rule.id));
+}
+
 function Wizard() {
-  const [step, setStep] = useState(1);
-  const [sessionId, setSessionId] = useState(null);
-  const [uploadedFile, setUploadedFile] = useState(null);
+  const [initialSession] = useState(readSession);
+  const [step, setStep] = useState(initialSession ? 2 : 1);
+  const [sessionId, setSessionId] = useState(initialSession?.id || null);
+  const [uploadedFile, setUploadedFile] = useState(initialSession?.name || null);
+  const [cancellationError, setCancellationError] = useState(initialSession?.cleanupPending
+    ? 'A previous completion reported pending cleanup. Retrieve its current receipt before starting again.' : null);
+  const [uploadNeedsCleanup, setUploadNeedsCleanup] = useState(initialSession?.requiresCleanup === true);
+  const [completionRecoveryAvailable, setCompletionRecoveryAvailable] = useState(initialSession?.cleanupPending === true);
+  const [completionReceipt, setCompletionReceipt] = useState(null);
+  const actionInFlight = useRef(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedRules, setSelectedRules] = useState([]);
   const [availableRules, setAvailableRules] = useState([]);
   const [validationResult, setValidationResult] = useState(null);
   const [verificationResult, setVerificationResult] = useState(null);
 
+  const rememberSession = (data, requiresCleanup = false) => {
+    if (!data?.tempModuleId) return;
+    const name = selectedFile?.name || data.standardName;
+    setSessionId(data.tempModuleId);
+    setUploadedFile(name);
+    setUploadNeedsCleanup(requiresCleanup);
+    saveSession({ id: data.tempModuleId, name, requiresCleanup });
+    setValidationResult(null);
+    setVerificationResult(null);
+    setStep(2);
+  };
+
   // Step 1: Upload
   const step1Mutation = useMutation({
     mutationFn: (file) => wizardAPI.step1Upload(file, file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]/g, '_')),
     onSuccess: (data) => {
-      if (!data.tempModuleId || data.step1_parsed !== true || data.step1_error) { toast.error('Upload was not verified'); return; }
-      setSessionId(data.tempModuleId);
-      setUploadedFile(selectedFile?.name || data.standardName);
-      setValidationResult(null);
-      setVerificationResult(null);
+      if (!data.tempModuleId || data.step1_parsed !== true || data.step1_error) {
+        rememberSession(data, true);
+        toast.error('Upload was not verified'); return;
+      }
+      rememberSession(data);
       toast.success('File uploaded successfully');
-      setStep(2);
     },
-    onError: () => {
+    onError: (error) => {
+      // A failed graph write can still leave a registered session requiring cleanup.
+      rememberSession(error.response?.data, true);
       toast.error('Failed to upload file');
     },
   });
@@ -46,8 +88,15 @@ function Wizard() {
     onSuccess: async (data) => {
       setValidationResult(data);
       if (canProceedValidation(data)) {
-        try { setAvailableRules(await alignmentAPI.getRules()); }
-        catch { setAvailableRules([]); }
+        try {
+          const rules = await alignmentAPI.getRules();
+          if (!Array.isArray(rules)) throw new Error('Unconfirmed rule catalog');
+          setAvailableRules(rules);
+          setSelectedRules((current) => current.filter(id => rules.some(rule => rule.id === id)));
+        } catch {
+          toast.error('The rule catalog could not be loaded. Retry validation before configuring this session.');
+          return;
+        }
       }
       if (canProceedValidation(data)) { setStep(3); if (data.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR') toast.warning('OWL consistency checked; declared context links require review'); else toast.success('OWL consistency checked'); }
       else { toast.error(data.step2_message || stateMessage(data)); }
@@ -59,9 +108,11 @@ function Wizard() {
 
   // Step 3: Alignment
   const step3Mutation = useMutation({
-    mutationFn: () => wizardAPI.step3DefineAlignments(sessionId, availableRules.filter((rule) => selectedRules.includes(rule.id))),
+    mutationFn: () => wizardAPI.step3DefineAlignments(sessionId, selectedRules.map((id) => ({ id }))),
     onSuccess: (data) => {
-      if (data.step3_error) { toast.error(data.step3_message || 'Alignment definition failed'); return; }
+      if (data.step3_error || data.status !== 'SELECTED' || !sameRuleIds(selectedRules, data.selectedRuleIds)) {
+        toast.error(data.step3_message || 'Rule selection was not confirmed'); return;
+      }
       setVerificationResult(null);
       setStep(4);
       toast.success('Alignments configured');
@@ -75,6 +126,11 @@ function Wizard() {
   const step4Mutation = useMutation({
     mutationFn: () => wizardAPI.step4VerifyInferences(sessionId),
     onSuccess: (data) => {
+      if (canProceedVerification(data) && !executionMatchesSelection(data, selectedRules)) {
+        setVerificationResult(null);
+        toast.error('The executed rules could not be confirmed for this selection');
+        return;
+      }
       setVerificationResult(data);
       if (canProceedVerification(data)) { setStep(5); if (data.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR') toast.warning('OWL reasoning checked; declared context links require review'); else toast.success('OWL reasoning configuration checked'); }
       else { toast.error(data.step4_message || stateMessage(data)); }
@@ -88,42 +144,81 @@ function Wizard() {
   const completeMutation = useMutation({
     mutationFn: () => wizardAPI.completeIncorporation(sessionId),
     onSuccess: (data) => {
-      if (data.status !== 'COMPLETED' || !data.finalModuleId) { toast.error(data.message || 'Incorporation could not be completed'); return; }
-      toast.success('Ontology successfully created!');
-      resetWizard();
+      if (data.status !== 'COMPLETED' || !data.finalModuleId) {
+        toast.error(completionReceipt
+          ? 'Temporary cleanup could not be confirmed; ontology incorporation remains complete.'
+          : data.message || 'Ontology incorporation could not be confirmed');
+        return;
+      }
+      const warnings = Array.isArray(data.warnings) ? data.warnings : [];
+      const cleanupPending = data.cleanupPending === true || (data.cleanupPending == null
+        && warnings.some(warning => typeof warning === 'string' && warning.includes('temporary graph cleanup')));
+      if (cleanupPending) {
+        setCompletionReceipt(data);
+        setCompletionRecoveryAvailable(true);
+        setCancellationError(null);
+        saveSession({ id: sessionId, name: uploadedFile, cleanupPending: true });
+        setStep(5);
+        toast.warning('Ontology incorporation is complete; temporary cleanup is pending.');
+        return;
+      }
+      warnings.forEach(warning => toast.warning(warning));
+      toast.success('Ontology incorporation confirmed');
+      clearWizard();
     },
     onError: () => {
-      toast.error('Failed to complete wizard');
+      toast.error(completionReceipt
+        ? 'Temporary cleanup could not be confirmed; ontology incorporation remains complete.'
+        : 'Ontology incorporation could not be confirmed');
     },
   });
 
+  const cancelMutation = useMutation({
+    mutationFn: () => wizardAPI.cancelIncorporation(sessionId),
+    onSuccess: (data) => {
+      if (data.status !== 'CANCELLED' || data.tempModuleId !== sessionId) {
+        setCancellationError('Cancellation was not confirmed. Retry before uploading another file.');
+        return;
+      }
+      clearWizard();
+    },
+    onError: (error) => {
+      const result = error.response?.data;
+      if (error.response?.status === 409 && result?.status === 'COMPLETED' && result.tempModuleId === sessionId) {
+        setCompletionRecoveryAvailable(true);
+        setCancellationError('The server reports this session was completed. Retrieve its completion receipt before starting again.');
+      } else {
+        setCancellationError('Cancellation could not be confirmed. Retry before uploading another file.');
+      }
+    },
+  });
+  const busy = [step1Mutation, step2Mutation, step3Mutation, step4Mutation, completeMutation, cancelMutation]
+    .some(mutation => mutation.isPending);
+
+  const runAction = (mutation, variables) => {
+    // Guard synchronously as well as disabling buttons after React renders.
+    if (actionInFlight.current || busy) return;
+    actionInFlight.current = true;
+    mutation.mutate(variables, { onSettled: () => { actionInFlight.current = false; } });
+  };
   const handleUpload = (e) => {
     e.preventDefault();
-    if (!selectedFile) {
-      toast.error('Please select a file');
-      return;
-    }
-    step1Mutation.mutate(selectedFile);
+    if (sessionId) { toast.error('Cancel the current session before uploading another file'); return; }
+    if (!selectedFile) { toast.error('Please select a file'); return; }
+    runAction(step1Mutation, selectedFile);
   };
-
-  const handleProceedToValidate = () => {
-    step2Mutation.mutate();
-  };
-
-  const handleProceedToAlignment = () => {
-    step3Mutation.mutate();
-  };
-
-  const handleProceedToVerify = () => {
-    step4Mutation.mutate();
-  };
-
+  const handleProceedToValidate = () => { if (!uploadNeedsCleanup && !completionRecoveryAvailable) runAction(step2Mutation); };
+  const handleProceedToAlignment = () => runAction(step3Mutation);
+  const handleProceedToVerify = () => runAction(step4Mutation);
   const handleComplete = () => {
-    if (!canProceedValidation(validationResult) || !canProceedVerification(verificationResult)) { toast.error('A completed, consistent verification is required'); return; }
-    completeMutation.mutate();
+    if (!canProceedValidation(validationResult) || !canProceedVerification(verificationResult)
+      || !executionMatchesSelection(verificationResult, selectedRules)) {
+      toast.error('A completed verification of the selected rules is required'); return;
+    }
+    runAction(completeMutation);
   };
-
-  const resetWizard = () => {
+  const clearWizard = () => {
+    saveSession(null);
     setStep(1);
     setSessionId(null);
     setUploadedFile(null);
@@ -132,9 +227,25 @@ function Wizard() {
     setAvailableRules([]);
     setValidationResult(null);
     setVerificationResult(null);
+    setCancellationError(null);
+    setUploadNeedsCleanup(false);
+    setCompletionRecoveryAvailable(false);
+    setCompletionReceipt(null);
+  };
+  const cancelAndReset = () => {
+    if (actionInFlight.current || busy) return;
+    if (!sessionId) { clearWizard(); return; }
+    setCancellationError(null);
+    runAction(cancelMutation);
+  };
+  const goBack = (targetStep) => {
+    if (actionInFlight.current || busy) return;
+    setVerificationResult(null);
+    setStep(targetStep);
   };
 
   const toggleRule = (ruleId) => {
+    if (actionInFlight.current || busy) return;
     setVerificationResult(null);
     setSelectedRules((prev) =>
       prev.includes(ruleId)
@@ -180,6 +291,10 @@ function Wizard() {
         </div>
       </div>
 
+      {cancellationError && <div role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4">{cancellationError}</div>}
+      {uploadNeedsCleanup && <div role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4">Upload incomplete. Use Back to cancel this session before uploading another file.</div>}
+      {completionRecoveryAvailable && <button className="btn-secondary" disabled={busy} onClick={() => runAction(completeMutation)}>{completionReceipt ? 'Retry temporary cleanup' : 'Retrieve completion receipt'}</button>}
+      {cancelMutation.isPending && <p role="status">Cancelling the current session...</p>}
       {/* Step Content */}
       <div className="card p-8">
         {step === 1 && (
@@ -188,6 +303,7 @@ function Wizard() {
             selectedFile={selectedFile}
             setSelectedFile={setSelectedFile}
             isLoading={step1Mutation.isPending}
+            busy={busy}
           />
         )}
 
@@ -197,7 +313,9 @@ function Wizard() {
             validationResult={validationResult}
             onValidate={handleProceedToValidate}
             isLoading={step2Mutation.isPending}
-            onBack={() => setStep(1)}
+            busy={busy}
+            onBack={cancelAndReset}
+            validationBlocked={uploadNeedsCleanup || completionRecoveryAvailable}
           />
         )}
 
@@ -208,7 +326,8 @@ function Wizard() {
             toggleRule={toggleRule}
             onNext={handleProceedToAlignment}
             isLoading={step3Mutation.isPending}
-            onBack={() => setStep(2)}
+            busy={busy}
+            onBack={() => goBack(2)}
             validationResult={validationResult}
           />
         )}
@@ -219,17 +338,29 @@ function Wizard() {
             selectedRules={selectedRules}
             onVerify={handleProceedToVerify}
             isLoading={step4Mutation.isPending}
-            onBack={() => setStep(3)}
+            busy={busy}
+            onBack={() => goBack(3)}
             verificationResult={verificationResult}
           />
         )}
 
-        {step === 5 && (
+        {step === 5 && completionReceipt && (
+          <div className="space-y-4">
+            <h2 className="text-2xl font-bold text-gray-900">Ontology incorporated</h2>
+            <div role="alert" className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <p>Temporary cleanup is pending. Retry cleanup before starting another session.</p>
+              {(completionReceipt.warnings || []).map((warning, index) => <p key={index}>{warning}</p>)}
+            </div>
+            <ExecutedRules result={completionReceipt} />
+          </div>
+        )}
+        {step === 5 && !completionReceipt && (
           <Step5Complete
             verificationResult={verificationResult}
             onComplete={handleComplete}
             isLoading={completeMutation.isPending}
-            onReset={resetWizard}
+            busy={busy}
+            onReset={cancelAndReset}
           />
         )}
       </div>
@@ -237,7 +368,7 @@ function Wizard() {
   );
 }
 
-function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading }) {
+function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading, busy }) {
   return (
     <div className="space-y-6">
       <div>
@@ -251,6 +382,7 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading }) {
           <label className="block cursor-pointer">
             <input
               type="file"
+              disabled={busy}
               onChange={(e) => setSelectedFile(e.target.files?.[0])}
               accept=".rdf,.owl,.ttl,.n3,.xml"
               className="hidden"
@@ -278,7 +410,7 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading }) {
         <div className="flex justify-end gap-2 pt-4">
           <button
             type="submit"
-            disabled={!selectedFile || isLoading}
+            disabled={!selectedFile || isLoading || busy}
             className="btn-primary flex items-center gap-2 disabled:opacity-50"
           >
             {isLoading ? 'Uploading...' : 'Upload & Continue'}
@@ -290,7 +422,7 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading }) {
   );
 }
 
-export function Step2Validate({ uploadedFile, onValidate, isLoading, onBack, validationResult }) {
+export function Step2Validate({ uploadedFile, onValidate, isLoading, busy, onBack, validationResult, validationBlocked }) {
   const status = validationState(validationResult);
   const indicator = status === 'CONSISTENT' ? 'success' : status === 'PENDING' ? 'pending' : 'error';
   return (
@@ -312,13 +444,13 @@ export function Step2Validate({ uploadedFile, onValidate, isLoading, onBack, val
       </div>
 
       <div className="flex justify-between gap-2 pt-4">
-        <button onClick={onBack} className="btn-secondary flex items-center gap-2">
+        <button onClick={onBack} disabled={busy || isLoading} className="btn-secondary flex items-center gap-2">
           <ArrowLeftIcon className="w-4 h-4" />
           Back
         </button>
         <button
           onClick={onValidate}
-          disabled={isLoading}
+          disabled={isLoading || busy || validationBlocked}
           className="btn-primary flex items-center gap-2 disabled:opacity-50"
         >
           {isLoading ? 'Validating...' : 'Validate & Continue'}
@@ -335,6 +467,7 @@ export function Step3Alignment({
   toggleRule,
   onNext,
   isLoading,
+  busy,
   onBack,
   validationResult,
 }) {
@@ -343,6 +476,7 @@ export function Step3Alignment({
       <div>
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Step 3: Configure Alignments</h2>
         <p className="text-gray-600">Select alignment rules to apply to your ontology</p>
+        <p className="text-sm text-gray-600">This selection applies only to this session. Registered inactive rules can be selected without changing global activation.</p>
       </div>
 
       <CleaningContextStatus evaluation={validationResult?.cleaningEvaluation} />
@@ -369,6 +503,7 @@ export function Step3Alignment({
             >
               <input
                 type="checkbox"
+                disabled={busy || isLoading}
                 checked={selectedRules.includes(rule.id)}
                 onChange={() => toggleRule(rule.id)}
                 className="mt-1"
@@ -376,6 +511,7 @@ export function Step3Alignment({
               <div className="flex-1">
                 <p className="font-medium text-gray-900">{rule.name}</p>
                 <p className="text-sm text-gray-600">{rule.description}</p>
+                {rule.active === false && <p className="text-xs text-gray-600">Globally inactive; available for this session</p>}
               </div>
             </label>
           ))
@@ -385,13 +521,13 @@ export function Step3Alignment({
       </div>
 
       <div className="flex justify-between gap-2 pt-4">
-        <button onClick={onBack} className="btn-secondary flex items-center gap-2">
+        <button onClick={onBack} disabled={busy || isLoading} className="btn-secondary flex items-center gap-2">
           <ArrowLeftIcon className="w-4 h-4" />
           Back
         </button>
         <button
           onClick={onNext}
-          disabled={isLoading}
+          disabled={isLoading || busy}
           className="btn-primary flex items-center gap-2 disabled:opacity-50"
         >
           {isLoading ? 'Configuring...' : 'Configure & Continue'}
@@ -407,6 +543,7 @@ export function Step4Verify({
   selectedRules,
   onVerify,
   isLoading,
+  busy,
   onBack,
   verificationResult,
 }) {
@@ -431,12 +568,12 @@ export function Step4Verify({
       </div>
 
       <div className="bg-gray-50 rounded-lg p-4">
-        <p className="font-semibold text-gray-900 mb-3">Applied Rules</p>
+        <p className="font-semibold text-gray-900 mb-3">Selected Rules</p>
         {selectedRules.length > 0 ? (
           <ul className="space-y-1">
             {selectedRules.map((ruleId) => (
               <li key={ruleId} className="text-sm text-gray-700">
-                ✓ Rule {ruleId}
+                Rule {ruleId}
               </li>
             ))}
           </ul>
@@ -445,6 +582,7 @@ export function Step4Verify({
         )}
       </div>
 
+      <ExecutedRules result={verificationResult} />
       <CleaningContextStatus evaluation={verificationResult?.cleaningEvaluation} />
       <ContextIntegrityStatus evaluation={verificationResult?.contextEvaluation} />
       <NumericIntegrityStatus evaluation={verificationResult?.numericEvaluation} owlStatus={verificationResult?.owlValidationStatus} />
@@ -460,13 +598,13 @@ export function Step4Verify({
       )}
 
       <div className="flex justify-between gap-2 pt-4">
-        <button onClick={onBack} className="btn-secondary flex items-center gap-2">
+        <button onClick={onBack} disabled={busy || isLoading} className="btn-secondary flex items-center gap-2">
           <ArrowLeftIcon className="w-4 h-4" />
           Back
         </button>
         <button
           onClick={onVerify}
-          disabled={isLoading}
+          disabled={isLoading || busy}
           className="btn-primary flex items-center gap-2 disabled:opacity-50"
         >
           {isLoading ? 'Verifying...' : 'Verify & Continue'}
@@ -477,7 +615,7 @@ export function Step4Verify({
   );
 }
 
-export function Step5Complete({ verificationResult, onComplete, isLoading, onReset }) {
+export function Step5Complete({ verificationResult, onComplete, isLoading, busy, onReset }) {
   const verified = canProceedVerification(verificationResult);
   const recordWarning = verificationResult?.numericEvaluation?.status === 'NOT_EVALUABLE' || verificationResult?.contextEvaluation?.status === 'CONTEXT_INTEGRITY_ERROR' || ['NOT_EVALUABLE', 'MISSING_CLEANING_RECORD'].includes(verificationResult?.cleaningEvaluation?.status);
   return (
@@ -488,6 +626,7 @@ export function Step5Complete({ verificationResult, onComplete, isLoading, onRes
         <p className="text-gray-600">{verified ? 'The configured OWL profile, consistency and inference checks completed. Review the separate record statuses below.' : stateMessage(verificationResult)}</p>
       </div>
 
+      <ExecutedRules result={verificationResult} />
       <CleaningContextStatus evaluation={verificationResult?.cleaningEvaluation} />
       <ContextIntegrityStatus evaluation={verificationResult?.contextEvaluation} />
       <NumericIntegrityStatus evaluation={verificationResult?.numericEvaluation} owlStatus={verificationResult?.owlValidationStatus} />
@@ -505,15 +644,35 @@ export function Step5Complete({ verificationResult, onComplete, isLoading, onRes
       <div className="flex flex-col gap-2 pt-4">
         <button
           onClick={onComplete}
-          disabled={isLoading || !canProceedVerification(verificationResult)}
+          disabled={isLoading || busy || !canProceedVerification(verificationResult)}
           className="btn-success w-full disabled:opacity-50"
         >
           {isLoading ? 'Creating...' : 'Create Ontology'}
         </button>
-        <button onClick={onReset} className="btn-secondary w-full">
+        <button onClick={onReset} disabled={busy || isLoading} className="btn-secondary w-full">
           Start Over
         </button>
       </div>
+    </div>
+  );
+}
+
+function ExecutedRules({ result }) {
+  const completed = result?.status === 'COMPLETED' && !!result.finalModuleId;
+  if ((!completed && !canProceedVerification(result)) || !Array.isArray(result?.executedRules)) return null;
+  return (
+    <div className="bg-gray-50 rounded-lg p-4 text-left">
+      <h3 className="font-semibold text-gray-900">Executed Rules</h3>
+      {result.executedRules.length ? <ul>{result.executedRules.map(rule => (
+        <li key={rule.id}>{rule.name || rule.id} ({rule.id})</li>
+      ))}</ul> : <p>No alignment rules were executed for this session.</p>}
+      {typeof result.ruleDefinitionsSha256 === 'string' && result.ruleDefinitionsSha256 && (
+        <details className="mt-3 text-sm">
+          <summary className="cursor-pointer">Rule snapshot traceability</summary>
+          <p className="mt-2">Saved rule definitions (SHA-256)</p>
+          <code className="block break-all">{result.ruleDefinitionsSha256}</code>
+        </details>
+      )}
     </div>
   );
 }

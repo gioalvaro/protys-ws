@@ -1,0 +1,51 @@
+IMPLEMENTACIÓN DE LOS TODO P1 — PROTYS-WS
+15 de octubre de 2026
+
+Resultado: REP-01, REP-02, REP-03 y REP-04 implementados y verificados en la rama fix/p1-integrity-and-wizard-2026-10-15.
+Base: a5492983a021e8a4e00544390a218b6df5d23994, inicialmente limpia.
+Este registro corresponde al mantenimiento del prototipo. La tesis, los informes anteriores, las ontologías y la evidencia científica se preservan. No modifica estados científicos ni cierra PAS2-UI01/RF-02 de la tesis.
+
+1. QUÉ CAMBIÓ
+REP-01. La materialización valida el formato completo antes de conectar JDBC o publicar. El adaptador admite únicamente XML legado con raíz mapping e hijos rr:sqlQuery SELECT; rechaza explícitamente R2RML general, estructuras no soportadas y entidades externas. Las consultas terminan y todos los recursos JDBC se cierran antes de publicar. Un resultado vacío devuelve EMPTY/200, conserva el grafo y los metadatos, y la UI muestra un aviso. Los mapeos no admitidos producen 422 estructurado; el caso soportado continúa publicando las triples previstas.
+Además, una publicación conserva un snapshot previo y puede compensarse ante un error posterior o rollback confirmado. La restauración usa una sola actualización SPARQL condicionada a que el grafo siga siendo exactamente el publicado por esa operación. No pisa contenido distinto de otro escritor ni multiplica nodos anónimos del snapshot. Un recibo con UUID identifica restauración, cambio ajeno, fallo de compensación o resultado transaccional desconocido.
+
+REP-02. El Wizard ejecuta los IDs de reglas registrados que se seleccionaron para esa sesión. No utiliza en su lugar la activación global, no crea reglas globales y no modifica su estado. Una regla globalmente inactiva puede seleccionarse localmente; la UI explica esa política. La selección vacía significa OWL sin SWRL. Se rechazan IDs desconocidos, repetidos o sin identificador ejecutable, y cambiar la selección invalida la verificación anterior. API y UI cotejan selección y recibo efectivo de IDs/nombres. La sesión guarda el snapshot exacto de definiciones RDF y su SHA256; la UI ofrece esa huella en un detalle de trazabilidad. Identifica bytes suministrados, no una versión semántica ni una canonicalización RDF. La finalización vuelve a verificar antes de publicar.
+
+REP-03. Cada carga tiene propietario persistente, UUID, estado y grafos propios. Los temporales no entran al catálogo de módulos permanentes ni a validaciones de otras sesiones. Los temporales heredados se excluyen sin borrarlos. La cancelación elimina solamente recursos propios y nunca reglas preexistentes por su antigüedad. Se pueden reintentar cancelaciones, cargas fallidas y finalizaciones parciales tras reconstruir el servicio. Los 404 esperados de grafos ausentes se distinguen de fallos de infraestructura. Una sesión completada responde 409 al intentar cancelarla y conserva su módulo; un error operacional de limpieza responde 503, sin fingir que completó. La UI conserva el ID tras fallos, evita dobles acciones, recupera sesiones y mantiene visible una incorporación completada con limpieza pendiente hasta confirmarla.
+
+REP-04. Las respuestas de lista, detalle, creación y actualización usan un DTO sin password y con hasPassword. El secreto sólo puede entrar, no se serializa ni se incluye en toString; se redactan credenciales habituales presentes en URLs JDBC antiguas. PUT parcial conserva campos omitidos/null y contraseñas vacías; una contraseña nueva no vacía reemplaza la anterior. Un marcador de URL redactada no sobrescribe la URL almacenada. Los errores y registros propios no repiten mensajes del driver que puedan incluir credenciales. La UI limpia el secreto al cerrar el formulario y no requiere leer el valor guardado.
+
+2. VERIFICACIÓN EJECUTADA
+- Base anterior aislada: 18 regresiones backend fallaron mediante aserciones por los fallos esperados; 0 errores de ejecución de tests en ese recibo. Incluyen selección global incorrecta, contaminación entre sesiones, borrado de reglas, materialización y exposición de secretos. Se conserva también la evidencia de las iteraciones de fixtures.
+- Frontend base: 35 pruebas existentes pasaron; siete regresiones nuevas del Wizard fallaron antes de la corrección.
+- Backend final: Maven verify, 118 ejecuciones de pruebas, 0 fallos, 0 errores, 0 omitidas; empaquetado correcto.
+- Frontend final: 61 pruebas, 13 suites, todas correctas; compilación de producción correcta.
+- Preservación y herramientas de demo: 16 + 6 pruebas existentes correctas.
+- Revisión independiente de los contratos ERP/Wizard y de la compensación; comprobación de diferencias sin errores de espacio.
+
+Integraciones efectivamente ejecutadas: JDBC/H2 y Fuseki HTTP privado para conservar/publicar/restaurar grafos; nodos anónimos compartidos; escritura ajena de igual cardinalidad; rollback real provocado mediante TransactionTemplate y commit exitoso. No se confunde ese rollback con un fallo físico de commit.
+Hibernate/H2 y Fuseki HTTP reales para persistencia de sesiones, cancelación interrumpida, reintento contra grafo ausente, conservación de otra sesión y finalización nueva/idempotente; controlador mediante MockMvc. En esta prueba de ciclo de vida el motor semántico está simulado.
+HermiT/SWRLAPI reales para reglas sintéticas A/B con efectos diferentes y para una sesión inconsistente abandonada que no contamina otra consistente. En esas pruebas semánticas el almacenamiento está simulado. Las capas y sus límites están identificados, no se presentan como una corrida única de navegador a PostgreSQL.
+
+3. ESQUEMA, ALCANCE Y LÍMITES
+Se agrega standard_incorporation_sessions y una columna nullable/unique incorporation_session_id en ontology_modules. Se conserva la configuración existente ddl-auto:update. Un despliegue con esquema administrado necesita incorporar esos cambios por su proceso normal. H2 es dependencia exclusiva de pruebas; no se actualizó el stack de producción.
+El aislamiento de mutaciones se verifica para una instancia de backend, con persistencia de checkpoints. No se declara coordinación entre varias réplicas. La propiedad es recurso-sesión, dentro del modelo de acceso existente.
+La compensación ERP no equivale a una transacción distribuida: un crash no ejecuta callbacks, el snapshot es de memoria, el resultado de commit puede ser desconocido y Fuseki puede impedir la recuperación. La comparación por contenido tampoco identifica a un escritor que haya publicado exactamente las mismas triples. Los casos no confirmados quedan registrados para reconciliación; no se declara restauración universal.
+No se ejecutó un despliegue sobre la base PostgreSQL del usuario ni una aceptación completa en navegador con servicios reales. Las pruebas de UI usan API simulada; los contratos HTTP de backend se verifican con MockMvc. No se publicaron cambios ni se repitieron las 120 mediciones científicas.
+El adaptador SQL sigue siendo un demostrador limitado. Este trabajo no agrega R2RML general, autenticación ni cifrado de secretos en reposo. Los P2/P3 del backlog original permanecen fuera de esta implementación, incluidos formatos RDF y conteos del Wizard. Las decisiones científicas siguen separadas para Marcela.
+
+4. TRAZABILIDAD Y REPRODUCCIÓN
+Evidencia nueva: /Users/gioalvaro/tesis/IMPLEMENTACION_P1_2026-10-15/
+REGISTRO_CAMBIOS.json: archivo por archivo, motivo, TODO y hashes antes/después.
+evidencia/BASE.json: rama/base y alcance.
+evidencia/baseline/p1-final-confirmed-red.log: 18 regresiones anteriores.
+evidencia/final/backend-verify-final.log y surefire-reports/: resultado final backend.
+evidencia/frontend/RESUMEN_FRONTEND.json, pruebas_finales.log y build.log: frontend.
+evidencia/final/preservation-tests.log y demo-ownership-tests.log: herramientas.
+evidencia/PRESERVACION_FINAL.json: comprobación de los 877 archivos protegidos y de la etiqueta tesis-cierre-2026-10-03-v1.
+CAMBIOS_P1.patch y ENTREGA.json: parche consolidado y commit local de entrega.
+Los registros de iteraciones fallidas se conservan y se diferencian de la verificación final.
+
+Para repetir backend: preparar los runtimes aislados según el proceso existente del proyecto y ejecutar ./mvnw -B verify desde backend con Java 17. Para frontend: npm test -- --watchAll=false --runInBand y npm run build con CI=true y el runtime declarado por el proyecto. Aquí se usaron Temurin 17.0.20.1 y Node 24.19.0 del runtime disponible; package.json declara Node 24.18.0. Esa diferencia está registrada, no se presenta como una corrida de CI remoto.
+
+Reversión: revertir el commit de esta rama revierte código y tests. No borrar automáticamente la tabla nueva, registros de sesión ni grafos con una heurística temporal. Si se desplegara, conservar primero sus recibos y tratar cualquier limpieza de esquema/datos por separado. Este trabajo sólo ejecutó escrituras de pruebas en almacenes privados temporales.

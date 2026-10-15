@@ -12,9 +12,18 @@ import org.protys.ws.model.ERPConnector;
 import org.protys.ws.dto.MaterializationResult;
 import org.protys.ws.dto.SchemaMetadata;
 import org.protys.ws.exception.ProtysFusekiException;
+import org.protys.ws.exception.ProtysMappingException;
+import org.protys.ws.exception.ERPMaterializationException;
 import org.protys.ws.repository.ERPConnectorRepository;
 
 import javax.sql.DataSource;
+import javax.xml.XMLConstants;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.xml.sax.InputSource;
+import org.xml.sax.helpers.DefaultHandler;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
@@ -59,8 +68,8 @@ public class ERPConnectorService {
             log.info("Connector registered with ID: {}", saved.getId());
             return saved;
         } catch (Exception e) {
-            log.error("Failed to register connector", e);
-            throw new ProtysFusekiException("Failed to register connector: " + e.getMessage(), e);
+            log.warn("Failed to register connector ({})", e.getClass().getSimpleName());
+            throw new ProtysFusekiException("Failed to register connector");
         }
     }
 
@@ -84,7 +93,7 @@ public class ERPConnectorService {
             log.info("Connection test successful for connector: {}", connectorId);
             return true;
         } catch (Exception e) {
-            log.error("Connection test failed for connector: {}", connectorId, e);
+            log.warn("Connection test failed for connector {} ({})", connectorId, e.getClass().getSimpleName());
             return false;
         }
     }
@@ -107,38 +116,38 @@ public class ERPConnectorService {
                 connector.getPassword())) {
 
             DatabaseMetaData metadata = conn.getMetaData();
-            ResultSet tables = metadata.getTables(null, null, "%", new String[]{"TABLE"});
-
-            while (tables.next()) {
+            try (ResultSet tables = metadata.getTables(null, null, "%", new String[]{"TABLE"})) {
+              while (tables.next()) {
                 String tableName = tables.getString("TABLE_NAME");
                 List<SchemaMetadata> columns = new ArrayList<>();
 
-                ResultSet columnsRs = metadata.getColumns(null, null, tableName, null);
-                while (columnsRs.next()) {
+                try (ResultSet columnsRs = metadata.getColumns(null, null, tableName, null)) {
+                  while (columnsRs.next()) {
                     SchemaMetadata col = new SchemaMetadata();
                     col.setName(columnsRs.getString("COLUMN_NAME"));
                     col.setType(columnsRs.getString("TYPE_NAME"));
                     col.setNullable(columnsRs.getInt("NULLABLE") == DatabaseMetaData.columnNullable);
                     columns.add(col);
+                  }
                 }
-                columnsRs.close();
 
                 schema.put(tableName, columns);
                 log.debug("Found table: {} with {} columns", tableName, columns.size());
+              }
             }
-            tables.close();
 
             log.info("Schema introspection found {} tables", schema.size());
             return schema;
 
         } catch (Exception e) {
-            log.error("Failed to introspect schema for connector: {}", connectorId, e);
-            throw new ProtysFusekiException("Failed to introspect schema: " + e.getMessage(), e);
+            log.warn("Failed to introspect schema for connector {} ({})", connectorId, e.getClass().getSimpleName());
+            throw new ProtysFusekiException("Failed to introspect ERP schema");
         }
     }
 
     /**
-     * Materializes RDF triples from ERP database using R2RML mapping.
+     * Executes the limited legacy XML SQL adapter, not a general R2RML processor.
+     * Unsupported mappings, failed SQL execution and empty results never replace an existing graph.
      */
     @Transactional
     public MaterializationResult materialize(UUID connectorId) {
@@ -148,44 +157,43 @@ public class ERPConnectorService {
         MaterializationResult result = new MaterializationResult();
         result.setConnectorId(connectorId);
         result.setStartedAt(LocalDateTime.now());
+        ERPGraphPublication publication = null;
 
         try {
             ERPConnector connector = erpConnectorRepository.findById(connectorId)
                     .orElseThrow(() -> new ProtysFusekiException("Connector not found: " + connectorId));
 
-            log.debug("Step 1: Loaded connector configuration: {}", connector.getName());
+            // Validate the complete supported structure before opening JDBC or touching Fuseki.
+            List<String> sqlQueries = extractSqlQueries(loadR2RMLMapping(connector));
+            result.setMappingsProcessed(sqlQueries.size());
+            result.setNamedGraph(connector.getNamedGraph());
 
-            // Step 2: Establish JDBC connection
-            Connection dbConnection = java.sql.DriverManager.getConnection(
-                    connector.getJdbcUrl(),
-                    connector.getUsername(),
-                    connector.getPassword()
-            );
-            log.info("Step 2: JDBC connection established to {}", connector.getType());
-
-            // Step 3: Load R2RML mapping
-            String r2rmlContent = loadR2RMLMapping(connector);
-            log.debug("Step 3: R2RML mapping loaded ({} bytes)", r2rmlContent.length());
-
-            // Step 4: Create RDF model
             Model rdfModel = ModelFactory.createDefaultModel();
             rdfModel.setNsPrefix("protys", "http://w3id.org/protys/ontology/");
             rdfModel.setNsPrefix("erp", "http://w3id.org/protys/erp/");
 
-            // Step 5: Execute SQL queries and generate triples
-            int tripleCount = executeMappingAndGenerateTriples(
-                    dbConnection, connector, r2rmlContent, rdfModel);
+            // Finish and close all JDBC resources before publishing anything.
+            try (Connection dbConnection = java.sql.DriverManager.getConnection(
+                    connector.getJdbcUrl(), connector.getUsername(), connector.getPassword())) {
+                dbConnection.setReadOnly(true);
+                executeMappingAndGenerateTriples(dbConnection, connector, sqlQueries, rdfModel);
+            }
+            long tripleCount = rdfModel.size();
+            result.setTripleCount(tripleCount);
+            if (rdfModel.isEmpty()) {
+                result.setStatus("EMPTY");
+                result.setExecutionTimeMs(System.currentTimeMillis() - startTime);
+                result.setCompletedAt(LocalDateTime.now());
+                result.setWarnings(List.of("Queries returned no rows; existing graph and connector metadata preserved"));
+                return result;
+            }
 
-            log.info("Step 4-5: Generated {} RDF triples", tripleCount);
-
-            // Step 6: Store resulting model in Fuseki
             String namedGraphUri = connector.getNamedGraph();
-            fusekiService.putModel(namedGraphUri, rdfModel);
-            log.info("Step 6: Stored model in Fuseki named graph: {}", namedGraphUri);
+            publication = new ERPGraphPublication(fusekiService, connectorId, namedGraphUri, rdfModel);
+            publication.publish();
+            log.info("Stored model in Fuseki named graph: {}", namedGraphUri);
 
-            // Step 7: Prepare result
             long duration = System.currentTimeMillis() - startTime;
-            result.setTripleCount((long) tripleCount);
             result.setExecutionTimeMs(duration);
             result.setNamedGraph(namedGraphUri);
             result.setCompletedAt(LocalDateTime.now());
@@ -193,43 +201,42 @@ public class ERPConnectorService {
 
             // Update connector metadata
             connector.setLastMaterializationAt(LocalDateTime.now());
-            connector.setTripleCount((long) tripleCount);
+            connector.setTripleCount(tripleCount);
             connector.setMaterializationTimeMs(duration);
             connector.setStatus(ERPConnector.ConnectorStatus.MATERIALIZED);
             erpConnectorRepository.save(connector);
 
             log.info("Materialization completed in {}ms: {} triples generated", duration, tripleCount);
 
-            dbConnection.close();
             return result;
 
         } catch (Exception e) {
-            log.error("Materialization failed for connector: {}", connectorId, e);
-            result.setStatus("FAILED");
-            result.setErrorMessage(e.getMessage());
-            result.setCompletedAt(LocalDateTime.now());
-            throw new ProtysFusekiException("Materialization failed: " + e.getMessage(), e);
+            if (publication != null) {
+                publication.compensate("EXECUTION_FAILURE");
+                throw new ERPMaterializationException(publication.operationId(), publication.outcome().name());
+            }
+            if (e instanceof ProtysMappingException mapping) throw mapping;
+            // JDBC and database exceptions can echo connection credentials.
+            log.warn("Materialization failed for connector {} ({})", connectorId, e.getClass().getSimpleName());
+            throw new ProtysFusekiException("ERP materialization failed; no successful result was recorded");
         }
     }
 
     /**
-     * Executes R2RML mapping and generates RDF triples from SQL results.
+     * Generates legacy RDF triples from the validated SQL list.
      */
     private int executeMappingAndGenerateTriples(
             Connection dbConnection,
             ERPConnector connector,
-            String r2rmlContent,
+            List<String> sqlQueries,
             Model rdfModel) throws Exception {
 
         int tripleCount = 0;
 
         try (Statement stmt = dbConnection.createStatement()) {
-            List<String> sqlQueries = extractSqlQueries(r2rmlContent);
-            log.debug("Found {} SQL queries in R2RML mapping", sqlQueries.size());
+            log.debug("Executing {} queries from legacy SQL mapping", sqlQueries.size());
 
             for (String sqlQuery : sqlQueries) {
-                log.debug("Executing SQL: {}", sqlQuery);
-
                 try (ResultSet resultSet = stmt.executeQuery(sqlQuery)) {
                     ResultSetMetaData metadata = resultSet.getMetaData();
                     int columnCount = metadata.getColumnCount();
@@ -262,24 +269,66 @@ public class ERPConnectorService {
             }
         }
 
-        log.info("Generated {} triples from R2RML execution", tripleCount);
+        log.info("Generated {} triple statements from legacy SQL execution", tripleCount);
         return tripleCount;
     }
 
     /**
-     * Extracts SQL queries from R2RML mapping content.
+     * Supported legacy format: a mapping root with only rr:sqlQuery children.
+     * It maps column 1 to the subject ID and later columns to plain literals.
+     * RDF/XML triples maps, Turtle, term maps, joins and extensions are rejected.
      */
     private List<String> extractSqlQueries(String r2rmlContent) {
-        List<String> queries = new ArrayList<>();
-        java.util.regex.Pattern p = java.util.regex.Pattern.compile("<rr:sqlQuery>([^<]+)</rr:sqlQuery>");
-        java.util.regex.Matcher m = p.matcher(r2rmlContent);
-        while (m.find()) {
-            String query = m.group(1).trim();
-            if (!query.isEmpty()) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setNamespaceAware(true);
+            factory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+            factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+            factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+            factory.setXIncludeAware(false);
+            factory.setExpandEntityReferences(false);
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+            factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+            var builder = factory.newDocumentBuilder();
+            builder.setErrorHandler(new DefaultHandler());
+            Element root = builder.parse(new InputSource(new StringReader(r2rmlContent))).getDocumentElement();
+            if (!"mapping".equals(root.getTagName()) || root.getNamespaceURI() != null) {
+                throw unsupportedMapping();
+            }
+            for (int i = 0; i < root.getAttributes().getLength(); i++) {
+                if (!XMLConstants.XMLNS_ATTRIBUTE_NS_URI.equals(root.getAttributes().item(i).getNamespaceURI())) {
+                    throw unsupportedMapping();
+                }
+            }
+            List<String> queries = new ArrayList<>();
+            for (Node child = root.getFirstChild(); child != null; child = child.getNextSibling()) {
+                if (child.getNodeType() == Node.COMMENT_NODE) continue;
+                if (child.getNodeType() == Node.TEXT_NODE && child.getTextContent().isBlank()) continue;
+                if (!(child instanceof Element element)
+                        || !"http://www.w3.org/ns/r2rml#".equals(element.getNamespaceURI())
+                        || !"sqlQuery".equals(element.getLocalName()) || element.hasAttributes()) {
+                    throw unsupportedMapping();
+                }
+                for (Node value = element.getFirstChild(); value != null; value = value.getNextSibling()) {
+                    if (value.getNodeType() != Node.TEXT_NODE && value.getNodeType() != Node.CDATA_SECTION_NODE) {
+                        throw unsupportedMapping();
+                    }
+                }
+                String query = element.getTextContent().trim();
+                if (!query.matches("(?is)^SELECT\\s+.+") || query.contains(";")) throw unsupportedMapping();
                 queries.add(query);
             }
+            if (queries.isEmpty()) throw unsupportedMapping();
+            return queries;
+        } catch (Exception e) {
+            throw unsupportedMapping();
         }
-        return queries;
+    }
+
+    private ProtysMappingException unsupportedMapping() {
+        return new ProtysMappingException("UNSUPPORTED_MAPPING: expected legacy XML <mapping> with only "
+                + "rr:sqlQuery SELECT children (rr=http://www.w3.org/ns/r2rml#); general R2RML is not supported");
     }
 
     /**
@@ -295,7 +344,7 @@ public class ERPConnectorService {
                 return tableName.replaceAll("[`\"]", "");
             }
         } catch (Exception e) {
-            log.warn("Failed to extract table name from SQL", e);
+            log.warn("Failed to extract table name from SQL ({})", e.getClass().getSimpleName());
         }
         return "unknown";
     }
@@ -305,14 +354,13 @@ public class ERPConnectorService {
      */
     private String loadR2RMLMapping(ERPConnector connector) throws Exception {
         if (connector.getR2rmlMappingPath() == null || connector.getR2rmlMappingPath().isBlank()) {
-            throw new ProtysFusekiException("R2RML mapping path not configured");
+            throw new ProtysMappingException("MAPPING_UNAVAILABLE: mapping path not configured");
         }
 
         try {
-            return new String(Files.readAllBytes(Paths.get(connector.getR2rmlMappingPath())));
+            return Files.readString(Paths.get(connector.getR2rmlMappingPath()));
         } catch (Exception e) {
-            log.error("Failed to load R2RML file: {}", connector.getR2rmlMappingPath(), e);
-            throw new ProtysFusekiException("Failed to load R2RML file: " + e.getMessage(), e);
+            throw new ProtysMappingException("MAPPING_UNAVAILABLE: mapping file cannot be read");
         }
     }
 
@@ -350,22 +398,27 @@ public class ERPConnectorService {
     @Transactional
     public ERPConnector updateConnector(UUID connectorId, ERPConnector updated) {
         log.info("Updating connector: {}", connectorId);
-
-        ERPConnector connector = erpConnectorRepository.findById(connectorId)
+        try {
+          ERPConnector connector = erpConnectorRepository.findById(connectorId)
                 .orElseThrow(() -> new ProtysFusekiException("Connector not found: " + connectorId));
 
-        connector.setName(updated.getName());
-        connector.setType(updated.getType());
-        connector.setJdbcUrl(updated.getJdbcUrl());
-        connector.setUsername(updated.getUsername());
-        connector.setPassword(updated.getPassword());
-        connector.setDatabaseName(updated.getDatabaseName());
-        connector.setR2rmlMappingPath(updated.getR2rmlMappingPath());
+        if (updated.getName() != null) connector.setName(updated.getName());
+        if (updated.getType() != null) connector.setType(updated.getType());
+        // A client may submit a public DTO again; never persist its redaction marker.
+        if (updated.getJdbcUrl() != null && !updated.getJdbcUrl().contains("[REDACTED]")) connector.setJdbcUrl(updated.getJdbcUrl());
+        if (updated.getUsername() != null) connector.setUsername(updated.getUsername());
+        if (updated.getPassword() != null && !updated.getPassword().isBlank()) connector.setPassword(updated.getPassword());
+        if (updated.getDatabaseName() != null) connector.setDatabaseName(updated.getDatabaseName());
+        if (updated.getR2rmlMappingPath() != null) connector.setR2rmlMappingPath(updated.getR2rmlMappingPath());
         connector.setUpdatedAt(LocalDateTime.now());
 
         ERPConnector saved = erpConnectorRepository.save(connector);
         log.info("Connector updated: {}", connectorId);
         return saved;
+        } catch (Exception e) {
+            log.warn("Failed to update connector {} ({})", connectorId, e.getClass().getSimpleName());
+            throw new ProtysFusekiException("Failed to update ERP connector");
+        }
     }
 
     /**

@@ -34,3 +34,17 @@ test('an ambiguous numerical response blocks final incorporation and explains th
   expect(html).toContain('disabled');
   expect(html).not.toContain('✓ OWL consistency and configured inference execution verified');
 });
+
+test('the saved rule fingerprint is optional traceability in a collapsed detail', () => {
+  const result = { status: 'CONSISTENT', step4_verified: true, executedRules: [{id:'rule-a',name:'Rule A'}] };
+  const fingerprint = 'a'.repeat(64);
+  const view = document.createElement('div');
+  view.innerHTML = renderToStaticMarkup(<Step5Complete verificationResult={{...result,ruleDefinitionsSha256:fingerprint}}/>);
+  const details = view.querySelector('details');
+  expect(details.querySelector('summary').textContent).toBe('Rule snapshot traceability');
+  expect(details.querySelector('code').textContent).toBe(fingerprint);
+  expect(details.hasAttribute('open')).toBe(false);
+  view.innerHTML = renderToStaticMarkup(<Step5Complete verificationResult={result}/>);
+  expect(view.querySelector('details')).toBeNull();
+  expect(view.querySelector('button').disabled).toBe(false);
+});

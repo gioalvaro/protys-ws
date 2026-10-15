@@ -6,8 +6,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 import org.protys.ws.dto.MaterializationResult;
+import org.protys.ws.dto.ERPConnectorResponse;
+import org.protys.ws.exception.ProtysMappingException;
+import org.protys.ws.exception.ERPMaterializationException;
 import org.protys.ws.model.ERPConnector;
 import org.protys.ws.service.ERPConnectorService;
 
@@ -24,39 +28,46 @@ public class ERPController {
 
     private final ERPConnectorService erpConnectorService;
 
+    /** Malformed credentials must not be echoed by generic deserialization errors. */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, String>> invalidRequestBody() {
+        return ResponseEntity.badRequest().body(Map.of("code", "INVALID_ERP_REQUEST",
+                "message", "Invalid ERP request body; check field names and value types"));
+    }
+
     // Connector Management Endpoints
 
     @GetMapping("/connectors")
     @Operation(summary = "List all ERP connectors", description = "Retrieve all registered ERP connectors and their configurations")
-    public ResponseEntity<List<ERPConnector>> getAllConnectors() {
+    public ResponseEntity<List<ERPConnectorResponse>> getAllConnectors() {
         log.info("Fetching all ERP connectors");
         try {
             List<ERPConnector> connectors = erpConnectorService.getConnectors();
             log.debug("Retrieved {} ERP connectors", connectors.size());
-            return ResponseEntity.ok(connectors);
+            return ResponseEntity.ok(connectors.stream().map(ERPConnectorResponse::from).toList());
         } catch (Exception e) {
-            log.error("Error retrieving ERP connectors", e);
+            log.warn("Error retrieving ERP connectors ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @GetMapping("/connectors/{id}")
     @Operation(summary = "Get connector details", description = "Retrieve detailed information about a specific ERP connector")
-    public ResponseEntity<ERPConnector> getConnectorById(@PathVariable UUID id) {
+    public ResponseEntity<ERPConnectorResponse> getConnectorById(@PathVariable UUID id) {
         log.info("Fetching ERP connector with id: {}", id);
         try {
             ERPConnector connector = erpConnectorService.getConnector(id);
             log.debug("Connector retrieved successfully");
-            return ResponseEntity.ok(connector);
+            return ResponseEntity.ok(ERPConnectorResponse.from(connector));
         } catch (Exception e) {
-            log.error("Error retrieving connector", e);
+            log.warn("Error retrieving connector ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @PostMapping("/connectors")
     @Operation(summary = "Register new ERP connector", description = "Create and register a new ERP system connector with JDBC configuration")
-    public ResponseEntity<ERPConnector> registerConnector(@RequestBody ERPConnector connector) {
+    public ResponseEntity<ERPConnectorResponse> registerConnector(@RequestBody ERPConnector connector) {
         log.info("Registering new ERP connector");
         try {
             if (connector.getName() == null || connector.getName().trim().isEmpty()) {
@@ -66,25 +77,25 @@ public class ERPController {
 
             ERPConnector registeredConnector = erpConnectorService.registerConnector(connector);
             log.info("ERP connector registered successfully with id: {}", registeredConnector.getId());
-            return ResponseEntity.status(HttpStatus.CREATED).body(registeredConnector);
+            return ResponseEntity.status(HttpStatus.CREATED).body(ERPConnectorResponse.from(registeredConnector));
         } catch (Exception e) {
-            log.error("Error registering ERP connector", e);
+            log.warn("Error registering ERP connector ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
     @PutMapping("/connectors/{id}")
-    @Operation(summary = "Update connector configuration", description = "Update the configuration of an existing ERP connector")
-    public ResponseEntity<ERPConnector> updateConnector(
+    @Operation(summary = "Update connector configuration", description = "Partially update a connector; omitted/null fields and blank passwords preserve stored values")
+    public ResponseEntity<ERPConnectorResponse> updateConnector(
             @PathVariable UUID id,
             @RequestBody ERPConnector connectorConfig) {
         log.info("Updating ERP connector: {}", id);
         try {
             ERPConnector updatedConnector = erpConnectorService.updateConnector(id, connectorConfig);
             log.info("Connector updated successfully");
-            return ResponseEntity.ok(updatedConnector);
+            return ResponseEntity.ok(ERPConnectorResponse.from(updatedConnector));
         } catch (Exception e) {
-            log.error("Error updating connector", e);
+            log.warn("Error updating connector ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -98,7 +109,7 @@ public class ERPController {
             log.info("Connector deleted successfully");
             return ResponseEntity.noContent().build();
         } catch (Exception e) {
-            log.error("Error deleting connector", e);
+            log.warn("Error deleting connector ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -119,7 +130,7 @@ public class ERPController {
             log.debug("Connection test completed");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            log.error("Error testing connection", e);
+            log.warn("Error testing connection ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -135,7 +146,7 @@ public class ERPController {
             log.debug("Schema introspection completed");
             return ResponseEntity.ok(schemaMetadata);
         } catch (Exception e) {
-            log.error("Error introspecting schema", e);
+            log.warn("Error introspecting schema ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -143,16 +154,28 @@ public class ERPController {
     // Materialization Endpoint
 
     @PostMapping("/connectors/{id}/materialize")
-    @Operation(summary = "Execute R2RML materialization", description = "Materialize RDF data from the ERP database using R2RML mapping rules")
-    public ResponseEntity<MaterializationResult> materializeData(@PathVariable UUID id) {
-        log.info("Starting R2RML materialization for connector: {}", id);
+    @Operation(summary = "Execute legacy SQL materialization", description = "Limited XML SQL adapter, not general R2RML. Empty results preserve the existing graph and return EMPTY")
+    public ResponseEntity<?> materializeData(@PathVariable UUID id) {
+        log.info("Starting legacy SQL materialization for connector: {}", id);
         try {
             MaterializationResult result = erpConnectorService.materialize(id);
-            log.info("Materialization completed successfully. Created {} triples", result.getTripleCount());
+            if ("EMPTY".equals(result.getStatus())) return ResponseEntity.ok(result);
             return ResponseEntity.status(HttpStatus.CREATED).body(result);
+        } catch (ProtysMappingException e) {
+            boolean unsupported = e.getMessage() != null && e.getMessage().startsWith("UNSUPPORTED_MAPPING");
+            return ResponseEntity.unprocessableEntity().body(Map.of(
+                    "code", unsupported ? "UNSUPPORTED_MAPPING" : "MAPPING_UNAVAILABLE",
+                    "message", unsupported
+                            ? "Only the limited legacy XML SQL mapping is supported; general R2RML is not supported. Existing graph preserved."
+                            : "The configured mapping cannot be read. Existing graph preserved."));
+        } catch (ERPMaterializationException e) {
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(Map.of(
+                    "code", "MATERIALIZATION_FAILED", "message", e.getMessage(),
+                    "operationId", e.getOperationId(), "compensationStatus", e.getCompensationStatus()));
         } catch (Exception e) {
-            log.error("Error during materialization", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            log.warn("Error during materialization ({})", e.getClass().getSimpleName());
+            return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(Map.of(
+                    "code", "MATERIALIZATION_FAILED", "message", "ERP materialization failed; no successful result was recorded"));
         }
     }
 
@@ -173,7 +196,7 @@ public class ERPController {
             log.debug("Materialization history retrieved");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            log.error("Error retrieving materialization history", e);
+            log.warn("Error retrieving materialization history ({})", e.getClass().getSimpleName());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }

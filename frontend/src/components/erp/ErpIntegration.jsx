@@ -40,6 +40,12 @@ function ErpIntegration() {
   const materializeMutation = useMaterialize();
   const deleteConnectorMutation = useDeleteConnector();
 
+  const closeConnectorForm = () => {
+    if (registerConnectorMutation.isPending) return;
+    setFormData((current) => ({ ...current, password: '' }));
+    setShowAddConnector(false);
+  };
+
   const handleCreateConnector = (e) => {
     e.preventDefault();
     if (!formData.name || !formData.connectionString) {
@@ -71,7 +77,8 @@ function ErpIntegration() {
           <p className="text-sm text-gray-600">Connect and materialize external systems</p>
         </div>
         <button
-          onClick={() => setShowAddConnector(!showAddConnector)}
+          onClick={() => showAddConnector ? closeConnectorForm() : setShowAddConnector(true)}
+          disabled={registerConnectorMutation.isPending}
           className="btn-primary flex items-center gap-2"
         >
           <PlusIcon className="w-4 h-4" />
@@ -139,6 +146,7 @@ function ErpIntegration() {
                 <label className="label">Password</label>
                 <input
                   type="password"
+                  autoComplete="new-password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   placeholder="Database password"
@@ -150,7 +158,8 @@ function ErpIntegration() {
             <div className="flex gap-2 pt-4">
               <button
                 type="button"
-                onClick={() => setShowAddConnector(false)}
+                onClick={closeConnectorForm}
+                disabled={registerConnectorMutation.isPending}
                 className="btn-secondary flex-1"
               >
                 Cancel

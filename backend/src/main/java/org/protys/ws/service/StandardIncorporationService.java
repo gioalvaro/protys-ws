@@ -2,467 +2,418 @@ package org.protys.ws.service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.jena.ontology.OntModel;
-import org.apache.jena.ontology.OntModelSpec;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
+import org.protys.ws.dto.StandardIncorporationResult;
+import org.protys.ws.dto.StandardIncorporationResult.ExecutedRule;
+import org.protys.ws.exception.ProtysMappingException;
 import org.protys.ws.model.AlignmentRule;
 import org.protys.ws.model.OntologyModule;
-import org.protys.ws.dto.StandardIncorporationResult;
-import org.protys.ws.exception.ProtysMappingException;
+import org.protys.ws.model.StandardIncorporationSession;
 import org.protys.ws.repository.AlignmentRuleRepository;
 import org.protys.ws.repository.OntologyModuleRepository;
+import org.protys.ws.repository.StandardIncorporationSessionRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
- * 4-step wizard service for incorporating new manufacturing standards.
- * Guides users through validation, alignment, and verification process.
+ * Session-owned staging, with durable checkpoints around non-transactional Fuseki writes.
+ * Repository operations commit separately: a failed graph write must not erase its owner.
+ * Mutations are serialized within the single backend instance used by this prototype.
  */
 @Service
 @Slf4j
 @RequiredArgsConstructor
 public class StandardIncorporationService {
-
-    private final OntologyService ontologyService;
-    private final AlignmentService alignmentService;
+    public static class IncorporationAlreadyCompletedException extends IllegalStateException {
+        public IncorporationAlreadyCompletedException() {
+            super("The session is already incorporated; cancellation cannot delete a permanent module");
+        }
+    }
+    static final String TEMP_PREFIX = "http://w3id.org/protys/ontology/temp/wizard/";
+    static final String PERMANENT_PREFIX = "http://w3id.org/protys/ontology/incorporated/";
     private final FusekiService fusekiService;
     private final ReasoningService reasoningService;
     private final OntologyModuleRepository ontologyModuleRepository;
     private final AlignmentRuleRepository alignmentRuleRepository;
+    private final StandardIncorporationSessionRepository sessionRepository;
 
-    // Temporary storage for multi-step process
-    private final Map<UUID, StandardIncorporationState> incorporationStates = new java.util.concurrent.ConcurrentHashMap<>();
-
-    /**
-     * Step 1: Upload and parse a new OWL standard.
-     *
-     * @param owlFile      the OWL file containing the standard
-     * @param standardName the name of the standard
-     * @return StandardIncorporationResult with step 1 status
-     * @throws ProtysMappingException if parsing fails
-     */
-    @Transactional
-    public StandardIncorporationResult step1_upload(MultipartFile owlFile, String standardName) {
-        log.info("STEP 1: Uploading and parsing new standard: {}", standardName);
-        long startTime = System.currentTimeMillis();
-
+    public synchronized StandardIncorporationResult step1_upload(MultipartFile file, String standardName) {
         StandardIncorporationResult result = new StandardIncorporationResult();
-        result.setStandardName(standardName);
         result.setCurrentStep(1);
-        result.setStartedAt(LocalDateTime.now());
-
+        long start = System.currentTimeMillis();
         try {
-            // Parse OWL file
+            if (standardName == null || standardName.isBlank() || standardName.trim().length() > 255)
+                throw new ProtysMappingException("A standard name of 1 to 255 characters is required");
             Model model = ModelFactory.createDefaultModel();
-            RDFDataMgr.read(model, owlFile.getInputStream(), Lang.RDFXML);
-
-            log.debug("Parsed OWL file with {} triples", model.size());
-
-            // Create temporary module entity for this standard
-            OntologyModule tempModule = new OntologyModule();
-            tempModule.setId(UUID.randomUUID());
-            tempModule.setName(standardName + "-temp");
-            tempModule.setBaseUri("http://w3id.org/protys/ontology/temp/"+standardName);
-            tempModule.setVersion("1.0");
-            tempModule.setStatus(OntologyModule.ModuleStatus.LOADED);
-            tempModule.setNamedGraph("http://w3id.org/protys/ontology/temp/" + standardName);
-            tempModule.setTripleCount(model.size());
-            tempModule.setLoadedAt(LocalDateTime.now());
-
-            // Store temporary module
-            OntologyModule savedTemp = ontologyModuleRepository.save(tempModule);
-            fusekiService.loadModel(tempModule.getNamedGraph(), owlFile.getInputStream());
-
-            // Store state for subsequent steps
-            StandardIncorporationState state = new StandardIncorporationState();
-            state.setTempModuleId(savedTemp.getId());
-            state.setStandardName(standardName);
-            state.setTripleCount((int) model.size());
-            incorporationStates.put(savedTemp.getId(), state);
-
-            // Prepare result
-            long duration = System.currentTimeMillis() - startTime;
-            result.setTempModuleId(savedTemp.getId());
-            result.setTripleCount((int) model.size());
-            result.setExecutionTimeMs(duration);
+            try (var input = file.getInputStream()) { RDFDataMgr.read(model, input, Lang.RDFXML); }
+            if (model.isEmpty()) throw new ProtysMappingException("The uploaded ontology is empty");
+            StandardIncorporationSession session = new StandardIncorporationSession();
+            UUID id = UUID.randomUUID();
+            session.setId(id);
+            session.setStandardName(standardName.trim());
+            session.setTemporaryGraph(TEMP_PREFIX + id);
+            session.setPermanentGraph(PERMANENT_PREFIX + id);
+            session.setStartedAt(LocalDateTime.now());
+            session.setTripleCount(Math.toIntExact(model.size()));
+            session.setPhase("UPLOADING");
+            session = sessionRepository.saveAndFlush(session);
+            result.setTempModuleId(id); // Retained on graph-write failure so the caller can cancel.
+            result.setStandardName(session.getStandardName());
+            result.setStartedAt(session.getStartedAt());
+            fusekiService.putModel(session.getTemporaryGraph(), model);
+            session.setPhase("UPLOADED");
+            sessionRepository.saveAndFlush(session);
+            result.setTripleCount(session.getTripleCount());
+            result.setStatus("UPLOADED");
             result.setStep1_parsed(true);
-            result.setStep1_message(String.format("Successfully parsed OWL file with %d triples", model.size()));
-
-            log.info("STEP 1 completed in {}ms: {} triples", duration, model.size());
-            return result;
-
-        } catch (IOException e) {
-            log.error("STEP 1 failed: File read error", e);
-            result.setStep1_message("File read error: " + e.getMessage());
-            result.setStep1_error(true);
-            throw new ProtysMappingException("Failed to upload OWL file: " + e.getMessage(), e);
+            result.setStep1_message("Parsed ontology into an isolated incorporation session");
         } catch (Exception e) {
-            log.error("STEP 1 failed: Parse error", e);
-            result.setStep1_message("Parse error: " + e.getMessage());
+            log.error("Wizard upload failed", e);
+            result.setStatus("NOT_EVALUATED");
+            result.setStep1_parsed(false);
             result.setStep1_error(true);
-            throw new ProtysMappingException("Failed to parse OWL: " + e.getMessage(), e);
+            result.setStep1_message("Upload error: " + e.getMessage());
         }
+        result.setExecutionTimeMs(System.currentTimeMillis() - start);
+        return result;
     }
 
-    /**
-     * Step 2: Validate consistency with existing modules.
-     *
-     * @param tempModuleId the temporary module ID
-     * @return StandardIncorporationResult with step 2 status
-     */
-    @Transactional(readOnly = true)
-    public StandardIncorporationResult step2_validateConsistency(UUID tempModuleId) {
-        log.info("STEP 2: Validating consistency for temp module: {}", tempModuleId);
-        long startTime = System.currentTimeMillis();
-
-        StandardIncorporationResult result = new StandardIncorporationResult();
-        result.setTempModuleId(tempModuleId);
-        result.setCurrentStep(2);
-
+    public synchronized StandardIncorporationResult step2_validateConsistency(UUID id) {
+        StandardIncorporationResult result = result(id, 2);
+        long start = System.currentTimeMillis();
         try {
-            StandardIncorporationState state = incorporationStates.get(tempModuleId);
-            if (state == null) {
-                throw new ProtysMappingException("Incorporation state not found");
-            }
-
-            // Load temp module
-            OntologyModule tempModule = ontologyModuleRepository.findById(tempModuleId)
-                    .orElseThrow(() -> new ProtysMappingException("Temp module not found"));
-
-            Model combined = ModelFactory.createDefaultModel();
-            for (OntologyModule existing : ontologyModuleRepository.findAll()) {
-                combined.add(fusekiService.getModel(existing.getNamedGraph()));
-            }
-            ReasoningService.ClassificationResult validation = reasoningService.classify(combined);
-            boolean consistent = validation.getValidationStatus().equals("CONSISTENT");
-            List<String> conflictingModules = consistent ? List.of() : List.of(validation.getValidationStatus());
-            result.setStatus(validation.getValidationStatus());
-            result.setCleaningEvaluation(validation.getCleaningEvaluation());
-            result.setContextEvaluation(validation.getContextEvaluation());
-            result.setNumericEvaluation(validation.getNumericEvaluation());
-            result.setOwlValidationStatus(validation.getOwlValidationStatus());
-            state.consistencyVerified=consistent;
-            state.inferenceVerified=false;
-            state.setConsistencyErrors(conflictingModules);
-            long duration = System.currentTimeMillis() - startTime;
-            result.setStep2_consistent(validation.getValidationStatus().equals("NOT_EVALUATED") ? null : consistent);
-            result.setStep2_conflictingModules(conflictingModules);
-            result.setStep2_message(consistent ?
-                    "OWL structural profile, consistency and class hierarchy verified by HermiT" :
-                    "Validation status: " + validation.getValidationStatus() + "; " + validation.getErrorMessage());
-            result.setExecutionTimeMs(duration);
-
-            if (!consistent) {
-                state.setConsistencyErrors(conflictingModules);
-                result.setStep2_error(true);
-            }
-
-            log.info("STEP 2 completed in {}ms: consistent={}, conflicts={}",
-                    duration, consistent, conflictingModules.size());
-
-            return result;
-
+            StandardIncorporationSession session = editable(id);
+            session.setConsistencyVerified(false);
+            session.setInferenceVerified(false);
+            session.setExecutedRulesJson(null);
+            session.setRuleDefinitionsSnapshot(null);
+            session.setRuleDefinitionsSha256(null);
+            session.setPhase("UPLOADED");
+            session = sessionRepository.saveAndFlush(session);
+            var validation = reasoningService.classify(combined(session));
+            validationFields(result, validation);
+            boolean passed = validation.isConsistent() && "CONSISTENT".equals(validation.getValidationStatus());
+            session.setConsistencyVerified(passed);
+            session.setPhase(passed ? "VALIDATED" : "UPLOADED");
+            sessionRepository.saveAndFlush(session);
+            result.setStep2_consistent("NOT_EVALUATED".equals(validation.getValidationStatus()) ? null : passed);
+            result.setStep2_error(!passed);
+            result.setStep2_conflictingModules(passed ? List.of() : List.of(validation.getValidationStatus()));
+            result.setStep2_message(passed ? "OWL consistency verified for this session and permanent modules" : "Validation status: " + validation.getValidationStatus());
         } catch (Exception e) {
-            log.error("STEP 2 failed", e);
             result.setStatus("NOT_EVALUATED");
             result.setStep2_consistent(null);
-            result.setStep2_message("Validation error: " + e.getMessage());
             result.setStep2_error(true);
-            return result;
+            result.setStep2_message("Validation error: " + e.getMessage());
         }
+        result.setExecutionTimeMs(System.currentTimeMillis() - start);
+        return result;
     }
 
-    /**
-     * Step 3: Define alignment rules between new and existing standards.
-     *
-     * @param tempModuleId the temporary module ID
-     * @param rules        list of alignment rules to apply
-     * @return StandardIncorporationResult with step 3 status
-     */
-    @Transactional
-    public StandardIncorporationResult step3_defineAlignments(UUID tempModuleId, List<AlignmentRule> rules) {
-        log.info("STEP 3: Defining {} alignment rules for temp module: {}", rules.size(), tempModuleId);
-        long startTime = System.currentTimeMillis();
-
-        StandardIncorporationResult result = new StandardIncorporationResult();
-        result.setTempModuleId(tempModuleId);
-        result.setCurrentStep(3);
-
+    /** A selection refers only to registered IDs; [] explicitly requests no SWRL rules. */
+    public synchronized StandardIncorporationResult step3_defineAlignments(UUID id, List<AlignmentRule> requested) {
+        StandardIncorporationResult result = result(id, 3);
         try {
-            StandardIncorporationState state = incorporationStates.get(tempModuleId);
-            if (state == null) {
-                throw new ProtysMappingException("Incorporation state not found");
+            StandardIncorporationSession session = editable(id);
+            // Invalidate the old receipt even when the replacement selection is rejected.
+            session.setInferenceVerified(false);
+            session.setSelectedRuleIds(null);
+            session.setExecutedRulesJson(null);
+            session.setRuleDefinitionsSnapshot(null);
+            session.setRuleDefinitionsSha256(null);
+            session = sessionRepository.saveAndFlush(session);
+            if (!session.isConsistencyVerified()) throw new ProtysMappingException("A completed consistency validation is required");
+            if (requested == null) throw new ProtysMappingException("An explicit rule selection is required");
+            var ids = new LinkedHashSet<UUID>();
+            for (AlignmentRule rule : requested) {
+                if (rule == null || rule.getId() == null) throw new ProtysMappingException("Select registered rule IDs; new global rules cannot be created by a session");
+                if (!ids.add(rule.getId())) throw new ProtysMappingException("Duplicate selected rule ID");
             }
-
-            if (!state.consistencyVerified) throw new ProtysMappingException("A completed consistency validation is required");
-            state.inferenceVerified=false;
-            // Save alignment rules
-            List<AlignmentRule> savedRules = new ArrayList<>();
-            for (AlignmentRule rule : rules) {
-                if(rule.getId()!=null) {
-                    AlignmentRule existing=alignmentRuleRepository.findById(rule.getId()).orElseThrow(()->new ProtysMappingException("Registered rule not found"));
-                    savedRules.add(existing);
-                    continue;
-                }
-                rule.setId(UUID.randomUUID());
-                rule.setCreatedAt(LocalDateTime.now());
-                rule.setUpdatedAt(LocalDateTime.now());
-
-                AlignmentRule saved = alignmentRuleRepository.save(rule);
-                savedRules.add(saved);
-
-                log.debug("Saved alignment rule: {}", rule.getName());
-            }
-
-            state.setAlignmentRules(savedRules);
-
-            long duration = System.currentTimeMillis() - startTime;
-            result.setStep3_rulesCount(savedRules.size());
-            result.setStep3_message(String.format("Created %d alignment rules", savedRules.size()));
-            result.setExecutionTimeMs(duration);
-
-            log.info("STEP 3 completed in {}ms: {} rules created", duration, savedRules.size());
-            return result;
-
+            List<AlignmentRule> selected = resolveRules(new ArrayList<>(ids));
+            session.setSelectedRuleIds(ids.stream().map(UUID::toString).collect(Collectors.joining(",")));
+            session.setPhase("SELECTED");
+            sessionRepository.saveAndFlush(session);
+            result.setSelectedRuleIds(new ArrayList<>(ids));
+            result.setStep3_rulesCount(selected.size());
+            result.setStep3_rulesGenerated(0);
+            result.setAlignmentRulesCreated(0);
+            result.setStatus("SELECTED");
+            result.setStep3_error(false);
+            result.setStep3_message("Selected " + selected.size() + " registered rules for this session");
         } catch (Exception e) {
-            log.error("STEP 3 failed", e);
-            result.setStep3_message("Alignment definition error: " + e.getMessage());
-            result.setStep3_error(true);
-            return result;
-        }
-    }
-
-    /**
-     * Step 4: Verify inferences by running reasoning over combined graph.
-     *
-     * @param tempModuleId the temporary module ID
-     * @return StandardIncorporationResult with step 4 status
-     */
-    @Transactional
-    public StandardIncorporationResult step4_verifyInferences(UUID tempModuleId) {
-        log.info("STEP 4: Verifying inferences for temp module: {}", tempModuleId);
-        long startTime = System.currentTimeMillis();
-
-        StandardIncorporationResult result = new StandardIncorporationResult();
-        result.setTempModuleId(tempModuleId);
-        result.setCurrentStep(4);
-
-        try {
-            StandardIncorporationState state = incorporationStates.get(tempModuleId);
-            if (state == null) {
-                throw new ProtysMappingException("Incorporation state not found");
-            }
-
-            // Load temp module
-            OntologyModule tempModule = ontologyModuleRepository.findById(tempModuleId)
-                    .orElseThrow(() -> new ProtysMappingException("Temp module not found"));
-
-            // Get all ontology modules
-            List<OntologyModule> allModules = ontologyModuleRepository.findAll();
-            Model combinedModel = ModelFactory.createDefaultModel();
-
-            for (OntologyModule module : allModules) {
-                Model model = fusekiService.getModel(module.getNamedGraph());
-                if(model.isEmpty())throw new ProtysMappingException("NOT_EVALUATED: required module graph is empty: "+module.getName());
-                combinedModel.add(AlignmentService.withoutRuleDefinitions(model));
-            }
-
-            state.inferenceVerified=false;
-            // Run reasoning (delegated to ReasoningService: cached, timeout-bounded)
-            combinedModel.add(fusekiService.getModel("http://w3id.org/protys/ontology/active-rule-definitions"));
-            var validation = reasoningService.classify(combinedModel, alignmentService.getActiveRules().stream().map(AlignmentRule::getName).toList());
-            result.setStatus(validation.getValidationStatus());
-            result.setCleaningEvaluation(validation.getCleaningEvaluation());
-            result.setContextEvaluation(validation.getContextEvaluation());
-            result.setNumericEvaluation(validation.getNumericEvaluation());
-            result.setOwlValidationStatus(validation.getOwlValidationStatus());
-            if (!validation.isConsistent()) throw new ProtysMappingException(validation.getValidationStatus()+": "+validation.getErrorMessage());
-            long inferenceSize = validation.getInferredTripleCount();
-            result.setStep4_verified(true);
-            state.inferenceVerified=true;
-
-            long duration = System.currentTimeMillis() - startTime;
-            result.setStep4_inferredTriples((int) inferenceSize);
-            result.setStep4_message(String.format("Reasoning produced %d inferred triples", inferenceSize));
-            result.setExecutionTimeMs(duration);
-
-            state.setInferredTriples((int) inferenceSize);
-
-            log.info("STEP 4 completed in {}ms: {} inferred triples", duration, inferenceSize);
-            return result;
-
-        } catch (Exception e) {
-            log.error("STEP 4 failed", e);
-            if(!"INCONSISTENT".equals(result.getStatus()))result.setStatus("NOT_EVALUATED");
-            result.setStep4_verified(false);
-            result.setStep4_message("Inference verification error: " + e.getMessage());
-            result.setStep4_error(true);
-            return result;
-        }
-    }
-
-    /**
-     * Final step: Complete incorporation by moving temp module to permanent and cleaning up.
-     *
-     * @param tempModuleId the temporary module ID
-     * @return StandardIncorporationResult with final status
-     */
-    @Transactional
-    public StandardIncorporationResult completeIncorporation(UUID tempModuleId) {
-        log.info("COMPLETING incorporation for temp module: {}", tempModuleId);
-        long startTime = System.currentTimeMillis();
-
-        StandardIncorporationResult result = new StandardIncorporationResult();
-        result.setTempModuleId(tempModuleId);
-        result.setCurrentStep(5);
-
-        try {
-            StandardIncorporationState state = incorporationStates.get(tempModuleId);
-            if (state == null) {
-                throw new ProtysMappingException("Incorporation state not found");
-            }
-
-            // Load temp module
-            OntologyModule tempModule = ontologyModuleRepository.findById(tempModuleId)
-                    .orElseThrow(() -> new ProtysMappingException("Temp module not found"));
-
-            if (!state.consistencyVerified || !state.inferenceVerified) throw new ProtysMappingException("Consistency and inference verification must pass before completion");
-
-            // Re-check the current graphs and rule selection, rather than accepting stale wizard state.
-            var finalVerification=step4_verifyInferences(tempModuleId);
-            if(!Boolean.TRUE.equals(finalVerification.getStep4_verified()))throw new ProtysMappingException("Current model did not pass inference verification");
-
-            // Create permanent module
-            OntologyModule permanentModule = new OntologyModule();
-            permanentModule.setId(UUID.randomUUID());
-            permanentModule.setName(state.getStandardName());
-            permanentModule.setBaseUri("http://w3id.org/protys/ontology/"+state.getStandardName());
-            permanentModule.setVersion("1.0");
-            permanentModule.setStatus(OntologyModule.ModuleStatus.VALIDATED);
-            permanentModule.setNamedGraph("http://w3id.org/protys/ontology/" + state.getStandardName());
-            permanentModule.setTripleCount((long) state.getTripleCount());
-            permanentModule.setLoadedAt(LocalDateTime.now());
-            permanentModule.setUpdatedAt(LocalDateTime.now());
-
-            // Copy data from temp to permanent graph
-            Model tempModel = fusekiService.getModel(tempModule.getNamedGraph());
-            fusekiService.putModel(permanentModule.getNamedGraph(), tempModel);
-
-            // Save permanent module
-            OntologyModule saved = ontologyModuleRepository.save(permanentModule);
-
-            // Delete temp module and graph
-            ontologyModuleRepository.delete(tempModule);
-            fusekiService.deleteGraph(tempModule.getNamedGraph());
-
-            // Clean up state
-            incorporationStates.remove(tempModuleId);
-
-            long duration = System.currentTimeMillis() - startTime;
-            result.setFinalModuleId(saved.getId());
-            result.setCompletedAt(LocalDateTime.now());
-            result.setExecutionTimeMs(duration);
-            result.setStatus("COMPLETED");
-            result.setMessage(String.format("Successfully incorporated %s standard", state.getStandardName()));
-
-            log.info("Incorporation COMPLETED in {}ms: final module ID {}", duration, saved.getId());
-            result.setStatus("COMPLETED");
-            return result;
-
-        } catch (Exception e) {
-            log.error("Incorporation completion failed", e);
-            result.setStatus("FAILED");
-            result.setMessage("Completion error: " + e.getMessage());
             result.setStatus("NOT_EVALUATED");
+            result.setStep3_error(true);
+            result.setStep3_message("Rule selection error: " + e.getMessage());
+        }
+        return result;
+    }
+
+    public synchronized StandardIncorporationResult step4_verifyInferences(UUID id) {
+        StandardIncorporationResult result = result(id, 4);
+        long start = System.currentTimeMillis();
+        try {
+            StandardIncorporationSession session = editable(id);
+            session.setInferenceVerified(false);
+            session.setExecutedRulesJson(null);
+            session.setRuleDefinitionsSnapshot(null);
+            session.setRuleDefinitionsSha256(null);
+            session = sessionRepository.saveAndFlush(session);
+            if (!session.isConsistencyVerified() || session.getSelectedRuleIds() == null)
+                throw new ProtysMappingException("Consistency validation and an explicit rule selection are required");
+            List<UUID> ids = selection(session);
+            List<AlignmentRule> selected = resolveRules(ids);
+            Model model = combined(session);
+            Model definitions = selected.isEmpty() ? ModelFactory.createDefaultModel() : requiredGraph(AlignmentService.RULE_GRAPH);
+            model.add(definitions);
+            // Exact supplied RDF snapshot (including blank node IDs), not a canonical RDF hash.
+            var snapshot = new java.io.ByteArrayOutputStream();
+            RDFDataMgr.write(snapshot, definitions, Lang.NTRIPLES);
+            String definitionsHash = java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(snapshot.toByteArray()));
+            var validation = reasoningService.classify(model, selected.stream().map(StandardIncorporationService::executionName).toList());
+            validationFields(result, validation);
+            if (!validation.isConsistent() || !"CONSISTENT".equals(validation.getValidationStatus()))
+                throw new ProtysMappingException(validation.getValidationStatus() + ": " + validation.getErrorMessage());
+            if (validation.getImportedRuleCount() != selected.size())
+                throw new ProtysMappingException("Executed rule count does not match the explicit selection");
+            session.setInferredTriples(Math.toIntExact(validation.getInferredTripleCount()));
+            List<ExecutedRule> executed = selected.stream().map(r -> new ExecutedRule(r.getId(), r.getName())).toList();
+            session.setExecutedRulesJson(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(executed));
+            session.setRuleDefinitionsSnapshot(snapshot.toString(java.nio.charset.StandardCharsets.UTF_8));
+            session.setRuleDefinitionsSha256(definitionsHash);
+            session.setInferenceVerified(true);
+            session.setPhase("VERIFIED");
+            sessionRepository.saveAndFlush(session);
+            result.setSelectedRuleIds(ids);
+            result.setExecutedRules(executed);
+            result.setRuleDefinitionsSha256(definitionsHash);
+            result.setStep4_verified(true);
+            result.setStep4_error(false);
+            result.setStep4_inferredTriples(session.getInferredTriples());
+            result.setStep4_message("Verified " + selected.size() + " selected rules; inferred " + session.getInferredTriples() + " triples");
+        } catch (Exception e) {
+            if (result.getStatus() == null || "CONSISTENT".equals(result.getStatus())) result.setStatus("NOT_EVALUATED");
+            result.setStep4_verified(false);
+            result.setStep4_error(true);
+            result.setStep4_message("Inference verification error: " + e.getMessage());
+        }
+        result.setExecutionTimeMs(System.currentTimeMillis() - start);
+        return result;
+    }
+
+    public synchronized StandardIncorporationResult completeIncorporation(UUID id) {
+        StandardIncorporationResult result = result(id, 5);
+        try {
+            StandardIncorporationSession session = owned(id);
+            if ("COMPLETED".equals(session.getPhase())) return completed(session);
+            if ("CANCELLED".equals(session.getPhase()) || "CANCELLING".equals(session.getPhase()))
+                throw new ProtysMappingException("The session has been cancelled or awaits cleanup");
+            // Recover a DB commit whose response/checkpoint was lost. Never rewrite its graph.
+            var existing = ontologyModuleRepository.findByNamedGraph(session.getPermanentGraph());
+            if (existing.isPresent()) {
+                if (!"COMPLETING".equals(session.getPhase()) || !id.equals(existing.get().getIncorporationSessionId()))
+                    throw new ProtysMappingException("Destination is already registered and is not owned by this completion");
+                session.setFinalModuleId(existing.get().getId());
+                session.setPhase("COMPLETED");
+                session.setCompletedAt(LocalDateTime.now());
+                session = sessionRepository.saveAndFlush(session);
+                return completed(session);
+            }
+            if (!session.isConsistencyVerified() || !session.isInferenceVerified())
+                throw new ProtysMappingException("Consistency and inference verification must pass before completion");
+            if ("COMPLETING".equals(session.getPhase())) {
+                // A graph-only partial completion is safe to revalidate and retry.
+                session.setPhase("VERIFIED");
+                sessionRepository.saveAndFlush(session);
+            }
+            var verified = step4_verifyInferences(id);
+            if (!Boolean.TRUE.equals(verified.getStep4_verified())) throw new ProtysMappingException(verified.getStep4_message());
+            session = owned(id);
+            Model source = requiredGraph(session.getTemporaryGraph());
+            Model destination = optionalGraph(session.getPermanentGraph());
+            // A nonempty graph is accepted only as an identical retry of this session's write.
+            if (!destination.isEmpty() && (!session.isPermanentWriteStarted() || !destination.isIsomorphicWith(source)))
+                throw new ProtysMappingException("Destination graph already contains different data; it will not be overwritten");
+            session.setPhase("COMPLETING");
+            session.setPermanentWriteStarted(true);
+            session = sessionRepository.saveAndFlush(session);
+            if (destination.isEmpty()) fusekiService.putModel(session.getPermanentGraph(), source);
+            OntologyModule module = new OntologyModule();
+            module.setName(session.getStandardName());
+            module.setBaseUri(session.getPermanentGraph());
+            module.setNamedGraph(session.getPermanentGraph());
+            module.setIncorporationSessionId(id);
+            module.setVersion("1.0");
+            module.setStatus(OntologyModule.ModuleStatus.VALIDATED);
+            module.setTripleCount((long) session.getTripleCount());
+            module.setLoadedAt(LocalDateTime.now());
+            module.setValidatedAt(LocalDateTime.now());
+            OntologyModule saved = ontologyModuleRepository.saveAndFlush(module);
+            session.setFinalModuleId(saved.getId());
+            session.setPhase("COMPLETED");
+            session.setCompletedAt(LocalDateTime.now());
+            session = sessionRepository.saveAndFlush(session);
+            result = completed(session);
+            result.setExecutedRules(verified.getExecutedRules());
+            return result;
+        } catch (Exception e) {
+            log.error("Wizard completion failed; ownership checkpoint retained", e);
+            result.setStatus("NOT_EVALUATED");
+            result.setMessage("Completion error: " + e.getMessage());
             return result;
         }
     }
 
-    /**
-     * Gets the current state of an in-progress incorporation.
-     *
-     * @param tempModuleId the temporary module ID
-     * @return StandardIncorporationState
-     */
-    @Transactional(readOnly = true)
-    public StandardIncorporationState getIncorporationState(UUID tempModuleId) {
-        log.debug("Fetching incorporation state: {}", tempModuleId);
-        return incorporationStates.get(tempModuleId);
+    /** No match is an idempotent no-op. A completed permanent module can never be cancelled. */
+    public synchronized void cancelIncorporation(UUID id) {
+        var found = sessionRepository.findById(id);
+        if (found.isEmpty()) return;
+        StandardIncorporationSession session = found.get();
+        checkOwnership(session);
+        if ("CANCELLED".equals(session.getPhase())) return;
+        if ("COMPLETED".equals(session.getPhase()) || ontologyModuleRepository.findByNamedGraph(session.getPermanentGraph()).isPresent())
+            throw new IncorporationAlreadyCompletedException();
+        session.setPhase("CANCELLING");
+        session.setInferenceVerified(false);
+        session.setConsistencyVerified(false);
+        session = sessionRepository.saveAndFlush(session);
+        // Delete graph before marking success; lost responses are safely retried by graph ID.
+        deleteOwnedGraph(session.getTemporaryGraph());
+        if (session.isPermanentWriteStarted()) deleteOwnedGraph(session.getPermanentGraph());
+        session.setPhase("CANCELLED");
+        sessionRepository.saveAndFlush(session);
     }
 
-    /**
-     * Cancels an in-progress incorporation and cleans up.
-     *
-     * @param tempModuleId the temporary module ID
-     */
-    @Transactional
-    public void cancelIncorporation(UUID tempModuleId) {
-        log.info("Cancelling incorporation: {}", tempModuleId);
+    public synchronized StandardIncorporationSession getIncorporationState(UUID id) {
+        return sessionRepository.findById(id).orElse(null);
+    }
 
+    private StandardIncorporationResult completed(StandardIncorporationSession session) {
+        StandardIncorporationResult result = result(session.getId(), 5);
+        result.setStatus("COMPLETED");
+        result.setStandardName(session.getStandardName());
+        result.setFinalModuleId(session.getFinalModuleId());
+        result.setCompletedAt(session.getCompletedAt());
+        result.setSelectedRuleIds(selection(session));
+        result.setRuleDefinitionsSha256(session.getRuleDefinitionsSha256());
         try {
-            OntologyModule tempModule = ontologyModuleRepository.findById(tempModuleId).orElse(null);
-            if (tempModule != null) {
-                // Delete alignment rules
-                List<AlignmentRule> rules = alignmentRuleRepository.findAll().stream()
-                        .filter(r -> r.getCreatedAt().isAfter(LocalDateTime.now().minusHours(1)))
-                        .toList();
-                alignmentRuleRepository.deleteAll(rules);
-
-                // Delete module
-                ontologyModuleRepository.delete(tempModule);
-                fusekiService.deleteGraph(tempModule.getNamedGraph());
-            }
-
-            // Clean up state
-            incorporationStates.remove(tempModuleId);
-            log.info("Incorporation cancelled and cleaned up");
-
+            result.setExecutedRules(new com.fasterxml.jackson.databind.ObjectMapper().readValue(session.getExecutedRulesJson(),
+                    new com.fasterxml.jackson.core.type.TypeReference<List<ExecutedRule>>() {}));
         } catch (Exception e) {
-            log.error("Failed to cancel incorporation", e);
+            throw new ProtysMappingException("The persisted execution receipt is unavailable", e);
+        }
+        result.setInferencesGenerated(session.getInferredTriples());
+        result.setAlignmentRulesCreated(0);
+        result.setMessage("Successfully incorporated " + session.getStandardName());
+        result.setCleanupPending(false);
+        try { deleteOwnedGraph(session.getTemporaryGraph()); }
+        catch (Exception cleanup) {
+            result.setCleanupPending(true);
+            result.setWarnings(List.of("Incorporation is complete; temporary graph cleanup will be retried on completion retry"));
+        }
+        return result;
+    }
+
+    private StandardIncorporationSession editable(UUID id) {
+        StandardIncorporationSession session = owned(id);
+        if (List.of("UPLOADING", "COMPLETING", "COMPLETED", "CANCELLING", "CANCELLED").contains(session.getPhase()))
+            throw new ProtysMappingException("Session is not editable in phase " + session.getPhase());
+        return session;
+    }
+
+    private StandardIncorporationSession owned(UUID id) {
+        StandardIncorporationSession session = sessionRepository.findById(id).orElseThrow(() -> new ProtysMappingException("Incorporation session not found"));
+        checkOwnership(session);
+        return session;
+    }
+
+    private void checkOwnership(StandardIncorporationSession session) {
+        if (!(TEMP_PREFIX + session.getId()).equals(session.getTemporaryGraph()) || !(PERMANENT_PREFIX + session.getId()).equals(session.getPermanentGraph()))
+            throw new ProtysMappingException("Session graph ownership is invalid");
+    }
+
+    private Model combined(StandardIncorporationSession session) {
+        Model combined = ModelFactory.createDefaultModel();
+        for (OntologyModule module : ontologyModuleRepository.findAll()) {
+            if (!AlignmentService.isPermanentModule(module)) continue;
+            combined.add(AlignmentService.withoutRuleDefinitions(requiredGraph(module.getNamedGraph())));
+        }
+        combined.add(AlignmentService.withoutRuleDefinitions(requiredGraph(session.getTemporaryGraph())));
+        return combined;
+    }
+
+    private Model requiredGraph(String graph) {
+        Model model = fusekiService.getModel(graph);
+        if (model.isEmpty()) throw new ProtysMappingException("Required graph is empty: " + graph);
+        return model;
+    }
+
+    private Model optionalGraph(String graph) {
+        try { return fusekiService.getModel(graph); }
+        catch (RuntimeException failure) {
+            if (isMissingGraph(failure)) return ModelFactory.createDefaultModel();
+            throw failure;
         }
     }
 
-    /**
-     * Internal state holder for multi-step incorporation process.
-     */
-    public static class StandardIncorporationState {
-        private UUID tempModuleId;
-        private String standardName;
-        private int tripleCount;
-        private List<String> consistencyErrors;
-        private List<AlignmentRule> alignmentRules;
-        private int inferredTriples;
-        private boolean consistencyVerified;
-        private boolean inferenceVerified;
+    private void deleteOwnedGraph(String graph) {
+        try { fusekiService.deleteGraph(graph); }
+        catch (RuntimeException failure) {
+            if (!isMissingGraph(failure)) throw failure;
+        }
+    }
 
-        // Getters and setters
-        public UUID getTempModuleId() { return tempModuleId; }
-        public void setTempModuleId(UUID tempModuleId) { this.tempModuleId = tempModuleId; }
+    private boolean isMissingGraph(Throwable failure) {
+        for (Throwable cause = failure; cause != null; cause = cause.getCause()) {
+            if (cause instanceof org.apache.jena.atlas.web.HttpException http && http.getStatusCode() == 404) return true;
+            if (cause instanceof org.apache.jena.web.JenaHttpException http && http.getStatusCode() == 404) return true;
+        }
+        return false;
+    }
 
-        public String getStandardName() { return standardName; }
-        public void setStandardName(String standardName) { this.standardName = standardName; }
+    private List<UUID> selection(StandardIncorporationSession session) {
+        if (session.getSelectedRuleIds() == null || session.getSelectedRuleIds().isEmpty()) return List.of();
+        return java.util.Arrays.stream(session.getSelectedRuleIds().split(",")).map(UUID::fromString).toList();
+    }
 
-        public int getTripleCount() { return tripleCount; }
-        public void setTripleCount(int tripleCount) { this.tripleCount = tripleCount; }
+    private List<AlignmentRule> resolveRules(List<UUID> ids) {
+        List<AlignmentRule> rules = new ArrayList<>();
+        var executionNames = new LinkedHashSet<String>();
+        for (UUID id : ids) {
+            AlignmentRule rule = alignmentRuleRepository.findById(id).orElseThrow(() -> new ProtysMappingException("Registered rule not found: " + id));
+            if (!executionNames.add(executionName(rule))) throw new ProtysMappingException("Selected IDs refer to the same executable rule");
+            rules.add(rule);
+        }
+        return rules;
+    }
 
-        public List<String> getConsistencyErrors() { return consistencyErrors; }
-        public void setConsistencyErrors(List<String> consistencyErrors) { this.consistencyErrors = consistencyErrors; }
+    private static String executionName(AlignmentRule rule) {
+        String name = rule.getRuleId();
+        if (name == null || !name.matches("[A-Za-z][A-Za-z0-9_]*")) throw new ProtysMappingException("Registered rule has no supported executable identifier");
+        return name.replaceFirst("^(R[0-9]+)_.*$", "$1");
+    }
 
-        public List<AlignmentRule> getAlignmentRules() { return alignmentRules; }
-        public void setAlignmentRules(List<AlignmentRule> alignmentRules) { this.alignmentRules = alignmentRules; }
+    private StandardIncorporationResult result(UUID id, int step) {
+        StandardIncorporationResult result = new StandardIncorporationResult();
+        result.setTempModuleId(id);
+        result.setCurrentStep(step);
+        return result;
+    }
 
-        public int getInferredTriples() { return inferredTriples; }
-        public void setInferredTriples(int inferredTriples) { this.inferredTriples = inferredTriples; }
+    private void validationFields(StandardIncorporationResult result, ReasoningService.ClassificationResult validation) {
+        result.setStatus(validation.getValidationStatus());
+        result.setCleaningEvaluation(validation.getCleaningEvaluation());
+        result.setContextEvaluation(validation.getContextEvaluation());
+        result.setNumericEvaluation(validation.getNumericEvaluation());
+        result.setOwlValidationStatus(validation.getOwlValidationStatus());
     }
 }

@@ -27,6 +27,18 @@ public class StandardIncorporationResult {
     private Map<String,Object> contextEvaluation;
     private Map<String,Object> numericEvaluation;
     private String owlValidationStatus;
+    private List<UUID> selectedRuleIds;
+    private List<ExecutedRule> executedRules;
+    private String ruleDefinitionsSha256;
+    private Boolean cleanupPending;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ExecutedRule {
+        private UUID id;
+        private String name;
+    }
 
     // Pipeline tracking
     private Integer currentStep;

@@ -42,6 +42,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AlignmentService {
 
+    static final String RULE_GRAPH = "http://w3id.org/protys/ontology/active-rule-definitions";
+
+    /** Includes legacy abandoned wizard modules only in explicit session cleanup, never global reasoning. */
+    static boolean isPermanentModule(OntologyModule module) {
+        return module.getNamedGraph() != null && !module.getNamedGraph().startsWith("http://w3id.org/protys/ontology/temp/");
+    }
+
     private final FusekiService fusekiService;
     private final AlignmentRuleRepository alignmentRuleRepository;
     private final OntologyModuleRepository ontologyModuleRepository;
@@ -120,7 +127,7 @@ public class AlignmentService {
 
         try {
             // Load all ontology modules into a combined model
-            List<OntologyModule> modules = ontologyModuleRepository.findAll();
+            List<OntologyModule> modules = ontologyModuleRepository.findAll().stream().filter(AlignmentService::isPermanentModule).toList();
             if(modules.isEmpty())throw new ProtysFusekiException("NOT_EVALUATED: no registered ontology modules");
             Model combinedModel = ModelFactory.createDefaultModel();
 
@@ -249,7 +256,7 @@ public class AlignmentService {
 
         try {
             // Load all ontologies
-            List<OntologyModule> modules = ontologyModuleRepository.findAll();
+            List<OntologyModule> modules = ontologyModuleRepository.findAll().stream().filter(AlignmentService::isPermanentModule).toList();
             Model combinedModel = ModelFactory.createDefaultModel();
 
             for (OntologyModule module : modules) {
@@ -301,7 +308,7 @@ public class AlignmentService {
                     .orElseThrow(() -> new ProtysFusekiException("Rule not found: " + ruleId));
 
             Model combined = ModelFactory.createDefaultModel();
-            for (OntologyModule module : ontologyModuleRepository.findAll()) combined.add(withoutRuleDefinitions(fusekiService.getModel(module.getNamedGraph())));
+            for (OntologyModule module : ontologyModuleRepository.findAll()) if (isPermanentModule(module)) combined.add(withoutRuleDefinitions(fusekiService.getModel(module.getNamedGraph())));
             combined.add(fusekiService.getModel("http://w3id.org/protys/ontology/active-rule-definitions"));
             var validation=reasoningService.classify(combined,List.of(rule.getName()));
             return validation.isConsistent() && validation.getImportedRuleCount()==1;

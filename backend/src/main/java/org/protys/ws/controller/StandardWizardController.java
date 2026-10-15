@@ -81,13 +81,13 @@ public class StandardWizardController {
     // Step 3: Define Alignment Rules
 
     @PostMapping("/step3/alignments/{tempId}")
-    @Operation(summary = "Step 3: Define alignment rules", description = "Define SWRL alignment rules between the standard and existing ontology")
+    @Operation(summary = "Step 3: Select registered alignment rules", description = "Select registered rule IDs for this session without changing global activation. An empty array explicitly selects no SWRL rules.")
     public ResponseEntity<StandardIncorporationResult> defineAlignmentRules(
             @PathVariable UUID tempId,
             @RequestBody List<AlignmentRule> rules) {
         log.info("Step 3: Defining alignment rules for tempId: {}",tempId);
         try {
-            if (rules == null || rules.isEmpty()) {
+            if (rules == null) {
                 log.warn("Invalid alignment data: missing rules");
                 return ResponseEntity.badRequest().build();
             }
@@ -95,7 +95,7 @@ public class StandardWizardController {
             StandardIncorporationResult alignmentResult = standardIncorporationService.step3_defineAlignments(tempId, rules);
 
             log.info("Alignment definition finished; error={}",alignmentResult.getStep3_error());
-            return ResponseEntity.ok(alignmentResult);
+            return ResponseEntity.status(Boolean.TRUE.equals(alignmentResult.getStep3_error()) ? HttpStatus.UNPROCESSABLE_ENTITY : HttpStatus.OK).body(alignmentResult);
         } catch (Exception e) {
             log.error("Error defining alignment rules", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -133,6 +133,20 @@ public class StandardWizardController {
         } catch (Exception e) {
             log.error("Error completing incorporation", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @DeleteMapping("/{tempId}")
+    @Operation(summary = "Cancel incorporation", description = "Remove only the graphs owned by this session; repeated cancellation is safe")
+    public ResponseEntity<Map<String, Object>> cancelIncorporation(@PathVariable UUID tempId) {
+        try {
+            standardIncorporationService.cancelIncorporation(tempId);
+            return ResponseEntity.ok(Map.of("status", "CANCELLED", "tempModuleId", tempId));
+        } catch (StandardIncorporationService.IncorporationAlreadyCompletedException completed) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("status", "COMPLETED", "tempModuleId", tempId, "message", completed.getMessage()));
+        } catch (Exception failure) {
+            log.error("Session cleanup failed; ownership retained for retry", failure);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Map.of("status", "CLEANUP_PENDING", "tempModuleId", tempId, "message", "Cleanup did not complete; retry cancellation"));
         }
     }
 
