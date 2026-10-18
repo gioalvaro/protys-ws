@@ -24,18 +24,19 @@
 
 La directora está revisando la versión del 5-10 de la tesis. Sus comentarios pueden pedir cambios de texto (sólo en los DOCX), cambios en el prototipo o cambios en el modelo (ontologías, reglas, datos o consultas). Este documento deja el repositorio en un estado conocido y verificado, y fija un procedimiento para que cualquier cambio del modelo se mida contra una ejecución de referencia antes de tocar la tesis.
 
-Nada de lo que hay acá decide una cuestión científica. Las ramas `propuesta/*` son borradores para discutir; no están mezcladas con ninguna otra.
+Actualización del 18-10, mañana: por decisión del autor, las dos propuestas (COM-01 y H-56) se integraron en la rama `integracion/main-2026-10-18` y de ahí en `main`. Siguen sujetas a la revisión de la directora; si ella pide otra cosa, se revierten con `git revert` sin tocar las etiquetas de cierre. La tesis sigue citando `tesis-cierre-2026-10-03-v1` y `tesis-mantenimiento-2026-10-04-v1`, que no se movieron.
 
 ## Mapa de ramas
 
 ```
-main = tesis-cierre-2026-10-03-v1 (a042810)      ← evidencia de los capítulos 3 y 4
+tesis-cierre-2026-10-03-v1 (a042810)              ← evidencia de los capítulos 3 y 4
   └─ tesis-mantenimiento-2026-10-04-v1 (b4ad8a3)
-       └─ maintenance/reproducible-startup-2026-10-03 (a549298, en origin)
-            └─ fix/p1-integrity-and-wizard-2026-10-15 (6dc6e43, sólo local hasta el 18-10)
-                 └─ preparacion/comentarios-marcela-2026-10-18      ← base de trabajo
-                      ├─ propuesta/com-01-process-activity-subsuncion
-                      └─ propuesta/h-56-rotulo-r03
+       └─ maintenance/reproducible-startup-2026-10-03 (a549298)
+            └─ fix/p1-integrity-and-wizard-2026-10-15 (6dc6e43)
+                 └─ preparacion/comentarios-marcela-2026-10-18
+                      ├─ propuesta/h-56-rotulo-r03
+                      │    └─ integracion/main-2026-10-18 = main  (+ COM-01)
+                      └─ propuesta/com-01-process-activity-subsuncion
 ```
 
 Cada rama contiene a la anterior, así que llevar cualquiera de ellas a `main` es un avance rápido (fast-forward), sin conflictos. El orden recomendado es: primero subir `fix/p1` y `preparacion` a origin como respaldo; después decidir si `main` avanza. Las etiquetas `tesis-cierre-2026-10-03-v1` y `tesis-mantenimiento-2026-10-04-v1` no se mueven: la tesis cita esos commits.
@@ -79,8 +80,8 @@ Las cuatro ramas pasan los mismos pasos que el trabajo `backend-and-research` de
 
 | Decisión | Archivos | Qué hay que volver a ejecutar | Estado en el repositorio |
 |---|---|---|---|
-| COM-01 Activity / Process_Activity | `ontologies/process-module.owl`, `ontologies/resource-module.owl`, `research/model/census.json` | Etapa funcional completa | Rama `propuesta/com-01-process-activity-subsuncion` con la inclusión simple y su corrida |
-| H-56 rótulo de R03 | `research/model/build_rules.py` → `alignment-rules.owl`, `mechanisms.*`, `census.json` | Etapa funcional (sólo cambia una anotación) | Rama `propuesta/h-56-rotulo-r03` con su corrida |
+| COM-01 Activity / Process_Activity | `ontologies/process-module.owl`, `ontologies/resource-module.owl`, `research/model/census.json` | Etapa funcional completa | Integrada en `main` (inclusión simple). Abiertos: si Setup, QualityControl, Inspection y Cleaning siguen bajo `Process_Activity`; si `Procedure_Activity` (ejecución) debe dejar de ser subclase de una definición |
+| H-56 rótulo de R03 | `research/model/build_rules.py` → `alignment-rules.owl`, `mechanisms.*`, `census.json` | Etapa funcional (sólo cambia una anotación) | Integrada en `main` |
 | N-01 disyunciones | `ontologies/core-concepts.owl` o módulos base | Etapa funcional; es probable que el TiO₂ (producto y recurso a la vez) vuelva inconsistente el caso | Sin rama: requiere decisión previa |
 | DEC-10 materiales como recurso | `ontologies/iso15531-module.owl` (rangos de `hasInput` y `consumesMaterial`), consultas Q02 y Q04 | Etapa funcional; cambian respuestas esperadas | Sin rama: requiere decisión previa |
 | H-43 fixtures ERP | `ontologies/paint-instances-adempiere.ttl`, `ontologies/paint-instances-odoo.ttl` | Ninguna (no alimentan la evaluación) | Se aclara abajo; los archivos no se tocan porque tienen huella en la evidencia publicada |
