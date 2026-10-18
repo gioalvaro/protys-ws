@@ -18,7 +18,7 @@ else
 fi
 : "${JAVA_HOME:?Set JAVA_HOME to a Java17 JDK}"
 export PATH="$JAVA_HOME/bin:$PATH"
-java -version 2>&1 | head -1 | grep '"17\.' >/dev/null || { echo "Java17 is required" >&2; exit 1; }
+java -version 2>&1 | grep 'version "17\.' >/dev/null || { echo "Java17 is required" >&2; exit 1; }
 "$PYTHON" -c 'import hashlib,json,pathlib; p=pathlib.Path("research/runtime/vendor"); m=json.loads((p/"provenance.json").read_text()); assert hashlib.sha256((p/"owlapi-parent-4.5.27.pom").read_bytes()).hexdigest()==m["sha256"]'
 ./backend/mvnw -q -f research/runtime/swrl-worker/pom.xml install:install-file -Dfile="$ROOT/research/runtime/vendor/owlapi-parent-4.5.27.pom" -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false
 for module in swrl-worker validator; do
