@@ -98,7 +98,7 @@
     },
     {
       "path": "ontologies/process-module.owl",
-      "sha256": "82cc6799989e635473fac4d5377b66306c567c0eae4add16896b5a1255b28263",
+      "sha256": "1934412c16172ae216fbe748192eee86a84d1a49f6dac9a9073c05513d27c53f",
       "scope": "base eight modules",
       "declared_iris": {
         "Class": [
@@ -140,7 +140,7 @@
     },
     {
       "path": "ontologies/resource-module.owl",
-      "sha256": "4f750efe55a1021b2a8d01e347fd02c6c0e7a59f367d144649faa9d5de462f6b",
+      "sha256": "bd89f5e95bbcc0a2f22d67105d317cffaac1eddba19f7239f368c76b26d774ff",
       "scope": "base eight modules",
       "declared_iris": {
         "Class": [
