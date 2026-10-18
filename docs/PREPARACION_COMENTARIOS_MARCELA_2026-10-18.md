@@ -50,7 +50,7 @@ Cada rama contiene a la anterior, así que llevar cualquiera de ellas a `main` e
 
 ## Estado verificado
 
-(ver sección «Verificación» al final; se completa con cada ejecución)
+Las cuatro ramas pasan los mismos pasos que el trabajo `backend-and-research` del CI, y la de preparación además el trabajo `frontend`. El detalle está en la sección «Verificación», al final.
 
 ## Procedimiento para cada comentario de la directora
 
@@ -91,3 +91,20 @@ Cada rama contiene a la anterior, así que llevar cualquiera de ellas a `main` e
 `ontologies/paint-instances-adempiere.ttl` y `ontologies/paint-instances-odoo.ttl` son fixtures ilustrativos del demostrador ERP. No provienen de una extracción ejecutada sobre un ERP real y no están en las `abox_paths` de ninguna configuración de `research/catalog.json`, de modo que no intervienen en las 21 consultas ni en las aserciones. Se dejan sin cambios porque sus huellas figuran en `research/release/functional.json`.
 
 ## Verificación
+
+Ejecutado el 18-10-2026 en un contenedor Linux con Temurin/OpenJDK 17.0.20.1, Maven Wrapper del proyecto, Python 3.13 y Node 24.18.0 con npm 11.16.0 (las versiones que declara `frontend/package.json`). No es una corrida del CI remoto: el trabajo `docker-demonstration` no se ejecutó.
+
+| Rama (commit verificado) | Preparación de motores | Backend (`mvnw verify`) | Preservación | Scripts | Funcional | Interfaz |
+|---|---|---|---|---|---|---|
+| `fix/p1-integrity-and-wizard-2026-10-15` (6dc6e43) | OK | 118 pruebas, 0 fallos | 16 OK | 6 OK | PASS | 61 pruebas en 13 suites, compilación OK |
+| `preparacion/comentarios-marcela-2026-10-18` (aa0541f), con `JAVA_TOOL_OPTIONS` definida | OK | 118, 0 fallos | 16 OK | 11 OK | PASS | 61 en 13 suites, compilación OK |
+| `propuesta/com-01-process-activity-subsuncion` | OK | 118, 0 fallos | 16 OK | 11 OK | PASS | — |
+| `propuesta/h-56-rotulo-r03` | OK | 118, 0 fallos | 16 OK | 11 OK | PASS | — |
+
+Comparaciones con `scripts/comparar_ejecuciones.py`:
+
+- **Evidencia publicada (`research/release/`) frente a `fix/p1`:** sin diferencias de resultados. Sólo cambian las huellas de los scripts de ejecución de `research/evaluation/`, `research/reproduce.sh` y `research/runtime/README.md`, y se agrega `research/evaluation/output_paths.py`, todo del mantenimiento posterior al cierre. Es decir, el código actual reproduce exactamente las respuestas de los capítulos 3 y 4.
+- **`fix/p1` frente a `preparacion`:** sin diferencias de resultados; cambia sólo la huella de `research/reproduce.sh`.
+- **`preparacion` frente a `propuesta/h-56-rotulo-r03`:** sin diferencias de resultados (el cambio es una anotación).
+- **`preparacion` frente a `propuesta/com-01-process-activity-subsuncion`:** las 21 consultas, las cuatro validaciones ASK, las 105 comprobaciones contra respuestas esperadas y las 243 aserciones dan lo mismo; los archivos de resultados de las consultas son idénticos byte a byte. La consistencia no cambia. Cambian sólo los conteos de triples: hay un triple de entrada más (el axioma) y, en las configuraciones unión, integrada y H3, el razonador deduce 28 tipos `resource:Activity` nuevos para las operaciones del caso (que son subclases de `Process_Activity` en la extensión de pintura) y deja de deducir el trivial `Process_Activity ⊑ owl:Thing` (27 triples netos). En las configuraciones ISO 15531 e ISO 14040 no hay individuos de `Process_Activity`, así que sólo desaparece esa deducción trivial.
+
