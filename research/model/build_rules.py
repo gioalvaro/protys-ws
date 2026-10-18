@@ -41,7 +41,7 @@ RULES = [
 ('R02', 'Presencia de inventario de agua del proceso',
  [C('i:ProcessOperation','?op'),D('i:consumesWaterL','?op','?water'),O('i:partOfProcess','?op','?process'),O('a:hasInventoryRepresentation','?process','?lci')],
  [O('e:hasInventoryFlow','?lci','c:WaterFlow')]),
-('R03', 'Vincular insumo comprado al lote mediante su representación LCI',
+('R03', 'Vincular al lote los flujos de producto registrados en la representación LCI de su proceso',
  [C('i:Lot','?lot'),O('i:producesLot','?order','?lot'),O('i:hasProcess','?lot','?process'),O('a:hasInventoryRepresentation','?process','?lci'),C('e:UnitProcess','?lci'),O('e:hasInventoryFlow','?lci','?flow'),C('e:ProductFlow','?flow')],
  [O('a:hasRecordedInputFlowForLot','?lot','?flow')]),
 ('R04', 'Indicador por umbral explícito de la misma unidad y categoría',

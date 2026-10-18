@@ -174,7 +174,7 @@
     {
       "id": "R03",
       "kind": "SWRL",
-      "title": "Vincular insumo comprado al lote mediante su representación LCI",
+      "title": "Vincular al lote los flujos de producto registrados en la representación LCI de su proceso",
       "source": "ontologies/alignment-rules.owl",
       "code": "i:Lot(?lot) ^\ni:producesLot(?order, ?lot) ^\ni:hasProcess(?lot, ?process) ^\na:hasInventoryRepresentation(?process, ?lci) ^\ne:UnitProcess(?lci) ^\ne:hasInventoryFlow(?lci, ?flow) ^\ne:ProductFlow(?flow)\n→\na:hasRecordedInputFlowForLot(?lot, ?flow)",
       "body": [
