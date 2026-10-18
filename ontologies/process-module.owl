@@ -6,6 +6,7 @@
         <rdfs:comment xml:lang="es">Conceptualización propia del Nivel de Refinamiento de PROTYS(KB), que profundiza Process del Nivel Principal. Las referencias a ISO 8000, ISO 10303, ISO 13584, ISO 15531, ISO 15926 e ISO 18629 constituyen el contexto normativo del análisis; no se presenta esta jerarquía local como una taxonomía derivada literalmente de todos esos estándares. Los recursos de las actividades se representan en el Módulo de Recursos y se referencian sin redefinirlos aquí.</rdfs:comment>
         <owl:versionInfo>2.0</owl:versionInfo>
         <owl:imports rdf:resource="http://w3id.org/protys/ontology/core"/>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/resource"/>
     </owl:Ontology>
 
     <!-- ============ CLASES (Fig. 3.7) ============ -->
@@ -30,7 +31,8 @@
 
     <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Process_Activity">
         <rdfs:label xml:lang="en">Process_Activity</rdfs:label>
-        <rdfs:comment xml:lang="es">Paso u operación atómica dentro de un proceso.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Actividad del plan de producción que transforma material hacia un producto o un producto intermedio, por lo general con maquinaria. Especializa resource:Activity: toda Process_Activity es una Activity, pero no a la inversa. El transporte o el movimiento de materiales entre ubicaciones (por ejemplo, una cinta del camión al depósito) es una Activity y no una Process_Activity, porque no lleva el material a un estado de mayor terminación (cf. ISO 15531-43:2006, 3.1.3 y 3.1.19; IEC 62264-3:2016, 3.1.2). La subsunción sigue el criterio de ISO/TS 10303-1803:2019, donde process_operation es subtipo de action_method. Propuesta COM-01, pendiente de validación por la dirección de tesis.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
     </owl:Class>
 
     <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity">

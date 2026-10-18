@@ -101,7 +101,7 @@
 
     <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Activity">
         <rdfs:label xml:lang="en">Activity</rdfs:label>
-        <rdfs:comment xml:lang="es">Concepto genérico de actividad usado para las relaciones Activity-Resource (Figs. 3.11 y 3.12). Process_Activity del Módulo de Proceso se corresponde con esta clase.</rdfs:comment>
+        <rdfs:comment xml:lang="es">Concepto genérico de actividad usado para las relaciones Activity-Resource (Figs. 3.11 y 3.12): cualquier actividad física realizada por personas o por máquinas, incluidas las de transporte y movimiento de materiales. process:Process_Activity es una especialización de esta clase restringida a las actividades del plan de producción que transforman material. Propuesta COM-01, pendiente de validación por la dirección de tesis.</rdfs:comment>
     </owl:Class>
 
     <!-- ============ PROPIEDADES DE OBJETO ============ -->
