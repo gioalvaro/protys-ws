@@ -1,0 +1,140 @@
+EVALUACIÓN CON OOPS! (OntOlogy Pitfall Scanner!)
+Fecha (UTC): 2026-11-14T19:26:31
+Servicio: https://oops.linkeddata.es/rest
+Repositorio: protys-ws-repo, etiqueta tesis-cierre-2026-10-03-v1 = a0428104c94942f3030139454d36bfed3e66873f
+Python 3.10.12 | rdflib 7.6.0
+
+==============================================================================
+Red base (niveles Principal y de Refinamiento)
+  core-concepts.owl                origen=tesis-cierre-2026-10-03-v1   sha256=f5017c95edaa914d tripletas=76
+  enterprise-module.owl            origen=tesis-cierre-2026-10-03-v1   sha256=ce34be0c66b35025 tripletas=44
+  process-module.owl               origen=tesis-cierre-2026-10-03-v1   sha256=82cc6799989e6354 tripletas=58
+  product-module.owl               origen=tesis-cierre-2026-10-03-v1   sha256=013cbc78c438bf54 tripletas=68
+  resource-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=4f750efe55a1021b tripletas=124
+  CARGADO: tripletas=366 (se quitaron 4 owl:imports, ya resueltos al unir los archivos)
+  clases=43 propiedades de objeto=28 propiedades de datos=4 individuos=0
+  subClassOf=27 dominios=23 rangos=30 disjuntas=1 restricciones=5 | axiomas estructurales=86
+  ENVIADO: 47484 bytes | RESPUESTA: 14279 bytes -> respuesta_oops_red_base.rdf
+  RESULTADO: 6 tipos de problema | críticos=0 importantes=2 menores=3
+    P04 [Minor    ] Creating unconnected ontology elements — 1 caso(s): Thing
+    P11 [Important] Missing domain or range in properties — 9 caso(s): hasDescription, hasName, hasPriorVersion, hasProcess, hasResource, hasVersion, isHeldBy, isPartOf, locatedAt
+    P13 [Minor    ] Inverse relationships not explicitly declared — 22 caso(s)
+    P22 [Minor    ] Using different naming conventions in the ontology — 1 caso(s): isHeldBy
+    P30 [Important] Equivalent classes not explicitly declared — 2 caso(s)
+    SUGGESTION: symmetric or transitive object properties. [None     ] None — 1 caso(s): precedes
+
+==============================================================================
+Módulo ISO 15531
+  iso15531-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=928d2aa16437b3c2 tripletas=227
+  CARGADO: tripletas=227 (se quitaron 0 owl:imports, ya resueltos al unir los archivos)
+  clases=18 propiedades de objeto=21 propiedades de datos=16 individuos=0
+  subClassOf=3 dominios=27 rangos=35 disjuntas=0 restricciones=1 | axiomas estructurales=65
+  ENVIADO: 25920 bytes | RESPUESTA: 15654 bytes -> respuesta_oops_iso15531.rdf
+  RESULTADO: 5 tipos de problema | críticos=0 importantes=1 menores=3
+    P04 [Minor    ] Creating unconnected ontology elements — 6 caso(s): CostAttribute, ManufacturingFacility, ManufacturingFlow, ProcessState, ProductionOrder, TimeAttribute
+    P08 [Minor    ] Missing annotations — 16 caso(s): CostAttribute, EquipmentResource, HumanResource, Lot, ManufacturingCapability, ManufacturingFacility, ManufacturingFlow, ManufacturingProcess, ManufacturingResource, ProcessPlan, ProcessState, ProductionOrder, QualityAttribute, ResourceState, TimeAttribute, WorkOrder
+    P11 [Important] Missing domain or range in properties — 11 caso(s): consumesEnergyKWh, consumesWaterL, cycleTime, cycleTimeMinutes, duration, hasMaintenance, operationSequence, precedes, propagatedQualityStatus, setupTimeMinutes, yield
+    P13 [Minor    ] Inverse relationships not explicitly declared — 21 caso(s)
+    SUGGESTION: symmetric or transitive object properties. [None     ] None — 3 caso(s): precedesEvent, requiresCleaningBetween
+
+==============================================================================
+Módulo ISO 14040
+  iso14040-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=a9fb3f9be4d918d4 tripletas=153
+  CARGADO: tripletas=153 (se quitaron 0 owl:imports, ya resueltos al unir los archivos)
+  clases=15 propiedades de objeto=11 propiedades de datos=12 individuos=0
+  subClassOf=1 dominios=9 rangos=19 disjuntas=0 restricciones=1 | axiomas estructurales=29
+  ENVIADO: 19442 bytes | RESPUESTA: 16513 bytes -> respuesta_oops_iso14040.rdf
+  RESULTADO: 6 tipos de problema | críticos=0 importantes=1 menores=5
+    P04 [Minor    ] Creating unconnected ontology elements — 7 caso(s): AllocationProcedure, EnvironmentalAspect, GoalAndScopeDefinition, ImpactCategory, Interpretation, LifeCycleImpactAssessment, LifeCycleInventory
+    P07 [Minor    ] Merging different concepts in the same class — 1 caso(s): GoalAndScopeDefinition
+    P08 [Minor    ] Missing annotations — 16 caso(s): AllocationProcedure, CharacterizationFactor, ElementaryFlow, EnvironmentalAspect, FunctionalUnit, GoalAndScopeDefinition, ImpactCategory, ImpactIndicator, Interpretation, LCAStudy, LifeCycleImpactAssessment, LifeCycleInventory, ProductFlow, SystemBoundary, UnitProcess, energyInputKWh
+    P11 [Important] Missing domain or range in properties — 16 caso(s): VOCContentGperLiter, appliesTo, carbonFootprintKgCO2eq, computedForProcess, energyConsumptionMJ, energyInputKWh, hasCharacterizationFactor, hasEmissionFactor, hasEnvironmentalImpact, hasFunctionalUnitQuantity, hasGHGImpactKgCO2e, hasImpact, hasInventoryFlow, refersToMaterial, usesCharacterizationFactor, waterFootprintLiters
+    P13 [Minor    ] Inverse relationships not explicitly declared — 11 caso(s)
+    P22 [Minor    ] Using different naming conventions in the ontology — 1 caso(s): VOCContentGperLiter
+
+==============================================================================
+Módulo piloto ISO 10303-242
+  iso10303-ap242-fragment.owl      origen=tesis-cierre-2026-10-03-v1   sha256=30488c54cf62da75 tripletas=46
+  CARGADO: tripletas=45 (se quitaron 1 owl:imports, ya resueltos al unir los archivos)
+  clases=6 propiedades de objeto=3 propiedades de datos=2 individuos=0
+  subClassOf=0 dominios=5 rangos=5 disjuntas=0 restricciones=0 | axiomas estructurales=10
+  ENVIADO: 6422 bytes | RESPUESTA: 8209 bytes -> respuesta_oops_piloto_ap242.rdf
+  RESULTADO: 5 tipos de problema | críticos=0 importantes=1 menores=4
+    P04 [Minor    ] Creating unconnected ontology elements — 2 caso(s): PilotComponentRecord, PilotProductRecord
+    P08 [Minor    ] Missing annotations — 2 caso(s): PilotComponentRecord, PilotProductRecord
+    P10 [Important] Missing disjointness — 1 caso(s)
+    P13 [Minor    ] Inverse relationships not explicitly declared — 3 caso(s)
+    P22 [Minor    ] Using different naming conventions in the ontology — 1 caso(s): PilotProductRecord
+
+==============================================================================
+Módulo de Alineamiento (declaraciones, sin reglas SWRL)
+  alignment-rules.owl              origen=tesis-cierre-2026-10-03-v1   sha256=50944ff37c746fde tripletas=1374
+  Se apartaron 1208 tripletas de reglas SWRL (OOPS! no evalúa reglas; las reglas se comprueban con las pruebas de la Sección 4.5)
+  CARGADO: tripletas=159 (se quitaron 7 owl:imports, ya resueltos al unir los archivos)
+  clases=11 propiedades de objeto=21 propiedades de datos=6 individuos=8
+  subClassOf=4 dominios=12 rangos=17 disjuntas=0 restricciones=0 | axiomas estructurales=42
+  ENVIADO: 23020 bytes | RESPUESTA: 24240 bytes -> respuesta_oops_alineamiento.rdf
+  RESULTADO: 8 tipos de problema | críticos=0 importantes=4 menores=4
+    P04 [Minor    ] Creating unconnected ontology elements — 7 caso(s): BottleneckResource, CoverageGap, HighImpactIndicator, Hotspot, MissingEnvironmentalData, RequiresRecomputeIndicators, SPARQLValidationPattern
+    P08 [Minor    ] Missing annotations — 19 caso(s): allocationForOperation, allocationForOperation, facilityInBoundary, facilityInBoundary, flowRefersToProduct, flowRefersToProduct, hasEfficiency, hasInventoryRepresentation, hasInventoryRepresentation, hasRecordedInputFlowForLot, hasRecordedInputFlowForLot, indicatorForLot, indicatorForLot, inputFlowForResource, inputFlowForResource, inventoryForPlan, inventoryForPlan, qualityForLot, qualityForLot
+    P10 [Important] Missing disjointness — 1 caso(s)
+    P11 [Important] Missing domain or range in properties — 16 caso(s): allocationForOperation, facilityInBoundary, flowRefersToProduct, hasEcoScore, hasEfficiency, hasEfficiency, hasInventoryRepresentation, hasLotGHGImpact, hasMeasurement, hasRecordedInputFlowForLot, impactThreshold, indicatorForLot, inputFlowForResource, inventoryForPlan, modifiedInVersion, qualityForLot
+    P12 [Important] Equivalent properties not explicitly declared — 1 caso(s)
+    P13 [Minor    ] Inverse relationships not explicitly declared — 21 caso(s)
+    P22 [Minor    ] Using different naming conventions in the ontology — 1 caso(s): SPARQLValidationPattern
+    P34 [Important] Untyped class — 17 caso(s): AllocationProcedure, ElementaryFlow, ImpactIndicator, LifeCycleInventory, Lot, ManufacturingCapability, ManufacturingFacility, ManufacturingProcess, ManufacturingResource, ProcessOperation, ProcessPlan, Product, ProductFlow, QualityAttribute, ResourceState, SystemBoundary, UnitProcess
+
+==============================================================================
+Ocho módulos base (Principal, Refinamiento, Estándares y Alineamiento)
+  core-concepts.owl                origen=tesis-cierre-2026-10-03-v1   sha256=f5017c95edaa914d tripletas=76
+  enterprise-module.owl            origen=tesis-cierre-2026-10-03-v1   sha256=ce34be0c66b35025 tripletas=44
+  process-module.owl               origen=tesis-cierre-2026-10-03-v1   sha256=82cc6799989e6354 tripletas=58
+  product-module.owl               origen=tesis-cierre-2026-10-03-v1   sha256=013cbc78c438bf54 tripletas=68
+  resource-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=4f750efe55a1021b tripletas=124
+  iso15531-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=928d2aa16437b3c2 tripletas=227
+  iso14040-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=a9fb3f9be4d918d4 tripletas=153
+  alignment-rules.owl              origen=tesis-cierre-2026-10-03-v1   sha256=50944ff37c746fde tripletas=1374
+  Se apartaron 1208 tripletas de reglas SWRL (OOPS! no evalúa reglas; las reglas se comprueban con las pruebas de la Sección 4.5)
+  CARGADO: tripletas=905 (se quitaron 11 owl:imports, ya resueltos al unir los archivos)
+  clases=87 propiedades de objeto=81 propiedades de datos=38 individuos=8
+  subClassOf=35 dominios=71 rangos=101 disjuntas=1 restricciones=7 | axiomas estructurales=222
+  ENVIADO: 114618 bytes | RESPUESTA: 49830 bytes -> respuesta_oops_ocho_modulos.rdf
+  RESULTADO: 9 tipos de problema | críticos=0 importantes=3 menores=5
+    P04 [Minor    ] Creating unconnected ontology elements — 18 caso(s): BottleneckResource, CostAttribute, CoverageGap, EnvironmentalAspect, GoalAndScopeDefinition, HighImpactIndicator, Hotspot, ImpactCategory, Interpretation, LifeCycleImpactAssessment, ManufacturingFlow, MissingEnvironmentalData, ProcessState, ProductionOrder, RequiresRecomputeIndicators, SPARQLValidationPattern, Thing, TimeAttribute
+    P07 [Minor    ] Merging different concepts in the same class — 1 caso(s): GoalAndScopeDefinition
+    P08 [Minor    ] Missing annotations — 51 caso(s): AllocationProcedure, CharacterizationFactor, CostAttribute, ElementaryFlow, EnvironmentalAspect, EquipmentResource, FunctionalUnit, GoalAndScopeDefinition, HumanResource, ImpactCategory, ImpactIndicator, Interpretation, LCAStudy, LifeCycleImpactAssessment, LifeCycleInventory, Lot, ManufacturingCapability, ManufacturingFacility, ManufacturingFlow, ManufacturingProcess, ManufacturingResource, ProcessPlan, ProcessState, ProductFlow, ProductionOrder, QualityAttribute, ResourceState, SystemBoundary, TimeAttribute, UnitProcess, WorkOrder, allocationForOperation, allocationForOperation, energyInputKWh, facilityInBoundary, facilityInBoundary, flowRefersToProduct, flowRefersToProduct, hasEfficiency, hasInventoryRepresentation, hasInventoryRepresentation, hasRecordedInputFlowForLot, hasRecordedInputFlowForLot, indicatorForLot, indicatorForLot, inputFlowForResource, inputFlowForResource, inventoryForPlan, inventoryForPlan, qualityForLot, qualityForLot
+    P11 [Important] Missing domain or range in properties — 52 caso(s): VOCContentGperLiter, allocationForOperation, appliesTo, carbonFootprintKgCO2eq, computedForProcess, consumesEnergyKWh, consumesWaterL, cycleTime, cycleTimeMinutes, duration, energyConsumptionMJ, energyInputKWh, facilityInBoundary, flowRefersToProduct, hasCharacterizationFactor, hasDescription, hasEcoScore, hasEfficiency, hasEfficiency, hasEmissionFactor, hasEnvironmentalImpact, hasFunctionalUnitQuantity, hasGHGImpactKgCO2e, hasImpact, hasInventoryFlow, hasInventoryRepresentation, hasLotGHGImpact, hasMaintenance, hasMeasurement, hasName, hasPriorVersion, hasProcess, hasRecordedInputFlowForLot, hasResource, hasVersion, impactThreshold, indicatorForLot, inputFlowForResource, inventoryForPlan, isHeldBy, isPartOf, locatedAt, modifiedInVersion, operationSequence, precedes, propagatedQualityStatus, qualityForLot, refersToMaterial, setupTimeMinutes, usesCharacterizationFactor, waterFootprintLiters, yield
+    P12 [Important] Equivalent properties not explicitly declared — 6 caso(s)
+    P13 [Minor    ] Inverse relationships not explicitly declared — 75 caso(s)
+    P22 [Minor    ] Using different naming conventions in the ontology — 1 caso(s): ProductFlow
+    P30 [Important] Equivalent classes not explicitly declared — 2 caso(s)
+    SUGGESTION: symmetric or transitive object properties. [None     ] None — 4 caso(s): precedes, precedesEvent, requiresCleaningBetween
+
+==============================================================================
+Ocho módulos base más el módulo piloto y sus reglas de vínculo
+  core-concepts.owl                origen=tesis-cierre-2026-10-03-v1   sha256=f5017c95edaa914d tripletas=76
+  enterprise-module.owl            origen=tesis-cierre-2026-10-03-v1   sha256=ce34be0c66b35025 tripletas=44
+  process-module.owl               origen=tesis-cierre-2026-10-03-v1   sha256=82cc6799989e6354 tripletas=58
+  product-module.owl               origen=tesis-cierre-2026-10-03-v1   sha256=013cbc78c438bf54 tripletas=68
+  resource-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=4f750efe55a1021b tripletas=124
+  iso15531-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=928d2aa16437b3c2 tripletas=227
+  iso14040-module.owl              origen=tesis-cierre-2026-10-03-v1   sha256=a9fb3f9be4d918d4 tripletas=153
+  alignment-rules.owl              origen=tesis-cierre-2026-10-03-v1   sha256=50944ff37c746fde tripletas=1374
+  iso10303-ap242-fragment.owl      origen=tesis-cierre-2026-10-03-v1   sha256=30488c54cf62da75 tripletas=46
+  iso10303-alignment-rules.owl     origen=tesis-cierre-2026-10-03-v1   sha256=9c5044ef35c41794 tripletas=95
+  Se apartaron 1296 tripletas de reglas SWRL (OOPS! no evalúa reglas; las reglas se comprueban con las pruebas de la Sección 4.5)
+  CARGADO: tripletas=954 (se quitaron 15 owl:imports, ya resueltos al unir los archivos)
+  clases=93 propiedades de objeto=84 propiedades de datos=40 individuos=8
+  subClassOf=35 dominios=76 rangos=106 disjuntas=1 restricciones=7 | axiomas estructurales=232
+  ENVIADO: 121124 bytes | RESPUESTA: 51030 bytes -> respuesta_oops_red_con_piloto.rdf
+  RESULTADO: 9 tipos de problema | críticos=0 importantes=3 menores=5
+    P04 [Minor    ] Creating unconnected ontology elements — 20 caso(s): BottleneckResource, CostAttribute, CoverageGap, EnvironmentalAspect, GoalAndScopeDefinition, HighImpactIndicator, Hotspot, ImpactCategory, Interpretation, LifeCycleImpactAssessment, ManufacturingFlow, MissingEnvironmentalData, PilotComponentRecord, PilotProductRecord, ProcessState, ProductionOrder, RequiresRecomputeIndicators, SPARQLValidationPattern, Thing, TimeAttribute
+    P07 [Minor    ] Merging different concepts in the same class — 1 caso(s): GoalAndScopeDefinition
+    P08 [Minor    ] Missing annotations — 53 caso(s): AllocationProcedure, CharacterizationFactor, CostAttribute, ElementaryFlow, EnvironmentalAspect, EquipmentResource, FunctionalUnit, GoalAndScopeDefinition, HumanResource, ImpactCategory, ImpactIndicator, Interpretation, LCAStudy, LifeCycleImpactAssessment, LifeCycleInventory, Lot, ManufacturingCapability, ManufacturingFacility, ManufacturingFlow, ManufacturingProcess, ManufacturingResource, PilotComponentRecord, PilotProductRecord, ProcessPlan, ProcessState, ProductFlow, ProductionOrder, QualityAttribute, ResourceState, SystemBoundary, TimeAttribute, UnitProcess, WorkOrder, allocationForOperation, allocationForOperation, energyInputKWh, facilityInBoundary, facilityInBoundary, flowRefersToProduct, flowRefersToProduct, hasEfficiency, hasInventoryRepresentation, hasInventoryRepresentation, hasRecordedInputFlowForLot, hasRecordedInputFlowForLot, indicatorForLot, indicatorForLot, inputFlowForResource, inputFlowForResource, inventoryForPlan, inventoryForPlan, qualityForLot, qualityForLot
+    P11 [Important] Missing domain or range in properties — 52 caso(s): VOCContentGperLiter, allocationForOperation, appliesTo, carbonFootprintKgCO2eq, computedForProcess, consumesEnergyKWh, consumesWaterL, cycleTime, cycleTimeMinutes, duration, energyConsumptionMJ, energyInputKWh, facilityInBoundary, flowRefersToProduct, hasCharacterizationFactor, hasDescription, hasEcoScore, hasEfficiency, hasEfficiency, hasEmissionFactor, hasEnvironmentalImpact, hasFunctionalUnitQuantity, hasGHGImpactKgCO2e, hasImpact, hasInventoryFlow, hasInventoryRepresentation, hasLotGHGImpact, hasMaintenance, hasMeasurement, hasName, hasPriorVersion, hasProcess, hasRecordedInputFlowForLot, hasResource, hasVersion, impactThreshold, indicatorForLot, inputFlowForResource, inventoryForPlan, isHeldBy, isPartOf, locatedAt, modifiedInVersion, operationSequence, precedes, propagatedQualityStatus, qualityForLot, refersToMaterial, setupTimeMinutes, usesCharacterizationFactor, waterFootprintLiters, yield
+    P12 [Important] Equivalent properties not explicitly declared — 6 caso(s)
+    P13 [Minor    ] Inverse relationships not explicitly declared — 78 caso(s)
+    P22 [Minor    ] Using different naming conventions in the ontology — 1 caso(s): ProductFlow
+    P30 [Important] Equivalent classes not explicitly declared — 2 caso(s)
+    SUGGESTION: symmetric or transitive object properties. [None     ] None — 4 caso(s): precedes, precedesEvent, requiresCleaningBetween
+
