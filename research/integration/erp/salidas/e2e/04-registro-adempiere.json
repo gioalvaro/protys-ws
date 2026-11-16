@@ -1,0 +1,18 @@
+{
+  "id" : "f012e42f-99c0-4474-9bf8-f3e5ca33a7d1",
+  "name" : "adempiere-demo",
+  "type" : "ADEMPIERE",
+  "jdbcUrl" : "jdbc:postgresql://adempiere-db:5432/adempiere",
+  "username" : "protys_ro",
+  "databaseName" : "adempiere",
+  "namedGraph" : "http://w3id.org/protys/erp/adempiere",
+  "r2rmlMappingPath" : "/opt/protys/integration/mappings/adempiere.r2rml.ttl",
+  "status" : "REGISTERED",
+  "lastMaterializationAt" : null,
+  "tripleCount" : null,
+  "materializationTimeMs" : null,
+  "active" : true,
+  "createdAt" : "2026-11-16T04:32:04.759098",
+  "updatedAt" : "2026-11-16T04:32:04.759109",
+  "hasPassword" : true
+}
