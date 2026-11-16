@@ -34,6 +34,9 @@ public class InferenceStats {
 
     private Integer inputTripleCount;
 
+    /** Grafos de datos (por ejemplo, de conectores ERP) incluidos en el razonamiento; vacío si no hubo. */
+    private java.util.List<String> dataGraphs;
+
     private Integer inferredTripleCount;
 
     private Integer newClassCount;

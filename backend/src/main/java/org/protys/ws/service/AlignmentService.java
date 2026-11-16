@@ -119,7 +119,19 @@ public class AlignmentService {
      */
     @Transactional
     public InferenceStats executeReasoning() {
-        log.info("Starting reasoning execution");
+        return executeReasoning(List.of());
+    }
+
+    /** Prefijo obligatorio de los grafos de datos que se pueden sumar al razonamiento. */
+    static final String DATA_GRAPH_PREFIX = "http://w3id.org/protys/erp/";
+
+    /**
+     * Razona sobre los módulos registrados más los grafos de datos indicados (grafos materializados
+     * por conectores ERP, bajo {@link #DATA_GRAPH_PREFIX}). Sin grafos de datos el resultado es el
+     * mismo que {@link #executeReasoning()} antes de existir este parámetro.
+     */
+    public InferenceStats executeReasoning(List<String> dataGraphs) {
+        log.info("Starting reasoning execution with {} data graphs", dataGraphs == null ? 0 : dataGraphs.size());
         long startTime = System.currentTimeMillis();
 
         InferenceStats stats = new InferenceStats();
@@ -138,6 +150,17 @@ public class AlignmentService {
                 combinedModel.add(withoutRuleDefinitions(moduleModel));
                 inputTriples += moduleModel.size();
             }
+
+            List<String> graphs = dataGraphs == null ? List.of() : List.copyOf(dataGraphs);
+            for (String graph : graphs) {
+                if (graph == null || !graph.startsWith(DATA_GRAPH_PREFIX)) {
+                    throw new ProtysFusekiException("NOT_EVALUATED: data graph outside " + DATA_GRAPH_PREFIX + ": " + graph);
+                }
+                Model data = fusekiService.getModelOrEmpty(graph);
+                if (data.isEmpty()) throw new ProtysFusekiException("NOT_EVALUATED: data graph is empty: " + graph);
+                combinedModel.add(data);
+            }
+            stats.setDataGraphs(graphs);
 
             combinedModel.add(fusekiService.getModel("http://w3id.org/protys/ontology/active-rule-definitions"));
             inputTriples = combinedModel.size();
