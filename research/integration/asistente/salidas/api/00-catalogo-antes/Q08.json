@@ -1,0 +1,902 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "operation", "stageName", "yieldPercent", "energyKWh", "ghgKgCO2e", "outputVolumeL", "kgCO2ePerL" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op1"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Recepción e inspección"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op2"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Dispersión de pigmentos"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.05"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op3"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Mezcla principal"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "75"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "37.5"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.375"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op4"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Ajuste de viscosidad"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "26.666667"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "13.3333335"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.133333335"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op5"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Filtrado"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.333333"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "1.6666665"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.016666665"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op6"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Control de calidad"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Op7"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Envasado"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "98.4"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.333333"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.1666665"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "98.4"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.00169376524390243902439"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op1"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Recepción e inspección"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "200"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op2"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Dispersión de pigmentos"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "200"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.05"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op3"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Mezcla principal"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "150"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "75.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "200"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.375"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op4"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Ajuste de viscosidad"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "53.333333"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "26.6666665"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "200"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.1333333325"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op5"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Filtrado"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "6.666667"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.3333335"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "200"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0166666675"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op6"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Control de calidad"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "200"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Op7"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Envasado"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "97.6"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.666667"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.3333335"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "195.2"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.001707651127049180327869"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op1"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Recepción e inspección"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op2"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Dispersión de pigmentos"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.05"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op3"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Mezcla principal"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "75"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "37.5"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.375"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op4"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Ajuste de viscosidad"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "26.666667"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "13.3333335"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.133333335"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op5"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Filtrado"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.333333"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "1.6666665"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.016666665"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op6"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Control de calidad"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "100"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.0"
+        }
+      }, {
+        "operation" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Op7"
+        },
+        "stageName" : {
+          "type" : "literal",
+          "value" : "Envasado"
+        },
+        "yieldPercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "97.392"
+        },
+        "energyKWh" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.333333"
+        },
+        "ghgKgCO2e" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.1666665"
+        },
+        "outputVolumeL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "97.392"
+        },
+        "kgCO2ePerL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.00171129558896007885658"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q08 Rendimiento másico, electricidad e intensidad de emisiones por operación\nSELECT ?operation ?stageName ?yieldPercent ?energyKWh\n?ghgKgCO2e ?outputVolumeL (?ghgKgCO2e/?outputVolumeL AS ?kgCO2ePerL)\nWHERE {\n?operation a p:Manufacturing_Stage ; c:hasName ?stageName ;\nt:yieldPercent ?yieldPercent .\n{ SELECT ?operation (MIN(?rawEnergy) AS ?energyKWh)\n(MIN(?rawGHG) AS ?ghgKgCO2e) (MIN(?rawVolume) AS ?outputVolumeL)\nWHERE {\n?operation i:consumesEnergyKWh ?rawEnergy .\nFILTER(isNumeric(?rawEnergy) && ?rawEnergy >= 0)\nFILTER NOT EXISTS { ?operation i:consumesEnergyKWh ?stageEnergyOther .\nFILTER(!isNumeric(?stageEnergyOther) || ?stageEnergyOther != ?rawEnergy) }\n?operation t:hasEmissionFactor ?stageFactor .\nFILTER(isIRI(?stageFactor))\nFILTER NOT EXISTS { ?operation t:hasEmissionFactor ?stageOtherFactor .\nFILTER(!sameTerm(?stageOtherFactor,?stageFactor)) }\n?stageFactor a t:ElectricityEmissionFactor ; t:factorUnit \"kg CO2e/kWh\" .\nFILTER NOT EXISTS { ?stageFactor t:factorUnit ?stageOtherUnit .\nFILTER(STR(?stageOtherUnit) != \"kg CO2e/kWh\") }\n?stageFactor t:factorValue ?stageFactorValue .\nFILTER(isNumeric(?stageFactorValue) && ?stageFactorValue >= 0)\nFILTER NOT EXISTS { ?stageFactor t:factorValue ?stageFactorOther .\nFILTER(!isNumeric(?stageFactorOther) || ?stageFactorOther != ?stageFactorValue) }\n?operation e:hasGHGImpactKgCO2e ?rawGHG .\nFILTER(isNumeric(?rawGHG) && ?rawGHG >= 0)\nFILTER NOT EXISTS { ?operation e:hasGHGImpactKgCO2e ?stageGHGOther .\nFILTER(!isNumeric(?stageGHGOther) || ?stageGHGOther != ?rawGHG) }\nFILTER(ABS(?rawGHG - ?rawEnergy * ?stageFactorValue) <= 0.000000001)\n?operation t:outputVolumeL ?rawVolume .\nFILTER(isNumeric(?rawVolume) && ?rawVolume > 0)\nFILTER NOT EXISTS { ?operation t:outputVolumeL ?stageVolumeOther .\nFILTER(!isNumeric(?stageVolumeOther) || ?stageVolumeOther != ?rawVolume) }\n} GROUP BY ?operation }\n} ORDER BY ?operation\n",
+  "executedAt" : "2026-11-16T19:54:26.179881498Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "stageName" : "Recepción e inspección",
+    "energyKWh" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op1",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Dispersión de pigmentos",
+    "energyKWh" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.05^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "5.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op2",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Mezcla principal",
+    "energyKWh" : "75^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.375^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "37.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op3",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Ajuste de viscosidad",
+    "energyKWh" : "26.666667^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.133333335^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "13.3333335^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op4",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Filtrado",
+    "energyKWh" : "3.333333^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.016666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "1.6666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op5",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Control de calidad",
+    "energyKWh" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op6",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Envasado",
+    "energyKWh" : "0.333333^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.00169376524390243902439^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.1666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "98.4^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchA_Op7",
+    "outputVolumeL" : "98.4^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Recepción e inspección",
+    "energyKWh" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op1",
+    "outputVolumeL" : "200^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Dispersión de pigmentos",
+    "energyKWh" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.05^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "10.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op2",
+    "outputVolumeL" : "200^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Mezcla principal",
+    "energyKWh" : "150^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.375^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "75.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op3",
+    "outputVolumeL" : "200^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Ajuste de viscosidad",
+    "energyKWh" : "53.333333^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.1333333325^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "26.6666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op4",
+    "outputVolumeL" : "200^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Filtrado",
+    "energyKWh" : "6.666667^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0166666675^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "3.3333335^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op5",
+    "outputVolumeL" : "200^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Control de calidad",
+    "energyKWh" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op6",
+    "outputVolumeL" : "200^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Envasado",
+    "energyKWh" : "0.666667^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.001707651127049180327869^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.3333335^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "97.6^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchB_Op7",
+    "outputVolumeL" : "195.2^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Recepción e inspección",
+    "energyKWh" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op1",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Dispersión de pigmentos",
+    "energyKWh" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.05^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "5.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op2",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Mezcla principal",
+    "energyKWh" : "75^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.375^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "37.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op3",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Ajuste de viscosidad",
+    "energyKWh" : "26.666667^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.133333335^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "13.3333335^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op4",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Filtrado",
+    "energyKWh" : "3.333333^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.016666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "1.6666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op5",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Control de calidad",
+    "energyKWh" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "100^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op6",
+    "outputVolumeL" : "100^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "stageName" : "Envasado",
+    "energyKWh" : "0.333333^^http://www.w3.org/2001/XMLSchema#decimal",
+    "kgCO2ePerL" : "0.00171129558896007885658^^http://www.w3.org/2001/XMLSchema#decimal",
+    "ghgKgCO2e" : "0.1666665^^http://www.w3.org/2001/XMLSchema#decimal",
+    "yieldPercent" : "97.392^^http://www.w3.org/2001/XMLSchema#decimal",
+    "operation" : "http://w3id.org/protys/fixture#BatchC_Op7",
+    "outputVolumeL" : "97.392^^http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 24,
+  "resultCount" : 21,
+  "truncated" : false
+}

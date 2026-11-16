@@ -1,0 +1,7 @@
+          standard_name           |   phase   |         started_at         
+----------------------------------+-----------+----------------------------
+ ISO 10303-242 (fragmento piloto) | CANCELLED | 2026-11-16 19:54:08.549729
+ ISO 10303-242 (fragmento piloto) | CANCELLED | 2026-11-16 19:54:29.243565
+ iso10303-ap242-fragment          | CANCELLED | 2026-11-16 19:55:16.638684
+(3 rows)
+

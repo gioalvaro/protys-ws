@@ -1,0 +1,7 @@
+Resumen — Fase 3, asistente por la API (2026-11-16T19:54:35Z)
+APROBADO  0 línea de base                                   módulos=1 reglas=22 razonamiento=SUCCESS owl=CONSISTENT
+APROBADO  1 subir fragmento AP242                            http=201 sesión=906aa1fd-a915-44ff-9c3c-cc6f872e219f triples=46
+APROBADO  2 validar consistencia (red + fragmento)           http=200 OWL consistency verified for this session and permanent modules
+NO-ALCANZA 3 seleccionar R27–R29 en el asistente            3 de 3 reglas no registradas; pedir R27: http=422 «Rule selection error: Select registered rule IDs; new global rules cannot be created by a session»
+APROBADO  4 cancelar la sesión (no se completa sin las reglas) http=200
+APROBADO  5 red sin cambios tras cancelar                    módulos y grafos iguales; owl CONSISTENT → CONSISTENT; 21 consultas idénticas

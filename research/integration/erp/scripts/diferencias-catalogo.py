@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Compara las respuestas de las 21 consultas del catálogo sin y con los grafos ERP.
 
-Uso: diferencias-catalogo.py <dir_sin_erp> <dir_con_erp> <salida.md>
+Uso: diferencias-catalogo.py <dir_sin_erp> <dir_con_erp> <salida.md> [titulo] [descripcion]
+
+También lo usa la Fase 3 (asistente) para comparar antes y después de una incorporación;
+los dos argumentos opcionales cambian el título y el párrafo del cuadro.
 
 Cada directorio tiene un Qxx.json por consulta, tal como lo devuelve /api/sparql/execute.
 Una fila es el conjunto de pares variable=valor; se comparan como conjuntos (las filas
@@ -46,6 +49,8 @@ def titulo(qfile):
 
 def main():
     sin, con, salida = map(Path, sys.argv[1:4])
+    titulo_md = sys.argv[4] if len(sys.argv) > 4 else "Consultas del catálogo sin y con los grafos ERP"
+    descripcion = sys.argv[5] if len(sys.argv) > 5 else None
     queries = Path(__file__).resolve().parents[3] / "model" / "queries"
     resumen, detalle, errores = [], [], 0
     for q in sorted(queries.glob("Q*.sparql")):
@@ -81,11 +86,11 @@ def main():
                     detalle.append("| " + " | ".join(corto(m.get(v, "")) for v in vars_) + " |")
                 if limite and len(conjunto) > limite:
                     detalle.append(f"\n… y {len(conjunto) - limite} filas más (ver los JSON de la corrida).")
-    texto = ["# Consultas del catálogo sin y con los grafos ERP", "",
-             "Generado por `scripts/diferencias-catalogo.py` a partir de `03b-catalogo-sin-erp/` y "
+    descripcion = descripcion or ("Generado por `scripts/diferencias-catalogo.py` a partir de `03b-catalogo-sin-erp/` y "
              "`08-catalogo-con-erp/`. Misma plataforma y misma red; la única diferencia es que en la "
-             "segunda corrida están materializados los dos grafos ERP y el razonamiento los incluyó.", "",
-             "| Consulta | Pregunta | Filas sin ERP | Filas con ERP | Nuevas | Quitadas | Nuevas con individuos ERP |",
+             "segunda corrida están materializados los dos grafos ERP y el razonamiento los incluyó.")
+    texto = [f"# {titulo_md}", "", descripcion, "",
+             "| Consulta | Pregunta | Filas antes (sin ERP) | Filas después (con ERP) | Nuevas | Quitadas | Nuevas con individuos ERP |",
              "|---|---|---|---|---|---|---|", *resumen, "", "## Filas que cambian", *detalle, ""]
     salida.write_text("\n".join(texto), encoding="utf-8")
     print("\n".join(resumen))

@@ -1,0 +1,5 @@
+reglas del piloto en iso10303-alignment-rules.owl: ['R27', 'R28', 'R29']
+reglas registradas en la plataforma: 22
+  R27: NO registrada: el paso 3 no la puede seleccionar
+  R28: NO registrada: el paso 3 no la puede seleccionar
+  R29: NO registrada: el paso 3 no la puede seleccionar
