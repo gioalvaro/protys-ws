@@ -1,0 +1,36 @@
+[
+  {
+    "uri": "http://w3id.org/protys/ontology/core#Enterprise",
+    "localName": "Enterprise",
+    "label": "Enterprise",
+    "description": "Concepto local para una organización o agrupación de organizaciones.",
+    "propertyCount": 1,
+    "superClassUris": [],
+    "subclasses": []
+  },
+  {
+    "uri": "http://w3id.org/protys/ontology/core#Process",
+    "localName": "Process",
+    "label": "Process",
+    "propertyCount": 2,
+    "superClassUris": [],
+    "subclasses": [
+      {
+        "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+        "localName": "ManufacturingProcess",
+        "label": "Proceso de manufactura",
+        "propertyCount": 3,
+        "superClassUris": ["http://w3id.org/protys/ontology/core#Process"],
+        "subclasses": []
+      }
+    ]
+  },
+  {
+    "uri": "http://w3id.org/protys/ontology/enterprise#Station",
+    "localName": "Station",
+    "label": "Station",
+    "propertyCount": 0,
+    "superClassUris": [],
+    "subclasses": []
+  }
+]

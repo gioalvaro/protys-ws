@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import {
   ChevronRightIcon,
   ChevronDownIcon,
   SparklesIcon,
   CircleStackIcon,
 } from '@heroicons/react/24/outline';
+
+const shortName = uri => (uri || '').split(/[#/]/).filter(Boolean).pop() || uri;
+
+/**
+ * Normaliza la respuesta de GET /api/ontology/modules/{id}/classes: una lista de raíces con hijos
+ * en "subclasses". Tolera un objeto único (contrato anterior) y nodos con "children". Cada nodo
+ * queda marcado como clase y con sus superclases como objetos, que es lo que usa el detalle.
+ */
+export function normalizeHierarchy(data) {
+  const roots = Array.isArray(data) ? data : data && typeof data === 'object' && data.uri ? [data] : [];
+  const normalize = node => ({
+    ...node,
+    type: 'class',
+    label: node.label || node.localName || shortName(node.uri),
+    children: (node.subclasses || node.children || []).map(normalize),
+    superclasses: (node.superClassUris || []).map(uri => ({ uri, label: shortName(uri) })),
+  });
+  return roots.map(normalize);
+}
 
 function ClassTree({
   data,
@@ -25,7 +44,8 @@ function ClassTree({
     return labelMatch || childrenMatch;
   };
 
-  const visibleData = data?.filter(node => filterTree(node, searchQuery)) || [];
+  const nodes = useMemo(() => normalizeHierarchy(data), [data]);
+  const visibleData = nodes.filter(node => filterTree(node, searchQuery));
 
   if (loading) {
     return (
@@ -37,7 +57,7 @@ function ClassTree({
     );
   }
 
-  if (!data || data.length === 0) {
+  if (nodes.length === 0) {
     return (
       <div className="text-center py-8 text-gray-500">
         <CircleStackIcon className="w-8 h-8 mx-auto mb-2 text-gray-400" />
@@ -124,7 +144,7 @@ function TreeNode({
 
         <SparklesIcon className="w-4 h-4 flex-shrink-0 text-protys-500" />
         <span className="flex-1 text-sm font-medium truncate">
-          {node.label || node.uri.split('/').pop()}
+          {node.label || shortName(node.uri)}
         </span>
         {node.individualCount !== undefined && (
           <span className="flex-shrink-0 px-2 py-0.5 text-xs bg-gray-200 text-gray-700 rounded-full">
