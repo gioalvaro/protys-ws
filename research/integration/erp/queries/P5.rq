@@ -1,0 +1,19 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX prod: <http://w3id.org/protys/ontology/product#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# P5 Producto generado por un plan de proceso X.
+# Variante de Q02: sin t:planProduces, el producto se obtiene por la cadena
+# plan → operación (i:includesActivity) → proceso (i:partOfProcess) → producto (c:produces).
+SELECT DISTINCT ?g ?plan ?planName ?product ?productName
+WHERE {
+  GRAPH ?g {
+    ?plan a i:ProcessPlan ; i:includesActivity ?op .
+    ?op i:partOfProcess ?process .
+    ?process c:produces ?product .
+  }
+  FILTER(STRSTARTS(STR(?g), "http://w3id.org/protys/erp/"))
+  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }
+  OPTIONAL { GRAPH ?g { ?product c:hasName ?productName } }
+}
+ORDER BY ?g ?plan

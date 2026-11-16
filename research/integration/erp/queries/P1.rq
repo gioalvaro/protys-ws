@@ -1,0 +1,18 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX prod: <http://w3id.org/protys/ontology/product#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# P1 Recursos requeridos por un proceso X.
+# Mismo patrón que la consulta canónica Q04 (operación parte del proceso; recurso requerido o insumo),
+# restringido a los grafos ERP y con la fuente (?g) y los nombres a la vista.
+SELECT DISTINCT ?g ?process ?processName ?resource ?resourceName
+WHERE {
+  GRAPH ?g {
+    ?op a i:ProcessOperation ; i:partOfProcess ?process .
+    { ?op i:requiresResource ?resource } UNION { ?op i:hasInput ?resource }
+  }
+  FILTER(STRSTARTS(STR(?g), "http://w3id.org/protys/erp/"))
+  OPTIONAL { GRAPH ?g { ?process c:hasName ?processName } }
+  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }
+}
+ORDER BY ?g ?process ?resource
