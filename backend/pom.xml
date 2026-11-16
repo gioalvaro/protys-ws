@@ -23,7 +23,6 @@
         <jena.version>4.10.0</jena.version>
         <owlapi.version>5.1.20</owlapi.version>
         <hermit.version>1.4.5.519</hermit.version>
-        <carml.version>0.4.3</carml.version>
         <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
     </properties>
 
@@ -116,13 +115,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <!-- R2RML Processing - CARML Engine -->
-        <dependency>
-            <groupId>io.carml</groupId>
-            <artifactId>carml-engine</artifactId>
-            <version>${carml.version}</version>
         </dependency>
 
         <!-- Jackson XML Support -->
