@@ -1,0 +1,23 @@
+adempiere: /introspect devolvió 992 tablas
+  m_product                sql= 74 api= 74 OK
+  pp_product_planning      sql= 34 api= 34 OK
+  pp_product_bom           sql= 26 api= 26 OK
+  pp_product_bomline       sql= 32 api= 32 OK
+  ad_workflow              sql= 47 api= 47 OK
+  ad_wf_node               sql= 62 api= 62 OK
+  ad_wf_nodenext           sql= 16 api= 16 OK
+  s_resource               sql= 24 api= 24 OK
+  s_resourcetype           sql= 30 api= 30 OK
+  pp_order                 sql= 76 api= 76 OK
+  pp_order_node            sql= 70 api= 70 OK
+  pp_order_bomline         sql= 44 api= 44 OK
+odoo: /introspect devolvió 336 tablas
+  product_template         sql= 33 api= 33 OK
+  product_product          sql= 14 api= 14 OK
+  mrp_bom                  sql= 20 api= 20 OK
+  mrp_bom_line             sql= 14 api= 14 OK
+  mrp_routing_workcenter   sql= 16 api= 16 OK
+  mrp_workcenter           sql= 21 api= 21 OK
+  resource_resource        sql= 13 api= 13 OK
+  mrp_production           sql= 36 api= 36 OK
+  mrp_workorder            sql= 25 api= 25 OK
