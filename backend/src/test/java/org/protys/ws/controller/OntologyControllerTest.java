@@ -134,32 +134,34 @@ class OntologyControllerTest {
                 ))
                 .build();
 
-        when(ontologyService.getClassHierarchy(moduleId)).thenReturn(hierarchy);
+        when(ontologyService.getClassHierarchy(moduleId)).thenReturn(List.of(hierarchy));
 
-        // Act & Assert
+        // Act & Assert: la respuesta es una lista de raíces.
         mockMvc.perform(get("/api/ontology/modules/{id}/classes", moduleId)
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.localName", equalTo("ManufacturingEntity")))
-                .andExpect(jsonPath("$.propertyCount", equalTo(5)))
-                .andExpect(jsonPath("$.subclasses", hasSize(1)));
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].localName", equalTo("ManufacturingEntity")))
+                .andExpect(jsonPath("$[0].propertyCount", equalTo(5)))
+                .andExpect(jsonPath("$[0].subclasses", hasSize(1)));
 
         verify(ontologyService, times(1)).getClassHierarchy(moduleId);
     }
 
     /**
-     * Test GET /api/ontology/modules/{id}/classes returns 404 when hierarchy is null.
+     * Test GET /api/ontology/modules/{id}/classes returns an empty list for a module without classes.
      */
     @Test
-    void testGetClassHierarchyReturns404WhenNull() throws Exception {
+    void testGetClassHierarchyReturnsEmptyListWithoutClasses() throws Exception {
         // Arrange
         UUID moduleId = UUID.randomUUID();
-        when(ontologyService.getClassHierarchy(moduleId)).thenReturn(null);
+        when(ontologyService.getClassHierarchy(moduleId)).thenReturn(List.of());
 
         // Act & Assert
         mockMvc.perform(get("/api/ontology/modules/{id}/classes", moduleId)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(0)));
     }
 
     /**

@@ -38,6 +38,7 @@ import org.protys.ws.repository.ERPConnectorRepository;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -112,61 +113,108 @@ public class OntologyService {
     }
 
     /**
-     * Retrieves the class hierarchy for a module.
+     * Devuelve la jerarquía de clases de un módulo como lista de raíces.
+     *
+     * Raíz es toda clase nombrada del módulo sin superclase nombrada dentro del módulo: las
+     * superclases anónimas (restricciones) y las de otros módulos no cuentan. Así el árbol no
+     * depende de una única raíz ni pierde las clases definidas sólo por restricciones. Una clase con
+     * varias superclases aparece bajo cada una; los ciclos de subClassOf se cortan, y las clases que
+     * sólo forman parte de un ciclo se agregan como raíces para que ninguna quede afuera.
      *
      * @param moduleId the OntologyModule ID
-     * @return OntologyClassDTO tree root
-     * @throws ProtysFusekiException if retrieval fails
+     * @return raíces ordenadas por etiqueta (lista vacía si el módulo no tiene clases)
      */
     @Transactional(readOnly = true)
-    public OntologyClassDTO getClassHierarchy(UUID moduleId) {
+    public List<OntologyClassDTO> getClassHierarchy(UUID moduleId) {
         log.debug("Fetching class hierarchy for module: {}", moduleId);
 
         OntologyModule module = ontologyModuleRepository.findById(moduleId)
                 .orElseThrow(() -> new ProtysMappingException("Module not found: " + moduleId));
-
         Model model = fusekiService.getModel(module.getNamedGraph());
-        OntModel ontModel = ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM, model);
 
-        // Find root classes (no superclass)
-        List<OntClass> rootClasses = ontModel.listNamedClasses()
-                .filterDrop(OntClass::isAnon)
-                .filterKeep(cls -> !cls.listSuperClasses().hasNext())
-                .toList();
+        Set<Resource> classes = new HashSet<>();
+        for (Resource type : List.of(org.apache.jena.vocabulary.OWL.Class, RDFS.Class)) {
+            model.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, type)
+                    .filterKeep(Resource::isURIResource).forEachRemaining(classes::add);
+        }
+        classes.remove(org.apache.jena.vocabulary.OWL.Thing);
+        classes.remove(org.apache.jena.vocabulary.OWL.Nothing);
 
-        log.debug("Found {} root classes", rootClasses.size());
-
-        if (rootClasses.isEmpty()) {
-            return null;
+        Map<Resource, List<Resource>> children = new HashMap<>();
+        List<Resource> roots = new ArrayList<>();
+        for (Resource cls : classes) {
+            boolean hasNamedParent = false;
+            for (Resource parent : namedSuperClasses(model, cls)) {
+                if (classes.contains(parent) && !parent.equals(cls)) {
+                    children.computeIfAbsent(parent, k -> new ArrayList<>()).add(cls);
+                    hasNamedParent = true;
+                }
+            }
+            if (!hasNamedParent) roots.add(cls);
         }
 
-        // Build hierarchy from first root
-        OntologyClassDTO root = buildClassHierarchy(rootClasses.get(0), ontModel);
-        log.info("Class hierarchy built for module: {}", moduleId);
+        Comparator<Resource> byLabel = Comparator.comparing((Resource r) -> classLabel(model, r).toLowerCase())
+                .thenComparing(Resource::getURI);
+        roots.sort(byLabel);
+        children.values().forEach(list -> list.sort(byLabel));
 
-        return root;
+        Set<Resource> reached = new HashSet<>();
+        List<OntologyClassDTO> result = new ArrayList<>();
+        for (Resource root : roots) result.add(buildClassNode(model, root, children, new HashSet<>(), reached));
+        // Clases que sólo forman parte de un ciclo: no tienen raíz alcanzable.
+        List<Resource> unreached = classes.stream().filter(c -> !reached.contains(c)).sorted(byLabel).toList();
+        for (Resource cls : unreached) {
+            if (!reached.contains(cls)) result.add(buildClassNode(model, cls, children, new HashSet<>(), reached));
+        }
+
+        log.info("Class hierarchy built for module {}: {} classes, {} roots", moduleId, classes.size(), result.size());
+        return result;
     }
 
-    /**
-     * Recursively builds class hierarchy DTO from OntClass.
-     */
-    private OntologyClassDTO buildClassHierarchy(OntClass ontClass, OntModel ontModel) {
+    private List<Resource> namedSuperClasses(Model model, Resource cls) {
+        List<Resource> parents = new ArrayList<>();
+        model.listObjectsOfProperty(cls, RDFS.subClassOf).forEachRemaining(o -> {
+            if (o.isURIResource()) parents.add(o.asResource());
+        });
+        return parents;
+    }
+
+    private String classLabel(Model model, Resource cls) {
+        String fallback = null;
+        for (String lang : List.of("", "es", "en")) {
+            StmtIterator it = model.listStatements(cls, RDFS.label, (RDFNode) null);
+            while (it.hasNext()) {
+                RDFNode o = it.next().getObject();
+                if (o.isLiteral()) {
+                    if (o.asLiteral().getLanguage().equals(lang)) return o.asLiteral().getString();
+                    if (fallback == null) fallback = o.asLiteral().getString();
+                }
+            }
+        }
+        if (fallback != null) return fallback;
+        String local = cls.getLocalName();
+        return local != null && !local.isBlank() ? local : cls.getURI();
+    }
+
+    /** Arma el nodo y sus subclases; {@code path} corta ciclos, {@code reached} registra lo visitado. */
+    private OntologyClassDTO buildClassNode(Model model, Resource cls, Map<Resource, List<Resource>> children,
+                                            Set<Resource> path, Set<Resource> reached) {
+        reached.add(cls);
+        path.add(cls);
         OntologyClassDTO dto = new OntologyClassDTO();
-        dto.setUri(ontClass.getURI());
-        dto.setLocalName(ontClass.getLocalName());
-        dto.setLabel(ontClass.getLabel(null) != null ? ontClass.getLabel(null) : ontClass.getLocalName());
-
+        dto.setUri(cls.getURI());
+        dto.setLocalName(cls.getLocalName());
+        dto.setLabel(classLabel(model, cls));
+        Statement comment = cls.getProperty(RDFS.comment);
+        if (comment != null && comment.getObject().isLiteral()) dto.setDescription(comment.getString());
+        dto.setSuperClassUris(namedSuperClasses(model, cls).stream().map(Resource::getURI).sorted().toList());
+        dto.setPropertyCount(model.listSubjectsWithProperty(RDFS.domain, cls).toList().size());
         List<OntologyClassDTO> subclasses = new ArrayList<>();
-        ontClass.listSubClasses()
-                .filterDrop(OntClass::isAnon)
-                .forEach(subclass -> {
-                    OntologyClassDTO subDto = buildClassHierarchy(subclass, ontModel);
-                    subclasses.add(subDto);
-                });
-
+        for (Resource child : children.getOrDefault(cls, List.of())) {
+            if (!path.contains(child)) subclasses.add(buildClassNode(model, child, children, path, reached));
+        }
         dto.setSubclasses(subclasses);
-        dto.setPropertyCount((int) ontClass.listDeclaredProperties().toList().size());
-
+        path.remove(cls);
         return dto;
     }
 

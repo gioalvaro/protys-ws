@@ -68,17 +68,11 @@ public class OntologyController {
     }
 
     @GetMapping("/modules/{id}/classes")
-    @Operation(summary = "Get class hierarchy tree", description = "Retrieve the complete class hierarchy for a specific module")
-    public ResponseEntity<OntologyClassDTO> getClassHierarchy(@PathVariable UUID id) {
+    @Operation(summary = "Get class hierarchy", description = "Lista de clases raíz del módulo, cada una con sus subclases (campo subclasses). Lista vacía si el módulo no tiene clases.")
+    public ResponseEntity<List<OntologyClassDTO>> getClassHierarchy(@PathVariable UUID id) {
         log.info("Fetching class hierarchy for module: {}", id);
         try {
-            OntologyClassDTO hierarchy = ontologyService.getClassHierarchy(id);
-            if (hierarchy == null) {
-                log.warn("Class hierarchy not found for module: {}", id);
-                return ResponseEntity.notFound().build();
-            }
-            log.debug("Class hierarchy retrieved");
-            return ResponseEntity.ok(hierarchy);
+            return ResponseEntity.ok(ontologyService.getClassHierarchy(id));
         } catch (Exception e) {
             log.error("Error retrieving class hierarchy", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();

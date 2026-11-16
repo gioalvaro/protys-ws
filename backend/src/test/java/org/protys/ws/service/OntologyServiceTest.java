@@ -129,13 +129,83 @@ class OntologyServiceTest {
         when(fusekiService.getModel(module.getNamedGraph())).thenReturn(owlModel);
 
         // Act
-        OntologyClassDTO hierarchy = ontologyService.getClassHierarchy(moduleId);
+        List<OntologyClassDTO> hierarchy = ontologyService.getClassHierarchy(moduleId);
 
         // Assert
-        assertNotNull(hierarchy);
-        assertNotNull(hierarchy.getUri());
+        assertEquals(1, hierarchy.size());
+        assertEquals("http://w3id.org/protys/ontology/ManufacturingEntity", hierarchy.get(0).getUri());
+        assertEquals(List.of("http://w3id.org/protys/ontology/Product"),
+                hierarchy.get(0).getSubclasses().stream().map(OntologyClassDTO::getUri).toList());
 
         verify(fusekiService, times(1)).getModel(module.getNamedGraph());
+    }
+
+    private List<OntologyClassDTO> hierarchyOf(Model owlModel) {
+        UUID moduleId = UUID.randomUUID();
+        OntologyModule module = new OntologyModule();
+        module.setId(moduleId);
+        module.setNamedGraph("http://example.org/module#");
+        when(ontologyModuleRepository.findById(moduleId)).thenReturn(Optional.of(module));
+        when(fusekiService.getModel(module.getNamedGraph())).thenReturn(owlModel);
+        return ontologyService.getClassHierarchy(moduleId);
+    }
+
+    private static int countNodes(List<OntologyClassDTO> nodes) {
+        int n = 0;
+        for (OntologyClassDTO node : nodes) n += 1 + countNodes(node.getSubclasses());
+        return n;
+    }
+
+    /** Varias raíces: el árbol no depende de una única raíz (antes sólo se devolvía la primera). */
+    @Test
+    void classHierarchyReturnsEveryRoot() {
+        Model m = ModelFactory.createDefaultModel();
+        for (String c : List.of("A", "B", "C")) m.add(m.createResource("http://example.org/" + c), RDF.type, OWL.Class);
+        m.add(m.createResource("http://example.org/C"), RDFS.subClassOf, m.createResource("http://example.org/A"));
+        List<OntologyClassDTO> roots = hierarchyOf(m);
+        assertEquals(List.of("http://example.org/A", "http://example.org/B"), roots.stream().map(OntologyClassDTO::getUri).toList());
+        assertEquals(3, countNodes(roots));
+    }
+
+    /** Una clase cuya única superclase es una restricción, o una clase de otro módulo, es raíz. */
+    @Test
+    void classesWithOnlyAnonymousOrExternalSuperclassesAreRoots() {
+        Model m = ModelFactory.createDefaultModel();
+        Resource station = m.createResource("http://example.org/Station");
+        Resource product = m.createResource("http://example.org/Product");
+        Resource restriction = m.createResource();
+        m.add(station, RDF.type, OWL.Class).add(product, RDF.type, OWL.Class)
+                .add(restriction, RDF.type, OWL.Restriction).add(station, RDFS.subClassOf, restriction)
+                .add(product, RDFS.subClassOf, m.createResource("http://other.org/External"))
+                .add(product, RDFS.label, "Producto", "es").add(product, RDFS.comment, "Un producto");
+        List<OntologyClassDTO> roots = hierarchyOf(m);
+        assertEquals(2, roots.size());
+        OntologyClassDTO p = roots.stream().filter(r -> r.getUri().endsWith("Product")).findFirst().orElseThrow();
+        assertEquals("Producto", p.getLabel());
+        assertEquals("Un producto", p.getDescription());
+        assertEquals(List.of("http://other.org/External"), p.getSuperClassUris());
+    }
+
+    /** Un ciclo de subClassOf no hace recursión infinita y ninguna clase queda afuera. */
+    @Test
+    void subclassCyclesAreCutAndNoClassIsLost() {
+        Model m = ModelFactory.createDefaultModel();
+        Resource a = m.createResource("http://example.org/A"), b = m.createResource("http://example.org/B");
+        Resource root = m.createResource("http://example.org/Root"), x = m.createResource("http://example.org/X");
+        m.add(a, RDF.type, OWL.Class).add(b, RDF.type, OWL.Class).add(root, RDF.type, OWL.Class).add(x, RDF.type, OWL.Class)
+                .add(a, RDFS.subClassOf, b).add(b, RDFS.subClassOf, a)
+                .add(x, RDFS.subClassOf, root).add(root, RDFS.subClassOf, x).add(x, RDFS.subClassOf, m.createResource("http://example.org/Root"));
+        List<OntologyClassDTO> roots = hierarchyOf(m);
+        java.util.Set<String> seen = new java.util.HashSet<>();
+        java.util.ArrayDeque<OntologyClassDTO> todo = new java.util.ArrayDeque<>(roots);
+        while (!todo.isEmpty()) { OntologyClassDTO n = todo.pop(); seen.add(n.getUri()); todo.addAll(n.getSubclasses()); }
+        assertEquals(java.util.Set.of(a.getURI(), b.getURI(), root.getURI(), x.getURI()), seen);
+    }
+
+    /** Un módulo sin clases devuelve una lista vacía, no null. */
+    @Test
+    void moduleWithoutClassesReturnsEmptyList() {
+        assertEquals(List.of(), hierarchyOf(ModelFactory.createDefaultModel()));
     }
 
     /**
