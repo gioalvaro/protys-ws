@@ -121,3 +121,20 @@ m:WorkOrder rr:logicalTable [ rr:sqlQuery """
     rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{operation_id}" ] ] ;
   rr:predicateObjectMap [ rr:predicate i:executedBy ;
     rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/workcenter/{workcenter_id}" ] ] .
+
+# E10 Organización: compañía de Odoo (res_company). Clase core:Enterprise, que el Módulo de
+# Empresa refina.
+m:Company rr:logicalTable [ rr:sqlQuery """
+    SELECT id, name FROM res_company""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/company/{id}" ; rr:class c:Enterprise ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# R14 La empresa tiene el proceso: compañía de la lista de materiales (mrp_bom.company_id), sólo
+# para las listas con operaciones, que son las que se mapean como proceso (E4).
+m:CompanyProcess rr:logicalTable [ rr:sqlQuery """
+    SELECT b.id AS bom_id, b.company_id FROM mrp_bom b
+    WHERE b.type = 'normal' AND b.active AND b.company_id IS NOT NULL
+      AND EXISTS (SELECT 1 FROM mrp_routing_workcenter o WHERE o.bom_id = b.id AND o.active)""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/company/{company_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasProcess ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/process/{bom_id}" ] ] .

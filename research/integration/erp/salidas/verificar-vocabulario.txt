@@ -1,7 +1,9 @@
 ontologías cargadas: 11 archivos, 2554 triples
+OK      c:Enterprise                     clase          dominio=- rango=-
 OK      c:Process                        clase          dominio=- rango=-
 OK      c:Product                        clase          dominio=- rango=-
 OK      c:hasName                        prop. datos    dominio=- rango=http://www.w3.org/2001/XMLSchema#string
+OK      c:hasProcess                     prop. objeto   dominio=- rango=c:Process
 OK      c:produces                       prop. objeto   dominio=c:Process rango=c:Product
 OK      i:Lot                            clase          dominio=- rango=-
 OK      i:ManufacturingFacility          clase          dominio=- rango=-
@@ -20,6 +22,7 @@ OK      i:includesActivity               prop. objeto   dominio=i:ProcessPlan ra
 OK      i:operationSequence              prop. datos    dominio=- rango=http://www.w3.org/2001/XMLSchema#integer
 OK      i:partOfProcess                  prop. objeto   dominio=i:ProcessOperation rango=i:ManufacturingProcess
 OK      i:precedes                       prop. objeto   dominio=- rango=-
+OK      i:producesQuantity               prop. datos    dominio=i:Lot rango=http://www.w3.org/2001/XMLSchema#decimal
 OK      i:requiresResource               prop. objeto   dominio=i:ProcessOperation rango=i:ManufacturingResource
 OK      prod:Product                     clase          dominio=- rango=-
 OK      prod:Production_Component        clase          dominio=- rango=-

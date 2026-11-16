@@ -131,3 +131,12 @@ m:WorkOrder rr:logicalTable [ rr:sqlQuery """
     rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/operation/{ad_wf_node_id}" ] ] ;
   rr:predicateObjectMap [ rr:predicate i:executedBy ;
     rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/resource/{s_resource_id}" ] ] .
+
+# E10 Organización: AD_Org del cliente GardenWorld (ad_client_id = 11; la organización comodín
+# "*", id 0, es del cliente de sistema y queda afuera). Clase core:Enterprise, que el Módulo de
+# Empresa refina. Sin relación con procesos: los flujos de manufactura de la demo están en la
+# organización "*" (ad_org_id = 0), es decir, no pertenecen a ninguna organización concreta.
+m:Organization rr:logicalTable [ rr:sqlQuery """
+    SELECT ad_org_id, name FROM adempiere.ad_org WHERE ad_client_id = 11""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/organization/{ad_org_id}" ; rr:class c:Enterprise ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .

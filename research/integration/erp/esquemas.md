@@ -31,6 +31,8 @@ vistas (1177 en total, 27 858 columnas). Odoo, esquema `public`, 336 tablas base
 | Orden de producción | `pp_order` | `pp_order_id`, `documentno`, `docstatus`, `m_product_id`, `pp_product_bom_id`, `ad_workflow_id`, `s_resource_id`, `qtyordered` | 2 | 2 (en borrador, `DR`) |
 | Operación de la orden | `pp_order_node` | `pp_order_node_id`, `pp_order_id`, `ad_wf_node_id`, `s_resource_id` | 2 | 2 |
 | Componente de la orden | `pp_order_bomline` | `pp_order_id`, `m_product_id`, `qtyrequired` | 4 | 4 |
+| Organización (revisión) | `ad_org` | `ad_org_id`, `ad_client_id`, `name` | 10 en los clientes 0 y 11 | 9 de GardenWorld (HQ, Store Central, Furniture, Fertilizer, cuatro Store y la sumaria Stores); la `*` (id 0) es del sistema |
+| Almacén (revisión, no mapeado) | `m_warehouse` | `m_warehouse_id`, `ad_org_id`, `name` | 11 de GardenWorld | — |
 
 Flujos de manufactura de la demo: *Patio Chair* (5 operaciones en secuencia: Assembly → Paint →
 Drying → Chrome Process → Inspection Process), *Lawn Fertilizer* (Mixed → Inspection the Mixed),
@@ -49,6 +51,9 @@ Las dos órdenes (8000 y 8001) fabrican *Fertilizer #50* y *Fertilizer #70* con 
 | Centro de trabajo | `mrp_workcenter` + `resource_resource` | `id`, `resource_id`, `name` (de `resource_resource`), `code` | 3 |
 | Orden de producción | `mrp_production` | `id`, `name`, `state`, `product_id`, `bom_id`, `product_qty` | 4 (1 borrador, 2 confirmadas, 1 terminada) |
 | Orden de trabajo | `mrp_workorder` | `id`, `production_id`, `operation_id`, `workcenter_id`, `name` | 3 |
+| Compañía (revisión) | `res_company` | `id`, `name` | 2 (San Francisco y Chicago) |
+| Compañía de la lista | `mrp_bom.company_id` | `company_id` | las 8 listas en la compañía 1 |
+| Almacén (revisión, no mapeado) | `stock_warehouse` | `id`, `company_id`, `code`, `name` | 2 |
 
 Listas con ruta: *Table* (Assembly), *Table Top* (Manual Assembly) y *Drawer* `SEC-ASSEM`
 (Packing → Testing → Long time assembly). Las otras cinco listas no tienen operaciones.
@@ -62,3 +67,4 @@ Listas con ruta: *Table* (Assembly), *Table Top* (Manual Assembly) y *Drawer* `S
 - Las órdenes de la demo no tienen lotes de producto terminado asociados.
 - En Odoo, `product_template.name` es `jsonb` (traducible); se lee la clave `en_US`. Los demás
   nombres usados son `character varying`.
+- **Revisión (16-11-2026).** Se agregaron `ad_org`, `m_warehouse`, `res_company` y `stock_warehouse` para las filas Organización y Almacén de las Tablas 5.8 y 5.9. Las columnas usadas aparecen en la salida de `/introspect` de la corrida (`salidas/e2e/05-introspect-*.json`); las filas se contaron por SQL sobre las bases de demostración. Los flujos de manufactura de ADempiere tienen `ad_org_id = 0` (organización `*`).
