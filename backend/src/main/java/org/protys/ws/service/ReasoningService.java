@@ -32,6 +32,33 @@ public class ReasoningService {
     this.root = Path.of(root).toAbsolutePath().normalize();
   }
 
+  /**
+   * Carpeta opcional donde se conserva una copia de cada corrida del razonador (entrada cruda,
+   * entrada preparada por las construcciones previas, deducciones). Vacía por defecto: no se
+   * conserva nada. Sirve para dejar evidencia de qué entró al razonador, no cambia el resultado.
+   */
+  private Path evidenceDir;
+
+  @Value("${protys.reasoning.evidence-dir:}")
+  void setEvidenceDir(String evidenceDir) {
+    this.evidenceDir = evidenceDir == null || evidenceDir.isBlank() ? null : Path.of(evidenceDir).toAbsolutePath().normalize();
+  }
+
+  /** Copia la carpeta de trabajo del razonador a la carpeta de evidencia, si está configurada. */
+  private void keepEvidence(Path dir) {
+    if (evidenceDir == null || dir == null || !Files.isDirectory(dir)) return;
+    Path target = evidenceDir.resolve(System.currentTimeMillis() + "-" + dir.getFileName());
+    try (var walk = Files.walk(dir)) {
+      for (Path source : walk.sorted().toList()) {
+        Path copy = target.resolve(dir.relativize(source).toString());
+        if (Files.isDirectory(source)) Files.createDirectories(copy);
+        else Files.copy(source, copy, StandardCopyOption.REPLACE_EXISTING);
+      }
+    } catch (IOException e) {
+      // La evidencia es accesoria: si no se puede copiar, el razonamiento no falla.
+    }
+  }
+
   @Getter
   @Builder(toBuilder = true)
   public static class ClassificationResult {
@@ -155,6 +182,7 @@ public class ReasoningService {
       return result(
           ModelFactory.createDefaultModel(), "NOT_EVALUATED", start, false, e.toString(), 0);
     } finally {
+      keepEvidence(dir);
       if (dir != null)
         try (var stream = Files.walk(dir)) {
           for (Path p : stream.sorted(Comparator.reverseOrder()).toList()) Files.deleteIfExists(p);
