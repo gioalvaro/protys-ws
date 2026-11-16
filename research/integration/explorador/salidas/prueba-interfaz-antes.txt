@@ -1,0 +1,60 @@
+    [0m [90m 61 |[39m   expect(byText([32m'span'[39m[33m,[39m [32m'Proceso de manufactura'[39m))[33m.[39mtoBeUndefined()[33m;[39m
+     [90m 62 |[39m   [36mconst[39m processRow [33m=[39m byText([32m'span'[39m[33m,[39m [32m'Process'[39m)[33m.[39mparentElement[33m;[39m
+    [31m[1m>[22m[39m[90m 63 |[39m   [36mawait[39m act([36masync[39m () [33m=>[39m { processRow[33m.[39mquerySelector([32m'button'[39m)[33m.[39mclick()[33m;[39m })[33m;[39m
+     [90m    |[39m                                                             [31m[1m^[22m[39m
+     [90m 64 |[39m   expect(byText([32m'span'[39m[33m,[39m [32m'Proceso de manufactura'[39m))[33m.[39mtoBeDefined()[33m;[39m
+     [90m 65 |[39m })[33m;[39m
+     [90m 66 |[39m[0m
+
+      at src/components/explorer/OntologyExplorer.test.jsx:63:61
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at Object.<anonymous> (src/components/explorer/OntologyExplorer.test.jsx:63:12)
+
+  ● selecting a class shows the class detail, not the individual detail
+
+    TypeError: Cannot read properties of null (reading 'click')
+
+    [0m [90m 69 |[39m   [36mawait[39m openIntegratedCatalog()[33m;[39m
+     [90m 70 |[39m   [36mconst[39m processRow [33m=[39m byText([32m'span'[39m[33m,[39m [32m'Process'[39m)[33m.[39mparentElement[33m;[39m
+    [31m[1m>[22m[39m[90m 71 |[39m   [36mawait[39m act([36masync[39m () [33m=>[39m { processRow[33m.[39mquerySelector([32m'button'[39m)[33m.[39mclick()[33m;[39m })[33m;[39m
+     [90m    |[39m                                                             [31m[1m^[22m[39m
+     [90m 72 |[39m   [36mawait[39m act([36masync[39m () [33m=>[39m { byText([32m'span'[39m[33m,[39m [32m'Proceso de manufactura'[39m)[33m.[39mclick()[33m;[39m })[33m;[39m
+     [90m 73 |[39m   [36mawait[39m settle()[33m;[39m
+     [90m 74 |[39m   expect(byText([32m'h2'[39m[33m,[39m [32m'Proceso de manufactura'[39m))[33m.[39mtoBeDefined()[33m;[39m[0m
+
+      at src/components/explorer/OntologyExplorer.test.jsx:71:61
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at Object.<anonymous> (src/components/explorer/OntologyExplorer.test.jsx:71:12)
+
+  ● a single-object response (the contract before the fix) does not break the explorer
+
+    TypeError: data.filter is not a function
+
+    [0m [90m 26 |[39m   }[33m;[39m
+     [90m 27 |[39m
+    [31m[1m>[22m[39m[90m 28 |[39m   [36mconst[39m visibleData [33m=[39m data[33m?[39m[33m.[39mfilter(node [33m=>[39m filterTree(node[33m,[39m searchQuery)) [33m||[39m [][33m;[39m
+     [90m    |[39m                             [31m[1m^[22m[39m
+     [90m 29 |[39m
+     [90m 30 |[39m   [36mif[39m (loading) {
+     [90m 31 |[39m     [36mreturn[39m ([0m
+
+      at ClassTree (src/components/explorer/ClassTree.jsx:28:29)
+      at renderWithHooks (node_modules/react-dom/cjs/react-dom.development.js:15486:18)
+      at updateFunctionComponent (node_modules/react-dom/cjs/react-dom.development.js:19617:20)
+      at beginWork (node_modules/react-dom/cjs/react-dom.development.js:21640:16)
+      at beginWork$1 (node_modules/react-dom/cjs/react-dom.development.js:27465:14)
+      at performUnitOfWork (node_modules/react-dom/cjs/react-dom.development.js:26599:12)
+      at workLoopSync (node_modules/react-dom/cjs/react-dom.development.js:26505:5)
+      at renderRootSync (node_modules/react-dom/cjs/react-dom.development.js:26473:7)
+      at recoverFromConcurrentError (node_modules/react-dom/cjs/react-dom.development.js:25889:20)
+      at performSyncWorkOnRoot (node_modules/react-dom/cjs/react-dom.development.js:26135:20)
+      at flushSyncCallbacks (node_modules/react-dom/cjs/react-dom.development.js:12042:22)
+      at flushActQueue (node_modules/react/cjs/react.development.js:2667:24)
+      at recursivelyFlushAsyncActWork (node_modules/react/cjs/react.development.js:2633:9)
+      at node_modules/react/cjs/react.development.js:2545:15
+
+Test Suites: 1 failed, 1 total
+Tests:       3 failed, 1 passed, 4 total
+Snapshots:   0 total
+Time:        1.065 s
+Ran all test suites matching /src\/components\/explorer/i.

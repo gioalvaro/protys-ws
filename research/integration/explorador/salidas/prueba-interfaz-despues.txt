@@ -1,0 +1,11 @@
+PASS src/components/explorer/OntologyExplorer.test.jsx
+  ✓ shows every root of the hierarchy returned by the API (48 ms)
+  ✓ expands a class and shows its subclasses from the "subclasses" field (13 ms)
+  ✓ selecting a class shows the class detail, not the individual detail (15 ms)
+  ✓ a single-object response (the contract before the fix) does not break the explorer (8 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        0.943 s, estimated 1 s
+Ran all test suites matching /src\/components\/explorer/i.
