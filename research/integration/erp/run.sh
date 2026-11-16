@@ -41,6 +41,30 @@ paso() { # paso <nombre> <APROBADO|FALLADO> <detalle>
   echo ">>> [$2] $1 — $3"
 }
 json() { python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print($2)" "$1"; }
+consulta() { # consulta <archivo.rq> <salida.json>
+  python3 - "$1" "$2" "$API" <<'PY'
+import json, sys, urllib.request
+q = open(sys.argv[1], encoding="utf-8").read()
+req = urllib.request.Request(sys.argv[3] + "/sparql/execute", data=json.dumps({"query": q}).encode(),
+                             headers={"Content-Type": "application/json"})
+body = urllib.request.urlopen(req, timeout=120).read()
+open(sys.argv[2], "wb").write(body)
+PY
+}
+fuentes() { # cuántas filas por grafo ERP
+  python3 - "$1" <<'PY'
+import json, sys, collections
+d = json.load(open(sys.argv[1]))
+rows = ((d.get("sparqlJson") or {}).get("results") or {}).get("bindings") or []
+c = collections.Counter(r.get("g", {}).get("value", "").rsplit("/", 1)[-1] for r in rows)
+print(len(rows), " ".join(f"{k}={v}" for k, v in sorted(c.items())))
+PY
+}
+catalogo() { # catalogo <dir_salida>: las 21 consultas del catálogo, tal cual
+  mkdir -p "$1"
+  for f in "$REPO"/research/model/queries/Q*.sparql; do consulta "$f" "$1/$(basename "$f" .sparql).json"; done
+}
+EVID_BACKEND=/tmp/protys-evidencia-razonamiento
 
 echo "== PROTYS-WS, Fase 1, prueba de punta a punta — $(date -u +%FT%TZ)"
 echo "== proyecto Compose: $COMPOSE_PROJECT_NAME, backend en 127.0.0.1:$PROTYS_BACKEND_PORT"
@@ -81,6 +105,14 @@ COMPOSE_PROJECT_NAME="$COMPOSE_PROJECT_NAME" "$SCRIPTS/huella-esquema.sh" adempi
 COMPOSE_PROJECT_NAME="$COMPOSE_PROJECT_NAME" "$SCRIPTS/huella-esquema.sh" odoo >> "$OUT/03-huella-antes.txt"
 paso "3 huella de esquemas (antes)" APROBADO "$(tr '\n' ' ' < "$OUT/03-huella-antes.txt" | cut -c1-60)…"
 
+# ---------------------------------------------------------------- 3b. línea de base sin ERP
+# Antes de materializar: la red sola (sin cuerpo, comportamiento anterior al parámetro dataGraphs)
+# y las 21 consultas del catálogo sobre ese estado.
+curl -sS -X POST "$API/alignment/reasoning/execute" -o "$OUT/03b-razonamiento-sin-erp.json"
+base_in=$(json "$OUT/03b-razonamiento-sin-erp.json" "d.get('inputTripleCount')" 2>/dev/null || echo 0)
+catalogo "$OUT/03b-catalogo-sin-erp"
+paso "3b línea de base sin ERP" APROBADO "razonamiento $(json "$OUT/03b-razonamiento-sin-erp.json" "d.get('status')" 2>/dev/null), entrada=$base_in; catálogo en 03b-catalogo-sin-erp/"
+
 # ---------------------------------------------------------------- 4–6. conectores
 for erp in adempiere odoo; do
   case $erp in
@@ -119,9 +151,9 @@ for erp in adempiere odoo; do
 done
 
 # ---------------------------------------------------------------- 7. razonamiento
-# Línea de base: la red sola (sin cuerpo, comportamiento anterior al parámetro dataGraphs).
-curl -sS -X POST "$API/alignment/reasoning/execute" -o "$OUT/07a-razonamiento-sin-erp.json"
-base_in=$(json "$OUT/07a-razonamiento-sin-erp.json" "d.get('inputTripleCount')" 2>/dev/null || echo 0)
+# El backend conserva la carpeta de trabajo del razonador; se vacía para quedarse sólo con esta corrida.
+BACKEND_C=$("${COMPOSE[@]}" ps -q protys-backend)
+docker exec "$BACKEND_C" rm -rf "$EVID_BACKEND"
 code=$(curl -sS -X POST "$API/alignment/reasoning/execute" -H 'Content-Type: application/json' \
   -d "{\"dataGraphs\":[\"http://w3id.org/protys/erp/adempiere\",\"http://w3id.org/protys/erp/odoo\"]}" -o "$OUT/07-razonamiento.json" -w '%{http_code}')
 st=$(json "$OUT/07-razonamiento.json" "d.get('status')" 2>/dev/null)
@@ -142,26 +174,25 @@ else
   paso "7 grafos ERP incluidos en el razonamiento" FALLADO "entrada $base_in → $inp, se esperaba +$erp_tr"
 fi
 
+# Cadena R07 → R24 sobre la entrada preparada de ESTA corrida (no sobre el grafo de inferidos).
+rm -rf "$OUT/07-evidencia-razonamiento"; mkdir -p "$OUT/07-evidencia-razonamiento"
+corrida=$(docker exec "$BACKEND_C" sh -c "ls -1 $EVID_BACKEND | tail -1")
+if [ -n "$corrida" ]; then
+  EV="$OUT/07-evidencia-razonamiento"
+  for f in request.json out/raw-input.owl out/prepared-input.ttl out/swrl/deductions.owl out/swrl/swrl.json out/validation.json out/validation-after-swrl.json; do
+    mkdir -p "$EV/$(dirname "$f")"
+    docker cp "$BACKEND_C:$EVID_BACKEND/$corrida/$f" "$EV/$f" > /dev/null 2>&1
+  done
+  python3 "$SCRIPTS/verificar-brecha.py" "$EV" > "$OUT/07-brecha-cobertura.txt" 2>&1
+  rc=$?
+  gzip -9 -f "$EV/out/raw-input.owl" "$EV/out/prepared-input.ttl"
+  [ $rc = 0 ] && paso "7 cadena R07 → R24 (brecha de cobertura)" APROBADO "$(grep -c '^\[OK\]' "$OUT/07-brecha-cobertura.txt") controles OK; ver 07-brecha-cobertura.txt" \
+              || paso "7 cadena R07 → R24 (brecha de cobertura)" FALLADO "ver 07-brecha-cobertura.txt"
+else
+  paso "7 cadena R07 → R24 (brecha de cobertura)" FALLADO "el backend no dejó la carpeta de la corrida"
+fi
+
 # ---------------------------------------------------------------- 8. consultas
-consulta() { # consulta <archivo.rq> <salida.json>
-  python3 - "$1" "$2" "$API" <<'PY'
-import json, sys, urllib.request
-q = open(sys.argv[1], encoding="utf-8").read()
-req = urllib.request.Request(sys.argv[3] + "/sparql/execute", data=json.dumps({"query": q}).encode(),
-                             headers={"Content-Type": "application/json"})
-body = urllib.request.urlopen(req, timeout=120).read()
-open(sys.argv[2], "wb").write(body)
-PY
-}
-fuentes() { # cuántas filas por grafo ERP
-  python3 - "$1" <<'PY'
-import json, sys, collections
-d = json.load(open(sys.argv[1]))
-rows = ((d.get("sparqlJson") or {}).get("results") or {}).get("bindings") or []
-c = collections.Counter(r.get("g", {}).get("value", "").rsplit("/", 1)[-1] for r in rows)
-print(len(rows), " ".join(f"{k}={v}" for k, v in sorted(c.items())))
-PY
-}
 # P1 también tal cual la consulta canónica Q04, sin cambios.
 consulta "$REPO/research/model/queries/Q04.sparql" "$OUT/08-Q04-canonica.json"
 q04_erp=$(python3 -c "import json,sys; d=json.load(open(sys.argv[1])); print(sum(1 for r in d['sparqlJson']['results']['bindings'] if '/protys/erp/' in r.get('process',{}).get('value','')))" "$OUT/08-Q04-canonica.json")
@@ -180,6 +211,14 @@ for q in P1 P2 P3 P4 P5 CRUZADA; do
     paso "8 consulta $q" FALLADO "respuesta vacía"
   fi
 done
+# Las 21 consultas del catálogo, ahora con los grafos ERP, contra la línea de base del paso 3b.
+catalogo "$OUT/08-catalogo-con-erp"
+if python3 "$SCRIPTS/diferencias-catalogo.py" "$OUT/03b-catalogo-sin-erp" "$OUT/08-catalogo-con-erp" \
+     "$OUT/08-catalogo-diferencias.md" > "$OUT/08-catalogo-diferencias.txt" 2>&1; then
+  paso "8 catálogo Q01–Q21 sin y con ERP" APROBADO "$(grep -c '^| Q' "$OUT/08-catalogo-diferencias.txt") consultas; ver 08-catalogo-diferencias.md"
+else
+  paso "8 catálogo Q01–Q21 sin y con ERP" FALLADO "ver 08-catalogo-diferencias.txt"
+fi
 consulta "$QUERIES/INFERENCIA.rq" "$OUT/08-INFERENCIA.json"
 ninf=$(json "$OUT/08-INFERENCIA.json" "len(d['sparqlJson']['results']['bindings'])" 2>/dev/null || echo 0)
 paso "8 tipos inferidos sobre individuos ERP" APROBADO "$ninf tipos deducidos no afirmados (informativo)"

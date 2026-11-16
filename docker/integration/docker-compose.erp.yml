@@ -89,8 +89,11 @@ services:
         condition: service_completed_successfully
     networks: [protys-network]
 
-  # Agrega al backend de la plataforma los mapeos R2RML de los dos ERP (sólo lectura).
+  # Agrega al backend de la plataforma los mapeos R2RML de los dos ERP (sólo lectura) y le pide
+  # conservar cada corrida del razonador (entrada preparada incluida) como evidencia.
   protys-backend:
+    environment:
+      PROTYS_REASONING_EVIDENCEDIR: /tmp/protys-evidencia-razonamiento
     volumes:
       - ./integration/mappings:/opt/protys/integration/mappings:ro
 

@@ -30,11 +30,12 @@ Fijadas en `docker/integration/docker-compose.erp.yml`. La corrida registra las 
 |---|---|
 | `esquemas.md` | tablas reales de manufactura de cada ERP, columnas usadas y filas |
 | `correspondencias.md` | tabla ERP → clases y propiedades de PROTYS(KB) |
+| `tablas-tesis-5.8-5.9.md` | Tablas 5.8 y 5.9 de la tesis y su contraste con lo mapeado |
 | `decision-mapeo.md` | por qué un procesador R2RML propio (a1) |
 | `queries/` | P1–P5, la consulta conjunta y la de tipos inferidos, en SPARQL |
-| `scripts/` | relevamiento de esquemas, huella de esquema, verificación de vocabulario |
+| `scripts/` | relevamiento de esquemas, huella de esquema, verificación de vocabulario, cadena R07 → R24 (`verificar-brecha.py`), catálogo sin y con ERP (`diferencias-catalogo.py`) |
 | `salidas/` | salidas crudas: relevamiento SQL, `/introspect`, vocabulario |
-| `salidas/e2e/` | salida cruda de la última corrida de `run.sh`, numerada por paso |
+| `salidas/e2e/` | salida cruda de la última corrida de `run.sh`, numerada por paso; incluye la entrada preparada del razonador (`07-evidencia-razonamiento/`) y el cuadro del catálogo (`08-catalogo-diferencias.md`) |
 | `salidas/w3c-r2rml-report.txt` | resultado por caso de la suite W3C R2RML |
 | `salidas/pruebas-backend.txt` | resumen de la suite de backend |
 | `INFORME.md` | informe de la fase |

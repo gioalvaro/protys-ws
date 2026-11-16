@@ -1,0 +1,37 @@
+== P1.rq
+  OK    c:hasName                  core-concepts.owl
+  OK    i:ProcessOperation         iso15531-module.owl
+  OK    i:hasInput                 iso15531-module.owl
+  OK    i:partOfProcess            iso15531-module.owl
+  OK    i:requiresResource         iso15531-module.owl
+== P2.rq
+  OK    c:hasName                  core-concepts.owl
+  OK    i:ProcessPlan              iso15531-module.owl
+  OK    i:assignsResource          iso15531-module.owl
+  OK    i:hasInput                 iso15531-module.owl
+  OK    i:includesActivity         iso15531-module.owl
+  OK    i:requiresResource         iso15531-module.owl
+== P3.rq
+  OK    c:hasName                  core-concepts.owl
+  OK    c:produces                 core-concepts.owl
+  OK    i:partOfProcess            iso15531-module.owl
+  OK    i:requiresResource         iso15531-module.owl
+== P4.rq
+  OK    c:hasName                  core-concepts.owl
+  OK    i:ProcessPlan              iso15531-module.owl
+  OK    i:duration                 iso15531-module.owl
+  OK    i:includesActivity         iso15531-module.owl
+  OK    i:operationSequence        iso15531-module.owl
+== P5.rq
+  OK    c:hasName                  core-concepts.owl
+  OK    c:produces                 core-concepts.owl
+  OK    i:ProcessPlan              iso15531-module.owl
+  OK    i:includesActivity         iso15531-module.owl
+  OK    i:partOfProcess            iso15531-module.owl
+== CRUZADA.rq
+  OK    c:hasName                  core-concepts.owl
+  OK    c:produces                 core-concepts.owl
+  OK    i:ManufacturingResource    iso15531-module.owl
+  OK    i:partOfProcess            iso15531-module.owl
+  OK    i:requiresResource         iso15531-module.owl
+resultado: APROBADO (sólo vocabulario de los módulos de ontologies/)
