@@ -1,0 +1,17 @@
+Reproducción del error del explorador de clases — 2026-11-16, antes de corregir
+Plataforma: proyecto Compose "protys", backend con el código del commit c720d11 (imagen protys-backend:maintenance,
+idéntica a la de la corrida de la Fase 1), interfaz construida del mismo código. Puertos: backend 127.0.0.1:18080,
+interfaz 127.0.0.1:18081 (el 5432 del host lo ocupa otro proyecto).
+Módulo: Canonical_Catalog_Integrated (id 3695f5cf-85a4-42fc-a801-fcd8030faac9), el catálogo integrado.
+
+1) API
+   curl 127.0.0.1:18080/api/ontology/modules/3695f5cf-85a4-42fc-a801-fcd8030faac9/classes  → antes-api-classes.json
+   HTTP 200. Devuelve UN objeto (no una lista), con hijos en "subclasses": raíz resource#Role, 1 nodo en total.
+   El grafo del módulo tiene 128 clases nombradas (SPARQL COUNT DISTINCT ?c a owl:Class, isIRI).
+
+2) Interfaz (Chrome, http://127.0.0.1:18081/explorer, elegir Canonical_Catalog_Integrated)
+   La página queda en blanco (antes-pantalla-en-blanco.jpg). Consola:
+   [EXCEPTION] TypeError: t.filter is not a function
+       at EN (http://127.0.0.1:18081/static/js/main.27711b61.js:2:690106)
+       at va ... (React)
+   EN es ClassTree: `data?.filter(...)` sobre el objeto que devuelve la API.
