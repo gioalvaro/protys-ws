@@ -154,9 +154,9 @@ public class ERPController {
     // Materialization Endpoint
 
     @PostMapping("/connectors/{id}/materialize")
-    @Operation(summary = "Execute legacy SQL materialization", description = "Limited XML SQL adapter, not general R2RML. Empty results preserve the existing graph and return EMPTY")
+    @Operation(summary = "Materialize ERP data", description = "Runs the connector mapping (R2RML in Turtle, or the legacy XML SQL adapter) over a read-only JDBC connection. Empty results preserve the existing graph and return EMPTY")
     public ResponseEntity<?> materializeData(@PathVariable UUID id) {
-        log.info("Starting legacy SQL materialization for connector: {}", id);
+        log.info("Starting materialization for connector: {}", id);
         try {
             MaterializationResult result = erpConnectorService.materialize(id);
             if ("EMPTY".equals(result.getStatus())) return ResponseEntity.ok(result);
@@ -166,7 +166,7 @@ public class ERPController {
             return ResponseEntity.unprocessableEntity().body(Map.of(
                     "code", unsupported ? "UNSUPPORTED_MAPPING" : "MAPPING_UNAVAILABLE",
                     "message", unsupported
-                            ? "Only the limited legacy XML SQL mapping is supported; general R2RML is not supported. Existing graph preserved."
+                            ? "The mapping is invalid or uses an unsupported feature: " + e.getMessage().substring("UNSUPPORTED_MAPPING".length()).replaceFirst("^:\\s*", "") + ". Existing graph preserved."
                             : "The configured mapping cannot be read. Existing graph preserved."));
         } catch (ERPMaterializationException e) {
             return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(Map.of(

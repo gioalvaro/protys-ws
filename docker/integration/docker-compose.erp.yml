@@ -89,6 +89,11 @@ services:
         condition: service_completed_successfully
     networks: [protys-network]
 
+  # Agrega al backend de la plataforma los mapeos R2RML de los dos ERP (sólo lectura).
+  protys-backend:
+    volumes:
+      - ./integration/mappings:/opt/protys/integration/mappings:ro
+
 volumes:
   adempiere-db-data:
   odoo-db-data:

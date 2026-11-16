@@ -83,12 +83,9 @@ public class ERPConnectorService {
         ERPConnector connector = erpConnectorRepository.findById(connectorId)
                 .orElseThrow(() -> new ProtysFusekiException("Connector not found: " + connectorId));
 
-        try {
-            java.sql.DriverManager.getConnection(
-                    connector.getJdbcUrl(),
-                    connector.getUsername(),
-                    connector.getPassword()
-            ).close();
+        try (Connection connection = java.sql.DriverManager.getConnection(
+                connector.getJdbcUrl(), connector.getUsername(), connector.getPassword())) {
+            connection.setReadOnly(true);
 
             log.info("Connection test successful for connector: {}", connectorId);
             return true;
@@ -146,8 +143,10 @@ public class ERPConnectorService {
     }
 
     /**
-     * Executes the limited legacy XML SQL adapter, not a general R2RML processor.
-     * Unsupported mappings, failed SQL execution and empty results never replace an existing graph.
+     * Materializa el conector en su grafo nombrado. Acepta dos formatos de mapeo:
+     * R2RML en Turtle (procesado por {@link R2RMLProcessor}) y el adaptador XML heredado
+     * ({@code <mapping>} con {@code rr:sqlQuery}). La conexión JDBC es de sólo lectura.
+     * Mapeos no soportados, SQL fallido y resultados vacíos nunca reemplazan un grafo existente.
      */
     @Transactional
     public MaterializationResult materialize(UUID connectorId) {
@@ -163,9 +162,12 @@ public class ERPConnectorService {
             ERPConnector connector = erpConnectorRepository.findById(connectorId)
                     .orElseThrow(() -> new ProtysFusekiException("Connector not found: " + connectorId));
 
-            // Validate the complete supported structure before opening JDBC or touching Fuseki.
-            List<String> sqlQueries = extractSqlQueries(loadR2RMLMapping(connector));
-            result.setMappingsProcessed(sqlQueries.size());
+            // Validate the complete mapping before opening JDBC or touching Fuseki.
+            String mappingContent = loadR2RMLMapping(connector);
+            boolean legacy = isLegacyXmlMapping(mappingContent);
+            List<String> sqlQueries = legacy ? extractSqlQueries(mappingContent) : List.of();
+            R2RMLProcessor.Mapping r2rml = legacy ? null : parseR2RML(mappingContent, connector);
+            result.setMappingsProcessed(legacy ? sqlQueries.size() : r2rml.size());
             result.setNamedGraph(connector.getNamedGraph());
 
             Model rdfModel = ModelFactory.createDefaultModel();
@@ -176,7 +178,14 @@ public class ERPConnectorService {
             try (Connection dbConnection = java.sql.DriverManager.getConnection(
                     connector.getJdbcUrl(), connector.getUsername(), connector.getPassword())) {
                 dbConnection.setReadOnly(true);
-                executeMappingAndGenerateTriples(dbConnection, connector, sqlQueries, rdfModel);
+                if (legacy) {
+                    executeMappingAndGenerateTriples(dbConnection, connector, sqlQueries, rdfModel);
+                } else {
+                    // Sin mapas de grafo con nombre (validado en parseR2RML): todo cae en el grafo por defecto,
+                    // que se publica en el grafo nombrado del conector.
+                    rdfModel.add(ModelFactory.createModelForGraph(
+                            R2RMLProcessor.execute(r2rml, dbConnection).getDefaultGraph()));
+                }
             }
             long tripleCount = rdfModel.size();
             result.setTripleCount(tripleCount);
@@ -216,6 +225,11 @@ public class ERPConnectorService {
                 throw new ERPMaterializationException(publication.operationId(), publication.outcome().name());
             }
             if (e instanceof ProtysMappingException mapping) throw mapping;
+            if (e instanceof R2RMLProcessor.R2RMLDataException data) {
+                // Mensaje propio del procesador: no incluye valores de filas ni datos de conexión.
+                log.warn("Materialization failed for connector {} ({})", connectorId, data.getMessage());
+                throw new ProtysFusekiException("ERP materialization failed: " + data.getMessage());
+            }
             // JDBC and database exceptions can echo connection credentials.
             log.warn("Materialization failed for connector {} ({})", connectorId, e.getClass().getSimpleName());
             throw new ProtysFusekiException("ERP materialization failed; no successful result was recorded");
@@ -324,6 +338,25 @@ public class ERPConnectorService {
         } catch (Exception e) {
             throw unsupportedMapping();
         }
+    }
+
+    /** El formato XML heredado empieza con declaración XML, DOCTYPE o el elemento raíz {@code <mapping>}. */
+    static boolean isLegacyXmlMapping(String content) {
+        String head = content.stripLeading();
+        return head.startsWith("<?xml") || head.startsWith("<!") || head.startsWith("<mapping");
+    }
+
+    /**
+     * Valida un mapeo R2RML en Turtle. Las IRIs relativas se resuelven contra el grafo del conector.
+     * Se rechazan los mapas de grafo con nombre: cada conector publica en un único grafo nombrado.
+     */
+    private R2RMLProcessor.Mapping parseR2RML(String content, ERPConnector connector) {
+        R2RMLProcessor.Mapping mapping = R2RMLProcessor.parse(content, connector.getNamedGraph() + "/");
+        if (mapping.usesNamedGraphs()) {
+            throw new ProtysMappingException("UNSUPPORTED_MAPPING: rr:graphMap is not supported for connectors; "
+                    + "each connector publishes into its own named graph");
+        }
+        return mapping;
     }
 
     private ProtysMappingException unsupportedMapping() {
