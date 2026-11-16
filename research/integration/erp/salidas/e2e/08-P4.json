@@ -620,7 +620,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P4 Actividades de un plan de proceso X.\n# Variante de Q18: Q18 exige t:lifecycleStage y etapas del escenario de pintura, que no existen en los\n# ERP. Acá: operaciones del plan con su secuencia y duración registradas en el ERP, y la duración\n# total por plan.\nSELECT ?g ?plan ?planName ?activity ?activityName ?sequence ?duration ?totalDuration\nWHERE {\n  GRAPH ?g {\n    ?plan a i:ProcessPlan ; i:includesActivity ?activity .\n    OPTIONAL { ?activity i:operationSequence ?sequence }\n    OPTIONAL { ?activity i:duration ?duration }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }\n  OPTIONAL { GRAPH ?g { ?activity c:hasName ?activityName } }\n  {\n    SELECT ?plan (SUM(?d) AS ?totalDuration)\n    WHERE { GRAPH ?h { ?plan i:includesActivity ?a . OPTIONAL { ?a i:duration ?d } }\n            FILTER(STRSTARTS(STR(?h), \"http://w3id.org/protys/erp/\")) }\n    GROUP BY ?plan\n  }\n}\nORDER BY ?g ?plan ?sequence\n",
-  "executedAt" : "2026-11-16T04:32:23.046749234Z",
+  "executedAt" : "2026-11-16T18:23:29.718029061Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -779,7 +779,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 20,
+  "executionTimeMs" : 18,
   "resultCount" : 17,
   "truncated" : false
 }

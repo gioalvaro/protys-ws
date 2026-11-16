@@ -1,0 +1,428 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "entity", "kind", "missingProperty" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50085"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50086"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50087"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50088"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50089"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50090"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50091"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50092"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50093"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50015"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50016"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50017"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50018"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/1"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/3"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/4"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/5"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/2"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/3"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/8"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MissingOperation"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MissingProcess"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ManufacturingProcess"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MissingQC"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "ProcessOperation"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasInput"
+        }
+      }, {
+        "entity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MissingQC"
+        },
+        "kind" : {
+          "type" : "literal",
+          "value" : "QualityControl"
+        },
+        "missingProperty" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#hasMeasurement"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q20 Datos críticos ausentes por tipo, con criterio explícito\nSELECT ?entity ?kind ?missingProperty WHERE {\n{ ?entity a i:ManufacturingProcess . BIND(\"ManufacturingProcess\" AS ?kind) BIND(e:computedForProcess AS ?missingProperty)\nFILTER NOT EXISTS { ?entity t:hasInventoryRepresentation ?lci . ?indicator a e:ImpactIndicator ; e:computedForProcess ?lci ; e:indicatorValue ?value . } }\nUNION { ?entity a i:ProcessOperation . BIND(\"ProcessOperation\" AS ?kind) BIND(i:hasInput AS ?missingProperty)\nFILTER NOT EXISTS { ?entity i:hasInput ?input . } }\nUNION { ?entity a i:Quality_Control_Activity . BIND(\"QualityControl\" AS ?kind) BIND(i:hasMeasurement AS ?missingProperty)\nFILTER NOT EXISTS { ?entity i:hasMeasurement ?measurement . } }\n} ORDER BY ?entity ?kind\n",
+  "executedAt" : "2026-11-16T18:23:34.377823847Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50085"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50086"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50087"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50088"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50089"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50090"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50091"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50092"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/adempiere/operation/50093"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/adempiere/process/50015"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/adempiere/process/50016"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/adempiere/process/50017"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/adempiere/process/50018"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/odoo/operation/1"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/odoo/operation/3"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/odoo/operation/4"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/erp/odoo/operation/5"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/odoo/process/2"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/odoo/process/3"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/erp/odoo/process/8"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/fixture#MissingOperation"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "kind" : "ManufacturingProcess",
+    "entity" : "http://w3id.org/protys/fixture#MissingProcess"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "kind" : "ProcessOperation",
+    "entity" : "http://w3id.org/protys/fixture#MissingQC"
+  }, {
+    "missingProperty" : "http://w3id.org/protys/ontology/iso15531#hasMeasurement",
+    "kind" : "QualityControl",
+    "entity" : "http://w3id.org/protys/fixture#MissingQC"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 18,
+  "resultCount" : 24,
+  "truncated" : false
+}

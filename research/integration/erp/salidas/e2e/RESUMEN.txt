@@ -1,15 +1,17 @@
-Resumen — PROTYS-WS Fase 1 (2026-11-16T04:32:24Z, proyecto protys-e2e)
+Resumen — PROTYS-WS Fase 1 (2026-11-16T18:23:36Z, proyecto protys-e2e)
 APROBADO  1 levantar plataforma y ERP              ADempiere, Odoo (mrp), Fuseki, PostgreSQL, backend y red integrada cargada
 APROBADO  2 registrar versiones                    salidas/e2e/02-versiones.txt
 APROBADO  3 huella de esquemas (antes)             erp=adempiere esquema=adempiere tablas=1177 columnas=27858 s…
-APROBADO  4 registrar y probar conexión (adempiere) id=f012e42f-99c0-4474-9bf8-f3e5ca33a7d1 usuario=protys_ro
+APROBADO  3b línea de base sin ERP                razonamiento SUCCESS, entrada=4318; catálogo en 03b-catalogo-sin-erp/
+APROBADO  4 registrar y probar conexión (adempiere) id=4978f0fd-0fc8-4be0-99e4-d72b5ae76a7e usuario=protys_ro
 APROBADO  5 inspeccionar esquema (adempiere)       992 tablas
-APROBADO  6 materializar con R2RML (adempiere)     321 triples de 13 triples maps en http://w3id.org/protys/erp/adempiere
-APROBADO  4 registrar y probar conexión (odoo)    id=5136fc34-996b-443d-a4c4-bce53b76f113 usuario=protys_ro
+APROBADO  6 materializar con R2RML (adempiere)     348 triples de 14 triples maps en http://w3id.org/protys/erp/adempiere
+APROBADO  4 registrar y probar conexión (odoo)    id=843fe894-514d-45bb-9a62-b244ab2f6874 usuario=protys_ro
 APROBADO  5 inspeccionar esquema (odoo)            336 tablas
-APROBADO  6 materializar con R2RML (odoo)          192 triples de 12 triples maps en http://w3id.org/protys/erp/odoo
-APROBADO  7 razonar red + 2 grafos ERP             owl=CONSISTENT validación=CONSISTENT entrada=4831 inferidos=1572
-APROBADO  7 grafos ERP incluidos en el razonamiento entrada 4318 → 4831 (+513 = triples materializados)
+APROBADO  6 materializar con R2RML (odoo)          201 triples de 14 triples maps en http://w3id.org/protys/erp/odoo
+APROBADO  7 razonar red + 2 grafos ERP             owl=CONSISTENT validación=CONSISTENT entrada=4867 inferidos=1586
+APROBADO  7 grafos ERP incluidos en el razonamiento entrada 4318 → 4867 (+549 = triples materializados)
+APROBADO  7 cadena R07 → R24 (brecha de cobertura) 6 controles OK; ver 07-brecha-cobertura.txt
 APROBADO  8 Q04 canónica sin cambios (P1)         15 filas con procesos ERP
 APROBADO  8 consulta P1                            15 filas (adempiere=9 odoo=6)
 APROBADO  8 consulta P2                            24 filas (adempiere=18 odoo=6)
@@ -17,6 +19,7 @@ APROBADO  8 consulta P3                            14 filas (adempiere=10 odoo=4
 APROBADO  8 consulta P4                            17 filas (adempiere=12 odoo=5)
 APROBADO  8 consulta P5                            11 filas (adempiere=8 odoo=3)
 APROBADO  8 consulta CRUZADA                       10 filas (adempiere=8 odoo=2)
+APROBADO  8 catálogo Q01–Q21 sin y con ERP      21 consultas; ver 08-catalogo-diferencias.md
 APROBADO  8 tipos inferidos sobre individuos ERP   216 tipos deducidos no afirmados (informativo)
 APROBADO  9 rol de conexión sin escritura         CREATE y DELETE rechazados en los dos ERP
 APROBADO  10 esquemas ERP sin cambios              huellas idénticas antes y después

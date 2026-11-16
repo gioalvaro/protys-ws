@@ -608,7 +608,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P2 Recursos para ejecutar un plan de proceso X.\n# Variante de Q02: Q02 parte de un lote (i:Lot) y usa t:hasPlan/t:planProduces, que no existen en los\n# datos ERP (sin lotes) ni en ontologies/. Acá: recursos requeridos por las operaciones del plan,\n# más el recurso que el plan asigna (i:assignsResource, la planta en ADempiere).\nSELECT DISTINCT ?g ?plan ?planName ?resource ?resourceName ?via\nWHERE {\n  GRAPH ?g {\n    ?plan a i:ProcessPlan .\n    { ?plan i:includesActivity ?op . ?op i:requiresResource ?resource . BIND(\"requiresResource\" AS ?via) }\n    UNION { ?plan i:includesActivity ?op . ?op i:hasInput ?resource . BIND(\"hasInput\" AS ?via) }\n    UNION { ?plan i:assignsResource ?resource . BIND(\"assignsResource\" AS ?via) }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n}\nORDER BY ?g ?plan ?via ?resource\n",
-  "executedAt" : "2026-11-16T04:32:22.584343196Z",
+  "executedAt" : "2026-11-16T18:23:29.018768708Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {

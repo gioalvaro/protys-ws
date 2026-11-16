@@ -1,15 +1,15 @@
 {
-  "connectorId" : "5136fc34-996b-443d-a4c4-bce53b76f113",
+  "connectorId" : "843fe894-514d-45bb-9a62-b244ab2f6874",
   "namedGraph" : "http://w3id.org/protys/erp/odoo",
   "status" : "SUCCESS",
-  "tripleCount" : 192,
-  "executionTimeMs" : 91,
-  "startedAt" : "2026-11-16T04:32:06.879572931",
-  "completedAt" : "2026-11-16T04:32:06.970455941",
-  "mappingsProcessed" : 12,
+  "tripleCount" : 201,
+  "executionTimeMs" : 131,
+  "startedAt" : "2026-11-16T18:23:16.006641962",
+  "completedAt" : "2026-11-16T18:23:16.138049016",
+  "mappingsProcessed" : 14,
   "errorMessage" : null,
   "errors" : [ ],
   "warnings" : [ ],
   "success" : true,
-  "statusMessage" : "Successfully materialized 192 triples in 91 ms"
+  "statusMessage" : "Successfully materialized 201 triples in 131 ms"
 }

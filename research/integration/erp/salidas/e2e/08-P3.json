@@ -302,7 +302,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P3 Productos que usan un recurso X.\n# Variante de Q02: el producto se llega por proceso (c:produces), no por lote. Un producto \"usa\" un\n# recurso si alguna operación del proceso que lo produce requiere ese recurso.\nSELECT DISTINCT ?g ?resource ?resourceName ?product ?productName\nWHERE {\n  GRAPH ?g {\n    ?op i:requiresResource ?resource ; i:partOfProcess ?process .\n    ?process c:produces ?product .\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n  OPTIONAL { GRAPH ?g { ?product c:hasName ?productName } }\n}\nORDER BY ?g ?resource ?product\n",
-  "executedAt" : "2026-11-16T04:32:22.808899503Z",
+  "executedAt" : "2026-11-16T18:23:29.368621531Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -392,7 +392,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 21,
+  "executionTimeMs" : 18,
   "resultCount" : 14,
   "truncated" : false
 }
