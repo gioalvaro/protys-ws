@@ -1,0 +1,29 @@
+ontologías cargadas: 11 archivos, 2554 triples
+OK      c:Process                        clase          dominio=- rango=-
+OK      c:Product                        clase          dominio=- rango=-
+OK      c:hasName                        prop. datos    dominio=- rango=http://www.w3.org/2001/XMLSchema#string
+OK      c:produces                       prop. objeto   dominio=c:Process rango=c:Product
+OK      i:Lot                            clase          dominio=- rango=-
+OK      i:ManufacturingFacility          clase          dominio=- rango=-
+OK      i:ManufacturingProcess           clase          dominio=- rango=-
+OK      i:ManufacturingResource          clase          dominio=- rango=-
+OK      i:ProcessOperation               clase          dominio=- rango=-
+OK      i:ProcessPlan                    clase          dominio=- rango=-
+OK      i:ProductionOrder                clase          dominio=- rango=-
+OK      i:WorkOrder                      clase          dominio=- rango=-
+OK      i:assignsResource                prop. objeto   dominio=i:ProcessPlan rango=i:ManufacturingResource
+OK      i:duration                       prop. datos    dominio=- rango=http://www.w3.org/2001/XMLSchema#decimal
+OK      i:executedBy                     prop. objeto   dominio=i:WorkOrder rango=i:ManufacturingResource
+OK      i:executesActivity               prop. objeto   dominio=i:WorkOrder rango=i:ProcessOperation
+OK      i:hasInput                       prop. objeto   dominio=i:ProcessOperation rango=i:ManufacturingResource
+OK      i:includesActivity               prop. objeto   dominio=i:ProcessPlan rango=i:ProcessOperation
+OK      i:operationSequence              prop. datos    dominio=- rango=http://www.w3.org/2001/XMLSchema#integer
+OK      i:partOfProcess                  prop. objeto   dominio=i:ProcessOperation rango=i:ManufacturingProcess
+OK      i:precedes                       prop. objeto   dominio=- rango=-
+OK      i:requiresResource               prop. objeto   dominio=i:ProcessOperation rango=i:ManufacturingResource
+OK      prod:Product                     clase          dominio=- rango=-
+OK      prod:Production_Component        clase          dominio=- rango=-
+OK      prod:isComposedOF                prop. objeto   dominio=prod:Product rango=prod:Production_Component
+OK      r:Material                       clase          dominio=- rango=-
+OK      rdfs:label                       estándar RDFS
+resultado: APROBADO (0 términos faltantes)
