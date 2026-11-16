@@ -2,7 +2,7 @@
 
 Fecha: 2026-11-16. Rama `trabajo-tecnico-2026-11`. Corrida de evidencia: `run.sh` de cero,
 **APROBADO en los 24 pasos** (`salidas/e2e/RESUMEN.txt`). Corrió sobre el commit `da3f100` más los
-cambios que entran en el commit siguiente (mapeos con Organización, `run.sh` y sus scripts); por eso
+cambios que entraron en los commits `93f9065` (mapeos con Organización) y `13d2ceb` (`run.sh` y sus scripts); por eso
 `02-versiones.txt` dice `+cambios-sin-commit`. Ningún archivo ejecutado cambió después de la corrida.
 
 Este informe incorpora la revisión del 16-11-2026: tabla por pregunta P1–P5, verificación de la
