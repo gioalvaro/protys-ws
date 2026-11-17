@@ -107,4 +107,27 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
     La prueba de no duplicar pasa igual, porque reemplazar tampoco duplica.
 
 ### Paso 2 — Paso 1 del asistente por extensión y datos de instancia opcionales (hueco 3)
+- **Lectura por extensión.** El paso 1 elige el lector con `RDFLanguages.filenameToLang`; si la
+  extensión no se reconoce, usa RDF/XML como antes. El controlador acepta lo que anuncia la pantalla:
+  `.owl`, `.rdf`, `.xml`, `.ttl`, `.n3` y `.nt`.
+- **Datos de instancia.** Nuevo `POST /api/wizard/step1/data/{id}`. Guarda el archivo en
+  `…/temp/wizard/<id>/data` y anula la validación anterior; los pasos 2 y 4 razonan con el estándar más
+  esos datos.
+- **Al completar.** Los datos se copian a `…/incorporated/<id>/data` y se registran como un módulo
+  propio, «<estándar> — datos de instancia», sin `incorporation_session_id` porque esa columna es única.
+  - El módulo de datos se registra **antes** que el del estándar: así un reintento sigue reconociendo
+    el estándar como marca de completado.
+  - Si un completado se corta a mitad, cancelar quita el módulo de datos y su grafo.
+- **Prueba.** `WizardInstanceDataTest`, con 6 pruebas nuevas:
+  - Turtle en el paso 1;
+  - datos en su grafo y dentro de la validación;
+  - subir datos anula la validación;
+  - completar crea dos módulos y limpia los grafos temporales;
+  - cancelar borra los datos;
+  - cancelar un completado cortado a mitad.
+
+  Corrida: `mvn17.sh -q test -Dtest='Wizard*Test,StandardWizardControllerTest'`. Pasan 39 de 39: las 6
+  nuevas, las 3 heredadas que se repiten en la clase nueva y las 30 que ya existían.
+
+### Paso 3 — Reglas de la sesión, paso 4 y completar que activa reglas (huecos 1 y 4)
 _En curso._

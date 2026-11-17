@@ -45,6 +45,8 @@ public class StandardIncorporationResult {
     private LocalDateTime startedAt;
     private Long executionTimeMs;
     private Integer tripleCount;
+    /** Triples del archivo opcional de datos de instancia de la sesión (null si no se subió). */
+    private Integer dataTripleCount;
     private String message;
     private UUID finalModuleId;
 

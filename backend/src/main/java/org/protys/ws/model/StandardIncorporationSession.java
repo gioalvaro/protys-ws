@@ -35,6 +35,8 @@ public class StandardIncorporationSession {
     private boolean consistencyVerified;
     private boolean inferenceVerified;
     private Integer tripleCount;
+    /** Triples de los datos de instancia de la sesión; null si no se subieron. */
+    private Integer dataTripleCount;
     private Integer inferredTriples;
     private UUID finalModuleId;
     private LocalDateTime startedAt;

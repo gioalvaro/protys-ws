@@ -55,6 +55,14 @@ public class StandardWizardController {
         }
     }
 
+    @PostMapping("/step1/data/{tempId}")
+    @Operation(summary = "Step 1b: Upload instance data (optional)", description = "Datos de instancia de la sesión, en un grafo temporal propio; se validan junto con el estándar y al completar se registran como su propio módulo")
+    public ResponseEntity<StandardIncorporationResult> uploadInstanceData(@PathVariable UUID tempId, @RequestParam("file") MultipartFile file) {
+        if (file.isEmpty() || !isValidOwlFile(file.getOriginalFilename())) return ResponseEntity.badRequest().build();
+        StandardIncorporationResult result = standardIncorporationService.step1_uploadData(tempId, file);
+        return ResponseEntity.status(Boolean.TRUE.equals(result.getStep1_parsed()) ? HttpStatus.CREATED : HttpStatus.UNPROCESSABLE_ENTITY).body(result);
+    }
+
     // Step 2: Validate Consistency
 
     @PostMapping("/step2/validate/{tempId}")
@@ -153,8 +161,7 @@ public class StandardWizardController {
     // Helper Methods
 
     private boolean isValidOwlFile(String filename) {
-        return filename != null && (filename.endsWith(".owl") ||
-                filename.endsWith(".rdf") ||
-                filename.endsWith(".ttl"));
+        // Lo que anuncia la interfaz: RDF, OWL, TTL, N3 o XML (el servicio elige el lector por extensión).
+        return filename != null && java.util.List.of(".owl", ".rdf", ".xml", ".ttl", ".n3", ".nt").stream().anyMatch(filename.toLowerCase()::endsWith);
     }
 }

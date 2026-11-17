@@ -54,8 +54,7 @@ public class StandardIncorporationService {
         try {
             if (standardName == null || standardName.isBlank() || standardName.trim().length() > 255)
                 throw new ProtysMappingException("A standard name of 1 to 255 characters is required");
-            Model model = ModelFactory.createDefaultModel();
-            try (var input = file.getInputStream()) { RDFDataMgr.read(model, input, Lang.RDFXML); }
+            Model model = parse(file);
             if (model.isEmpty()) throw new ProtysMappingException("The uploaded ontology is empty");
             StandardIncorporationSession session = new StandardIncorporationSession();
             UUID id = UUID.randomUUID();
@@ -86,6 +85,54 @@ public class StandardIncorporationService {
         }
         result.setExecutionTimeMs(System.currentTimeMillis() - start);
         return result;
+    }
+
+    /**
+     * Datos de instancia opcionales de la sesión (por ejemplo, los registros del piloto), en un grafo
+     * temporal propio. Reemplaza los datos anteriores de la misma sesión e invalida la validación previa:
+     * los pasos 2 y 4 razonan con el estándar más estos datos.
+     */
+    public synchronized StandardIncorporationResult step1_uploadData(UUID id, MultipartFile file) {
+        StandardIncorporationResult result = result(id, 1);
+        try {
+            StandardIncorporationSession session = editable(id);
+            Model data = parse(file);
+            if (data.isEmpty()) throw new ProtysMappingException("El archivo de datos está vacío");
+            session.setConsistencyVerified(false);
+            session.setInferenceVerified(false);
+            session.setExecutedRulesJson(null);
+            session.setRuleDefinitionsSnapshot(null);
+            session.setRuleDefinitionsSha256(null);
+            session.setPhase("UPLOADED");
+            session = sessionRepository.saveAndFlush(session);
+            fusekiService.putModel(dataGraph(session.getTemporaryGraph()), data);
+            session.setDataTripleCount(Math.toIntExact(data.size()));
+            session = sessionRepository.saveAndFlush(session);
+            result.setStandardName(session.getStandardName());
+            result.setTripleCount(session.getTripleCount());
+            result.setDataTripleCount(session.getDataTripleCount());
+            result.setStatus("UPLOADED");
+            result.setStep1_parsed(true);
+            result.setStep1_message("Datos de instancia cargados en la sesión: " + data.size() + " triples");
+        } catch (Exception e) {
+            log.error("Wizard data upload failed", e);
+            result.setStatus("NOT_EVALUATED");
+            result.setStep1_parsed(false);
+            result.setStep1_error(true);
+            result.setStep1_message("Data upload error: " + e.getMessage());
+        }
+        return result;
+    }
+
+    /** Grafo de datos de instancia asociado a un grafo de sesión (temporal o permanente). */
+    static String dataGraph(String sessionGraph) { return sessionGraph + "/data"; }
+
+    /** Lee RDF eligiendo el formato por la extensión del archivo; sin extensión conocida, RDF/XML. */
+    static Model parse(MultipartFile file) throws java.io.IOException {
+        Lang lang = file.getOriginalFilename() == null ? null : org.apache.jena.riot.RDFLanguages.filenameToLang(file.getOriginalFilename());
+        Model model = ModelFactory.createDefaultModel();
+        try (var input = file.getInputStream()) { RDFDataMgr.read(model, input, lang == null ? Lang.RDFXML : lang); }
+        return model;
     }
 
     public synchronized StandardIncorporationResult step2_validateConsistency(UUID id) {
@@ -243,10 +290,31 @@ public class StandardIncorporationService {
             // A nonempty graph is accepted only as an identical retry of this session's write.
             if (!destination.isEmpty() && (!session.isPermanentWriteStarted() || !destination.isIsomorphicWith(source)))
                 throw new ProtysMappingException("Destination graph already contains different data; it will not be overwritten");
+            boolean withData = session.getDataTripleCount() != null;
+            String dataTarget = dataGraph(session.getPermanentGraph());
+            Model dataSource = withData ? requiredGraph(dataGraph(session.getTemporaryGraph())) : null;
+            Model dataDestination = withData ? optionalGraph(dataTarget) : ModelFactory.createDefaultModel();
+            if (!dataDestination.isEmpty() && (!session.isPermanentWriteStarted() || !dataDestination.isIsomorphicWith(dataSource)))
+                throw new ProtysMappingException("Data destination graph already contains different data; it will not be overwritten");
             session.setPhase("COMPLETING");
             session.setPermanentWriteStarted(true);
             session = sessionRepository.saveAndFlush(session);
             if (destination.isEmpty()) fusekiService.putModel(session.getPermanentGraph(), source);
+            if (withData && dataDestination.isEmpty()) fusekiService.putModel(dataTarget, dataSource);
+            // Los datos son un módulo aparte (incorporation_session_id es único y lo lleva el estándar);
+            // se registran antes, así un reintento reconoce el estándar como la marca de completado.
+            if (withData && ontologyModuleRepository.findByNamedGraph(dataTarget).isEmpty()) {
+                OntologyModule data = new OntologyModule();
+                data.setName(session.getStandardName() + " — datos de instancia");
+                data.setBaseUri(dataTarget);
+                data.setNamedGraph(dataTarget);
+                data.setVersion("1.0");
+                data.setStatus(OntologyModule.ModuleStatus.VALIDATED);
+                data.setTripleCount((long) session.getDataTripleCount());
+                data.setLoadedAt(LocalDateTime.now());
+                data.setValidatedAt(LocalDateTime.now());
+                ontologyModuleRepository.saveAndFlush(data);
+            }
             OntologyModule module = new OntologyModule();
             module.setName(session.getStandardName());
             module.setBaseUri(session.getPermanentGraph());
@@ -288,7 +356,16 @@ public class StandardIncorporationService {
         session = sessionRepository.saveAndFlush(session);
         // Delete graph before marking success; lost responses are safely retried by graph ID.
         deleteOwnedGraph(session.getTemporaryGraph());
-        if (session.isPermanentWriteStarted()) deleteOwnedGraph(session.getPermanentGraph());
+        if (session.getDataTripleCount() != null) deleteOwnedGraph(dataGraph(session.getTemporaryGraph()));
+        if (session.isPermanentWriteStarted()) {
+            deleteOwnedGraph(session.getPermanentGraph());
+            if (session.getDataTripleCount() != null) {
+                String dataTarget = dataGraph(session.getPermanentGraph());
+                // Un completado interrumpido pudo registrar ya el módulo de datos de esta sesión.
+                ontologyModuleRepository.findByNamedGraph(dataTarget).ifPresent(ontologyModuleRepository::delete);
+                deleteOwnedGraph(dataTarget);
+            }
+        }
         session.setPhase("CANCELLED");
         sessionRepository.saveAndFlush(session);
     }
@@ -315,7 +392,10 @@ public class StandardIncorporationService {
         result.setAlignmentRulesCreated(0);
         result.setMessage("Successfully incorporated " + session.getStandardName());
         result.setCleanupPending(false);
-        try { deleteOwnedGraph(session.getTemporaryGraph()); }
+        try {
+            deleteOwnedGraph(session.getTemporaryGraph());
+            if (session.getDataTripleCount() != null) deleteOwnedGraph(dataGraph(session.getTemporaryGraph()));
+        }
         catch (Exception cleanup) {
             result.setCleanupPending(true);
             result.setWarnings(List.of("Incorporation is complete; temporary graph cleanup will be retried on completion retry"));
@@ -348,6 +428,7 @@ public class StandardIncorporationService {
             combined.add(AlignmentService.withoutRuleDefinitions(requiredGraph(module.getNamedGraph())));
         }
         combined.add(AlignmentService.withoutRuleDefinitions(requiredGraph(session.getTemporaryGraph())));
+        if (session.getDataTripleCount() != null) combined.add(requiredGraph(dataGraph(session.getTemporaryGraph())));
         return combined;
     }
 
