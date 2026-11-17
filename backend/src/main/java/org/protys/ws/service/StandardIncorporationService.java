@@ -205,6 +205,57 @@ public class StandardIncorporationService {
         return result;
     }
 
+    /**
+     * Reglas SWRL nuevas que trae la sesión (por ejemplo, las reglas de vínculo de un estándar). Se
+     * guardan en un grafo temporal propio; el paso 4 razona con ellas y al completar se registran,
+     * se suman al grafo de definiciones y quedan activas. No pueden usar identificadores ya registrados.
+     */
+    public synchronized StandardIncorporationResult step3_uploadRules(UUID id, MultipartFile file) {
+        StandardIncorporationResult result = result(id, 3);
+        try {
+            StandardIncorporationSession session = editable(id);
+            session.setInferenceVerified(false);
+            session.setExecutedRulesJson(null);
+            session.setRuleDefinitionsSnapshot(null);
+            session.setRuleDefinitionsSha256(null);
+            if ("VERIFIED".equals(session.getPhase())) session.setPhase("SELECTED");
+            session = sessionRepository.saveAndFlush(session);
+            Model rules = parse(file);
+            var imp = rules.createResource(SWRL_IMP);
+            var names = new java.util.TreeSet<String>();
+            for (var rule : rules.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, imp).toList()) {
+                if (rule.isAnon()) throw new ProtysMappingException("Cada regla SWRL necesita un IRI");
+                String name = rule.getLocalName();
+                if (name == null || !name.matches("[A-Za-z][A-Za-z0-9_]*")) throw new ProtysMappingException("Identificador de regla no ejecutable: " + rule.getURI());
+                if (alignmentRuleRepository.findByRuleId(name).isPresent()) throw new ProtysMappingException("La regla " + name + " ya está registrada; selecciónela en lugar de cargarla");
+                if (!names.add(name)) throw new ProtysMappingException("Regla repetida en el archivo: " + name);
+            }
+            if (names.isEmpty()) throw new ProtysMappingException("El archivo no contiene reglas SWRL (swrl:Imp)");
+            fusekiService.putModel(rulesGraph(session.getTemporaryGraph()), rules);
+            session.setSessionRuleIds(String.join(",", names));
+            sessionRepository.saveAndFlush(session);
+            result.setSessionRuleIds(new ArrayList<>(names));
+            result.setStatus(session.getPhase());
+            result.setStep3_error(false);
+            result.setStep3_message("Reglas de la sesión cargadas: " + String.join(", ", names));
+        } catch (Exception e) {
+            result.setStatus("NOT_EVALUATED");
+            result.setStep3_error(true);
+            result.setStep3_message("Session rules error: " + e.getMessage());
+        }
+        return result;
+    }
+
+    private static final String SWRL_IMP = "http://www.w3.org/2003/11/swrl#Imp";
+
+    /** Grafo temporal con las reglas SWRL nuevas de la sesión. */
+    static String rulesGraph(String temporaryGraph) { return temporaryGraph + "/rules"; }
+
+    private List<String> sessionRules(StandardIncorporationSession session) {
+        if (session.getSessionRuleIds() == null || session.getSessionRuleIds().isEmpty()) return List.of();
+        return List.of(session.getSessionRuleIds().split(","));
+    }
+
     public synchronized StandardIncorporationResult step4_verifyInferences(UUID id) {
         StandardIncorporationResult result = result(id, 4);
         long start = System.currentTimeMillis();
@@ -221,19 +272,30 @@ public class StandardIncorporationService {
             List<AlignmentRule> selected = resolveRules(ids);
             Model model = combined(session);
             Model definitions = selected.isEmpty() ? ModelFactory.createDefaultModel() : requiredGraph(AlignmentService.RULE_GRAPH);
+            List<String> extra = sessionRules(session);
+            // Se combinan sin duplicar: en un reintento de completar, las reglas de la sesión ya pueden
+            // estar sumadas (con la misma definición) al grafo de definiciones.
+            if (!extra.isEmpty()) definitions = AlignmentService.mergeRuleDefinitions(definitions, requiredGraph(rulesGraph(session.getTemporaryGraph())));
+            List<String> enabled = new ArrayList<>(selected.stream().map(StandardIncorporationService::executionName).toList());
+            for (String name : extra) {
+                if (enabled.contains(name)) throw new ProtysMappingException("La regla " + name + " está a la vez seleccionada y cargada en la sesión");
+                enabled.add(name);
+            }
             model.add(definitions);
             // Exact supplied RDF snapshot (including blank node IDs), not a canonical RDF hash.
             var snapshot = new java.io.ByteArrayOutputStream();
             RDFDataMgr.write(snapshot, definitions, Lang.NTRIPLES);
             String definitionsHash = java.util.HexFormat.of().formatHex(java.security.MessageDigest.getInstance("SHA-256").digest(snapshot.toByteArray()));
-            var validation = reasoningService.classify(model, selected.stream().map(StandardIncorporationService::executionName).toList());
+            var validation = reasoningService.classify(model, enabled);
             validationFields(result, validation);
             if (!validation.isConsistent() || !"CONSISTENT".equals(validation.getValidationStatus()))
                 throw new ProtysMappingException(validation.getValidationStatus() + ": " + validation.getErrorMessage());
-            if (validation.getImportedRuleCount() != selected.size())
+            if (validation.getImportedRuleCount() != enabled.size())
                 throw new ProtysMappingException("Executed rule count does not match the explicit selection");
             session.setInferredTriples(Math.toIntExact(validation.getInferredTripleCount()));
-            List<ExecutedRule> executed = selected.stream().map(r -> new ExecutedRule(r.getId(), r.getName())).toList();
+            List<ExecutedRule> executed = new ArrayList<>(selected.stream().map(r -> new ExecutedRule(r.getId(), r.getName())).toList());
+            // Las reglas de la sesión todavía no tienen registro: su id se completa al incorporarlas.
+            for (String name : extra) executed.add(new ExecutedRule(alignmentRuleRepository.findByRuleId(name).map(AlignmentRule::getId).orElse(null), name));
             session.setExecutedRulesJson(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(executed));
             session.setRuleDefinitionsSnapshot(snapshot.toString(java.nio.charset.StandardCharsets.UTF_8));
             session.setRuleDefinitionsSha256(definitionsHash);
@@ -246,7 +308,8 @@ public class StandardIncorporationService {
             result.setStep4_verified(true);
             result.setStep4_error(false);
             result.setStep4_inferredTriples(session.getInferredTriples());
-            result.setStep4_message("Verified " + selected.size() + " selected rules; inferred " + session.getInferredTriples() + " triples");
+            result.setSessionRuleIds(extra);
+            result.setStep4_message("Verified " + selected.size() + " selected rules and " + extra.size() + " session rules; inferred " + session.getInferredTriples() + " triples");
         } catch (Exception e) {
             if (result.getStatus() == null || "CONSISTENT".equals(result.getStatus())) result.setStatus("NOT_EVALUATED");
             result.setStep4_verified(false);
@@ -301,6 +364,7 @@ public class StandardIncorporationService {
             session = sessionRepository.saveAndFlush(session);
             if (destination.isEmpty()) fusekiService.putModel(session.getPermanentGraph(), source);
             if (withData && dataDestination.isEmpty()) fusekiService.putModel(dataTarget, dataSource);
+            session = activateVerifiedRules(session, verified.getExecutedRules());
             // Los datos son un módulo aparte (incorporation_session_id es único y lo lleva el estándar);
             // se registran antes, así un reintento reconoce el estándar como la marca de completado.
             if (withData && ontologyModuleRepository.findByNamedGraph(dataTarget).isEmpty()) {
@@ -330,15 +394,56 @@ public class StandardIncorporationService {
             session.setPhase("COMPLETED");
             session.setCompletedAt(LocalDateTime.now());
             session = sessionRepository.saveAndFlush(session);
-            result = completed(session);
-            result.setExecutedRules(verified.getExecutedRules());
-            return result;
+            return completed(session);
         } catch (Exception e) {
             log.error("Wizard completion failed; ownership checkpoint retained", e);
             result.setStatus("NOT_EVALUATED");
             result.setMessage("Completion error: " + e.getMessage());
             return result;
         }
+    }
+
+    /**
+     * Al completar: suma al grafo de definiciones las reglas nuevas de la sesión (sin duplicar si es un
+     * reintento), las registra y deja activas todas las reglas verificadas en el paso 4. Va antes de
+     * registrar el módulo del estándar, que es la marca de completado; todo es idempotente.
+     */
+    private StandardIncorporationSession activateVerifiedRules(StandardIncorporationSession session, List<ExecutedRule> executed) throws Exception {
+        List<String> extra = sessionRules(session);
+        if (!extra.isEmpty()) {
+            Model definitions = requiredGraph(rulesGraph(session.getTemporaryGraph()));
+            fusekiService.putModel(AlignmentService.RULE_GRAPH,
+                    AlignmentService.mergeRuleDefinitions(fusekiService.getModelOrEmpty(AlignmentService.RULE_GRAPH), definitions));
+            var body = definitions.createProperty("http://www.w3.org/2003/11/swrl#body");
+            for (String name : extra) {
+                AlignmentRule rule = alignmentRuleRepository.findByRuleId(name).orElseGet(AlignmentRule::new);
+                if (rule.getId() == null) {
+                    var resource = definitions.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, definitions.createResource(SWRL_IMP)).toList()
+                            .stream().filter(r -> name.equals(r.getLocalName())).findFirst().orElseThrow();
+                    rule.setRuleId(name);
+                    rule.setName(name);
+                    rule.setRuleType(AlignmentRule.RuleType.INFERENCE);
+                    rule.setSwrlExpression(resource.hasProperty(body) ? resource.getProperty(body).getObject().toString() : null);
+                    rule.setCreatedAt(LocalDateTime.now());
+                }
+                rule.setActive(true);
+                rule.setUpdatedAt(LocalDateTime.now());
+                alignmentRuleRepository.saveAndFlush(rule);
+            }
+        }
+        for (ExecutedRule run : executed) {
+            if (run.getId() == null) continue; // regla de la sesión: ya quedó activa arriba
+            AlignmentRule rule = alignmentRuleRepository.findById(run.getId()).orElseThrow(() -> new ProtysMappingException("Registered rule not found: " + run.getId()));
+            if (Boolean.TRUE.equals(rule.getActive())) continue;
+            rule.setActive(true);
+            rule.setUpdatedAt(LocalDateTime.now());
+            alignmentRuleRepository.saveAndFlush(rule);
+        }
+        // El comprobante guardado pasa a llevar el id de las reglas recién registradas.
+        List<ExecutedRule> receipt = executed.stream().map(r -> r.getId() != null ? r
+                : new ExecutedRule(alignmentRuleRepository.findByRuleId(r.getName()).map(AlignmentRule::getId).orElse(null), r.getName())).toList();
+        session.setExecutedRulesJson(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(receipt));
+        return sessionRepository.saveAndFlush(session);
     }
 
     /** No match is an idempotent no-op. A completed permanent module can never be cancelled. */
@@ -357,6 +462,7 @@ public class StandardIncorporationService {
         // Delete graph before marking success; lost responses are safely retried by graph ID.
         deleteOwnedGraph(session.getTemporaryGraph());
         if (session.getDataTripleCount() != null) deleteOwnedGraph(dataGraph(session.getTemporaryGraph()));
+        if (!sessionRules(session).isEmpty()) deleteOwnedGraph(rulesGraph(session.getTemporaryGraph()));
         if (session.isPermanentWriteStarted()) {
             deleteOwnedGraph(session.getPermanentGraph());
             if (session.getDataTripleCount() != null) {
@@ -388,6 +494,8 @@ public class StandardIncorporationService {
         } catch (Exception e) {
             throw new ProtysMappingException("The persisted execution receipt is unavailable", e);
         }
+        result.setSessionRuleIds(sessionRules(session));
+        result.setActivatedRules(result.getExecutedRules().stream().map(ExecutedRule::getName).toList());
         result.setInferencesGenerated(session.getInferredTriples());
         result.setAlignmentRulesCreated(0);
         result.setMessage("Successfully incorporated " + session.getStandardName());
@@ -395,6 +503,7 @@ public class StandardIncorporationService {
         try {
             deleteOwnedGraph(session.getTemporaryGraph());
             if (session.getDataTripleCount() != null) deleteOwnedGraph(dataGraph(session.getTemporaryGraph()));
+            if (!sessionRules(session).isEmpty()) deleteOwnedGraph(rulesGraph(session.getTemporaryGraph()));
         }
         catch (Exception cleanup) {
             result.setCleanupPending(true);

@@ -110,6 +110,14 @@ public class StandardWizardController {
         }
     }
 
+    @PostMapping("/step3/rules/{tempId}")
+    @Operation(summary = "Step 3b: Upload session SWRL rules", description = "Reglas SWRL nuevas de la sesión (identificadores no registrados). El paso 4 razona con ellas; al completar se registran, se suman a las definiciones y quedan activas")
+    public ResponseEntity<StandardIncorporationResult> uploadSessionRules(@PathVariable UUID tempId, @RequestParam("file") MultipartFile file) {
+        if (file.isEmpty() || !isValidOwlFile(file.getOriginalFilename())) return ResponseEntity.badRequest().build();
+        StandardIncorporationResult result = standardIncorporationService.step3_uploadRules(tempId, file);
+        return ResponseEntity.status(Boolean.TRUE.equals(result.getStep3_error()) ? HttpStatus.UNPROCESSABLE_ENTITY : HttpStatus.CREATED).body(result);
+    }
+
     // Step 4: Verify Inferences
 
     @PostMapping("/step4/verify/{tempId}")

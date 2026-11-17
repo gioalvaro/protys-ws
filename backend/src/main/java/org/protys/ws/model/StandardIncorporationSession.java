@@ -26,6 +26,9 @@ public class StandardIncorporationSession {
     private String phase;
     @Column(columnDefinition = "TEXT")
     private String selectedRuleIds;
+    /** Identificadores (separados por coma) de las reglas SWRL nuevas que trae la sesión; null si no trae. */
+    @Column(columnDefinition = "TEXT")
+    private String sessionRuleIds;
     @Column(columnDefinition = "TEXT")
     private String executedRulesJson;
     @Column(columnDefinition = "TEXT")

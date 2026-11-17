@@ -28,6 +28,10 @@ public class StandardIncorporationResult {
     private Map<String,Object> numericEvaluation;
     private String owlValidationStatus;
     private List<UUID> selectedRuleIds;
+    /** Reglas SWRL nuevas cargadas en la sesión (paso 3); se registran al completar. */
+    private List<String> sessionRuleIds;
+    /** Reglas que quedaron activas en la plataforma al completar (las verificadas en el paso 4). */
+    private List<String> activatedRules;
     private List<ExecutedRule> executedRules;
     private String ruleDefinitionsSha256;
     private Boolean cleanupPending;

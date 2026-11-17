@@ -130,4 +130,32 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
   nuevas, las 3 heredadas que se repiten en la clase nueva y las 30 que ya existían.
 
 ### Paso 3 — Reglas de la sesión, paso 4 y completar que activa reglas (huecos 1 y 4)
+- **Reglas de la sesión.** Nuevo `POST /api/wizard/step3/rules/{id}`.
+  - Recibe un archivo SWRL y lo guarda en `…/temp/wizard/<id>/rules`.
+  - Rechaza identificadores ya registrados, nombres que no se pueden ejecutar, repetidos y archivos sin
+    `swrl:Imp`.
+  - Anula una verificación anterior.
+  - La selección de reglas registradas (`step3/alignments`) sigue igual.
+- **Paso 4.** Razona con las reglas seleccionadas más las de la sesión: sus definiciones se combinan con
+  `mergeRuleDefinitions`, así un reintento no las duplica. El comprobante lista las dos; las de la
+  sesión todavía sin id.
+- **Completar.** Antes de registrar el módulo del estándar (la marca de completado):
+  - suma las definiciones nuevas al grafo de reglas, con el ayudante del paso 1;
+  - registra las reglas de la sesión;
+  - deja activas **todas las reglas verificadas** en el paso 4;
+  - guarda el comprobante con los ids definitivos.
+  El resultado trae `activatedRules`. Todo se puede repetir sin efectos dobles.
+- **Cancelar** borra también el grafo temporal de reglas.
+- **Prueba.** `WizardSessionRulesTest`, con 7 pruebas nuevas:
+  - grafo temporal sin registro previo;
+  - rechazos;
+  - el paso 4 corre R01+R27;
+  - cargar reglas obliga a verificar de nuevo;
+  - completar registra, suma y activa;
+  - reintentar no duplica;
+  - cancelar no registra nada.
+- **Suite completa en Java 17:** 218 pruebas, 0 fallas (antes de la Fase 3b eran 196). Salida en
+  `salidas/fase3b/pruebas-backend.txt`.
+
+### Paso 4 — Interfaz del asistente
 _En curso._
