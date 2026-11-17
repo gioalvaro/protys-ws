@@ -296,6 +296,26 @@ export const wizardAPI = {
     return response.data;
   },
 
+  // POST /api/wizard/step1/data/{tempId}: datos de instancia opcionales de la sesión
+  step1UploadData: async (tempId, file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await apiClient.post(`/wizard/step1/data/${tempId}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data;
+  },
+
+  // POST /api/wizard/step3/rules/{tempId}: reglas SWRL nuevas de la sesión
+  step3UploadRules: async (tempId, file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await apiClient.post(`/wizard/step3/rules/${tempId}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data;
+  },
+
   // POST /api/wizard/step2/validate/{tempId}
   step2Validate: async (tempId) => {
     const response = await apiClient.post(`/wizard/step2/validate/${tempId}`);

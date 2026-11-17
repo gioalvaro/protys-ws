@@ -6,7 +6,7 @@ import Wizard from './Wizard';
 import { wizardAPI, alignmentAPI } from '../../services/api';
 
 jest.mock('../../services/api', () => ({
-  wizardAPI: { step1Upload: jest.fn(), step2Validate: jest.fn(), step3DefineAlignments: jest.fn(), step4VerifyInferences: jest.fn(), completeIncorporation: jest.fn(), cancelIncorporation: jest.fn() },
+  wizardAPI: { step1Upload: jest.fn(), step1UploadData: jest.fn(), step3UploadRules: jest.fn(), step2Validate: jest.fn(), step3DefineAlignments: jest.fn(), step4VerifyInferences: jest.fn(), completeIncorporation: jest.fn(), cancelIncorporation: jest.fn() },
   alignmentAPI: { getRules: jest.fn() },
 }));
 jest.mock('react-toastify', () => ({ toast: { success: jest.fn(), error: jest.fn(), warning: jest.fn() } }));
@@ -237,4 +237,59 @@ test('pending cleanup is recoverable after remount without losing the incorporat
   await click('Retrieve completion receipt');
   expect(wizardAPI.completeIncorporation).toHaveBeenLastCalledWith(session);
   expect(container.textContent).toContain('Step 1: Upload Ontology');
+});
+
+
+// Fase 3b: datos de instancia, reglas de la sesión y reglas activas al completar.
+const fileInput = label => container.querySelector(`input[aria-label="${label}"]`);
+const choose = async (input, file) => { await act(async () => { Simulate.change(input, {target:{files:[file]}}); }); await settle(); };
+
+test('instance data is uploaded to the same session after the standard',async()=>{
+  wizardAPI.step1UploadData.mockResolvedValue({tempModuleId:session,step1_parsed:true,dataTripleCount:2});
+  const data=new File(['@prefix x: <x#> .'],'automotive.ttl',{type:'text/turtle'});
+  await choose(fileInput('Instance data (optional)'),data);
+  await upload();
+  expect(wizardAPI.step1UploadData).toHaveBeenCalledWith(session,data);
+  expect(container.textContent).toContain('Step 2: Validate Ontology');
+  expect(container.textContent).not.toContain('Upload incomplete');
+});
+
+test('a failed instance data upload keeps the session for cancellation',async()=>{
+  wizardAPI.step1UploadData.mockRejectedValue({response:{status:422,data:{step1_parsed:false,step1_message:'Data upload error'}}});
+  await choose(fileInput('Instance data (optional)'),new File(['x'],'datos.ttl'));
+  await upload();
+  expect(container.textContent).toContain('Upload incomplete');
+  expect(button('Validate & Continue').disabled).toBe(true);
+});
+
+test('session rules are verified with the selection and listed as active after completion',async()=>{
+  await upload();await click('Validate & Continue');
+  wizardAPI.step3UploadRules.mockResolvedValue({status:'VALIDATED',step3_error:false,sessionRuleIds:['R27','R28']});
+  const rules=new File(['<rdf/>'],'iso10303-alignment-rules.owl');
+  await choose(fileInput('Session rules (SWRL)'),rules);
+  expect(wizardAPI.step3UploadRules).toHaveBeenCalledWith(session,rules);
+  expect(container.textContent).toContain('Loaded session rules: R27, R28');
+  await act(async()=>{container.querySelector('input[type=checkbox]').click();});
+  await click('Configure & Continue');
+  wizardAPI.step4VerifyInferences.mockResolvedValue({...verified,executedRules:[{id:'rule-a',name:'Actual rule A'},{id:null,name:'R27'},{id:null,name:'R28'}]});
+  await click('Verify & Continue');
+  expect(container.textContent).toContain('Active after completion: Actual rule A, R27, R28');
+  expect(container.textContent).toContain('(session rule)');
+  wizardAPI.completeIncorporation.mockResolvedValue({status:'COMPLETED',finalModuleId:'final-a',standardName:'ISO 10303',cleanupPending:false,warnings:[],
+    activatedRules:['Actual rule A','R27','R28']});
+  await click('Create Ontology');
+  expect(container.textContent).toContain('Step 1: Upload Ontology');
+  expect(container.textContent).toContain('Last incorporation: ISO 10303');
+  expect(container.textContent).toContain('Rules active after completion (3): Actual rule A, R27, R28');
+});
+
+test('a receipt that omits a loaded session rule cannot advance to completion',async()=>{
+  await upload();await click('Validate & Continue');
+  wizardAPI.step3UploadRules.mockResolvedValue({step3_error:false,sessionRuleIds:['R27']});
+  await choose(fileInput('Session rules (SWRL)'),new File(['<rdf/>'],'r.owl'));
+  await act(async()=>{container.querySelector('input[type=checkbox]').click();});
+  await click('Configure & Continue');
+  await click('Verify & Continue');
+  expect(container.textContent).toContain('Step 4: Verify Configuration');
+  expect(button('Create Ontology')).toBeUndefined();
 });

@@ -29,10 +29,14 @@ function saveSession(session) {
 function sameRuleIds(expected, actual) {
   return Array.isArray(actual) && JSON.stringify([...expected].sort()) === JSON.stringify([...actual].sort());
 }
-function executionMatchesSelection(result, selectedIds) {
-  return sameRuleIds(selectedIds, result?.selectedRuleIds) && Array.isArray(result?.executedRules)
-    && result.executedRules.every(rule => rule && typeof rule.id === 'string')
-    && sameRuleIds(selectedIds, result.executedRules.map(rule => rule.id));
+// Las reglas registradas llegan con id; las reglas de la sesión, sin id hasta completar.
+function executionMatchesSelection(result, selectedIds, sessionRuleIds = []) {
+  if (!sameRuleIds(selectedIds, result?.selectedRuleIds) || !Array.isArray(result?.executedRules)) return false;
+  const registered = result.executedRules.filter(rule => rule && typeof rule.id === 'string');
+  const sessionRules = result.executedRules.filter(rule => rule && rule.id == null && typeof rule.name === 'string');
+  return registered.length + sessionRules.length === result.executedRules.length
+    && sameRuleIds(selectedIds, registered.map(rule => rule.id))
+    && sameRuleIds(sessionRuleIds, sessionRules.map(rule => rule.name));
 }
 
 function Wizard() {
@@ -51,6 +55,9 @@ function Wizard() {
   const [availableRules, setAvailableRules] = useState([]);
   const [validationResult, setValidationResult] = useState(null);
   const [verificationResult, setVerificationResult] = useState(null);
+  const [dataFile, setDataFile] = useState(null);
+  const [sessionRuleIds, setSessionRuleIds] = useState([]);
+  const [lastCompletion, setLastCompletion] = useState(null);
 
   const rememberSession = (data, requiresCleanup = false) => {
     if (!data?.tempModuleId) return;
@@ -66,11 +73,21 @@ function Wizard() {
 
   // Step 1: Upload
   const step1Mutation = useMutation({
-    mutationFn: (file) => wizardAPI.step1Upload(file, file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]/g, '_')),
+    mutationFn: async (file) => {
+      const data = await wizardAPI.step1Upload(file, file.name.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9_-]/g, '_'));
+      if (!dataFile || !data?.tempModuleId || data.step1_parsed !== true) return data;
+      // Datos de instancia opcionales: van a un grafo propio de la misma sesión.
+      const instanceData = await wizardAPI.step1UploadData(data.tempModuleId, dataFile).catch(error => error.response?.data || { step1_parsed: false });
+      return { ...data, instanceData };
+    },
     onSuccess: (data) => {
       if (!data.tempModuleId || data.step1_parsed !== true || data.step1_error) {
         rememberSession(data, true);
         toast.error('Upload was not verified'); return;
+      }
+      if (dataFile && data.instanceData?.step1_parsed !== true) {
+        rememberSession(data, true);
+        toast.error(data.instanceData?.step1_message || 'Instance data was not loaded'); return;
       }
       rememberSession(data);
       toast.success('File uploaded successfully');
@@ -122,11 +139,27 @@ function Wizard() {
     },
   });
 
+  // Step 3b: reglas SWRL nuevas de la sesión
+  const step3RulesMutation = useMutation({
+    mutationFn: (file) => wizardAPI.step3UploadRules(sessionId, file),
+    onSuccess: (data) => {
+      setVerificationResult(null);
+      if (data.step3_error || !Array.isArray(data.sessionRuleIds)) {
+        toast.error(data.step3_message || 'Session rules were not loaded'); return;
+      }
+      setSessionRuleIds(data.sessionRuleIds);
+      toast.success(`Session rules loaded: ${data.sessionRuleIds.join(', ')}`);
+    },
+    onError: (error) => {
+      toast.error(error.response?.data?.step3_message || 'Failed to load session rules');
+    },
+  });
+
   // Step 4: Verify
   const step4Mutation = useMutation({
     mutationFn: () => wizardAPI.step4VerifyInferences(sessionId),
     onSuccess: (data) => {
-      if (canProceedVerification(data) && !executionMatchesSelection(data, selectedRules)) {
+      if (canProceedVerification(data) && !executionMatchesSelection(data, selectedRules, sessionRuleIds)) {
         setVerificationResult(null);
         toast.error('The executed rules could not be confirmed for this selection');
         return;
@@ -165,6 +198,7 @@ function Wizard() {
       warnings.forEach(warning => toast.warning(warning));
       toast.success('Ontology incorporation confirmed');
       clearWizard();
+      setLastCompletion(data);
     },
     onError: () => {
       toast.error(completionReceipt
@@ -192,7 +226,7 @@ function Wizard() {
       }
     },
   });
-  const busy = [step1Mutation, step2Mutation, step3Mutation, step4Mutation, completeMutation, cancelMutation]
+  const busy = [step1Mutation, step2Mutation, step3Mutation, step3RulesMutation, step4Mutation, completeMutation, cancelMutation]
     .some(mutation => mutation.isPending);
 
   const runAction = (mutation, variables) => {
@@ -205,6 +239,7 @@ function Wizard() {
     e.preventDefault();
     if (sessionId) { toast.error('Cancel the current session before uploading another file'); return; }
     if (!selectedFile) { toast.error('Please select a file'); return; }
+    setLastCompletion(null);
     runAction(step1Mutation, selectedFile);
   };
   const handleProceedToValidate = () => { if (!uploadNeedsCleanup && !completionRecoveryAvailable) runAction(step2Mutation); };
@@ -212,7 +247,7 @@ function Wizard() {
   const handleProceedToVerify = () => runAction(step4Mutation);
   const handleComplete = () => {
     if (!canProceedValidation(validationResult) || !canProceedVerification(verificationResult)
-      || !executionMatchesSelection(verificationResult, selectedRules)) {
+      || !executionMatchesSelection(verificationResult, selectedRules, sessionRuleIds)) {
       toast.error('A completed verification of the selected rules is required'); return;
     }
     runAction(completeMutation);
@@ -223,6 +258,8 @@ function Wizard() {
     setSessionId(null);
     setUploadedFile(null);
     setSelectedFile(null);
+    setDataFile(null);
+    setSessionRuleIds([]);
     setSelectedRules([]);
     setAvailableRules([]);
     setValidationResult(null);
@@ -295,6 +332,7 @@ function Wizard() {
       {uploadNeedsCleanup && <div role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4">Upload incomplete. Use Back to cancel this session before uploading another file.</div>}
       {completionRecoveryAvailable && <button className="btn-secondary" disabled={busy} onClick={() => runAction(completeMutation)}>{completionReceipt ? 'Retry temporary cleanup' : 'Retrieve completion receipt'}</button>}
       {cancelMutation.isPending && <p role="status">Cancelling the current session...</p>}
+      {lastCompletion && step === 1 && <CompletionSummary result={lastCompletion} />}
       {/* Step Content */}
       <div className="card p-8">
         {step === 1 && (
@@ -302,6 +340,8 @@ function Wizard() {
             onUpload={handleUpload}
             selectedFile={selectedFile}
             setSelectedFile={setSelectedFile}
+            dataFile={dataFile}
+            setDataFile={setDataFile}
             isLoading={step1Mutation.isPending}
             busy={busy}
           />
@@ -324,6 +364,9 @@ function Wizard() {
             availableRules={availableRules}
             selectedRules={selectedRules}
             toggleRule={toggleRule}
+            sessionRuleIds={sessionRuleIds}
+            onUploadRules={(file) => runAction(step3RulesMutation, file)}
+            rulesLoading={step3RulesMutation.isPending}
             onNext={handleProceedToAlignment}
             isLoading={step3Mutation.isPending}
             busy={busy}
@@ -368,7 +411,7 @@ function Wizard() {
   );
 }
 
-function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading, busy }) {
+function Step1Upload({ onUpload, selectedFile, setSelectedFile, dataFile, setDataFile, isLoading, busy }) {
   return (
     <div className="space-y-6">
       <div>
@@ -406,6 +449,22 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, isLoading, busy 
             </p>
           </div>
         )}
+
+        <div className="border border-gray-200 rounded-lg p-4">
+          <label className="block text-sm font-medium text-gray-900">
+            Instance data (optional)
+            <input
+              type="file"
+              aria-label="Instance data (optional)"
+              disabled={busy}
+              onChange={(e) => setDataFile(e.target.files?.[0] || null)}
+              accept=".rdf,.owl,.ttl,.n3,.nt,.xml"
+              className="block mt-2 text-sm"
+            />
+          </label>
+          <p className="text-xs text-gray-500 mt-1">Individuals validated together with the standard and registered as their own module on completion.</p>
+          {dataFile && <p className="text-sm text-gray-700 mt-1">Selected data file: {dataFile.name}</p>}
+        </div>
 
         <div className="flex justify-end gap-2 pt-4">
           <button
@@ -465,6 +524,9 @@ export function Step3Alignment({
   availableRules,
   selectedRules,
   toggleRule,
+  sessionRuleIds = [],
+  onUploadRules,
+  rulesLoading,
   onNext,
   isLoading,
   busy,
@@ -518,6 +580,21 @@ export function Step3Alignment({
         ) : (
           <p className="text-gray-500 text-sm">No suggested rules available</p>
         )}
+      </div>
+
+      <div className="space-y-2 border border-gray-200 rounded-lg p-4">
+        <h3 className="font-semibold text-gray-900">Session rules (SWRL)</h3>
+        <p className="text-sm text-gray-600">New rules brought by this standard. They are verified in step 4 and, on completion, registered and activated.</p>
+        <input
+          type="file"
+          aria-label="Session rules (SWRL)"
+          disabled={busy || isLoading || rulesLoading}
+          onChange={(e) => { const file = e.target.files?.[0]; if (file && onUploadRules) onUploadRules(file); }}
+          accept=".rdf,.owl,.ttl,.n3,.nt,.xml"
+          className="block text-sm"
+        />
+        {rulesLoading && <p role="status" className="text-sm">Loading session rules...</p>}
+        {sessionRuleIds.length > 0 && <p className="text-sm text-gray-700">Loaded session rules: {sessionRuleIds.join(', ')}</p>}
       </div>
 
       <div className="flex justify-between gap-2 pt-4">
@@ -627,6 +704,9 @@ export function Step5Complete({ verificationResult, onComplete, isLoading, busy,
       </div>
 
       <ExecutedRules result={verificationResult} />
+      {canProceedVerification(verificationResult) && Array.isArray(verificationResult.executedRules) && verificationResult.executedRules.length > 0 && (
+        <p className="text-sm text-gray-700 text-left">Active after completion: {verificationResult.executedRules.map(rule => rule.name).join(', ')}</p>
+      )}
       <CleaningContextStatus evaluation={verificationResult?.cleaningEvaluation} />
       <ContextIntegrityStatus evaluation={verificationResult?.contextEvaluation} />
       <NumericIntegrityStatus evaluation={verificationResult?.numericEvaluation} owlStatus={verificationResult?.owlValidationStatus} />
@@ -664,7 +744,7 @@ function ExecutedRules({ result }) {
     <div className="bg-gray-50 rounded-lg p-4 text-left">
       <h3 className="font-semibold text-gray-900">Executed Rules</h3>
       {result.executedRules.length ? <ul>{result.executedRules.map(rule => (
-        <li key={rule.id}>{rule.name || rule.id} ({rule.id})</li>
+        <li key={rule.id || rule.name}>{rule.name || rule.id} ({rule.id || 'session rule'})</li>
       ))}</ul> : <p>No alignment rules were executed for this session.</p>}
       {typeof result.ruleDefinitionsSha256 === 'string' && result.ruleDefinitionsSha256 && (
         <details className="mt-3 text-sm">
@@ -673,6 +753,16 @@ function ExecutedRules({ result }) {
           <code className="block break-all">{result.ruleDefinitionsSha256}</code>
         </details>
       )}
+    </div>
+  );
+}
+
+function CompletionSummary({ result }) {
+  const active = Array.isArray(result?.activatedRules) ? result.activatedRules : [];
+  return (
+    <div role="status" className="bg-green-50 border border-green-200 rounded-lg p-4">
+      <p className="font-medium text-green-900">Last incorporation: {result.standardName || result.finalModuleId}</p>
+      <p className="text-sm text-green-800">Rules active after completion ({active.length}): {active.length ? active.join(', ') : 'none'}</p>
     </div>
   );
 }

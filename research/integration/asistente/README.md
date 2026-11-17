@@ -158,4 +158,28 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
   `salidas/fase3b/pruebas-backend.txt`.
 
 ### Paso 4 — Interfaz del asistente
+- **Paso 1.** Campo opcional «Instance data (optional)». Se sube después del estándar, a la misma
+  sesión (`step1UploadData`). Si falla, la sesión queda marcada para cancelar, igual que una subida
+  incompleta.
+- **Paso 3.** Campo «Session rules (SWRL)», que llama a `step3UploadRules` y muestra las reglas cargadas.
+- **Comprobante del paso 4.** Antes exigía que toda regla ejecutada tuviera id; ahora acepta:
+  - las reglas registradas, con id e iguales a la selección;
+  - las reglas de la sesión, sin id e iguales a las cargadas.
+  Si falta una regla de la sesión, no deja completar.
+- **Paso 5.** Lista «Active after completion». Al completar, el asistente vuelve al paso 1, como antes y
+  como esperan las pruebas existentes, y muestra un aviso con las reglas que quedaron activas
+  (`activatedRules`).
+- **Límite conocido.** Las reglas de la sesión no se guardan en el navegador. Si la página se recarga a
+  mitad de la sesión, hay que volver a cargarlas en el paso 3: la nueva carga reemplaza a la anterior
+  en el servidor.
+- **Prueba.** `WizardFlow.test.jsx`, con 4 pruebas nuevas:
+  - los datos van a la misma sesión;
+  - si fallan los datos, la sesión queda para cancelar;
+  - las reglas de la sesión se verifican y se listan como activas;
+  - un comprobante sin la regla de la sesión no deja completar.
+
+  Suite de interfaz: 14 archivos, 69 pruebas, todas pasan (antes eran 65). Salida en
+  `salidas/fase3b/pruebas-interfaz.txt`.
+
+### Paso 5 — Recorrido completo por la API y la interfaz
 _En curso._

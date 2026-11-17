@@ -1,0 +1,16 @@
+PASS src/components/wizard/WizardFlow.test.jsx
+PASS src/components/dashboard/Dashboard.test.jsx
+PASS src/components/sparql/SparqlConsole.test.jsx
+PASS src/components/alignment/Alignment.test.jsx
+PASS src/components/erp/ErpIntegration.test.jsx
+PASS src/components/explorer/OntologyExplorer.test.jsx
+PASS src/hooks/useERP.test.jsx
+PASS src/components/wizard/Wizard.test.jsx
+PASS src/components/alignment/ContextIntegrityStatus.test.jsx
+PASS src/hooks/useSparql.test.js
+PASS src/services/api.test.js
+PASS src/components/alignment/CleaningContextStatus.test.jsx
+PASS src/components/alignment/NumericIntegrityStatus.test.jsx
+PASS src/services/validationState.test.js
+Test Suites: 14 passed, 14 total
+Tests:       69 passed, 69 total
