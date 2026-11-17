@@ -1,11 +1,11 @@
 # Informe de la Fase 1: conexión real con ADempiere y Odoo
 
 Fecha: 2026-11-16. Rama `trabajo-tecnico-2026-11`. Corrida de evidencia: `run.sh` de cero,
-**APROBADO en los 24 pasos** (`salidas/e2e/RESUMEN.txt`). Corrió sobre el commit `da3f100` más los
-cambios que entraron en los commits `93f9065` (mapeos con Organización) y `13d2ceb` (`run.sh` y sus scripts); por eso
+**APROBADO en los 24 pasos** (`salidas/e2e/RESUMEN.txt`). Corrió sobre el commit `ac41ef4` más los
+cambios que entraron en los commits `935d9e5` (mapeos con Organización) y `86f4b9d` (`run.sh` y sus scripts); por eso
 `02-versiones.txt` dice `+cambios-sin-commit`. Ningún archivo ejecutado cambió después de la corrida.
 
-**Re-corrida del 2026-11-17** (pulido para compartir), sobre el commit `a34efdf`: `run.sh` de cero,
+**Re-corrida del 2026-11-17** (pulido para compartir), sobre el commit `ecb48d8`: `run.sh` de cero,
 **APROBADO en los 24 pasos**, con los mismos números. Las salidas de `salidas/e2e/` son las de esta
 corrida: respecto de la anterior cambian sólo marcas de tiempo e identificadores. Después, el reinicio
 de ese proyecto conservó los dos grafos ERP (`../asistente/salidas/pulido/reinicio-con-grafos-erp.txt`).

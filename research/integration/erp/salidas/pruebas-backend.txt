@@ -1,6 +1,6 @@
 Suite de backend — comando: ./mvnw -q test en eclipse-temurin:17-jdk@sha256:5465815640e10433422217335e15a523a3e57021a1f2ae0fc3849380d237979f
 (el repo y ~/.m2 montados en las mismas rutas del host; en el JDK 21 del host fallan 2 pruebas preexistentes del trabajador SWRL por java.lang.Compiler)
-commit de código: 142ba3f4a21c56e6edd1c215c8fcfe4d0a35d17d (sin CARML en el pom; con la opción de evidencia del razonador)
+commit de código: 8bea4f2df46be62e4b5339527909a5a599018474 (sin CARML en el pom; con la opción de evidencia del razonador)
 org.protys.ws.controller.ERPConnectorContractTest: Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 s -- in org.protys.ws.controller.ERPConnectorContractTest
 org.protys.ws.controller.ERPControllerTest: Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.258 s -- in org.protys.ws.controller.ERPControllerTest
 org.protys.ws.controller.OntologyControllerTest: Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.272 s -- in org.protys.ws.controller.OntologyControllerTest

@@ -1,5 +1,5 @@
 Reproducción del error del explorador de clases — 2026-11-16, antes de corregir
-Plataforma: proyecto Compose "protys", backend con el código del commit c720d11 (imagen protys-backend:maintenance,
+Plataforma: proyecto Compose "protys", backend con el código del commit 7d7e065 (imagen protys-backend:maintenance,
 idéntica a la de la corrida de la Fase 1), interfaz construida del mismo código. Puertos: backend 127.0.0.1:18080,
 interfaz 127.0.0.1:18081 (el 5432 del host lo ocupa otro proyecto).
 Módulo: Canonical_Catalog_Integrated (id 3695f5cf-85a4-42fc-a801-fcd8030faac9), el catálogo integrado.

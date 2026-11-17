@@ -1,4 +1,4 @@
-# Fase 3b — 2026-11-17T02:45:00Z; código de la plataforma: commit e564ec8 (imágenes reconstruidas desde ese árbol)
+# Fase 3b — 2026-11-17T02:45:00Z; código de la plataforma: commit 6d33abb (imágenes reconstruidas desde ese árbol)
 /protys-adempiere-db-1 protys-erp-adempiere-db:3.9.4 sha256:56444eaf7eec73c5cb840764cef0e96eabe23f267c05bc7ea461f024bb10f58f
 /protys-odoo-db-1 postgres:15.10@sha256:d609c3005478af92bddad773423df829b7402ea0b356d5b72edd2fd54d1ad3ea sha256:c4730599ff7510e9ac59d170f5c89f2c90da013ea55fe9d69dabf97726f71f08
 /protys-protys-backend-1 protys-backend:maintenance sha256:3fdf868c43389a3d3af8e9a0c0640305715b958db4df81637122cb52019d5043

@@ -30,7 +30,7 @@ los componentes, clases de origen conservadas y casos sin marca de piloto que no
 
 ## Cómo se probó
 Plataforma levantada en configuración integrada (proyecto Compose `protys`, imágenes del commit
-`52f229e`, backend en 127.0.0.1:18080). La plataforma cargó 1 módulo y 22 reglas, todas activas.
+`14c7ac1`, backend en 127.0.0.1:18080). La plataforma cargó 1 módulo y 22 reglas, todas activas.
 - **Por la API:** `secuencia.sh` → `salidas/api/`, con una respuesta por llamada y `RESUMEN.txt`.
 - **Por la interfaz:** Chrome, en `salidas/interfaz/`, con una captura por pantalla.
 
@@ -194,7 +194,7 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
 
 ### Paso 5 — Recorrido completo por la API y la interfaz
 **Plataforma.**
-- Imágenes reconstruidas desde el commit `e564ec8`; el mismo Compose fija `postgres:15` por digest.
+- Imágenes reconstruidas desde el commit `6d33abb`; el mismo Compose fija `postgres:15` por digest.
 - Proyecto `protys` en puertos alternativos: backend 127.0.0.1:18080, interfaz 18081, Fuseki 13030.
 - Antes de cada recorrido se borraron sólo `protys_fuseki-data` y `protys_postgres-data`, así la carga
   inicial dejó la configuración integrada limpia: 1 módulo (4318 triples) y 22 reglas activas.
@@ -285,7 +285,7 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
   - red consistente;
   - las 21 consultas del catálogo sin cambios;
   - los 8 controles H3 comparables iguales a lo esperado.
-- Esto vale **con los cambios de la Fase 3b** (commits `10d01ba`, `752d190`, `31cbc3a`, `e564ec8`), no
+- Esto vale **con los cambios de la Fase 3b** (commits `1f5b909`, `fe739b1`, `89e201c`, `6d33abb`), no
   con el asistente evaluado en la versión de la tesis.
 
 ## Qué no puede afirmar
@@ -297,7 +297,7 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
 
 Pedido: correr todos los controles, arreglar lo que haga falta y pulir la interfaz para compartir.
 
-### Paso 1 — Reiniciar después de incorporar (`96172d1`)
+### Paso 1 — Reiniciar después de incorporar (`0610397`)
 Ver «Reiniciar después de incorporar» más arriba.
 
 ### Paso 2 — Recorrida de las 6 pantallas en el navegador y arreglos
@@ -325,7 +325,7 @@ Pruebas nuevas: `SwrlTextTest` (3), 2 en `AlignmentRuleUploadTest`, 2 en `Dashbo
 - Interfaz: 73/73 (antes 69).
 - `npm run build` con `CI=true` compila sin avisos.
 
-### Paso 3 — Controles completos con el código actual (`a34efdf`)
+### Paso 3 — Controles completos con el código actual (`ecb48d8`)
 
 | Control | Comando | Resultado |
 |---|---|---|
@@ -362,3 +362,11 @@ Comparada con `research/release/functional.json` (`salidas/pulido/funcional-vs-r
 - Cómo levantar la plataforma con Docker Compose, cómo se reinicia y cómo empezar de cero.
 - Cantidad de pruebas por suite.
 - Tabla con la evidencia de noviembre de 2026.
+
+### Paso 5 — Mensajes de commit
+El 2026-11-17 se reescribieron los mensajes de los 30 commits de la rama, para dejar sólo la descripción
+del cambio. El código de cada commit quedó igual; lo único que cambió fue una línea de
+`salidas/fase3b/versiones.txt`, que describe la herramienta usada para las capturas. Como los
+identificadores cambian al reescribir, los que se citan en estos README, en los informes y en las
+primeras líneas de las salidas guardadas se reemplazaron por los nuevos. Cada uno sigue apuntando al
+mismo árbol de código; ninguna otra parte de las salidas se tocó.

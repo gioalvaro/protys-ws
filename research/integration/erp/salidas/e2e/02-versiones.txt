@@ -1,5 +1,5 @@
 fecha_utc=2026-11-17T15:49:51Z
-commit=a34efdf48170bc838389fc5c778096d416a0a5a3+cambios-sin-commit
+commit=ecb48d88a632bf98c7d416854b6ce3531a77d589+cambios-sin-commit
 docker=29.8.2
 compose=5.5.0
 imagen[adempiere-db]=protys-erp-adempiere-db:3.9.4 id=sha256:2c2ba07feba6d3a59d0971d45047ee6bfda20458319ccac2eb86ab900f0ba5bf

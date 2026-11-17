@@ -33,7 +33,7 @@ muestra el detalle de una clase, sin errores. Antes fallaba con «TypeError: t.f
 
 ## Verificación a mano (plataforma levantada)
 `docker compose -p protys -f docker/docker-compose.yml up -d` con las imágenes reconstruidas desde el
-commit `52f229e`. Puertos alternativos: backend 127.0.0.1:18080 e interfaz 127.0.0.1:18081 (el 5432 del
+commit `14c7ac1`. Puertos alternativos: backend 127.0.0.1:18080 e interfaz 127.0.0.1:18081 (el 5432 del
 host lo ocupa otro proyecto). Navegador: Chrome.
 
 - **Antes** (`salidas/antes-reproduccion.txt`, `salidas/antes-api-classes.json`,

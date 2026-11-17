@@ -1,4 +1,4 @@
-# Reinicio completo de la plataforma (a34efdf, 2026-11-17T15:50:36Z)
+# Reinicio completo de la plataforma (ecb48d8, 2026-11-17T15:50:36Z)
 $ docker compose -p protys-e2e -f <repo>/docker/docker-compose.yml stop protys-frontend protys-backend protys-fuseki protys-postgres
  Container protys-e2e-protys-fuseki-1 Stopped 
 $ docker compose -p protys-e2e -f <repo>/docker/docker-compose.yml up -d --build --wait protys-frontend

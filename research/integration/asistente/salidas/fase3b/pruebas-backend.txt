@@ -1,4 +1,4 @@
-# mvn17.sh test (eclipse-temurin:17-jdk@sha256:5465815640e1…), commit base 752d190 + cambios del paso 3
+# mvn17.sh test (eclipse-temurin:17-jdk@sha256:5465815640e1…), commit base fe739b1 + cambios del paso 3
 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.602 s -- in org.protys.ws.repository.StandardIncorporationSessionRepositoryTest
 [INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.721 s -- in org.protys.ws.controller.ERPControllerTest
 [INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.245 s -- in org.protys.ws.controller.SPARQLControllerTest
