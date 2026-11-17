@@ -292,3 +292,35 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
 - Que el control `H3_pre_extension_no_classification` se reprodujo en la plataforma.
 - Que el asistente de la versión evaluada (`tesis-cierre-2026-10-03-v1`) podía hacer esta
   incorporación: no podía (Fase 3).
+
+## Pulido para compartir (2026-11-17)
+
+Pedido: correr todos los controles, arreglar lo que haga falta y pulir la interfaz para compartir.
+
+### Paso 1 — Reiniciar después de incorporar (`96172d1`)
+Ver «Reiniciar después de incorporar» más arriba.
+
+### Paso 2 — Recorrida de las 6 pantallas en el navegador y arreglos
+Recorrí Dashboard, Explorador, SPARQL, Alineamiento, ERP y Asistente con la plataforma incorporada.
+
+| # | Problema encontrado | Arreglo |
+|---|---|---|
+| 1 | SPARQL: una tabla de resultados ancha arrastraba la página entera hacia el costado, por debajo de la barra lateral | `min-w-0` en el contenedor principal (`App.jsx`); celdas largas en tres líneas con el texto completo en el título |
+| 2 | SPARQL: las variables sin valor se mostraban como `null` | se muestran como «—» |
+| 3 | La barra lateral decía «Connected» siempre, aunque el backend no respondiera | consulta `/api/dashboard/health`: «Backend connected», «Backend unreachable» o «Checking backend…» |
+| 4 | Dashboard: el gráfico de torta tenía una sola porción («Modules: 3») y el de barras una sola barra | dos gráficos por módulo, con triples y con clases e individuos, a partir de `moduleStats`, que la API ya devolvía |
+| 5 | Dashboard: marcas de tiempo crudas, con nanosegundos | `2026-11-17 15:09:28` |
+| 6 | Página inexistente con el título «Dashboard» | título «Page not found» |
+| 7 | Explorador: al elegir un módulo, el aviso «Select a class…» quedaba centrado en un panel alto, fuera de la vista | el panel ya no se estira y queda fijo arriba |
+| 8 | Alineamiento: reglas en orden de carga (R10, R11, R15, R04…) | orden natural (R01…R29) |
+| 9 | **Backend**: la expresión SWRL guardada de cada regla era el identificador de un nodo en blanco y la descripción quedaba vacía, aunque las reglas tienen `rdfs:label` | `SwrlText` arma el texto legible (`ProcessOperation(?var_op) ^ … -> hasGHGImpactKgCO2e(?var_op, ?var_ghg)`) y toma la etiqueta como descripción, al subir reglas y al completar el asistente; la interfaz lo muestra plegado |
+| 10 | **Backend**: la subida de reglas leía sólo RDF/XML, aunque la interfaz ofrece `.ttl` y `.n3` | lector por extensión, como el asistente |
+| 11 | **nginx**: límite de 1 MB por defecto; la interfaz prometía 100 MB y el backend acepta 50 MB | `client_max_body_size 50m` en `/api/` y la interfaz dice «max 50 MB» |
+| 12 | **nginx**: `index.html` sin `Cache-Control`; después de actualizar, el navegador seguía con la versión vieja | `Cache-Control: no-cache` (los `.js`/`.css` con hash se siguen guardando un año) |
+| 13 | Detalles: iconos emoji mezclados con los de Heroicons; botones sólo con icono y sin nombre accesible; en pantallas angostas la barra lateral tapaba el contenido; textos de ERP y del asistente | iconos Heroicons; `aria-label`; barra lateral superpuesta con fondo que la cierra; textos corregidos |
+
+Pruebas nuevas: `SwrlTextTest` (3), 2 en `AlignmentRuleUploadTest`, 2 en `Dashboard.test.jsx`,
+`BackendStatus.test.jsx` (1) y 1 en `Alignment.test.jsx`.
+- Backend: 223/223 (antes 218).
+- Interfaz: 73/73 (antes 69).
+- `npm run build` con `CI=true` compila sin avisos.

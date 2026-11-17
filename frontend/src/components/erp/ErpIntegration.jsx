@@ -342,7 +342,7 @@ function ErpIntegration() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <h3 className="font-medium text-gray-900 mb-2">1. Connect System</h3>
-            <p className="text-sm text-gray-600">Create a new connector with your ERP credentials</p>
+            <p className="text-sm text-gray-600">Register the ERP database with a read-only (SELECT-only) user</p>
           </div>
           <div>
             <h3 className="font-medium text-gray-900 mb-2">2. Test Connection</h3>

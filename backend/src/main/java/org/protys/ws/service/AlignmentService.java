@@ -9,8 +9,6 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -66,8 +64,8 @@ public class AlignmentService {
         log.info("Loading alignment rules from file");
 
         try {
-            Model model = ModelFactory.createDefaultModel();
-            RDFDataMgr.read(model, rulesFile.getInputStream(), Lang.RDFXML);
+            // Lector según la extensión (la interfaz ofrece .rdf, .owl, .ttl y .n3); RDF/XML si no se reconoce.
+            Model model = StandardIncorporationService.parse(rulesFile);
 
             List<AlignmentRule> rules = new ArrayList<>();
 
@@ -84,7 +82,8 @@ public class AlignmentService {
                 rule.setRuleId(ruleResource.getLocalName());
                 rule.setRuleType(AlignmentRule.RuleType.INFERENCE);
                 rule.setName(ruleResource.getLocalName());
-                rule.setSwrlExpression(stmt.getObject().toString());
+                rule.setSwrlExpression(SwrlText.of(ruleResource));
+                rule.setDescription(SwrlText.description(ruleResource));
                 rule.setActive(true);
                 rule.setCreatedAt(LocalDateTime.now());
                 rule.setUpdatedAt(LocalDateTime.now());

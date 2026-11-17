@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import {
   Bars3Icon,
-  XMarkIcon,
   HomeIcon,
   SparklesIcon,
   CommandLineIcon,
@@ -16,6 +15,7 @@ import SparqlConsole from './components/sparql/SparqlConsole';
 import Alignment from './components/alignment/Alignment';
 import ErpIntegration from './components/erp/ErpIntegration';
 import Wizard from './components/wizard/Wizard';
+import { useSystemHealth } from './hooks/useDashboard';
 
 const NAVIGATION = [
   {
@@ -57,11 +57,14 @@ const NAVIGATION = [
 ];
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  // En pantallas angostas la barra lateral arranca cerrada para no tapar el contenido.
+  const [sidebarOpen, setSidebarOpen] = useState(
+    () => typeof window === 'undefined' || !window.matchMedia || window.matchMedia('(min-width: 1024px)').matches
+  );
   const location = useLocation();
 
   const getCurrentPath = () => {
-    return NAVIGATION.find(nav => nav.href === location.pathname)?.name || 'Dashboard';
+    return NAVIGATION.find(nav => nav.href === location.pathname)?.name || 'Page not found';
   };
 
   const isActive = (href) => location.pathname === href;
@@ -124,18 +127,21 @@ function App() {
 
         {/* Footer Info */}
         <div className="absolute bottom-0 left-0 right-0 border-t border-gray-200 bg-gray-50 p-4">
-          <div className="text-xs text-gray-600 space-y-1">
-            <div className="font-medium">Status</div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span>Connected</span>
-            </div>
-          </div>
+          <BackendStatus />
         </div>
       </aside>
 
+      {/* En pantallas angostas la barra lateral se superpone: tocar fuera la cierra. */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-gray-900/30 lg:hidden"
+          aria-hidden="true"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Main Content */}
-      <div className={`flex-1 flex flex-col transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-0'}`}>
+      <div className={`flex-1 min-w-0 flex flex-col transition-all duration-300 ${sidebarOpen ? 'lg:ml-64' : 'ml-0'}`}>
         {/* Top Bar */}
         <header className="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
           <div className="px-6 py-4 flex items-center justify-between">
@@ -143,12 +149,10 @@ function App() {
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition-colors duration-150"
+                aria-label={sidebarOpen ? 'Hide navigation' : 'Show navigation'}
+                title={sidebarOpen ? 'Hide navigation' : 'Show navigation'}
               >
-                {sidebarOpen ? (
-                  <XMarkIcon className="w-5 h-5 text-gray-600" />
-                ) : (
-                  <Bars3Icon className="w-5 h-5 text-gray-600" />
-                )}
+                <Bars3Icon className="w-5 h-5 text-gray-600" />
               </button>
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-semibold text-gray-900">{getCurrentPath()}</h1>
@@ -165,7 +169,7 @@ function App() {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 min-w-0 overflow-auto">
           <div className="p-6">
             <Routes>
               <Route path="/" element={<Dashboard />} />
@@ -178,6 +182,23 @@ function App() {
             </Routes>
           </div>
         </main>
+      </div>
+    </div>
+  );
+}
+
+// Estado real del backend (antes decía «Connected» siempre, aunque el backend no respondiera).
+export function BackendStatus() {
+  const { data, isLoading, isError } = useSystemHealth({ retry: false });
+  const up = !isError && data?.status === 'UP';
+  const label = isLoading ? 'Checking backend…' : up ? 'Backend connected' : 'Backend unreachable';
+  const dot = isLoading ? 'bg-gray-400' : up ? 'bg-green-500' : 'bg-red-500';
+  return (
+    <div className="text-xs text-gray-600 space-y-1" role="status">
+      <div className="font-medium">Status</div>
+      <div className="flex items-center gap-2">
+        <div className={`w-2 h-2 rounded-full ${dot}`}></div>
+        <span>{label}</span>
       </div>
     </div>
   );

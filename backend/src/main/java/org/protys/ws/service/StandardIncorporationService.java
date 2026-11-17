@@ -414,7 +414,6 @@ public class StandardIncorporationService {
             Model definitions = requiredGraph(rulesGraph(session.getTemporaryGraph()));
             fusekiService.putModel(AlignmentService.RULE_GRAPH,
                     AlignmentService.mergeRuleDefinitions(fusekiService.getModelOrEmpty(AlignmentService.RULE_GRAPH), definitions));
-            var body = definitions.createProperty("http://www.w3.org/2003/11/swrl#body");
             for (String name : extra) {
                 AlignmentRule rule = alignmentRuleRepository.findByRuleId(name).orElseGet(AlignmentRule::new);
                 if (rule.getId() == null) {
@@ -423,7 +422,8 @@ public class StandardIncorporationService {
                     rule.setRuleId(name);
                     rule.setName(name);
                     rule.setRuleType(AlignmentRule.RuleType.INFERENCE);
-                    rule.setSwrlExpression(resource.hasProperty(body) ? resource.getProperty(body).getObject().toString() : null);
+                    rule.setSwrlExpression(SwrlText.of(resource));
+                    rule.setDescription(SwrlText.description(resource));
                     rule.setCreatedAt(LocalDateTime.now());
                 }
                 rule.setActive(true);

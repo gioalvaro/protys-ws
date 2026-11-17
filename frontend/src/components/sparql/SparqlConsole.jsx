@@ -4,6 +4,7 @@ import {
   ArrowDownTrayIcon,
   TrashIcon,
   CommandLineIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import {
   useSparqlTemplates,
@@ -59,7 +60,8 @@ function SparqlConsole() {
           onClick={() => setShowTemplates(!showTemplates)}
           className="btn-secondary"
         >
-          📋 Templates
+          <DocumentTextIcon className="w-4 h-4 inline -mt-0.5 mr-1" aria-hidden="true" />
+          Templates
         </button>
       </div>
 
@@ -127,6 +129,8 @@ function SparqlConsole() {
           <button
             onClick={() => setQuery('')}
             className="btn-ghost"
+            aria-label="Clear query"
+            title="Clear query"
           >
             <TrashIcon className="w-4 h-4" />
           </button>
@@ -230,7 +234,7 @@ export function SparqlResults({ results }) {
         </tr></thead>
         <tbody>{rows.map((row, index) => (
           <tr key={index} className="border-b border-gray-200 hover:bg-gray-50">
-            {columns.map(column => <td key={column} className="px-4 py-2 text-gray-700"><ResultCell value={row[column]} /></td>)}
+            {columns.map(column => <td key={column} className="px-4 py-2 text-gray-700 align-top"><ResultCell value={row[column]} /></td>)}
           </tr>
         ))}</tbody>
       </table>
@@ -242,7 +246,7 @@ export function SparqlResults({ results }) {
 
 function ResultCell({ value }) {
   if (value === null || value === undefined) {
-    return <span className="text-gray-400 italic">null</span>;
+    return <span className="text-gray-400" title="Unbound">—</span>;
   }
 
   const uri = typeof value === 'string' ? value : value.uri;
@@ -254,7 +258,9 @@ function ResultCell({ value }) {
     );
   }
 
-  return <span className="truncate">{typeof value === 'object' ? JSON.stringify(value) : String(value)}</span>;
+  const text = typeof value === 'object' ? JSON.stringify(value) : String(value);
+  // Textos largos (descripciones) se cortan a tres líneas; el completo queda en el título.
+  return <span className="block max-w-xl line-clamp-3 break-words" title={text}>{text}</span>;
 }
 
 function getSampleQuery() {

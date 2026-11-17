@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
-import Dashboard, { ApiStatus, ActivitySnapshot } from './Dashboard';
+import Dashboard, { ApiStatus, ActivitySnapshot, formatTimestamp, moduleChartData } from './Dashboard';
 import health from './__fixtures__/dashboard-health.json';
 import activity from './__fixtures__/dashboard-activity.json';
 import stats from './__fixtures__/dashboard-stats.json';
@@ -50,8 +50,8 @@ test('real activity object renders a snapshot and its recorded counts', () => {
     entry.querySelector('dt').textContent, entry.querySelector('dd').textContent,
   ]));
   expect(entries).toEqual({
-    'Snapshot timestamp': activity.timestamp,
-    'Last updated': activity.lastUpdated,
+    'Snapshot timestamp': formatTimestamp(activity.timestamp),
+    'Last updated': formatTimestamp(activity.lastUpdated),
     'Loaded modules': '1',
     Classes: '128',
     Individuals: '621',
@@ -82,4 +82,25 @@ test('dashboard consumes the real DTO names instead of absent rule/ERP fields', 
   expect(view.textContent).toContain('Activity Snapshot');
   expect(view.textContent).toContain('Last updated');
   expect(view.textContent).not.toContain('No recent activity');
+});
+
+test('timestamps drop fractional seconds and keep the server date and time', () => {
+  expect(formatTimestamp('2026-11-17T14:54:05.353452769')).toBe('2026-11-17 14:54:05');
+  expect(formatTimestamp(null)).toBeNull();
+  expect(formatTimestamp('not a date')).toBe('not a date');
+});
+
+test('charts break the totals down per module instead of a single slice', () => {
+  const rows = moduleChartData({
+    moduleStats: [
+      { moduleName: 'iso10303-ap242-fragment', tripleCount: 46, classCount: 6, individualCount: 0 },
+      { moduleName: 'Canonical_Catalog_Integrated', tripleCount: 4318, classCount: 128, individualCount: 165 },
+      { moduleName: 'iso10303-ap242-fragment — datos de instancia', tripleCount: 203, classCount: null, individualCount: 53 },
+    ],
+  });
+  expect(rows.map(row => row.triples)).toEqual([4318, 203, 46]);
+  expect(rows[1].classes).toBe(0);
+  expect(rows[1].label.length).toBeLessThanOrEqual(28);
+  expect(rows[1].name).toBe('iso10303-ap242-fragment — datos de instancia');
+  expect(moduleChartData(undefined)).toEqual([]);
 });

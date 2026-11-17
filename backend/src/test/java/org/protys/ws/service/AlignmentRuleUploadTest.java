@@ -80,4 +80,20 @@ class AlignmentRuleUploadTest {
         assertSame(row, rows.get("R27"));
         verify(rules, times(1)).saveAll(anyList());
     }
+
+    @Test void seGuardaElTextoSwrlYLaEtiquetaNoElNodoEnBlanco() {
+        Model m = rule("R27", "https://e.org/C", "https://e.org/D");
+        m.getResource(A + "R27").addProperty(org.apache.jena.vocabulary.RDFS.label, "R27: C implica D");
+        service.loadAlignmentRules(file(m));
+        assertEquals("C(?var_x) -> D(?var_x)", rows.get("R27").getSwrlExpression());
+        assertEquals("R27: C implica D", rows.get("R27").getDescription());
+    }
+
+    @Test void aceptaReglasEnTurtle() {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        RDFDataMgr.write(out, rule("R28", "https://e.org/C", "https://e.org/D"), Lang.TURTLE);
+        service.loadAlignmentRules(new MockMultipartFile("file", "reglas.ttl", "text/turtle", out.toByteArray()));
+        assertTrue(has("R28"));
+        assertEquals(Set.of("R28"), rows.keySet());
+    }
 }

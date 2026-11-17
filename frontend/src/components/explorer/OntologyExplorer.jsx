@@ -140,7 +140,7 @@ function OntologyExplorer() {
             </div>
           </>
         ) : (
-          <div className="card p-6 flex-1 flex items-center justify-center text-gray-500">
+          <div className="card p-6 min-h-[10rem] flex items-center justify-center text-gray-500 lg:sticky lg:top-0">
             <p className="text-sm">Select a class or individual to view details</p>
           </div>
         )}

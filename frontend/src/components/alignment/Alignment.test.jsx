@@ -70,3 +70,9 @@ test('missing inference statistics do not become measured zeros', () => {
     expect(cardLabel.nextElementSibling.textContent).toBe('-');
   }
 });
+
+test('rules are listed in natural identifier order, not load order', () => {
+  const { sortRules } = require('./Alignment');
+  const ordered = sortRules([{ ruleId: 'R10' }, { ruleId: 'R04' }, { ruleId: 'R27' }, { ruleId: 'R01' }]);
+  expect(ordered.map(rule => rule.ruleId)).toEqual(['R01', 'R04', 'R10', 'R27']);
+});

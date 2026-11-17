@@ -427,7 +427,7 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, dataFile, setDat
               type="file"
               disabled={busy}
               onChange={(e) => setSelectedFile(e.target.files?.[0])}
-              accept=".rdf,.owl,.ttl,.n3,.xml"
+              accept=".rdf,.owl,.ttl,.n3,.nt,.xml"
               className="hidden"
             />
             <span className="text-protys-600 hover:text-protys-700 font-medium">
@@ -436,7 +436,7 @@ function Step1Upload({ onUpload, selectedFile, setSelectedFile, dataFile, setDat
             {' '}or drag and drop
           </label>
           <p className="text-sm text-gray-500 mt-2">
-            RDF, OWL, TTL, N3, or XML files (max 100MB)
+            RDF, OWL, TTL, N3, NT or XML files (max 50 MB)
           </p>
         </div>
 
