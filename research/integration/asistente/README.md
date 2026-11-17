@@ -255,18 +255,29 @@ no hay datos del piloto, así que da `false` (lo esperado) de forma trivial. Des
 `true`, y es lo correcto: con la extensión, `Component00` sí se clasifica. No se cuenta como control
 reproducido.
 
-**Reiniciar después de incorporar (encontrado, no corregido).** Con el piloto ya incorporado, volver a
-correr `docker compose up -d` hace fallar `protys-init`: «Foreign or incomplete module metadata; no state
-was modified» (`salidas/fase3b/reinicio/reinicio.txt`).
-- La causa: `docker/load_canonical.py` exige que en la base estén sólo el módulo y las 22 reglas de la
+**Reiniciar después de incorporar (encontrado el 2026-11-16, corregido el 2026-11-17).** Con el piloto ya
+incorporado, volver a correr `docker compose up -d` hacía fallar `protys-init`: «Foreign or incomplete
+module metadata; no state was modified» (`salidas/fase3b/reinicio/reinicio.txt`). Como la interfaz espera
+a que `protys-init` termine bien, tampoco volvía a levantar.
+- Causa: `docker/load_canonical.py` exigía que en la base estuvieran sólo el módulo y las 22 reglas de la
   carga inicial.
-- La carga inicial no modifica nada, y el backend y la interfaz siguen funcionando; pero `docker compose
-  up` devuelve código 1.
-- Cambio mínimo posible: que `verify_existing` acepte módulos y reglas incorporados por el asistente
-  (por ejemplo, módulos con grafo bajo `…/incorporated/`) además de los suyos.
-- No se tocó, por decisión del 2026-11-16.
+- Arreglo (pulido, paso 1): `verify_existing` conserva lo que la plataforma registró por su API después
+  de la carga inicial:
+  - módulos registrados, cada uno con su grafo (asistente, explorador);
+  - reglas registradas que tengan definición en el grafo de reglas;
+  - grafos de conectores ERP (`…/protys/erp/`) y de sesiones abiertas del asistente.
+- Sigue rechazando:
+  - grafos que nadie registró;
+  - definiciones de reglas sin registro y reglas registradas sin definición;
+  - el módulo canónico cambiado;
+  - cualquiera de las 22 reglas canónicas cambiada o sin registrar.
+- Pruebas: 12 en `scripts/tests/test_load_canonical.py`, sin Docker.
+- Comprobación real: `reiniciar.sh` para y vuelve a levantar todo sobre la plataforma con el piloto
+  incorporado. `protys-init` responde `PRESERVED` (2 módulos y R27–R29 agregados), quedan 25 reglas
+  activas y la interfaz responde 200 (`salidas/fase3b/reinicio/reinicio-tras-arreglo.txt`).
 
 ## Qué puede afirmar la tesis (actualizado tras la Fase 3b)
+- La plataforma se reinicia sin intervención después de incorporar (con el arreglo del 2026-11-17).
 - El asistente incorpora el fragmento AP242 con sus reglas de vínculo R27–R29 y los datos del piloto, por
   la API y por la interfaz.
 - El resultado coincide con la incorporación por programa (`h3_extended`) en lo comprobado:
@@ -279,6 +290,5 @@ was modified» (`salidas/fase3b/reinicio/reinicio.txt`).
 
 ## Qué no puede afirmar
 - Que el control `H3_pre_extension_no_classification` se reprodujo en la plataforma.
-- Que la plataforma se puede reiniciar sin intervención después de incorporar un estándar (ver arriba).
 - Que el asistente de la versión evaluada (`tesis-cierre-2026-10-03-v1`) podía hacer esta
   incorporación: no podía (Fase 3).

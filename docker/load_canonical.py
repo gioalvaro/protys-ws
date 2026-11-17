@@ -2,8 +2,11 @@
 """Bootstrap asserted canonical sources through the API, without inference.
 
 A complete unchanged bootstrap can be revisited without changing rule activation.
-Foreign data or a partial bootstrap are rejected; use a new Compose project instead
-of deleting or replacing an existing dataset.
+State the platform itself registered through its API afterwards (modules incorporated
+with the wizard or uploaded from the explorer, their SWRL rules, ERP connector graphs and
+open wizard sessions) is preserved. Foreign data, a partial bootstrap or a changed
+canonical module or rule are rejected; use a new Compose project instead of deleting or
+replacing an existing dataset.
 """
 import hashlib
 import json
@@ -16,7 +19,7 @@ import urllib.request
 import uuid
 
 import rdflib
-from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.compare import isomorphic
 from rdflib.namespace import RDF, XSD
 
@@ -33,6 +36,9 @@ MARKER_PREDICATE = URIRef("urn:protys:bootstrap:manifest")
 RULE_GRAPH = "http://w3id.org/protys/ontology/active-rule-definitions"
 INFERENCE_GRAPH = "http://w3id.org/protys/ontology/inference-results"
 SWRL = Namespace("http://www.w3.org/2003/11/swrl#")
+# Grafos que la plataforma crea por su API sin registrar un módulo: sesiones abiertas del
+# asistente (borrables con cancelar) y materializaciones de conectores ERP.
+PLATFORM_GRAPH_PREFIXES = ("http://w3id.org/protys/ontology/temp/wizard/", "http://w3id.org/protys/erp/")
 
 
 def call(url, data=None, content=None, method=None, accept="application/json"):
@@ -140,25 +146,97 @@ def existing_marker():
     return json.loads(bindings[0]["manifest"]["value"])
 
 
+def rule_id(rule):
+    return str(rule).rsplit("#", 1)[-1]
+
+
+def rule_definitions(model):
+    """Cada swrl:Imp con todo lo que cuelga de ella por nodos en blanco (cuerpo, cabeza, átomos)."""
+    definitions = {}
+    for rule in model.subjects(RDF.type, SWRL.Imp):
+        if isinstance(rule, BNode):
+            raise RuntimeError("Anonymous SWRL rule in stored definitions; no state was modified")
+        definition, pending, seen = Graph(), [rule], set()
+        while pending:
+            subject = pending.pop()
+            if subject in seen:
+                continue
+            seen.add(subject)
+            for triple in model.triples((subject, None, None)):
+                definition.add(triple)
+                if isinstance(triple[2], BNode):
+                    pending.append(triple[2])
+        if rule_id(rule) in definitions:
+            raise RuntimeError("Duplicate SWRL rule identifier " + rule_id(rule) + "; no state was modified")
+        definitions[rule_id(rule)] = definition
+    return definitions
+
+
+def verify_rule_definitions(rules, stored, added_rule_ids):
+    """Las 22 definiciones canónicas siguen iguales y cada regla agregada tiene la suya."""
+    if not added_rule_ids:
+        if not equal_graph(rules, stored):
+            raise RuntimeError("Stored asserted sources or rule definitions changed; no state was modified")
+        return
+    canonical, current = rule_definitions(rules), rule_definitions(stored)
+    for identifier, definition in canonical.items():
+        if identifier not in current or not equal_graph(definition, current[identifier]):
+            raise RuntimeError("Canonical rule " + identifier + " changed; no state was modified")
+    missing = [identifier for identifier in added_rule_ids if identifier not in current]
+    if missing:
+        raise RuntimeError("Registered rules without definition " + ", ".join(missing) + "; no state was modified")
+    undeclared = sorted(set(current) - set(canonical) - set(added_rule_ids))
+    if undeclared:
+        raise RuntimeError("Unregistered rule definitions " + ", ".join(undeclared) + "; no state was modified")
+    # Lo que no es definición de regla (declaraciones de variables, cabecera) debe seguir estando.
+    defined = set()
+    for definition in canonical.values():
+        defined.update(definition)
+    remainder = [triple for triple in rules if triple not in defined]
+    if any(isinstance(term, BNode) for triple in remainder for term in triple):
+        raise RuntimeError("Canonical rule graph cannot be compared term by term; no state was modified")
+    stored_terms = set(transport_graph(stored))
+    shared = Graph()
+    for triple in remainder:
+        shared.add(triple)
+    if any(triple not in stored_terms for triple in transport_graph(shared)):
+        raise RuntimeError("Canonical rule declarations changed; no state was modified")
+
+
 def verify_existing(marker, combined, rules, expected, modules, registered_rules):
     if marker.get("source_manifest") != expected:
         raise RuntimeError("Existing bootstrap uses different sources; use a new Compose project")
-    if len(modules) != 1 or modules[0].get("id") != marker.get("module_id"):
+    canonical = [item for item in modules if item.get("id") == marker.get("module_id")]
+    if len(canonical) != 1:
         raise RuntimeError("Foreign or incomplete module metadata; no state was modified")
-    module_graph = modules[0]["namedGraph"]
-    if module_graph != marker.get("module_graph") or modules[0].get("name") != MODULE_NAME:
+    module_graph = canonical[0]["namedGraph"]
+    if module_graph != marker.get("module_graph") or canonical[0].get("name") != MODULE_NAME:
         raise RuntimeError("Canonical module identity changed; no state was modified")
-    if sorted(item["ruleId"] for item in registered_rules) != expected["expected_rule_ids"]:
+    # Módulos registrados después por la plataforma (asistente, explorador): cada uno con su grafo.
+    added_graphs = [item.get("namedGraph") for item in modules if item is not canonical[0]]
+    if (any(not name for name in added_graphs) or len(set(added_graphs)) != len(added_graphs)
+            or module_graph in added_graphs):
+        raise RuntimeError("Registered modules share or lack a named graph; no state was modified")
+    registered = [item["ruleId"] for item in registered_rules]
+    if len(set(registered)) != len(registered) or not set(expected["expected_rule_ids"]) <= set(registered):
         raise RuntimeError("Foreign or incomplete rule metadata; no state was modified")
-    names = query("SELECT DISTINCT ?g WHERE { GRAPH ?g { ?s ?p ?o } }")["results"]["bindings"]
-    allowed = {MARKER_GRAPH, module_graph, RULE_GRAPH, INFERENCE_GRAPH}
-    if any(item["g"]["value"] not in allowed for item in names):
-        raise RuntimeError("Foreign named graph present; no state was modified")
-    if not equal_graph(combined, graph(module_graph)) or not equal_graph(rules, graph(RULE_GRAPH)):
+    added_rules = sorted(set(registered) - set(expected["expected_rule_ids"]))
+    names = [item["g"]["value"] for item in
+             query("SELECT DISTINCT ?g WHERE { GRAPH ?g { ?s ?p ?o } }")["results"]["bindings"]]
+    allowed = {MARKER_GRAPH, module_graph, RULE_GRAPH, INFERENCE_GRAPH, *added_graphs}
+    foreign = sorted(name for name in names
+                     if name not in allowed and not name.startswith(PLATFORM_GRAPH_PREFIXES))
+    if foreign:
+        raise RuntimeError("Foreign named graph present (" + ", ".join(foreign) + "); no state was modified")
+    if not equal_graph(combined, graph(module_graph)):
         raise RuntimeError("Stored asserted sources or rule definitions changed; no state was modified")
+    verify_rule_definitions(rules, graph(RULE_GRAPH), added_rules)
     # Never reset activation, remove inferences, or replace any existing graph here.
     print(json.dumps({"status": "PRESERVED", "module_id": marker["module_id"],
-                      "source_manifest": expected, "rule_activation_preserved": True}), flush=True)
+                      "source_manifest": expected, "rule_activation_preserved": True,
+                      "added_modules": sorted(added_graphs), "added_rules": added_rules,
+                      "platform_graphs": sorted(name for name in names
+                                                if name.startswith(PLATFORM_GRAPH_PREFIXES))}), flush=True)
 
 
 def main():
