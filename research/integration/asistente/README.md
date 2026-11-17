@@ -87,3 +87,24 @@ se canceló a mano antes de volver a correrla. Es la primera fila de `sesiones.t
 - Que el piloto ISO 10303 se incorporó con el asistente: las reglas de vínculo y los datos del piloto
   no entran por él.
 - Que el asistente acepta Turtle o N3, como dice su pantalla.
+
+## Bitácora de la Fase 3b: completar el asistente
+Decisión (2026-11-16): implementar los cambios mínimos 1–5 y volver a recorrer el asistente con el
+piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anota acá al terminarlo.
+
+### Paso 1 — Subida de reglas que suma en vez de reemplazar (hueco 2)
+- **Qué se cambió.** `AlignmentService.loadAlignmentRules` ya no hace `putModel` del archivo subido sobre
+  el grafo de definiciones. Ahora lee el grafo y lo combina con un ayudante nuevo,
+  `mergeRuleDefinitions`, que trata cada `swrl:Imp` con todo lo que cuelga de ella (`ruleDefinition`):
+  - si la regla no estaba, la suma;
+  - si estaba con una definición isomorfa, no la vuelve a sumar (reintentar no duplica las listas RDF);
+  - si estaba con otra definición, la rechaza sin tocar el grafo ni la base.
+  El mismo ayudante lo usa el paso 3.
+- **Prueba.** `AlignmentRuleUploadTest`, en Java 17:
+  `mvn17.sh -q test -Dtest=AlignmentRuleUploadTest,AlignmentDefinitionTest`.
+  - Con el cambio pasan 3 de 3.
+  - Con el `putModel` anterior fallan 2: se pierde R01 al subir R27, y se acepta otra definición de R27.
+    La prueba de no duplicar pasa igual, porque reemplazar tampoco duplica.
+
+### Paso 2 — Paso 1 del asistente por extensión y datos de instancia opcionales (hueco 3)
+_En curso._

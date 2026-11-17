@@ -93,8 +93,9 @@ public class AlignmentService {
                 log.debug("Parsed alignment rule: {}", rule.getName());
             }
 
-            // Preserve the executable RDF lists, variable declarations and rule heads.
-            fusekiService.putModel("http://w3id.org/protys/ontology/active-rule-definitions", model);
+            // Suma las definiciones (listas RDF, variables y cabezas) a las ya cargadas, sin reemplazarlas:
+            // antes un putModel borraba las definiciones de las demás reglas registradas.
+            fusekiService.putModel(RULE_GRAPH, mergeRuleDefinitions(fusekiService.getModelOrEmpty(RULE_GRAPH), model));
 
             // Save all rules
             List<AlignmentRule> saved = alignmentRuleRepository.saveAll(rules);
@@ -340,6 +341,47 @@ public class AlignmentService {
             log.error("Rule validation failed: {}", ruleId, e);
             return false;
         }
+    }
+
+    private static final String SWRL_IMP = "http://www.w3.org/2003/11/swrl#Imp";
+
+    /**
+     * Devuelve las definiciones existentes más las reglas SWRL de {@code incoming}.
+     * Una regla ya presente con la misma definición (isomorfa) no se vuelve a sumar, así un reintento
+     * no duplica sus listas RDF; una regla presente con otra definición se rechaza. El resto del archivo
+     * (encabezado, declaraciones de variables) se suma tal cual.
+     */
+    static Model mergeRuleDefinitions(Model existing, Model incoming) {
+        Model merged = ModelFactory.createDefaultModel().add(existing);
+        var imp = incoming.createResource(SWRL_IMP);
+        for (Resource rule : incoming.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, imp).toList()) {
+            if (rule.isAnon()) throw new ProtysMappingException("Cada regla SWRL necesita un IRI");
+            Model definition = ruleDefinition(incoming, rule);
+            if (existing.contains(rule, org.apache.jena.vocabulary.RDF.type, imp)) {
+                if (!ruleDefinition(existing, rule).isIsomorphicWith(definition))
+                    throw new ProtysMappingException("La regla " + rule.getLocalName() + " ya está cargada con otra definición");
+                continue;
+            }
+            merged.add(definition);
+        }
+        merged.add(withoutRuleDefinitions(incoming));
+        return merged;
+    }
+
+    /** Las sentencias de la regla y de todos los nodos en blanco que cuelgan de ella (cuerpo y cabeza). */
+    static Model ruleDefinition(Model source, Resource rule) {
+        Model definition = ModelFactory.createDefaultModel();
+        var queue = new java.util.ArrayDeque<Resource>(List.of(rule));
+        var seen = new java.util.HashSet<Resource>();
+        while (!queue.isEmpty()) {
+            Resource subject = queue.remove();
+            if (!seen.add(subject)) continue;
+            for (Statement statement : source.listStatements(subject, null, (org.apache.jena.rdf.model.RDFNode) null).toList()) {
+                definition.add(statement);
+                if (statement.getObject().isAnon()) queue.add(statement.getObject().asResource());
+            }
+        }
+        return definition;
     }
 
     /** Executable definitions have one authoritative graph; copied RDF lists must not coexist. */
