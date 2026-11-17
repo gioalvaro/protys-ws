@@ -2,7 +2,7 @@
 
 Generado por `scripts/diferencias-catalogo.py` a partir de `03b-catalogo-sin-erp/` y `08-catalogo-con-erp/`. Misma plataforma y misma red; la única diferencia es que en la segunda corrida están materializados los dos grafos ERP y el razonamiento los incluyó.
 
-| Consulta | Pregunta | Filas sin ERP | Filas con ERP | Nuevas | Quitadas | Nuevas con individuos ERP |
+| Consulta | Pregunta | Filas antes (sin ERP) | Filas después (con ERP) | Nuevas | Quitadas | Nuevas con individuos ERP |
 |---|---|---|---|---|---|---|
 | Q01 | Q01 Ranking de procesos por electricidad y emisiones acumuladas | 4 | 4 | 0 | 0 | 0 |
 | Q02 | Q02 Trazabilidad lote, plan, producto, recursos requeridos e insumos | 40 | 40 | 0 | 0 | 0 |

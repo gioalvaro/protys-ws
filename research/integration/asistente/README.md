@@ -324,3 +324,41 @@ Pruebas nuevas: `SwrlTextTest` (3), 2 en `AlignmentRuleUploadTest`, 2 en `Dashbo
 - Backend: 223/223 (antes 218).
 - Interfaz: 73/73 (antes 69).
 - `npm run build` con `CI=true` compila sin avisos.
+
+### Paso 3 — Controles completos con el código actual (`a34efdf`)
+
+| Control | Comando | Resultado |
+|---|---|---|
+| Pruebas de backend (Java 17) | `./mvnw test` | 223/223 |
+| Pruebas de interfaz | `npm test -- --watchAll=false` | 73/73 |
+| Compilación de producción | `CI=true npm run build` | compila sin avisos |
+| Pruebas de scripts (incluye la carga inicial) | `python3 -m unittest discover -s scripts/tests` | 23/23 |
+| Pruebas de conservación de salidas | `python3 -m unittest discover -s research/evaluation/tests` | 16/16 |
+| Plataforma de cero + asistente por API | volúmenes `protys_fuseki-data` y `protys_postgres-data` borrados; `incorporar.sh` | 12/12 APROBADO (`salidas/fase3b/api/RESUMEN.txt`) |
+| Reinicio con el piloto incorporado | `reiniciar.sh` | `PRESERVED`, 25 reglas activas, interfaz 200 (`salidas/fase3b/reinicio/reinicio-tras-arreglo.txt`) |
+| Fase 1 de punta a punta (ADempiere y Odoo) | `research/integration/erp/run.sh` | 24/24 APROBADO (`../erp/salidas/e2e/RESUMEN.txt`) |
+| Reinicio con grafos ERP materializados | `COMPOSE_PROJECT_NAME=protys-e2e reiniciar.sh` | `PRESERVED` con `erp/adempiere` y `erp/odoo` (`salidas/pulido/reinicio-con-grafos-erp.txt`) |
+| Demostración de CI (`verify.yml`, docker-demonstration) | `scripts/demo.py up` + `smoke` + `down --remove-data` | PASS (`salidas/pulido/demo-smoke-report.json`) |
+
+Las salidas regeneradas de `incorporar.sh` y de `erp/run.sh` sólo difieren de las anteriores en marcas
+de tiempo, identificadores de sesión y tiempos de ejecución. Los resultados son los mismos.
+
+En la plataforma de cero, las reglas ya muestran su texto SWRL y su etiqueta, también R27–R29, que
+registró el asistente (`salidas/pulido/alineamiento-reglas-swrl.jpg`).
+
+**Evaluación funcional de la tesis** (`reproduce.sh --functional`, en `eclipse-temurin:17-jdk` con Python 3,
+corrida `research/evaluation/runs/20261117T155256Z-…`): **PASS**, 89 grupos de aserciones `CONSISTENT`.
+Comparada con `research/release/functional.json` (`salidas/pulido/funcional-vs-release.md`):
+- Consultas, comprobaciones contra respuestas esperadas y aserciones: sin diferencias.
+- Cambian sólo los conteos de triples por configuración: entrada +1 y materializados hasta +36.
+- Esas diferencias vienen de las propuestas COM-01 (`c9423a5`) y H-56 (`eb80440`). Ya estaban en `main`
+  antes de esta rama y tocan `ontologies/`. Esta rama no modifica `ontologies/` (`git log main..HEAD -- ontologies` vacío).
+- No se ajustó nada para igualarlas.
+
+### Paso 4 — README del repositorio
+- Conexión real con ERP (antes decía que no la había).
+- R2RML con el procesador propio: el README nombraba CARML, que ya no está en el `pom.xml`.
+- 42 endpoints (antes 39) y los del asistente.
+- Cómo levantar la plataforma con Docker Compose, cómo se reinicia y cómo empezar de cero.
+- Cantidad de pruebas por suite.
+- Tabla con la evidencia de noviembre de 2026.

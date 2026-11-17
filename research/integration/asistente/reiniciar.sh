@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Reinicia la plataforma completa (sin borrar volúmenes) y comprueba que protys-init conserva
-# lo incorporado con el asistente. Uso: research/integration/asistente/reiniciar.sh [salida.txt]
+# lo registrado por la API (asistente, ERP). Uso: [COMPOSE_PROJECT_NAME=protys] reiniciar.sh [salida.txt]
 set -uo pipefail
 REPO=$(cd "$(dirname "$0")/../../.." && pwd)
 export PROTYS_POSTGRES_PORT=${PROTYS_POSTGRES_PORT:-15432} PROTYS_BACKEND_PORT=${PROTYS_BACKEND_PORT:-18080}
 export PROTYS_FRONTEND_PORT=${PROTYS_FRONTEND_PORT:-18081} PROTYS_FUSEKI_PORT=${PROTYS_FUSEKI_PORT:-13030}
-C=(docker compose -p protys -f "$REPO/docker/docker-compose.yml")
+C=(docker compose -p "${COMPOSE_PROJECT_NAME:-protys}" -f "$REPO/docker/docker-compose.yml")
 API=http://127.0.0.1:$PROTYS_BACKEND_PORT
 {
 echo "# Reinicio completo de la plataforma ($(git -C "$REPO" rev-parse --short HEAD), $(date -u +%FT%TZ))"

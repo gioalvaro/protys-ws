@@ -323,7 +323,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P1 Recursos requeridos por un proceso X.\n# Mismo patrón que la consulta canónica Q04 (operación parte del proceso; recurso requerido o insumo),\n# restringido a los grafos ERP y con la fuente (?g) y los nombres a la vista.\nSELECT DISTINCT ?g ?process ?processName ?resource ?resourceName\nWHERE {\n  GRAPH ?g {\n    ?op a i:ProcessOperation ; i:partOfProcess ?process .\n    { ?op i:requiresResource ?resource } UNION { ?op i:hasInput ?resource }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?process c:hasName ?processName } }\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n}\nORDER BY ?g ?process ?resource\n",
-  "executedAt" : "2026-11-16T18:23:28.684215126Z",
+  "executedAt" : "2026-11-17T15:50:19.563926272Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -419,7 +419,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 24,
+  "executionTimeMs" : 16,
   "resultCount" : 15,
   "truncated" : false
 }

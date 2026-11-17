@@ -1952,7 +1952,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# Efecto del razonamiento sobre los individuos ERP: tipos que no están afirmados en el grafo del\n# conector y que el razonador dedujo (grafo de resultados de inferencia de la plataforma).\nSELECT ?individual ?inferredType\nWHERE {\n  GRAPH <http://w3id.org/protys/ontology/inference-results> { ?individual a ?inferredType }\n  FILTER(STRSTARTS(STR(?individual), \"http://w3id.org/protys/erp/\"))\n  FILTER(STRSTARTS(STR(?inferredType), \"http://w3id.org/protys/ontology/\"))\n  FILTER NOT EXISTS { GRAPH ?g { ?individual a ?inferredType } FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\")) }\n}\nORDER BY ?individual ?inferredType\n",
-  "executedAt" : "2026-11-16T18:23:35.081944473Z",
+  "executedAt" : "2026-11-17T15:50:24.414442904Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -2606,7 +2606,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 13,
+  "executionTimeMs" : 34,
   "resultCount" : 216,
   "truncated" : false
 }

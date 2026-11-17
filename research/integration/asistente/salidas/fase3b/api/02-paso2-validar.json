@@ -1,5 +1,5 @@
 {
-  "tempModuleId" : "e123b9ce-4d40-4101-8f42-0ba3ad75c68a",
+  "tempModuleId" : "8db59917-7df8-4248-9507-0cac3fd47e96",
   "standardName" : null,
   "status" : "CONSISTENT",
   "cleaningEvaluation" : {
@@ -30,7 +30,7 @@
   "cleanupPending" : null,
   "currentStep" : 2,
   "startedAt" : null,
-  "executionTimeMs" : 2020,
+  "executionTimeMs" : 2078,
   "tripleCount" : null,
   "dataTripleCount" : null,
   "message" : null,

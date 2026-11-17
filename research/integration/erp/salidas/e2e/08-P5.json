@@ -239,7 +239,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P5 Producto generado por un plan de proceso X.\n# Variante de Q02: sin t:planProduces, el producto se obtiene por la cadena\n# plan → operación (i:includesActivity) → proceso (i:partOfProcess) → producto (c:produces).\nSELECT DISTINCT ?g ?plan ?planName ?product ?productName\nWHERE {\n  GRAPH ?g {\n    ?plan a i:ProcessPlan ; i:includesActivity ?op .\n    ?op i:partOfProcess ?process .\n    ?process c:produces ?product .\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }\n  OPTIONAL { GRAPH ?g { ?product c:hasName ?productName } }\n}\nORDER BY ?g ?plan\n",
-  "executedAt" : "2026-11-16T18:23:30.046898449Z",
+  "executedAt" : "2026-11-17T15:50:20.574205100Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -311,7 +311,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 9,
+  "executionTimeMs" : 16,
   "resultCount" : 11,
   "truncated" : false
 }

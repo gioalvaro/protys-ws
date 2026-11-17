@@ -1,15 +1,15 @@
 {
-  "connectorId" : "4978f0fd-0fc8-4be0-99e4-d72b5ae76a7e",
+  "connectorId" : "18fa1466-0a98-415b-9fd6-569526a11c2d",
   "namedGraph" : "http://w3id.org/protys/erp/adempiere",
   "status" : "SUCCESS",
   "tripleCount" : 348,
-  "executionTimeMs" : 159,
-  "startedAt" : "2026-11-16T18:23:14.44570801",
-  "completedAt" : "2026-11-16T18:23:14.604769865",
+  "executionTimeMs" : 157,
+  "startedAt" : "2026-11-17T15:50:08.928254298",
+  "completedAt" : "2026-11-17T15:50:09.08522185",
   "mappingsProcessed" : 14,
   "errorMessage" : null,
   "errors" : [ ],
   "warnings" : [ ],
   "success" : true,
-  "statusMessage" : "Successfully materialized 348 triples in 159 ms"
+  "statusMessage" : "Successfully materialized 348 triples in 157 ms"
 }

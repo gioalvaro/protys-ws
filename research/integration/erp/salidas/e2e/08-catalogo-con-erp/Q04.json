@@ -503,7 +503,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q04 Recursos requeridos e insumos materiales por proceso\nSELECT DISTINCT ?process ?resource\nWHERE { ?op a i:ProcessOperation ; i:partOfProcess ?process . { ?op i:requiresResource ?resource } UNION { ?op i:hasInput ?resource } }\nORDER BY ?process ?resource\n",
-  "executedAt" : "2026-11-16T18:23:31.264397025Z",
+  "executedAt" : "2026-11-17T15:50:21.555858672Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -674,7 +674,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 7,
+  "executionTimeMs" : 9,
   "resultCount" : 55,
   "truncated" : false
 }

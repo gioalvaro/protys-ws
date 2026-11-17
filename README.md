@@ -2,9 +2,17 @@
 
 **Sistema web para la gestión de la red de ontologías PROTYS(KB)**
 
-PROTYS-WS es el sistema prototipo que operacionaliza PROTYS(KB), una red de ontologías diseñada para abordar la interoperabilidad semántica entre sistemas de información heterogéneos en la industria manufacturera. Permite explorar, consultar y gestionar formalizaciones de subconjuntos de ISO 15531 (ISO/TC 184/SC 4) e ISO 14040 (ISO/TC 207/SC 5), con un piloto separado de ISO 10303, y ejecutar razonamiento semántico mediante reglas SWRL. Incluye conectores y ejemplos experimentales de mapeos para ERP; la evaluación nueva no acredita una integración con ERP industriales.
+PROTYS-WS es el sistema prototipo que operacionaliza PROTYS(KB), una red de ontologías diseñada para abordar la interoperabilidad semántica entre sistemas de información heterogéneos en la industria manufacturera. Permite explorar, consultar y gestionar formalizaciones de subconjuntos de ISO 15531 (ISO/TC 184/SC 4) e ISO 14040 (ISO/TC 207/SC 5), con un piloto separado de ISO 10303, y ejecutar razonamiento semántico mediante reglas SWRL. Incluye conectores ERP con mapeo R2RML: en noviembre de 2026 se probaron en sólo lectura contra ADempiere 3.9.4 y Odoo 17 con sus datos de demostración ([informe](research/integration/erp/INFORME.md)); eso no equivale a una integración industrial en producción.
 
 Para revisar la evidencia de la tesis, comenzar por [research/release/README.md](research/release/README.md) y la [publicación `tesis-cierre-2026-10-03-v1`](https://github.com/gioalvaro/protys-ws/releases/tag/tesis-cierre-2026-10-03-v1). Esa etiqueta conserva el código y las 120 ejecuciones citadas en el manuscrito. Los ajustes posteriores de instalación y conservación de salidas se registran por separado; no sustituyen esos resultados ni resuelven la decisión pendiente C033/IC62.
+
+El trabajo técnico posterior (noviembre de 2026, rama `trabajo-tecnico-2026-11`) tiene su evidencia en `research/integration/`. No reemplaza los resultados de esa etiqueta:
+
+| Evidencia | Qué muestra |
+|---|---|
+| [`erp/INFORME.md`](research/integration/erp/INFORME.md) | Conexión en sólo lectura con ADempiere y Odoo, materialización R2RML, razonamiento y P1–P5 con datos de los dos ERP |
+| [`explorador/README.md`](research/integration/explorador/README.md) | El explorador de clases abre el catálogo integrado completo (128 clases) |
+| [`asistente/README.md`](research/integration/asistente/README.md) | El asistente incorpora el piloto ISO 10303 (fragmento AP242, datos y reglas R27–R29) por API e interfaz, con el mismo resultado que la configuración `h3_extended`; la plataforma se reinicia conservando lo incorporado |
 
 Desarrollado como parte de la tesis doctoral:
 
@@ -48,8 +56,8 @@ protys-ws/
 │   ├── Dockerfile
 │   └── src/main/java/org/protys/ws/
 │       ├── config/          # Jena, CORS, Security, DataInitializer
-│       ├── controller/      # 7 controladores REST (39 endpoints)
-│       ├── service/         # 7 servicios de negocio (incluye ReasoningService)
+│       ├── controller/      # 7 controladores REST (42 endpoints)
+│       ├── service/         # Ontologías, SPARQL, alineamiento, razonamiento, ERP (R2RML) y asistente
 │       ├── model/           # Entidades JPA
 │       ├── dto/             # Objetos de transferencia
 │       ├── repository/      # Repositorios JPA
@@ -80,6 +88,8 @@ protys-ws/
 │
 ├── docker/                  # Docker Compose (4 servicios persistentes y un inicializador)
 │   ├── docker-compose.yml
+│   ├── load_canonical.py    # Carga inicial por la API; al reiniciar conserva lo registrado después
+│   ├── integration/         # ADempiere y Odoo de demostración y mapeos R2RML (Fase 1)
 │   ├── .env.example         # Credenciales (copiar a .env)
 │   ├── fuseki-config.ttl
 │   └── init-fuseki.sh
@@ -131,6 +141,18 @@ python3 scripts/demo.py down --state .local-demo/IDENTIFICADOR/state.json
 ```
 
 La opción explícita `--remove-data` elimina además los volúmenes de esa demostración. El arranque y la parada no gestionan otros proyectos Docker. Esta ruta permite examinar la aplicación con datos simulados; no acredita integración industrial ni todas las funciones de los conectores y del asistente.
+
+### Plataforma con Docker Compose
+
+Para levantar la plataforma directamente, en un proyecto propio y con puertos locales elegidos:
+
+```bash
+export PROTYS_FRONTEND_PORT=18081 PROTYS_BACKEND_PORT=18080 PROTYS_FUSEKI_PORT=13030 PROTYS_POSTGRES_PORT=15432
+docker compose -p protys -f docker/docker-compose.yml up -d --build --wait protys-frontend
+# Interfaz en http://127.0.0.1:18081 · API en http://127.0.0.1:18080/api
+```
+
+`protys-init` carga el catálogo integrado (módulo canónico y 22 reglas SWRL) por la API. Para incorporar además el piloto ISO 10303 con el asistente, por la API: `research/integration/asistente/incorporar.sh`; o desde la interfaz, en **Wizard**. Al volver a levantar la plataforma, `protys-init` conserva lo que la plataforma registró por su API: módulos incorporados, reglas, grafos ERP y sesiones del asistente. Rechaza datos ajenos y cambios en lo canónico (`research/integration/asistente/reiniciar.sh` lo comprueba). Para empezar de cero se borran sólo los volúmenes `protys_fuseki-data` y `protys_postgres-data`.
 
 ### Paquete académico reproducible
 
@@ -184,7 +206,13 @@ npm start
 | `POST` | `/api/erp/connectors` | Registrar conector ERP |
 | `POST` | `/api/erp/connectors/{id}/materialize` | Materializar mapeo R2RML |
 | `POST` | `/api/standards` | Iniciar pipeline de incorporación de estándares (§5.3) |
-| `POST` | `/api/wizard/step1/upload` | Asistente de incorporación de estándar (paso a paso) |
+| `POST` | `/api/wizard/step1/upload` | Asistente, paso 1: subir el estándar (RDF/XML, OWL, Turtle, N3, N-Triples) |
+| `POST` | `/api/wizard/step1/data/{id}` | Asistente, paso 1: datos de instancia opcionales de la sesión |
+| `POST` | `/api/wizard/step2/validate/{id}` | Asistente, paso 2: perfil OWL 2 DL y consistencia |
+| `POST` | `/api/wizard/step3/alignments/{id}` | Asistente, paso 3: elegir reglas registradas |
+| `POST` | `/api/wizard/step3/rules/{id}` | Asistente, paso 3: reglas SWRL nuevas de la sesión |
+| `POST` | `/api/wizard/step4/verify/{id}` | Asistente, paso 4: razonar con la selección |
+| `POST` | `/api/wizard/complete/{id}` | Asistente, paso 5: registrar módulos y activar las reglas verificadas |
 
 ## PROTYS(KB)
 
@@ -243,7 +271,10 @@ El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ej
 ```bash
 ./research/reproduce.sh --prepare-only
 cd backend
-./mvnw test
+./mvnw test                                   # 223 pruebas
+cd ../frontend && npm test -- --watchAll=false  # 73 pruebas
+cd .. && python3 -m unittest discover -s scripts/tests            # 23 pruebas, incluye la carga inicial
+python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
 
 # Tests individuales
 ./mvnw test -Dtest=OntologyControllerTest
@@ -263,7 +294,7 @@ cd backend
 | OWL API | OWL API | 5.1.20 |
 | Motor de reglas aislado | SWRLAPI / Drools | 2.1.3 / 7.74.1.Final |
 | OWL API del proceso de reglas | OWL API | 4.5.27 |
-| R2RML | CARML Engine | 0.4.3 |
+| R2RML | `R2RMLProcessor` propio sobre Jena | pasa los 63 casos R2RML de la suite W3C RDB2RDF |
 | Base de datos | PostgreSQL | 15 |
 | Frontend | React | 18.3.1 (entorno probado) |
 | Estilos | Tailwind CSS | 3.4.19 (entorno probado) |

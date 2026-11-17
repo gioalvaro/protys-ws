@@ -5,6 +5,11 @@ Fecha: 2026-11-16. Rama `trabajo-tecnico-2026-11`. Corrida de evidencia: `run.sh
 cambios que entraron en los commits `93f9065` (mapeos con Organización) y `13d2ceb` (`run.sh` y sus scripts); por eso
 `02-versiones.txt` dice `+cambios-sin-commit`. Ningún archivo ejecutado cambió después de la corrida.
 
+**Re-corrida del 2026-11-17** (pulido para compartir), sobre el commit `a34efdf`: `run.sh` de cero,
+**APROBADO en los 24 pasos**, con los mismos números. Las salidas de `salidas/e2e/` son las de esta
+corrida: respecto de la anterior cambian sólo marcas de tiempo e identificadores. Después, el reinicio
+de ese proyecto conservó los dos grafos ERP (`../asistente/salidas/pulido/reinicio-con-grafos-erp.txt`).
+
 Este informe incorpora la revisión del 16-11-2026: tabla por pregunta P1–P5, verificación de la
 brecha de cobertura, catálogo completo sin y con ERP, contraste con las Tablas 5.8 y 5.9, CARML fuera
 del `pom.xml` y PostgreSQL de la plataforma fijado por digest.

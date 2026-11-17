@@ -288,7 +288,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# Consulta conjunta: en una sola respuesta, para cada ERP, cada recurso de manufactura con la\n# cantidad de operaciones que lo requieren, de procesos distintos y de productos fabricados.\n# El mismo patrón responde sobre los dos esquemas de origen porque ambos se expresan con PROTYS(KB).\nSELECT ?g ?resource ?resourceName (COUNT(DISTINCT ?op) AS ?operations)\n       (COUNT(DISTINCT ?process) AS ?processes) (COUNT(DISTINCT ?product) AS ?products)\nWHERE {\n  GRAPH ?g {\n    ?resource a i:ManufacturingResource .\n    ?op i:requiresResource ?resource ; i:partOfProcess ?process .\n    OPTIONAL { ?process c:produces ?product }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n}\nGROUP BY ?g ?resource ?resourceName\nORDER BY ?g DESC(?operations) ?resource\n",
-  "executedAt" : "2026-11-16T18:23:30.358862713Z",
+  "executedAt" : "2026-11-17T15:50:20.821219759Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -364,7 +364,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 14,
+  "executionTimeMs" : 22,
   "resultCount" : 10,
   "truncated" : false
 }

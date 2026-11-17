@@ -60,7 +60,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q20 Datos críticos ausentes por tipo, con criterio explícito\nSELECT ?entity ?kind ?missingProperty WHERE {\n{ ?entity a i:ManufacturingProcess . BIND(\"ManufacturingProcess\" AS ?kind) BIND(e:computedForProcess AS ?missingProperty)\nFILTER NOT EXISTS { ?entity t:hasInventoryRepresentation ?lci . ?indicator a e:ImpactIndicator ; e:computedForProcess ?lci ; e:indicatorValue ?value . } }\nUNION { ?entity a i:ProcessOperation . BIND(\"ProcessOperation\" AS ?kind) BIND(i:hasInput AS ?missingProperty)\nFILTER NOT EXISTS { ?entity i:hasInput ?input . } }\nUNION { ?entity a i:Quality_Control_Activity . BIND(\"QualityControl\" AS ?kind) BIND(i:hasMeasurement AS ?missingProperty)\nFILTER NOT EXISTS { ?entity i:hasMeasurement ?measurement . } }\n} ORDER BY ?entity ?kind\n",
-  "executedAt" : "2026-11-16T18:23:12.372426820Z",
+  "executedAt" : "2026-11-17T15:50:07.369753663Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -82,7 +82,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 9,
+  "executionTimeMs" : 10,
   "resultCount" : 4,
   "truncated" : false
 }

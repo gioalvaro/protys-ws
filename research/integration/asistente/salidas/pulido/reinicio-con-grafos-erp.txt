@@ -1,0 +1,26 @@
+# Reinicio completo de la plataforma (a34efdf, 2026-11-17T15:50:36Z)
+$ docker compose -p protys-e2e -f <repo>/docker/docker-compose.yml stop protys-frontend protys-backend protys-fuseki protys-postgres
+ Container protys-e2e-protys-fuseki-1 Stopped 
+$ docker compose -p protys-e2e -f <repo>/docker/docker-compose.yml up -d --build --wait protys-frontend
+exit=0
+protys-backend Up 15 seconds (healthy)
+protys-frontend Up 5 seconds (healthy)
+protys-fuseki Up 20 seconds (healthy)
+protys-init Exited (0) 6 seconds ago
+protys-postgres Up 20 seconds (healthy)
+## protys-init (última línea, resumida)
+{
+ "status": "PRESERVED",
+ "rule_activation_preserved": true,
+ "added_modules": [],
+ "added_rules": [],
+ "platform_graphs": [
+  "http://w3id.org/protys/erp/adempiere",
+  "http://w3id.org/protys/erp/odoo"
+ ]
+}
+## módulos registrados
+Canonical_Catalog_Integrated http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#
+## reglas activas
+22 R01 R02 R03 R04 R05 R06 R08 R09 R10 R11 R12 R13 R14 R15 R17 R18 R20 R21 R22 R23 R24 R25
+## interfaz: HTTP 200

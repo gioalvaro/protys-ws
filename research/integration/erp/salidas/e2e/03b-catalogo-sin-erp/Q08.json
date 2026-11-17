@@ -722,7 +722,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q08 Rendimiento másico, electricidad e intensidad de emisiones por operación\nSELECT ?operation ?stageName ?yieldPercent ?energyKWh\n?ghgKgCO2e ?outputVolumeL (?ghgKgCO2e/?outputVolumeL AS ?kgCO2ePerL)\nWHERE {\n?operation a p:Manufacturing_Stage ; c:hasName ?stageName ;\nt:yieldPercent ?yieldPercent .\n{ SELECT ?operation (MIN(?rawEnergy) AS ?energyKWh)\n(MIN(?rawGHG) AS ?ghgKgCO2e) (MIN(?rawVolume) AS ?outputVolumeL)\nWHERE {\n?operation i:consumesEnergyKWh ?rawEnergy .\nFILTER(isNumeric(?rawEnergy) && ?rawEnergy >= 0)\nFILTER NOT EXISTS { ?operation i:consumesEnergyKWh ?stageEnergyOther .\nFILTER(!isNumeric(?stageEnergyOther) || ?stageEnergyOther != ?rawEnergy) }\n?operation t:hasEmissionFactor ?stageFactor .\nFILTER(isIRI(?stageFactor))\nFILTER NOT EXISTS { ?operation t:hasEmissionFactor ?stageOtherFactor .\nFILTER(!sameTerm(?stageOtherFactor,?stageFactor)) }\n?stageFactor a t:ElectricityEmissionFactor ; t:factorUnit \"kg CO2e/kWh\" .\nFILTER NOT EXISTS { ?stageFactor t:factorUnit ?stageOtherUnit .\nFILTER(STR(?stageOtherUnit) != \"kg CO2e/kWh\") }\n?stageFactor t:factorValue ?stageFactorValue .\nFILTER(isNumeric(?stageFactorValue) && ?stageFactorValue >= 0)\nFILTER NOT EXISTS { ?stageFactor t:factorValue ?stageFactorOther .\nFILTER(!isNumeric(?stageFactorOther) || ?stageFactorOther != ?stageFactorValue) }\n?operation e:hasGHGImpactKgCO2e ?rawGHG .\nFILTER(isNumeric(?rawGHG) && ?rawGHG >= 0)\nFILTER NOT EXISTS { ?operation e:hasGHGImpactKgCO2e ?stageGHGOther .\nFILTER(!isNumeric(?stageGHGOther) || ?stageGHGOther != ?rawGHG) }\nFILTER(ABS(?rawGHG - ?rawEnergy * ?stageFactorValue) <= 0.000000001)\n?operation t:outputVolumeL ?rawVolume .\nFILTER(isNumeric(?rawVolume) && ?rawVolume > 0)\nFILTER NOT EXISTS { ?operation t:outputVolumeL ?stageVolumeOther .\nFILTER(!isNumeric(?stageVolumeOther) || ?stageVolumeOther != ?rawVolume) }\n} GROUP BY ?operation }\n} ORDER BY ?operation\n",
-  "executedAt" : "2026-11-16T18:23:10.007062797Z",
+  "executedAt" : "2026-11-17T15:50:05.568937274Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -896,7 +896,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 21,
+  "executionTimeMs" : 18,
   "resultCount" : 21,
   "truncated" : false
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "843fe894-514d-45bb-9a62-b244ab2f6874",
+  "id" : "59c68a80-941f-43c5-b823-9d9337d7b27f",
   "name" : "odoo-demo",
   "type" : "ODOO",
   "jdbcUrl" : "jdbc:postgresql://odoo-db:5432/odoo",
@@ -12,7 +12,7 @@
   "tripleCount" : null,
   "materializationTimeMs" : null,
   "active" : true,
-  "createdAt" : "2026-11-16T18:23:15.239261",
-  "updatedAt" : "2026-11-16T18:23:15.239275",
+  "createdAt" : "2026-11-17T15:50:09.572532",
+  "updatedAt" : "2026-11-17T15:50:09.572545",
   "hasPassword" : true
 }

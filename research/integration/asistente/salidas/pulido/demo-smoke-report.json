@@ -1,0 +1,136 @@
+{
+  "status": "PASS",
+  "scope": "Docker services and Nginx API proxy on the simulated functional case",
+  "state_file": "<repo>/.local-demo/16c861d78a20/state.json",
+  "query_catalog_sha256": "95211a31353972c3b2e03a9d8d55ae515458bcfb2e3817b62ced8dc7bb65f159",
+  "checks": [
+    {
+      "id": "REGISTERED_22_RULES",
+      "passed": true
+    },
+    {
+      "id": "CONSISTENT_WITH_22_RULES",
+      "passed": true
+    },
+    {
+      "id": "VALID_DECLARED_CONTEXT",
+      "passed": true
+    },
+    {
+      "id": "VALID_NUMERICAL_RECORDS",
+      "passed": true
+    },
+    {
+      "id": "CLEANING_MISSING_RECORD_VISIBLE",
+      "passed": true
+    },
+    {
+      "id": "CACHE_REPORTS_ZERO_REASONING_TIME",
+      "passed": true
+    },
+    {
+      "id": "Q01_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q02_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q03_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q04_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q05_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q06_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q07_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q08_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q09_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q10_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q11_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q12_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q13_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q14_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q15_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q16_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q17_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q18_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q19_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q20_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "Q21_COMPLETE_EXPECTED_OUTPUT",
+      "passed": true
+    },
+    {
+      "id": "R03_ACTIVE",
+      "passed": true
+    },
+    {
+      "id": "R03_DISABLED_NEW_MATERIALIZATION",
+      "passed": true
+    },
+    {
+      "id": "R03_DISABLED_REMOVES_RESULT",
+      "passed": true
+    },
+    {
+      "id": "R03_RESTORED_MATERIALIZATION",
+      "passed": true
+    },
+    {
+      "id": "R03_RESTORED_RESULT",
+      "passed": true
+    }
+  ]
+}

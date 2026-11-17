@@ -108,7 +108,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q05 Materiales según factores hipotéticos del escenario, excluidos de Q06\nSELECT ?material ?carbonFactor ?waterFactor ?exceedsDeclaredCarbonThreshold\nWHERE { ?material a r:Raw_Material ; t:materialFactorKgCO2ePerKg ?carbonFactor ; t:waterFootprintLPerKg ?waterFactor .\nBIND((?carbonFactor > 5.0) AS ?exceedsDeclaredCarbonThreshold)\nFILTER(?carbonFactor > 3.0 || ?waterFactor > 100) } ORDER BY DESC(?carbonFactor)\n",
-  "executedAt" : "2026-11-16T18:23:09.417824562Z",
+  "executedAt" : "2026-11-17T15:50:05.105659752Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -139,7 +139,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 10,
+  "executionTimeMs" : 9,
   "resultCount" : 5,
   "truncated" : false
 }

@@ -21,7 +21,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q21 Términos con versión modificada respecto de la registrada\nSELECT ?entity ?currentVersion ?priorVersion WHERE { ?entity c:hasVersion ?currentVersion ; c:hasPriorVersion ?priorVersion .\nFILTER(?currentVersion != ?priorVersion) } ORDER BY ?entity\n",
-  "executedAt" : "2026-11-16T18:23:12.565092006Z",
+  "executedAt" : "2026-11-17T15:50:07.505476728Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -31,7 +31,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 20,
+  "executionTimeMs" : 9,
   "resultCount" : 1,
   "truncated" : false
 }

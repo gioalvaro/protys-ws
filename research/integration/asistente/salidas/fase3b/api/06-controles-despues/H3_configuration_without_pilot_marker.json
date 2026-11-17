@@ -4,13 +4,13 @@
     "boolean" : false
   },
   "queryText" : "PREFIX ap: <http://w3id.org/protys/ontology/iso10303#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nASK { f:UnmappedConfigurationRecord a prod:Production_Component . }\n",
-  "executedAt" : "2026-11-17T02:32:59.398406216Z",
+  "executedAt" : "2026-11-17T15:47:12.418876170Z",
   "columns" : null,
   "rows" : null,
   "results" : null,
   "constructResult" : null,
   "askResult" : false,
-  "executionTimeMs" : 13,
+  "executionTimeMs" : 10,
   "resultCount" : null,
   "truncated" : false
 }

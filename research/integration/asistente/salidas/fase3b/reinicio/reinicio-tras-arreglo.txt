@@ -1,7 +1,7 @@
-# Reinicio completo de la plataforma (20fe6d4, 2026-11-17T14:52:54Z)
-$ docker compose -p protys -f /Users/gioalvaro/tesis/protys-ws-repo/docker/docker-compose.yml stop protys-frontend protys-backend protys-fuseki protys-postgres
+# Reinicio completo de la plataforma (a34efdf, 2026-11-17T15:47:23Z)
+$ docker compose -p protys -f <repo>/docker/docker-compose.yml stop protys-frontend protys-backend protys-fuseki protys-postgres
  Container protys-protys-fuseki-1 Stopped 
-$ docker compose -p protys -f /Users/gioalvaro/tesis/protys-ws-repo/docker/docker-compose.yml up -d --build --wait protys-frontend
+$ docker compose -p protys -f <repo>/docker/docker-compose.yml up -d --build --wait protys-frontend
 exit=0
 protys-backend Up 14 seconds (healthy)
 protys-frontend Up 5 seconds (healthy)
@@ -13,8 +13,8 @@ protys-postgres Up 19 seconds (healthy)
  "status": "PRESERVED",
  "rule_activation_preserved": true,
  "added_modules": [
-  "http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14",
-  "http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14/data"
+  "http://w3id.org/protys/ontology/incorporated/8db59917-7df8-4248-9507-0cac3fd47e96",
+  "http://w3id.org/protys/ontology/incorporated/8db59917-7df8-4248-9507-0cac3fd47e96/data"
  ],
  "added_rules": [
   "R27",
@@ -25,8 +25,8 @@ protys-postgres Up 19 seconds (healthy)
 }
 ## módulos registrados
 Canonical_Catalog_Integrated http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#
-iso10303-ap242-fragment — datos de instancia http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14/data
-iso10303-ap242-fragment http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14
+ISO 10303-242 (fragmento piloto) — datos de instancia http://w3id.org/protys/ontology/incorporated/8db59917-7df8-4248-9507-0cac3fd47e96/data
+ISO 10303-242 (fragmento piloto) http://w3id.org/protys/ontology/incorporated/8db59917-7df8-4248-9507-0cac3fd47e96
 ## reglas activas
 25 R01 R02 R03 R04 R05 R06 R08 R09 R10 R11 R12 R13 R14 R15 R17 R18 R20 R21 R22 R23 R24 R25 R27 R28 R29
 ## interfaz: HTTP 200

@@ -1152,7 +1152,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q12 Trazabilidad indicador, proceso, operación y recurso vinculados\nSELECT ?indicator ?process ?operation ?resource ?value\nWHERE { ?indicator a e:ImpactIndicator ; e:computedForProcess ?lci ; e:hasIndicatorValue ?value . ?process a:hasInventoryRepresentation ?lci .\n?operation i:partOfProcess ?process ; i:usesResource ?resource . } ORDER BY ?indicator ?operation ?resource\n",
-  "executedAt" : "2026-11-17T02:32:43.009925982Z",
+  "executedAt" : "2026-11-17T15:46:54.833420142Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -1470,7 +1470,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 14,
+  "executionTimeMs" : 8,
   "resultCount" : 52,
   "truncated" : false
 }

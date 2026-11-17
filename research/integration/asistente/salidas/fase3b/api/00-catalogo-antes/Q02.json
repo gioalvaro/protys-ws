@@ -688,7 +688,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q02 Trazabilidad lote, plan, producto, recursos requeridos e insumos\nSELECT DISTINCT ?lot ?plan ?product ?resource\nWHERE { ?lot a i:Lot ; t:hasPlan ?plan ; t:producesProduct ?product .\n?lot i:hasProcess ?process . ?plan t:planProduces ?product ; i:includesActivity ?op .\n?op i:partOfProcess ?process . { ?op i:requiresResource ?resource } UNION { ?op i:hasInput ?resource } }\nORDER BY ?lot ?resource\n",
-  "executedAt" : "2026-11-17T02:32:41.627972213Z",
+  "executedAt" : "2026-11-17T15:46:53.265467991Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -894,7 +894,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 21,
+  "executionTimeMs" : 19,
   "resultCount" : 40,
   "truncated" : false
 }

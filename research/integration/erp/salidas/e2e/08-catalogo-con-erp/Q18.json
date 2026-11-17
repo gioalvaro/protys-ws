@@ -764,7 +764,7 @@
     }
   },
   "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q18 Actividades del plan, orden explícito y duración de cadena lineal\nSELECT DISTINCT ?plan ?activity ?stageIndex ?stageName ?lifecycleStage ?totalDurationMinutes WHERE {\n?plan a i:ProcessPlan ; i:includesActivity ?activity ; t:lifecycleStage ?lifecycleStage .\n?lot t:hasPlan ?plan ; i:hasProcess ?process .\n?activity i:partOfProcess ?process ; t:stageIndex ?stageIndex ; c:hasName ?stageName .\n{ SELECT ?plan (SUM(?d) AS ?totalDurationMinutes) WHERE {\n{ SELECT DISTINCT ?plan ?op ?d WHERE { ?owner t:hasPlan ?plan ; i:hasProcess ?ownedProcess .\n?plan i:includesActivity ?op . ?op i:partOfProcess ?ownedProcess ; i:duration ?d . } } } GROUP BY ?plan }\n} ORDER BY ?plan ?stageIndex\n",
-  "executedAt" : "2026-11-16T18:23:33.968737319Z",
+  "executedAt" : "2026-11-17T15:50:23.653901117Z",
   "columns" : null,
   "rows" : null,
   "results" : [ {
@@ -966,7 +966,7 @@
   } ],
   "constructResult" : null,
   "askResult" : null,
-  "executionTimeMs" : 18,
+  "executionTimeMs" : 17,
   "resultCount" : 28,
   "truncated" : false
 }

@@ -1,5 +1,5 @@
 {
-  "id" : "4978f0fd-0fc8-4be0-99e4-d72b5ae76a7e",
+  "id" : "18fa1466-0a98-415b-9fd6-569526a11c2d",
   "name" : "adempiere-demo",
   "type" : "ADEMPIERE",
   "jdbcUrl" : "jdbc:postgresql://adempiere-db:5432/adempiere",
@@ -12,7 +12,7 @@
   "tripleCount" : null,
   "materializationTimeMs" : null,
   "active" : true,
-  "createdAt" : "2026-11-16T18:23:12.773138",
-  "updatedAt" : "2026-11-16T18:23:12.773158",
+  "createdAt" : "2026-11-17T15:50:07.643103",
+  "updatedAt" : "2026-11-17T15:50:07.643122",
   "hasPassword" : true
 }
