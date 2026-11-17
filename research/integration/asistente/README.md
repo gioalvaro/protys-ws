@@ -1,11 +1,22 @@
 # Evidencia E-ASI: incorporar el fragmento de ISO 10303 con el asistente
 
-**Resultado.** Con el asistente actual **no se puede completar** la incorporación del piloto ISO 10303
-con las mismas comprobaciones que la incorporación por programa. El fragmento AP242 pasa la carga y la
-validación de consistencia (pasos 1 y 2), pero el asistente no permite registrar las tres reglas de
-vínculo R27–R29 (paso 3) ni cargar los datos del piloto. No se forzó ni se salteó ningún paso: la
-sesión se canceló y se comprobó que la red quedó igual. Abajo está la lista de lo que falta y el cambio
-mínimo que se propone para cada hueco; **queda pendiente tu decisión**.
+**Resultado (actual, Fase 3b, 2026-11-17).** Con los cambios mínimos 1–4 de la lista de abajo, el
+asistente **completa** la incorporación del piloto ISO 10303 y da lo mismo que la incorporación por
+programa (`h3_extended`). Se probó por la API y por la interfaz, partiendo cada vez de la plataforma
+limpia en configuración integrada.
+- **Reglas.** Quedan 25 reglas activas: las 22 más R27–R29, igual que `h3_extended`.
+- **Consistencia.** La red es `CONSISTENT` antes y después.
+- **Catálogo.** Las 21 consultas devuelven exactamente lo mismo.
+- **Controles del piloto.** Los 8 controles `H3_*` comparables (g30) dan lo esperado.
+- **Control que no es equivalente.** El noveno, `H3_pre_extension_no_classification` (g31), no tiene
+  equivalente en la plataforma: se ve abajo por qué.
+
+Detalle en la «Bitácora de la Fase 3b», al final.
+
+**Resultado anterior (Fase 3, 2026-11-16), que queda como antecedente.** Con el asistente de entonces no
+se podía completar la incorporación. El fragmento pasaba la carga y la validación, pero el asistente no
+permitía registrar R27–R29 ni cargar los datos del piloto. La sesión se canceló y se comprobó que la red
+quedó igual. Lo que sigue hasta la bitácora describe ese estado.
 
 ## Qué es la incorporación por programa
 La configuración `h3_extended` de `research/catalog.json` es la integrada (11 TBox, `functional.ttl`,
@@ -77,13 +88,13 @@ se canceló a mano antes de volver a correrla. Es la primera fila de `sesiones.t
    - los 9 controles `H3_*`. Hoy los corre el evaluador académico (`research/evaluation/`), no la API
      de la plataforma, así que haría falta escribir sus equivalentes como consultas sobre la plataforma.
 
-## Qué puede afirmar la tesis
+## Qué podía afirmar la tesis con el asistente de la Fase 3 (antecedente)
 - El asistente carga el fragmento AP242 en una sesión aislada y verifica que la red sigue consistente
   con él.
 - Cancelar una sesión deja la red como estaba: mismos módulos y grafos, misma consistencia y mismas
   respuestas en las 21 consultas.
 
-## Qué no puede afirmar
+## Qué no podía afirmar con el asistente de la Fase 3 (antecedente)
 - Que el piloto ISO 10303 se incorporó con el asistente: las reglas de vínculo y los datos del piloto
   no entran por él.
 - Que el asistente acepta Turtle o N3, como dice su pantalla.
@@ -182,4 +193,92 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
   `salidas/fase3b/pruebas-interfaz.txt`.
 
 ### Paso 5 — Recorrido completo por la API y la interfaz
-_En curso._
+**Plataforma.**
+- Imágenes reconstruidas desde el commit `e564ec8`; el mismo Compose fija `postgres:15` por digest.
+- Proyecto `protys` en puertos alternativos: backend 127.0.0.1:18080, interfaz 18081, Fuseki 13030.
+- Antes de cada recorrido se borraron sólo `protys_fuseki-data` y `protys_postgres-data`, así la carga
+  inicial dejó la configuración integrada limpia: 1 módulo (4318 triples) y 22 reglas activas.
+- No se usó `down -v`, para no tocar los volúmenes de los ERP.
+
+**Por la API.** `incorporar.sh` → `salidas/fase3b/api/` (una respuesta por llamada, `RESUMEN.txt`).
+
+| Paso | Resultado |
+|---|---|
+| 0 Línea de base | 1 módulo, 22 reglas (22 activas), razonamiento `CONSISTENT` |
+| 1 Subir el fragmento AP242 | HTTP 201, 46 triples |
+| 1b Subir `automotive.ttl` como datos de la sesión | HTTP 201, 203 triples |
+| 2 Validar red + fragmento + datos | `CONSISTENT` |
+| 3a Cargar R27–R29 como reglas de la sesión | HTTP 201: R27, R28, R29 |
+| 3b Seleccionar las 22 reglas registradas | HTTP 200, 22 |
+| 4 Verificar | 25 reglas ejecutadas (22 + 3); 1419 triples inferidos |
+| 5 Completar | HTTP 201: módulo del estándar, módulo de datos y 25 reglas activas |
+| 6a Reglas activas en la plataforma | 25, R27–R29 incluidas, como `h3_extended` |
+| 6b Razonamiento global | `CONSISTENT` → `CONSISTENT`; entrada 4318 → 4662 triples; inferidos 1167 → 1419 |
+| 6c Las 21 consultas del catálogo | idénticas (`06-catalogo-diferencias.md`) |
+| 6d Controles `H3_*` | los 8 de g30 iguales a lo esperado (`06-controles-H3.md`) |
+
+- **Grafos.** Después de completar no quedan grafos temporales.
+- **Grafo de reglas.** Pasó de 1374 a 1469 triples (+95, las definiciones de R27–R29) y conserva las
+  anteriores. Es el arreglo del paso 1 funcionando en la plataforma real.
+- **Controles H3, antes y después.** Antes de incorporar, los controles g30 que esperan `true` dan
+  `false`, porque sin el piloto no hay datos. Después dan lo esperado. Los controles comparan con la
+  evaluación por programa (`research/evaluation/current/assertion-groups/g30`, resumida en
+  `research/release/functional.json`).
+
+**Por la interfaz.** Chrome, plataforma limpia de nuevo. Capturas en `salidas/fase3b/interfaz/`:
+1. `1-paso1-estandar-y-datos.jpg`: el fragmento y `automotive.ttl` en el paso 1.
+2. `2a-paso2-subido.jpg` y `2b-paso2-validado-paso3.jpg`: validación aprobada.
+3. `3-paso3-reglas-sesion-y-22-seleccionadas.jpg`: «Loaded session rules: R27, R28, R29» y las 22
+   casillas marcadas.
+4. `4a-paso4-seleccion-configurada.jpg` y `4b-paso4-verificado-reglas-de-sesion.jpg`: R27–R29 como
+   «session rule» y la lista «Active after completion».
+5. `5a-paso5-crear.jpg` y `5b-completado-reglas-activas.jpg`: «Last incorporation:
+   iso10303-ap242-fragment» y «Rules active after completion (25)».
+
+Comprobación posterior en `salidas/fase3b/interfaz/api-despues/RESUMEN.txt`:
+- tres módulos, entre ellos «iso10303-ap242-fragment — datos de instancia», con 203 triples;
+- 25 reglas activas;
+- razonamiento `CONSISTENT`, con 4662 triples de entrada y 1419 inferidos;
+- ningún grafo temporal;
+- 0 de 21 consultas cambian contra la línea de base de la corrida por la API;
+- los 8 controles g30 iguales a lo esperado.
+
+Es el mismo resultado que por la API. La lectura de la consola de Chrome no mostró errores, pero empezó
+después de cargar la página, así que no cubre la carga.
+
+**Nombre del módulo.** La interfaz toma el nombre del estándar del nombre del archivo
+(`iso10303-ap242-fragment`); la API lo recibe explícito.
+
+**Lo que no es equivalente.** `H3_pre_extension_no_classification` (g31) se evalúa en la configuración
+integrada **con** los datos del piloto **sin** el fragmento AP242. En la plataforma, antes de incorporar
+no hay datos del piloto, así que da `false` (lo esperado) de forma trivial. Después de incorporar da
+`true`, y es lo correcto: con la extensión, `Component00` sí se clasifica. No se cuenta como control
+reproducido.
+
+**Reiniciar después de incorporar (encontrado, no corregido).** Con el piloto ya incorporado, volver a
+correr `docker compose up -d` hace fallar `protys-init`: «Foreign or incomplete module metadata; no state
+was modified» (`salidas/fase3b/reinicio/reinicio.txt`).
+- La causa: `docker/load_canonical.py` exige que en la base estén sólo el módulo y las 22 reglas de la
+  carga inicial.
+- La carga inicial no modifica nada, y el backend y la interfaz siguen funcionando; pero `docker compose
+  up` devuelve código 1.
+- Cambio mínimo posible: que `verify_existing` acepte módulos y reglas incorporados por el asistente
+  (por ejemplo, módulos con grafo bajo `…/incorporated/`) además de los suyos.
+- No se tocó, por decisión del 2026-11-16.
+
+## Qué puede afirmar la tesis (actualizado tras la Fase 3b)
+- El asistente incorpora el fragmento AP242 con sus reglas de vínculo R27–R29 y los datos del piloto, por
+  la API y por la interfaz.
+- El resultado coincide con la incorporación por programa (`h3_extended`) en lo comprobado:
+  - las mismas 25 reglas activas;
+  - red consistente;
+  - las 21 consultas del catálogo sin cambios;
+  - los 8 controles H3 comparables iguales a lo esperado.
+- Esto vale **con los cambios de la Fase 3b** (commits `10d01ba`, `752d190`, `31cbc3a`, `e564ec8`), no
+  con el asistente evaluado en la versión de la tesis.
+
+## Qué no puede afirmar
+- Que el control `H3_pre_extension_no_classification` se reprodujo en la plataforma.
+- Que la plataforma se puede reiniciar sin intervención después de incorporar un estándar (ver arriba).
+- Que el asistente de la versión evaluada (`tesis-cierre-2026-10-03-v1`) podía hacer esta
+  incorporación: no podía (Fase 3).

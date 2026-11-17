@@ -1,0 +1,14 @@
+módulos: [('Canonical_Catalog_Integrated', 4318), ('iso10303-ap242-fragment — datos de instancia', 203), ('iso10303-ap242-fragment', 46)]
+reglas: 25 activas: 25 R27–R29 activas: ['R27', 'R28', 'R29']
+razonamiento: SUCCESS CONSISTENT entrada 4662 inferidos 1419 reglas 25
+grafos temporales: []
+consultas del catálogo que cambian: 0 de 21
+  H3_components_same_identity: esperado=True plataforma=True
+  H3_configuration_without_pilot_marker: esperado=False plataforma=False
+  H3_no_new_named_individuals: esperado=True plataforma=True
+  H3_product_definition_without_pilot_marker: esperado=False plataforma=False
+  H3_same_named_individual_set: esperado=True plataforma=True
+  H3_shape_without_pilot_product: esperado=False plataforma=False
+  H3_source_classes_preserved: esperado=True plataforma=True
+  H3_unmapped_negative: esperado=False plataforma=False
+controles H3 g30 iguales a lo esperado: 8 de 8

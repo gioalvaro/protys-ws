@@ -1,0 +1,40 @@
+[ {
+  "id" : "2674f9bf-275e-4120-a889-7d20e5bc9920",
+  "name" : "Canonical_Catalog_Integrated",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated",
+  "namedGraph" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 4318,
+  "status" : "LOADED",
+  "createdAt" : "2026-11-17T02:40:09.959204",
+  "updatedAt" : "2026-11-17T02:40:09.959219",
+  "classes" : null
+}, {
+  "id" : "10d12a76-3a75-4b12-9f1c-fcac9b90348c",
+  "name" : "iso10303-ap242-fragment — datos de instancia",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14/data",
+  "namedGraph" : "http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14/data",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 203,
+  "status" : "VALIDATED",
+  "createdAt" : "2026-11-17T02:43:21.065746",
+  "updatedAt" : "2026-11-17T02:43:21.065752",
+  "classes" : null
+}, {
+  "id" : "71c02e8d-7b78-474a-86f5-33d1993dd255",
+  "name" : "iso10303-ap242-fragment",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14",
+  "namedGraph" : "http://w3id.org/protys/ontology/incorporated/80b22cf8-74f1-41f5-afc0-8e8961d7ae14",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 46,
+  "status" : "VALIDATED",
+  "createdAt" : "2026-11-17T02:43:21.068884",
+  "updatedAt" : "2026-11-17T02:43:21.06889",
+  "classes" : null
+} ]

@@ -1,0 +1,9 @@
+# Fase 3b — 2026-11-17T02:45:00Z; código de la plataforma: commit e564ec8 (imágenes reconstruidas desde ese árbol)
+/protys-adempiere-db-1 protys-erp-adempiere-db:3.9.4 sha256:56444eaf7eec73c5cb840764cef0e96eabe23f267c05bc7ea461f024bb10f58f
+/protys-odoo-db-1 postgres:15.10@sha256:d609c3005478af92bddad773423df829b7402ea0b356d5b72edd2fd54d1ad3ea sha256:c4730599ff7510e9ac59d170f5c89f2c90da013ea55fe9d69dabf97726f71f08
+/protys-protys-backend-1 protys-backend:maintenance sha256:3fdf868c43389a3d3af8e9a0c0640305715b958db4df81637122cb52019d5043
+/protys-protys-frontend-1 protys-protys-frontend sha256:4e96da60184e9cb4bfd344ed2d492c4831580e8416b2951cd969513bda6b5e41
+/protys-protys-fuseki-1 protys-backend:maintenance sha256:3fdf868c43389a3d3af8e9a0c0640305715b958db4df81637122cb52019d5043
+/protys-protys-init-1 protys-protys-init sha256:0483be4dfbfb9ddfc31c173758df772d016771226229c3c275d7476eae5c7149
+/protys-protys-postgres-1 postgres:15@sha256:0dda651c259bfe50e2bcc28ca23d1fcca772fa90b0210803aa7b97379ccf4e85 sha256:3b50b13a8e1eccf58bcb314b4dda76ddc01577026bfacefe0678d746b8f80853
+chrome: navegador Chrome automatizado (versión del navegador no registrada)

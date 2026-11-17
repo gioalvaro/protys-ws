@@ -1,0 +1,468 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "process", "flow", "material", "quantityKg", "unit" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "37.5"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Flow_Biocide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "1.25"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "25"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Flow_Water"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Water"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "61.25"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "75"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Flow_Biocide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "2.5"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "50"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Flow_Water"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Water"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "122.5"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "37.5"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Flow_Biocide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "1.25"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "25"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Flow_Water"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Water"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "61.25"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_Biocide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      }, {
+        "process" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "flow" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_Water"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Water"
+        },
+        "quantityKg" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "unit" : {
+          "type" : "literal",
+          "value" : "kg"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q13 Inventario explícito de flujos materiales por proceso\nSELECT ?process ?flow ?material ?quantityKg ?unit\nWHERE { ?flow a e:ProductFlow ; t:belongsToProcess ?process ; e:refersToMaterial ?material ; t:materialQuantityKg ?quantityKg ; t:unit ?unit . }\nORDER BY ?process ?material\n",
+  "executedAt" : "2026-11-17T02:32:43.131971253Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "process" : "http://w3id.org/protys/fixture#BatchA_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#AcrylicResin",
+    "quantityKg" : "37.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchA_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Biocide",
+    "quantityKg" : "1.25^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchA_Flow_Biocide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchA_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#TitaniumDioxide",
+    "quantityKg" : "25^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchA_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Water",
+    "quantityKg" : "61.25^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchA_Flow_Water"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchB_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#AcrylicResin",
+    "quantityKg" : "75^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchB_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Biocide",
+    "quantityKg" : "2.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchB_Flow_Biocide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchB_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#TitaniumDioxide",
+    "quantityKg" : "50^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchB_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Water",
+    "quantityKg" : "122.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchB_Flow_Water"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchC_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#AcrylicResin",
+    "quantityKg" : "37.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchC_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Biocide",
+    "quantityKg" : "1.25^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchC_Flow_Biocide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchC_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#TitaniumDioxide",
+    "quantityKg" : "25^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchC_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Water",
+    "quantityKg" : "61.25^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchC_Flow_Water"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchZero_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#AcrylicResin",
+    "quantityKg" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchZero_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Biocide",
+    "quantityKg" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchZero_Flow_Biocide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchZero_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#TitaniumDioxide",
+    "quantityKg" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide"
+  }, {
+    "process" : "http://w3id.org/protys/fixture#BatchZero_Process",
+    "unit" : "kg",
+    "material" : "http://w3id.org/protys/fixture#Water",
+    "quantityKg" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "flow" : "http://w3id.org/protys/fixture#BatchZero_Flow_Water"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 7,
+  "resultCount" : 16,
+  "truncated" : false
+}

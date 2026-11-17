@@ -1,0 +1,120 @@
+{
+  "tempModuleId" : "e123b9ce-4d40-4101-8f42-0ba3ad75c68a",
+  "standardName" : "ISO 10303-242 (fragmento piloto)",
+  "status" : "COMPLETED",
+  "cleaningEvaluation" : null,
+  "contextEvaluation" : null,
+  "numericEvaluation" : null,
+  "owlValidationStatus" : null,
+  "selectedRuleIds" : [ "8e837567-5cc5-44ed-91d0-7f24288de678", "4b0ba3cc-a715-4f43-ba0e-24ed7dbd0f07", "76af1aec-979d-4b2e-a3fd-eb8d0a3e9884", "3b722a42-693f-4eaa-a0c8-db081dfb1d65", "b0bf3e81-67ae-4500-a528-9ea90575fd5f", "c58db497-dc58-4e9e-94c1-13a605f0a83f", "7a728d35-04f9-40a8-9a50-e2217aeeb856", "1a1b5d18-fe1b-4550-ab99-1a95430fdcd2", "66f28883-b02c-48ce-84bd-4d589f62f759", "e50f253f-bfb5-482b-a28e-30089c8bdc39", "ca4fabf8-1ba9-4443-9067-5a22aac0c4ad", "6c9ee762-a8c0-4b0e-8c60-554a88c5c756", "04cab3e4-0bc3-48dd-9f53-63e097109f16", "34ac8378-5e9e-458a-8042-1f1170fb2302", "435e44d9-c620-4239-a050-db192c1e8445", "a5252449-837d-4560-93ea-9bb5b7fdb6f4", "25e84729-21b2-4618-8e7d-44814ac39b38", "e0fbf120-6dcb-47ff-bc07-2a8a74516001", "ea8c96f3-485b-45c1-87c4-98ccfdb49832", "499fd8ab-546e-4cf8-8b9a-14fd475690a6", "cb0fb1a7-da06-464e-a4b8-4b24c7f7120f", "c30ee22e-af24-46bc-b639-f358485144ba" ],
+  "sessionRuleIds" : [ "R27", "R28", "R29" ],
+  "activatedRules" : [ "R09", "R15", "R18", "R23", "R04", "R21", "R13", "R25", "R11", "R03", "R17", "R02", "R08", "R14", "R10", "R20", "R12", "R24", "R06", "R01", "R05", "R22", "R27", "R28", "R29" ],
+  "executedRules" : [ {
+    "id" : "8e837567-5cc5-44ed-91d0-7f24288de678",
+    "name" : "R09"
+  }, {
+    "id" : "4b0ba3cc-a715-4f43-ba0e-24ed7dbd0f07",
+    "name" : "R15"
+  }, {
+    "id" : "76af1aec-979d-4b2e-a3fd-eb8d0a3e9884",
+    "name" : "R18"
+  }, {
+    "id" : "3b722a42-693f-4eaa-a0c8-db081dfb1d65",
+    "name" : "R23"
+  }, {
+    "id" : "b0bf3e81-67ae-4500-a528-9ea90575fd5f",
+    "name" : "R04"
+  }, {
+    "id" : "c58db497-dc58-4e9e-94c1-13a605f0a83f",
+    "name" : "R21"
+  }, {
+    "id" : "7a728d35-04f9-40a8-9a50-e2217aeeb856",
+    "name" : "R13"
+  }, {
+    "id" : "1a1b5d18-fe1b-4550-ab99-1a95430fdcd2",
+    "name" : "R25"
+  }, {
+    "id" : "66f28883-b02c-48ce-84bd-4d589f62f759",
+    "name" : "R11"
+  }, {
+    "id" : "e50f253f-bfb5-482b-a28e-30089c8bdc39",
+    "name" : "R03"
+  }, {
+    "id" : "ca4fabf8-1ba9-4443-9067-5a22aac0c4ad",
+    "name" : "R17"
+  }, {
+    "id" : "6c9ee762-a8c0-4b0e-8c60-554a88c5c756",
+    "name" : "R02"
+  }, {
+    "id" : "04cab3e4-0bc3-48dd-9f53-63e097109f16",
+    "name" : "R08"
+  }, {
+    "id" : "34ac8378-5e9e-458a-8042-1f1170fb2302",
+    "name" : "R14"
+  }, {
+    "id" : "435e44d9-c620-4239-a050-db192c1e8445",
+    "name" : "R10"
+  }, {
+    "id" : "a5252449-837d-4560-93ea-9bb5b7fdb6f4",
+    "name" : "R20"
+  }, {
+    "id" : "25e84729-21b2-4618-8e7d-44814ac39b38",
+    "name" : "R12"
+  }, {
+    "id" : "e0fbf120-6dcb-47ff-bc07-2a8a74516001",
+    "name" : "R24"
+  }, {
+    "id" : "ea8c96f3-485b-45c1-87c4-98ccfdb49832",
+    "name" : "R06"
+  }, {
+    "id" : "499fd8ab-546e-4cf8-8b9a-14fd475690a6",
+    "name" : "R01"
+  }, {
+    "id" : "cb0fb1a7-da06-464e-a4b8-4b24c7f7120f",
+    "name" : "R05"
+  }, {
+    "id" : "c30ee22e-af24-46bc-b639-f358485144ba",
+    "name" : "R22"
+  }, {
+    "id" : "6d56b546-aa88-42d4-a786-99adb56d4a79",
+    "name" : "R27"
+  }, {
+    "id" : "d38e9e6d-06ac-43d8-9208-c517659c4d40",
+    "name" : "R28"
+  }, {
+    "id" : "2d5d69b4-0307-4e77-b8fd-10bbd7e8fda8",
+    "name" : "R29"
+  } ],
+  "ruleDefinitionsSha256" : "99dccf1a1d261a97dbd209c2b95bf2130e1232b3ab13544052a258fd7e1667b7",
+  "cleanupPending" : false,
+  "currentStep" : 5,
+  "startedAt" : null,
+  "executionTimeMs" : null,
+  "tripleCount" : null,
+  "dataTripleCount" : null,
+  "message" : "Successfully incorporated ISO 10303-242 (fragmento piloto)",
+  "finalModuleId" : "048eb98e-7642-425a-9ab0-0fc84e176ebd",
+  "step1_parsed" : null,
+  "step1_message" : null,
+  "step1_error" : null,
+  "step2_consistent" : null,
+  "step2_conflictingModules" : null,
+  "step2_message" : null,
+  "step2_error" : null,
+  "step3_rulesGenerated" : null,
+  "step3_rulesCount" : null,
+  "step3_message" : null,
+  "step3_error" : null,
+  "step4_verified" : null,
+  "step4_inferredTriples" : null,
+  "step4_message" : null,
+  "step4_error" : null,
+  "classesImported" : null,
+  "propertiesImported" : null,
+  "alignmentRulesCreated" : 0,
+  "inferencesGenerated" : 1419,
+  "consistencyCheck" : null,
+  "warnings" : null,
+  "errors" : null,
+  "completedAt" : "2026-11-17T02:32:54.83866363"
+}

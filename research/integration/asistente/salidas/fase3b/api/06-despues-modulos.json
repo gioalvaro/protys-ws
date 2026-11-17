@@ -1,0 +1,40 @@
+[ {
+  "id" : "7a42131c-9d1b-441f-953e-47b20ae7838e",
+  "name" : "Canonical_Catalog_Integrated",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated",
+  "namedGraph" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 4318,
+  "status" : "LOADED",
+  "createdAt" : "2026-11-17T02:32:16.36756",
+  "updatedAt" : "2026-11-17T02:32:16.367571",
+  "classes" : null
+}, {
+  "id" : "1ff76395-eab8-4298-9526-4b0aa6fa4bc0",
+  "name" : "ISO 10303-242 (fragmento piloto) — datos de instancia",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/incorporated/e123b9ce-4d40-4101-8f42-0ba3ad75c68a/data",
+  "namedGraph" : "http://w3id.org/protys/ontology/incorporated/e123b9ce-4d40-4101-8f42-0ba3ad75c68a/data",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 203,
+  "status" : "VALIDATED",
+  "createdAt" : "2026-11-17T02:32:54.833721",
+  "updatedAt" : "2026-11-17T02:32:54.833726",
+  "classes" : null
+}, {
+  "id" : "048eb98e-7642-425a-9ab0-0fc84e176ebd",
+  "name" : "ISO 10303-242 (fragmento piloto)",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/incorporated/e123b9ce-4d40-4101-8f42-0ba3ad75c68a",
+  "namedGraph" : "http://w3id.org/protys/ontology/incorporated/e123b9ce-4d40-4101-8f42-0ba3ad75c68a",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 46,
+  "status" : "VALIDATED",
+  "createdAt" : "2026-11-17T02:32:54.836152",
+  "updatedAt" : "2026-11-17T02:32:54.836165",
+  "classes" : null
+} ]
