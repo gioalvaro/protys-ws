@@ -18,6 +18,7 @@ class WizardSessionRulesTest extends WizardSelectionRegressionTest {
     @BeforeEach void sessionRuleStubs() {
         when(fuseki.getModelOrEmpty(anyString())).thenAnswer(c -> ModelFactory.createDefaultModel().add(graphs.getOrDefault(c.getArgument(0), ModelFactory.createDefaultModel())));
         when(rules.findByRuleId(anyString())).thenAnswer(c -> ruleRecords.values().stream().filter(r -> r.getRuleId().equals(c.getArgument(0))).findFirst());
+        doAnswer(c -> { ruleRecords.remove(((AlignmentRule) c.getArgument(0)).getId()); return null; }).when(rules).delete(any());
         when(rules.saveAndFlush(any())).thenAnswer(c -> { AlignmentRule r = c.getArgument(0); if (r.getId() == null) r.setId(UUID.randomUUID()); ruleRecords.put(r.getId(), r); return r; });
     }
 
@@ -101,5 +102,46 @@ class WizardSessionRulesTest extends WizardSelectionRegressionTest {
         service.cancelIncorporation(id);
         assertFalse(graphs.containsKey(rulesGraph(id)));
         assertNull(row("R27")); assertFalse(defines(definitions(), "R27"));
+    }
+
+    /** Estado de las reglas que ve la plataforma: registro, estado de cada una y grafo global de definiciones. */
+    Map<String, Boolean> ruleStates() {
+        Map<String, Boolean> states = new TreeMap<>();
+        ruleRecords.values().forEach(r -> states.put(r.getRuleId(), r.getActive()));
+        return states;
+    }
+
+    @Test void cancelarUnCompletadoCortadoDejaLasReglasComoEstaban() {
+        UUID id = readyWithR27("Cortado");
+        service.step4_verifyInferences(id);
+        Map<String, Boolean> before = ruleStates();
+        Model baseline = ModelFactory.createDefaultModel().add(definitions());
+        // Se corta después de activar las reglas, al registrar el módulo del estándar.
+        doThrow(new RuntimeException("Database unavailable")).when(modules).saveAndFlush(any());
+        assertEquals("NOT_EVALUATED", service.completeIncorporation(id).getStatus());
+        assertTrue(row("R27").getActive());
+        assertTrue(ruleRecords.get(a.getId()).getActive());
+        assertTrue(defines(definitions(), "R27"));
+
+        service.cancelIncorporation(id);
+        assertEquals(before, ruleStates());
+        assertTrue(definitions().isIsomorphicWith(baseline), "el grafo de reglas no volvió a la línea de base");
+        assertEquals("CANCELLED", session(id).getPhase());
+
+        service.cancelIncorporation(id); // idempotente
+        assertEquals(before, ruleStates());
+        assertTrue(definitions().isIsomorphicWith(baseline));
+    }
+
+    @Test void cancelarNoTocaReglasQueYaEstabanActivasNiDefinicionesPrevias() {
+        UUID id = upload("Previas"); select(id, List.of(b));
+        service.step4_verifyInferences(id);
+        Model baseline = ModelFactory.createDefaultModel().add(definitions());
+        doThrow(new RuntimeException("Database unavailable")).when(modules).saveAndFlush(any());
+        assertEquals("NOT_EVALUATED", service.completeIncorporation(id).getStatus());
+        service.cancelIncorporation(id);
+        assertTrue(ruleRecords.get(b.getId()).getActive());
+        assertFalse(ruleRecords.get(a.getId()).getActive());
+        assertTrue(definitions().isIsomorphicWith(baseline));
     }
 }

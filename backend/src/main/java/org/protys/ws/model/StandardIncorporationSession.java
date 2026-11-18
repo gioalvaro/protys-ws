@@ -34,6 +34,13 @@ public class StandardIncorporationSession {
     @Column(columnDefinition = "TEXT")
     private String ruleDefinitionsSnapshot;
     private String ruleDefinitionsSha256;
+    /**
+     * Cambios globales en las reglas que hizo el completado (JSON): reglas creadas, reglas existentes que
+     * pasó de inactivas a activas, reglas cuya definición sumó y triples sueltos que sumó al grafo de
+     * reglas. Se guarda antes de aplicarlos, así cancelar un completado interrumpido los deshace.
+     */
+    @Column(columnDefinition = "TEXT")
+    private String ruleChangesJson;
     private boolean permanentWriteStarted;
     private boolean consistencyVerified;
     private boolean inferenceVerified;

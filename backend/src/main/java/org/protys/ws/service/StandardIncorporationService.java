@@ -403,17 +403,76 @@ public class StandardIncorporationService {
         }
     }
 
+    /** Lo que el completado cambió fuera de la sesión, para poder deshacerlo al cancelar. */
+    public static class RuleChanges {
+        public LinkedHashSet<String> created = new LinkedHashSet<>();
+        public LinkedHashSet<String> reactivated = new LinkedHashSet<>();
+        public LinkedHashSet<String> defined = new LinkedHashSet<>();
+        /** Triples sin nodos en blanco, fuera de las definiciones, que no estaban en el grafo de reglas (N-Triples). */
+        public LinkedHashSet<String> addedTriples = new LinkedHashSet<>();
+    }
+
+    private static final com.fasterxml.jackson.databind.ObjectMapper JSON = new com.fasterxml.jackson.databind.ObjectMapper();
+
+    static RuleChanges ruleChanges(StandardIncorporationSession session) {
+        try {
+            return session.getRuleChangesJson() == null ? new RuleChanges() : JSON.readValue(session.getRuleChangesJson(), RuleChanges.class);
+        } catch (Exception e) {
+            throw new ProtysMappingException("The persisted rule changes are unreadable", e);
+        }
+    }
+
+    private static String nTriple(org.apache.jena.rdf.model.Statement statement) {
+        Model one = ModelFactory.createDefaultModel().add(statement);
+        var out = new java.io.StringWriter();
+        RDFDataMgr.write(out, one, Lang.NTRIPLES);
+        return out.toString().trim();
+    }
+
+    /** Registradas e inactivas entre las verificadas: el completado las activa para toda la plataforma. */
+    private List<String> inactiveRegistered(List<ExecutedRule> executed) {
+        List<String> names = new ArrayList<>();
+        for (ExecutedRule run : executed) {
+            if (run.getId() == null) continue;
+            alignmentRuleRepository.findById(run.getId()).filter(r -> !Boolean.TRUE.equals(r.getActive()))
+                    .ifPresent(r -> names.add(r.getRuleId()));
+        }
+        return names;
+    }
+
     /**
      * Al completar: suma al grafo de definiciones las reglas nuevas de la sesión (sin duplicar si es un
      * reintento), las registra y deja activas todas las reglas verificadas en el paso 4. Va antes de
-     * registrar el módulo del estándar, que es la marca de completado; todo es idempotente.
+     * registrar el módulo del estándar, que es la marca de completado; todo es idempotente. Antes de
+     * tocar nada guarda en la sesión qué va a cambiar (sumado a lo de intentos anteriores), para que
+     * cancelar un completado interrumpido lo deshaga.
      */
     private StandardIncorporationSession activateVerifiedRules(StandardIncorporationSession session, List<ExecutedRule> executed) throws Exception {
         List<String> extra = sessionRules(session);
+        Model definitions = extra.isEmpty() ? ModelFactory.createDefaultModel() : requiredGraph(rulesGraph(session.getTemporaryGraph()));
+        // Sin reglas de sesión el grafo global de reglas no se toca ni se lee.
+        Model current = extra.isEmpty() ? ModelFactory.createDefaultModel() : fusekiService.getModelOrEmpty(AlignmentService.RULE_GRAPH);
+        Model merged = extra.isEmpty() ? current : AlignmentService.mergeRuleDefinitions(current, definitions);
+
+        RuleChanges changes = ruleChanges(session);
+        var imp = current.createResource(SWRL_IMP);
+        for (String name : extra) {
+            var existing = alignmentRuleRepository.findByRuleId(name);
+            if (existing.isEmpty()) changes.created.add(name);
+            else if (!Boolean.TRUE.equals(existing.get().getActive())) changes.reactivated.add(name);
+            if (!current.contains(current.createResource(definitionIri(definitions, name)), org.apache.jena.vocabulary.RDF.type, imp))
+                changes.defined.add(name);
+        }
+        changes.reactivated.addAll(inactiveRegistered(executed));
+        for (var statement : AlignmentService.withoutRuleDefinitions(definitions).listStatements().toList()) {
+            boolean ground = !statement.getSubject().isAnon() && !statement.getObject().isAnon();
+            if (ground && !current.contains(statement)) changes.addedTriples.add(nTriple(statement));
+        }
+        session.setRuleChangesJson(JSON.writeValueAsString(changes));
+        session = sessionRepository.saveAndFlush(session);
+
         if (!extra.isEmpty()) {
-            Model definitions = requiredGraph(rulesGraph(session.getTemporaryGraph()));
-            fusekiService.putModel(AlignmentService.RULE_GRAPH,
-                    AlignmentService.mergeRuleDefinitions(fusekiService.getModelOrEmpty(AlignmentService.RULE_GRAPH), definitions));
+            fusekiService.putModel(AlignmentService.RULE_GRAPH, merged);
             for (String name : extra) {
                 AlignmentRule rule = alignmentRuleRepository.findByRuleId(name).orElseGet(AlignmentRule::new);
                 if (rule.getId() == null) {
@@ -442,8 +501,44 @@ public class StandardIncorporationService {
         // El comprobante guardado pasa a llevar el id de las reglas recién registradas.
         List<ExecutedRule> receipt = executed.stream().map(r -> r.getId() != null ? r
                 : new ExecutedRule(alignmentRuleRepository.findByRuleId(r.getName()).map(AlignmentRule::getId).orElse(null), r.getName())).toList();
-        session.setExecutedRulesJson(new com.fasterxml.jackson.databind.ObjectMapper().writeValueAsString(receipt));
+        session.setExecutedRulesJson(JSON.writeValueAsString(receipt));
         return sessionRepository.saveAndFlush(session);
+    }
+
+    private static String definitionIri(Model definitions, String name) {
+        return definitions.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, definitions.createResource(SWRL_IMP)).toList()
+                .stream().filter(r -> name.equals(r.getLocalName())).findFirst()
+                .orElseThrow(() -> new ProtysMappingException("Session rule without definition: " + name)).getURI();
+    }
+
+    /**
+     * Deshace lo que un completado interrumpido cambió en las reglas globales: borra los registros y las
+     * definiciones de las reglas que creó, saca los triples sueltos que sumó y vuelve a inactivas las que
+     * activó. Repetirlo no cambia nada más.
+     */
+    private void revertRuleChanges(StandardIncorporationSession session) throws Exception {
+        RuleChanges changes = ruleChanges(session);
+        if (!changes.defined.isEmpty() || !changes.addedTriples.isEmpty()) {
+            Model graph = fusekiService.getModelOrEmpty(AlignmentService.RULE_GRAPH);
+            var imp = graph.createResource(SWRL_IMP);
+            for (var rule : graph.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, imp).toList())
+                if (!rule.isAnon() && changes.defined.contains(rule.getLocalName()))
+                    graph.remove(AlignmentService.ruleDefinition(graph, rule));
+            for (String triple : changes.addedTriples) {
+                Model one = ModelFactory.createDefaultModel();
+                RDFDataMgr.read(one, new java.io.StringReader(triple), null, Lang.NTRIPLES);
+                graph.remove(one);
+            }
+            fusekiService.putModel(AlignmentService.RULE_GRAPH, graph);
+        }
+        for (String name : changes.created)
+            alignmentRuleRepository.findByRuleId(name).ifPresent(alignmentRuleRepository::delete);
+        for (String name : changes.reactivated)
+            alignmentRuleRepository.findByRuleId(name).filter(r -> Boolean.TRUE.equals(r.getActive())).ifPresent(rule -> {
+                rule.setActive(false);
+                rule.setUpdatedAt(LocalDateTime.now());
+                alignmentRuleRepository.saveAndFlush(rule);
+            });
     }
 
     /** No match is an idempotent no-op. A completed permanent module can never be cancelled. */
@@ -470,6 +565,11 @@ public class StandardIncorporationService {
                 // Un completado interrumpido pudo registrar ya el módulo de datos de esta sesión.
                 ontologyModuleRepository.findByNamedGraph(dataTarget).ifPresent(ontologyModuleRepository::delete);
                 deleteOwnedGraph(dataTarget);
+            }
+            try {
+                revertRuleChanges(session);
+            } catch (Exception e) {
+                throw new ProtysMappingException("Could not revert the rule changes of the interrupted completion", e);
             }
         }
         session.setPhase("CANCELLED");

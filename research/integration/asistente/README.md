@@ -92,7 +92,9 @@ se canceló a mano antes de volver a correrla. Es la primera fila de `sesiones.t
 - El asistente carga el fragmento AP242 en una sesión aislada y verifica que la red sigue consistente
   con él.
 - Cancelar una sesión deja la red como estaba: mismos módulos y grafos, misma consistencia y mismas
-  respuestas en las 21 consultas.
+  respuestas en las 21 consultas. Esto se probó con sesiones que no llegaron a completar. Con la
+  Fase 3b, completar empezó a cambiar las reglas globales; hasta la revisión del 2026-11-18, cancelar un
+  completado cortado a mitad no deshacía esos cambios (ver «Revisión del 2026-11-18» más abajo).
 
 ## Qué no podía afirmar con el asistente de la Fase 3 (antecedente)
 - Que el piloto ISO 10303 se incorporó con el asistente: las reglas de vínculo y los datos del piloto
@@ -128,7 +130,12 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
   propio, «<estándar> — datos de instancia», sin `incorporation_session_id` porque esa columna es única.
   - El módulo de datos se registra **antes** que el del estándar: así un reintento sigue reconociendo
     el estándar como marca de completado.
-  - Si un completado se corta a mitad, cancelar quita el módulo de datos y su grafo.
+  - Si un completado se corta a mitad, cancelar quita el módulo de datos y su grafo. Desde la revisión
+    del 2026-11-18 también deshace los cambios en las reglas globales: borra las reglas que el
+    completado creó (registro y definición), vuelve a inactivas las que activó y saca los triples que
+    sumó al grafo de reglas (`WizardSessionRulesTest.cancelarUnCompletadoCortadoDejaLasReglasComoEstaban`,
+    salida en `../revision-2026-11-18/salidas/backend-pruebas.txt`). Antes de esa revisión quedaban
+    activas.
 - **Prueba.** `WizardInstanceDataTest`, con 6 pruebas nuevas:
   - Turtle en el paso 1;
   - datos en su grafo y dentro de la validación;
@@ -156,7 +163,8 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
   - deja activas **todas las reglas verificadas** en el paso 4;
   - guarda el comprobante con los ids definitivos.
   El resultado trae `activatedRules`. Todo se puede repetir sin efectos dobles.
-- **Cancelar** borra también el grafo temporal de reglas.
+- **Cancelar** borra también el grafo temporal de reglas. (Revisión del 2026-11-18: si el completado se
+  cortó después de activar reglas, cancelar además deshace esa activación; ver arriba.)
 - **Prueba.** `WizardSessionRulesTest`, con 7 pruebas nuevas:
   - grafo temporal sin registro previo;
   - rechazos;
@@ -290,6 +298,7 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
 
 ## Qué no puede afirmar
 - Que el control `H3_pre_extension_no_classification` se reprodujo en la plataforma.
+
 - Que el asistente de la versión evaluada (`tesis-cierre-2026-10-03-v1`) podía hacer esta
   incorporación: no podía (Fase 3).
 
