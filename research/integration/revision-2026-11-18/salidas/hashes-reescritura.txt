@@ -1,0 +1,48 @@
+# 2026-11-18T03:35:05Z: equivalencia entre la historia anterior (rama trabajo-tecnico-2026-11-respaldo) y la actual
+# por par: archivos que difieren entre el árbol anterior y el actual
+a55e984 -> 95fc35a: 
+0ea887c -> e461591: 
+d4e8da3 -> 055fca2: 
+56b11c9 -> cc789de: 
+5238100 -> 83a0904: 
+c53a492 -> 3d46774: 
+383ca9c -> 0962d7b: 
+3f579ff -> 591f63a: 
+fbbbb09 -> 674a5c7: 
+eefdd68 -> 6dbc734: 
+9048621 -> 5182904: 
+142ba3f -> 8bea4f2: 
+da3f100 -> ac41ef4: 
+93f9065 -> 935d9e5: 
+13d2ceb -> 86f4b9d: 
+323887c -> c3c4a06: 
+c720d11 -> 7d7e065: 
+61bbd24 -> 96c0e1d: 
+81e9779 -> fd18185: 
+52f229e -> 14c7ac1: 
+5210e02 -> 2dfc9d5: 
+4cc54c0 -> 0d29644: 
+10d01ba -> 1f5b909: 
+752d190 -> fe739b1: 
+31cbc3a -> 89e201c: 
+e564ec8 -> 6d33abb: 
+20fe6d4 -> f9e7694: research/integration/asistente/salidas/fase3b/versiones.txt 
+96172d1 -> 0610397: research/integration/asistente/salidas/fase3b/versiones.txt 
+a34efdf -> ecb48d8: research/integration/asistente/salidas/fase3b/versiones.txt 
+c288ce3 -> bd49daa: research/integration/asistente/salidas/fase3b/versiones.txt 
+
+$ git diff -U0 7fc4cf6~1 7fc4cf6 -- "*/salidas/*" (sólo nombres de archivo y líneas)
++++ b/research/integration/asistente/salidas/fase3b/pruebas-backend.txt
+@@ -1 +1 @@
++++ b/research/integration/asistente/salidas/fase3b/reinicio/reinicio-tras-arreglo.txt
+@@ -1 +1 @@
++++ b/research/integration/asistente/salidas/fase3b/versiones.txt
+@@ -1 +1 @@
++++ b/research/integration/asistente/salidas/pulido/reinicio-con-grafos-erp.txt
+@@ -1 +1 @@
++++ b/research/integration/erp/salidas/e2e/02-versiones.txt
+@@ -2 +2 @@
++++ b/research/integration/erp/salidas/pruebas-backend.txt
+@@ -3 +3 @@
++++ b/research/integration/explorador/salidas/antes-reproduccion.txt
+@@ -2 +2 @@

@@ -385,8 +385,66 @@ Comparada con `research/release/functional.json` (`salidas/pulido/funcional-vs-r
 
 ### Paso 5 — Mensajes de commit
 El 2026-11-17 se reescribieron los mensajes de los 30 commits de la rama, para dejar sólo la descripción
-del cambio. El código de cada commit quedó igual; lo único que cambió fue una línea de
-`salidas/fase3b/versiones.txt`, que describe la herramienta usada para las capturas. Como los
-identificadores cambian al reescribir, los que se citan en estos README, en los informes y en las
-primeras líneas de las salidas guardadas se reemplazaron por los nuevos. Cada uno sigue apuntando al
-mismo árbol de código; ninguna otra parte de las salidas se tocó.
+del cambio. El código de cada commit quedó igual. Dos cosas, sin embargo, tocaron salidas guardadas, y
+la revisión del 2026-11-18 lo señaló:
+
+1. **Dentro de la reescritura**, en el commit de la Fase 3b, paso 5 (`f9e7694`):
+   `salidas/fase3b/versiones.txt`, línea 9, cambió el texto que nombraba la herramienta usada para las
+   capturas por «navegador Chrome automatizado».
+2. **En el commit siguiente** (`7fc4cf6`) se reemplazaron, dentro de siete salidas guardadas, los
+   identificadores de commit viejos por los nuevos:
+
+   | Archivo | Línea |
+   |---|---|
+   | `asistente/salidas/fase3b/pruebas-backend.txt` | 1 |
+   | `asistente/salidas/fase3b/reinicio/reinicio-tras-arreglo.txt` | 1 |
+   | `asistente/salidas/fase3b/versiones.txt` | 1 |
+   | `asistente/salidas/pulido/reinicio-con-grafos-erp.txt` | 1 |
+   | `erp/salidas/e2e/02-versiones.txt` | 2 |
+   | `erp/salidas/pruebas-backend.txt` | 3 |
+   | `explorador/salidas/antes-reproduccion.txt` | 2 |
+
+   No se tocó ninguna otra línea de esas salidas (`git diff -U0 7fc4cf6~1 7fc4cf6`). Lo correcto era
+   no editarlas y poner las equivalencias en una tabla. Esas salidas no se vuelven a tocar: corregirlas
+   de nuevo sería otra edición.
+
+Los identificadores anteriores se pueden recuperar: la rama local `trabajo-tecnico-2026-11-respaldo`
+conserva la historia previa. Cada par apunta al mismo árbol de código (la única diferencia es la
+línea 9 de `versiones.txt`, desde `f9e7694`):
+
+| Hash anterior | Hash actual | Commit |
+|---|---|---|
+| `a55e984` | `95fc35a` | Agrega evidencia E-09: análisis de la red con OOPS! |
+| `0ea887c` | `e461591` | Incluye el registro de la ejecución de OOPS! (E-09) |
+| `d4e8da3` | `055fca2` | Agrega las fuentes ERP para la prueba de integración (Fase 1, paso 1) |
+| `56b11c9` | `cc789de` | Releva los esquemas de manufactura de ADempiere y Odoo (Fase 1, paso 2) |
+| `5238100` | `83a0904` | Agrega la tabla de correspondencias ERP → PROTYS(KB) (Fase 1, paso 3) |
+| `c53a492` | `3d46774` | Propone la vía de mapeo ERP; espera decisión (Fase 1, paso 4) |
+| `383ca9c` | `0962d7b` | Agrega un procesador R2RML sobre Jena y los mapeos de ADempiere y Odoo (Fase 1, paso 5) |
+| `3f579ff` | `591f63a` | Permite sumar grafos de conectores ERP al razonamiento (Fase 1, paso 6) |
+| `fbbbb09` | `674a5c7` | Agrega la prueba de punta a punta con ADempiere y Odoo (Fase 1, paso 7) |
+| `eefdd68` | `6dbc734` | Agrega la evidencia de la corrida de punta a punta y el informe de la Fase 1 |
+| `9048621` | `5182904` | Quita la dependencia CARML sin uso del backend (revisión de la Fase 1) |
+| `142ba3f` | `8bea4f2` | Permite conservar la entrada preparada del razonador como evidencia |
+| `da3f100` | `ac41ef4` | Fija por digest la imagen de PostgreSQL de la plataforma |
+| `93f9065` | `935d9e5` | Mapea Organización y contrasta las Tablas 5.8 y 5.9 (revisión de la Fase 1) |
+| `13d2ceb` | `86f4b9d` | Verifica la cadena R07 → R24 y compara el catálogo sin y con ERP en run.sh |
+| `323887c` | `c3c4a06` | Actualiza la evidencia y el informe de la Fase 1 tras la revisión |
+| `c720d11` | `7d7e065` | Precisa en el informe sobre qué commits corrió la evidencia |
+| `61bbd24` | `96c0e1d` | Reproduce el error del explorador de clases con el catálogo integrado (Fase 2, paso 1) |
+| `81e9779` | `fd18185` | Devuelve la jerarquía de clases completa como lista de raíces (Fase 2, paso 2) |
+| `52f229e` | `14c7ac1` | Corrige el explorador de clases para el contrato de la API (Fase 2, paso 3) |
+| `5210e02` | `2dfc9d5` | Agrega la evidencia del explorador de clases corregido (Fase 2, paso 4) |
+| `4cc54c0` | `0d29644` | Recorre el asistente con el fragmento ISO 10303 y registra lo que falta (Fase 3) |
+| `10d01ba` | `1f5b909` | La subida de reglas suma definiciones en vez de reemplazar el grafo (Fase 3b, paso 1) |
+| `752d190` | `fe739b1` | El asistente lee por extensión y acepta datos de instancia de la sesión (Fase 3b, paso 2) |
+| `31cbc3a` | `89e201c` | El asistente carga reglas de la sesión y al completar las registra y activa (Fase 3b, paso 3) |
+| `e564ec8` | `6d33abb` | La interfaz del asistente carga datos y reglas de la sesión y muestra las reglas activas (Fase 3b, paso 4) |
+| `20fe6d4` | `f9e7694` | Incorpora el piloto ISO 10303 completo con el asistente, por API e interfaz (Fase 3b, paso 5) |
+| `96172d1` | `0610397` | La carga inicial conserva lo que la plataforma registró por su API y permite reiniciar tras incorporar (pulido, paso 1) |
+| `a34efdf` | `ecb48d8` | Pulido de la interfaz y del despliegue tras recorrer las 6 pantallas (pulido, paso 2) |
+| `c288ce3` | `bd49daa` | Controles completos con el código actual y README al día (pulido, pasos 3 y 4) |
+
+**Regla para adelante.** Las salidas guardadas en `research/integration/*/salidas/` no se editan, ni
+siquiera para actualizar un identificador. Si un identificador cambia, la equivalencia va en una tabla
+como la de arriba, en el README.
