@@ -122,4 +122,53 @@ class ERPReadOnlyConnectionIntegrationTest {
             }
         }
     }
+
+    /**
+     * Comprobación (no afirma nada): las mismas variantes con cada configuración de conexión candidata,
+     * para elegir la más simple que impida escribir sin depender del filtro.
+     */
+    @Test
+    void comprobacionConfiguracionesDeConexion() throws SQLException {
+        String[] variantes = {
+                "SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)",
+                "SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT",
+                "SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)",
+                "SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)"};
+        String[][] configuraciones = {
+                {"session-characteristics", null, null},
+                {"options-default_transaction_read_only", "options", "-c default_transaction_read_only=on"},
+                {"readOnlyMode=always", "readOnlyMode", "always"},
+                {"preferQueryMode=simple", "preferQueryMode", "simple"},
+                {"preferQueryMode=extended", "preferQueryMode", "extended"},
+                {"preferQueryMode=extendedForPrepared", "preferQueryMode", "extendedForPrepared"}};
+        for (String[] conf : configuraciones) {
+            for (String sql : variantes) {
+                for (String metodo : new String[]{"executeQuery", "execute"}) {
+                    try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+                        st.execute("TRUNCATE prueba");
+                    }
+                    var props = new java.util.Properties();
+                    props.setProperty("user", user);
+                    props.setProperty("password", password);
+                    if (conf[1] != null) props.setProperty(conf[1], conf[2]);
+                    String resultado;
+                    try (Connection c = DriverManager.getConnection(url, props)) {
+                        c.setAutoCommit(false);
+                        c.setReadOnly(true);
+                        if (conf[0].equals("session-characteristics"))
+                            try (var st = c.createStatement()) { st.execute("SET SESSION CHARACTERISTICS AS TRANSACTION READ ONLY"); }
+                        try (var st = c.createStatement()) {
+                            if (metodo.equals("executeQuery")) st.executeQuery(sql); else st.execute(sql);
+                            resultado = "aceptada";
+                        } catch (SQLException e) {
+                            resultado = "rechazada, SQLSTATE " + e.getSQLState() + ": " + e.getMessage().replace('\n', ' ');
+                        } finally {
+                            try { c.rollback(); } catch (SQLException ignored) { }
+                        }
+                    }
+                    System.out.println("PGJDBC CONFIG " + conf[0] + " " + metodo + " [" + sql + "] -> " + resultado + "; filas=" + filas());
+                }
+            }
+        }
+    }
 }
