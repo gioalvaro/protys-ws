@@ -172,7 +172,47 @@ class ERPReadOnlyConnectionIntegrationTest {
         }
     }
 
-    static final String COMMIT_INSERT = "SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)";
+    /** Tres entradas donde PostgreSQL ve un ';' que el analizador propio del filtro no ve (ronda 3). */
+    static final String SALTEO_A = "SELECT 1 AS a_$x$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 AS b_$x$";
+    static final String SALTEO_B = "SELECT $é$ ' $é$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 --'";
+    static final String SALTEO_C = "SELECT 1 --\r; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 2";
+
+    /**
+     * Comprobación (no afirma nada): qué dice el filtro de cada salteo y qué pasa si la consulta llega a la
+     * conexión del conector con un usuario que puede escribir.
+     */
+    @Test
+    void comprobacionSalteosDelFiltro() throws SQLException {
+        String[][] casos = {{"A", SALTEO_A}, {"B", SALTEO_B}, {"C", SALTEO_C}};
+        for (String[] caso : casos) {
+            String sql = caso[1];
+            String filtro;
+            try {
+                SqlQueryGuard.check(sql);
+                filtro = "aceptada";
+            } catch (SqlQueryGuard.RejectedQuery e) {
+                filtro = "rechazada: " + e.getMessage();
+            }
+            try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+                st.execute("TRUNCATE prueba");
+            }
+            String conexion;
+            try (Connection c = ERPConnectorService.openReadOnly(url, user, password)) {
+                try (var st = c.createStatement()) {
+                    st.executeQuery(sql);
+                    conexion = "aceptada";
+                } catch (SQLException e) {
+                    conexion = "rechazada, SQLSTATE " + e.getSQLState() + ": " + e.getMessage().replace('\n', ' ');
+                } finally {
+                    try { c.rollback(); } catch (SQLException ignored) { }
+                }
+            }
+            System.out.println("PGJDBC SALTEO " + caso[0] + " [" + sql.replace("\r", "\\r") + "] filtro -> " + filtro
+                    + "; executeQuery por la conexión del conector -> " + conexion + "; filas en prueba=" + filas());
+        }
+    }
+
+    static final String COMMIT_INSERT ="SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)";
     static final String BEGIN_READ_WRITE = "SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT";
     static final String SET_TRANSACTION = "SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)";
     static final String SET_SESSION = "SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)";
