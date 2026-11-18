@@ -342,15 +342,18 @@ Pruebas nuevas: `SwrlTextTest` (3), 2 en `AlignmentRuleUploadTest`, 2 en `Dashbo
 - Interfaz: 73/73 (antes 69).
 - `npm run build` con `CI=true` compila sin avisos.
 
+(Revisión del 2026-11-18: estos números no tenían salida guardada. La corrida de la revisión, con
+salida, está en la tabla del paso 3.)
+
 ### Paso 3 — Controles completos con el código actual (`ecb48d8`)
 
 | Control | Comando | Resultado |
 |---|---|---|
-| Pruebas de backend (Java 17) | `./mvnw test` | 223/223 |
-| Pruebas de interfaz | `npm test -- --watchAll=false` | 73/73 |
-| Compilación de producción | `CI=true npm run build` | compila sin avisos |
-| Pruebas de scripts (incluye la carga inicial) | `python3 -m unittest discover -s scripts/tests` | 23/23 |
-| Pruebas de conservación de salidas | `python3 -m unittest discover -s research/evaluation/tests` | 16/16 |
+| Pruebas de backend (Java 17) | `./mvnw test` | 2026-11-17: 223/223, sin salida guardada. 2026-11-18 (revisión): 248, 0 fallas, 3 salteadas (`../revision-2026-11-18/salidas/backend-pruebas.txt`) |
+| Pruebas de interfaz | `npm test -- --watchAll=false` | 2026-11-17: 73/73, sin salida guardada. 2026-11-18: 74/74 (`../revision-2026-11-18/salidas/frontend-pruebas.txt`) |
+| Compilación de producción | `CI=true npm run build` | 2026-11-18: compila sin advertencias del compilador; Node muestra un aviso de obsolescencia (`fs.F_OK`) de la herramienta (`../revision-2026-11-18/salidas/frontend-build.txt`) |
+| Pruebas de scripts (incluye la carga inicial) | `python3 -m unittest discover -s scripts/tests` | 23/23 (`../revision-2026-11-18/salidas/scripts-pruebas.txt`) |
+| Pruebas de conservación de salidas | `python3 -m unittest discover -s research/evaluation/tests` | 16/16 (`../revision-2026-11-18/salidas/evaluacion-pruebas.txt`) |
 | Plataforma de cero + asistente por API | volúmenes `protys_fuseki-data` y `protys_postgres-data` borrados; `incorporar.sh` | 12/12 APROBADO (`salidas/fase3b/api/RESUMEN.txt`) |
 | Reinicio con el piloto incorporado | `reiniciar.sh` | `PRESERVED`, 25 reglas activas, interfaz 200 (`salidas/fase3b/reinicio/reinicio-tras-arreglo.txt`) |
 | Fase 1 de punta a punta (ADempiere y Odoo) | `research/integration/erp/run.sh` | 24/24 APROBADO (`../erp/salidas/e2e/RESUMEN.txt`) |

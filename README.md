@@ -271,10 +271,13 @@ El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ej
 ```bash
 ./research/reproduce.sh --prepare-only
 cd backend
-./mvnw test                                   # 223 pruebas
-cd ../frontend && npm test -- --watchAll=false  # 73 pruebas
+./mvnw test                                   # 248 pruebas, 3 salteadas (ver abajo)
+cd ../frontend && npm test -- --watchAll=false  # 74 pruebas
 cd .. && python3 -m unittest discover -s scripts/tests            # 23 pruebas, incluye la carga inicial
 python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
+
+# Sólo lectura de la conexión ERP contra un PostgreSQL desechable (las 3 salteadas de arriba)
+research/integration/revision-2026-11-18/solo-lectura.sh
 
 # Tests individuales
 ./mvnw test -Dtest=OntologyControllerTest
@@ -283,6 +286,14 @@ python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
 ./mvnw test -Dtest=OntologyServiceTest
 ./mvnw test -Dtest=ERPConnectorServiceTest
 ```
+
+Corrida del 2026-11-18, con la salida completa de cada suite: backend 248 pruebas, 0 fallas, 3 salteadas
+(`research/integration/revision-2026-11-18/salidas/backend-pruebas.txt`); interfaz 74 de 74 (`research/integration/revision-2026-11-18/salidas/frontend-pruebas.txt`); `CI=true npm run build`
+compila sin advertencias del compilador, aunque Node muestra un aviso de obsolescencia (`fs.F_OK`) de
+la herramienta de build (`research/integration/revision-2026-11-18/salidas/frontend-build.txt`); scripts 23 de 23 (`research/integration/revision-2026-11-18/salidas/scripts-pruebas.txt`);
+evaluación 16 de 16 (`research/integration/revision-2026-11-18/salidas/evaluacion-pruebas.txt`). Las 3 salteadas son
+`ERPReadOnlyConnectionIntegrationTest`, que necesita un PostgreSQL desechable y corre con `solo-lectura.sh`
+(`research/integration/revision-2026-11-18/salidas/solo-lectura-pgjdbc.txt`: 3 de 3).
 
 ## Stack tecnológico
 
