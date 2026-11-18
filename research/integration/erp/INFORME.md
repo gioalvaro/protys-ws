@@ -43,8 +43,26 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
 | Brecha de cobertura | Cadena R07 → R24 confirmada sobre la entrada preparada (ver abajo) |
 | P1–P5 y consulta conjunta | Ver la tabla por pregunta. La consulta conjunta devuelve 10 filas en una respuesta: 8 recursos de ADempiere y 2 de Odoo |
 | Catálogo Q01–Q21 sin y con ERP | Cambian sólo Q04 (+15 filas) y Q20 (+20); las otras 19 dan lo mismo (ver abajo) |
-| Sólo lectura | `CREATE TABLE` y `DELETE` rechazados para `protys_ro` en los dos ERP |
+| Sólo lectura (rol) | `CREATE TABLE` y `DELETE` rechazados para `protys_ro` en los dos ERP |
 | No intrusión | Huellas antes y después idénticas: tablas, columnas, SHA-256 de `information_schema.columns` y permisos de `protys_ro` |
+
+### Sólo lectura: dos garantías distintas (revisión del 2026-11-18)
+
+- **El rol `protys_ro` no puede escribir.** Es lo que prueba el paso 9 de `run.sh`: con ese usuario,
+  `CREATE TABLE` (aun forzando `BEGIN READ WRITE`) y `DELETE` fallan en los dos ERP. Desde la revisión,
+  además, el rol tiene `SELECT` sólo sobre las tablas que leen los mapeos
+  (`docker/integration/odoo/inicializar.sh` y `docker/integration/adempiere-db/10-restaurar-semilla.sh`),
+  no sobre todas.
+- **La conexión de la aplicación es de sólo lectura.** Es independiente del rol: vale aunque el usuario
+  configurado en el conector pudiera escribir. Antes de la revisión **no** lo era: el conector llamaba
+  a `setReadOnly(true)` con autocommit activo, y con pgjdbc 42.6.0 eso no tiene efecto; un `INSERT`
+  por esa conexión, con un usuario con permiso de escritura, se aceptó. Ahora el conector abre la
+  conexión sin autocommit y en sólo lectura, y la cierra con rollback; el mismo `INSERT` falla con
+  SQLSTATE 25006 (*cannot execute INSERT in a read-only transaction*). Prueba contra un PostgreSQL
+  desechable, nunca contra un ERP: `../revision-2026-11-18/solo-lectura.sh`, salida en
+  `../revision-2026-11-18/salidas/solo-lectura-pgjdbc.txt`.
+
+En la corrida del 2026-11-16 y su re-corrida del 2026-11-17, la única garantía era la del rol.
 
 ### P1–P5 por pregunta
 
@@ -138,8 +156,10 @@ y `08-catalogo-con-erp/`). Ninguna consulta pierde filas.
   causa (descargas de Maven cortadas al reconstruir la imagen del backend); el segundo aprobó.
 
 ## Qué puede afirmar la tesis
-- PROTYS-WS se conectó, en modo de sólo lectura, a una base real de ADempiere 3.9.4 y a una de Odoo 17.0
-  con datos de demostración de manufactura, y extrajo de ellas individuos de PROTYS(KB).
+- PROTYS-WS se conectó a una base real de ADempiere 3.9.4 y a una de Odoo 17.0 con datos de
+  demostración de manufactura, con un rol de base de datos que no puede escribir, y extrajo de ellas
+  individuos de PROTYS(KB). Desde la revisión del 2026-11-18, la conexión de la aplicación también es de
+  sólo lectura por sí misma (ver «Sólo lectura: dos garantías distintas»).
 - La extracción usa mapeos R2RML (W3C) ejecutados por un procesador que pasa los 63 casos R2RML de la
   suite de pruebas W3C RDB2RDF.
 - Los individuos extraídos quedan tipados con clases de los módulos core, ISO 15531, product y

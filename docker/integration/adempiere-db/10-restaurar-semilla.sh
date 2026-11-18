@@ -16,5 +16,8 @@ CREATE ROLE ${PROTYS_RO_USER} LOGIN PASSWORD '${PROTYS_RO_PASSWORD}';
 ALTER ROLE ${PROTYS_RO_USER} SET default_transaction_read_only = on;
 GRANT CONNECT ON DATABASE ${POSTGRES_DB} TO ${PROTYS_RO_USER};
 GRANT USAGE ON SCHEMA adempiere TO ${PROTYS_RO_USER};
-GRANT SELECT ON ALL TABLES IN SCHEMA adempiere TO ${PROTYS_RO_USER};
+-- SELECT sólo sobre las tablas que leen los mapeos (docker/integration/mappings/adempiere.r2rml.ttl).
+GRANT SELECT ON adempiere.ad_org, adempiere.ad_wf_node, adempiere.ad_wf_nodenext, adempiere.ad_workflow,
+  adempiere.m_product, adempiere.pp_order, adempiere.pp_order_node, adempiere.pp_product_bom,
+  adempiere.pp_product_bomline, adempiere.pp_product_planning, adempiere.s_resource TO ${PROTYS_RO_USER};
 SQL

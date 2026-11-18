@@ -26,6 +26,9 @@ GRANT USAGE ON SCHEMA public TO ${PROTYS_RO_USER};
 -- Odoo deja CREATE sobre public para PUBLIC; sin esto protys_ro podría crear tablas
 -- forzando BEGIN READ WRITE. Odoo no lo necesita: su rol es dueño de la base.
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;
-GRANT SELECT ON ALL TABLES IN SCHEMA public TO ${PROTYS_RO_USER};
+-- SELECT sólo sobre las tablas que leen los mapeos (docker/integration/mappings/odoo.r2rml.ttl).
+REVOKE ALL ON ALL TABLES IN SCHEMA public FROM ${PROTYS_RO_USER};
+GRANT SELECT ON mrp_bom, mrp_bom_line, mrp_production, mrp_routing_workcenter, mrp_workcenter,
+  mrp_workorder, product_product, product_template, res_company, resource_resource TO ${PROTYS_RO_USER};
 SQL
 echo "Odoo listo: base $ODOO_DB_NAME con mrp y rol ${PROTYS_RO_USER}"

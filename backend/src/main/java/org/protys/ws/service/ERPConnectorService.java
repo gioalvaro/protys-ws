@@ -86,6 +86,38 @@ public class ERPConnectorService {
     }
 
     /**
+     * Conexión del conector en una transacción de sólo lectura real: sin autocommit, pgjdbc abre cada
+     * transacción con {@code BEGIN READ ONLY} y PostgreSQL rechaza cualquier escritura (SQLSTATE 25006).
+     * Con autocommit activo, {@code setReadOnly(true)} no tiene efecto en pgjdbc (modo por defecto
+     * {@code readOnlyMode=transaction}); ver research/integration/revision-2026-11-18/. Es una garantía
+     * de la aplicación, distinta de la del rol de base de datos, que también debe ser de sólo lectura.
+     */
+    static Connection openReadOnly(String jdbcUrl, String username, String password) throws java.sql.SQLException {
+        Connection connection = java.sql.DriverManager.getConnection(jdbcUrl, username, password);
+        try {
+            connection.setAutoCommit(false);
+            connection.setReadOnly(true);
+            return connection;
+        } catch (java.sql.SQLException | RuntimeException e) {
+            connection.close();
+            throw e;
+        }
+    }
+
+    /** Cierra la transacción de lectura sin confirmar nada. */
+    private static void endReadOnly(Connection connection) {
+        try {
+            if (!connection.isClosed() && !connection.getAutoCommit()) connection.rollback();
+        } catch (java.sql.SQLException ignored) {
+            // La conexión se cierra igual; una lectura no deja nada pendiente.
+        }
+    }
+
+    private static Connection open(ERPConnector connector) throws java.sql.SQLException {
+        return openReadOnly(connector.getJdbcUrl(), connector.getUsername(), connector.getPassword());
+    }
+
+    /**
      * Tests JDBC connectivity to the ERP database.
      */
     @Transactional(readOnly = true)
@@ -95,10 +127,8 @@ public class ERPConnectorService {
         ERPConnector connector = erpConnectorRepository.findById(connectorId)
                 .orElseThrow(() -> new ProtysFusekiException("Connector not found: " + connectorId));
 
-        try (Connection connection = java.sql.DriverManager.getConnection(
-                connector.getJdbcUrl(), connector.getUsername(), connector.getPassword())) {
-            connection.setReadOnly(true);
-
+        try (Connection connection = open(connector)) {
+            endReadOnly(connection);
             log.info("Connection test successful for connector: {}", connectorId);
             return true;
         } catch (Exception e) {
@@ -119,10 +149,8 @@ public class ERPConnectorService {
 
         Map<String, List<SchemaMetadata>> schema = new HashMap<>();
 
-        try (Connection conn = java.sql.DriverManager.getConnection(
-                connector.getJdbcUrl(),
-                connector.getUsername(),
-                connector.getPassword())) {
+        try (Connection conn = open(connector)) {
+          try {
 
             DatabaseMetaData metadata = conn.getMetaData();
             try (ResultSet tables = metadata.getTables(null, null, "%", new String[]{"TABLE"})) {
@@ -147,7 +175,9 @@ public class ERPConnectorService {
 
             log.info("Schema introspection found {} tables", schema.size());
             return schema;
-
+          } finally {
+            endReadOnly(conn);
+          }
         } catch (Exception e) {
             log.warn("Failed to introspect schema for connector {} ({})", connectorId, e.getClass().getSimpleName());
             throw new ProtysFusekiException("Failed to introspect ERP schema");
@@ -187,9 +217,8 @@ public class ERPConnectorService {
             rdfModel.setNsPrefix("erp", "http://w3id.org/protys/erp/");
 
             // Finish and close all JDBC resources before publishing anything.
-            try (Connection dbConnection = java.sql.DriverManager.getConnection(
-                    connector.getJdbcUrl(), connector.getUsername(), connector.getPassword())) {
-                dbConnection.setReadOnly(true);
+            try (Connection dbConnection = open(connector)) {
+              try {
                 if (legacy) {
                     executeMappingAndGenerateTriples(dbConnection, connector, sqlQueries, rdfModel);
                 } else {
@@ -198,6 +227,9 @@ public class ERPConnectorService {
                     rdfModel.add(ModelFactory.createModelForGraph(
                             R2RMLProcessor.execute(r2rml, dbConnection, limits()).getDefaultGraph()));
                 }
+              } finally {
+                endReadOnly(dbConnection);
+              }
             }
             long tripleCount = rdfModel.size();
             result.setTripleCount(tripleCount);
