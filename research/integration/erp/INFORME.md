@@ -68,11 +68,20 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
   - **No puede impedir** `COMMIT; BEGIN READ WRITE; INSERT …` en una consulta de varias sentencias: un
     `BEGIN READ WRITE` explícito pasa por encima de cualquier configuración de la conexión. Se probaron
     características de sesión, `default_transaction_read_only`, `readOnlyMode=always` y los tres
-    `preferQueryMode`. Esa consulta la rechaza el filtro de SQL, por el `;` intermedio. Pero el filtro
-    revisa texto y ya tuvo un hueco: una cadena `E'…'` podía esconder un `;`, y se cerró en la segunda
-    ronda.
+    `preferQueryMode`. Esa consulta la rechaza el filtro de SQL, por el `;` intermedio.
+  - **El filtro tuvo cuatro huecos**, todos por diferencias entre su analizador de texto y el de
+    PostgreSQL, y en los cuatro una consulta con `BEGIN READ WRITE` escondido llegaba a escribir con un
+    usuario con permiso de escritura: una cadena `E'…'` (segunda ronda); un `$` pegado a un nombre que
+    termina en `_`, etiquetas de dólar con letras no ASCII y un comentario `--` que termina en retorno de
+    carro (tercera ronda). Están cerrados y, además, el filtro cuenta las sentencias con el divisor del
+    propio driver (`org.postgresql.core.Parser.parseJdbcSql`, el criterio con que pgjdbc decide qué
+    manda al servidor) y rechaza si no es exactamente una.
+  - **Ese control se apoya en el protocolo extendido**, comprobado: el servidor rechaza un mensaje
+    `Parse` con dos sentencias (SQLSTATE 42601, no escribe), y en el protocolo simple la misma cadena
+    escribe. Por eso la conexión del conector rechaza `preferQueryMode=simple` y `extendedForPrepared`.
   - Salidas: `../revision-2026-11-18/salidas/ronda2/comprobacion-varias-sentencias.txt`,
-    `comprobacion-configuraciones.txt` y `solo-lectura-pgjdbc.txt`.
+    `comprobacion-configuraciones.txt`; `../revision-2026-11-18/salidas/ronda3/comprobacion-salteos.txt`
+    (antes del arreglo) y `solo-lectura-pgjdbc.txt` (después).
 
 **La garantía que no depende de la consulta es el rol `protys_ro`:** no tiene permiso para escribir, y
 la prueba de integración muestra que un rol con sólo `SELECT` tampoco escribe con `BEGIN READ WRITE`.
@@ -164,6 +173,7 @@ y `08-catalogo-con-erp/`). Ninguna consulta pierde filas.
 - **Rechazos conocidos del filtro de SQL.** Rechaza consultas válidas que empiezan con paréntesis
   (`(SELECT …) UNION (SELECT …)`), un `WITH` con una columna sin comillas llamada `insert`, `update`,
   `delete` o `merge`, y cualquier barra invertida en una cadena que no sea `E'…'`, también en `U&'…'`.
+  Una URL de conector con `preferQueryMode=simple` o `extendedForPrepared` se rechaza al conectar.
   Es a propósito: ante la duda rechaza. Ninguna consulta de los mapeos de ADempiere y Odoo, ni de la
   suite W3C, cae en esos casos.
 - **Provisión de Odoo.** Para que el rol de sólo lectura no pudiera crear tablas, hubo que quitar a
