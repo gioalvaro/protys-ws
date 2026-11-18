@@ -154,3 +154,108 @@ que levanta `solo-lectura.sh`.
   - `protys` quedó levantada en http://127.0.0.1:18081 con el piloto incorporado por la secuencia de
     cierre. Antes de esa secuencia se borraron sólo `protys_fuseki-data` y `protys_postgres-data`.
   - `protys-e2e` quedó detenida, con sus volúmenes.
+
+## Ronda 2 (18-11-2026)
+
+Segunda revisión de los commits `7fc4cf6..d334e3a`: dos puntos importantes y unos pocos menores. Toda la
+evidencia de esta ronda se generó con el árbol versionado limpio (`460f152`), salvo lo que se indica, y está
+en `salidas/ronda2/`. Las salidas de la primera ronda no se tocaron.
+
+### A. El filtro de SQL se salteaba con una cadena `E'…'`
+
+**Comprobación empírica, primero y textual.** Contra el PostgreSQL desechable de `solo-lectura.sh`, con un
+usuario que puede escribir y sin pasar por el filtro, por la conexión del conector de la primera ronda
+(sin autocommit y en sólo lectura), cerrada con rollback (`salidas/ronda2/comprobacion-varias-sentencias.txt`,
+commit `df79352`):
+
+```
+executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas en prueba=1
+executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas en prueba=1
+executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas en prueba=0
+execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas en prueba=0
+```
+
+Las dos primeras variantes **escribían**, también con `executeQuery`, que es lo que usa el procesador: el
+error 0100E llega después de ejecutar todas las sentencias. Combinado con el hueco del filtro
+(`SqlQueryGuard.check("SELECT E'\\'' ; COMMIT; DELETE FROM t; --'")` se aceptaba entera; confirmado), un
+mapeo con un usuario que pudiera escribir podía escribir. Con `protys_ro` no, porque el rol no tiene permiso.
+
+**Configuraciones de conexión evaluadas** (`salidas/ronda2/comprobacion-configuraciones.txt`, commit `3eea75e`):
+
+| Configuración | `COMMIT; INSERT` | `COMMIT; BEGIN READ WRITE; INSERT` | `SET TRANSACTION READ WRITE; INSERT` | `COMMIT; SET SESSION CHARACTERISTICS … READ WRITE; INSERT` |
+|---|---|---|---|---|
+| características de sesión `READ ONLY` al abrir | rechazada (25006) | **escribe** | rechazada (25001) | rechazada (25006) |
+| `options=-c default_transaction_read_only=on` | rechazada (25006) | **escribe** | rechazada (25001) | rechazada (25006) |
+| `readOnlyMode=always` | **escribe** | **escribe** | rechazada (25001) | **escribe** |
+| `preferQueryMode` simple, extended o extendedForPrepared | **escribe** | **escribe** | rechazada (25001) | **escribe** |
+
+Ninguna configuración impide un `BEGIN READ WRITE` explícito dentro de una consulta de varias sentencias.
+
+**Cambios** (`1095e5e`, `5c8a864`):
+- `SqlQueryGuard.codeOnly`: en `E'…'`/`e'…'` la barra invertida escapa el carácter siguiente; en las cadenas
+  comunes y `U&'…'` sólo `''` escapa, y una barra invertida se rechaza porque su sentido depende de
+  `standard_conforming_strings` (ante la duda, rechazar).
+- `ERPConnectorService.openReadOnly`: en PostgreSQL agrega `options=-c default_transaction_read_only=on`
+  (la más simple de las dos que bloquean más variantes; no requiere una sentencia extra).
+- Redacción: el Javadoc de `ERPConnectorService` y de `SqlQueryGuard` y el INFORME de ERP (sección «Sólo
+  lectura: dos garantías distintas» y «Qué puede afirmar») dicen qué rechaza la conexión, que no puede
+  impedir `BEGIN READ WRITE` en varias sentencias y que la garantía que no depende de la consulta es el rol.
+
+**Pruebas.** `SqlQueryGuardTest` (21): la reproducción rechazada, `E'a\'b'` aceptada como una sola cadena,
+`E'\\'` seguida de `;` intermedio rechazada, barra en cadena común rechazada.
+`ERPReadOnlyConnectionIntegrationTest`: `COMMIT; INSERT`, `SET TRANSACTION READ WRITE` y `SET SESSION
+CHARACTERISTICS … READ WRITE` no dejan filas por la conexión del conector; `BEGIN READ WRITE` lo rechaza el
+filtro y, con un rol que sólo puede leer, tampoco deja filas. Suite W3C: 63 de 63
+(`salidas/ronda2/backend-pruebas.txt`). Con la conexión final, la comprobación repetida muestra la variante 1
+rechazada (25006) y la 2 todavía escribiendo (`salidas/ronda2/solo-lectura-pgjdbc.txt`).
+
+**Diferencia con lo pedido.** La prueba pedida «las tres variantes no dejan filas» no se puede cumplir para
+`BEGIN READ WRITE` con la conexión sola; la prueba afirma lo comprobado: que la frenan el filtro y el rol.
+
+### B. Evidencia generada sobre código sin commitear
+
+- Las salidas viejas (`salidas/solo-lectura-pgjdbc.txt`, `salidas/*-final.txt`) no se tocaron.
+- `solo-lectura.sh` (`e2ba9cf`): sin el `|| true`; devuelve el código de salida de Maven y conserva la
+  limpieza. Comprobado rompiendo la prueba en una copia sin commitear: el script terminó con 1, marcó
+  `+cambios-sin-commit` y no dejó contenedores (esa corrida no se guardó como evidencia). El encabezado ahora
+  marca cambios en cualquier parte del árbol versionado y se borra el reporte anterior de surefire.
+- Las rutas locales de la máquina (`/Users/…`) se reemplazaron por `<repo>` o `~` en las salidas nuevas
+  antes de commitearlas, como en la primera ronda.
+- Corridas sobre `460f152`, árbol limpio: `salidas/ronda2/solo-lectura-pgjdbc.txt` (9 de 9),
+  `backend-pruebas.txt` (263, 0 fallas, 9 salteadas), `frontend-pruebas.txt` (75/75), `frontend-build.txt`,
+  `scripts-pruebas.txt` (24/24), `evaluacion-pruebas.txt` (16/16).
+- Un traspié propio: la primera corrida de `run.sh` de esta ronda registró `460f152+cambios-sin-commit`
+  porque edité los README mientras arrancaba. Se cortó, se apartaron los cambios y se repitió con el árbol
+  limpio; sólo la corrida repetida está en `salidas/ronda2/erp-e2e/`.
+
+### Menores (`460f152`)
+
+| Punto | Qué se hizo | Respaldo |
+|---|---|---|
+| Zona horaria en PostgreSQL | `timestamptzDePostgresqlConservaElDesplazamiento`: `'2026-11-18 10:15:30-03'` → `"2026-11-18T13:15:30Z"^^xsd:dateTime`; falla sin la rama de `R2RMLProcessor` (comprobado en una copia sin commitear) | `salidas/ronda2/solo-lectura-pgjdbc.txt` |
+| Tiempo máximo en PostgreSQL | `elTiempoMaximoCortaUnaConsultaLentaEnPostgresql`: `pg_sleep(5)` con límite de 1 s corta en 1 s con el mensaje de tiempo excedido; falla sin la rama del SQLSTATE 57014 | ídem |
+| 404 en el servicio | `OntologyServiceTest.unModuloQueNoExisteLanzaModuleNotFound` | `salidas/ronda2/backend-pruebas.txt` |
+| Rechazos conocidos del filtro | Javadoc de `SqlQueryGuard` y línea en el INFORME: paréntesis inicial, `WITH` con columna `insert`/`update`/`delete`/`merge` sin comillas, barra invertida fuera de `E'…'` (comprobados) | — |
+| Conteos | README del asistente y README principal con las tres corridas, cada una con su archivo | — |
+| `relevar-esquemas.sh` | Línea en el INFORME | — |
+| `reiniciar.sh` | Sobre `460f152`: `PRESERVED`, 25 reglas activas, interfaz 200; la columna `rule_changes_json` existe | `salidas/ronda2/reinicio.txt` |
+| Límites declarados | Reversión por nombre local y triples con nodos en blanco (README del asistente); `ddl-auto: validate` reemplazado por `update` en Compose (README principal) | — |
+
+Además se corrigió un error propio de la primera ronda: al insertar «Limitaciones del asistente» había
+quedado bajo ese título un punto de «Qué no puede afirmar».
+
+### Cierre de la ronda 2
+
+| Comprobación | Resultado | Salida |
+|---|---|---|
+| Flujo ERP (`run.sh`, `protys-e2e`, `460f152`) | 24 de 24 APROBADO; ADempiere 348 triples, Odoo 201; entrada 4318 → 4867; inferidos 1586; Q04 +15, Q20 +20, las otras 19 iguales; registrado `commit=460f152…` sin cambios pendientes | `salidas/ronda2/erp-e2e/RESUMEN.txt` |
+
+### Qué no se hizo en esta ronda
+- No se cambió la reversión por nombre local, el registro de triples con nodos en blanco ni
+  `application-docker.yml`: quedan como límites declarados.
+- La conexión del conector sigue sin poder impedir `BEGIN READ WRITE` en una consulta de varias sentencias;
+  queda escrito, con el rol como garantía.
+- Los conteos de los README se actualizaron en un commit de documentación posterior a las corridas
+  (no cambia código ni salidas).

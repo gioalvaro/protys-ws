@@ -274,12 +274,12 @@ El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ej
 ```bash
 ./research/reproduce.sh --prepare-only
 cd backend
-./mvnw test                                   # 254 pruebas, 3 salteadas (ver abajo)
+./mvnw test                                   # 263 pruebas, 9 salteadas (ver abajo)
 cd ../frontend && npm test -- --watchAll=false  # 75 pruebas
 cd .. && python3 -m unittest discover -s scripts/tests            # 24 pruebas, incluye la carga inicial
 python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
 
-# Sólo lectura de la conexión ERP contra un PostgreSQL desechable (las 3 salteadas de arriba)
+# Sólo lectura de la conexión ERP contra un PostgreSQL desechable (las 9 salteadas de arriba)
 research/integration/revision-2026-11-18/solo-lectura.sh
 
 # Tests individuales
@@ -290,7 +290,12 @@ research/integration/revision-2026-11-18/solo-lectura.sh
 ./mvnw test -Dtest=ERPConnectorServiceTest
 ```
 
-Corrida final del 2026-11-18 (con todas las correcciones de la revisión): backend 254 pruebas, 0 fallas,
+Corrida de la segunda ronda de la revisión (`460f152`, árbol versionado limpio): backend 263 pruebas, 0 fallas, 9 salteadas
+(`research/integration/revision-2026-11-18/salidas/ronda2/backend-pruebas.txt`); interfaz 75 de 75; scripts 24 de 24; evaluación 16 de 16; el build igual
+que abajo (`research/integration/revision-2026-11-18/salidas/ronda2/`). Las 9 salteadas son `ERPReadOnlyConnectionIntegrationTest`: con
+`solo-lectura.sh`, 9 de 9 (`research/integration/revision-2026-11-18/salidas/ronda2/solo-lectura-pgjdbc.txt`).
+
+Corrida final de la primera ronda (con cambios sin commitear en el árbol): backend 254 pruebas, 0 fallas,
 3 salteadas (`research/integration/revision-2026-11-18/salidas/backend-pruebas-final.txt`); interfaz 75 de 75 (`research/integration/revision-2026-11-18/salidas/frontend-pruebas-final.txt`); build
 igual que abajo (`research/integration/revision-2026-11-18/salidas/frontend-build-final.txt`); scripts 24 de 24 (`research/integration/revision-2026-11-18/salidas/scripts-pruebas-final.txt`);
 evaluación 16 de 16 (`research/integration/revision-2026-11-18/salidas/evaluacion-pruebas-final.txt`).
@@ -301,7 +306,7 @@ compila sin advertencias del compilador, aunque Node muestra un aviso de obsoles
 la herramienta de build (`research/integration/revision-2026-11-18/salidas/frontend-build.txt`); scripts 23 de 23 (`research/integration/revision-2026-11-18/salidas/scripts-pruebas.txt`);
 evaluación 16 de 16 (`research/integration/revision-2026-11-18/salidas/evaluacion-pruebas.txt`). Las 3 salteadas son
 `ERPReadOnlyConnectionIntegrationTest`, que necesita un PostgreSQL desechable y corre con `solo-lectura.sh`
-(`research/integration/revision-2026-11-18/salidas/solo-lectura-pgjdbc.txt`: 3 de 3).
+(`research/integration/revision-2026-11-18/salidas/solo-lectura-pgjdbc.txt`: 3 de 3, primera ronda).
 
 ## Límites del prototipo
 
