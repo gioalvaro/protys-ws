@@ -1,0 +1,2612 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "individual", "inferredType" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50015"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50015"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50016"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50016"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50017"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50017"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50018"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/process/50018"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/134"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/134"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/134"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/134"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/135"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/135"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/135"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/135"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/137"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/137"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/137"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/137"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/145"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/145"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/145"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/145"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50000"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50000"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50000"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50000"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50000"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50001"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50001"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50001"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50001"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50001"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50002"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50002"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50002"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50002"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50003"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50003"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50003"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50003"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50004"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50004"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50004"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50004"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50005"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50005"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50005"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50005"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50009"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50009"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50009"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50009"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50010"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50010"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50010"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50010"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50012"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50012"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50012"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50012"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50013"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50013"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50013"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50013"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50014"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50014"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50014"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50014"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50015"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50015"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50015"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50015"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50016"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50016"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50016"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50016"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50017"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50017"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50017"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50017"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50038"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50038"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50038"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50038"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50039"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50039"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50039"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50039"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50041"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50041"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50041"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50041"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50042"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50042"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50042"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50042"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50043"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50043"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50043"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50043"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50044"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50044"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50044"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50044"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50045"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50045"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50045"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50045"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50046"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50046"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50046"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50046"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50047"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50047"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50047"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50047"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50000"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50005"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/2"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/2"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/3"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/3"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/8"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#CoverageGap"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/process/8"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Process"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/25"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/25"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/25"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/25"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/26"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/26"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/26"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/26"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/27"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/27"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/27"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/27"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/37"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/37"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/37"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/37"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/39"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/39"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/39"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/39"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/39"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/40"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/40"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/40"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/40"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/41"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/41"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/41"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/41"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/42"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/42"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/42"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/42"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/43"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/43"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/43"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/43"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/44"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/44"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/44"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/44"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/45"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/45"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/45"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/45"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/45"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/46"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/46"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/46"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/46"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/48"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/48"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/48"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/48"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/49"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/core#Resource"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/49"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/49"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/49"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/8"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Product"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/8"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Production_Item"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/8"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Substance"
+        }
+      }, {
+        "individual" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/8"
+        },
+        "inferredType" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/ontology/product#Thing"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# Efecto del razonamiento sobre los individuos ERP: tipos que no están afirmados en el grafo del\n# conector y que el razonador dedujo (grafo de resultados de inferencia de la plataforma).\nSELECT ?individual ?inferredType\nWHERE {\n  GRAPH <http://w3id.org/protys/ontology/inference-results> { ?individual a ?inferredType }\n  FILTER(STRSTARTS(STR(?individual), \"http://w3id.org/protys/erp/\"))\n  FILTER(STRSTARTS(STR(?inferredType), \"http://w3id.org/protys/ontology/\"))\n  FILTER NOT EXISTS { GRAPH ?g { ?individual a ?inferredType } FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\")) }\n}\nORDER BY ?individual ?inferredType\n",
+  "executedAt" : "2026-11-18T14:14:05.048667848Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50015",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50015",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50016",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50016",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50017",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50017",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50018",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/process/50018",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/134",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/134",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/134",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/134",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/135",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/135",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/135",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/135",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/137",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/137",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/137",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/137",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/145",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/145",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/145",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/145",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50000",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50000",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50000",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50000",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50000",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50001",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50001",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50001",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50001",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50001",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50002",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50002",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50002",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50002",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50003",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50003",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50003",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50003",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50004",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50004",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50004",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50004",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50005",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50005",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50005",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50005",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50009",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50009",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50009",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50009",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50010",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50010",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50010",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50010",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50012",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50012",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50012",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50012",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50013",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50013",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50013",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50013",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50014",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50014",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50014",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50014",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50015",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50015",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50015",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50015",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50016",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50016",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50016",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50016",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50017",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50017",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50017",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50017",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50038",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50038",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50038",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50038",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50039",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50039",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50039",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50039",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50041",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50041",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50041",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50041",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50042",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50042",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50042",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50042",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50043",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50043",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50043",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50043",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50044",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50044",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50044",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50044",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50045",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50045",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50045",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50045",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50046",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50046",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50046",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50046",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50047",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50047",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50047",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/product/50047",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/resource/50000",
+    "inferredType" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/adempiere/resource/50005",
+    "inferredType" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/process/2",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/process/2",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/process/3",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/process/3",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/process/8",
+    "inferredType" : "http://w3id.org/protys/ontology/core#CoverageGap"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/process/8",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Process"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/25",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/25",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/25",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/25",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/26",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/26",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/26",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/26",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/27",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/27",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/27",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/27",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/32",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/32",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/32",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/32",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/37",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/37",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/37",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/37",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/38",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/38",
+    "inferredType" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/38",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/38",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/38",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/38",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/39",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/39",
+    "inferredType" : "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/39",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/39",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/39",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/40",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/40",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/40",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/40",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/41",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/41",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/41",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/41",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/42",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/42",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/42",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/42",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/43",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/43",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/43",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/43",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/44",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/44",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/44",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/44",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/45",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/45",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/45",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/45",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/45",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/46",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/46",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/46",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/46",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/48",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/48",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/48",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/48",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/49",
+    "inferredType" : "http://w3id.org/protys/ontology/core#Resource"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/49",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/49",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/49",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/8",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Product"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/8",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Production_Item"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/8",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Substance"
+  }, {
+    "individual" : "http://w3id.org/protys/erp/odoo/product/8",
+    "inferredType" : "http://w3id.org/protys/ontology/product#Thing"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 22,
+  "resultCount" : 216,
+  "truncated" : false
+}

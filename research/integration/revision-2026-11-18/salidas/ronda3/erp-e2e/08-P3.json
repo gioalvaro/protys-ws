@@ -1,0 +1,398 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "g", "resource", "resourceName", "product", "productName" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50001"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Chair"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50001"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/145"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Furniture Set"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50002"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Paint Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Chair"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50003"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Chrome Subcontract Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Chair"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50004"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Inspection Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Chair"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50006"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Packing Production Line"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Fertilizer #50"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50006"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Packing Production Line"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Fertilizer #70"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50007"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Mixed Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Lawn Fertilizer"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50008"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Dry Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Chair"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50009"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Inspection Area"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Lawn Fertilizer"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Drawer"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/37"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Table"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Table Top"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/2"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Drill Station 1"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Drawer"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P3 Productos que usan un recurso X.\n# Variante de Q02: el producto se llega por proceso (c:produces), no por lote. Un producto \"usa\" un\n# recurso si alguna operación del proceso que lo produce requiere ese recurso.\nSELECT DISTINCT ?g ?resource ?resourceName ?product ?productName\nWHERE {\n  GRAPH ?g {\n    ?op i:requiresResource ?resource ; i:partOfProcess ?process .\n    ?process c:produces ?product .\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n  OPTIONAL { GRAPH ?g { ?product c:hasName ?productName } }\n}\nORDER BY ?g ?resource ?product\n",
+  "executedAt" : "2026-11-18T14:14:01.135283718Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50001",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Assembly Area",
+    "productName" : "Patio Chair"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/145",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50001",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Assembly Area",
+    "productName" : "Patio Furniture Set"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50002",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Paint Area",
+    "productName" : "Patio Chair"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50003",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Chrome Subcontract Area",
+    "productName" : "Patio Chair"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50004",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Inspection Area",
+    "productName" : "Patio Chair"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50006",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Packing Production Line",
+    "productName" : "Fertilizer #50"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50006",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Packing Production Line",
+    "productName" : "Fertilizer #70"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50007",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Mixed Area",
+    "productName" : "Lawn Fertilizer"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50008",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Dry Area",
+    "productName" : "Patio Chair"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50009",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Fertilizer Inspection Area",
+    "productName" : "Lawn Fertilizer"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/32",
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "resourceName" : "Assembly Line 1",
+    "productName" : "Drawer"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/37",
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "resourceName" : "Assembly Line 1",
+    "productName" : "Table"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/38",
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "resourceName" : "Assembly Line 1",
+    "productName" : "Table Top"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/32",
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/2",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "resourceName" : "Drill Station 1",
+    "productName" : "Drawer"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 9,
+  "resultCount" : 14,
+  "truncated" : false
+}

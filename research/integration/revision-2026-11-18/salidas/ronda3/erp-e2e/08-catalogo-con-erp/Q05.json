@@ -1,0 +1,145 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "material", "carbonFactor", "waterFactor", "exceedsDeclaredCarbonThreshold" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "carbonFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5.6"
+        },
+        "waterFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40"
+        },
+        "exceedsDeclaredCarbonThreshold" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#boolean",
+          "value" : "true"
+        }
+      }, {
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#ThresholdMaterial"
+        },
+        "carbonFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5"
+        },
+        "waterFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "50"
+        },
+        "exceedsDeclaredCarbonThreshold" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#boolean",
+          "value" : "false"
+        }
+      }, {
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Coalescent"
+        },
+        "carbonFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "4.2"
+        },
+        "waterFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "exceedsDeclaredCarbonThreshold" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#boolean",
+          "value" : "false"
+        }
+      }, {
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "carbonFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.8"
+        },
+        "waterFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "127"
+        },
+        "exceedsDeclaredCarbonThreshold" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#boolean",
+          "value" : "false"
+        }
+      }, {
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide"
+        },
+        "carbonFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.5"
+        },
+        "waterFactor" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "15"
+        },
+        "exceedsDeclaredCarbonThreshold" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#boolean",
+          "value" : "false"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q05 Materiales según factores hipotéticos del escenario, excluidos de Q06\nSELECT ?material ?carbonFactor ?waterFactor ?exceedsDeclaredCarbonThreshold\nWHERE { ?material a r:Raw_Material ; t:materialFactorKgCO2ePerKg ?carbonFactor ; t:waterFootprintLPerKg ?waterFactor .\nBIND((?carbonFactor > 5.0) AS ?exceedsDeclaredCarbonThreshold)\nFILTER(?carbonFactor > 3.0 || ?waterFactor > 100) } ORDER BY DESC(?carbonFactor)\n",
+  "executedAt" : "2026-11-18T14:14:02.705168390Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "material" : "http://w3id.org/protys/fixture#TitaniumDioxide",
+    "exceedsDeclaredCarbonThreshold" : "true^^http://www.w3.org/2001/XMLSchema#boolean",
+    "carbonFactor" : "5.6^^http://www.w3.org/2001/XMLSchema#decimal",
+    "waterFactor" : "40^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#ThresholdMaterial",
+    "exceedsDeclaredCarbonThreshold" : "false^^http://www.w3.org/2001/XMLSchema#boolean",
+    "carbonFactor" : "5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "waterFactor" : "50^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#Coalescent",
+    "exceedsDeclaredCarbonThreshold" : "false^^http://www.w3.org/2001/XMLSchema#boolean",
+    "carbonFactor" : "4.2^^http://www.w3.org/2001/XMLSchema#decimal",
+    "waterFactor" : "10^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#AcrylicResin",
+    "exceedsDeclaredCarbonThreshold" : "false^^http://www.w3.org/2001/XMLSchema#boolean",
+    "carbonFactor" : "3.8^^http://www.w3.org/2001/XMLSchema#decimal",
+    "waterFactor" : "127^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#Biocide",
+    "exceedsDeclaredCarbonThreshold" : "false^^http://www.w3.org/2001/XMLSchema#boolean",
+    "carbonFactor" : "3.5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "waterFactor" : "15^^http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 7,
+  "resultCount" : 5,
+  "truncated" : false
+}

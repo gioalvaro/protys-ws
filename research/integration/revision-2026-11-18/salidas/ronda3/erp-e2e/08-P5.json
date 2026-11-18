@@ -1,0 +1,317 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "g", "plan", "planName", "product", "productName" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50009"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Furniture Set"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/145"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Furniture Set"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/133"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Patio Chair"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Lawn Fertilizer"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50087"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #50"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Fertilizer #50"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50087"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #50"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Fertilizer #70"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50089"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #70"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/136"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Fertilizer #50"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50089"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #70"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50007"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Fertilizer #70"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/product/50008"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Lawn Fertilizer"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/2"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/37"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Table"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/3"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table Top"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Table Top"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/8"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Drawer SEC-ASSEM"
+        },
+        "product" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/32"
+        },
+        "productName" : {
+          "type" : "literal",
+          "value" : "Drawer"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P5 Producto generado por un plan de proceso X.\n# Variante de Q02: sin t:planProduces, el producto se obtiene por la cadena\n# plan → operación (i:includesActivity) → proceso (i:partOfProcess) → producto (c:produces).\nSELECT DISTINCT ?g ?plan ?planName ?product ?productName\nWHERE {\n  GRAPH ?g {\n    ?plan a i:ProcessPlan ; i:includesActivity ?op .\n    ?op i:partOfProcess ?process .\n    ?process c:produces ?product .\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }\n  OPTIONAL { GRAPH ?g { ?product c:hasName ?productName } }\n}\nORDER BY ?g ?plan\n",
+  "executedAt" : "2026-11-18T14:14:01.637042333Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/145",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Furniture Set",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50009",
+    "productName" : "Patio Furniture Set"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/133",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "productName" : "Patio Chair"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50038",
+    "productName" : "Lawn Fertilizer"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #50",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50087",
+    "productName" : "Fertilizer #50"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #50",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50087",
+    "productName" : "Fertilizer #70"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/136",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #70",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50089",
+    "productName" : "Fertilizer #50"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50007",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #70",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50089",
+    "productName" : "Fertilizer #70"
+  }, {
+    "product" : "http://w3id.org/protys/erp/adempiere/product/50008",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50091",
+    "productName" : "Lawn Fertilizer"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/37",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Table",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/2",
+    "productName" : "Table"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/38",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Table Top",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/3",
+    "productName" : "Table Top"
+  }, {
+    "product" : "http://w3id.org/protys/erp/odoo/product/32",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Drawer SEC-ASSEM",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/8",
+    "productName" : "Drawer"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 18,
+  "resultCount" : 11,
+  "truncated" : false
+}

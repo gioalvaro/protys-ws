@@ -1,0 +1,158 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "supplier", "material", "factor", "value" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "supplier" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Supplier_B"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "factor" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#AcrylicResin_Factor"
+        },
+        "value" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.8"
+        }
+      }, {
+        "supplier" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Supplier_B"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide"
+        },
+        "factor" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Biocide_Factor"
+        },
+        "value" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3.5"
+        }
+      }, {
+        "supplier" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Supplier_B"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Coalescent"
+        },
+        "factor" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Coalescent_Factor"
+        },
+        "value" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "4.2"
+        }
+      }, {
+        "supplier" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Supplier_A"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#ThresholdMaterial"
+        },
+        "factor" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#ThresholdMaterial_Factor"
+        },
+        "value" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5"
+        }
+      }, {
+        "supplier" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Supplier_A"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "factor" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#TitaniumDioxide_Factor"
+        },
+        "value" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5.6"
+        }
+      }, {
+        "supplier" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Supplier_A"
+        },
+        "material" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Water"
+        },
+        "factor" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Water_Factor"
+        },
+        "value" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q10 Proveedores y factores hipotéticos de materiales, separados del inventario eléctrico\nSELECT ?supplier ?material ?factor ?value\nWHERE { ?material a r:Raw_Material ; t:providedBy ?supplier ; t:hasEmissionFactor ?factor . ?factor t:factorValue ?value . }\nORDER BY ?material\n",
+  "executedAt" : "2026-11-18T14:14:03.366922525Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "material" : "http://w3id.org/protys/fixture#AcrylicResin",
+    "supplier" : "http://w3id.org/protys/fixture#Supplier_B",
+    "factor" : "http://w3id.org/protys/fixture#AcrylicResin_Factor",
+    "value" : "3.8^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#Biocide",
+    "supplier" : "http://w3id.org/protys/fixture#Supplier_B",
+    "factor" : "http://w3id.org/protys/fixture#Biocide_Factor",
+    "value" : "3.5^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#Coalescent",
+    "supplier" : "http://w3id.org/protys/fixture#Supplier_B",
+    "factor" : "http://w3id.org/protys/fixture#Coalescent_Factor",
+    "value" : "4.2^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#ThresholdMaterial",
+    "supplier" : "http://w3id.org/protys/fixture#Supplier_A",
+    "factor" : "http://w3id.org/protys/fixture#ThresholdMaterial_Factor",
+    "value" : "5^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#TitaniumDioxide",
+    "supplier" : "http://w3id.org/protys/fixture#Supplier_A",
+    "factor" : "http://w3id.org/protys/fixture#TitaniumDioxide_Factor",
+    "value" : "5.6^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "material" : "http://w3id.org/protys/fixture#Water",
+    "supplier" : "http://w3id.org/protys/fixture#Supplier_A",
+    "factor" : "http://w3id.org/protys/fixture#Water_Factor",
+    "value" : "0^^http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 14,
+  "resultCount" : 6,
+  "truncated" : false
+}

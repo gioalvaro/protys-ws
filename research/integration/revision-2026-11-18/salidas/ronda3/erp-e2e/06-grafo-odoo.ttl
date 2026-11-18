@@ -1,0 +1,280 @@
+@prefix erp:    <http://w3id.org/protys/erp/> .
+@prefix ns1:    <urn:protys:bootstrap:> .
+@prefix ns2:    <http://w3id.org/protys/ontology/research#> .
+@prefix ns3:    <http://www.w3.org/2003/11/swrl#> .
+@prefix ns4:    <http://w3id.org/protys/ontology/core#> .
+@prefix ns5:    <http://w3id.org/protys/ontology/iso15531#> .
+@prefix ns6:    <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix protys: <http://w3id.org/protys/ontology/> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/protys/erp/odoo/workorder/2>
+        rdf:type              ns5:WorkOrder;
+        rdfs:label            "Assembly";
+        ns4:hasName           "Assembly";
+        ns5:executedBy        <http://w3id.org/protys/erp/odoo/workcenter/1>;
+        ns5:executesActivity  <http://w3id.org/protys/erp/odoo/operation/2> .
+
+<http://w3id.org/protys/erp/odoo/workcenter/1>
+        rdf:type     ns5:ManufacturingResource;
+        rdfs:label   "Assembly Line 1";
+        ns4:hasName  "Assembly Line 1" .
+
+<http://w3id.org/protys/erp/odoo/operation/2>
+        rdf:type               ns5:ProcessOperation;
+        rdfs:label             "Assembly";
+        ns4:hasName            "Assembly";
+        ns5:duration           "60"^^xsd:decimal;
+        ns5:hasInput           <http://w3id.org/protys/erp/odoo/product/38> , <http://w3id.org/protys/erp/odoo/product/39>;
+        ns5:operationSequence  10;
+        ns5:partOfProcess      <http://w3id.org/protys/erp/odoo/process/2>;
+        ns5:requiresResource   <http://w3id.org/protys/erp/odoo/workcenter/1> .
+
+<http://w3id.org/protys/erp/odoo/product/38>
+        rdf:type     ns4:Product , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Table Top";
+        ns4:hasName  "Table Top";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/odoo/product/45> .
+
+<http://w3id.org/protys/erp/odoo/product/45>
+        rdf:type     ns4:Product , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Wood Panel";
+        ns4:hasName  "Wood Panel";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/odoo/product/42> , <http://w3id.org/protys/erp/odoo/product/43> .
+
+<http://w3id.org/protys/erp/odoo/product/25>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Office Chair Black";
+        ns4:hasName  "Office Chair Black" .
+
+<http://w3id.org/protys/erp/odoo/product/39>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Table Leg";
+        ns4:hasName  "Table Leg" .
+
+<http://w3id.org/protys/erp/odoo/process/2>
+        rdf:type      ns5:ManufacturingProcess;
+        rdfs:label    "Ruta Table";
+        ns4:hasName   "Ruta Table";
+        ns4:produces  <http://w3id.org/protys/erp/odoo/product/37> .
+
+<http://w3id.org/protys/erp/odoo/order/1>
+        rdf:type     ns5:ProductionOrder;
+        rdfs:label   "WH/MO/00001";
+        ns4:hasName  "WH/MO/00001" .
+
+<http://w3id.org/protys/erp/odoo/product/40>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Bolt";
+        ns4:hasName  "Bolt" .
+
+<http://w3id.org/protys/erp/odoo/product/46>
+        rdf:type     ns4:Product;
+        rdfs:label   "Plastic Laminate";
+        ns4:hasName  "Plastic Laminate";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/odoo/product/44> .
+
+<http://w3id.org/protys/erp/odoo/product/44>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Ply Veneer";
+        ns4:hasName  "Ply Veneer" .
+
+<http://w3id.org/protys/erp/odoo/plan/4>
+        rdf:type     ns5:ProcessPlan;
+        rdfs:label   "Plan Plastic Laminate";
+        ns4:hasName  "Plan Plastic Laminate" .
+
+<http://w3id.org/protys/erp/odoo/workorder/3>
+        rdf:type              ns5:WorkOrder;
+        rdfs:label            "Manual Assembly";
+        ns4:hasName           "Manual Assembly";
+        ns5:executedBy        <http://w3id.org/protys/erp/odoo/workcenter/1>;
+        ns5:executesActivity  <http://w3id.org/protys/erp/odoo/operation/1> .
+
+<http://w3id.org/protys/erp/odoo/operation/1>
+        rdf:type               ns5:ProcessOperation;
+        rdfs:label             "Manual Assembly";
+        ns4:hasName            "Manual Assembly";
+        ns5:duration           "60"^^xsd:decimal;
+        ns5:operationSequence  5;
+        ns5:partOfProcess      <http://w3id.org/protys/erp/odoo/process/3>;
+        ns5:requiresResource   <http://w3id.org/protys/erp/odoo/workcenter/1> .
+
+<http://w3id.org/protys/erp/odoo/product/26>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Corner Desk Left Sit";
+        ns4:hasName  "Corner Desk Left Sit" .
+
+<http://w3id.org/protys/erp/odoo/operation/3>
+        rdf:type               ns5:ProcessOperation;
+        rdfs:label             "Long time assembly";
+        ns4:hasName            "Long time assembly";
+        ns5:duration           "60"^^xsd:decimal;
+        ns5:operationSequence  15;
+        ns5:partOfProcess      <http://w3id.org/protys/erp/odoo/process/8>;
+        ns5:requiresResource   <http://w3id.org/protys/erp/odoo/workcenter/1> .
+
+<http://w3id.org/protys/erp/odoo/process/8>
+        rdf:type      ns5:ManufacturingProcess;
+        rdfs:label    "Ruta Drawer SEC-ASSEM";
+        ns4:hasName   "Ruta Drawer SEC-ASSEM";
+        ns4:produces  <http://w3id.org/protys/erp/odoo/product/32> .
+
+<http://w3id.org/protys/erp/odoo/order/2>
+        rdf:type     ns5:ProductionOrder;
+        rdfs:label   "WH/MO/00002";
+        ns4:hasName  "WH/MO/00002" .
+
+<http://w3id.org/protys/erp/odoo/product/41>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Screw";
+        ns4:hasName  "Screw" .
+
+<http://w3id.org/protys/erp/odoo/plan/5>
+        rdf:type     ns5:ProcessPlan;
+        rdfs:label   "Plan Wood Panel";
+        ns4:hasName  "Plan Wood Panel" .
+
+<http://w3id.org/protys/erp/odoo/product/37>
+        rdf:type     ns4:Product;
+        rdfs:label   "Table";
+        ns4:hasName  "Table";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/odoo/product/38> , <http://w3id.org/protys/erp/odoo/product/39> , <http://w3id.org/protys/erp/odoo/product/40> , <http://w3id.org/protys/erp/odoo/product/41> .
+
+<http://w3id.org/protys/erp/odoo/product/32>
+        rdf:type     ns4:Product;
+        rdfs:label   "Drawer";
+        ns4:hasName  "Drawer";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/odoo/product/48> , <http://w3id.org/protys/erp/odoo/product/49> .
+
+<http://w3id.org/protys/erp/odoo/product/27>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Drawer Black";
+        ns4:hasName  "Drawer Black" .
+
+<http://w3id.org/protys/erp/odoo/operation/4>
+        rdf:type               ns5:ProcessOperation;
+        rdfs:label             "Testing";
+        ns4:hasName            "Testing";
+        ns5:duration           "60"^^xsd:decimal;
+        ns5:operationSequence  10;
+        ns5:partOfProcess      <http://w3id.org/protys/erp/odoo/process/8>;
+        ns5:precedes           <http://w3id.org/protys/erp/odoo/operation/3>;
+        ns5:requiresResource   <http://w3id.org/protys/erp/odoo/workcenter/1> .
+
+<http://w3id.org/protys/erp/odoo/order/3>
+        rdf:type     ns5:ProductionOrder;
+        rdfs:label   "WH/MO/00003";
+        ns4:hasName  "WH/MO/00003" .
+
+<http://w3id.org/protys/erp/odoo/product/42>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Ply Layer";
+        ns4:hasName  "Ply Layer" .
+
+<http://w3id.org/protys/erp/odoo/product/48>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Drawer Black";
+        ns4:hasName  "Drawer Black" .
+
+<http://w3id.org/protys/erp/odoo/process/3>
+        rdf:type      ns5:ManufacturingProcess;
+        rdfs:label    "Ruta Table Top";
+        ns4:hasName   "Ruta Table Top";
+        ns4:produces  <http://w3id.org/protys/erp/odoo/product/38> .
+
+<http://w3id.org/protys/erp/odoo/workcenter/2>
+        rdf:type     ns5:ManufacturingResource;
+        rdfs:label   "Drill Station 1";
+        ns4:hasName  "Drill Station 1" .
+
+<http://w3id.org/protys/erp/odoo/operation/5>
+        rdf:type               ns5:ProcessOperation;
+        rdfs:label             "Packing";
+        ns4:hasName            "Packing";
+        ns5:duration           "60"^^xsd:decimal;
+        ns5:operationSequence  5;
+        ns5:partOfProcess      <http://w3id.org/protys/erp/odoo/process/8>;
+        ns5:precedes           <http://w3id.org/protys/erp/odoo/operation/4>;
+        ns5:requiresResource   <http://w3id.org/protys/erp/odoo/workcenter/2> .
+
+<http://w3id.org/protys/erp/odoo/order/4>
+        rdf:type     ns5:ProductionOrder;
+        rdfs:label   "WH/MO/00004";
+        ns4:hasName  "WH/MO/00004" .
+
+<http://w3id.org/protys/erp/odoo/product/43>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Wear Layer";
+        ns4:hasName  "Wear Layer" .
+
+<http://w3id.org/protys/erp/odoo/company/1>
+        rdf:type        ns4:Enterprise;
+        rdfs:label      "My Company (San Francisco)";
+        ns4:hasName     "My Company (San Francisco)";
+        ns4:hasProcess  <http://w3id.org/protys/erp/odoo/process/2> , <http://w3id.org/protys/erp/odoo/process/8> , <http://w3id.org/protys/erp/odoo/process/3> .
+
+<http://w3id.org/protys/erp/odoo/plan/1>
+        rdf:type     ns5:ProcessPlan;
+        rdfs:label   "Plan Desk Combination";
+        ns4:hasName  "Plan Desk Combination" .
+
+<http://w3id.org/protys/erp/odoo/product/49>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Drawer Case Black";
+        ns4:hasName  "Drawer Case Black" .
+
+<http://w3id.org/protys/erp/odoo/plan/7>
+        rdf:type     ns5:ProcessPlan;
+        rdfs:label   "Plan Drawer PRIM-ASSEM";
+        ns4:hasName  "Plan Drawer PRIM-ASSEM" .
+
+<http://w3id.org/protys/erp/odoo/workcenter/3>
+        rdf:type     ns5:ManufacturingResource;
+        rdfs:label   "Assembly Line 2";
+        ns4:hasName  "Assembly Line 2" .
+
+<http://w3id.org/protys/erp/odoo/company/2>
+        rdf:type     ns4:Enterprise;
+        rdfs:label   "My Company (Chicago)";
+        ns4:hasName  "My Company (Chicago)" .
+
+<http://w3id.org/protys/erp/odoo/plan/2>
+        rdf:type              ns5:ProcessPlan;
+        rdfs:label            "Plan Table";
+        ns4:hasName           "Plan Table";
+        ns5:includesActivity  <http://w3id.org/protys/erp/odoo/operation/2> .
+
+<http://w3id.org/protys/erp/odoo/workorder/1>
+        rdf:type              ns5:WorkOrder;
+        rdfs:label            "Manual Assembly";
+        ns4:hasName           "Manual Assembly";
+        ns5:executedBy        <http://w3id.org/protys/erp/odoo/workcenter/1>;
+        ns5:executesActivity  <http://w3id.org/protys/erp/odoo/operation/1> .
+
+<http://w3id.org/protys/erp/odoo/plan/8>
+        rdf:type              ns5:ProcessPlan;
+        rdfs:label            "Plan Drawer SEC-ASSEM";
+        ns4:hasName           "Plan Drawer SEC-ASSEM";
+        ns5:includesActivity  <http://w3id.org/protys/erp/odoo/operation/3> , <http://w3id.org/protys/erp/odoo/operation/4> , <http://w3id.org/protys/erp/odoo/operation/5> .
+
+<http://w3id.org/protys/erp/odoo/product/8>
+        rdf:type     ns4:Product;
+        rdfs:label   "Desk Combination";
+        ns4:hasName  "Desk Combination";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/odoo/product/25> , <http://w3id.org/protys/erp/odoo/product/26> , <http://w3id.org/protys/erp/odoo/product/27> .
+
+<http://w3id.org/protys/erp/odoo/plan/3>
+        rdf:type              ns5:ProcessPlan;
+        rdfs:label            "Plan Table Top";
+        ns4:hasName           "Plan Table Top";
+        ns5:includesActivity  <http://w3id.org/protys/erp/odoo/operation/1> .

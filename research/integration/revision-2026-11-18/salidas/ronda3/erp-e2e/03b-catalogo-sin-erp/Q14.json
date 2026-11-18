@@ -1,0 +1,37 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "lotA", "lotB", "equipment" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "lotA" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB"
+        },
+        "lotB" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC"
+        },
+        "equipment" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q14 Falta de registro de limpieza del mismo equipo entre lotes consecutivos\nSELECT DISTINCT ?lotA ?lotB ?equipment WHERE {\n?lotA i:requiresCleaningBetween ?lotB ; i:processedOn ?equipment .\n?lotB i:processedOn ?equipment .\n?lotA t:endTimeSeconds ?endA .\nFILTER(isNumeric(?endA))\nFILTER NOT EXISTS { ?lotA t:endTimeSeconds ?pairEndOther .\nFILTER(!isNumeric(?pairEndOther) || ?pairEndOther != ?endA) }\n?lotB t:startTimeSeconds ?startB .\nFILTER(isNumeric(?startB))\nFILTER NOT EXISTS { ?lotB t:startTimeSeconds ?pairStartOther .\nFILTER(!isNumeric(?pairStartOther) || ?pairStartOther != ?startB) }\nFILTER(?endA <= ?startB)\nFILTER NOT EXISTS { ?clean a i:CleaningOperation ; t:cleanedResource ?equipment .\n?clean t:startTimeSeconds ?cleanStart .\nFILTER(isNumeric(?cleanStart))\nFILTER NOT EXISTS { ?clean t:startTimeSeconds ?cleanStartOther .\nFILTER(!isNumeric(?cleanStartOther) || ?cleanStartOther != ?cleanStart) }\n?clean t:endTimeSeconds ?cleanEnd .\nFILTER(isNumeric(?cleanEnd))\nFILTER NOT EXISTS { ?clean t:endTimeSeconds ?cleanEndOther .\nFILTER(!isNumeric(?cleanEndOther) || ?cleanEndOther != ?cleanEnd) }\nFILTER(?cleanStart >= ?endA && ?cleanEnd <= ?startB && ?cleanEnd >= ?cleanStart) }\n} ORDER BY ?lotA ?lotB ?equipment\n",
+  "executedAt" : "2026-11-18T14:13:48.109748110Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "lotA" : "http://w3id.org/protys/fixture#BatchB",
+    "lotB" : "http://w3id.org/protys/fixture#BatchC",
+    "equipment" : "http://w3id.org/protys/fixture#PearlMill_01"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 6,
+  "resultCount" : 1,
+  "truncated" : false
+}

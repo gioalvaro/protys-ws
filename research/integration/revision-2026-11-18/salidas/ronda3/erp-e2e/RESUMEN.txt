@@ -1,0 +1,26 @@
+Resumen — PROTYS-WS Fase 1 (2026-11-18T14:14:06Z, proyecto protys-e2e)
+APROBADO  1 levantar plataforma y ERP              ADempiere, Odoo (mrp), Fuseki, PostgreSQL, backend y red integrada cargada
+APROBADO  2 registrar versiones                    salidas/e2e/02-versiones.txt
+APROBADO  3 huella de esquemas (antes)             erp=adempiere esquema=adempiere tablas=1177 columnas=27858 s…
+APROBADO  3b línea de base sin ERP                razonamiento SUCCESS, entrada=4318; catálogo en 03b-catalogo-sin-erp/
+APROBADO  4 registrar y probar conexión (adempiere) id=970ca7ad-df84-4d85-be44-69af8e03e97d usuario=protys_ro
+APROBADO  5 inspeccionar esquema (adempiere)       992 tablas
+APROBADO  6 materializar con R2RML (adempiere)     348 triples de 14 triples maps en http://w3id.org/protys/erp/adempiere
+APROBADO  4 registrar y probar conexión (odoo)    id=82ebcbbd-8963-4cf2-9274-9312ff64b00a usuario=protys_ro
+APROBADO  5 inspeccionar esquema (odoo)            336 tablas
+APROBADO  6 materializar con R2RML (odoo)          201 triples de 14 triples maps en http://w3id.org/protys/erp/odoo
+APROBADO  7 razonar red + 2 grafos ERP             owl=CONSISTENT validación=CONSISTENT entrada=4867 inferidos=1586
+APROBADO  7 grafos ERP incluidos en el razonamiento entrada 4318 → 4867 (+549 = triples materializados)
+APROBADO  7 cadena R07 → R24 (brecha de cobertura) 6 controles OK; ver 07-brecha-cobertura.txt
+APROBADO  8 Q04 canónica sin cambios (P1)         15 filas con procesos ERP
+APROBADO  8 consulta P1                            15 filas (adempiere=9 odoo=6)
+APROBADO  8 consulta P2                            24 filas (adempiere=18 odoo=6)
+APROBADO  8 consulta P3                            14 filas (adempiere=10 odoo=4)
+APROBADO  8 consulta P4                            17 filas (adempiere=12 odoo=5)
+APROBADO  8 consulta P5                            11 filas (adempiere=8 odoo=3)
+APROBADO  8 consulta CRUZADA                       10 filas (adempiere=8 odoo=2)
+APROBADO  8 catálogo Q01–Q21 sin y con ERP      21 consultas; ver 08-catalogo-diferencias.md
+APROBADO  8 tipos inferidos sobre individuos ERP   216 tipos deducidos no afirmados (informativo)
+APROBADO  9 rol de conexión sin escritura         CREATE y DELETE rechazados en los dos ERP
+APROBADO  10 esquemas ERP sin cambios              huellas idénticas antes y después
+resultado: APROBADO
