@@ -1,0 +1,785 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "g", "plan", "planName", "activity", "activityName", "sequence", "duration", "totalDuration" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50009"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Furniture Set"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50093"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Assembly"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50085"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Assembly"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "65.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50086"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Paint"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "20"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "15"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "65.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50087"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Drying"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "30"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "65.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50088"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Chrome Process"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "40"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "65.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50089"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Inspection Process"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "50"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "65.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50090"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Mixed"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "30"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50091"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Inspection the Mixed"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "20"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50087"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #50"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50092"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Packing Process"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50089"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #70"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50092"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Packing Process"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "3"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50090"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Mixed"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "30"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/operation/50091"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Inspection the Mixed"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "20"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/2"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/2"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Assembly"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/3"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table Top"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/1"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Manual Assembly"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "5"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/8"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Drawer SEC-ASSEM"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/5"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Packing"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "5"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "180.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/8"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Drawer SEC-ASSEM"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/4"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Testing"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "10"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "180.0"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/8"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Drawer SEC-ASSEM"
+        },
+        "activity" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/operation/3"
+        },
+        "activityName" : {
+          "type" : "literal",
+          "value" : "Long time assembly"
+        },
+        "sequence" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "15"
+        },
+        "duration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "60"
+        },
+        "totalDuration" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "180.0"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P4 Actividades de un plan de proceso X.\n# Variante de Q18: Q18 exige t:lifecycleStage y etapas del escenario de pintura, que no existen en los\n# ERP. Acá: operaciones del plan con su secuencia y duración registradas en el ERP, y la duración\n# total por plan.\nSELECT ?g ?plan ?planName ?activity ?activityName ?sequence ?duration ?totalDuration\nWHERE {\n  GRAPH ?g {\n    ?plan a i:ProcessPlan ; i:includesActivity ?activity .\n    OPTIONAL { ?activity i:operationSequence ?sequence }\n    OPTIONAL { ?activity i:duration ?duration }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }\n  OPTIONAL { GRAPH ?g { ?activity c:hasName ?activityName } }\n  {\n    SELECT ?plan (SUM(?d) AS ?totalDuration)\n    WHERE { GRAPH ?h { ?plan i:includesActivity ?a . OPTIONAL { ?a i:duration ?d } }\n            FILTER(STRSTARTS(STR(?h), \"http://w3id.org/protys/erp/\")) }\n    GROUP BY ?plan\n  }\n}\nORDER BY ?g ?plan ?sequence\n",
+  "executedAt" : "2026-11-18T04:55:36.601744273Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "duration" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50093",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Assembly",
+    "planName" : "Plan Patio Furniture Set",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50009"
+  }, {
+    "duration" : "40^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "65.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50085",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Assembly",
+    "planName" : "Plan Patio Chair",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+  }, {
+    "duration" : "15^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "65.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "20^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50086",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Paint",
+    "planName" : "Plan Patio Chair",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+  }, {
+    "duration" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "65.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "30^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50087",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Drying",
+    "planName" : "Plan Patio Chair",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+  }, {
+    "duration" : "0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "65.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "40^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50088",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Chrome Process",
+    "planName" : "Plan Patio Chair",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+  }, {
+    "duration" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "65.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "50^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50089",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Inspection Process",
+    "planName" : "Plan Patio Chair",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+  }, {
+    "duration" : "30^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50090",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Mixed",
+    "planName" : "Plan Lawn Fertilizer",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+  }, {
+    "duration" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "20^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50091",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Inspection the Mixed",
+    "planName" : "Plan Lawn Fertilizer",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+  }, {
+    "duration" : "3^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "3^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50092",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Packing Process",
+    "planName" : "Plan Fertilizer #50",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50087"
+  }, {
+    "duration" : "3^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "3^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50092",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Packing Process",
+    "planName" : "Plan Fertilizer #70",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50089"
+  }, {
+    "duration" : "30^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50090",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Mixed",
+    "planName" : "Plan Lawn Fertilizer",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+  }, {
+    "duration" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "20^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/adempiere/operation/50091",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "activityName" : "Inspection the Mixed",
+    "planName" : "Plan Lawn Fertilizer",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+  }, {
+    "duration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/odoo/operation/2",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "activityName" : "Assembly",
+    "planName" : "Plan Table",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/2"
+  }, {
+    "duration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "5^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/odoo/operation/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "activityName" : "Manual Assembly",
+    "planName" : "Plan Table Top",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/3"
+  }, {
+    "duration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "180.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "5^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/odoo/operation/5",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "activityName" : "Packing",
+    "planName" : "Plan Drawer SEC-ASSEM",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/8"
+  }, {
+    "duration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "180.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "10^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/odoo/operation/4",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "activityName" : "Testing",
+    "planName" : "Plan Drawer SEC-ASSEM",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/8"
+  }, {
+    "duration" : "60^^http://www.w3.org/2001/XMLSchema#decimal",
+    "totalDuration" : "180.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "sequence" : "15^^http://www.w3.org/2001/XMLSchema#integer",
+    "activity" : "http://w3id.org/protys/erp/odoo/operation/3",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "activityName" : "Long time assembly",
+    "planName" : "Plan Drawer SEC-ASSEM",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/8"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 12,
+  "resultCount" : 17,
+  "truncated" : false
+}

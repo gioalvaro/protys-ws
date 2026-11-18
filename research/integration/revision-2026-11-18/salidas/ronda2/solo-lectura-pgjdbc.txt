@@ -1,0 +1,65 @@
+# solo-lectura.sh — 2026-11-18T04:41:51Z
+# commit: 460f152
+# PostgreSQL desechable: postgres:15@sha256:0dda651c259bfe50e2bcc28ca23d1fcca772fa90b0210803aa7b97379ccf4e85; Java: eclipse-temurin:17-jdk@sha256:5465815640e10433422217335e15a523a3e57021a1f2ae0fc3849380d237979f
+# usuario 'escritor' = dueño de la base 'desechable' (puede escribir en la tabla prueba)
+PGJDBC timestamptz '2026-11-18 10:15:30-03' -> "2026-11-18T13:15:30Z"^^xsd:dateTime
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG session-characteristics execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG session-characteristics execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG session-characteristics execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG session-characteristics execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC pg_sleep(5) con límite de 1 s -> R2RML_DATA_ERROR: logical table of http://e.org/#T exceeded the query timeout of 1 s (1 s)
+PGJDBC conexión del conector (autocommit=false, readOnly=true) -> INSERT rechazado, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction
+PGJDBC autocommit=true readOnly=true driver=42.6.0 servidor=15.19 (Debian 15.19-1.pgdg13+2) -> INSERT aceptado; filas en prueba=1
+PGJDBC COMPROBACION executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas en prueba=0
+PGJDBC COMPROBACION execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas en prueba=0
+PGJDBC COMPROBACION executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+PGJDBC COMPROBACION execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas en prueba=1
+PGJDBC COMPROBACION executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas en prueba=0
+PGJDBC COMPROBACION execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas en prueba=0
+# surefire:
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.132 s -- in org.protys.ws.service.ERPReadOnlyConnectionIntegrationTest
+# código de salida de maven: 0

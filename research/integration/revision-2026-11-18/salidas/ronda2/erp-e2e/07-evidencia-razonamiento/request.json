@@ -1,0 +1,1 @@
+{"queries":[],"enabled_rules":"R06,R15,R25,R24,R09,R14,R03,R08,R13,R11,R22,R04,R05,R10,R01,R02,R18,R12,R23,R20,R21,R17","files":["/tmp/protys-reasoning-16621314951216620758/input.owl"],"numeric_controls_enabled":true,"pre_inference_constructs":["research/model/validations/R07-materialize.sparql","research/model/validations/CNUM-materialize.sparql"]}
