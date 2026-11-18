@@ -482,6 +482,8 @@ public final class R2RMLProcessor {
 
     private static Table query(Connection connection, String sql, String id, Limits limits) {
         try (var statement = connection.createStatement()) {
+            // Sin escapes JDBC ({fn …}, {d …}): el driver manda el mismo texto que analizó SqlQueryGuard.
+            statement.setEscapeProcessing(false);
             statement.setQueryTimeout(limits.queryTimeoutSeconds());
             // Una fila de más alcanza para saber que se superó el tope sin leer el resto.
             if (limits.maxRows() < Integer.MAX_VALUE) statement.setMaxRows((int) limits.maxRows() + 1);

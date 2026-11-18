@@ -236,7 +236,7 @@ rechazada (25006) y la 2 todavía escribiendo (`salidas/ronda2/solo-lectura-pgjd
 
 | Punto | Qué se hizo | Respaldo |
 |---|---|---|
-| Zona horaria en PostgreSQL | `timestamptzDePostgresqlConservaElDesplazamiento`: `'2026-11-18 10:15:30-03'` → `"2026-11-18T13:15:30Z"^^xsd:dateTime`. Pese al nombre de la prueba, se conserva el instante, no el desplazamiento escrito (`-03` pasa a `Z`); falla sin la rama de `R2RMLProcessor` (comprobado en una copia sin commitear) | `salidas/ronda2/solo-lectura-pgjdbc.txt` |
+| Zona horaria en PostgreSQL | `timestamptzDePostgresqlConservaElInstante` (en las salidas de las rondas 2 y 3 figura con su nombre anterior, `…ConservaElDesplazamiento`): `'2026-11-18 10:15:30-03'` → `"2026-11-18T13:15:30Z"^^xsd:dateTime`. Se conserva el instante, no el desplazamiento escrito (`-03` pasa a `Z`); falla sin la rama de `R2RMLProcessor` (comprobado en una copia sin commitear) | `salidas/ronda2/solo-lectura-pgjdbc.txt` |
 | Tiempo máximo en PostgreSQL | `elTiempoMaximoCortaUnaConsultaLentaEnPostgresql`: `pg_sleep(5)` con límite de 1 s corta en 1 s con el mensaje de tiempo excedido; falla sin la rama del SQLSTATE 57014 | ídem |
 | 404 en el servicio | `OntologyServiceTest.unModuloQueNoExisteLanzaModuleNotFound` | `salidas/ronda2/backend-pruebas.txt` |
 | Rechazos conocidos del filtro | Javadoc de `SqlQueryGuard` y línea en el INFORME: paréntesis inicial, `WITH` con columna `insert`/`update`/`delete`/`merge` sin comillas, barra invertida fuera de `E'…'` (comprobados) | — |
@@ -377,6 +377,6 @@ posterior a las corridas (no cambia código ni salidas).
 ### Qué no se hizo en esta ronda
 - La conexión del conector sigue sin poder impedir un `BEGIN READ WRITE` explícito por sí sola. Lo
   frenan tres cosas: el filtro, que tiene dos controles; el servidor, en el protocolo extendido; y el rol.
-- No se renombró la prueba `timestamptzDePostgresqlConservaElDesplazamiento`.
+- No se renombró la prueba `timestamptzDePostgresqlConservaElDesplazamiento` (se renombró en la ronda 4).
 - El divisor es una API interna de pgjdbc: al actualizar el driver hay que volver a correr
   `SqlQueryGuardTest`.

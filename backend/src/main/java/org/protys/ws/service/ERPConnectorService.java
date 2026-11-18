@@ -360,6 +360,8 @@ public class ERPConnectorService {
         R2RMLProcessor.Limits limits = limits();
         try (Statement stmt = dbConnection.createStatement()) {
             log.debug("Executing {} queries from legacy SQL mapping", sqlQueries.size());
+            // Sin escapes JDBC ({fn …}, {d …}): el driver manda el mismo texto que analizó SqlQueryGuard.
+            stmt.setEscapeProcessing(false);
             stmt.setQueryTimeout(limits.queryTimeoutSeconds());
             if (limits.maxRows() < Integer.MAX_VALUE) stmt.setMaxRows((int) limits.maxRows() + 1);
 

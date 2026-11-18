@@ -145,6 +145,20 @@ class SqlQueryGuardTest {
         assertEquals(1, org.postgresql.core.Parser.parseJdbcSql("SELECT 'a\\'; SELECT 2 --'", false, false, true, false, true).size(), aviso);
     }
 
+    /** El procesador ejecuta sin escapes JDBC: {d …} llega tal cual a la base y H2 lo rechaza. */
+    @Test
+    void elProcesadorNoProcesaEscapesJdbc() throws Exception {
+        String jdbc = "jdbc:h2:mem:escapes_" + UUID.randomUUID() + ";DB_CLOSE_DELAY=-1";
+        try (var connection = DriverManager.getConnection(jdbc, "sa", "")) {
+            try (var st = connection.createStatement(); var rs = st.executeQuery("SELECT {d '2026-11-18'} AS ID")) {
+                assertTrue(rs.next(), "con escapes, H2 entiende {d …}");
+            }
+            var parsed = R2RMLProcessor.parse(mapping("SELECT {d '2026-11-18'} AS ID"), "http://e.org/");
+            var error = assertThrows(Exception.class, () -> R2RMLProcessor.execute(parsed, connection));
+            assertTrue(String.valueOf(error.getMessage()).contains("Syntax error"), error.getMessage());
+        }
+    }
+
     @Test
     void elProcesadorRechazaElMapeoConElMotivo() {
         String mapping = mapping("SELECT id FROM t FOR UPDATE");

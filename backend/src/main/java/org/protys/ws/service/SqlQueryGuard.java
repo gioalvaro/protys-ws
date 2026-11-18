@@ -22,6 +22,9 @@ import java.util.regex.Pattern;
  * etiqueta de dólar no empieza con dígito ni sigue a un carácter de identificador; un comentario {@code --}
  * termina en {@code \n} o {@code \r}.
  *
+ * <p>Escapes JDBC ({@code {fn …}}, {@code {d …}}): el procesador y el formato XML heredado ejecutan con
+ * {@code setEscapeProcessing(false)}, así que el driver manda el mismo texto que analiza esta clase.
+ *
  * <p>Cadenas: en {@code E'…'} la barra invertida escapa el carácter siguiente; en las comunes (y {@code U&'…'})
  * sólo {@code ''} escapa una comilla, y una barra invertida se rechaza, porque su sentido depende de
  * {@code standard_conforming_strings} en el servidor. Ante la duda se rechaza: nunca se acepta algo que este

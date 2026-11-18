@@ -466,7 +466,7 @@ class ERPReadOnlyConnectionIntegrationTest {
      * conserva el instante, no el desplazamiento escrito ('10:15:30-03' queda '13:15:30Z').
      */
     @Test
-    void timestamptzDePostgresqlConservaElDesplazamiento() throws Exception {
+    void timestamptzDePostgresqlConservaElInstante() throws Exception {
         try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
             st.execute("DROP TABLE IF EXISTS orden");
             st.execute("CREATE TABLE orden (id int PRIMARY KEY, cuando timestamptz)");
