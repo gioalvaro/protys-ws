@@ -13,6 +13,15 @@ import java.util.regex.Pattern;
  * {@code MERGE}) y cualquier {@code ;}, salvo uno solo al final, que se descarta (los casos W3C D011 y D015
  * terminan así).
  *
+ * <p>Además cuenta las sentencias con el divisor del propio driver de PostgreSQL ({@link #driverStatementCount})
+ * y rechaza si no es exactamente una: el analizador de texto de esta clase tuvo cuatro diferencias con el de
+ * PostgreSQL que dejaban pasar un {@code ;} ({@code E'…'}; {@code $} pegado a un nombre que termina en
+ * {@code _}; etiquetas de dólar no ASCII; {@code --} cerrado por retorno de carro), todas corregidas.
+ *
+ * <p>Identificadores, como en PostgreSQL: letra, dígito, {@code _}, {@code $} o cualquier carácter no ASCII. Una
+ * etiqueta de dólar no empieza con dígito ni sigue a un carácter de identificador; un comentario {@code --}
+ * termina en {@code \n} o {@code \r}.
+ *
  * <p>Cadenas: en {@code E'…'} la barra invertida escapa el carácter siguiente; en las comunes (y {@code U&'…'})
  * sólo {@code ''} escapa una comilla, y una barra invertida se rechaza, porque su sentido depende de
  * {@code standard_conforming_strings} en el servidor. Ante la duda se rechaza: nunca se acepta algo que este
@@ -26,8 +35,9 @@ import java.util.regex.Pattern;
  * <p><b>No es una barrera de seguridad.</b> Un filtro de texto no puede garantizar que una consulta no
  * escriba (por ejemplo, una función con efectos llamada desde un SELECT). La conexión que abre
  * {@link ERPConnectorService} rechaza casi todas las escrituras, pero no un {@code BEGIN READ WRITE} explícito
- * en una consulta de varias sentencias, que hoy frena este filtro. La garantía que no depende de la consulta es
- * el rol de la base, con permiso de SELECT sólo sobre las tablas mapeadas.
+ * en una consulta de varias sentencias, que hoy frena este filtro (y, en el protocolo extendido que exige esa
+ * conexión, el servidor, que rechaza un {@code Parse} con más de una sentencia). La garantía que no depende de la
+ * consulta es el rol de la base, con permiso de SELECT sólo sobre las tablas mapeadas.
  */
 public final class SqlQueryGuard {
 
@@ -35,6 +45,8 @@ public final class SqlQueryGuard {
     private static final Pattern SELECT = Pattern.compile("\\bSELECT\\b");
     private static final Pattern INTO = Pattern.compile("\\bINTO\\b");
     private static final Pattern LOCKING = Pattern.compile("\\bFOR\\s+(?:NO\\s+KEY\\s+UPDATE|KEY\\s+SHARE|UPDATE|SHARE)\\b");
+    /** Etiqueta de dólar: vacía, o empieza con letra, '_' o carácter no ASCII (nunca con dígito) y sigue con esos o dígitos. */
+    private static final Pattern DOLLAR_TAG = Pattern.compile("\\$(?:[A-Za-z_\\x{80}-\\x{10FFFF}][A-Za-z0-9_\\x{80}-\\x{10FFFF}]*)?\\$");
     private static final Pattern WRITE_IN_CTE = Pattern.compile("\\b(INSERT|UPDATE|DELETE|MERGE)\\b");
 
     private SqlQueryGuard() {}
@@ -57,6 +69,9 @@ public final class SqlQueryGuard {
             code = code.substring(0, last) + " " + code.substring(last + 1);
         }
         if (code.indexOf(';') >= 0) throw new RejectedQuery("';' is not allowed: a mapping query must be a single statement");
+        int statements = driverStatementCount(trimmed);
+        if (statements != 1)
+            throw new RejectedQuery("';' is not allowed: the PostgreSQL driver splits this query into " + statements + " statements");
         String upper = code.toUpperCase(Locale.ROOT);
         Matcher first = FIRST_WORD.matcher(upper);
         String keyword = first.find() ? first.group(1) : "";
@@ -71,6 +86,22 @@ public final class SqlQueryGuard {
         Matcher lock = LOCKING.matcher(upper);
         if (lock.find()) throw new RejectedQuery(lock.group().replaceAll("\\s+", " ") + " is not allowed: row locks need write access");
         return trimmed;
+    }
+
+    /**
+     * Cuántas sentencias ve el divisor de pgjdbc ({@code org.postgresql.core.Parser.parseJdbcSql}, API interna del
+     * driver): es el criterio con que el driver decide qué manda al servidor, una sentencia por mensaje
+     * {@code Parse}. Se cuenta con {@code standard_conforming_strings} activo y apagado, y vale el mayor, para
+     * no depender de la configuración del servidor. Sólo analiza texto: se aplica también a H2.
+     */
+    static int driverStatementCount(String sql) {
+        try {
+            int on = org.postgresql.core.Parser.parseJdbcSql(sql, true, false, true, false, true).size();
+            int off = org.postgresql.core.Parser.parseJdbcSql(sql, false, false, true, false, true).size();
+            return Math.max(on, off);
+        } catch (java.sql.SQLException e) {
+            throw new RejectedQuery("the PostgreSQL driver could not split the query: " + e.getMessage());
+        }
     }
 
     /**
@@ -104,8 +135,9 @@ public final class SqlQueryGuard {
                 blank(out, end - i + 1);
                 i = end + 1;
             } else if (c == '-' && i + 1 < n && sql.charAt(i + 1) == '-') {
-                int end = sql.indexOf('\n', i);
-                end = end < 0 ? n : end;
+                // Para PostgreSQL el comentario termina en '\n' o en '\r'.
+                int end = i + 2;
+                while (end < n && sql.charAt(end) != '\n' && sql.charAt(end) != '\r') end++;
                 blank(out, end - i);
                 i = end;
             } else if (c == '/' && i + 1 < n && sql.charAt(i + 1) == '*') {
@@ -119,8 +151,9 @@ public final class SqlQueryGuard {
                 blank(out, end - i);
                 i = end;
             } else if (c == '$') {
-                Matcher tag = Pattern.compile("\\$[A-Za-z_]?[A-Za-z0-9_]*\\$").matcher(sql);
-                if (tag.find(i) && tag.start() == i && (i == 0 || !Character.isLetterOrDigit(sql.charAt(i - 1)))) {
+                // Pegado a un identificador, '$' es parte del nombre (a_$x$), no el comienzo de una cadena.
+                Matcher tag = DOLLAR_TAG.matcher(sql);
+                if (tag.find(i) && tag.start() == i && (i == 0 || !isIdentifierChar(sql.charAt(i - 1)))) {
                     int close = sql.indexOf(tag.group(), tag.end());
                     if (close < 0) throw new RejectedQuery("unterminated dollar-quoted string");
                     int end = close + tag.group().length();
@@ -138,8 +171,9 @@ public final class SqlQueryGuard {
         return out.toString();
     }
 
+    /** Regla de PostgreSQL: letra, dígito, '_', '$' o cualquier carácter no ASCII (byte ≥ 0x80 en UTF-8). */
     private static boolean isIdentifierChar(char c) {
-        return Character.isLetterOrDigit(c) || c == '_' || c == '$';
+        return Character.isLetterOrDigit(c) || c == '_' || c == '$' || c >= 0x80;
     }
 
     private static void blank(StringBuilder out, int length) {

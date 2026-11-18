@@ -80,6 +80,71 @@ class SqlQueryGuardTest {
         SqlQueryGuard.check("SELECT U&'data' AS x FROM t"); // U&'…' sin barra: igual que una cadena común
     }
 
+    /** Los tres salteos de la tercera revisión: PostgreSQL ve un ';' que el analizador propio no veía. */
+    static final String SALTEO_A = "SELECT 1 AS a_$x$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 AS b_$x$";
+    static final String SALTEO_B = "SELECT $é$ ' $é$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 --'";
+    static final String SALTEO_C = "SELECT 1 --\r; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 2";
+
+    @Test
+    void losSalteosDeLaTerceraRevisionSeRechazan() {
+        for (String sql : new String[]{SALTEO_A, SALTEO_B, SALTEO_C}) {
+            var error = assertThrows(SqlQueryGuard.RejectedQuery.class, () -> SqlQueryGuard.check(sql), sql);
+            assertTrue(error.getMessage().contains("';' is not allowed"), error.getMessage());
+        }
+    }
+
+    @Test
+    void elAnalizadorPropioYaNoSeEquivocaConEsosCasos() {
+        // Sin depender del divisor del driver: el ';' queda a la vista del analizador propio.
+        for (String sql : new String[]{SALTEO_A, SALTEO_B, SALTEO_C})
+            assertTrue(SqlQueryGuard.codeOnly(sql).contains(";"), "el analizador propio esconde el ';' en: " + sql);
+        // '$1$' no es una etiqueta (empieza con dígito): lo que sigue es código.
+        assertTrue(SqlQueryGuard.codeOnly("SELECT $1$ ; $1$").contains(";"));
+        // Un espacio duro (U+00A0) pegado a E' lo vuelve parte de un identificador: la cadena es común y la
+        // barra se rechaza.
+        var duro = assertThrows(SqlQueryGuard.RejectedQuery.class,
+                () -> SqlQueryGuard.check("SELECT  E'\\'' ; SELECT 2 --'"));
+        assertTrue(duro.getMessage().contains("standard_conforming_strings"), duro.getMessage());
+    }
+
+    @Test
+    void etiquetaDeDolarQueEmpiezaConDigitoSeRechaza() {
+        var error = assertThrows(SqlQueryGuard.RejectedQuery.class, () -> SqlQueryGuard.check("SELECT $1$ ; DELETE FROM t; $1$"));
+        assertTrue(error.getMessage().contains("';' is not allowed"), error.getMessage());
+    }
+
+    @Test
+    void consultasValidasQueElDivisorCuentaComoUna() {
+        SqlQueryGuard.check("SELECT 1");
+        assertEquals("SELECT 1", SqlQueryGuard.check("SELECT 1;"));
+        assertEquals("SELECT 1", SqlQueryGuard.check("SELECT 1; "));
+        SqlQueryGuard.check("SELECT ';' AS a, $t$ ; $t$ AS b /* ; */ -- ;");
+        SqlQueryGuard.check("WITH t AS (SELECT 1 AS x) SELECT x FROM t");
+        SqlQueryGuard.check("SELECT $é$ texto $é$ AS a, 1 AS a_$x");
+        // El divisor la cuenta como una, pero la regla de la primera palabra la rechaza (rechazo conocido).
+        assertEquals(1, SqlQueryGuard.driverStatementCount("(SELECT 1) UNION (SELECT 2)"));
+        var parentesis = assertThrows(SqlQueryGuard.RejectedQuery.class, () -> SqlQueryGuard.check("(SELECT 1) UNION (SELECT 2)"));
+        assertTrue(parentesis.getMessage().contains("only SELECT or WITH"), parentesis.getMessage());
+    }
+
+    /**
+     * El divisor es una API interna de pgjdbc: si al actualizar el driver cambia la firma, esto no compila; si
+     * cambia el comportamiento, falla acá con este mensaje.
+     */
+    @Test
+    void elDivisorDePgjdbcSigueComportandoseComoSeVerifico() throws Exception {
+        String aviso = "cambió org.postgresql.core.Parser.parseJdbcSql (API interna de pgjdbc): revisar SqlQueryGuard.driverStatementCount";
+        assertEquals(6, org.postgresql.core.Parser.parseJdbcSql(SALTEO_A, true, false, true, false, true).size(), aviso);
+        assertEquals(6, org.postgresql.core.Parser.parseJdbcSql(SALTEO_B, true, false, true, false, true).size(), aviso);
+        assertEquals(6, org.postgresql.core.Parser.parseJdbcSql(SALTEO_C, true, false, true, false, true).size(), aviso);
+        for (String sql : new String[]{"SELECT 1", "SELECT 1;", "SELECT 1; ", "SELECT ';' AS a, $t$ ; $t$ AS b /* ; */ -- ;",
+                "WITH t AS (SELECT 1 AS x) SELECT x FROM t", "(SELECT 1) UNION (SELECT 2)"})
+            assertEquals(1, org.postgresql.core.Parser.parseJdbcSql(sql, true, false, true, false, true).size(), aviso + ": " + sql);
+        // Con standard_conforming_strings apagado la barra escapa: por eso se cuentan los dos modos.
+        assertEquals(2, org.postgresql.core.Parser.parseJdbcSql("SELECT 'a\\'; SELECT 2 --'", true, false, true, false, true).size(), aviso);
+        assertEquals(1, org.postgresql.core.Parser.parseJdbcSql("SELECT 'a\\'; SELECT 2 --'", false, false, true, false, true).size(), aviso);
+    }
+
     @Test
     void elProcesadorRechazaElMapeoConElMotivo() {
         String mapping = mapping("SELECT id FROM t FOR UPDATE");

@@ -96,8 +96,11 @@ public class ERPConnectorService {
      *       {@code SET SESSION CHARACTERISTICS … READ WRITE} seguidos de una escritura;</li>
      *   <li><b>no puede impedir</b> {@code COMMIT; BEGIN READ WRITE; INSERT …} en una consulta de varias
      *       sentencias: un {@code BEGIN READ WRITE} explícito pasa por encima de cualquier configuración de la
-     *       conexión. Eso lo frena {@link SqlQueryGuard} (rechaza cualquier {@code ;} intermedio) y, sin
-     *       depender de la consulta, el rol de la base ({@code protys_ro}, sólo {@code SELECT}).</li>
+     *       conexión. Eso lo frena {@link SqlQueryGuard} (rechaza cualquier {@code ;} intermedio, también
+     *       contando las sentencias con el divisor de pgjdbc) y, sin depender de la consulta, el rol de la base
+     *       ({@code protys_ro}, sólo {@code SELECT}).</li>
+     *   <li>exige el protocolo extendido ({@link #requireExtendedProtocol}): en él el servidor rechaza un
+     *       {@code Parse} con dos sentencias; en el simple las ejecuta (comprobado en salidas/ronda3/).</li>
      * </ul>
      * Con autocommit activo, {@code setReadOnly(true)} solo no tiene efecto en pgjdbc
      * ({@code readOnlyMode=transaction} por defecto).
@@ -114,6 +117,7 @@ public class ERPConnectorService {
             connection = java.sql.DriverManager.getConnection(jdbcUrl, username, password);
         }
         try {
+            if (jdbcUrl != null && jdbcUrl.startsWith("jdbc:postgresql:")) requireExtendedProtocol(connection);
             connection.setAutoCommit(false);
             connection.setReadOnly(true);
             return connection;
@@ -121,6 +125,20 @@ public class ERPConnectorService {
             connection.close();
             throw e;
         }
+    }
+
+    /**
+     * Con {@code preferQueryMode=simple} (o {@code extendedForPrepared}, que manda así los {@code Statement}) el
+     * servidor ejecuta todas las sentencias de un mismo mensaje; en el protocolo extendido rechaza un {@code Parse}
+     * con más de una (SQLSTATE 42601, comprobado en salidas/ronda3/). El control del divisor de
+     * {@link SqlQueryGuard} se apoya en eso, así que una URL que pida otro modo se rechaza.
+     */
+    static void requireExtendedProtocol(Connection connection) throws java.sql.SQLException {
+        var mode = connection.unwrap(org.postgresql.PGConnection.class).getPreferQueryMode();
+        if (mode != org.postgresql.jdbc.PreferQueryMode.EXTENDED
+                && mode != org.postgresql.jdbc.PreferQueryMode.EXTENDED_CACHE_EVERYTHING)
+            throw new java.sql.SQLException("preferQueryMode=" + mode.value()
+                    + " is not allowed for an ERP connector: it sends several statements in one message");
     }
 
     /** Cierra la transacción de lectura sin confirmar nada. */

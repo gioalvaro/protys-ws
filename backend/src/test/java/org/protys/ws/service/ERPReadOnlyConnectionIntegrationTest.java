@@ -217,6 +217,89 @@ class ERPReadOnlyConnectionIntegrationTest {
     static final String SET_TRANSACTION = "SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)";
     static final String SET_SESSION = "SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)";
 
+    /**
+     * Camino completo: un mapeo R2RML con cada salteo como rr:sqlQuery. Se rechaza al analizarlo y, si no se
+     * rechazara, se ejecuta por la conexión del conector con un usuario que puede escribir: prueba queda sin filas.
+     */
+    @Test
+    void losSalteosSeRechazanAlAnalizarElMapeoYNoEscriben() throws Exception {
+        for (String sql : new String[]{SALTEO_A, SALTEO_B, SALTEO_C}) {
+            String mapping = SqlQueryGuardTest.mapping(sql);
+            RuntimeException rechazo = null;
+            try {
+                var parsed = R2RMLProcessor.parse(mapping, "http://e.org/");
+                try (Connection c = ERPConnectorService.openReadOnly(url, user, password)) {
+                    try { R2RMLProcessor.execute(parsed, c); } catch (Exception ignored) { }
+                    finally { try { c.rollback(); } catch (SQLException ignored) { } }
+                }
+            } catch (RuntimeException e) {
+                rechazo = e;
+            }
+            assertEquals(0, filas(), "escribió con: " + sql.replace("\r", "\\r"));
+            assertNotNull(rechazo, "el mapeo se aceptó: " + sql.replace("\r", "\\r"));
+            assertTrue(rechazo.getMessage().contains("';' is not allowed"), rechazo.getMessage());
+        }
+    }
+
+    /**
+     * Comprobación del supuesto que sostiene el control del divisor (no afirma nada): en el protocolo extendido,
+     * ¿el servidor rechaza un mensaje Parse con dos sentencias? Se construye una cadena que el divisor, con
+     * standard_conforming_strings apagado, cuenta como una, pero que el servidor (con esa opción activa) ve como
+     * dos, y se la manda en un único Parse por la API de bajo nivel de pgjdbc, con un usuario que puede escribir
+     * y autocommit activo. Como contraste, la misma cadena por una conexión con preferQueryMode=simple.
+     */
+    @Test
+    void comprobacionUnParseConDosSentencias() throws SQLException {
+        String sql = "SELECT 'a\\'; INSERT INTO prueba VALUES (99) --'";
+        var nativas = org.postgresql.core.Parser.parseJdbcSql(sql, false, false, true, false, true);
+        // QUERY_SUPPRESS_BEGIN: con autocommit, como hace la capa de Statement; sin él el ejecutor abre un BEGIN
+        // que nadie confirma y lo escrito se deshace al cerrar.
+        int sinBegin = org.postgresql.core.QueryExecutor.QUERY_SUPPRESS_BEGIN;
+        for (String[] modo : new String[][]{{"extendido", String.valueOf(sinBegin)},
+                {"simple", String.valueOf(sinBegin | org.postgresql.core.QueryExecutor.QUERY_EXECUTE_AS_SIMPLE)}}) {
+            try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+                st.execute("TRUNCATE prueba");
+            }
+            String resultado;
+            String scs;
+            var props = new java.util.Properties();
+            props.setProperty("user", user);
+            props.setProperty("password", password);
+            if (modo[0].equals("simple")) props.setProperty("preferQueryMode", "simple");
+            try (Connection c = DriverManager.getConnection(url, props)) {
+                try (var st = c.createStatement(); var rs = st.executeQuery("SHOW standard_conforming_strings")) {
+                    rs.next();
+                    scs = rs.getString(1);
+                }
+                var qe = c.unwrap(org.postgresql.core.BaseConnection.class).getQueryExecutor();
+                var query = qe.wrap(nativas);
+                var handler = new org.postgresql.core.ResultHandlerBase();
+                try {
+                    qe.execute(query, query.createParameterList(), handler, 0, 0, Integer.parseInt(modo[1]));
+                    handler.handleCompletion();
+                    resultado = "aceptada";
+                } catch (SQLException e) {
+                    resultado = "rechazada, SQLSTATE " + e.getSQLState() + ": " + e.getMessage().replace('\n', ' ');
+                }
+            }
+            System.out.println("PGJDBC PARSE " + modo[0] + " [" + sql + "] sentencias según el divisor (scs=off)=" + nativas.size()
+                    + "; standard_conforming_strings del servidor=" + scs + " -> " + resultado + "; filas en prueba=" + filas());
+        }
+    }
+
+    /** El divisor se apoya en el protocolo extendido: una URL que pida el simple se rechaza al abrir. */
+    @Test
+    void laConexionDelConectorRechazaLosModosQueMandanVariasSentenciasJuntas() throws SQLException {
+        String sep = url.contains("?") ? "&" : "?";
+        for (String modo : new String[]{"simple", "extendedForPrepared"}) {
+            var error = assertThrows(SQLException.class,
+                    () -> ERPConnectorService.openReadOnly(url + sep + "preferQueryMode=" + modo, user, password).close());
+            assertTrue(error.getMessage().contains("preferQueryMode=" + modo + " is not allowed"), error.getMessage());
+        }
+        for (String modo : new String[]{"extended", "extendedCacheEverything"})
+            ERPConnectorService.openReadOnly(url + sep + "preferQueryMode=" + modo, user, password).close();
+    }
+
     /** Ejecuta como el procesador (executeQuery) y como execute, y cierra como el servicio. */
     void intentar(String sql, String usuario, String clave) throws SQLException {
         for (boolean query : new boolean[]{true, false}) {

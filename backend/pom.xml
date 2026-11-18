@@ -86,7 +86,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <!-- compile: SqlQueryGuard usa el divisor de sentencias del driver (org.postgresql.core.Parser) -->
         </dependency>
 
         <!-- OWL API Dependencies -->
