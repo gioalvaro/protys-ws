@@ -488,3 +488,69 @@ posterior a las corridas (no cambia código ni salidas).
 - Una función con efectos llamada desde un `SELECT` sigue pasando el filtro, que es un control de forma.
   Con la sesión en sólo lectura, el servidor la rechaza si escribe en tablas (25006). La garantía que no
   depende de la consulta sigue siendo el rol.
+
+## Ronda 4b (18-11-2026)
+
+Último ajuste de la revisión de la ronda 4 (`8239198..cf96496`), sin ronda nueva. Evidencia en `salidas/ronda4b/`;
+las salidas anteriores no se tocaron.
+
+### 1. La comprobación de sólo lectura dependía del `search_path`
+
+**Comprobación previa, textual** (`salidas/ronda4b/comprobacion-search-path.txt`, commit `14e7614`, antes del
+arreglo). En la base desechable se creó `trampa.current_setting(text)`, que contesta `'on'`; el estado real se leyó
+con `pg_catalog.current_setting`:
+
+```
+PGJDBC TRAMPA [?readOnlyMode=ignore&options=-c%20search_path%3Dtrampa,pg_catalog,public%20-c%20default_transaction_read_only%3Doff] default_ro=off tx_ro=off; [INSERT INTO prueba VALUES (1)] aceptada filas=1; [SELECT escribe()] aceptada filas=1
+PGJDBC TRAMPA [?readOnlyMode=ignore&currentSchema=trampa,pg_catalog,public&options=-c%20default_transaction_read_only%3Doff] default_ro=off tx_ro=off; [INSERT INTO prueba VALUES (1)] aceptada filas=1; [SELECT escribe()] aceptada filas=1
+```
+
+La revisión se confirmó: `requireReadOnlySession` leía la función falsa y la conexión abría escribiendo. Condición
+previa: alguien ya pudo crear una función en un esquema de la base.
+
+**Cambio** (`f508753`). `requireReadOnlySession` lee con `pg_catalog.current_setting(...)`, que no se resuelve por
+el `search_path`. Las otras consultas del conector no deciden nada de seguridad: la introspección usa
+`DatabaseMetaData` de pgjdbc, y las consultas de los mapeos (incluido el `SELECT * FROM` de `rr:tableName`)
+corren ya en la sesión de sólo lectura; si una de ellas resolviera a una función que escribe, el servidor la
+rechazaría (25006).
+
+**Pruebas.** `laConexionDelConectorRechazaUnaUrlQueDejaLaSesionEscribiendo` suma las dos URLs con la función
+trampa creada, y las dos se rechazan con `default_transaction_read_only=off after connecting`
+(`salidas/ronda4b/solo-lectura-pgjdbc.txt`). Sin `pg_catalog.` la prueba falla:
+`readOnlyMode=ignore&options=-c%20search_path%3Dtrampa,... ==> Expected java.sql.SQLException to be thrown, but
+nothing was thrown` (comprobado en una copia sin commitear).
+
+### 2. Escapes JDBC por el formato XML heredado
+
+`SqlQueryGuardTest.elFormatoXmlHeredadoNoProcesaEscapesJdbc` (`f508753`) llama a
+`ERPConnectorService.executeMappingAndGenerateTriples`, que es privado, por reflexión, sobre H2:
+- control: `SELECT DATE '2026-11-18' AS ID` materializa un triple;
+- `SELECT {d '2026-11-18'} AS ID` pasa el filtro y H2 lo rechaza por sintaxis.
+
+Sin `setEscapeProcessing(false)` en esa ruta la prueba falla: `Expected java.lang.Exception to be thrown, but
+nothing was thrown` (comprobado en una copia sin commitear).
+
+### 3. Redacción
+
+`erp/INFORME.md`: el punto «La URL del conector no puede deshacerlo» pasó a «Una URL que deshace la sólo
+lectura se rechaza al conectar». Cuenta el caso del `search_path` con su condición previa, enumera lo que se
+probó y aclara que no es una lista completa de lo que pgjdbc acepta. Ya no dice «ninguno la esquiva».
+
+### Cierre de la ronda 4b
+
+| Comprobación | Resultado | Salida |
+|---|---|---|
+| Sólo lectura (`solo-lectura.sh`, `f508753`) | 17 de 17 | `salidas/ronda4b/solo-lectura-pgjdbc.txt` |
+| Backend (`f508753`) | 278 pruebas, 0 fallas, 17 salteadas (las de PostgreSQL desechable); W3C 63 de 63; `SqlQueryGuardTest` 28 | `salidas/ronda4b/backend-pruebas.txt` |
+| Flujo ERP (`run.sh`, `protys-e2e`, `3d30d05`: el código de `f508753` más las salidas de cierre) | 24 de 24; 348 + 201 triples, entrada 4318 → 4867, inferidos 1586, Q04 +15, Q20 +20; las URLs de ADempiere y Odoo conectan sin cambios | `salidas/ronda4b/erp-e2e/RESUMEN.txt` |
+
+El flujo ERP se volvió a correr porque la consulta cambiada se ejecuta en cada conexión a ADempiere y Odoo.
+Interfaz, scripts, evaluación y build no se volvieron a correr: el cambio fue sólo de backend; sus últimas
+salidas son las de `salidas/ronda4/`. Los conteos del README principal y del README del asistente se
+actualizaron en un commit de documentación posterior a las corridas.
+
+### Qué no se hizo
+- No se probaron todas las propiedades de pgjdbc: la comprobación mira el estado, y lo probado está listado en
+  el INFORME.
+- La sección «Ronda 4» queda como estaba; su «Ninguno esquiva la comprobación» valía para los parámetros que
+  listaba, no para este caso.
