@@ -1,0 +1,32 @@
+# 2026-11-18T14:33:53Z, commit f716af0 (árbol versionado limpio), Python 3.9.6
+$ python3 -m unittest discover -s scripts/tests -v
+test_detecta_cambios_logicos_y_de_entrada (test_comparar_ejecuciones.CompararTests) ... ok
+test_entrada_inexistente (test_comparar_ejecuciones.CompararTests) ... ok
+test_identicas_sin_diferencias (test_comparar_ejecuciones.CompararTests) ... ok
+test_no_sobrescribe_json (test_comparar_ejecuciones.CompararTests) ... ok
+test_tiempos_no_cuentan (test_comparar_ejecuciones.CompararTests) ... ok
+test_applied_r03_disable_with_lost_response_attempts_restoration (test_demo.DemoSafetyTests) ... ok
+test_changed_frozen_compose_rejected_before_resource_management (test_demo.DemoSafetyTests) ... ok
+test_confirmed_frontend_health_required (test_demo.DemoSafetyTests) ... ok
+test_foreign_identity_port_or_replaced_container_rejected_before_http (test_demo.DemoSafetyTests) ... ok
+test_foreign_port_reuse_without_owned_frontend_rejected_before_http (test_demo.DemoSafetyTests) ... ok
+test_live_compose_changes_do_not_replace_frozen_definition (test_demo.DemoSafetyTests) ... ok
+test_nombre_local_igual_que_jena (test_load_canonical.RuleIdTests) ... ok
+test_arranque_canonico_sin_cambios_se_conserva (test_load_canonical.VerifyExistingTests) ... ok
+test_conserva_grafos_erp_y_sesiones_abiertas_del_asistente (test_load_canonical.VerifyExistingTests) ... ok
+test_conserva_lo_incorporado_con_el_asistente (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_declaraciones_canonicas_borradas (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_definicion_sin_registro (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_grafo_ajeno (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_modulo_canonico_ausente (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_modulo_canonico_modificado (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_regla_canonica_cambiada_aunque_haya_agregadas (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_regla_canonica_no_registrada (test_load_canonical.VerifyExistingTests) ... ok
+test_rechaza_regla_registrada_sin_definicion (test_load_canonical.VerifyExistingTests) ... ok
+test_sin_agregados_el_grafo_de_reglas_sigue_siendo_estricto (test_load_canonical.VerifyExistingTests) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 24.295s
+
+OK
+# código de salida: 0

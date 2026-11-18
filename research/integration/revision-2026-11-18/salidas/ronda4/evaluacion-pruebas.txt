@@ -1,0 +1,24 @@
+# 2026-11-18T14:33:53Z, commit f716af0 (árbol versionado limpio), Python 3.9.6
+$ python3 -m unittest discover -s research/evaluation/tests -v
+test_audit_rejects_active_lock_before_reading_results (test_preservation.PreservationTests) ... ok
+test_auditor_selects_requested_evidence_and_guards_raw_outputs (test_preservation.PreservationTests) ... ok
+test_auxiliary_producers_are_guarded_before_runtime (test_preservation.PreservationTests) ... ok
+test_benchmark_requires_existing_functional_without_creating_output (test_preservation.PreservationTests) ... ok
+test_concurrent_phase_and_interruption_reservations (test_preservation.PreservationTests) ... ok
+test_escape_and_symlink_escape_rejected (test_preservation.PreservationTests) ... ok
+test_exclusive_json_write_never_truncates (test_preservation.PreservationTests) ... ok
+test_execute_rejects_even_empty_existing_target_before_java (test_preservation.PreservationTests) ... ok
+test_failed_process_leaves_request_and_logs_and_cannot_be_restarted (test_preservation.PreservationTests) ... ok
+test_functional_then_benchmark_does_not_replace_environment (test_preservation.PreservationTests) ... ok
+test_lazy_comparator_import_has_no_java_or_classpath_dependency (test_preservation.PreservationTests) ... ok
+test_packer_selects_requested_evidence_before_packaging (test_preservation.PreservationTests) ... ok
+test_partial_phase_and_summary_are_preserved (test_preservation.PreservationTests) ... ok
+test_shell_prepare_only_never_creates_evaluation (test_preservation.PreservationTests) ... ok
+test_shell_rejects_occupied_output_before_maven_or_java (test_preservation.PreservationTests) ... ok
+test_unique_default_and_repo_relative_paths (test_preservation.PreservationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.406s
+
+OK
+# código de salida: 0

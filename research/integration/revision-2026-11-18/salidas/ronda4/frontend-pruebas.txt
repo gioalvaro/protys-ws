@@ -1,0 +1,25 @@
+# 2026-11-18T14:33:53Z, commit f716af0 (árbol versionado limpio), node v24.18.0
+$ CI=true npx react-scripts test --watchAll=false
+PASS src/NavToggleIcon.test.jsx
+PASS src/components/wizard/WizardFlow.test.jsx
+PASS src/BackendStatus.test.jsx
+PASS src/components/alignment/Alignment.test.jsx
+PASS src/components/dashboard/Dashboard.test.jsx
+PASS src/components/explorer/OntologyExplorer.test.jsx
+PASS src/components/sparql/SparqlConsole.test.jsx
+PASS src/components/erp/ErpIntegration.test.jsx
+PASS src/components/wizard/Wizard.test.jsx
+PASS src/hooks/useERP.test.jsx
+PASS src/components/alignment/NumericIntegrityStatus.test.jsx
+PASS src/services/validationState.test.js
+PASS src/components/alignment/ContextIntegrityStatus.test.jsx
+PASS src/components/alignment/CleaningContextStatus.test.jsx
+PASS src/services/api.test.js
+PASS src/hooks/useSparql.test.js
+
+Test Suites: 16 passed, 16 total
+Tests:       75 passed, 75 total
+Snapshots:   0 total
+Time:        1.347 s
+Ran all test suites.
+# código de salida: 0
