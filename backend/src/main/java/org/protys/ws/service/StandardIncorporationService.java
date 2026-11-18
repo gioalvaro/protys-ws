@@ -309,6 +309,7 @@ public class StandardIncorporationService {
             result.setStep4_error(false);
             result.setStep4_inferredTriples(session.getInferredTriples());
             result.setSessionRuleIds(extra);
+            result.setReactivatedRules(inactiveRegistered(executed));
             result.setStep4_message("Verified " + selected.size() + " selected rules and " + extra.size() + " session rules; inferred " + session.getInferredTriples() + " triples");
         } catch (Exception e) {
             if (result.getStatus() == null || "CONSISTENT".equals(result.getStatus())) result.setStatus("NOT_EVALUATED");
@@ -596,6 +597,7 @@ public class StandardIncorporationService {
         }
         result.setSessionRuleIds(sessionRules(session));
         result.setActivatedRules(result.getExecutedRules().stream().map(ExecutedRule::getName).toList());
+        result.setReactivatedRules(new ArrayList<>(ruleChanges(session).reactivated));
         result.setInferencesGenerated(session.getInferredTriples());
         result.setAlignmentRulesCreated(0);
         result.setMessage("Successfully incorporated " + session.getStandardName());

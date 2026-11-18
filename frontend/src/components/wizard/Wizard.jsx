@@ -707,6 +707,12 @@ export function Step5Complete({ verificationResult, onComplete, isLoading, busy,
       {canProceedVerification(verificationResult) && Array.isArray(verificationResult.executedRules) && verificationResult.executedRules.length > 0 && (
         <p className="text-sm text-gray-700 text-left">Active after completion: {verificationResult.executedRules.map(rule => rule.name).join(', ')}</p>
       )}
+      {canProceedVerification(verificationResult) && Array.isArray(verificationResult.reactivatedRules) && verificationResult.reactivatedRules.length > 0 && (
+        <div role="alert" className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-left text-sm text-amber-900">
+          <p className="font-semibold">Platform-wide change</p>
+          <p>These registered rules are inactive and will be activated for the whole platform: {verificationResult.reactivatedRules.join(', ')}. Cancelling an interrupted completion deactivates them again.</p>
+        </div>
+      )}
       <CleaningContextStatus evaluation={verificationResult?.cleaningEvaluation} />
       <ContextIntegrityStatus evaluation={verificationResult?.contextEvaluation} />
       <NumericIntegrityStatus evaluation={verificationResult?.numericEvaluation} owlStatus={verificationResult?.owlValidationStatus} />
@@ -759,10 +765,12 @@ function ExecutedRules({ result }) {
 
 function CompletionSummary({ result }) {
   const active = Array.isArray(result?.activatedRules) ? result.activatedRules : [];
+  const reactivated = Array.isArray(result?.reactivatedRules) ? result.reactivatedRules : [];
   return (
     <div role="status" className="bg-green-50 border border-green-200 rounded-lg p-4">
       <p className="font-medium text-green-900">Last incorporation: {result.standardName || result.finalModuleId}</p>
       <p className="text-sm text-green-800">Rules active after completion ({active.length}): {active.length ? active.join(', ') : 'none'}</p>
+      {reactivated.length > 0 && <p className="text-sm text-amber-800">Reactivated platform-wide (were inactive): {reactivated.join(', ')}</p>}
     </div>
   );
 }

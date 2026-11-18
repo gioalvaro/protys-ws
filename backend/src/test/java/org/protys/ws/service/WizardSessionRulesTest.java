@@ -111,6 +111,15 @@ class WizardSessionRulesTest extends WizardSelectionRegressionTest {
         return states;
     }
 
+    @Test void elPaso4AvisaQueReglasInactivasVaAReactivar() {
+        UUID id = readyWithR27("Avisa");
+        var verified = service.step4_verifyInferences(id);
+        assertEquals(List.of("R01"), verified.getReactivatedRules());
+        var done = service.completeIncorporation(id);
+        assertEquals("COMPLETED", done.getStatus(), done.getMessage());
+        assertEquals(List.of("R01"), done.getReactivatedRules());
+    }
+
     @Test void cancelarUnCompletadoCortadoDejaLasReglasComoEstaban() {
         UUID id = readyWithR27("Cortado");
         service.step4_verifyInferences(id);

@@ -32,6 +32,11 @@ public class StandardIncorporationResult {
     private List<String> sessionRuleIds;
     /** Reglas que quedaron activas en la plataforma al completar (las verificadas en el paso 4). */
     private List<String> activatedRules;
+    /**
+     * Reglas registradas que estaban inactivas y el completado deja activas para toda la plataforma.
+     * En el paso 4 es la vista previa; en el paso 5, lo que efectivamente se reactivó.
+     */
+    private List<String> reactivatedRules;
     private List<ExecutedRule> executedRules;
     private String ruleDefinitionsSha256;
     private Boolean cleanupPending;

@@ -48,3 +48,13 @@ test('the saved rule fingerprint is optional traceability in a collapsed detail'
   expect(view.querySelector('details')).toBeNull();
   expect(view.querySelector('button').disabled).toBe(false);
 });
+
+test('rules that completion will reactivate are announced before confirming', () => {
+  const result = { status: 'CONSISTENT', step4_verified: true, executedRules: [{id:'rule-a',name:'R01'}], reactivatedRules: ['R01'] };
+  const view = document.createElement('div');
+  view.innerHTML = renderToStaticMarkup(<Step5Complete verificationResult={result}/>);
+  const alert = view.querySelector('[role="alert"]');
+  expect(alert.textContent).toContain('will be activated for the whole platform: R01');
+  view.innerHTML = renderToStaticMarkup(<Step5Complete verificationResult={{...result, reactivatedRules: []}}/>);
+  expect(view.querySelector('[role="alert"]')).toBeNull();
+});
