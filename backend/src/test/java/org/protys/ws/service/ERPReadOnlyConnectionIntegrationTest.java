@@ -300,6 +300,70 @@ class ERPReadOnlyConnectionIntegrationTest {
             ERPConnectorService.openReadOnly(url + sep + "preferQueryMode=" + modo, user, password).close();
     }
 
+    /** URLs que intentan deshacer la sólo lectura que configura openReadOnly (cuarta revisión). */
+    static final String[] URLS_QUE_PISAN = {
+            "options=-c%20default_transaction_read_only%3Doff",
+            "readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Doff",
+            "readOnlyMode=ignore",
+            "readOnly=false"};
+
+    String conParametros(String parametros) {
+        return url + (url.contains("?") ? "&" : "?") + parametros;
+    }
+
+    void crearFuncionQueEscribe() throws SQLException {
+        try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+            st.execute("CREATE OR REPLACE FUNCTION escribe() RETURNS int LANGUAGE sql AS "
+                    + "'INSERT INTO prueba VALUES (5) RETURNING 1'");
+        }
+    }
+
+    /**
+     * Abre con openReadOnly y registra el estado de la sesión y si un INSERT y SELECT escribe() quedan escritos
+     * con un commit explícito.
+     */
+    String sondear(String parametros) throws SQLException {
+        String linea;
+        try (Connection c = ERPConnectorService.openReadOnly(parametros.isEmpty() ? url : conParametros(parametros), user, password)) {
+            String defaultRo, txRo;
+            try (var st = c.createStatement();
+                 var rs = st.executeQuery("SELECT current_setting('default_transaction_read_only'), current_setting('transaction_read_only')")) {
+                rs.next();
+                defaultRo = rs.getString(1);
+                txRo = rs.getString(2);
+            }
+            c.rollback();
+            linea = "default_ro=" + defaultRo + " tx_ro=" + txRo;
+            for (String sql : new String[]{"INSERT INTO prueba VALUES (1)", "SELECT escribe()"}) {
+                try (Connection l = DriverManager.getConnection(url, user, password); var st = l.createStatement()) {
+                    st.execute("TRUNCATE prueba");
+                }
+                String r;
+                try (var st = c.createStatement()) {
+                    st.execute(sql);
+                    c.commit();
+                    r = "aceptada";
+                } catch (SQLException e) {
+                    r = "rechazada " + e.getSQLState();
+                    try { c.rollback(); } catch (SQLException ignored) { }
+                }
+                linea += "; [" + sql + "] " + r + " filas=" + filas();
+            }
+        } catch (SQLException e) {
+            linea = "conexión rechazada: " + e.getMessage().replace('\n', ' ');
+        }
+        return linea;
+    }
+
+    /** Comprobación (no afirma nada): qué deja la URL del conector después de openReadOnly. */
+    @Test
+    void comprobacionUrlQuePisaLaSoloLectura() throws SQLException {
+        crearFuncionQueEscribe();
+        System.out.println("PGJDBC URL [sin parámetros] " + sondear(""));
+        for (String p : URLS_QUE_PISAN)
+            System.out.println("PGJDBC URL [?" + p + "] " + sondear(p));
+    }
+
     /** Ejecuta como el procesador (executeQuery) y como execute, y cierra como el servicio. */
     void intentar(String sql, String usuario, String clave) throws SQLException {
         for (boolean query : new boolean[]{true, false}) {
