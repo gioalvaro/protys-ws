@@ -319,6 +319,23 @@ class ERPReadOnlyConnectionIntegrationTest {
     }
 
     /**
+     * URLs que ponen antes que pg_catalog un esquema con una función current_setting(text) propia que contesta
+     * 'on', y apagan la sólo lectura (revisión de la ronda 4). Condición previa: alguien ya pudo crear esa
+     * función en la base.
+     */
+    static final String[] URLS_TRAMPA = {
+            "readOnlyMode=ignore&options=-c%20search_path%3Dtrampa,pg_catalog,public%20-c%20default_transaction_read_only%3Doff",
+            "readOnlyMode=ignore&currentSchema=trampa,pg_catalog,public&options=-c%20default_transaction_read_only%3Doff"};
+
+    void crearTrampaDeSearchPath() throws SQLException {
+        try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+            st.execute("CREATE SCHEMA IF NOT EXISTS trampa");
+            st.execute("CREATE OR REPLACE FUNCTION trampa.current_setting(text) RETURNS text LANGUAGE sql AS "
+                    + "$$ SELECT 'on'::text $$");
+        }
+    }
+
+    /**
      * Abre con openReadOnly y registra el estado de la sesión y si un INSERT y SELECT escribe() quedan escritos
      * con un commit explícito.
      */
@@ -327,7 +344,8 @@ class ERPReadOnlyConnectionIntegrationTest {
         try (Connection c = ERPConnectorService.openReadOnly(parametros.isEmpty() ? url : conParametros(parametros), user, password)) {
             String defaultRo, txRo;
             try (var st = c.createStatement();
-                 var rs = st.executeQuery("SELECT current_setting('default_transaction_read_only'), current_setting('transaction_read_only')")) {
+                 var rs = st.executeQuery("SELECT pg_catalog.current_setting('default_transaction_read_only'), "
+                         + "pg_catalog.current_setting('transaction_read_only')")) {
                 rs.next();
                 defaultRo = rs.getString(1);
                 txRo = rs.getString(2);
@@ -362,6 +380,18 @@ class ERPReadOnlyConnectionIntegrationTest {
         System.out.println("PGJDBC URL [sin parámetros] " + sondear(""));
         for (String p : URLS_QUE_PISAN)
             System.out.println("PGJDBC URL [?" + p + "] " + sondear(p));
+    }
+
+    /**
+     * Comprobación (no afirma nada): con la función trampa, qué deja cada URL. El estado se lee con
+     * pg_catalog.current_setting, que no depende del search_path.
+     */
+    @Test
+    void comprobacionTrampaDeSearchPath() throws SQLException {
+        crearFuncionQueEscribe();
+        crearTrampaDeSearchPath();
+        for (String p : URLS_TRAMPA)
+            System.out.println("PGJDBC TRAMPA [?" + p + "] " + sondear(p));
     }
 
     @Test
