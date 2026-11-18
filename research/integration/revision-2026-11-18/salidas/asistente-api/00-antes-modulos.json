@@ -1,0 +1,14 @@
+[ {
+  "id" : "7f046719-ee4c-4fb3-9696-3a055104d49b",
+  "name" : "Canonical_Catalog_Integrated",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated",
+  "namedGraph" : "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 4318,
+  "status" : "LOADED",
+  "createdAt" : "2026-11-18T04:00:33.016386",
+  "updatedAt" : "2026-11-18T04:00:33.016396",
+  "classes" : null
+} ]

@@ -1,0 +1,15 @@
+{
+  "connectorId" : "57c77090-1ad5-48b9-87d9-5867d116894e",
+  "namedGraph" : "http://w3id.org/protys/erp/adempiere",
+  "status" : "SUCCESS",
+  "tripleCount" : 348,
+  "executionTimeMs" : 137,
+  "startedAt" : "2026-11-18T03:49:01.978896464",
+  "completedAt" : "2026-11-18T03:49:02.115273488",
+  "mappingsProcessed" : 14,
+  "errorMessage" : null,
+  "errors" : [ ],
+  "warnings" : [ ],
+  "success" : true,
+  "statusMessage" : "Successfully materialized 348 triples in 137 ms"
+}

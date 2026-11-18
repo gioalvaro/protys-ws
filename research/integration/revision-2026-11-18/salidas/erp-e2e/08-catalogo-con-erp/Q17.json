@@ -1,0 +1,92 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "lot", "functionalUnit", "outputLiters", "impactPerFU" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "lot" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA"
+        },
+        "functionalUnit" : {
+          "type" : "literal",
+          "value" : "L"
+        },
+        "outputLiters" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "98.4"
+        },
+        "impactPerFU" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.586043358739837398373984"
+        }
+      }, {
+        "lot" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB"
+        },
+        "functionalUnit" : {
+          "type" : "literal",
+          "value" : "L"
+        },
+        "outputLiters" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "195.2"
+        },
+        "impactPerFU" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.590846995389344262295082"
+        }
+      }, {
+        "lot" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC"
+        },
+        "functionalUnit" : {
+          "type" : "literal",
+          "value" : "L"
+        },
+        "outputLiters" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "97.392"
+        },
+        "impactPerFU" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "0.592108864177755873172334"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q17 Emisiones eléctricas por unidad funcional de salida, litros positivos\nSELECT ?lot ?functionalUnit ?outputLiters\n(SUM(?ghg)/?outputLiters AS ?impactPerFU) WHERE {\n{ SELECT ?lot ?op (MIN(?inputEnergy) AS ?energy)\n(MIN(?inputGHG) AS ?ghg) WHERE {\n?lot a i:Lot ; i:hasProcess ?process ; i:hasActivity ?op .\n?op a i:ProcessOperation ; i:partOfProcess ?process .\n?lot t:hasGHGContribution ?op .\n?op i:consumesEnergyKWh ?inputEnergy .\nFILTER(isNumeric(?inputEnergy) && ?inputEnergy >= 0)\nFILTER NOT EXISTS { ?op i:consumesEnergyKWh ?rowEnergyOther .\nFILTER(!isNumeric(?rowEnergyOther) || ?rowEnergyOther != ?inputEnergy) }\n?op t:hasEmissionFactor ?rowFactor .\nFILTER(isIRI(?rowFactor))\nFILTER NOT EXISTS { ?op t:hasEmissionFactor ?rowOtherFactor .\nFILTER(!sameTerm(?rowOtherFactor,?rowFactor)) }\n?rowFactor a t:ElectricityEmissionFactor ; t:factorUnit \"kg CO2e/kWh\" .\nFILTER NOT EXISTS { ?rowFactor t:factorUnit ?rowOtherUnit .\nFILTER(STR(?rowOtherUnit) != \"kg CO2e/kWh\") }\n?rowFactor t:factorValue ?rowFactorValue .\nFILTER(isNumeric(?rowFactorValue) && ?rowFactorValue >= 0)\nFILTER NOT EXISTS { ?rowFactor t:factorValue ?rowFactorOther .\nFILTER(!isNumeric(?rowFactorOther) || ?rowFactorOther != ?rowFactorValue) }\n?op e:hasGHGImpactKgCO2e ?inputGHG .\nFILTER(isNumeric(?inputGHG) && ?inputGHG >= 0)\nFILTER NOT EXISTS { ?op e:hasGHGImpactKgCO2e ?rowGHGOther .\nFILTER(!isNumeric(?rowGHGOther) || ?rowGHGOther != ?inputGHG) }\nFILTER(ABS(?inputGHG - ?inputEnergy * ?rowFactorValue) <= 0.000000001)\nFILTER NOT EXISTS { ?lot a i:Lot ; i:hasProcess ?allProcess ; i:hasActivity ?allOperation .\n?allOperation a i:ProcessOperation ; i:partOfProcess ?allProcess .\nFILTER NOT EXISTS { ?allOperation i:consumesEnergyKWh ?allEnergy .\nFILTER(isNumeric(?allEnergy) && ?allEnergy >= 0)\nFILTER NOT EXISTS { ?allOperation i:consumesEnergyKWh ?allCheckEnergyOther .\nFILTER(!isNumeric(?allCheckEnergyOther) || ?allCheckEnergyOther != ?allEnergy) }\n?allOperation t:hasEmissionFactor ?allCheckFactor .\nFILTER(isIRI(?allCheckFactor))\nFILTER NOT EXISTS { ?allOperation t:hasEmissionFactor ?allCheckOtherFactor .\nFILTER(!sameTerm(?allCheckOtherFactor,?allCheckFactor)) }\n?allCheckFactor a t:ElectricityEmissionFactor ; t:factorUnit \"kg CO2e/kWh\" .\nFILTER NOT EXISTS { ?allCheckFactor t:factorUnit ?allCheckOtherUnit .\nFILTER(STR(?allCheckOtherUnit) != \"kg CO2e/kWh\") }\n?allCheckFactor t:factorValue ?allCheckFactorValue .\nFILTER(isNumeric(?allCheckFactorValue) && ?allCheckFactorValue >= 0)\nFILTER NOT EXISTS { ?allCheckFactor t:factorValue ?allCheckFactorOther .\nFILTER(!isNumeric(?allCheckFactorOther) || ?allCheckFactorOther != ?allCheckFactorValue) }\n?allOperation e:hasGHGImpactKgCO2e ?allGHG .\nFILTER(isNumeric(?allGHG) && ?allGHG >= 0)\nFILTER NOT EXISTS { ?allOperation e:hasGHGImpactKgCO2e ?allCheckGHGOther .\nFILTER(!isNumeric(?allCheckGHGOther) || ?allCheckGHGOther != ?allGHG) }\nFILTER(ABS(?allGHG - ?allEnergy * ?allCheckFactorValue) <= 0.000000001) } }\n}\nGROUP BY ?lot ?op }\n?lot i:functionalUnit ?functionalUnit . FILTER(STR(?functionalUnit)=\"L\")\nFILTER NOT EXISTS { ?lot i:functionalUnit ?otherUnit . FILTER(STR(?otherUnit)!=\"L\") }\n{ SELECT ?lot (MIN(?rawLiters) AS ?outputLiters) WHERE {\n?lot i:producesQuantity ?rawLiters .\nFILTER(isNumeric(?rawLiters) && ?rawLiters > 0)\nFILTER NOT EXISTS { ?lot i:producesQuantity ?fuVolumeOther .\nFILTER(!isNumeric(?fuVolumeOther) || ?fuVolumeOther != ?rawLiters) }\n} GROUP BY ?lot }\n} GROUP BY ?lot ?functionalUnit ?outputLiters ORDER BY ?lot\n",
+  "executedAt" : "2026-11-18T03:49:14.372856033Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "lot" : "http://w3id.org/protys/fixture#BatchA",
+    "impactPerFU" : "0.586043358739837398373984^^http://www.w3.org/2001/XMLSchema#decimal",
+    "functionalUnit" : "L",
+    "outputLiters" : "98.4^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "lot" : "http://w3id.org/protys/fixture#BatchB",
+    "impactPerFU" : "0.590846995389344262295082^^http://www.w3.org/2001/XMLSchema#decimal",
+    "functionalUnit" : "L",
+    "outputLiters" : "195.2^^http://www.w3.org/2001/XMLSchema#decimal"
+  }, {
+    "lot" : "http://w3id.org/protys/fixture#BatchC",
+    "impactPerFU" : "0.592108864177755873172334^^http://www.w3.org/2001/XMLSchema#decimal",
+    "functionalUnit" : "L",
+    "outputLiters" : "97.392^^http://www.w3.org/2001/XMLSchema#decimal"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 29,
+  "resultCount" : 3,
+  "truncated" : false
+}

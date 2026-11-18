@@ -1,0 +1,6 @@
+reglas registradas: 25 activas: 25
+R27–R29 activas: ['R27', 'R28', 'R29']
+módulos:
+  Canonical_Catalog_Integrated http://w3id.org/protys/ontology/Canonical_Catalog_Integrated# 4318
+  ISO 10303-242 (fragmento piloto) — datos de instancia http://w3id.org/protys/ontology/incorporated/26048ee8-d9b1-43fb-80d5-b337b1173da6/data 203
+  ISO 10303-242 (fragmento piloto) http://w3id.org/protys/ontology/incorporated/26048ee8-d9b1-43fb-80d5-b337b1173da6 46

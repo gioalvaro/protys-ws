@@ -1,0 +1,59 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "clean", "waterL" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "clean" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#HistoricalCleaning"
+        },
+        "waterL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5"
+        }
+      }, {
+        "clean" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#ValidCleaning"
+        },
+        "waterL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5"
+        }
+      }, {
+        "clean" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#WrongEquipmentCleaning"
+        },
+        "waterL" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "5"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q15 Agua registrada por operación auxiliar de limpieza\nSELECT ?clean ?waterL WHERE { ?clean a i:CleaningOperation ; i:consumesWaterL ?waterL . } ORDER BY ?clean\n",
+  "executedAt" : "2026-11-18T04:01:21.841235828Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "waterL" : "5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "clean" : "http://w3id.org/protys/fixture#HistoricalCleaning"
+  }, {
+    "waterL" : "5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "clean" : "http://w3id.org/protys/fixture#ValidCleaning"
+  }, {
+    "waterL" : "5^^http://www.w3.org/2001/XMLSchema#decimal",
+    "clean" : "http://w3id.org/protys/fixture#WrongEquipmentCleaning"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 12,
+  "resultCount" : 3,
+  "truncated" : false
+}

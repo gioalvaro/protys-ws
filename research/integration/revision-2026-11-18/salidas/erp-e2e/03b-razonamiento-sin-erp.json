@@ -1,0 +1,43 @@
+{
+  "totalRules" : null,
+  "activeRules" : 22,
+  "totalInferences" : null,
+  "reasoningTimeMs" : 4901,
+  "executionTimeMs" : 8870,
+  "startedAt" : "2026-11-18T03:48:48.804872361",
+  "completedAt" : "2026-11-18T03:48:57.674237232",
+  "lastExecutedAt" : null,
+  "inputTripleCount" : 4318,
+  "dataGraphs" : [ ],
+  "inferredTripleCount" : 1167,
+  "newClassCount" : 31,
+  "newIndividualCount" : 0,
+  "status" : "SUCCESS",
+  "validationStatus" : "CONSISTENT",
+  "cacheHit" : false,
+  "cleaningEvaluation" : {
+    "required_pair_count" : 2,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "incomplete_context" : false,
+    "missing_record" : true,
+    "status" : "MISSING_CLEANING_RECORD"
+  },
+  "contextEvaluation" : {
+    "declared_link_count" : 84,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "invalid_declared_link" : false,
+    "status" : "CONTEXT_VALID"
+  },
+  "numericEvaluation" : {
+    "selected_operation_count" : 28,
+    "scope" : "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+    "output_checked" : true,
+    "ambiguous_input" : false,
+    "invalid_input" : false,
+    "invalid_output" : false,
+    "status" : "VALID"
+  },
+  "owlValidationStatus" : "CONSISTENT",
+  "errorMessage" : null,
+  "ruleResults" : null
+}

@@ -1,0 +1,5 @@
+ERROR:  permission denied for schema public
+LINE 1: BEGIN READ WRITE; CREATE TABLE protys_intrusion(i int); ROLL...
+                                       ^
+BEGIN
+ERROR:  cannot execute DELETE in a read-only transaction

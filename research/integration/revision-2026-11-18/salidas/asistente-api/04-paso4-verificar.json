@@ -1,0 +1,140 @@
+{
+  "tempModuleId" : "26048ee8-d9b1-43fb-80d5-b337b1173da6",
+  "standardName" : null,
+  "status" : "CONSISTENT",
+  "cleaningEvaluation" : {
+    "required_pair_count" : 2,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "incomplete_context" : false,
+    "missing_record" : true,
+    "status" : "MISSING_CLEANING_RECORD"
+  },
+  "contextEvaluation" : {
+    "declared_link_count" : 84,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "invalid_declared_link" : false,
+    "status" : "CONTEXT_VALID"
+  },
+  "numericEvaluation" : {
+    "selected_operation_count" : 28,
+    "scope" : "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+    "output_checked" : true,
+    "ambiguous_input" : false,
+    "invalid_input" : false,
+    "invalid_output" : false,
+    "status" : "VALID"
+  },
+  "owlValidationStatus" : "CONSISTENT",
+  "selectedRuleIds" : [ "c1c63f0e-7482-49d3-968e-ff23cc89634b", "6c9a32e7-5583-4e3e-945f-d9c75b60f8e5", "fc412795-8d94-4dce-ab20-156a7d2fb9cd", "0eb0fdad-4afa-4865-bcb4-d04723c48f45", "fa135291-9ba0-4335-9c8b-dff89d73eb0d", "5f338f63-12b5-4be1-ab6c-ab4a28eddf3c", "231088e7-5e54-46d7-a15c-87d4fb937c7d", "364895bd-25a8-46b3-a914-e1d96ea4ddec", "3bba3585-76c2-4739-b4d6-6db5c443acbb", "885fe8d0-9f5e-45f0-9f5f-9c3f686190d8", "f2bbb95b-d0cf-42d8-9461-95b33dc5adfc", "647ec644-71f6-487c-8a8f-279699cb5e92", "77596df7-a0bf-40db-b0f3-36e357c221f7", "d3cdbbac-7598-4e39-a062-1b4c125864a5", "1b84e990-34ea-494b-9c80-03f69e6465dc", "190e0925-d186-424b-b1dd-f0c6f0d33cf7", "9fbcbc34-8253-44ac-811f-70fdadcd23b0", "08ad5e96-ac4b-459c-8e3f-688def3b1499", "b920a7f6-0ca2-4338-9c25-123705959c06", "d3a27e66-f3a9-4ace-93ac-519956ae06fb", "51087de4-e0a9-4928-b208-613246cbed2e", "c34575ea-4a78-48c5-9a8c-4246ace3d4c2" ],
+  "sessionRuleIds" : [ "R27", "R28", "R29" ],
+  "activatedRules" : null,
+  "reactivatedRules" : [ ],
+  "executedRules" : [ {
+    "id" : "c1c63f0e-7482-49d3-968e-ff23cc89634b",
+    "name" : "R09"
+  }, {
+    "id" : "6c9a32e7-5583-4e3e-945f-d9c75b60f8e5",
+    "name" : "R23"
+  }, {
+    "id" : "fc412795-8d94-4dce-ab20-156a7d2fb9cd",
+    "name" : "R24"
+  }, {
+    "id" : "0eb0fdad-4afa-4865-bcb4-d04723c48f45",
+    "name" : "R10"
+  }, {
+    "id" : "fa135291-9ba0-4335-9c8b-dff89d73eb0d",
+    "name" : "R12"
+  }, {
+    "id" : "5f338f63-12b5-4be1-ab6c-ab4a28eddf3c",
+    "name" : "R15"
+  }, {
+    "id" : "231088e7-5e54-46d7-a15c-87d4fb937c7d",
+    "name" : "R14"
+  }, {
+    "id" : "364895bd-25a8-46b3-a914-e1d96ea4ddec",
+    "name" : "R11"
+  }, {
+    "id" : "3bba3585-76c2-4739-b4d6-6db5c443acbb",
+    "name" : "R22"
+  }, {
+    "id" : "885fe8d0-9f5e-45f0-9f5f-9c3f686190d8",
+    "name" : "R20"
+  }, {
+    "id" : "f2bbb95b-d0cf-42d8-9461-95b33dc5adfc",
+    "name" : "R17"
+  }, {
+    "id" : "647ec644-71f6-487c-8a8f-279699cb5e92",
+    "name" : "R01"
+  }, {
+    "id" : "77596df7-a0bf-40db-b0f3-36e357c221f7",
+    "name" : "R13"
+  }, {
+    "id" : "d3cdbbac-7598-4e39-a062-1b4c125864a5",
+    "name" : "R04"
+  }, {
+    "id" : "1b84e990-34ea-494b-9c80-03f69e6465dc",
+    "name" : "R08"
+  }, {
+    "id" : "190e0925-d186-424b-b1dd-f0c6f0d33cf7",
+    "name" : "R03"
+  }, {
+    "id" : "9fbcbc34-8253-44ac-811f-70fdadcd23b0",
+    "name" : "R06"
+  }, {
+    "id" : "08ad5e96-ac4b-459c-8e3f-688def3b1499",
+    "name" : "R18"
+  }, {
+    "id" : "b920a7f6-0ca2-4338-9c25-123705959c06",
+    "name" : "R02"
+  }, {
+    "id" : "d3a27e66-f3a9-4ace-93ac-519956ae06fb",
+    "name" : "R25"
+  }, {
+    "id" : "51087de4-e0a9-4928-b208-613246cbed2e",
+    "name" : "R05"
+  }, {
+    "id" : "c34575ea-4a78-48c5-9a8c-4246ace3d4c2",
+    "name" : "R21"
+  }, {
+    "id" : null,
+    "name" : "R27"
+  }, {
+    "id" : null,
+    "name" : "R28"
+  }, {
+    "id" : null,
+    "name" : "R29"
+  } ],
+  "ruleDefinitionsSha256" : "ab520a82644a81d3f2e89901ec876bc632b4f0656d02a6d27ea444467edcf729",
+  "cleanupPending" : null,
+  "currentStep" : 4,
+  "startedAt" : null,
+  "executionTimeMs" : 6638,
+  "tripleCount" : null,
+  "dataTripleCount" : null,
+  "message" : null,
+  "finalModuleId" : null,
+  "step1_parsed" : null,
+  "step1_message" : null,
+  "step1_error" : null,
+  "step2_consistent" : null,
+  "step2_conflictingModules" : null,
+  "step2_message" : null,
+  "step2_error" : null,
+  "step3_rulesGenerated" : null,
+  "step3_rulesCount" : null,
+  "step3_message" : null,
+  "step3_error" : null,
+  "step4_verified" : true,
+  "step4_inferredTriples" : 1419,
+  "step4_message" : "Verified 22 selected rules and 3 session rules; inferred 1419 triples",
+  "step4_error" : false,
+  "classesImported" : null,
+  "propertiesImported" : null,
+  "alignmentRulesCreated" : null,
+  "inferencesGenerated" : null,
+  "consistencyCheck" : null,
+  "warnings" : null,
+  "errors" : null,
+  "completedAt" : null
+}

@@ -1,0 +1,15 @@
+{
+  "connectorId" : "4752b9f8-36d5-4f3a-8458-d4d1e52d5741",
+  "namedGraph" : "http://w3id.org/protys/erp/odoo",
+  "status" : "SUCCESS",
+  "tripleCount" : 201,
+  "executionTimeMs" : 79,
+  "startedAt" : "2026-11-18T03:49:03.071470827",
+  "completedAt" : "2026-11-18T03:49:03.150762354",
+  "mappingsProcessed" : 14,
+  "errorMessage" : null,
+  "errors" : [ ],
+  "warnings" : [ ],
+  "success" : true,
+  "statusMessage" : "Successfully materialized 201 triples in 79 ms"
+}

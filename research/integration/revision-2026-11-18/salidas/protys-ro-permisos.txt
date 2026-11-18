@@ -1,0 +1,24 @@
+# 2026-11-18T03:49:54Z, proyecto protys-e2e tras run.sh: permisos de tabla del rol protys_ro (consulta con el superusuario de cada base)
+== adempiere-db
+adempiere.ad_org SELECT
+adempiere.ad_wf_node SELECT
+adempiere.ad_wf_nodenext SELECT
+adempiere.ad_workflow SELECT
+adempiere.m_product SELECT
+adempiere.pp_order SELECT
+adempiere.pp_order_node SELECT
+adempiere.pp_product_bom SELECT
+adempiere.pp_product_bomline SELECT
+adempiere.pp_product_planning SELECT
+adempiere.s_resource SELECT
+== odoo-db
+public.mrp_bom SELECT
+public.mrp_bom_line SELECT
+public.mrp_production SELECT
+public.mrp_routing_workcenter SELECT
+public.mrp_workcenter SELECT
+public.mrp_workorder SELECT
+public.product_product SELECT
+public.product_template SELECT
+public.res_company SELECT
+public.resource_resource SELECT
