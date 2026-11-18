@@ -380,3 +380,111 @@ posterior a las corridas (no cambia código ni salidas).
 - No se renombró la prueba `timestamptzDePostgresqlConservaElDesplazamiento` (se renombró en la ronda 4).
 - El divisor es una API interna de pgjdbc: al actualizar el driver hay que volver a correr
   `SqlQueryGuardTest`.
+
+## Ronda 4 (18-11-2026)
+
+Cuarta revisión, sobre la ronda 3 (`3435bc0..fd26119`): un punto importante, en la conexión, y dos
+menores. La evidencia de cierre se generó con el árbol versionado limpio (`f716af0`) y está en
+`salidas/ronda4/`. Las salidas de las rondas anteriores no se tocaron.
+
+### A. La URL del conector pisaba lo que configura `openReadOnly`
+
+**Comprobación previa, textual.** Antes del arreglo, en el PostgreSQL desechable de `solo-lectura.sh`, con
+un usuario que puede escribir y la función `escribe()`, que inserta en `prueba`, se abrió cada URL con
+`ERPConnectorService.openReadOnly` (`salidas/ronda4/comprobacion-url.txt`, commit `8239198`). Para
+cada URL se registró el estado de la sesión y si un `INSERT` y un `SELECT escribe()` quedaban escritos con
+un commit explícito:
+
+```
+URL [sin parámetros] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+URL [?options=-c%20default_transaction_read_only%3Doff] default_ro=off tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+URL [?readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Doff] default_ro=off tx_ro=off; [INSERT INTO prueba VALUES (1)] aceptada filas=1; [SELECT escribe()] aceptada filas=1
+URL [?readOnlyMode=ignore] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+URL [?readOnly=false] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+```
+
+- La revisión se confirmó: un `options` en la URL reemplaza al de `openReadOnly`. Junto con
+  `readOnlyMode=ignore`, la conexión escribía.
+- Las URLs con `readOnlyMode=ignore` sola o con `readOnly=false` no cambian el estado: la sesión queda en
+  sólo lectura.
+
+**Cambio** (`b561763`). En PostgreSQL, `openReadOnly` llama a `requireReadOnlySession` después de
+`setAutoCommit(false)` y `setReadOnly(true)`:
+- consulta `default_transaction_read_only` y `transaction_read_only` dentro de la transacción recién
+  abierta;
+- cierra esa transacción con rollback;
+- si alguno no da `on`, cierra la conexión y lanza un error que dice cuál y que la URL del conector no
+  puede cambiar esos valores.
+
+Mira el estado que quedó, no el texto de la URL. El Javadoc de `ERPConnectorService` y el INFORME de ERP
+(«Sólo lectura: dos garantías distintas») lo dicen, y se mantiene lo que ya decían sobre
+`BEGIN READ WRITE` y el rol.
+
+**A.3: otros parámetros, uno por uno.** Se corrieron después del arreglo
+(`comprobacionOtrosParametrosDeLaUrl`, `salidas/ronda4/solo-lectura-pgjdbc.txt`):
+
+| Parámetro | Resultado |
+|---|---|
+| `currentSchema=public` | conecta; `default_ro=on tx_ro=on`; `INSERT` y `escribe()` rechazados (25006) |
+| `ApplicationName=prueba` | ídem |
+| `assumeMinServerVersion=9.0` y `=15` | ídem |
+| `autosave=always`, `autosave=conservative`, `autosave=always&cleanupSavepoints=true` | ídem |
+| `replication=database` | ídem |
+| `stringtype=unspecified` | ídem |
+| `readOnlyMode=ignore&options=-c …=on -c …=off` | conexión rechazada: `default_transaction_read_only=off` (gana el último `-c`) |
+| `readOnlyMode=ignore&options=-c …=off -c …=on` | conecta; `default_ro=on tx_ro=on`; escrituras rechazadas |
+| `readOnlyMode=ignore&options=-c transaction_read_only=off` | conexión rechazada: el `options` de la URL reemplaza al del conector, así que `default_transaction_read_only` queda en `off` |
+| `readOnlyMode=ignore&options=-c session_replication_role=replica` | conexión rechazada, por la misma razón |
+| `PGOPTIONS='-c default_transaction_read_only=off'` en el entorno del proceso Java | pgjdbc no la lee: `default_ro=on tx_ro=on`, escrituras rechazadas (`salidas/ronda4/comprobacion-pgoptions.txt`) |
+
+Ninguno esquiva la comprobación.
+- Para la fila de `PGOPTIONS`, `solo-lectura.sh` ahora pasa esa variable al contenedor de Java si
+  está definida, y lo anota en el encabezado.
+- Ninguno de los parámetros probados actúa después de la comprobación: lo que se ejecuta luego en la
+  sesión también se registró, y las escrituras se rechazaron.
+
+**Pruebas** (`ERPReadOnlyConnectionIntegrationTest`, 16):
+- `laConexionDelConectorRechazaUnaUrlQueDejaLaSesionEscribiendo`:
+  - las dos URLs que cambian el estado se rechazan al conectar con el mensaje nuevo;
+  - `readOnlyMode=ignore` sola, `readOnly=false` y la URL normal conectan, quedan en `on`/`on` y no
+    escriben;
+  - la URL normal lee.
+- Sin la comprobación, la prueba falla: `options=-c%20default_transaction_read_only%3Doff ==> Expected
+  java.sql.SQLException to be thrown, but nothing was thrown`. Comprobado en una copia sin commitear.
+
+**Diferencia con lo pedido.** Se pidió que «las cuatro URLs del punto 1 se rechazan al conectar». Con la
+comprobación del estado, que es lo que se pidió implementar, sólo se rechazan las dos que dejan la sesión
+fuera de sólo lectura. `readOnlyMode=ignore` sola y `readOnly=false` dejan `default_transaction_read_only`
+y `transaction_read_only` en `on`, así que conectan. La prueba afirma lo comprobado: conectan y no
+escriben. Rechazarlas exigiría filtrar por nombre de parámetro, y eso se pidió no hacer.
+
+### B. Menores (`925cb52`)
+
+| Punto | Qué se hizo | Respaldo |
+|---|---|---|
+| Nombre de la prueba de `timestamptz` | `timestamptzDePostgresqlConservaElDesplazamiento` → `timestamptzDePostgresqlConservaElInstante`. Se actualizó la fila de la ronda 2; en las salidas de las rondas 2 y 3 queda el nombre viejo, y la fila lo aclara. `R2RMLProcessorTypesTest.timestampConZonaConservaElDesplazamiento` (H2) no se renombró: en H2 sí se conserva el desplazamiento escrito (`10:15:30-03:00`) | `salidas/ronda4/solo-lectura-pgjdbc.txt` |
+| Escapes JDBC | Camino (a): el procesador R2RML y el formato XML heredado ejecutan con `setEscapeProcessing(false)`, así que el driver manda el mismo texto que analizó el filtro. `SqlQueryGuardTest.elProcesadorNoProcesaEscapesJdbc` muestra que H2 entiende `{d '2026-11-18'}` con escapes y lo rechaza sin ellos; la prueba falla si se saca `setEscapeProcessing(false)` (comprobado en una copia sin commitear). Los mapeos de ADempiere y Odoo no usan `{` en su SQL; W3C 63 de 63. Javadoc de `SqlQueryGuard` al día | `salidas/ronda4/backend-pruebas.txt` |
+
+### Cierre de la ronda 4
+
+| Comprobación | Resultado | Salida |
+|---|---|---|
+| Sólo lectura (`solo-lectura.sh`) | 16 de 16 | `salidas/ronda4/solo-lectura-pgjdbc.txt` |
+| Backend | 276 pruebas, 0 fallas, 16 salteadas (las de PostgreSQL desechable); W3C 63 de 63; `SqlQueryGuardTest` 27 | `salidas/ronda4/backend-pruebas.txt` |
+| Interfaz | 75 de 75 | `salidas/ronda4/frontend-pruebas.txt` |
+| Build | compila; Node muestra el aviso de obsolescencia `fs.F_OK` | `salidas/ronda4/frontend-build.txt` |
+| Scripts | 24 de 24 | `salidas/ronda4/scripts-pruebas.txt` |
+| Evaluación | 16 de 16 | `salidas/ronda4/evaluacion-pruebas.txt` |
+| Flujo ERP (`run.sh`, `protys-e2e`, `8b7268c`: el código de `f716af0` más las salidas de cierre) | 24 de 24; 348 + 201 triples, entrada 4318 → 4867, inferidos 1586, Q04 +15, Q20 +20; las URLs de ADempiere y Odoo conectan sin cambios | `salidas/ronda4/erp-e2e/RESUMEN.txt` |
+
+Los conteos del README principal y del README del asistente se actualizaron en un commit de documentación
+posterior a las corridas (no cambia código ni salidas).
+
+### Qué no se hizo en esta ronda
+- No se filtran parámetros de la URL por nombre: la comprobación mira el estado.
+- `readOnlyMode=ignore` sola y `readOnly=false` se aceptan, porque la sesión queda en sólo lectura.
+- La conexión sigue sin poder impedir por sí sola un `BEGIN READ WRITE` explícito. Lo frenan el filtro,
+  el servidor en el protocolo extendido y el rol, como en la ronda 3.
+- Una función con efectos llamada desde un `SELECT` sigue pasando el filtro, que es un control de forma.
+  Con la sesión en sólo lectura, el servidor la rechaza si escribe en tablas (25006). La garantía que no
+  depende de la consulta sigue siendo el rol.
