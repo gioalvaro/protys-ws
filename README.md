@@ -274,12 +274,12 @@ El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ej
 ```bash
 ./research/reproduce.sh --prepare-only
 cd backend
-./mvnw test                                   # 263 pruebas, 9 salteadas (ver abajo)
+./mvnw test                                   # 272 pruebas, 13 salteadas (ver abajo)
 cd ../frontend && npm test -- --watchAll=false  # 75 pruebas
 cd .. && python3 -m unittest discover -s scripts/tests            # 24 pruebas, incluye la carga inicial
 python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
 
-# Sólo lectura de la conexión ERP contra un PostgreSQL desechable (las 9 salteadas de arriba)
+# Sólo lectura de la conexión ERP contra un PostgreSQL desechable (las 13 salteadas de arriba)
 research/integration/revision-2026-11-18/solo-lectura.sh
 
 # Tests individuales
@@ -289,6 +289,11 @@ research/integration/revision-2026-11-18/solo-lectura.sh
 ./mvnw test -Dtest=OntologyServiceTest
 ./mvnw test -Dtest=ERPConnectorServiceTest
 ```
+
+Corrida de la tercera ronda de la revisión (`425f270`, árbol versionado limpio): backend 272 pruebas, 0 fallas, 13 salteadas
+(`research/integration/revision-2026-11-18/salidas/ronda3/backend-pruebas.txt`); interfaz 75 de 75; scripts 24 de 24; evaluación 16 de 16; el build igual
+que abajo (`research/integration/revision-2026-11-18/salidas/ronda3/`). Las 13 salteadas son `ERPReadOnlyConnectionIntegrationTest`: con
+`solo-lectura.sh`, 13 de 13 (`research/integration/revision-2026-11-18/salidas/ronda3/solo-lectura-pgjdbc.txt`).
 
 Corrida de la segunda ronda de la revisión (`460f152`, árbol versionado limpio): backend 263 pruebas, 0 fallas, 9 salteadas
 (`research/integration/revision-2026-11-18/salidas/ronda2/backend-pruebas.txt`); interfaz 75 de 75; scripts 24 de 24; evaluación 16 de 16; el build igual

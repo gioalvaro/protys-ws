@@ -261,3 +261,122 @@ quedado bajo ese título un punto de «Qué no puede afirmar».
   queda escrito, con el rol como garantía.
 - Los conteos de los README se actualizaron en un commit de documentación posterior a las corridas
   (no cambia código ni salidas).
+
+## Ronda 3 (18-11-2026)
+
+Tercera revisión, sobre la ronda 2 (`df79352..769dbf8`): un punto importante y tres menores. La evidencia de
+cierre se generó con el árbol versionado limpio, sin archivos sin seguimiento (`425f270`), y está en
+`salidas/ronda3/`. Las salidas de las rondas anteriores no se tocaron.
+
+### A. El filtro de SQL todavía se salteaba
+
+**Comprobación previa, textual.** Antes del arreglo, en el PostgreSQL desechable de `solo-lectura.sh`
+(15.19; la revisión había usado 15.10), con un usuario que puede escribir, se pasó cada entrada por el
+filtro y después por la conexión del conector, con `executeQuery` como el procesador
+(`salidas/ronda3/comprobacion-salteos.txt`, commit `3435bc0`):
+
+```
+SALTEO A [SELECT 1 AS a_$x$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 AS b_$x$] filtro -> aceptada; executeQuery por la conexión del conector -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+SALTEO B [SELECT $é$ ' $é$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 --'] filtro -> aceptada; executeQuery por la conexión del conector -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+SALTEO C [SELECT 1 --\r; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 2] filtro -> aceptada; executeQuery por la conexión del conector -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+```
+
+Las tres se aceptaban y escribían, como decía la revisión. (En la corrida de cierre esa comprobación
+se repite: el filtro las rechaza; la línea «filas en prueba=1» sigue apareciendo porque la comprobación
+manda la consulta a la conexión sin pasar por el filtro.)
+
+**Cambios** (`675a0c0`):
+- `SqlQueryGuard.check` cuenta las sentencias con el divisor de pgjdbc,
+  `org.postgresql.core.Parser.parseJdbcSql(sql, scs, false, true, false, true)`, y rechaza si no da
+  exactamente una. Firma confirmada con `javap` sobre pgjdbc 42.6.0 (la del `pom.xml`). Se cuenta con
+  `standard_conforming_strings` activo y apagado y vale el mayor, para no depender del servidor; esto
+  va un poco más allá de lo pedido (`true` solo). El divisor da 6 para A, B y C y 1 para `SELECT 1`,
+  `SELECT 1;`, `SELECT 1; `, `SELECT ';' AS a, $t$ ; $t$ AS b /* ; */ -- ;`, la CTE y
+  `(SELECT 1) UNION (SELECT 2)`, así que no hizo falta cambiar el orden con el `;` final. Se aplica
+  siempre, también con H2: la suite W3C sigue en 63 de 63.
+- `postgresql` pasó de alcance `runtime` a `compile` en el `pom.xml`, porque el filtro usa una clase
+  del driver.
+- Analizador propio, para que el rechazo no dependa sólo del divisor y diga el motivo correcto:
+  - antes de `$` y de `E'`, carácter de identificador = letra, dígito, `_`, `$` o carácter ≥ U+0080;
+  - etiqueta de dólar: vacía, o empieza con letra, `_` o carácter ≥ U+0080 (nunca con dígito);
+  - `--` termina en `\n` o en `\r`.
+- **Además, no pedido:** `ERPConnectorService.openReadOnly` rechaza una URL con
+  `preferQueryMode=simple` o `extendedForPrepared`, por el resultado del punto A.4 (abajo): en esos
+  modos el control del divisor deja de tener respaldo en el servidor.
+
+**Pruebas.**
+- `SqlQueryGuardTest` (26): A, B y C rechazadas; el analizador propio ya deja el `;` a la vista en las
+  tres; el espacio duro pegado a `E'` y `$1$` rechazados; los cinco casos válidos aceptados, y el de
+  paréntesis rechazado por la regla de la primera palabra, como dice la prueba.
+  `elDivisorDePgjdbcSigueComportandoseComoSeVerifico` falla con un mensaje que nombra
+  `parseJdbcSql` si el driver cambia de comportamiento; si cambia la firma, no compila.
+- `ERPReadOnlyConnectionIntegrationTest` (13):
+  - `losSalteosSeRechazanAlAnalizarElMapeoYNoEscriben`: mapeo R2RML con cada salteo como
+    `rr:sqlQuery`, por `R2RMLProcessor.parse`; se rechaza y `prueba` queda sin filas.
+  - Comprobado en una copia sin commitear: sacando el divisor y el arreglo correspondiente del
+    analizador, la prueba falla en los tres casos con `escribió con: … expected: <0> but was: <1>`.
+  - `laConexionDelConectorRechazaLosModosQueMandanVariasSentenciasJuntas`.
+- Salidas: `salidas/ronda3/solo-lectura-pgjdbc.txt` (13 de 13) y `salidas/ronda3/backend-pruebas.txt`
+  (W3C 63 de 63).
+
+**A.4: el supuesto que sostiene el control.** Se armó una cadena que el divisor, con
+`standard_conforming_strings` apagado, cuenta como una sentencia, y que el servidor (con esa opción
+activa) ve como dos. Se la mandó en un único mensaje por la API de bajo nivel de pgjdbc
+(`QueryExecutor.wrap` y `execute`, con `QUERY_SUPPRESS_BEGIN` y autocommit activo), con un usuario
+que puede escribir (`comprobacionUnParseConDosSentencias`, `salidas/ronda3/solo-lectura-pgjdbc.txt`):
+
+```
+PARSE extendido [SELECT 'a\'; INSERT INTO prueba VALUES (99) --'] sentencias según el divisor (scs=off)=1; standard_conforming_strings del servidor=on -> rechazada, SQLSTATE 42601: ERROR: cannot insert multiple commands into a prepared statement; filas en prueba=0
+PARSE simple [SELECT 'a\'; INSERT INTO prueba VALUES (99) --'] sentencias según el divisor (scs=off)=1; standard_conforming_strings del servidor=on -> aceptada; filas en prueba=1
+```
+
+- En el protocolo extendido, que pgjdbc usa por defecto, el servidor rechaza el `Parse` con dos
+  sentencias y no escribe. Es lo que dice la documentación del protocolo de PostgreSQL, en la sección
+  «Extended Query»: la cadena de un mensaje Parse no puede tener más de una sentencia SQL.
+- En el protocolo simple (`preferQueryMode=simple`) la misma cadena escribe. Por eso la conexión del
+  conector ahora exige el modo extendido.
+- **Un tropiezo propio, corregido antes de guardar:** el primer intento de esta comprobación no pasaba
+  `QUERY_SUPPRESS_BEGIN`, así que el ejecutor de bajo nivel abría un `BEGIN` que nadie confirmaba. Por eso
+  el modo simple mostraba «aceptada» sin filas. Con el registro de sentencias de un PostgreSQL aparte
+  se vio que el servidor sí había ejecutado las dos sentencias y que se deshacían al cerrar.
+
+**Redacción** (`ab13a07` y el Javadoc en `675a0c0`). El INFORME de ERP («Sólo lectura: dos garantías
+distintas») ahora dice:
+- el filtro tuvo cuatro huecos, todos por diferencias entre su analizador y el de PostgreSQL: uno en
+  la ronda 2 y tres en la 3;
+- ahora hay además un control con el divisor del driver;
+- ese control se apoya en el protocolo extendido.
+
+Se mantiene lo que ya estaba bien: el filtro es un control de forma, la conexión no puede impedir un
+`BEGIN READ WRITE` explícito y la garantía que no depende de la consulta es el rol `protys_ro`. Los
+Javadoc de `SqlQueryGuard` y `ERPConnectorService` dicen lo mismo.
+
+### B. Menores (`11cdec5`)
+
+| Punto | Qué se hizo | Respaldo |
+|---|---|---|
+| `solo-lectura.sh` y archivos sin seguimiento | El encabezado se calcula al empezar con `git status --porcelain --untracked-files=all`, que respeta `.gitignore`, antes de crear el archivo de salida. Comprobado con `backend/comprobacion-sin-seguimiento.txt` sin `git add`: marcó `11cdec5+cambios-sin-commit` | `salidas/ronda3/solo-lectura-archivo-sin-seguimiento.txt` (commit `425f270`) |
+| Zona horaria | El comentario de `R2RMLProcessor`, el Javadoc de la prueba y las dos filas de este informe dicen que se conserva el instante, no el desplazamiento escrito (`10:15:30-03` → `13:15:30Z`). El nombre de la prueba (`…ConservaElDesplazamiento`) no se cambió: la fila lo aclara | — |
+| Commits de dos salidas de la ronda 2 | Línea en la sección «Ronda 2»: `comprobacion-varias-sentencias.txt` y `comprobacion-configuraciones.txt` llevan `df79352` y `3eea75e` porque se corrieron a propósito antes del arreglo | — |
+
+### Cierre de la ronda 3
+
+| Comprobación | Resultado | Salida |
+|---|---|---|
+| Sólo lectura (`solo-lectura.sh`) | 13 de 13 | `salidas/ronda3/solo-lectura-pgjdbc.txt` |
+| Backend | 272 pruebas, 0 fallas, 13 salteadas (las de PostgreSQL desechable); W3C 63 de 63; `SqlQueryGuardTest` 26 | `salidas/ronda3/backend-pruebas.txt` |
+| Interfaz | 75 de 75 | `salidas/ronda3/frontend-pruebas.txt` |
+| Build | compila; Node muestra el aviso de obsolescencia `fs.F_OK` | `salidas/ronda3/frontend-build.txt` |
+| Scripts | 24 de 24 | `salidas/ronda3/scripts-pruebas.txt` |
+| Evaluación | 16 de 16 | `salidas/ronda3/evaluacion-pruebas.txt` |
+| Flujo ERP (`run.sh`, `protys-e2e`, `01c10c0`: el código de `425f270` más las salidas de cierre) | 24 de 24; 348 + 201 triples, entrada 4318 → 4867, inferidos 1586, Q04 +15, Q20 +20; los mapeos pasan el filtro sin cambios | `salidas/ronda3/erp-e2e/RESUMEN.txt` |
+
+Los conteos del README principal y del README del asistente se actualizaron en un commit de documentación
+posterior a las corridas (no cambia código ni salidas).
+
+### Qué no se hizo en esta ronda
+- La conexión del conector sigue sin poder impedir un `BEGIN READ WRITE` explícito por sí sola. Lo
+  frenan tres cosas: el filtro, que tiene dos controles; el servidor, en el protocolo extendido; y el rol.
+- No se renombró la prueba `timestamptzDePostgresqlConservaElDesplazamiento`.
+- El divisor es una API interna de pgjdbc: al actualizar el driver hay que volver a correr
+  `SqlQueryGuardTest`.
