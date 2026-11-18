@@ -1,0 +1,576 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "plan", "resource", "usedTimeMinutes", "oeePercent" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Operator_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "110.0"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "80.0"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Operator_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "220.0"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Operator_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "110.0"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "40.0"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#Operator_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "110.0"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "10"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      }, {
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        "usedTimeMinutes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "20"
+        },
+        "oeePercent" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+          "value" : "82"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\n# Q16 Tiempo de uso y OEE registrado por recurso y plan\nSELECT ?plan ?resource (SUM(?duration) AS ?usedTimeMinutes) ?oeePercent\nWHERE { { SELECT DISTINCT ?plan ?operation ?resource ?duration WHERE {\n?lot t:hasPlan ?plan ; i:hasProcess ?process . ?plan a i:ProcessPlan ; i:includesActivity ?operation .\n?operation i:partOfProcess ?process ; i:usesResource ?resource ; i:duration ?duration . } }\nOPTIONAL { ?resource t:oeePercent ?oeePercent } } GROUP BY ?plan ?resource ?oeePercent ORDER BY ?plan ?resource\n",
+  "executedAt" : "2026-11-18T14:38:44.519847153Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#DosingSystem_03",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchA_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#FilterSystem_04",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchA_Plan"
+  }, {
+    "usedTimeMinutes" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#MixingReactor_02",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchA_Plan"
+  }, {
+    "usedTimeMinutes" : "110.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#Operator_01",
+    "oeePercent" : null,
+    "plan" : "http://w3id.org/protys/fixture#BatchA_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PackagingMachine_05",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchA_Plan"
+  }, {
+    "usedTimeMinutes" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PearlMill_01",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchA_Plan"
+  }, {
+    "usedTimeMinutes" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#DosingSystem_03",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchB_Plan"
+  }, {
+    "usedTimeMinutes" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#FilterSystem_04",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchB_Plan"
+  }, {
+    "usedTimeMinutes" : "80.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#MixingReactor_02",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchB_Plan"
+  }, {
+    "usedTimeMinutes" : "220.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#Operator_01",
+    "oeePercent" : null,
+    "plan" : "http://w3id.org/protys/fixture#BatchB_Plan"
+  }, {
+    "usedTimeMinutes" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PackagingMachine_05",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchB_Plan"
+  }, {
+    "usedTimeMinutes" : "40^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PearlMill_01",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchB_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#DosingSystem_03",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchC_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#FilterSystem_04",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchC_Plan"
+  }, {
+    "usedTimeMinutes" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#MixingReactor_02",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchC_Plan"
+  }, {
+    "usedTimeMinutes" : "110.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#Operator_01",
+    "oeePercent" : null,
+    "plan" : "http://w3id.org/protys/fixture#BatchC_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PackagingMachine_05",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchC_Plan"
+  }, {
+    "usedTimeMinutes" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PearlMill_01",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchC_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#DosingSystem_03",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#FilterSystem_04",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+  }, {
+    "usedTimeMinutes" : "40.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#MixingReactor_02",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+  }, {
+    "usedTimeMinutes" : "110.0^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#Operator_01",
+    "oeePercent" : null,
+    "plan" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+  }, {
+    "usedTimeMinutes" : "10^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PackagingMachine_05",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+  }, {
+    "usedTimeMinutes" : "20^^http://www.w3.org/2001/XMLSchema#decimal",
+    "resource" : "http://w3id.org/protys/fixture#PearlMill_01",
+    "oeePercent" : "82^^http://www.w3.org/2001/XMLSchema#decimal",
+    "plan" : "http://w3id.org/protys/fixture#BatchZero_Plan"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 21,
+  "resultCount" : 24,
+  "truncated" : false
+}

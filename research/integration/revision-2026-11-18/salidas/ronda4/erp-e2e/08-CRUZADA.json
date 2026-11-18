@@ -1,0 +1,370 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "g", "resource", "resourceName", "operations", "processes", "products" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50001"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "2"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "2"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "2"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50002"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Paint Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50003"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Chrome Subcontract Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50004"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Inspection Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50006"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Packing Production Line"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "2"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50007"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Mixed Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50008"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Dry Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50009"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Inspection Area"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "4"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "3"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "3"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/2"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Drill Station 1"
+        },
+        "operations" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "processes" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        },
+        "products" : {
+          "type" : "literal",
+          "datatype" : "http://www.w3.org/2001/XMLSchema#integer",
+          "value" : "1"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# Consulta conjunta: en una sola respuesta, para cada ERP, cada recurso de manufactura con la\n# cantidad de operaciones que lo requieren, de procesos distintos y de productos fabricados.\n# El mismo patrón responde sobre los dos esquemas de origen porque ambos se expresan con PROTYS(KB).\nSELECT ?g ?resource ?resourceName (COUNT(DISTINCT ?op) AS ?operations)\n       (COUNT(DISTINCT ?process) AS ?processes) (COUNT(DISTINCT ?product) AS ?products)\nWHERE {\n  GRAPH ?g {\n    ?resource a i:ManufacturingResource .\n    ?op i:requiresResource ?resource ; i:partOfProcess ?process .\n    OPTIONAL { ?process c:produces ?product }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n}\nGROUP BY ?g ?resource ?resourceName\nORDER BY ?g DESC(?operations) ?resource\n",
+  "executedAt" : "2026-11-18T14:38:57.985292815Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "processes" : "2^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "2^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50001",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Assembly Area",
+    "products" : "2^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50002",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Paint Area",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50003",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Chrome Subcontract Area",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50004",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Inspection Area",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50006",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Packing Production Line",
+    "products" : "2^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50007",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Mixed Area",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50008",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Dry Area",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50009",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "resourceName" : "Fertilizer Inspection Area",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "3^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "4^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "resourceName" : "Assembly Line 1",
+    "products" : "3^^http://www.w3.org/2001/XMLSchema#integer"
+  }, {
+    "processes" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "operations" : "1^^http://www.w3.org/2001/XMLSchema#integer",
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/2",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "resourceName" : "Drill Station 1",
+    "products" : "1^^http://www.w3.org/2001/XMLSchema#integer"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 17,
+  "resultCount" : 10,
+  "truncated" : false
+}

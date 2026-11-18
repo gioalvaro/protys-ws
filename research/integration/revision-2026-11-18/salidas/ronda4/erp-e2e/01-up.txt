@@ -1,0 +1,247 @@
+ Image protys-e2e-backend:maintenance Building 
+ Image protys-e2e-backend:maintenance Building 
+ Image protys-erp-adempiere-db:3.9.4 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.60kB done
+#1 DONE 0.0s
+
+#2 [protys-backend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 3.31kB 0.0s done
+#2 DONE 0.0s
+
+#3 [adempiere-db internal] load build definition from Dockerfile
+#3 transferring dockerfile: 906B 0.0s done
+#3 DONE 0.0s
+
+#4 [adempiere-db internal] load metadata for docker.io/library/postgres:15.10@sha256:d609c3005478af92bddad773423df829b7402ea0b356d5b72edd2fd54d1ad3ea
+#4 DONE 0.0s
+
+#5 [adempiere-db internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [protys-fuseki internal] load metadata for docker.io/library/eclipse-temurin:17-jre-jammy
+#6 ...
+
+#7 [adempiere-db 2/4] ADD --checksum=sha256:ed4b2b3d33bbf831cb2443195cea0ede2f836e7212a123042e0b794ca87bbd1c     https://github.com/adempiere/adempiere/releases/download/3.9.4/adempiere_postgresql_seed.tar.gz     /seed/adempiere_postgresql_seed.tar.gz
+#7 DONE 0.0s
+
+#8 [adempiere-db 1/4] FROM docker.io/library/postgres:15.10@sha256:d609c3005478af92bddad773423df829b7402ea0b356d5b72edd2fd54d1ad3ea
+#8 DONE 0.0s
+
+#9 [adempiere-db internal] load build context
+#9 transferring context: 45B done
+#9 DONE 0.0s
+
+#10 [adempiere-db 3/4] RUN tar -xzf /seed/adempiere_postgresql_seed.tar.gz -C /seed  && rm /seed/adempiere_postgresql_seed.tar.gz  && test -s /seed/Adempiere_pg.dmp
+#10 CACHED
+
+#11 [adempiere-db 2/4] ADD --checksum=sha256:ed4b2b3d33bbf831cb2443195cea0ede2f836e7212a123042e0b794ca87bbd1c     https://github.com/adempiere/adempiere/releases/download/3.9.4/adempiere_postgresql_seed.tar.gz     /seed/adempiere_postgresql_seed.tar.gz
+#11 CACHED
+
+#12 [adempiere-db 4/4] COPY 10-restaurar-semilla.sh /docker-entrypoint-initdb.d/
+#12 CACHED
+
+#13 [adempiere-db] exporting to image
+#13 exporting layers done
+#13 writing image sha256:7891080b97852261666c25a9269b12e4f62425046a4bd7e6a84c609500239ddc done
+#13 naming to docker.io/library/protys-erp-adempiere-db:3.9.4 done
+#13 DONE 0.0s
+
+#14 [protys-backend internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#14 ...
+
+#15 [adempiere-db] resolving provenance for metadata file
+#15 DONE 0.0s
+
+#6 [protys-fuseki internal] load metadata for docker.io/library/eclipse-temurin:17-jre-jammy
+#6 DONE 1.6s
+
+#14 [protys-backend internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#14 DONE 1.6s
+
+#16 [protys-fuseki internal] load .dockerignore
+#16 transferring context: 221B done
+#16 DONE 0.0s
+
+#17 [protys-fuseki builder 1/7] FROM docker.io/library/maven:3.9.9-eclipse-temurin-17@sha256:f58d59b6273e785ac0a4477f6e9b5ba1d7731c75b906c0f7b34076f1851318cc
+#17 DONE 0.0s
+
+#18 [protys-fuseki runtime  1/11] FROM docker.io/library/eclipse-temurin:17-jre-jammy@sha256:aa6381384f8db99762fa7d0d3c2b5de58874e5f12c96df4c13a1455376ae0ed1
+#18 DONE 0.0s
+
+#19 [protys-backend internal] load build context
+#19 transferring context: 209.40kB 0.0s done
+#19 DONE 0.1s
+
+#20 [protys-fuseki builder 2/7] WORKDIR /opt/protys
+#20 CACHED
+
+#21 [protys-fuseki builder 3/7] COPY backend/ backend/
+#21 DONE 0.6s
+
+#22 [protys-backend builder 4/7] COPY research/runtime/ research/runtime/
+#22 DONE 0.1s
+
+#23 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#23 0.170 research/runtime/vendor/owlapi-parent-4.5.27.pom: OK
+#23 DONE 73.8s
+
+#24 [protys-fuseki builder 6/7] RUN set -eu; for artifact in log4j-api log4j-core log4j-slf4j-impl; do       mvn -q -f research/runtime/validator/pom.xml dependency:copy         -Dartifact="org.apache.logging.log4j:$artifact:2.21.0"         -DoutputDirectory=/opt/protys/research/runtime/validator/target/fuseki-dependency;     done;     { tr ':' '\n' < research/runtime/validator/target/classpath.txt | sed '/\/slf4j-simple-/d';       find /opt/protys/research/runtime/validator/target/fuseki-dependency -name '*.jar'; }       | LC_ALL=C sort | paste -sd: - > research/runtime/validator/target/fuseki-classpath.txt
+#24 DONE 4.7s
+
+#25 [protys-fuseki builder 7/7] RUN java -Djava.awt.headless=true       -cp "research/runtime/swrl-worker/target/classes:$(cat research/runtime/swrl-worker/target/classpath.txt)"       org.protys.research.SwrlSmokeTest research/runtime/swrl-worker/target/docker-smoke.json  && java -Djava.awt.headless=true       -cp "research/runtime/validator/target/classes:$(cat research/runtime/validator/target/fuseki-classpath.txt)"       org.apache.jena.fuseki.main.cmds.FusekiMainCmd --help  && mvn -q -f backend/pom.xml package -DskipTests
+#25 6.947 fuseki [--config=FILE] [--mem|--desc=AssemblerFile|--file=FILE] [--port PORT] /DatasetPathName
+#25 6.947   Fuseki Main
+#25 6.947       --mem                  Create an in-memory, non-persistent dataset for the server
+#25 6.947       --file=FILE            Create an in-memory, non-persistent dataset for the server, initialised with the contents of the file
+#25 6.947       --tdb2                 Use TDB2 for command line persistent datasets
+#25 6.947       --tdb1                 Use TDB1 for command line persistent datasets (default is TDB2)
+#25 6.947       --loc=DIR              Use an existing TDB database (or create if does not exist)
+#25 6.947       --memTDB               Create an in-memory, non-persistent dataset using TDB (testing only)
+#25 6.947       --rdfs=FILE            Apply RDFS on top of the dataset
+#25 6.947       --config=FILE          Use a configuration file to determine the services
+#25 6.947       --desc=                Assembler description file
+#25 6.947       --port                 Listen on this port number
+#25 6.947       --localhost            Listen only on the localhost interface
+#25 6.947       --timeout=             Global timeout applied to queries (value in ms) -- format is X[,Y] 
+#25 6.947       --update               Allow updates (via SPARQL Update and SPARQL HTTP Update)
+#25 6.947       --gzip=on|off          Enable GZip compression (HTTP Accept-Encoding) if request header set
+#25 6.947       --base=DIR             Directory for static content
+#25 6.947       --pathBase=DIR         Context path for datasets
+#25 6.947       --sparqler=DIR         Run with SPARQLer services Directory for static content
+#25 6.947       --validators           Install validators
+#25 6.947       --general=PATH         Add a general SPARQL endpoint (without a dataset) at /PATH
+#25 6.947       --auth=[basic|digest]   Run the server using basic or digest authentication
+#25 6.947       --https=CONF           https certificate access details. JSON file { "cert":FILE , "passwd"; SECRET } 
+#25 6.947       --httpsPort=NUM        https port (default port is 3043)
+#25 6.947       --passwd=FILE          Password file
+#25 6.947       --jetty=FILE           jetty.xml server configuration
+#25 6.947       --no-cors              Disable CORS
+#25 6.947       --ping                 Enable /$/ping
+#25 6.947       --stats                Enable /$/stats
+#25 6.947       --metrics              Enable /$/metrics
+#25 6.947       --compact              Enable /$/compact/*
+#25 6.947       --modules=true|false   Enable Fuseki modules
+#25 6.947   Symbol definition
+#25 6.947       --set                  Set a configuration symbol to a value
+#25 6.947   General
+#25 6.947       -v   --verbose         Verbose
+#25 6.947       -q   --quiet           Run with minimal output
+#25 6.947       --debug                Output information for debugging
+#25 6.947       --help
+#25 6.947       --version              Version information
+#25 6.947       --strict               Operate in strict SPARQL mode (no extensions of any kind)
+#25 DONE 42.3s
+
+#26 [protys-backend runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#26 CACHED
+
+#27 [protys-backend runtime  3/11] WORKDIR /opt/protys
+#27 CACHED
+
+#28 [protys-backend runtime  4/11] COPY --from=builder /opt/protys/backend/target/protys-ws-*.jar backend/app.jar
+#28 DONE 0.1s
+
+#26 [protys-fuseki runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#26 CACHED
+
+#27 [protys-fuseki runtime  3/11] WORKDIR /opt/protys
+#27 CACHED
+
+#29 [protys-fuseki runtime  5/11] COPY --from=builder /opt/protys/research/runtime/ research/runtime/
+#29 DONE 0.1s
+
+#30 [protys-fuseki runtime  6/11] COPY ontologies/ ontologies/
+#30 DONE 0.1s
+
+#31 [protys-backend runtime  7/11] COPY research/catalog.json research/catalog.json
+#31 DONE 0.1s
+
+#32 [protys-backend runtime  8/11] COPY research/model/ research/model/
+#32 DONE 0.2s
+
+#33 [protys-fuseki runtime  9/11] COPY research/data/ research/data/
+#33 DONE 0.3s
+
+#34 [protys-backend runtime 10/11] COPY docker/fuseki-config.ttl docker/fuseki-config.ttl
+#34 DONE 0.0s
+
+#35 [protys-backend runtime 11/11] WORKDIR /opt/protys/backend
+#35 DONE 0.0s
+
+#36 [protys-backend] exporting to image
+#36 exporting layers
+#36 exporting layers 0.2s done
+#36 writing image sha256:e22502431a1293ed9b0a784305cb8ff329abad05efd5e3aa3059cdc42a6c2d35 done
+#36 naming to docker.io/library/protys-e2e-backend:maintenance done
+#36 DONE 0.2s
+
+#37 [protys-fuseki] exporting to image
+#37 exporting layers 0.2s done
+#37 writing image sha256:a455763868f7ee30c67cb6ecaddb297b6dd961f569f03dc855ee81b5b81b0d5d done
+#37 naming to docker.io/library/protys-e2e-backend:maintenance done
+#37 DONE 0.2s
+
+#38 [protys-fuseki] resolving provenance for metadata file
+#38 DONE 0.0s
+
+#39 [protys-backend] resolving provenance for metadata file
+#39 DONE 0.0s
+ Image protys-e2e-backend:maintenance Built 
+ Image protys-e2e-backend:maintenance Built 
+ Image protys-erp-adempiere-db:3.9.4 Built 
+ Volume protys-e2e_postgres-data Creating 
+ Volume protys-e2e_postgres-data Creating 
+ Network protys-e2e_protys-network Creating 
+ Volume protys-e2e_adempiere-db-data Creating 
+ Volume protys-e2e_odoo-db-data Creating 
+ Volume protys-e2e_odoo-db-data Creating 
+ Network protys-e2e_protys-network Creating 
+ Volume protys-e2e_adempiere-db-data Creating 
+ Volume protys-e2e_fuseki-data Creating 
+ Volume protys-e2e_fuseki-data Creating 
+ Volume protys-e2e_postgres-data Created 
+ Volume protys-e2e_postgres-data Created 
+ Volume protys-e2e_odoo-db-data Created 
+ Volume protys-e2e_odoo-db-data Created 
+ Volume protys-e2e_fuseki-data Created 
+ Volume protys-e2e_fuseki-data Created 
+ Volume protys-e2e_adempiere-db-data Created 
+ Volume protys-e2e_adempiere-db-data Created 
+ Network protys-e2e_protys-network Created 
+ Network protys-e2e_protys-network Created 
+ Container protys-e2e-adempiere-db-1 Creating 
+ Container protys-e2e-protys-fuseki-1 Creating 
+ Container protys-e2e-protys-postgres-1 Creating 
+ Container protys-e2e-odoo-db-1 Creating 
+ Container protys-e2e-protys-postgres-1 Created 
+ Container protys-e2e-adempiere-db-1 Created 
+ Container protys-e2e-odoo-db-1 Created 
+ Container protys-e2e-protys-fuseki-1 Created 
+ Container protys-e2e-protys-backend-1 Creating 
+ Container protys-e2e-protys-backend-1 Created 
+ Container protys-e2e-protys-fuseki-1 Starting 
+ Container protys-e2e-adempiere-db-1 Starting 
+ Container protys-e2e-protys-postgres-1 Starting 
+ Container protys-e2e-odoo-db-1 Starting 
+ Container protys-e2e-odoo-db-1 Started 
+ Container protys-e2e-protys-fuseki-1 Started 
+ Container protys-e2e-protys-postgres-1 Started 
+ Container protys-e2e-protys-postgres-1 Waiting 
+ Container protys-e2e-protys-fuseki-1 Waiting 
+ Container protys-e2e-adempiere-db-1 Started 
+ Container protys-e2e-protys-fuseki-1 Healthy 
+ Container protys-e2e-protys-postgres-1 Healthy 
+ Container protys-e2e-protys-backend-1 Starting 
+ Container protys-e2e-protys-backend-1 Started 
+ Container protys-e2e-protys-fuseki-1 Waiting 
+ Container protys-e2e-protys-postgres-1 Waiting 
+ Container protys-e2e-odoo-db-1 Waiting 
+ Container protys-e2e-protys-backend-1 Waiting 
+ Container protys-e2e-adempiere-db-1 Waiting 
+ Container protys-e2e-odoo-db-1 Healthy 
+ Container protys-e2e-protys-postgres-1 Healthy 
+ Container protys-e2e-protys-fuseki-1 Healthy 
+ Container protys-e2e-protys-backend-1 Healthy 
+ Container protys-e2e-adempiere-db-1 Healthy 

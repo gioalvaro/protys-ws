@@ -1,0 +1,18 @@
+{
+  "id" : "1cc87bb3-3342-4ce2-9100-a320cead3239",
+  "name" : "odoo-demo",
+  "type" : "ODOO",
+  "jdbcUrl" : "jdbc:postgresql://odoo-db:5432/odoo",
+  "username" : "protys_ro",
+  "databaseName" : "odoo",
+  "namedGraph" : "http://w3id.org/protys/erp/odoo",
+  "r2rmlMappingPath" : "/opt/protys/integration/mappings/odoo.r2rml.ttl",
+  "status" : "REGISTERED",
+  "lastMaterializationAt" : null,
+  "tripleCount" : null,
+  "materializationTimeMs" : null,
+  "active" : true,
+  "createdAt" : "2026-11-18T14:38:47.019362",
+  "updatedAt" : "2026-11-18T14:38:47.019396",
+  "hasPassword" : true
+}

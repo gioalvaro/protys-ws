@@ -1,0 +1,788 @@
+{
+  "sparqlJson" : {
+    "head" : {
+      "vars" : [ "g", "plan", "planName", "resource", "resourceName", "via" ]
+    },
+    "results" : {
+      "bindings" : [ {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50009"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Furniture Set"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50005"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Furniture Plant"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "assignsResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50009"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Furniture Set"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50001"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50005"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Furniture Plant"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "assignsResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50001"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50002"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Paint Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50003"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Chrome Subcontract Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50004"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Inspection Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50025"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Patio Chair"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50008"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Dry Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50005"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Furniture Plant"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "assignsResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50007"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Mixed Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50038"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50009"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Inspection Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50087"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #50"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50000"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Plant"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "assignsResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50087"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #50"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50006"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Packing Production Line"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50089"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #70"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50000"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Plant"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "assignsResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50089"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Fertilizer #70"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50006"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Packing Production Line"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50000"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Plant"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "assignsResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50007"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Mixed Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/plan/50091"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Lawn Fertilizer"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/adempiere/resource/50009"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Fertilizer Inspection Area"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/2"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/38"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Table Top"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "hasInput"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/2"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/product/39"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Table Leg"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "hasInput"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/2"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/3"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Table Top"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/8"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Drawer SEC-ASSEM"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/1"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Assembly Line 1"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      }, {
+        "g" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo"
+        },
+        "plan" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/plan/8"
+        },
+        "planName" : {
+          "type" : "literal",
+          "value" : "Plan Drawer SEC-ASSEM"
+        },
+        "resource" : {
+          "type" : "uri",
+          "value" : "http://w3id.org/protys/erp/odoo/workcenter/2"
+        },
+        "resourceName" : {
+          "type" : "literal",
+          "value" : "Drill Station 1"
+        },
+        "via" : {
+          "type" : "literal",
+          "value" : "requiresResource"
+        }
+      } ]
+    }
+  },
+  "queryText" : "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX prod: <http://w3id.org/protys/ontology/product#>\nPREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n# P2 Recursos para ejecutar un plan de proceso X.\n# Variante de Q02: Q02 parte de un lote (i:Lot) y usa t:hasPlan/t:planProduces, que no existen en los\n# datos ERP (sin lotes) ni en ontologies/. Acá: recursos requeridos por las operaciones del plan,\n# más el recurso que el plan asigna (i:assignsResource, la planta en ADempiere).\nSELECT DISTINCT ?g ?plan ?planName ?resource ?resourceName ?via\nWHERE {\n  GRAPH ?g {\n    ?plan a i:ProcessPlan .\n    { ?plan i:includesActivity ?op . ?op i:requiresResource ?resource . BIND(\"requiresResource\" AS ?via) }\n    UNION { ?plan i:includesActivity ?op . ?op i:hasInput ?resource . BIND(\"hasInput\" AS ?via) }\n    UNION { ?plan i:assignsResource ?resource . BIND(\"assignsResource\" AS ?via) }\n  }\n  FILTER(STRSTARTS(STR(?g), \"http://w3id.org/protys/erp/\"))\n  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }\n  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }\n}\nORDER BY ?g ?plan ?via ?resource\n",
+  "executedAt" : "2026-11-18T14:38:57.062326147Z",
+  "columns" : null,
+  "rows" : null,
+  "results" : [ {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50005",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Furniture Set",
+    "resourceName" : "Furniture Plant",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50009",
+    "via" : "assignsResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50001",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Furniture Set",
+    "resourceName" : "Assembly Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50009",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50005",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "resourceName" : "Furniture Plant",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "via" : "assignsResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50001",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "resourceName" : "Assembly Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50002",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "resourceName" : "Paint Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50003",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "resourceName" : "Chrome Subcontract Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50004",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "resourceName" : "Inspection Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50008",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Patio Chair",
+    "resourceName" : "Dry Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50025",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50005",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "resourceName" : "Furniture Plant",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50038",
+    "via" : "assignsResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50007",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "resourceName" : "Mixed Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50038",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50009",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "resourceName" : "Fertilizer Inspection Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50038",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50000",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #50",
+    "resourceName" : "Fertilizer Plant",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50087",
+    "via" : "assignsResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50006",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #50",
+    "resourceName" : "Packing Production Line",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50087",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50000",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #70",
+    "resourceName" : "Fertilizer Plant",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50089",
+    "via" : "assignsResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50006",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Fertilizer #70",
+    "resourceName" : "Packing Production Line",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50089",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50000",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "resourceName" : "Fertilizer Plant",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50091",
+    "via" : "assignsResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50007",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "resourceName" : "Mixed Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50091",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/adempiere/resource/50009",
+    "g" : "http://w3id.org/protys/erp/adempiere",
+    "planName" : "Plan Lawn Fertilizer",
+    "resourceName" : "Fertilizer Inspection Area",
+    "plan" : "http://w3id.org/protys/erp/adempiere/plan/50091",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/odoo/product/38",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Table",
+    "resourceName" : "Table Top",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/2",
+    "via" : "hasInput"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/odoo/product/39",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Table",
+    "resourceName" : "Table Leg",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/2",
+    "via" : "hasInput"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Table",
+    "resourceName" : "Assembly Line 1",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/2",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Table Top",
+    "resourceName" : "Assembly Line 1",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/3",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/1",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Drawer SEC-ASSEM",
+    "resourceName" : "Assembly Line 1",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/8",
+    "via" : "requiresResource"
+  }, {
+    "resource" : "http://w3id.org/protys/erp/odoo/workcenter/2",
+    "g" : "http://w3id.org/protys/erp/odoo",
+    "planName" : "Plan Drawer SEC-ASSEM",
+    "resourceName" : "Drill Station 1",
+    "plan" : "http://w3id.org/protys/erp/odoo/plan/8",
+    "via" : "requiresResource"
+  } ],
+  "constructResult" : null,
+  "askResult" : null,
+  "executionTimeMs" : 15,
+  "resultCount" : 24,
+  "truncated" : false
+}
