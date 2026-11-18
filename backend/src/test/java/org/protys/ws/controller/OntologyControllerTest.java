@@ -164,6 +164,19 @@ class OntologyControllerTest {
                 .andExpect(jsonPath("$", hasSize(0)));
     }
 
+    @Test
+    void unModuloInexistenteDa404ConMensaje() throws Exception {
+        UUID moduleId = UUID.randomUUID();
+        when(ontologyService.getClassHierarchy(moduleId)).thenThrow(new org.protys.ws.exception.ModuleNotFoundException(moduleId));
+        when(ontologyService.validateDetailed(moduleId)).thenThrow(new org.protys.ws.exception.ModuleNotFoundException(moduleId));
+        mockMvc.perform(get("/api/ontology/modules/{id}/classes", moduleId))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error").value("Module not found: " + moduleId));
+        mockMvc.perform(post("/api/ontology/modules/{id}/validate", moduleId))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error").value("Module not found: " + moduleId));
+    }
+
     /**
      * Test POST /api/ontology/modules/{id}/validate with consistent module.
      */

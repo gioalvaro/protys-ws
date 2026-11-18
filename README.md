@@ -12,6 +12,9 @@ El trabajo técnico posterior (noviembre de 2026, rama `trabajo-tecnico-2026-11`
 |---|---|
 | [`erp/INFORME.md`](research/integration/erp/INFORME.md) | Conexión en sólo lectura con ADempiere y Odoo, materialización R2RML, razonamiento y P1–P5 con datos de los dos ERP |
 | [`explorador/README.md`](research/integration/explorador/README.md) | El explorador de clases abre el catálogo integrado completo (128 clases) |
+| [`revision-2026-11-18/README.md`](research/integration/revision-2026-11-18/README.md) | Correcciones de la revisión externa de la rama, con la salida que respalda cada una |
+
+Las 128 clases nombradas del catálogo integrado son las 87 de los ocho módulos de `ontologies/` (core, product, process, resource, enterprise, ISO 15531, ISO 14040 y alignment), más 30 de la extensión del caso de pintura y 11 de los tres perfiles de investigación (`research/model/*-profile.owl`). Cálculo en [`clases-catalogo.txt`](research/integration/revision-2026-11-18/salidas/clases-catalogo.txt).
 | [`asistente/README.md`](research/integration/asistente/README.md) | El asistente incorpora el piloto ISO 10303 (fragmento AP242, datos y reglas R27–R29) por API e interfaz, con el mismo resultado que la configuración `h3_extended`; la plataforma se reinicia conservando lo incorporado |
 
 Desarrollado como parte de la tesis doctoral:
@@ -152,7 +155,7 @@ docker compose -p protys -f docker/docker-compose.yml up -d --build --wait proty
 # Interfaz en http://127.0.0.1:18081 · API en http://127.0.0.1:18080/api
 ```
 
-`protys-init` carga el catálogo integrado (módulo canónico y 22 reglas SWRL) por la API. Para incorporar además el piloto ISO 10303 con el asistente, por la API: `research/integration/asistente/incorporar.sh`; o desde la interfaz, en **Wizard**. Al volver a levantar la plataforma, `protys-init` conserva lo que la plataforma registró por su API: módulos incorporados, reglas, grafos ERP y sesiones del asistente. Rechaza datos ajenos y cambios en lo canónico (`research/integration/asistente/reiniciar.sh` lo comprueba). Para empezar de cero se borran sólo los volúmenes `protys_fuseki-data` y `protys_postgres-data`.
+`protys-init` carga el catálogo integrado (módulo canónico y 22 reglas SWRL: las de los 26 mecanismos R01–R26 que se expresan en SWRL; R07, R16, R19 y R26 son patrones SPARQL ASK) por la API. Para incorporar además el piloto ISO 10303 con el asistente, por la API: `research/integration/asistente/incorporar.sh`; o desde la interfaz, en **Wizard**. Al volver a levantar la plataforma, `protys-init` conserva lo que la plataforma registró por su API: módulos incorporados, reglas, grafos ERP y sesiones del asistente. Rechaza datos ajenos y cambios en lo canónico (`research/integration/asistente/reiniciar.sh` lo comprueba). Para empezar de cero se borran sólo los volúmenes `protys_fuseki-data` y `protys_postgres-data`.
 
 ### Paquete académico reproducible
 
@@ -271,9 +274,9 @@ El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ej
 ```bash
 ./research/reproduce.sh --prepare-only
 cd backend
-./mvnw test                                   # 248 pruebas, 3 salteadas (ver abajo)
-cd ../frontend && npm test -- --watchAll=false  # 74 pruebas
-cd .. && python3 -m unittest discover -s scripts/tests            # 23 pruebas, incluye la carga inicial
+./mvnw test                                   # 254 pruebas, 3 salteadas (ver abajo)
+cd ../frontend && npm test -- --watchAll=false  # 75 pruebas
+cd .. && python3 -m unittest discover -s scripts/tests            # 24 pruebas, incluye la carga inicial
 python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
 
 # Sólo lectura de la conexión ERP contra un PostgreSQL desechable (las 3 salteadas de arriba)
@@ -287,13 +290,24 @@ research/integration/revision-2026-11-18/solo-lectura.sh
 ./mvnw test -Dtest=ERPConnectorServiceTest
 ```
 
-Corrida del 2026-11-18, con la salida completa de cada suite: backend 248 pruebas, 0 fallas, 3 salteadas
+Corrida final del 2026-11-18 (con todas las correcciones de la revisión): backend 254 pruebas, 0 fallas,
+3 salteadas (`research/integration/revision-2026-11-18/salidas/backend-pruebas-final.txt`); interfaz 75 de 75 (`research/integration/revision-2026-11-18/salidas/frontend-pruebas-final.txt`); build
+igual que abajo (`research/integration/revision-2026-11-18/salidas/frontend-build-final.txt`); scripts 24 de 24 (`research/integration/revision-2026-11-18/salidas/scripts-pruebas-final.txt`);
+evaluación 16 de 16 (`research/integration/revision-2026-11-18/salidas/evaluacion-pruebas-final.txt`).
+
+Corrida del 2026-11-18 con los arreglos 1–5 de la revisión, con la salida completa de cada suite: backend 248 pruebas, 0 fallas, 3 salteadas
 (`research/integration/revision-2026-11-18/salidas/backend-pruebas.txt`); interfaz 74 de 74 (`research/integration/revision-2026-11-18/salidas/frontend-pruebas.txt`); `CI=true npm run build`
 compila sin advertencias del compilador, aunque Node muestra un aviso de obsolescencia (`fs.F_OK`) de
 la herramienta de build (`research/integration/revision-2026-11-18/salidas/frontend-build.txt`); scripts 23 de 23 (`research/integration/revision-2026-11-18/salidas/scripts-pruebas.txt`);
 evaluación 16 de 16 (`research/integration/revision-2026-11-18/salidas/evaluacion-pruebas.txt`). Las 3 salteadas son
 `ERPReadOnlyConnectionIntegrationTest`, que necesita un PostgreSQL desechable y corre con `solo-lectura.sh`
 (`research/integration/revision-2026-11-18/salidas/solo-lectura-pgjdbc.txt`: 3 de 3).
+
+## Límites del prototipo
+
+- **API sin autenticación.** `SecurityConfig` deja abierto `/api/**`. Docker Compose publica todos los puertos sólo en `127.0.0.1`; la plataforma no está pensada para exponerse en una red.
+- **Ruta del mapeo leída del servidor.** Un conector ERP guarda `r2rmlMappingPath`, una ruta de archivo dentro del contenedor del backend, y el servicio lo lee de ahí. Quien registra un conector elige qué archivo del servidor se lee.
+- **Contraseña del conector en texto plano.** Se guarda tal cual en PostgreSQL (la API no la devuelve: es de sólo escritura en el JSON). Las credenciales del entorno de prueba son de demostración (`docker/integration/.env.example`).
 
 ## Stack tecnológico
 

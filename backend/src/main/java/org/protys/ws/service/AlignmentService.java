@@ -55,6 +55,10 @@ public class AlignmentService {
     /**
      * Loads alignment rules (SWRL rules) from an OWL file.
      *
+     * <p>Una regla nueva se registra activa. Una regla que ya estaba registrada actualiza su texto y su
+     * descripción, pero conserva su fecha de creación y su estado: recargar no reactiva una regla
+     * desactivada. La respuesta trae cada regla con su estado.
+     *
      * @param rulesFile the MultipartFile containing SWRL rules
      * @return List of loaded AlignmentRule entities
      * @throws ProtysMappingException if parsing fails
@@ -79,13 +83,16 @@ public class AlignmentService {
                 Resource ruleResource = stmt.getSubject();
 
                 AlignmentRule rule = alignmentRuleRepository.findByRuleId(ruleResource.getLocalName()).orElseGet(AlignmentRule::new);
+                boolean isNew = rule.getId() == null;
                 rule.setRuleId(ruleResource.getLocalName());
                 rule.setRuleType(AlignmentRule.RuleType.INFERENCE);
                 rule.setName(ruleResource.getLocalName());
                 rule.setSwrlExpression(SwrlText.of(ruleResource));
                 rule.setDescription(SwrlText.description(ruleResource));
-                rule.setActive(true);
-                rule.setCreatedAt(LocalDateTime.now());
+                if (isNew) {
+                    rule.setActive(true);
+                    rule.setCreatedAt(LocalDateTime.now());
+                }
                 rule.setUpdatedAt(LocalDateTime.now());
 
                 rules.add(rule);
@@ -143,12 +150,10 @@ public class AlignmentService {
             if(modules.isEmpty())throw new ProtysFusekiException("NOT_EVALUATED: no registered ontology modules");
             Model combinedModel = ModelFactory.createDefaultModel();
 
-            long inputTriples = 0;
             for (OntologyModule module : modules) {
                 Model moduleModel = fusekiService.getModel(module.getNamedGraph());
                 if(moduleModel.isEmpty())throw new ProtysFusekiException("NOT_EVALUATED: required module graph is empty: "+module.getName());
                 combinedModel.add(withoutRuleDefinitions(moduleModel));
-                inputTriples += moduleModel.size();
             }
 
             List<String> graphs = dataGraphs == null ? List.of() : List.copyOf(dataGraphs);
@@ -163,7 +168,7 @@ public class AlignmentService {
             stats.setDataGraphs(graphs);
 
             combinedModel.add(fusekiService.getModel("http://w3id.org/protys/ontology/active-rule-definitions"));
-            inputTriples = combinedModel.size();
+            long inputTriples = combinedModel.size();
             stats.setInputTripleCount((int) inputTriples);
             log.debug("Combined model contains {} triples from {} modules",
                     inputTriples, modules.size());

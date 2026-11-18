@@ -146,5 +146,15 @@ class VerifyExistingTests(unittest.TestCase):
         self.assert_rejected("Stored asserted sources or rule definitions changed")
 
 
+class RuleIdTests(unittest.TestCase):
+    def test_nombre_local_igual_que_jena(self):
+        # Resultados de Resource.getLocalName() de Jena 4.10 para los mismos IRIs.
+        for iri, local in (("http://w3id.org/protys/ontology/alignment#R01", "R01"),
+                           ("http://e.org/rules/R27", "R27"),
+                           ("http://e.org/x/123abc", "abc"),
+                           ("urn:protys:R30", "R30")):
+            self.assertEqual(local, lc.rule_id(URIRef(iri)))
+
+
 if __name__ == "__main__":
     unittest.main()

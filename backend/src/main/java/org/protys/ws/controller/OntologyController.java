@@ -69,10 +69,12 @@ public class OntologyController {
 
     @GetMapping("/modules/{id}/classes")
     @Operation(summary = "Get class hierarchy", description = "Lista de clases raíz del módulo, cada una con sus subclases (campo subclasses). Lista vacía si el módulo no tiene clases.")
-    public ResponseEntity<List<OntologyClassDTO>> getClassHierarchy(@PathVariable UUID id) {
+    public ResponseEntity<?> getClassHierarchy(@PathVariable UUID id) {
         log.info("Fetching class hierarchy for module: {}", id);
         try {
             return ResponseEntity.ok(ontologyService.getClassHierarchy(id));
+        } catch (org.protys.ws.exception.ModuleNotFoundException missing) {
+            return notFound(missing);
         } catch (Exception e) {
             log.error("Error retrieving class hierarchy", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -145,13 +147,15 @@ public class OntologyController {
 
     @PostMapping("/modules/{id}/validate")
     @Operation(summary = "Validate ontology consistency", description = "Trigger ontology consistency validation using a reasoner")
-    public ResponseEntity<Map<String, Object>> validateModule(@PathVariable UUID id) {
+    public ResponseEntity<?> validateModule(@PathVariable UUID id) {
         log.info("Validating module: {}", id);
         try {
             var validation=ontologyService.validateDetailed(id);
             Map<String,Object> result=new java.util.LinkedHashMap<>();result.put("moduleId",id.toString());result.put("status",validation.getValidationStatus());result.put("consistent",validation.getValidationStatus().equals("NOT_EVALUATED")?null:validation.isConsistent());result.put("cacheHit",validation.isCacheHit());result.put("reasoningTimeMs",validation.getReasoningTimeMs());result.put("error",validation.getErrorMessage());result.put("cleaningEvaluation",validation.getCleaningEvaluation());result.put("contextEvaluation",validation.getContextEvaluation());result.put("numericEvaluation",validation.getNumericEvaluation());result.put("owlValidationStatus",validation.getOwlValidationStatus());
             log.debug("Module validation completed");
             return ResponseEntity.ok(result);
+        } catch (org.protys.ws.exception.ModuleNotFoundException missing) {
+            return notFound(missing);
         } catch (Exception e) {
             log.error("Error validating module", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
@@ -159,6 +163,10 @@ public class OntologyController {
     }
 
     // Helper Methods
+
+    private static ResponseEntity<Map<String, Object>> notFound(org.protys.ws.exception.ModuleNotFoundException missing) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", missing.getMessage()));
+    }
 
     private boolean isValidOwlFile(String filename) {
         return filename != null && (filename.endsWith(".owl") || filename.endsWith(".rdf") || filename.endsWith(".ttl"));

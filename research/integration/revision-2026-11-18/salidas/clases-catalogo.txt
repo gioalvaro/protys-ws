@@ -1,0 +1,17 @@
+# 2026-11-18T03:41:40Z, Python 3.9.6, rdflib 7.6.0
+$ python3 research/integration/revision-2026-11-18/contar-clases.py
+ontologies/core-concepts.owl: 4
+ontologies/product-module.owl: 11
+ontologies/process-module.owl: 8
+ontologies/resource-module.owl: 15
+ontologies/enterprise-module.owl: 5
+ontologies/iso15531-module.owl: 18
+ontologies/iso14040-module.owl: 15
+ontologies/alignment-rules.owl: 11
+ocho módulos de ontologies/: 87 clases nombradas distintas
++ research/model/research-profile.owl: 9
++ research/model/manufacturing-profile.owl: 1
++ research/model/environmental-profile.owl: 1
++ ontologies/paint-case-extension.owl: 30
++ research/data/functional.ttl: 0
+catálogo integrado: 128 clases nombradas distintas

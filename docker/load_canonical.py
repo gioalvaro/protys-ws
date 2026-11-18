@@ -120,7 +120,7 @@ def prepare():
         if relative in config["rules_paths"]:
             rules += parsed
         sources.append({"path": relative, "sha256": hashlib.sha256(source.read_bytes()).hexdigest()})
-    rule_ids = sorted(str(rule).rsplit("#", 1)[-1] for rule in rules.subjects(RDF.type, SWRL.Imp))
+    rule_ids = sorted(rule_id(rule) for rule in rules.subjects(RDF.type, SWRL.Imp))
     if len(rule_ids) != 22 or len(set(rule_ids)) != 22:
         raise RuntimeError("Canonical bootstrap requires exactly22distinct SWRL rules")
     manifest = {
@@ -146,8 +146,16 @@ def existing_marker():
     return json.loads(bindings[0]["manifest"]["value"])
 
 
+# Nombre local como Resource.getLocalName() de Jena, que es lo que el backend guarda como ruleId: el
+# sufijo más largo que es un NCName (empieza con letra o guion bajo). Sirve para IRIs con '#' o con '/'.
+LOCAL_NAME = re.compile(r"[^\W\d][\w.\-\u00B7]*$")
+
+
 def rule_id(rule):
-    return str(rule).rsplit("#", 1)[-1]
+    match = LOCAL_NAME.search(str(rule))
+    if not match:
+        raise RuntimeError("SWRL rule IRI without a local name: " + str(rule))
+    return match.group()
 
 
 def rule_definitions(model):

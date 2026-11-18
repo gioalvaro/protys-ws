@@ -118,9 +118,13 @@ public class AlignmentController {
 
     @PostMapping("/reasoning/execute")
     @Operation(summary = "Execute reasoning engine", description = "Trigger the reasoning engine to apply all active alignment rules. Optional body {\"dataGraphs\": [...]} adds ERP connector graphs (under http://w3id.org/protys/erp/) to the reasoned model")
-    public ResponseEntity<InferenceStats> executeReasoning(
+    public ResponseEntity<?> executeReasoning(
             @org.springframework.web.bind.annotation.RequestBody(required = false) Map<String, List<String>> request) {
         log.info("Executing alignment reasoning");
+        if (request != null && request.containsKey("dataGraphs")
+                && (request.get("dataGraphs") == null || request.get("dataGraphs").contains(null))) {
+            return ResponseEntity.badRequest().body(Map.of("error", "dataGraphs must be a list of graph IRIs (null is not allowed)"));
+        }
         try {
             // Cuerpo opcional {"dataGraphs": [...]}: grafos materializados por conectores ERP.
             List<String> dataGraphs = request == null ? List.of() : request.getOrDefault("dataGraphs", List.of());

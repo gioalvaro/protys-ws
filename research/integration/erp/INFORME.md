@@ -44,7 +44,7 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
 | P1–P5 y consulta conjunta | Ver la tabla por pregunta. La consulta conjunta devuelve 10 filas en una respuesta: 8 recursos de ADempiere y 2 de Odoo |
 | Catálogo Q01–Q21 sin y con ERP | Cambian sólo Q04 (+15 filas) y Q20 (+20); las otras 19 dan lo mismo (ver abajo) |
 | Sólo lectura (rol) | `CREATE TABLE` y `DELETE` rechazados para `protys_ro` en los dos ERP |
-| No intrusión | Huellas antes y después idénticas: tablas, columnas, SHA-256 de `information_schema.columns` y permisos de `protys_ro` |
+| No intrusión | Huellas antes y después idénticas: tablas, columnas, SHA-256 de `information_schema.columns` y permisos de `protys_ro`. La huella compara esquema y permisos, no datos: no detectaría un cambio en el contenido de las filas (eso lo impiden el rol y la conexión de sólo lectura) |
 
 ### Sólo lectura: dos garantías distintas (revisión del 2026-11-18)
 

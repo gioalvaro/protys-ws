@@ -129,7 +129,7 @@ public class OntologyService {
         log.debug("Fetching class hierarchy for module: {}", moduleId);
 
         OntologyModule module = ontologyModuleRepository.findById(moduleId)
-                .orElseThrow(() -> new ProtysMappingException("Module not found: " + moduleId));
+                .orElseThrow(() -> new org.protys.ws.exception.ModuleNotFoundException(moduleId));
         Model model = fusekiService.getModel(module.getNamedGraph());
 
         Set<Resource> classes = new HashSet<>();
@@ -415,7 +415,7 @@ public class OntologyService {
      */
     @Transactional(readOnly = true)
     public ReasoningService.ClassificationResult validateDetailed(UUID moduleId) {
-        OntologyModule module=ontologyModuleRepository.findById(moduleId).orElseThrow(()->new ProtysMappingException("Module not found: "+moduleId));
+        OntologyModule module=ontologyModuleRepository.findById(moduleId).orElseThrow(()->new org.protys.ws.exception.ModuleNotFoundException(moduleId));
         Model model=fusekiService.getModel(module.getNamedGraph());
         if (model.isEmpty() && module.getTripleCount()!=null && module.getTripleCount()>0) return ReasoningService.ClassificationResult.builder().consistent(false).validationStatus("NOT_EVALUATED").errorMessage("Registered module graph is missing or empty").deductions(ModelFactory.createDefaultModel()).build();
         return reasoningService.classify(model);

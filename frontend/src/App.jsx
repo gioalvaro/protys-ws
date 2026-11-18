@@ -8,6 +8,7 @@ import {
   ArrowRightIcon,
   CircleStackIcon,
   WrenchIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline';
 import Dashboard from './components/dashboard/Dashboard';
 import OntologyExplorer from './components/explorer/OntologyExplorer';
@@ -16,6 +17,20 @@ import Alignment from './components/alignment/Alignment';
 import ErpIntegration from './components/erp/ErpIntegration';
 import Wizard from './components/wizard/Wizard';
 import { useSystemHealth } from './hooks/useDashboard';
+
+/**
+ * Ícono del botón de navegación. En pantallas angostas la barra abierta tapa el contenido, así que se
+ * muestra una X para cerrarla; en pantallas anchas, donde la barra no tapa nada, siempre el de menú.
+ */
+export function NavToggleIcon({ open }) {
+  if (!open) return <Bars3Icon className="w-5 h-5 text-gray-600" aria-hidden="true" />;
+  return (
+    <>
+      <XMarkIcon data-testid="nav-close" className="w-5 h-5 text-gray-600 lg:hidden" aria-hidden="true" />
+      <Bars3Icon data-testid="nav-menu" className="w-5 h-5 text-gray-600 hidden lg:block" aria-hidden="true" />
+    </>
+  );
+}
 
 const NAVIGATION = [
   {
@@ -152,7 +167,7 @@ function App() {
                 aria-label={sidebarOpen ? 'Hide navigation' : 'Show navigation'}
                 title={sidebarOpen ? 'Hide navigation' : 'Show navigation'}
               >
-                <Bars3Icon className="w-5 h-5 text-gray-600" />
+                <NavToggleIcon open={sidebarOpen} />
               </button>
               <div className="flex items-center gap-2">
                 <h1 className="text-lg font-semibold text-gray-900">{getCurrentPath()}</h1>

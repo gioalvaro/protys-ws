@@ -411,7 +411,7 @@ public final class R2RMLProcessor {
             for (Join j : ref.joins()) {
                 Value c = childRow.get(childTable.resolve(j.child()));
                 Value p = parentRow.get(parentTable.resolve(j.parent()));
-                if (c == null || p == null || c.raw() == null || p.raw() == null || !c.joinKey().equals(p.joinKey())) {
+                if (c == null || p == null || c.raw() == null || p.raw() == null || !c.joins(p)) {
                     match = false;
                     break;
                 }
@@ -432,7 +432,20 @@ public final class R2RMLProcessor {
     // ------------------------------------------------------------------ filas SQL
 
     record Value(Object raw, int sqlType, String lexical) {
-        String joinKey() { return lexical; }
+        /**
+         * Igualdad de claves de join (R2RML §8, igualdad SQL): si las dos son numéricas se comparan por valor
+         * (un INTEGER 8 y un NUMERIC 8.0 son la misma clave); si no, por su forma léxica.
+         */
+        boolean joins(Value other) {
+            if (raw instanceof Number a && other.raw instanceof Number b) {
+                try {
+                    return new BigDecimal(a.toString()).compareTo(new BigDecimal(b.toString())) == 0;
+                } catch (NumberFormatException notFinite) {
+                    return false; // NaN o infinito: nunca es igual en SQL
+                }
+            }
+            return lexical.equals(other.lexical);
+        }
     }
 
     /** Cómo pliega la base los identificadores SQL sin comillas. */
@@ -501,8 +514,15 @@ public final class R2RMLProcessor {
                             + " rows (limit protys.erp.max-rows); nothing was materialized");
                 Map<String, Value> row = new HashMap<>();
                 for (int i = 1; i <= columns.size(); i++) {
-                    Object raw = rs.getObject(i);
                     int type = md.getColumnType(i);
+                    Object raw;
+                    if (type == Types.TIMESTAMP_WITH_TIMEZONE || "timestamptz".equalsIgnoreCase(md.getColumnTypeName(i))) {
+                        // Con zona: se conserva el desplazamiento (pgjdbc informa timestamptz como TIMESTAMP).
+                        raw = rs.getObject(i, java.time.OffsetDateTime.class);
+                        type = Types.TIMESTAMP_WITH_TIMEZONE;
+                    } else {
+                        raw = rs.getObject(i);
+                    }
                     row.put(columns.get(i - 1), new Value(raw, type, raw == null ? null : naturalLexical(raw, type)));
                 }
                 rows.add(row);
@@ -668,7 +688,7 @@ public final class R2RMLProcessor {
             case Types.BOOLEAN, Types.BIT -> XSDDatatype.XSDboolean.getURI();
             case Types.DATE -> XSDDatatype.XSDdate.getURI();
             case Types.TIME -> XSDDatatype.XSDtime.getURI();
-            case Types.TIMESTAMP -> XSDDatatype.XSDdateTime.getURI();
+            case Types.TIMESTAMP, Types.TIMESTAMP_WITH_TIMEZONE -> XSDDatatype.XSDdateTime.getURI();
             case Types.BINARY, Types.VARBINARY, Types.LONGVARBINARY, Types.BLOB -> XSDDatatype.XSDhexBinary.getURI();
             default -> null;
         };
@@ -692,6 +712,10 @@ public final class R2RMLProcessor {
             case Types.TIME -> raw instanceof java.sql.Time t ? t.toLocalTime().format(DateTimeFormatter.ISO_LOCAL_TIME) : raw.toString();
             case Types.TIMESTAMP -> raw instanceof java.sql.Timestamp ts
                     ? ts.toLocalDateTime().format(DateTimeFormatter.ISO_LOCAL_DATE_TIME) : raw.toString().replace(' ', 'T');
+            case Types.TIMESTAMP_WITH_TIMEZONE -> raw instanceof java.time.OffsetDateTime odt
+                    ? odt.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+                    : raw instanceof java.time.ZonedDateTime zdt ? zdt.toOffsetDateTime().format(DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+                    : raw.toString().replace(' ', 'T');
             case Types.BINARY, Types.VARBINARY, Types.LONGVARBINARY, Types.BLOB ->
                     raw instanceof byte[] bytes ? HexFormat.of().withUpperCase().formatHex(bytes) : raw.toString();
             default -> raw.toString();

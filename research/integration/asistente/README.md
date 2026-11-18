@@ -223,7 +223,7 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
 | 5 Completar | HTTP 201: módulo del estándar, módulo de datos y 25 reglas activas |
 | 6a Reglas activas en la plataforma | 25, R27–R29 incluidas, como `h3_extended` |
 | 6b Razonamiento global | `CONSISTENT` → `CONSISTENT`; entrada 4318 → 4662 triples; inferidos 1167 → 1419 |
-| 6c Las 21 consultas del catálogo | idénticas (`06-catalogo-diferencias.md`) |
+| 6c Las 21 consultas del catálogo | idénticas (`06-catalogo-diferencias.md`; ese informe reutiliza el script de la Fase 1, así que sus columnas «sin ERP» y «con ERP» significan antes y después de incorporar, como aclara su encabezado) |
 | 6d Controles `H3_*` | los 8 de g30 iguales a lo esperado después; 4 pasan de `false` a `true` y 4 esperan `false` y ya lo daban antes (`06-controles-H3.md`) |
 
 - **Grafos.** Después de completar no quedan grafos temporales.
@@ -374,6 +374,12 @@ registró el asistente (`salidas/pulido/alineamiento-reglas-swrl.jpg`).
 
 **Evaluación funcional de la tesis** (`reproduce.sh --functional`, en `eclipse-temurin:17-jdk` con Python 3,
 corrida `research/evaluation/runs/20261117T155256Z-…`): **PASS**, 89 grupos de aserciones `CONSISTENT`.
+(Revisión del 2026-11-18: esa corrida no está versionada. `research/evaluation/.gitignore` excluye
+`runs/`, así que quedó sólo en la máquina donde se corrió. Para regenerarla: en
+`eclipse-temurin:17-jdk` con `python3` instalado, `JAVA_HOME=/opt/java/openjdk ./research/reproduce.sh --functional`,
+y después `python3 scripts/comparar_ejecuciones.py research/release/functional.json research/evaluation/runs/<corrida>/functional.json`.
+El identificador de la corrida y sus tiempos cambian; las consultas y las aserciones tienen que dar lo
+mismo.)
 Comparada con `research/release/functional.json` (`salidas/pulido/funcional-vs-release.md`):
 - Consultas, comprobaciones contra respuestas esperadas y aserciones: sin diferencias.
 - Cambian sólo los conteos de triples por configuración: entrada +1 y materializados hasta +36.

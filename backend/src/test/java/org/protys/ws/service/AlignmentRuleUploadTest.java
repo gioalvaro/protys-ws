@@ -29,7 +29,7 @@ class AlignmentRuleUploadTest {
         when(fuseki.getModelOrEmpty(anyString())).thenAnswer(c -> ModelFactory.createDefaultModel().add(graphs.getOrDefault(c.getArgument(0), ModelFactory.createDefaultModel())));
         doAnswer(c -> { graphs.put(c.getArgument(0), ModelFactory.createDefaultModel().add((Model) c.getArgument(1))); return null; }).when(fuseki).putModel(anyString(), any(Model.class));
         when(rules.findByRuleId(anyString())).thenAnswer(c -> Optional.ofNullable(rows.get(c.getArgument(0))));
-        when(rules.saveAll(anyList())).thenAnswer(c -> { List<AlignmentRule> l = c.getArgument(0); l.forEach(r -> rows.put(r.getRuleId(), r)); return l; });
+        when(rules.saveAll(anyList())).thenAnswer(c -> { List<AlignmentRule> l = c.getArgument(0); l.forEach(r -> { if (r.getId() == null) r.setId(UUID.randomUUID()); rows.put(r.getRuleId(), r); }); return l; });
         service = new AlignmentService(fuseki, rules, mock(OntologyModuleRepository.class), mock(ReasoningService.class));
     }
 
@@ -95,5 +95,17 @@ class AlignmentRuleUploadTest {
         service.loadAlignmentRules(new MockMultipartFile("file", "reglas.ttl", "text/turtle", out.toByteArray()));
         assertTrue(has("R28"));
         assertEquals(Set.of("R28"), rows.keySet());
+    }
+
+    @Test void recargarUnaReglaExistenteNoLaReactivaNiCambiaSuFechaDeCreacion() {
+        service.loadAlignmentRules(file(rule("R01", "https://e.org/A", "https://e.org/B")));
+        AlignmentRule r01 = rows.get("R01");
+        java.time.LocalDateTime creada = java.time.LocalDateTime.of(2026, 1, 1, 0, 0);
+        r01.setCreatedAt(creada);
+        r01.setActive(false);
+        var recargadas = service.loadAlignmentRules(file(rule("R01", "https://e.org/A", "https://e.org/B")));
+        assertEquals(creada, rows.get("R01").getCreatedAt());
+        assertFalse(rows.get("R01").getActive());
+        assertFalse(recargadas.get(0).getActive(), "la respuesta muestra el estado conservado");
     }
 }

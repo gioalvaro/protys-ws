@@ -4,6 +4,9 @@
 (`Canonical_Catalog_Integrated`, 128 clases nombradas), muestra la jerarquía completa, la expande y
 muestra el detalle de una clase, sin errores. Antes fallaba con «TypeError: t.filter is not a function».
 
+Las 128 clases nombradas son las 87 de los ocho módulos de `ontologies/`, más 30 de la extensión del caso
+de pintura y 11 de los tres perfiles de investigación (`../revision-2026-11-18/salidas/clases-catalogo.txt`).
+
 ## Qué estaba mal
 1. **Contrato.** `GET /api/ontology/modules/{id}/classes` devolvía un objeto con hijos en `subclasses`.
    `ClassTree.jsx` esperaba una lista con hijos en `children` y llamaba `data.filter(...)`.
