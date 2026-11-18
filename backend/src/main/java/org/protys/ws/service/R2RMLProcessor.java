@@ -42,17 +42,26 @@ import java.util.regex.Pattern;
 /**
  * Procesador R2RML (W3C, 2012) sobre Jena.
  *
- * <p>Implementa el vocabulario completo de R2RML: tablas lógicas ({@code rr:tableName},
+ * <p>Implementa los términos de R2RML: tablas lógicas ({@code rr:tableName},
  * {@code rr:sqlQuery}), mapas de sujeto, predicado, objeto y grafo (constantes, columnas y
  * plantillas), {@code rr:termType}, {@code rr:datatype}, {@code rr:language}, {@code rr:class},
  * mapas de objeto referenciados con {@code rr:joinCondition} y la correspondencia natural de
  * tipos SQL a XSD. {@code rr:inverseExpression} se acepta y no se usa (la especificación lo
  * permite: es una pista de optimización).
  *
- * <p>Restricciones propias de PROTYS-WS, más estrictas que la especificación: una consulta
- * {@code rr:sqlQuery} tiene que ser un único SELECT, y {@code rr:tableName} sólo admite
- * identificadores SQL (con o sin comillas, calificados con esquema). Cualquier término del espacio
- * {@code rr:} que no se reconozca hace fallar el mapeo: nada se ignora en silencio.
+ * <p>Restricciones propias de PROTYS-WS, más estrictas que la especificación:
+ * <ul>
+ *   <li>{@code rr:sqlQuery} pasa por {@link SqlQueryGuard}: una sola consulta {@code SELECT} o
+ *       {@code WITH … SELECT}, sin {@code INTO}, {@code FOR UPDATE/SHARE} ni {@code ;} intermedios. Es un
+ *       control de forma, no de seguridad: la garantía de no escribir la dan la conexión de sólo lectura y
+ *       el rol de la base (ver {@link ERPConnectorService}).</li>
+ *   <li>{@code rr:tableName} sólo admite identificadores SQL (con o sin comillas, calificados con
+ *       esquema).</li>
+ *   <li>Cada consulta tiene tiempo máximo y tope de filas ({@link Limits}); superar el tope es un error,
+ *       nunca se trunca.</li>
+ *   <li>Cualquier término del espacio {@code rr:} que no se reconozca hace fallar el mapeo: nada se ignora
+ *       en silencio.</li>
+ * </ul>
  *
  * <p>Todo el mapeo se valida en {@link #parse} sin tocar la base; {@link #execute} sólo lee.
  */
@@ -74,7 +83,6 @@ public final class R2RMLProcessor {
             "(?:[A-Za-z_][A-Za-z0-9_$]*|\"(?:[^\"]|\"\")+\")(?:\\.(?:[A-Za-z_][A-Za-z0-9_$]*|\"(?:[^\"]|\"\")+\")){0,2}");
     // Etiqueta BCP 47 con subetiqueta primaria ISO 639 (2–3 letras); rechaza "english" (caso R2RMLTC0015b).
     private static final Pattern LANGUAGE_TAG = Pattern.compile("[A-Za-z]{2,3}(-[A-Za-z0-9]{1,8})*");
-    private static final Pattern SELECT_ONLY =Pattern.compile("(?is)^\\s*SELECT\\s+.+");
 
     enum Kind { CONSTANT, COLUMN, TEMPLATE }
     enum TermType { IRI, BLANK, LITERAL }
@@ -187,12 +195,11 @@ public final class R2RMLProcessor {
             if (!TABLE_NAME.matcher(name).matches()) throw unsupported("rr:tableName is not a SQL identifier in " + id);
             return "SELECT * FROM " + name;
         }
-        String sql = literal(query, "rr:sqlQuery", id).trim();
-        if (sql.endsWith(";")) sql = sql.substring(0, sql.length() - 1).trim();
-        if (!SELECT_ONLY.matcher(sql).matches() || sql.contains(";")) {
-            throw unsupported("rr:sqlQuery must be a single SELECT statement in " + id);
+        try {
+            return SqlQueryGuard.check(literal(query, "rr:sqlQuery", id));
+        } catch (SqlQueryGuard.RejectedQuery rejected) {
+            throw unsupported("rr:sqlQuery rejected in " + id + ": " + rejected.getMessage());
         }
-        return sql;
     }
 
     private static PredicateObjectMap parsePom(Model m, Resource pom, Map<Resource, String> ids, String id) {
@@ -317,12 +324,27 @@ public final class R2RMLProcessor {
      * Ejecuta el mapeo y devuelve las cuádruplas generadas. Sólo lee de la conexión.
      * Las consultas de cada tabla lógica se ejecutan una vez.
      */
+    /**
+     * Límites de cada consulta: tiempo máximo en segundos (0 = sin límite, como JDBC) y cantidad máxima de
+     * filas por tabla lógica (superarla es un error, nunca se trunca).
+     */
+    public record Limits(int queryTimeoutSeconds, long maxRows) {
+        public static final Limits DEFAULT = new Limits(60, 500_000);
+        public Limits {
+            if (queryTimeoutSeconds < 0 || maxRows < 1) throw new IllegalArgumentException("invalid query limits");
+        }
+    }
+
     public static DatasetGraph execute(Mapping mapping, Connection connection) throws SQLException {
+        return execute(mapping, connection, Limits.DEFAULT);
+    }
+
+    public static DatasetGraph execute(Mapping mapping, Connection connection, Limits limits) throws SQLException {
         Map<String, TriplesMap> byId = new LinkedHashMap<>();
         for (TriplesMap tm : mapping.triplesMaps()) byId.put(tm.id(), tm);
         Map<String, Table> tables = new HashMap<>();
         try {
-            for (TriplesMap tm : mapping.triplesMaps()) tables.computeIfAbsent(tm.sql(), sql -> query(connection, sql));
+            for (TriplesMap tm : mapping.triplesMaps()) tables.computeIfAbsent(tm.sql(), sql -> query(connection, sql, tm.id(), limits));
         } catch (SqlFailure failure) {
             throw (SQLException) failure.getCause();
         }
@@ -445,8 +467,25 @@ public final class R2RMLProcessor {
         return Fold.NONE;
     }
 
-    private static Table query(Connection connection, String sql) {
-        try (var statement = connection.createStatement(); ResultSet rs = statement.executeQuery(sql)) {
+    private static Table query(Connection connection, String sql, String id, Limits limits) {
+        try (var statement = connection.createStatement()) {
+            statement.setQueryTimeout(limits.queryTimeoutSeconds());
+            // Una fila de más alcanza para saber que se superó el tope sin leer el resto.
+            if (limits.maxRows() < Integer.MAX_VALUE) statement.setMaxRows((int) limits.maxRows() + 1);
+            return read(connection, statement.executeQuery(sql), id, limits);
+        } catch (java.sql.SQLTimeoutException e) {
+            throw new R2RMLDataException("logical table of " + id + " exceeded the query timeout of "
+                    + limits.queryTimeoutSeconds() + " s");
+        } catch (SQLException e) {
+            if ("57014".equals(e.getSQLState())) // PostgreSQL: consulta cancelada por tiempo
+                throw new R2RMLDataException("logical table of " + id + " exceeded the query timeout of "
+                        + limits.queryTimeoutSeconds() + " s");
+            throw new SqlFailure(e);
+        }
+    }
+
+    private static Table read(Connection connection, ResultSet result, String id, Limits limits) throws SQLException {
+        try (ResultSet rs = result) {
             ResultSetMetaData md = rs.getMetaData();
             List<String> columns = new ArrayList<>();
             for (int i = 1; i <= md.getColumnCount(); i++) {
@@ -457,6 +496,9 @@ public final class R2RMLProcessor {
             }
             List<Map<String, Value>> rows = new ArrayList<>();
             while (rs.next()) {
+                if (rows.size() >= limits.maxRows())
+                    throw new R2RMLDataException("logical table of " + id + " returned more than " + limits.maxRows()
+                            + " rows (limit protys.erp.max-rows); nothing was materialized");
                 Map<String, Value> row = new HashMap<>();
                 for (int i = 1; i <= columns.size(); i++) {
                     Object raw = rs.getObject(i);
@@ -466,8 +508,6 @@ public final class R2RMLProcessor {
                 rows.add(row);
             }
             return new Table(List.copyOf(columns), rows, fold(connection));
-        } catch (SQLException e) {
-            throw new SqlFailure(e);
         }
     }
 

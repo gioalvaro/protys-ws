@@ -1,0 +1,67 @@
+# mvn17.sh -q test -Dtest='SqlQueryGuardTest,R2RMLW3CTestSuiteTest,ERPConnector*Test' (eclipse-temurin:17-jdk@sha256:5465815640e1…), 2026-11-18, árbol con el arreglo del hallazgo 3
+Suite W3C RDB2RDF, casos R2RML, sobre H2
+aprobados=63 fallados=0 excluidos=0 total=63
+R2RMLTC0000  APROBADO  one table, one column, zero rows
+R2RMLTC0001a  APROBADO  One column mapping, subject URI generation by using rr:template
+R2RMLTC0001b  APROBADO  One column mapping, generation of a BlankNode subject by using rr:termType
+R2RMLTC0002a  APROBADO  Two columns mapping, generation of a subject URI by the concatenation of two column values
+R2RMLTC0002b  APROBADO  Two columns mapping, generation of a BlankNode subject by using rr:template and rr:termType
+R2RMLTC0002c  APROBADO  error esperado: UNSUPPORTED_MAPPING: column "IDs" not found in logical table
+R2RMLTC0002d  APROBADO  Two columns mapping, generation of a BlankNode subject by using a SQL Query that concatenates two columns
+R2RMLTC0002e  APROBADO  error esperado: Table "Students" not found; SQL statement:
+SELECT * FROM "Students" [42102-224]
+R2RMLTC0002f  APROBADO  error esperado: UNSUPPORTED_MAPPING: column Name not found in logical table
+R2RMLTC0002g  APROBADO  error esperado: UNSUPPORTED_MAPPING: rr:sqlQuery rejected in http://example.com/base/TriplesMap1: only SELECT or WITH … SELECT is allowed, found THIS
+R2RMLTC0002h  APROBADO  error esperado: UNSUPPORTED_MAPPING: duplicate column name ID in logical table
+R2RMLTC0002i  APROBADO  Two columns mapping, SQL Version identifier
+R2RMLTC0002j  APROBADO  Two columns mapping, qualified column names
+R2RMLTC0003a  APROBADO  error esperado: UNSUPPORTED_MAPPING: unknown R2RML term rr:SQL1979
+R2RMLTC0003b  APROBADO  Three columns mapping, concatenation of columns, by using a rr:sqlQuery to produce literal
+R2RMLTC0003c  APROBADO  Three columns mapping, by using a rr:template to produce literal
+R2RMLTC0004a  APROBADO  Two column mapping, from one row table to two different triples
+R2RMLTC0004b  APROBADO  error esperado: UNSUPPORTED_MAPPING: only object maps can generate literals (http://example.com/base/TriplesMap1)
+R2RMLTC0005a  APROBADO  Typing of resources
+R2RMLTC0005b  APROBADO  Default mapping
+R2RMLTC0006a  APROBADO  Long form of R2RML by using rr:constant in rr:subjectMap, rr:predicateMap, rr:objectMap and rr:graphMap
+R2RMLTC0007a  APROBADO  Typing resources by relying on rdf:type predicate
+R2RMLTC0007b  APROBADO  Assigning triples to Named Graphs
+R2RMLTC0007c  APROBADO  One column mapping, using rr:class
+R2RMLTC0007d  APROBADO  One column mapping, specifying an rr:predicateObjectMap with rdf:type
+R2RMLTC0007e  APROBADO  One column mapping, using rr:graphMap and rr:class
+R2RMLTC0007f  APROBADO  One column mapping, using rr:graphMap and specifying an rr:predicateObjectMap with rdf:type
+R2RMLTC0007g  APROBADO  Assigning triples to the default graph
+R2RMLTC0007h  APROBADO  error esperado: UNSUPPORTED_MAPPING: only object maps can generate literals (http://example.com/base/TriplesMap1)
+R2RMLTC0008a  APROBADO  Generation of triples to a target graph by using rr:graphMap and rr:template
+R2RMLTC0008b  APROBADO  Generation of triples referencing object map
+R2RMLTC0008c  APROBADO  Generation of triples by using multiple predicateMaps within a rr:predicateObjectMap
+R2RMLTC0009a  APROBADO  Generation of triples from foreign key relations
+R2RMLTC0009b  APROBADO  Generation of triples to multiple graphs
+R2RMLTC0009c  APROBADO  Unnamed column in a logical table
+R2RMLTC0009d  APROBADO  Named column in logical table
+R2RMLTC0010a  APROBADO  Template with table column with special chars
+R2RMLTC0010b  APROBADO  Template with table columns with special chars
+R2RMLTC0010c  APROBADO  Template with table columns with special chars and backslashes
+R2RMLTC0011a  APROBADO  M to M relation, by using a SQL query
+R2RMLTC0011b  APROBADO  M to M relation, by using an additional Triples Map
+R2RMLTC0012a  APROBADO  Duplicate tuples generate same blank node
+R2RMLTC0012b  APROBADO  Duplicate tuples generate same blank node
+R2RMLTC0012c  APROBADO  error esperado: UNSUPPORTED_MAPPING: triples map http://example.com/base/TriplesMap1 needs exactly one rr:subjectMap or rr:subject
+R2RMLTC0012d  APROBADO  error esperado: UNSUPPORTED_MAPPING: rr:subjectMap appears more than once in http://example.com/base/TriplesMap1
+R2RMLTC0012e  APROBADO  Default mapping
+R2RMLTC0013a  APROBADO  Generation of empty triples from referenced columns that have null values
+R2RMLTC0014a  APROBADO  Subjectmap with rr:inverseExpression
+R2RMLTC0014b  APROBADO  Triplesmaps with rr:inverseExpression and rr:joinCondition
+R2RMLTC0014c  APROBADO  Triplesmaps with rr:inverseExpression, rr:joinCondition, and referencing object maps
+R2RMLTC0014d  APROBADO  three tables, one primary key, one foreign key
+R2RMLTC0015a  APROBADO  Generation of language tags from a table with language information
+R2RMLTC0015b  APROBADO  error esperado: UNSUPPORTED_MAPPING: rr:language is not a valid language tag in http://example.com/base/TriplesMap2
+R2RMLTC0016a  APROBADO  Table with datatypes: string and integer
+R2RMLTC0016b  APROBADO  Table with datatypes: real and float
+R2RMLTC0016c  APROBADO  Table with datatypes: date and timestamp
+R2RMLTC0016d  APROBADO  Table with datatypes, boolean conversions
+R2RMLTC0016e  APROBADO  Table with datatypes, binary column
+R2RMLTC0018a  APROBADO  Generation of triples by using CHAR datatype column
+R2RMLTC0019a  APROBADO  Generation of triples by using IRI value in columns
+R2RMLTC0019b  APROBADO  error esperado: R2RML_DATA_ERROR: invalid IRI generated
+R2RMLTC0020a  APROBADO  Generation of triples by using IRI value in columns
+R2RMLTC0020b  APROBADO  error esperado: R2RML_DATA_ERROR: invalid IRI generated

@@ -51,6 +51,18 @@ public class ERPConnectorService {
     private final ERPConnectorRepository erpConnectorRepository;
     private final DataSource dataSource;
 
+    /** Tiempo máximo de cada consulta de un mapeo, en segundos (0 = sin límite). */
+    @org.springframework.beans.factory.annotation.Value("${protys.erp.query-timeout-seconds:60}")
+    private int queryTimeoutSeconds = R2RMLProcessor.Limits.DEFAULT.queryTimeoutSeconds();
+
+    /** Filas máximas por consulta de un mapeo; superarlas hace fallar la materialización. */
+    @org.springframework.beans.factory.annotation.Value("${protys.erp.max-rows:500000}")
+    private long maxRows = R2RMLProcessor.Limits.DEFAULT.maxRows();
+
+    private R2RMLProcessor.Limits limits() {
+        return new R2RMLProcessor.Limits(queryTimeoutSeconds, maxRows);
+    }
+
     /**
      * Registers a new ERP connector configuration.
      */
@@ -184,7 +196,7 @@ public class ERPConnectorService {
                     // Sin mapas de grafo con nombre (validado en parseR2RML): todo cae en el grafo por defecto,
                     // que se publica en el grafo nombrado del conector.
                     rdfModel.add(ModelFactory.createModelForGraph(
-                            R2RMLProcessor.execute(r2rml, dbConnection).getDefaultGraph()));
+                            R2RMLProcessor.execute(r2rml, dbConnection, limits()).getDefaultGraph()));
                 }
             }
             long tripleCount = rdfModel.size();
@@ -247,15 +259,22 @@ public class ERPConnectorService {
 
         int tripleCount = 0;
 
+        R2RMLProcessor.Limits limits = limits();
         try (Statement stmt = dbConnection.createStatement()) {
             log.debug("Executing {} queries from legacy SQL mapping", sqlQueries.size());
+            stmt.setQueryTimeout(limits.queryTimeoutSeconds());
+            if (limits.maxRows() < Integer.MAX_VALUE) stmt.setMaxRows((int) limits.maxRows() + 1);
 
             for (String sqlQuery : sqlQueries) {
                 try (ResultSet resultSet = stmt.executeQuery(sqlQuery)) {
                     ResultSetMetaData metadata = resultSet.getMetaData();
                     int columnCount = metadata.getColumnCount();
+                    long rows = 0;
 
                     while (resultSet.next()) {
+                        if (++rows > limits.maxRows())
+                            throw new R2RMLProcessor.R2RMLDataException("legacy query returned more than " + limits.maxRows()
+                                    + " rows (limit protys.erp.max-rows); nothing was materialized");
                         String subjectId = resultSet.getString(1);
                         String subjectUri = "http://w3id.org/protys/erp/" + connector.getId() + "/" +
                                 extractTableName(sqlQuery) + "/" + subjectId;
@@ -329,12 +348,12 @@ public class ERPConnectorService {
                         throw unsupportedMapping();
                     }
                 }
-                String query = element.getTextContent().trim();
-                if (!query.matches("(?is)^SELECT\\s+.+") || query.contains(";")) throw unsupportedMapping();
-                queries.add(query);
+                queries.add(SqlQueryGuard.check(element.getTextContent()));
             }
             if (queries.isEmpty()) throw unsupportedMapping();
             return queries;
+        } catch (SqlQueryGuard.RejectedQuery rejected) {
+            throw new ProtysMappingException("UNSUPPORTED_MAPPING: rr:sqlQuery rejected: " + rejected.getMessage());
         } catch (Exception e) {
             throw unsupportedMapping();
         }

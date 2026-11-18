@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: org.protys.ws.service.SqlQueryGuardTest
+-------------------------------------------------------------------------------
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.361 s -- in org.protys.ws.service.SqlQueryGuardTest
+-------------------------------------------------------------------------------
+Test set: org.protys.ws.service.R2RMLW3CTestSuiteTest
+-------------------------------------------------------------------------------
+Tests run: 63, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.297 s -- in org.protys.ws.service.R2RMLW3CTestSuiteTest
