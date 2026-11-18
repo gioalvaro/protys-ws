@@ -135,13 +135,16 @@ public class ERPConnectorService {
      * {@code options=-c default_transaction_read_only=off} con {@code readOnlyMode=ignore}) gana sobre las
      * propiedades de {@link #openReadOnly} y deja la sesión escribiendo (comprobado en salidas/ronda4/). Exige
      * {@code default_transaction_read_only} y {@code transaction_read_only} en {@code on} dentro de la transacción
-     * recién abierta, y la cierra con rollback.
+     * recién abierta, y la cierra con rollback. Lee con {@code pg_catalog.current_setting}, que no se resuelve por
+     * el {@code search_path} que pueda poner la URL (salidas/ronda4b/).
      */
     static void requireReadOnlySession(Connection connection) throws java.sql.SQLException {
         String defaultReadOnly, transactionReadOnly;
         try (Statement statement = connection.createStatement();
-             var rs = statement.executeQuery("SELECT current_setting('default_transaction_read_only'), "
-                     + "current_setting('transaction_read_only')")) {
+             // Calificada con pg_catalog: sin calificar, una función current_setting(text) propia puesta antes
+             // que pg_catalog en el search_path (por options o currentSchema de la URL) contestaría 'on'.
+             var rs = statement.executeQuery("SELECT pg_catalog.current_setting('default_transaction_read_only'), "
+                     + "pg_catalog.current_setting('transaction_read_only')")) {
             rs.next();
             defaultReadOnly = rs.getString(1);
             transactionReadOnly = rs.getString(2);

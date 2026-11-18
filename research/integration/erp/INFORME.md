@@ -59,13 +59,24 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
     pgjdbc 42.6.0 eso no tiene efecto: un `INSERT` con un usuario con permiso de escritura se aceptó.
   - **Ahora** el conector abre la conexión sin autocommit, en sólo lectura y, en PostgreSQL, con
     `default_transaction_read_only=on`; la cierra con rollback.
-  - **La URL del conector no puede deshacerlo.** Un parámetro de la URL gana sobre lo que configura el
-    conector: con `readOnlyMode=ignore&options=-c default_transaction_read_only=off`, un `INSERT` y un
-    `SELECT` de una función que escribe quedaban escritos con un commit explícito
+  - **Una URL que deshace la sólo lectura se rechaza al conectar.** Un parámetro de la URL gana sobre lo
+    que configura el conector: con `readOnlyMode=ignore&options=-c default_transaction_read_only=off`, un
+    `INSERT` y un `SELECT` de una función que escribe quedaban escritos con un commit explícito
     (`../revision-2026-11-18/salidas/ronda4/comprobacion-url.txt`). Por eso, al conectar, el conector
     comprueba que `default_transaction_read_only` y `transaction_read_only` quedaron en `on` y, si no,
-    rechaza la conexión. Mira el estado, no el texto de la URL; se probaron otros parámetros de pgjdbc y
-    `PGOPTIONS`, y ninguno la esquiva (`../revision-2026-11-18/salidas/ronda4/solo-lectura-pgjdbc.txt`).
+    rechaza la conexión. Mira el estado, no el texto de la URL.
+    - La primera versión de esa comprobación leía con `current_setting(...)` sin calificar. Si en la base
+      ya existe una función propia `current_setting(text)` que contesta `on` (condición previa: alguien
+      pudo crearla) y la URL pone su esquema antes que `pg_catalog` en el `search_path` (por `options` o
+      por `currentSchema`), la comprobación leía el valor falso y la conexión abría escribiendo
+      (`../revision-2026-11-18/salidas/ronda4b/comprobacion-search-path.txt`). Ahora lee con
+      `pg_catalog.current_setting(...)`, y esas dos URLs se rechazan.
+    - Lo probado: las URLs de la revisión, otros parámetros de pgjdbc (`currentSchema`,
+      `ApplicationName`, `assumeMinServerVersion`, `autosave`, `cleanupSavepoints`, `replication`,
+      `stringtype`, `options` con varios `-c`), `PGOPTIONS` y las dos URLs con el `search_path` cambiado.
+      Ninguna de esas deja la conexión abierta escribiendo
+      (`../revision-2026-11-18/salidas/ronda4b/solo-lectura-pgjdbc.txt`). No es una lista completa de
+      lo que pgjdbc acepta.
   - **Comprobado** contra un PostgreSQL desechable (nunca contra un ERP), con un usuario que puede
     escribir. Rechaza:
     - un `INSERT` (SQLSTATE 25006);

@@ -159,6 +159,30 @@ class SqlQueryGuardTest {
         }
     }
 
+    /** Lo mismo por el formato XML heredado (ERPConnectorService.executeMappingAndGenerateTriples). */
+    @Test
+    void elFormatoXmlHeredadoNoProcesaEscapesJdbc() throws Exception {
+        String jdbc = "jdbc:h2:mem:escapes_xml_" + UUID.randomUUID() + ";DB_CLOSE_DELAY=-1";
+        var service = new ERPConnectorService(org.mockito.Mockito.mock(FusekiService.class),
+                org.mockito.Mockito.mock(org.protys.ws.repository.ERPConnectorRepository.class),
+                org.mockito.Mockito.mock(javax.sql.DataSource.class));
+        var connector = org.protys.ws.model.ERPConnector.builder().id(UUID.randomUUID()).build();
+        try (var connection = DriverManager.getConnection(jdbc, "sa", "")) {
+            // Control: sin escapes en el texto, la misma ruta materializa.
+            var model = org.apache.jena.rdf.model.ModelFactory.createDefaultModel();
+            org.springframework.test.util.ReflectionTestUtils.invokeMethod(service, "executeMappingAndGenerateTriples",
+                    connection, connector, java.util.List.of(SqlQueryGuard.check("SELECT DATE '2026-11-18' AS ID")), model);
+            assertEquals(1, model.size());
+            String sql = SqlQueryGuard.check("SELECT {d '2026-11-18'} AS ID");
+            var error = assertThrows(Exception.class, () -> org.springframework.test.util.ReflectionTestUtils.invokeMethod(
+                    service, "executeMappingAndGenerateTriples", connection, connector, java.util.List.of(sql),
+                    org.apache.jena.rdf.model.ModelFactory.createDefaultModel()));
+            String mensajes = "";
+            for (Throwable t = error; t != null; t = t.getCause()) mensajes += t + " | ";
+            assertTrue(mensajes.contains("Syntax error"), mensajes);
+        }
+    }
+
     @Test
     void elProcesadorRechazaElMapeoConElMotivo() {
         String mapping = mapping("SELECT id FROM t FOR UPDATE");

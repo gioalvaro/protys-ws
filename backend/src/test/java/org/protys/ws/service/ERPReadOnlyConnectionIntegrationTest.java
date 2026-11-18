@@ -397,7 +397,8 @@ class ERPReadOnlyConnectionIntegrationTest {
     @Test
     void laConexionDelConectorRechazaUnaUrlQueDejaLaSesionEscribiendo() throws SQLException {
         crearFuncionQueEscribe();
-        for (String p : new String[]{URLS_QUE_PISAN[0], URLS_QUE_PISAN[1]}) {
+        crearTrampaDeSearchPath();
+        for (String p : new String[]{URLS_QUE_PISAN[0], URLS_QUE_PISAN[1], URLS_TRAMPA[0], URLS_TRAMPA[1]}) {
             var error = assertThrows(SQLException.class,
                     () -> ERPConnectorService.openReadOnly(conParametros(p), user, password).close(), p);
             assertTrue(error.getMessage().contains("the connector URL cannot change the read-only settings"), error.getMessage());
