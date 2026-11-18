@@ -7,7 +7,8 @@ limpia en configuración integrada.
 - **Reglas.** Quedan 25 reglas activas: las 22 más R27–R29, igual que `h3_extended`.
 - **Consistencia.** La red es `CONSISTENT` antes y después.
 - **Catálogo.** Las 21 consultas devuelven exactamente lo mismo.
-- **Controles del piloto.** Los 8 controles `H3_*` comparables (g30) dan lo esperado.
+- **Controles del piloto.** Los 8 controles `H3_*` comparables (g30) dan lo esperado después de
+  incorporar. De ellos, cuatro (`components_same_identity`, `no_new_named_individuals`, `same_named_individual_set`, `source_classes_preserved`) pasan de `false` a `true` con la incorporación; los otros cuatro esperan `false` y ya daban `false` antes, así que confirman que no hay efectos indebidos pero no distinguen el antes del después (`salidas/fase3b/api/06-controles-H3.md`).
 - **Control que no es equivalente.** El noveno, `H3_pre_extension_no_classification` (g31), no tiene
   equivalente en la plataforma: se ve abajo por qué.
 
@@ -223,13 +224,15 @@ piloto. Lo de arriba queda como evidencia del estado anterior. Cada paso se anot
 | 6a Reglas activas en la plataforma | 25, R27–R29 incluidas, como `h3_extended` |
 | 6b Razonamiento global | `CONSISTENT` → `CONSISTENT`; entrada 4318 → 4662 triples; inferidos 1167 → 1419 |
 | 6c Las 21 consultas del catálogo | idénticas (`06-catalogo-diferencias.md`) |
-| 6d Controles `H3_*` | los 8 de g30 iguales a lo esperado (`06-controles-H3.md`) |
+| 6d Controles `H3_*` | los 8 de g30 iguales a lo esperado después; 4 pasan de `false` a `true` y 4 esperan `false` y ya lo daban antes (`06-controles-H3.md`) |
 
 - **Grafos.** Después de completar no quedan grafos temporales.
 - **Grafo de reglas.** Pasó de 1374 a 1469 triples (+95, las definiciones de R27–R29) y conserva las
   anteriores. Es el arreglo del paso 1 funcionando en la plataforma real.
-- **Controles H3, antes y después.** Antes de incorporar, los controles g30 que esperan `true` dan
-  `false`, porque sin el piloto no hay datos. Después dan lo esperado. Los controles comparan con la
+- **Controles H3, antes y después.** Antes de incorporar, los cuatro controles g30 que esperan `true`
+  dan `false`, porque sin el piloto no hay datos; después dan `true`. Los otros cuatro esperan `false` y
+  dan `false` antes y después: confirman que la incorporación no produce efectos indebidos, pero no
+  distinguen el antes del después. Los controles comparan con la
   evaluación por programa (`research/evaluation/current/assertion-groups/g30`, resumida en
   `research/release/functional.json`).
 
@@ -249,7 +252,8 @@ Comprobación posterior en `salidas/fase3b/interfaz/api-despues/RESUMEN.txt`:
 - razonamiento `CONSISTENT`, con 4662 triples de entrada y 1419 inferidos;
 - ningún grafo temporal;
 - 0 de 21 consultas cambian contra la línea de base de la corrida por la API;
-- los 8 controles g30 iguales a lo esperado.
+- los 8 controles g30 iguales a lo esperado (4 que pasan de `false` a `true` y 4 que esperan `false`
+  y ya lo daban antes).
 
 Es el mismo resultado que por la API. La lectura de la consola de Chrome no mostró errores, pero empezó
 después de cargar la página, así que no cubre la carga.
@@ -292,7 +296,9 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
   - las mismas 25 reglas activas;
   - red consistente;
   - las 21 consultas del catálogo sin cambios;
-  - los 8 controles H3 comparables iguales a lo esperado.
+  - los 8 controles H3 comparables iguales a lo esperado: 4 pasan de `false` a `true` con la
+    incorporación; los otros 4 esperan `false` y ya daban `false` antes, así que confirman que no hay
+    efectos indebidos pero no distinguen el antes del después.
 - Esto vale **con los cambios de la Fase 3b** (commits `1f5b909`, `fe739b1`, `89e201c`, `6d33abb`), no
   con el asistente evaluado en la versión de la tesis.
 
