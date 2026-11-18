@@ -88,8 +88,10 @@ public class ERPConnectorService {
     /**
      * Conexión del conector: sin autocommit y en sólo lectura (pgjdbc abre cada transacción con
      * {@code BEGIN READ ONLY}) y, en PostgreSQL, con {@code default_transaction_read_only=on} para toda la
-     * sesión. Comprobado contra un PostgreSQL desechable con un usuario que puede escribir
-     * (research/integration/revision-2026-11-18/salidas/ronda2/):
+     * sesión. Un parámetro de la URL gana sobre esas propiedades, así que al conectar se comprueba el estado que
+     * quedó ({@link #requireReadOnlySession}): si la sesión o la transacción no quedaron en sólo lectura, la
+     * conexión se rechaza (salidas/ronda4/). Comprobado contra un PostgreSQL desechable con un usuario que puede
+     * escribir (research/integration/revision-2026-11-18/salidas/ronda2/):
      * <ul>
      *   <li>rechaza un {@code INSERT} (SQLSTATE 25006), también después de un {@code COMMIT} dentro de la
      *       misma consulta, y {@code SET TRANSACTION READ WRITE} (25001) o
@@ -120,11 +122,38 @@ public class ERPConnectorService {
             if (jdbcUrl != null && jdbcUrl.startsWith("jdbc:postgresql:")) requireExtendedProtocol(connection);
             connection.setAutoCommit(false);
             connection.setReadOnly(true);
+            if (jdbcUrl != null && jdbcUrl.startsWith("jdbc:postgresql:")) requireReadOnlySession(connection);
             return connection;
         } catch (java.sql.SQLException | RuntimeException e) {
             connection.close();
             throw e;
         }
+    }
+
+    /**
+     * Mira el estado que quedó después de conectar, no el texto de la URL: un parámetro de la URL (por ejemplo
+     * {@code options=-c default_transaction_read_only=off} con {@code readOnlyMode=ignore}) gana sobre las
+     * propiedades de {@link #openReadOnly} y deja la sesión escribiendo (comprobado en salidas/ronda4/). Exige
+     * {@code default_transaction_read_only} y {@code transaction_read_only} en {@code on} dentro de la transacción
+     * recién abierta, y la cierra con rollback.
+     */
+    static void requireReadOnlySession(Connection connection) throws java.sql.SQLException {
+        String defaultReadOnly, transactionReadOnly;
+        try (Statement statement = connection.createStatement();
+             var rs = statement.executeQuery("SELECT current_setting('default_transaction_read_only'), "
+                     + "current_setting('transaction_read_only')")) {
+            rs.next();
+            defaultReadOnly = rs.getString(1);
+            transactionReadOnly = rs.getString(2);
+        } finally {
+            connection.rollback();
+        }
+        if (!"on".equals(defaultReadOnly))
+            throw new java.sql.SQLException("default_transaction_read_only=" + defaultReadOnly
+                    + " after connecting: the connector URL cannot change the read-only settings");
+        if (!"on".equals(transactionReadOnly))
+            throw new java.sql.SQLException("transaction_read_only=" + transactionReadOnly
+                    + " after connecting: the connector URL cannot change the read-only settings");
     }
 
     /**

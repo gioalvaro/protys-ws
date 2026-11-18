@@ -364,6 +364,62 @@ class ERPReadOnlyConnectionIntegrationTest {
             System.out.println("PGJDBC URL [?" + p + "] " + sondear(p));
     }
 
+    @Test
+    void laConexionDelConectorRechazaUnaUrlQueDejaLaSesionEscribiendo() throws SQLException {
+        crearFuncionQueEscribe();
+        for (String p : new String[]{URLS_QUE_PISAN[0], URLS_QUE_PISAN[1]}) {
+            var error = assertThrows(SQLException.class,
+                    () -> ERPConnectorService.openReadOnly(conParametros(p), user, password).close(), p);
+            assertTrue(error.getMessage().contains("the connector URL cannot change the read-only settings"), error.getMessage());
+            assertTrue(error.getMessage().startsWith("default_transaction_read_only=off"), error.getMessage());
+        }
+        // Estas dos no cambian el estado: la sesión queda en sólo lectura, conectan y no escriben.
+        for (String p : new String[]{URLS_QUE_PISAN[2], URLS_QUE_PISAN[3], ""}) {
+            String linea = sondear(p);
+            assertTrue(linea.startsWith("default_ro=on tx_ro=on;"), p + " -> " + linea);
+            assertFalse(linea.contains("aceptada"), p + " -> " + linea);
+            assertEquals(0, filas());
+        }
+        // La URL normal sigue leyendo.
+        try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+            st.executeUpdate("INSERT INTO prueba VALUES (7)");
+        }
+        try (Connection c = ERPConnectorService.openReadOnly(url, user, password); var st = c.createStatement();
+             var rs = st.executeQuery("SELECT count(*) FROM prueba")) {
+            rs.next();
+            assertEquals(1, rs.getLong(1));
+            c.rollback();
+        }
+    }
+
+    /**
+     * Comprobación (no afirma nada): otros parámetros de pgjdbc que podrían cambiar el estado de la sesión o
+     * esquivar la comprobación. Con PGOPTIONS en el entorno (solo-lectura.sh lo pasa al contenedor), la primera
+     * línea muestra si el driver lo lee.
+     */
+    @Test
+    void comprobacionOtrosParametrosDeLaUrl() throws SQLException {
+        crearFuncionQueEscribe();
+        System.out.println("PGJDBC PARAM entorno PGOPTIONS=" + System.getenv("PGOPTIONS"));
+        String[] parametros = {
+                "",
+                "currentSchema=public",
+                "ApplicationName=prueba",
+                "assumeMinServerVersion=9.0",
+                "assumeMinServerVersion=15",
+                "autosave=always",
+                "autosave=conservative",
+                "autosave=always&cleanupSavepoints=true",
+                "replication=database",
+                "stringtype=unspecified",
+                "readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Don%20-c%20default_transaction_read_only%3Doff",
+                "readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Doff%20-c%20default_transaction_read_only%3Don",
+                "readOnlyMode=ignore&options=-c%20transaction_read_only%3Doff",
+                "readOnlyMode=ignore&options=-c%20session_replication_role%3Dreplica"};
+        for (String p : parametros)
+            System.out.println("PGJDBC PARAM [" + (p.isEmpty() ? "sin parámetros" : "?" + p) + "] " + sondear(p));
+    }
+
     /** Ejecuta como el procesador (executeQuery) y como execute, y cierra como el servicio. */
     void intentar(String sql, String usuario, String clave) throws SQLException {
         for (boolean query : new boolean[]{true, false}) {

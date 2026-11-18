@@ -5,6 +5,7 @@
 # Al terminar borra el contenedor y la red. Requiere docker. Termina con el código de salida de Maven:
 # distinto de cero si alguna prueba falla.
 # Uso: research/integration/revision-2026-11-18/solo-lectura.sh [archivo-de-salida]
+#      Si PGOPTIONS está definida, se pasa al contenedor de Java (para comprobar si pgjdbc la lee).
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
@@ -35,7 +36,7 @@ rm -f "$REPO/backend/target/surefire-reports/org.protys.ws.service.ERPReadOnlyCo
 set +e
 docker run --rm --network "$NET" -v "$REPO:$REPO" -v "$HOME/.m2:$HOME/.m2" -e HOME="$HOME" \
   -e PROTYS_TEST_PG_URL="jdbc:postgresql://$DB:5432/desechable" \
-  -e PROTYS_TEST_PG_USER=escritor -e PROTYS_TEST_PG_PASSWORD=escritor_demo \
+  -e PROTYS_TEST_PG_USER=escritor -e PROTYS_TEST_PG_PASSWORD=escritor_demo ${PGOPTIONS:+-e PGOPTIONS="$PGOPTIONS"} \
   -w "$REPO/backend" "$JDK_IMAGE" \
   ./mvnw -q -Dmaven.repo.local="$HOME/.m2/repository" test -Dtest=ERPReadOnlyConnectionIntegrationTest > "$LOGF" 2>&1
 STATUS=$?
@@ -45,6 +46,7 @@ set -e
   echo "# solo-lectura.sh — $(date -u +%FT%TZ)"
   echo "# commit: $COMMIT"
   echo "# PostgreSQL desechable: $PG_IMAGE; Java: $JDK_IMAGE"
+  [ -z "${PGOPTIONS:-}" ] || echo "# PGOPTIONS en el entorno de Java: $PGOPTIONS"
   echo "# usuario 'escritor' = dueño de la base 'desechable' (puede escribir en la tabla prueba)"
   # Sólo las líneas de la comprobación y del resultado; grep sin coincidencias no es una falla.
   grep -E "PGJDBC|Tests run|FAIL|ERROR" "$LOGF" || [ $? -eq 1 ]

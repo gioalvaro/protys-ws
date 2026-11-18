@@ -59,6 +59,13 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
     pgjdbc 42.6.0 eso no tiene efecto: un `INSERT` con un usuario con permiso de escritura se aceptó.
   - **Ahora** el conector abre la conexión sin autocommit, en sólo lectura y, en PostgreSQL, con
     `default_transaction_read_only=on`; la cierra con rollback.
+  - **La URL del conector no puede deshacerlo.** Un parámetro de la URL gana sobre lo que configura el
+    conector: con `readOnlyMode=ignore&options=-c default_transaction_read_only=off`, un `INSERT` y un
+    `SELECT` de una función que escribe quedaban escritos con un commit explícito
+    (`../revision-2026-11-18/salidas/ronda4/comprobacion-url.txt`). Por eso, al conectar, el conector
+    comprueba que `default_transaction_read_only` y `transaction_read_only` quedaron en `on` y, si no,
+    rechaza la conexión. Mira el estado, no el texto de la URL; se probaron otros parámetros de pgjdbc y
+    `PGOPTIONS`, y ninguno la esquiva (`../revision-2026-11-18/salidas/ronda4/solo-lectura-pgjdbc.txt`).
   - **Comprobado** contra un PostgreSQL desechable (nunca contra un ERP), con un usuario que puede
     escribir. Rechaza:
     - un `INSERT` (SQLSTATE 25006);
