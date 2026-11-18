@@ -275,7 +275,7 @@ El flujo automático de `.github/workflows/verify.yml` prepara ambos motores, ej
 ./research/reproduce.sh --prepare-only
 cd backend
 ./mvnw test                                   # 278 pruebas, 17 salteadas (ver abajo)
-cd ../frontend && npm test -- --watchAll=false  # 75 pruebas
+cd ../frontend && npm test -- --watchAll=false  # 84 pruebas
 cd .. && python3 -m unittest discover -s scripts/tests            # 24 pruebas, incluye la carga inicial
 python3 -m unittest discover -s research/evaluation/tests         # 16 pruebas
 
@@ -289,6 +289,11 @@ research/integration/revision-2026-11-18/solo-lectura.sh
 ./mvnw test -Dtest=OntologyServiceTest
 ./mvnw test -Dtest=ERPConnectorServiceTest
 ```
+
+Ronda 5 de la revisión (`198de8f`, árbol versionado limpio): interfaz 84 de 84
+(`research/integration/revision-2026-11-18/salidas/ronda5/frontend-pruebas.txt`) y build sin errores
+(`research/integration/revision-2026-11-18/salidas/ronda5/frontend-build.txt`). El cambio fue sólo de interfaz: backend,
+scripts y evaluación no se volvieron a correr; sus últimas salidas son las de las rondas 4 y 4b.
 
 Ronda 4b de la revisión (`f508753`, árbol versionado limpio): backend 278 pruebas, 0 fallas, 17 salteadas
 (`research/integration/revision-2026-11-18/salidas/ronda4b/backend-pruebas.txt`). Las 17 salteadas son

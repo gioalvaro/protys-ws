@@ -554,3 +554,54 @@ actualizaron en un commit de documentación posterior a las corridas.
   el INFORME.
 - La sección «Ronda 4» queda como estaba; su «Ninguno esquiva la comprobación» valía para los parámetros que
   listaba, no para este caso.
+
+## Ronda 5 (18-11-2026)
+
+Revisión de las capturas de la v1 (`6e28126`). Hubo un defecto de la interfaz, en la pantalla de conectores ERP,
+y uno de tipografía. Sólo cambió `frontend/`.
+
+### Qué se confirmó antes de cambiar
+- **Estado.** `ErpIntegration.jsx` comparaba con `'connected'` en minúscula, y la API devuelve `REGISTERED`,
+  `CONNECTED`, `MATERIALIZED` o `ERROR`: todo conector salía en rojo con una cruz (`C1` de la v1).
+- **Dato de conexión.** La tarjeta mostraba `connector.connectionString`, que `ERPConnectorResponse` no tiene.
+  Lo que hay es `jdbcUrl`, `username`, `databaseName`, `namedGraph`, `lastMaterializationAt` y `tripleCount`.
+- **Alta.** Mandando a `POST /api/erp/connectors` el mismo cuerpo que armaba el formulario (`type: "sap"`,
+  `connectionString`), la API respondió 400 `INVALID_ERP_REQUEST`; con `type: "custom"`, lo mismo. No se creó nada.
+  La entidad, además, exige `namedGraph`, y el formulario no lo pedía.
+- **Panel de detalle.** Leía `statistics`, que la API no devuelve, y no tenía botón para inspeccionar el esquema.
+- **Tipografía.** Fira Code dibujaba «www» como ligadura: `http:// www .w3.org` en `A4a`, `A5a` y `C2a`.
+
+### Qué cambió (`198de8f`, etiqueta `tesis-mantenimiento-2026-11-18-v2`)
+
+| Archivo | Cambio |
+|---|---|
+| `frontend/src/components/erp/ErpIntegration.jsx` | Estados con su estilo: `CONNECTED` y `MATERIALIZED` con tilde y en verde, `REGISTERED` neutro, `ERROR` en rojo con cruz; texto legible («Materialized»). La tarjeta muestra servidor, puerto y base, tomados de `jdbcUrl` sin credenciales ni parámetros, además del usuario, el grafo de destino y la última materialización con sus triples; nunca la contraseña. El alta manda `name`, `type` (`ADEMPIERE`, `ODOO` o `CUSTOM`), `jdbcUrl`, `username`, `password`, `namedGraph`, `r2rmlMappingPath` y `databaseName`. El panel tiene probar conexión, inspeccionar esquema (nuevo), materializar y borrar, y muestra el resultado o el error de cada uno |
+| `frontend/src/index.css` | `font-variant-ligatures: none` (y `liga`/`calt` en 0) en `code`, `pre`, `kbd`, `samp`, `textarea` y `.font-mono` |
+
+### Qué lo cubre
+- `ErpIntegration.test.jsx` tiene 9 pruebas nuevas:
+  - una tarjeta por estado, con su estilo;
+  - la tarjeta muestra servidor, base, usuario, grafo y fecha, y nunca la contraseña;
+  - `describeJdbcUrl` descarta credenciales y parámetros;
+  - el alta manda el cuerpo esperado;
+  - la lista de tipos tiene sólo los que acepta la API;
+  - los botones llaman a los endpoints y muestran el resultado o el error.
+- Con la pantalla anterior fallan 9 de 11; pasan sólo las 2 que ya existían (comprobado cambiando sólo el
+  componente, sin commitear).
+- Interfaz 84 de 84 y build sin errores (`salidas/ronda5/`, `198de8f`, árbol limpio).
+- Contra la plataforma (`protys`, interfaz reconstruida), un conector de prueba hacia un servidor inexistente:
+  - el alta respondió 201 y la tarjeta salió en «Registered»;
+  - la prueba de conexión mostró «Connection test failed»;
+  - el borrado respondió 204;
+  - la contraseña no se mostró y no quedó nada.
+- Ligaduras: se comprobó recortando la línea `PREFIX owl:` de `A4a` en la v1 y en la v2.
+- Capturas nuevas en `../capturas-tesis-2026-11-18-v2/`: C1, C2a, C2b, A4a y A5a.
+  - C1 y C2 son de `protys-e2e`, tras `run.sh` (24 de 24).
+  - A4a y A5a son de `protys`, con el piloto incorporado: Q06 dio 3 filas y Q04, 40.
+
+### Qué no se hizo
+- El backend no cambió y no se volvió a correr; su última salida es la de la ronda 4b.
+- La inspección de esquema desde la pantalla está cubierta por la prueba de interfaz. No se probó contra un ERP
+  real, porque `protys` no tiene conectores.
+- Las capturas de la v1 no se modificaron. El defecto de `C1` de la v1 está anotado en el README de la v2, porque
+  la carpeta de la v1 no se toca.

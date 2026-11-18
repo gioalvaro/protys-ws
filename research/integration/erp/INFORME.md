@@ -28,7 +28,11 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
    RDB2RDF (`salidas/w3c-r2rml-report.txt`).
 5. **Prueba de punta a punta** (`run.sh`): línea de base sin ERP, registro de conectores por la API,
    prueba de conexión, inspección, materialización, razonamiento con la entrada preparada guardada,
-   consultas, catálogo completo sin y con ERP, sólo lectura y huellas de esquema.
+   consultas, catálogo completo sin y con ERP, sólo lectura y huellas de esquema. Los conectores se
+   registran por la API, no por la pantalla. Hasta la v1 de mantenimiento, la pantalla de conectores no seguía
+   el contrato de la API: el alta respondía 400 y los conectores salían en rojo aunque estuvieran
+   materializados. Desde `tesis-mantenimiento-2026-11-18-v2` (`198de8f`) los muestra y los registra bien
+   (`../revision-2026-11-18/README.md`, «Ronda 5»).
 6. **Pruebas de backend.** Suite completa en Java 17: 192 pruebas, 0 fallas, 0 errores
    (`salidas/pruebas-backend.txt`), ya sin CARML. Antes de este trabajo eran 118.
 
