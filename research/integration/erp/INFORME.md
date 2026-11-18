@@ -46,7 +46,7 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
 | Sólo lectura (rol) | `CREATE TABLE` y `DELETE` rechazados para `protys_ro` en los dos ERP |
 | No intrusión | Huellas antes y después idénticas: tablas, columnas, SHA-256 de `information_schema.columns` y permisos de `protys_ro`. La huella compara esquema y permisos, no datos: no detectaría un cambio en el contenido de las filas (eso lo impiden el rol y la conexión de sólo lectura) |
 
-### Sólo lectura: dos garantías distintas (revisión del 2026-11-18)
+### Sólo lectura: dos garantías distintas (revisión del 2026-11-18, precisada en la segunda ronda)
 
 - **El rol `protys_ro` no puede escribir.** Es lo que prueba el paso 9 de `run.sh`: con ese usuario,
   `CREATE TABLE` (aun forzando `BEGIN READ WRITE`) y `DELETE` fallan en los dos ERP. Desde la revisión,
@@ -173,8 +173,10 @@ y `08-catalogo-con-erp/`). Ninguna consulta pierde filas.
 ## Qué puede afirmar la tesis
 - PROTYS-WS se conectó a una base real de ADempiere 3.9.4 y a una de Odoo 17.0 con datos de
   demostración de manufactura, con un rol de base de datos que no puede escribir, y extrajo de ellas
-  individuos de PROTYS(KB). Desde la revisión del 2026-11-18, la conexión de la aplicación también es de
-  sólo lectura por sí misma (ver «Sólo lectura: dos garantías distintas»).
+  individuos de PROTYS(KB). Desde la revisión del 2026-11-18, la conexión de la aplicación además
+  rechaza las escrituras comprobadas, salvo un `BEGIN READ WRITE` explícito dentro de una consulta de
+  varias sentencias (ver «Sólo lectura: dos garantías distintas»). La garantía que no depende de la
+  consulta es el rol.
 - La extracción usa mapeos R2RML (W3C) ejecutados por un procesador que pasa los 63 casos R2RML de la
   suite de pruebas W3C RDB2RDF.
 - Los individuos extraídos quedan tipados con clases de los módulos core, ISO 15531, product y
