@@ -1,0 +1,511 @@
+@prefix erp:    <http://w3id.org/protys/erp/> .
+@prefix ns1:    <urn:protys:bootstrap:> .
+@prefix ns2:    <http://w3id.org/protys/ontology/research#> .
+@prefix ns3:    <http://w3id.org/protys/ontology/core#> .
+@prefix ns4:    <http://w3id.org/protys/ontology/iso14040#> .
+@prefix ns5:    <http://www.w3.org/2003/11/swrl#> .
+@prefix ns6:    <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix owl:    <http://www.w3.org/2002/07/owl#> .
+@prefix protys: <http://w3id.org/protys/ontology/> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+<http://w3id.org/protys/erp/adempiere/resource/50000>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingFacility>;
+        rdfs:label   "Fertilizer Plant";
+        ns3:hasName  "Fertilizer Plant" .
+
+<http://w3id.org/protys/erp/adempiere/organization/50005>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Store East";
+        ns3:hasName  "Store East" .
+
+<http://w3id.org/protys/erp/adempiere/product/50010>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Phosphorus";
+        ns3:hasName  "Phosphorus" .
+
+<http://w3id.org/protys/erp/adempiere/operation/50086>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Paint";
+        ns3:hasName  "Paint";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "15"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                20;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50015>;
+        <http://w3id.org/protys/ontology/iso15531#precedes>
+                <http://w3id.org/protys/erp/adempiere/operation/50087>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50002> .
+
+<http://w3id.org/protys/erp/adempiere/process/50015>
+        rdf:type      <http://w3id.org/protys/ontology/iso15531#ManufacturingProcess>;
+        rdfs:label    "Patio Chair";
+        ns3:hasName   "Patio Chair";
+        ns3:produces  <http://w3id.org/protys/erp/adempiere/product/133> .
+
+<http://w3id.org/protys/erp/adempiere/resource/50002>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Paint Area";
+        ns3:hasName  "Paint Area" .
+
+<http://w3id.org/protys/erp/adempiere/operation/50087>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Drying";
+        ns3:hasName  "Drying";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "0"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                30;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50015>;
+        <http://w3id.org/protys/ontology/iso15531#precedes>
+                <http://w3id.org/protys/erp/adempiere/operation/50088>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50008> .
+
+<http://w3id.org/protys/erp/adempiere/resource/50006>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Packing Production Line";
+        ns3:hasName  "Packing Production Line" .
+
+<http://w3id.org/protys/erp/adempiere/plan/50009>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessPlan>;
+        rdfs:label   "Plan Patio Furniture Set";
+        ns3:hasName  "Plan Patio Furniture Set";
+        <http://w3id.org/protys/ontology/iso15531#assignsResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50005>;
+        <http://w3id.org/protys/ontology/iso15531#includesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50093> .
+
+<http://w3id.org/protys/erp/adempiere/resource/50005>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingFacility>;
+        rdfs:label   "Furniture Plant";
+        ns3:hasName  "Furniture Plant" .
+
+<http://w3id.org/protys/erp/adempiere/operation/50093>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Assembly";
+        ns3:hasName  "Assembly";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "20"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                10;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50018>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50001> .
+
+<http://w3id.org/protys/erp/adempiere/product/50016>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Back Leg";
+        ns3:hasName  "Back Leg" .
+
+<http://w3id.org/protys/erp/adempiere/product/50044>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Grow Light and Stand";
+        ns3:hasName  "Grow Light and Stand" .
+
+<http://w3id.org/protys/erp/adempiere/product/50003>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Ultra Glue";
+        ns3:hasName  "Ultra Glue" .
+
+<http://w3id.org/protys/erp/adempiere/product/134>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Patio Table";
+        ns3:hasName  "Patio Table" .
+
+<http://w3id.org/protys/erp/adempiere/product/133>
+        rdf:type     ns3:Product , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Patio Chair";
+        ns3:hasName  "Patio Chair";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50004> , <http://w3id.org/protys/erp/adempiere/product/50005> , <http://w3id.org/protys/erp/adempiere/product/50000> , <http://w3id.org/protys/erp/adempiere/product/50001> .
+
+<http://w3id.org/protys/erp/adempiere/organization/50000>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Furniture";
+        ns3:hasName  "Furniture" .
+
+<http://w3id.org/protys/erp/adempiere/workorder/50000>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#WorkOrder>;
+        rdfs:label   "Packing Process";
+        ns3:hasName  "Packing Process";
+        <http://w3id.org/protys/ontology/iso15531#executedBy>
+                <http://w3id.org/protys/erp/adempiere/resource/50006>;
+        <http://w3id.org/protys/ontology/iso15531#executesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50092> .
+
+<http://w3id.org/protys/erp/adempiere/operation/50092>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Packing Process";
+        ns3:hasName  "Packing Process";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "3"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                10;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50017>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50006> .
+
+<http://w3id.org/protys/erp/adempiere/product/50009>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Nitrogen";
+        ns3:hasName  "Nitrogen" .
+
+<http://w3id.org/protys/erp/adempiere/order/50000>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProductionOrder>;
+        rdfs:label   "Orden 8000";
+        ns3:hasName  "Orden 8000" .
+
+<http://w3id.org/protys/erp/adempiere/resource/50001>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Assembly Area";
+        ns3:hasName  "Assembly Area" .
+
+<http://w3id.org/protys/erp/adempiere/organization/50006>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Store West";
+        ns3:hasName  "Store West" .
+
+<http://w3id.org/protys/erp/adempiere/resource/50008>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Dry Area";
+        ns3:hasName  "Dry Area" .
+
+<http://w3id.org/protys/erp/adempiere/operation/50088>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Chrome Process";
+        ns3:hasName  "Chrome Process";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "0"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                40;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50015>;
+        <http://w3id.org/protys/ontology/iso15531#precedes>
+                <http://w3id.org/protys/erp/adempiere/operation/50089>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50003> .
+
+<http://w3id.org/protys/erp/adempiere/resource/50007>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Mixed Area";
+        ns3:hasName  "Mixed Area" .
+
+<http://w3id.org/protys/erp/adempiere/plan/50038>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessPlan>;
+        rdfs:label   "Plan Lawn Fertilizer";
+        ns3:hasName  "Plan Lawn Fertilizer";
+        <http://w3id.org/protys/ontology/iso15531#assignsResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50005>;
+        <http://w3id.org/protys/ontology/iso15531#includesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50090> , <http://w3id.org/protys/erp/adempiere/operation/50091> .
+
+<http://w3id.org/protys/erp/adempiere/operation/50090>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Mixed";
+        ns3:hasName  "Mixed";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "30"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                10;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50016>;
+        <http://w3id.org/protys/ontology/iso15531#precedes>
+                <http://w3id.org/protys/erp/adempiere/operation/50091>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50007> .
+
+<http://w3id.org/protys/erp/adempiere/operation/50091>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Inspection the Mixed";
+        ns3:hasName  "Inspection the Mixed";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "10"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                20;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50016>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50009> .
+
+<http://w3id.org/protys/erp/adempiere/product/50017>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Water";
+        ns3:hasName  "Water" .
+
+<http://w3id.org/protys/erp/adempiere/product/50045>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Seed Pack Daisy";
+        ns3:hasName  "Seed Pack Daisy" .
+
+<http://w3id.org/protys/erp/adempiere/plan/50025>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessPlan>;
+        rdfs:label   "Plan Patio Chair";
+        ns3:hasName  "Plan Patio Chair";
+        <http://w3id.org/protys/ontology/iso15531#assignsResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50005>;
+        <http://w3id.org/protys/ontology/iso15531#includesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50086> , <http://w3id.org/protys/erp/adempiere/operation/50087> , <http://w3id.org/protys/erp/adempiere/operation/50088> , <http://w3id.org/protys/erp/adempiere/operation/50089> , <http://w3id.org/protys/erp/adempiere/operation/50085> .
+
+<http://w3id.org/protys/erp/adempiere/operation/50089>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Inspection Process";
+        ns3:hasName  "Inspection Process";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "10"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                50;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50015>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50004> .
+
+<http://w3id.org/protys/erp/adempiere/operation/50085>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessOperation>;
+        rdfs:label   "Assembly";
+        ns3:hasName  "Assembly";
+        <http://w3id.org/protys/ontology/iso15531#duration>
+                "40"^^xsd:decimal;
+        <http://w3id.org/protys/ontology/iso15531#operationSequence>
+                10;
+        <http://w3id.org/protys/ontology/iso15531#partOfProcess>
+                <http://w3id.org/protys/erp/adempiere/process/50015>;
+        <http://w3id.org/protys/ontology/iso15531#precedes>
+                <http://w3id.org/protys/erp/adempiere/operation/50086>;
+        <http://w3id.org/protys/ontology/iso15531#requiresResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50001> .
+
+<http://w3id.org/protys/erp/adempiere/product/135>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Patio Sun Screen";
+        ns3:hasName  "Patio Sun Screen" .
+
+<http://w3id.org/protys/erp/adempiere/product/50004>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Seat";
+        ns3:hasName  "Seat" .
+
+<http://w3id.org/protys/erp/adempiere/process/50016>
+        rdf:type      <http://w3id.org/protys/ontology/iso15531#ManufacturingProcess>;
+        rdfs:label    "Lawn Fertilizer";
+        ns3:hasName   "Lawn Fertilizer";
+        ns3:produces  <http://w3id.org/protys/erp/adempiere/product/50008> .
+
+<http://w3id.org/protys/erp/adempiere/product/50008>
+        rdf:type     ns3:Product , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Lawn Fertilizer";
+        ns3:hasName  "Lawn Fertilizer";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50010> , <http://w3id.org/protys/erp/adempiere/product/50009> , <http://w3id.org/protys/erp/adempiere/product/50017> , <http://w3id.org/protys/erp/adempiere/product/50012> .
+
+<http://w3id.org/protys/erp/adempiere/organization/50001>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Fertilizer";
+        ns3:hasName  "Fertilizer" .
+
+<http://w3id.org/protys/erp/adempiere/workorder/50001>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#WorkOrder>;
+        rdfs:label   "Packing Process";
+        ns3:hasName  "Packing Process";
+        <http://w3id.org/protys/ontology/iso15531#executedBy>
+                <http://w3id.org/protys/erp/adempiere/resource/50006>;
+        <http://w3id.org/protys/ontology/iso15531#executesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50092> .
+
+<http://w3id.org/protys/erp/adempiere/product/50038>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Seedling Tray - 16 Bins";
+        ns3:hasName  "Seedling Tray - 16 Bins" .
+
+<http://w3id.org/protys/erp/adempiere/plan/50087>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessPlan>;
+        rdfs:label   "Plan Fertilizer #50";
+        ns3:hasName  "Plan Fertilizer #50";
+        <http://w3id.org/protys/ontology/iso15531#assignsResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50000>;
+        <http://w3id.org/protys/ontology/iso15531#includesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50092> .
+
+<http://w3id.org/protys/erp/adempiere/order/50001>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProductionOrder>;
+        rdfs:label   "Orden 8001";
+        ns3:hasName  "Orden 8001" .
+
+<http://w3id.org/protys/erp/adempiere/organization/50007>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Stores";
+        ns3:hasName  "Stores" .
+
+<http://w3id.org/protys/erp/adempiere/product/50012>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Potassium";
+        ns3:hasName  "Potassium" .
+
+<http://w3id.org/protys/erp/adempiere/resource/50003>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Chrome Subcontract Area";
+        ns3:hasName  "Chrome Subcontract Area" .
+
+<http://w3id.org/protys/erp/adempiere/product/50046>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Seed Packet Baby Breath";
+        ns3:hasName  "Seed Packet Baby Breath" .
+
+<http://w3id.org/protys/erp/adempiere/product/50005>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Back Support";
+        ns3:hasName  "Back Support" .
+
+<http://w3id.org/protys/erp/adempiere/product/136>
+        rdf:type     ns3:Product;
+        rdfs:label   "Fertilizer #50";
+        ns3:hasName  "Fertilizer #50";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50008> , <http://w3id.org/protys/erp/adempiere/product/50013> .
+
+<http://w3id.org/protys/erp/adempiere/product/50013>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Bag 50 Kg";
+        ns3:hasName  "Bag 50 Kg" .
+
+<http://w3id.org/protys/erp/adempiere/process/50017>
+        rdf:type      <http://w3id.org/protys/ontology/iso15531#ManufacturingProcess>;
+        rdfs:label    "Fertilizer Packing Process";
+        ns3:hasName   "Fertilizer Packing Process";
+        ns3:produces  <http://w3id.org/protys/erp/adempiere/product/136> , <http://w3id.org/protys/erp/adempiere/product/50007> .
+
+<http://w3id.org/protys/erp/adempiere/product/50007>
+        rdf:type     ns3:Product;
+        rdfs:label   "Fertilizer #70";
+        ns3:hasName  "Fertilizer #70";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50008> , <http://w3id.org/protys/erp/adempiere/product/50014> .
+
+<http://w3id.org/protys/erp/adempiere/organization/50002>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Store North";
+        ns3:hasName  "Store North" .
+
+<http://w3id.org/protys/erp/adempiere/product/50039>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Seedling Tray - 32 bins";
+        ns3:hasName  "Seedling Tray - 32 bins" .
+
+<http://w3id.org/protys/erp/adempiere/resource/50004>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Inspection Area";
+        ns3:hasName  "Inspection Area" .
+
+<http://w3id.org/protys/erp/adempiere/product/50041>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Peat";
+        ns3:hasName  "Peat" .
+
+<http://w3id.org/protys/erp/adempiere/product/50000>
+        rdf:type     ns3:Product , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Assembly Back Leg";
+        ns3:hasName  "Assembly Back Leg";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50016> , <http://w3id.org/protys/erp/adempiere/product/50003> , <http://w3id.org/protys/erp/adempiere/product/50002> .
+
+<http://w3id.org/protys/erp/adempiere/product/50002>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "#6-32 x 3/8 Socket Head Cap Screw";
+        ns3:hasName  "#6-32 x 3/8 Socket Head Cap Screw" .
+
+<http://w3id.org/protys/erp/adempiere/resource/50009>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ManufacturingResource>;
+        rdfs:label   "Fertilizer Inspection Area";
+        ns3:hasName  "Fertilizer Inspection Area" .
+
+<http://w3id.org/protys/erp/adempiere/product/50047>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Seed Packet Forget Me Not";
+        ns3:hasName  "Seed Packet Forget Me Not" .
+
+<http://w3id.org/protys/erp/adempiere/product/137>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Mulch 10#";
+        ns3:hasName  "Mulch 10#" .
+
+<http://w3id.org/protys/erp/adempiere/organization/11>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "HQ";
+        ns3:hasName  "HQ" .
+
+<http://w3id.org/protys/erp/adempiere/process/50018>
+        rdf:type      <http://w3id.org/protys/ontology/iso15531#ManufacturingProcess>;
+        rdfs:label    "Patio Furniture Set";
+        ns3:hasName   "Patio Furniture Set";
+        ns3:produces  <http://w3id.org/protys/erp/adempiere/product/145> .
+
+<http://w3id.org/protys/erp/adempiere/product/145>
+        rdf:type     ns3:Product;
+        rdfs:label   "Patio Furniture Set";
+        ns3:hasName  "Patio Furniture Set";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/134> , <http://w3id.org/protys/erp/adempiere/product/133> , <http://w3id.org/protys/erp/adempiere/product/135> .
+
+<http://w3id.org/protys/erp/adempiere/plan/50089>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessPlan>;
+        rdfs:label   "Plan Fertilizer #70";
+        ns3:hasName  "Plan Fertilizer #70";
+        <http://w3id.org/protys/ontology/iso15531#assignsResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50000>;
+        <http://w3id.org/protys/ontology/iso15531#includesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50092> .
+
+<http://w3id.org/protys/erp/adempiere/product/50014>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Bag 70 Kg";
+        ns3:hasName  "Bag 70 Kg" .
+
+<http://w3id.org/protys/erp/adempiere/product/50042>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Potting Soil";
+        ns3:hasName  "Potting Soil" .
+
+<http://w3id.org/protys/erp/adempiere/plan/50091>
+        rdf:type     <http://w3id.org/protys/ontology/iso15531#ProcessPlan>;
+        rdfs:label   "Plan Lawn Fertilizer";
+        ns3:hasName  "Plan Lawn Fertilizer";
+        <http://w3id.org/protys/ontology/iso15531#assignsResource>
+                <http://w3id.org/protys/erp/adempiere/resource/50000>;
+        <http://w3id.org/protys/ontology/iso15531#includesActivity>
+                <http://w3id.org/protys/erp/adempiere/operation/50090> , <http://w3id.org/protys/erp/adempiere/operation/50091> .
+
+<http://w3id.org/protys/erp/adempiere/product/50001>
+        rdf:type     ns3:Product , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Assembly Front Leg";
+        ns3:hasName  "Assembly Front Leg";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50003> , <http://w3id.org/protys/erp/adempiere/product/50002> , <http://w3id.org/protys/erp/adempiere/product/50015> .
+
+<http://w3id.org/protys/erp/adempiere/product/50015>
+        rdf:type     <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Production_Component>;
+        rdfs:label   "Front Leg";
+        ns3:hasName  "Front Leg" .
+
+<http://w3id.org/protys/erp/adempiere/organization/12>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Store Central";
+        ns3:hasName  "Store Central" .
+
+<http://w3id.org/protys/erp/adempiere/organization/50004>
+        rdf:type     ns3:Enterprise;
+        rdfs:label   "Store South";
+        ns3:hasName  "Store South" .
+
+<http://w3id.org/protys/erp/adempiere/product/50043>
+        rdf:type     ns3:Product;
+        rdfs:label   "Plant Starter Kit";
+        ns3:hasName  "Plant Starter Kit";
+        <http://w3id.org/protys/ontology/product#isComposedOF>
+                <http://w3id.org/protys/erp/adempiere/product/50044> , <http://w3id.org/protys/erp/adempiere/product/50045> , <http://w3id.org/protys/erp/adempiere/product/50038> , <http://w3id.org/protys/erp/adempiere/product/50046> , <http://w3id.org/protys/erp/adempiere/product/50039> , <http://w3id.org/protys/erp/adempiere/product/50041> , <http://w3id.org/protys/erp/adempiere/product/50047> , <http://w3id.org/protys/erp/adempiere/product/137> , <http://w3id.org/protys/erp/adempiere/product/50042> .

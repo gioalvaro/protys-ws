@@ -1,0 +1,2492 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="https://w3id.org/protys/runtime/deductions#"
+     xml:base="https://w3id.org/protys/runtime/deductions"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:core="http://w3id.org/protys/ontology/core#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:iso14040="http://w3id.org/protys/ontology/iso14040#"
+     xmlns:iso15531="http://w3id.org/protys/ontology/iso15531#"
+     xmlns:research="http://w3id.org/protys/ontology/research#"
+     xmlns:alignment="http://w3id.org/protys/ontology/alignment#">
+    <owl:Ontology rdf:about="https://w3id.org/protys/runtime/deductions"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/protys/ontology/alignment#flowRefersToProduct -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/alignment#flowRefersToProduct">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Product"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/alignment#hasEmittedFlow -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/alignment#hasEmittedFlow">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/alignment#hasRecordedInputFlowForLot -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/alignment#hasRecordedInputFlowForLot">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/alignment#inputFlowForResource -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/alignment#inputFlowForResource">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#bridgesFlowToActivity -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#bridgesFlowToActivity">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#hasProcess -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#hasProcess">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Enterprise"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#producedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#producedBy">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Product"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#produces -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#produces">
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Product"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/enterprise#isPartOf -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#emits -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#emits">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasImpact -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasImpact"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasInventoryFlow -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasInventoryFlow"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasSystemBoundary -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasSystemBoundary">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit"/>
+                <owl:cardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#executedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#executedBy">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#executesActivity -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#executesActivity">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#hasCapability -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#hasCapability"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#hasMeasurement -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#hasMeasurement">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#precedesEvent -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#precedesEvent"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#processedOn -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#processedOn">
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#producesLot -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#producesLot">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#requiresCleaningBetween -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#requiresCleaningBetween"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#responsibleOperator -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#responsibleOperator">
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#usesResource -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/iso15531#usesResource"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#employs -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#employs">
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#hasSkill -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#hasSkill">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#suppliesTo -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/paint-ext#suppliesTo">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Enterprise"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/process#composedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/process#composedBy">
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/process#specifiedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/process#specifiedBy">
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/process#Procedure"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#acquiredBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/product#acquiredBy">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#composes -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/product#composes">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#definedBy -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/product#definedBy">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#isComposedOF -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/product#isComposedOF">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#allocationForOperation -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#allocationForOperation">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#AllocationProcedure"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#facilityInBoundary -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#facilityInBoundary">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingFacility"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#SystemBoundary"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#flowRefersToProduct -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#flowRefersToProduct">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Product"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#hasGHGContribution -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasGHGContribution"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#hasInventoryRepresentation -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasInventoryRepresentation">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingProcess"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#UnitProcess"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#hasRecordedInputFlowForLot -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasRecordedInputFlowForLot">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#Lot"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#indicatorForLot -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#indicatorForLot">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#Lot"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#inputFlowForResource -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#inputFlowForResource">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#inventoryForPlan -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#inventoryForPlan">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso14040#LifeCycleInventory"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessPlan"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#qualityForLot -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#qualityForLot">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#QualityAttribute"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/iso15531#Lot"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#usesEmissionFactor -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#usesEmissionFactor"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#hasRole -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#hasRole">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#isInputToActivity -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#isInputToActivity">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#isOutputOfActivity -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#isOutputOfActivity">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/protys/ontology/alignment#hasEfficiency -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/alignment#hasEfficiency"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasFunctionalUnitQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasFunctionalUnitQuantity"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasGHGImpactKgCO2e -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasGHGImpactKgCO2e"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#hasIndicatorValue -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#hasIndicatorValue">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/protys/ontology/iso14040#indicatorValue"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#indicatorValue -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso14040#indicatorValue">
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/protys/ontology/iso14040#hasIndicatorValue"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#experienceYears -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso15531#experienceYears">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#propagatedQualityStatus -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso15531#propagatedQualityStatus"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#skillCode -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/iso15531#skillCode">
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/research#operationIndicatorRatio -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#operationIndicatorRatio"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#BottleneckResource -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#BottleneckResource">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#CoverageGap -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#Enterprise -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Enterprise"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#HighImpactIndicator -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#HighImpactIndicator"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#Hotspot -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Hotspot"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#Process -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Process"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#Product -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Product">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Product"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#Resource -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Resource"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/enterprise#Factory -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/enterprise#Factory"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/enterprise#Shop -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/enterprise#Shop"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#AllocationProcedure -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#AllocationProcedure"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#ElementaryFlow -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#ImpactIndicator -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ImpactIndicator"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#LifeCycleInventory -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#LifeCycleInventory"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#ProductFlow -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#SystemBoundary -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#SystemBoundary"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso14040#UnitProcess -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso14040#UnitProcess"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#Lot -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#Lot"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#ManufacturingFacility -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#ManufacturingFacility"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#ManufacturingProcess -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#ManufacturingProcess"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#ManufacturingResource -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#ManufacturingResource"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#ProcessOperation -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#ProcessPlan -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#ProcessPlan"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#QualityAttribute -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#QualityAttribute"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/iso15531#requiresReprocess -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/iso15531#requiresReprocess"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#BatchProcess -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#BatchProcess">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Chemical_Compound -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Chemical_Compound">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#CleaningOperation -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#CleaningOperation">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Consumable -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Consumable">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#ContinuousProcess -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ContinuousProcess">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Department -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Department">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/enterprise#Factory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Final_Product -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Final_Product">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Formulation -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Formulation">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Product_Information"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Inspection -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Inspection">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Intermediate_Product -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Intermediate_Product">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Production_Item"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Manufacturing_Stage -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Manufacturing_Stage">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Packaging -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Packaging">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Plant -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Plant">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/core#Enterprise"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#ProductionCell -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ProductionCell">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/enterprise#Shop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#ProductionLine -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#ProductionLine">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/enterprise#Shop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#QualityControl -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#QualityControl">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/iso15531#ProcessOperation"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Sensor -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Sensor">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Setup_Activity -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Setup_Activity">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Standard -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Standard">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Warehouse -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Warehouse">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/enterprise#Factory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#WorkCell -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#WorkCell">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/enterprise#Shop"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/paint-ext#Workshop -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/paint-ext#Workshop">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/enterprise#isPartOf"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/enterprise#Factory"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/process#Procedure -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/process#Procedure"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/process#Procedure_Activity -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/process#Procedure"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/process#Process_Activity -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Process_Activity"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#Product -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/product#Product">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#Product_Information -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/product#Product_Information"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#Production_Component -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/product#Production_Component">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Substance"/>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#Production_Item -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/product#Production_Item">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/product#Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#Substance -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/product#Substance"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/product#Thing -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/product#Thing"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#Activity -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Activity"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#Process_Material -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Process_Material">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#Product_Material -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Product_Material">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#Product_Related_File -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Product_Related_File">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#Raw_Material -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Raw_Material">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/resource#Resource_Related_File -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Resource_Related_File">
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://w3id.org/protys/erp/adempiere/process/50015 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/adempiere/process/50015">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/adempiere/process/50016 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/adempiere/process/50016">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/adempiere/process/50017 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/adempiere/process/50017">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/adempiere/process/50018 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/adempiere/process/50018">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/adempiere/workorder/50000 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/adempiere/workorder/50000">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/adempiere/workorder/50001 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/adempiere/workorder/50001">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/odoo/process/2 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/odoo/process/2">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/odoo/process/3 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/odoo/process/3">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/odoo/process/8 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/odoo/process/8">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/odoo/workorder/1 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/odoo/workorder/1">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/odoo/workorder/2 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/odoo/workorder/2">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/erp/odoo/workorder/3 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/erp/odoo/workorder/3">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#AcrylicResin_Factor -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#AcrylicResin_Factor"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA">
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchA_Flow_Biocide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchA_Flow_Water"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+        <iso14040:hasImpact rdf:resource="http://w3id.org/protys/fixture#BatchA_Indicator"/>
+        <iso15531:requiresCleaningBetween rdf:resource="http://w3id.org/protys/fixture#BatchB"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op1"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op2"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op3"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op4"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op5"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op6"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchA_Op7"/>
+        <iso14040:hasFunctionalUnitQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">98.4</iso14040:hasFunctionalUnitQuantity>
+        <iso15531:propagatedQualityStatus>APPROVED</iso15531:propagatedQualityStatus>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_EventEnd -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_EventEnd"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_EventStart -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_EventStart">
+        <iso15531:precedesEvent rdf:resource="http://w3id.org/protys/fixture#BatchA_EventEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#AcrylicResin_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Flow_Biocide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Flow_Biocide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Biocide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#TitaniumDioxide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Flow_Water -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Flow_Water">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchA_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Water_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Indicator -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Indicator">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#HighImpactIndicator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_LCIProcess -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_LCIProcess">
+        <iso14040:hasInventoryFlow rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op1 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op1">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op1_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op1_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op2 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op2">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PearlMill_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op2_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op2_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3468208102509272</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op3 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op3">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3333333333333333</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">37.5</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op3_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op3_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5202312153763908</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op4 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op4">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#DosingSystem_03"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.3333335</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op4_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op4_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op5 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op5">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#FilterSystem_04"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.6666665</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op5_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op5_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op6 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op6">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op6_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op6_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3468208102509272</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op7 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op7">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PackagingMachine_05"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.84000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1666665</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Op7_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Op7_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchA_Order -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchA_Order">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB">
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchB_Flow_Biocide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchB_Flow_Water"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+        <iso14040:hasImpact rdf:resource="http://w3id.org/protys/fixture#BatchB_Indicator"/>
+        <iso15531:requiresCleaningBetween rdf:resource="http://w3id.org/protys/fixture#BatchC"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op1"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op2"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op3"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op4"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op5"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op6"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchB_Op7"/>
+        <iso14040:hasFunctionalUnitQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">195.2</iso14040:hasFunctionalUnitQuantity>
+        <iso15531:propagatedQualityStatus>APPROVED</iso15531:propagatedQualityStatus>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_EventEnd -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_EventEnd"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_EventStart -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_EventStart">
+        <iso15531:precedesEvent rdf:resource="http://w3id.org/protys/fixture#BatchB_EventEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#AcrylicResin_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Flow_Biocide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Flow_Biocide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Biocide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#TitaniumDioxide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Flow_Water -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Flow_Water">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchB_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Water_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Indicator -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Indicator">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#HighImpactIndicator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_LCIProcess -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_LCIProcess">
+        <iso14040:hasInventoryFlow rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op1 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op1">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op1_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op1_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104043736844</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op2 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op2">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PearlMill_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op2_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op2_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3468208087473688</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op3 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op3">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.6666666666666667</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">75.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op3_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op3_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5202312131210532</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op4 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op4">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#DosingSystem_03"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">26.6666665</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op4_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op4_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104043736844</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op5 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op5">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#FilterSystem_04"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3333335</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op5_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op5_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104043736844</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op6 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op6">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">2.5000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op6_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op6_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3468208087473688</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op7 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op7">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PackagingMachine_05"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">4.88000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3333335</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Op7_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Op7_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104043736844</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchB_Order -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchB_Order">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/iso15531#requiresReprocess"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchC_Flow_Biocide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchC_Flow_Water"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+        <iso14040:hasImpact rdf:resource="http://w3id.org/protys/fixture#BatchC_Indicator"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op1"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op2"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op3"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op4"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op5"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op6"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchC_Op7"/>
+        <iso14040:hasFunctionalUnitQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">97.392</iso14040:hasFunctionalUnitQuantity>
+        <iso15531:propagatedQualityStatus>REJECTED</iso15531:propagatedQualityStatus>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_EventEnd -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_EventEnd"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_EventStart -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_EventStart">
+        <iso15531:precedesEvent rdf:resource="http://w3id.org/protys/fixture#BatchC_EventEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#AcrylicResin_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Flow_Biocide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Flow_Biocide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Biocide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#TitaniumDioxide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Flow_Water -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Flow_Water">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchC_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Water_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Indicator -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Indicator">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#HighImpactIndicator"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_LCIProcess -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_LCIProcess">
+        <iso14040:hasInventoryFlow rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op1 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op1">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op1_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op1_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op2 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op2">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PearlMill_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op2_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op2_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3468208102509272</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op3 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op3">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">3.3333333333333333</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">37.5</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op3_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op3_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.5202312153763908</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op4 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op4">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#DosingSystem_03"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13.3333335</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op4_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op4_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op5 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op5">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#FilterSystem_04"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.6666665</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op5_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op5_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op6 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op6">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op6_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op6_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.3468208102509272</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op7 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op7">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PackagingMachine_05"/>
+        <alignment:hasEfficiency rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">9.7392000000000000000</alignment:hasEfficiency>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1666665</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Op7_Ratio -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Op7_Ratio">
+        <research:operationIndicatorRatio rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1734104051254636</research:operationIndicatorRatio>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchC_Order -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchC_Order">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero">
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchZero_Flow_Biocide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/fixture#BatchZero_Flow_Water"/>
+        <alignment:hasRecordedInputFlowForLot rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+        <iso14040:hasImpact rdf:resource="http://w3id.org/protys/fixture#BatchZero_Indicator"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op1"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op2"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op3"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op4"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op5"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op6"/>
+        <research:hasGHGContribution rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op7"/>
+        <iso14040:hasFunctionalUnitQuantity rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0</iso14040:hasFunctionalUnitQuantity>
+        <iso15531:propagatedQualityStatus>INVALID_TEST_RECORD</iso15531:propagatedQualityStatus>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_EventEnd -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_EventEnd"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_EventStart -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_EventStart">
+        <iso15531:precedesEvent rdf:resource="http://w3id.org/protys/fixture#BatchZero_EventEnd"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#AcrylicResin_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Flow_Biocide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Flow_Biocide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Biocide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#TitaniumDioxide_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Flow_Water -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Flow_Water">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op1"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op2"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op3"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op4"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op5"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op6"/>
+        <core:bridgesFlowToActivity rdf:resource="http://w3id.org/protys/fixture#BatchZero_Op7"/>
+        <research:usesEmissionFactor rdf:resource="http://w3id.org/protys/fixture#Water_Factor"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Indicator -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Indicator"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_LCIProcess -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_LCIProcess">
+        <iso14040:hasInventoryFlow rdf:resource="http://w3id.org/protys/ontology/core#WaterFlow"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op1 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op1">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op2 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op2">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PearlMill_01"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op3 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op3">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op4 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op4">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#DosingSystem_03"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#MixingReactor_02"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op5 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op5">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#FilterSystem_04"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op6 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op6">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Op7 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Op7">
+        <iso15531:responsibleOperator rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#Operator_01"/>
+        <iso15531:usesResource rdf:resource="http://w3id.org/protys/fixture#PackagingMachine_05"/>
+        <iso14040:hasGHGImpactKgCO2e rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</iso14040:hasGHGImpactKgCO2e>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#BatchZero_Order -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#BatchZero_Order">
+        <rdf:type>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/iso15531#executedBy"/>
+                <owl:minCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minCardinality>
+            </owl:Restriction>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#Biocide_Factor -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#Biocide_Factor"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#DosingSystem_03 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#DosingSystem_03"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#FilterSystem_04 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#FilterSystem_04"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#GridFactor -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#GridFactor">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#MissingProcess -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#MissingProcess">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#CoverageGap"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#MixingReactor_02 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#MixingReactor_02"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#Operator_01 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#Operator_01"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#PackagingMachine_05 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#PackagingMachine_05"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#PearlMill_01 -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#PearlMill_01">
+        <rdf:type rdf:resource="http://w3id.org/protys/ontology/core#Hotspot"/>
+        <iso15531:hasCapability rdf:resource="http://w3id.org/protys/ontology/alignment#FineGrinding"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#TitaniumDioxide_Factor -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#TitaniumDioxide_Factor"/>
+    
+
+
+    <!-- http://w3id.org/protys/fixture#Water_Factor -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/fixture#Water_Factor"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/alignment#FineGrinding -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/ontology/alignment#FineGrinding"/>
+    
+
+
+    <!-- http://w3id.org/protys/ontology/core#WaterFlow -->
+
+    <owl:NamedIndividual rdf:about="http://w3id.org/protys/ontology/core#WaterFlow">
+        <rdf:type>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ElementaryFlow"/>
+                    <rdf:Description rdf:about="http://w3id.org/protys/ontology/iso14040#ProductFlow"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.27.2024-05-08T17:59:22Z) https://github.com/owlcs/owlapi -->
+

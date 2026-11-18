@@ -1,0 +1,36 @@
+entrada cruda: 4846 triples; preparada: 4882 (+36); deducciones SWRL: 1003
+construcciones previas pedidas: ['research/model/validations/R07-materialize.sparql', 'research/model/validations/CNUM-materialize.sparql']
+[OK] 1 R24 habilitada — 22 reglas habilitadas
+[OK] 1 regla SWRL MissingEnvironmentalData(?p) → CoverageGap(?p) en la entrada — reglas con cabeza CoverageGap: [('core#MissingEnvironmentalData', 'core#CoverageGap')]
+[OK] 2 MissingEnvironmentalData no afirmada en la entrada cruda — 0 individuos afirmados
+
+Procesos ERP (i:ManufacturingProcess) en la entrada preparada:
+  erp:adempiere/process/50015              Patio Chair                                   MissingEnvironmentalData=sí
+  erp:adempiere/process/50016              Lawn Fertilizer                               MissingEnvironmentalData=sí
+  erp:adempiere/process/50017              Fertilizer Packing Process                    MissingEnvironmentalData=sí
+  erp:adempiere/process/50018              Patio Furniture Set                           MissingEnvironmentalData=sí
+  erp:odoo/process/2                       Ruta Table                                    MissingEnvironmentalData=sí
+  erp:odoo/process/3                       Ruta Table Top                                MissingEnvironmentalData=sí
+  erp:odoo/process/8                       Ruta Drawer SEC-ASSEM                         MissingEnvironmentalData=sí
+[OK] 3 todos los procesos ERP tienen MissingEnvironmentalData en la entrada preparada — 7 de 7
+
+c:MissingEnvironmentalData en la entrada preparada: 8 (7 ERP)
+c:CoverageGap en las deducciones SWRL: 8
+  erp:adempiere/process/50015              Missing=sí CoverageGap=sí
+  erp:adempiere/process/50016              Missing=sí CoverageGap=sí
+  erp:adempiere/process/50017              Missing=sí CoverageGap=sí
+  erp:adempiere/process/50018              Missing=sí CoverageGap=sí
+  erp:odoo/process/2                       Missing=sí CoverageGap=sí
+  erp:odoo/process/3                       Missing=sí CoverageGap=sí
+  erp:odoo/process/8                       Missing=sí CoverageGap=sí
+  fixture#MissingProcess                   Missing=sí CoverageGap=sí
+[OK] 4 CoverageGap deducida exactamente para los procesos con MissingEnvironmentalData — 8 = 8
+
+Procesos con representación de inventario e indicador (escenario):
+  fixture#BatchA_Process                   inventario=fixture#BatchA_LCIProcess indicador=fixture#BatchA_Indicator valor=57.6666665
+  fixture#BatchB_Process                   inventario=fixture#BatchB_LCIProcess indicador=fixture#BatchB_Indicator valor=115.3333335
+  fixture#BatchC_Process                   inventario=fixture#BatchC_LCIProcess indicador=fixture#BatchC_Indicator valor=57.6666665
+  fixture#BatchZero_Process                inventario=fixture#BatchZero_LCIProcess indicador=fixture#BatchZero_Indicator valor=0.0
+[OK] 5 prueba negativa: procesos con inventario no quedan como brecha — 4 procesos con inventario; marcados por error: []
+
+resultado: CADENA CONFIRMADA
