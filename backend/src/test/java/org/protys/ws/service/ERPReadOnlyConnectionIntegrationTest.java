@@ -91,4 +91,35 @@ class ERPReadOnlyConnectionIntegrationTest {
             c.rollback();
         }
     }
+
+    /**
+     * Comprobación (no afirma nada): varias sentencias en una sola consulta, sin pasar por el filtro de SQL,
+     * por la conexión del conector, que se cierra como lo hace el servicio (rollback y close).
+     */
+    @Test
+    void comprobacionVariasSentenciasPorLaConexionDelConector() throws SQLException {
+        String[] variantes = {
+                "SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)",
+                "SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT",
+                "SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)"};
+        for (String sql : variantes) {
+            for (String metodo : new String[]{"executeQuery", "execute"}) {
+                try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+                    st.execute("TRUNCATE prueba");
+                }
+                String resultado;
+                try (Connection c = ERPConnectorService.openReadOnly(url, user, password)) {
+                    try (var st = c.createStatement()) {
+                        if (metodo.equals("executeQuery")) st.executeQuery(sql); else st.execute(sql);
+                        resultado = "aceptada";
+                    } catch (SQLException e) {
+                        resultado = "rechazada, SQLSTATE " + e.getSQLState() + ": " + e.getMessage().replace('\n', ' ');
+                    } finally {
+                        try { c.rollback(); } catch (SQLException ignored) { }
+                    }
+                }
+                System.out.println("PGJDBC COMPROBACION " + metodo + " [" + sql + "] -> " + resultado + "; filas en prueba=" + filas());
+            }
+        }
+    }
 }
