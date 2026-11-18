@@ -6,17 +6,25 @@
 # alternativos, así no toca otra instancia de la plataforma. Al empezar borra los contenedores
 # y volúmenes de ESE proyecto. Requiere docker (con compose), curl y python3.
 #
+# Nunca corre sobre el proyecto "protys" (el de la plataforma principal): aborta antes de bajar nada.
+#
 # Uso:   research/integration/erp/run.sh            (deja todo levantado al terminar)
 #        KEEP_UP=0 research/integration/erp/run.sh  (baja el proyecto al terminar)
+#        OUT=<carpeta> research/integration/erp/run.sh  (otra carpeta de salida; la por defecto se reemplaza)
 # Salida: research/integration/erp/salidas/e2e/ y un resumen APROBADO/FALLADO por paso.
 set -uo pipefail
 
 REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
-OUT="$REPO/research/integration/erp/salidas/e2e"
+OUT="${OUT:-$REPO/research/integration/erp/salidas/e2e}"
 QUERIES="$REPO/research/integration/erp/queries"
 SCRIPTS="$REPO/research/integration/erp/scripts"
 
 export COMPOSE_PROJECT_NAME="${COMPOSE_PROJECT_NAME:-protys-e2e}"
+if [ "$COMPOSE_PROJECT_NAME" = "protys" ]; then
+  echo "run.sh: COMPOSE_PROJECT_NAME=protys es la plataforma principal; esta prueba borra los volúmenes" >&2
+  echo "de su proyecto al empezar. Usá otro nombre (por defecto protys-e2e). No se tocó nada." >&2
+  exit 2
+fi
 export PROTYS_FUSEKI_PORT="${PROTYS_FUSEKI_PORT:-13030}"
 export PROTYS_POSTGRES_PORT="${PROTYS_POSTGRES_PORT:-15432}"
 export PROTYS_BACKEND_PORT="${PROTYS_BACKEND_PORT:-18080}"

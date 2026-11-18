@@ -11,7 +11,8 @@
 set -uo pipefail
 
 REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
-OUT="$REPO/research/integration/asistente/salidas/api"
+# OUT cambia la carpeta de salida; la por defecto (evidencia de la Fase 3) se borra y se reescribe.
+OUT="${OUT:-$REPO/research/integration/asistente/salidas/api}"
 API="${API:-http://127.0.0.1:18080/api}"
 FUSEKI="${FUSEKI:-http://127.0.0.1:13030}"
 FRAGMENTO="$REPO/ontologies/iso10303-ap242-fragment.owl"

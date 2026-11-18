@@ -6,7 +6,7 @@
 # Uso: huella-esquema.sh adempiere|odoo
 set -euo pipefail
 
-PROJECT="${COMPOSE_PROJECT_NAME:-protys}"
+PROJECT="${COMPOSE_PROJECT_NAME:-protys-e2e}"
 case "${1:-}" in
   adempiere) C="${PROJECT}-adempiere-db-1"; U="${ERP_ADMIN_USER:-postgres}"; D=adempiere; S=adempiere ;;
   odoo)      C="${PROJECT}-odoo-db-1";      U="${ODOO_DB_USER:-odoo}";      D=odoo;      S=public ;;

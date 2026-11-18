@@ -1,0 +1,6 @@
+$ COMPOSE_PROJECT_NAME=protys research/integration/erp/run.sh
+run.sh: COMPOSE_PROJECT_NAME=protys es la plataforma principal; esta prueba borra los volúmenes
+de su proyecto al empezar. Usá otro nombre (por defecto protys-e2e). No se tocó nada.
+exit=2
+$ git status --short research/integration/erp/salidas
+(sin cambios)
