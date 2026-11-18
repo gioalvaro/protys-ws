@@ -15,6 +15,12 @@
   code, pre {
     font-family: 'Fira Code', monospace;
   }
+
+  /* Fira Code une «www», «//» o «>=» en ligaduras: en consultas y reglas se lee mal. */
+  code, pre, kbd, samp, textarea, .font-mono {
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0, "calt" 0;
+  }
 }
 
 @layer components {
