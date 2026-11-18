@@ -341,7 +341,10 @@ class ERPReadOnlyConnectionIntegrationTest {
         assertEquals(0, filas(), "un rol con sólo SELECT no debería poder escribir");
     }
 
-    /** En PostgreSQL, pgjdbc informa timestamptz como TIMESTAMP: sin la rama propia se perdería el desplazamiento. */
+    /**
+     * En PostgreSQL, pgjdbc informa timestamptz como TIMESTAMP: sin la rama propia el valor saldría sin zona. Se
+     * conserva el instante, no el desplazamiento escrito ('10:15:30-03' queda '13:15:30Z').
+     */
     @Test
     void timestamptzDePostgresqlConservaElDesplazamiento() throws Exception {
         try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {

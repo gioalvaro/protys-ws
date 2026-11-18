@@ -517,7 +517,8 @@ public final class R2RMLProcessor {
                     int type = md.getColumnType(i);
                     Object raw;
                     if (type == Types.TIMESTAMP_WITH_TIMEZONE || "timestamptz".equalsIgnoreCase(md.getColumnTypeName(i))) {
-                        // Con zona: se conserva el desplazamiento (pgjdbc informa timestamptz como TIMESTAMP).
+                        // Con zona (pgjdbc informa timestamptz como TIMESTAMP): se conserva el instante, no el
+                        // desplazamiento escrito; pgjdbc lo devuelve en UTC ('10:15:30-03' queda '13:15:30Z').
                         raw = rs.getObject(i, java.time.OffsetDateTime.class);
                         type = Types.TIMESTAMP_WITH_TIMEZONE;
                     } else {

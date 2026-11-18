@@ -130,7 +130,7 @@ que levanta `solo-lectura.sh`.
 | Punto | Qué se hizo | Respaldo |
 |---|---|---|
 | Claves de join numéricas | Se comparan por valor; la prueba (INTEGER 8 frente a DOUBLE 8.0) falla sin el arreglo | `R2RMLProcessorTypesTest`, `salidas/backend-pruebas-final.txt` |
-| `TIMESTAMP WITH TIME ZONE` | `xsd:dateTime` con desplazamiento; también `timestamptz` de pgjdbc, que se informa como TIMESTAMP | ídem |
+| `TIMESTAMP WITH TIME ZONE` | `xsd:dateTime` con zona; también `timestamptz` de pgjdbc, que se informa como TIMESTAMP. Se conserva el instante, no el desplazamiento escrito (aclarado en la ronda 3) | ídem |
 | Javadoc «vocabulario completo» | Ya se corrigió en `a7702ec`: dice qué términos implementa y qué restringe | — |
 | `{"dataGraphs": null}` | 400 con mensaje, también `[null]` | `AlignmentControllerTest` |
 | Acumulador muerto de `inputTriples` | Quitado | — |
@@ -160,6 +160,8 @@ que levanta `solo-lectura.sh`.
 Segunda revisión de los commits `7fc4cf6..d334e3a`: dos puntos importantes y unos pocos menores. Toda la
 evidencia de esta ronda se generó con el árbol versionado limpio (`460f152`), salvo lo que se indica, y está
 en `salidas/ronda2/`. Las salidas de la primera ronda no se tocaron.
+Las dos comprobaciones del punto A llevan `df79352` y `3eea75e`, no `460f152`: se corrieron a propósito antes
+del arreglo, para registrar lo que pasaba sin él.
 
 ### A. El filtro de SQL se salteaba con una cadena `E'…'`
 
@@ -234,7 +236,7 @@ rechazada (25006) y la 2 todavía escribiendo (`salidas/ronda2/solo-lectura-pgjd
 
 | Punto | Qué se hizo | Respaldo |
 |---|---|---|
-| Zona horaria en PostgreSQL | `timestamptzDePostgresqlConservaElDesplazamiento`: `'2026-11-18 10:15:30-03'` → `"2026-11-18T13:15:30Z"^^xsd:dateTime`; falla sin la rama de `R2RMLProcessor` (comprobado en una copia sin commitear) | `salidas/ronda2/solo-lectura-pgjdbc.txt` |
+| Zona horaria en PostgreSQL | `timestamptzDePostgresqlConservaElDesplazamiento`: `'2026-11-18 10:15:30-03'` → `"2026-11-18T13:15:30Z"^^xsd:dateTime`. Pese al nombre de la prueba, se conserva el instante, no el desplazamiento escrito (`-03` pasa a `Z`); falla sin la rama de `R2RMLProcessor` (comprobado en una copia sin commitear) | `salidas/ronda2/solo-lectura-pgjdbc.txt` |
 | Tiempo máximo en PostgreSQL | `elTiempoMaximoCortaUnaConsultaLentaEnPostgresql`: `pg_sleep(5)` con límite de 1 s corta en 1 s con el mensaje de tiempo excedido; falla sin la rama del SQLSTATE 57014 | ídem |
 | 404 en el servicio | `OntologyServiceTest.unModuloQueNoExisteLanzaModuleNotFound` | `salidas/ronda2/backend-pruebas.txt` |
 | Rechazos conocidos del filtro | Javadoc de `SqlQueryGuard` y línea en el INFORME: paréntesis inicial, `WITH` con columna `insert`/`update`/`delete`/`merge` sin comillas, barra invertida fuera de `E'…'` (comprobados) | — |

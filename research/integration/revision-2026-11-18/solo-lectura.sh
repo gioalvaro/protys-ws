@@ -14,6 +14,11 @@ NET=protys-solo-lectura-$$
 DB=protys-solo-lectura-db-$$
 OUT="${1:-/dev/stdout}"
 
+# Estado del árbol al empezar (antes de crear el archivo de salida): cambios en archivos versionados o
+# archivos nuevos que .gitignore no excluye.
+COMMIT="$(git -C "$REPO" rev-parse --short HEAD)"
+[ -z "$(git -C "$REPO" status --porcelain --untracked-files=all)" ] || COMMIT="$COMMIT+cambios-sin-commit"
+
 LOGF=$(mktemp)
 limpiar() { docker rm -f "$DB" > /dev/null 2>&1 || true; docker network rm "$NET" > /dev/null 2>&1 || true; rm -f "$LOGF"; }
 trap limpiar EXIT
@@ -38,7 +43,7 @@ set -e
 
 {
   echo "# solo-lectura.sh — $(date -u +%FT%TZ)"
-  echo "# commit: $(git -C "$REPO" rev-parse --short HEAD)$(git -C "$REPO" diff --quiet HEAD || echo '+cambios-sin-commit')"
+  echo "# commit: $COMMIT"
   echo "# PostgreSQL desechable: $PG_IMAGE; Java: $JDK_IMAGE"
   echo "# usuario 'escritor' = dueño de la base 'desechable' (puede escribir en la tabla prueba)"
   # Sólo las líneas de la comprobación y del resultado; grep sin coincidencias no es una falla.
