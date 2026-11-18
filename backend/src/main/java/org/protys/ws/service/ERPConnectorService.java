@@ -86,14 +86,33 @@ public class ERPConnectorService {
     }
 
     /**
-     * Conexión del conector en una transacción de sólo lectura real: sin autocommit, pgjdbc abre cada
-     * transacción con {@code BEGIN READ ONLY} y PostgreSQL rechaza cualquier escritura (SQLSTATE 25006).
-     * Con autocommit activo, {@code setReadOnly(true)} no tiene efecto en pgjdbc (modo por defecto
-     * {@code readOnlyMode=transaction}); ver research/integration/revision-2026-11-18/. Es una garantía
-     * de la aplicación, distinta de la del rol de base de datos, que también debe ser de sólo lectura.
+     * Conexión del conector: sin autocommit y en sólo lectura (pgjdbc abre cada transacción con
+     * {@code BEGIN READ ONLY}) y, en PostgreSQL, con {@code default_transaction_read_only=on} para toda la
+     * sesión. Comprobado contra un PostgreSQL desechable con un usuario que puede escribir
+     * (research/integration/revision-2026-11-18/salidas/ronda2/):
+     * <ul>
+     *   <li>rechaza un {@code INSERT} (SQLSTATE 25006), también después de un {@code COMMIT} dentro de la
+     *       misma consulta, y {@code SET TRANSACTION READ WRITE} (25001) o
+     *       {@code SET SESSION CHARACTERISTICS … READ WRITE} seguidos de una escritura;</li>
+     *   <li><b>no puede impedir</b> {@code COMMIT; BEGIN READ WRITE; INSERT …} en una consulta de varias
+     *       sentencias: un {@code BEGIN READ WRITE} explícito pasa por encima de cualquier configuración de la
+     *       conexión. Eso lo frena {@link SqlQueryGuard} (rechaza cualquier {@code ;} intermedio) y, sin
+     *       depender de la consulta, el rol de la base ({@code protys_ro}, sólo {@code SELECT}).</li>
+     * </ul>
+     * Con autocommit activo, {@code setReadOnly(true)} solo no tiene efecto en pgjdbc
+     * ({@code readOnlyMode=transaction} por defecto).
      */
     static Connection openReadOnly(String jdbcUrl, String username, String password) throws java.sql.SQLException {
-        Connection connection = java.sql.DriverManager.getConnection(jdbcUrl, username, password);
+        Connection connection;
+        if (jdbcUrl != null && jdbcUrl.startsWith("jdbc:postgresql:")) {
+            java.util.Properties properties = new java.util.Properties();
+            if (username != null) properties.setProperty("user", username);
+            if (password != null) properties.setProperty("password", password);
+            properties.setProperty("options", "-c default_transaction_read_only=on");
+            connection = java.sql.DriverManager.getConnection(jdbcUrl, properties);
+        } else {
+            connection = java.sql.DriverManager.getConnection(jdbcUrl, username, password);
+        }
         try {
             connection.setAutoCommit(false);
             connection.setReadOnly(true);

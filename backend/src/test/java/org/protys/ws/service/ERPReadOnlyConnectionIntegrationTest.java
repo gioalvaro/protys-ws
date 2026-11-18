@@ -171,4 +171,50 @@ class ERPReadOnlyConnectionIntegrationTest {
             }
         }
     }
+
+    static final String COMMIT_INSERT = "SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)";
+    static final String BEGIN_READ_WRITE = "SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT";
+    static final String SET_TRANSACTION = "SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)";
+    static final String SET_SESSION = "SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)";
+
+    /** Ejecuta como el procesador (executeQuery) y como execute, y cierra como el servicio. */
+    void intentar(String sql, String usuario, String clave) throws SQLException {
+        for (boolean query : new boolean[]{true, false}) {
+            try (Connection c = ERPConnectorService.openReadOnly(url, usuario, clave)) {
+                try (var st = c.createStatement()) {
+                    if (query) st.executeQuery(sql); else st.execute(sql);
+                } catch (SQLException expected) {
+                    // Lo que importa es si quedó escrito, no el mensaje.
+                } finally {
+                    try { c.rollback(); } catch (SQLException ignored) { }
+                }
+            }
+        }
+    }
+
+    @Test
+    void laConexionDelConectorImpideEscribirDespuesDeCommitYConSetReadWrite() throws SQLException {
+        for (String sql : new String[]{COMMIT_INSERT, SET_TRANSACTION, SET_SESSION}) {
+            intentar(sql, user, password);
+            assertEquals(0, filas(), "escribió con: " + sql);
+        }
+    }
+
+    /**
+     * BEGIN READ WRITE explícito pasa por encima de la configuración de la conexión (comprobado): lo frenan el
+     * filtro de SQL, que rechaza el ';' intermedio, y un rol que sólo puede leer, que no depende de la consulta.
+     */
+    @Test
+    void beginReadWriteLoFrenanElFiltroYElRolNoLaConexion() throws SQLException {
+        var rechazo = assertThrows(SqlQueryGuard.RejectedQuery.class, () -> SqlQueryGuard.check(BEGIN_READ_WRITE));
+        assertTrue(rechazo.getMessage().contains("';' is not allowed"));
+        try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+            st.execute("DO $$ BEGIN IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'lector') THEN "
+                    + "CREATE ROLE lector LOGIN PASSWORD 'lector_demo'; END IF; END $$");
+            st.execute("REVOKE ALL ON prueba FROM lector");
+            st.execute("GRANT SELECT ON prueba TO lector");
+        }
+        intentar(BEGIN_READ_WRITE, "lector", "lector_demo");
+        assertEquals(0, filas(), "un rol con sólo SELECT no debería poder escribir");
+    }
 }

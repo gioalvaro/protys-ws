@@ -53,14 +53,29 @@ del `pom.xml` y PostgreSQL de la plataforma fijado por digest.
   además, el rol tiene `SELECT` sólo sobre las tablas que leen los mapeos
   (`docker/integration/odoo/inicializar.sh` y `docker/integration/adempiere-db/10-restaurar-semilla.sh`),
   no sobre todas.
-- **La conexión de la aplicación es de sólo lectura.** Es independiente del rol: vale aunque el usuario
-  configurado en el conector pudiera escribir. Antes de la revisión **no** lo era: el conector llamaba
-  a `setReadOnly(true)` con autocommit activo, y con pgjdbc 42.6.0 eso no tiene efecto; un `INSERT`
-  por esa conexión, con un usuario con permiso de escritura, se aceptó. Ahora el conector abre la
-  conexión sin autocommit y en sólo lectura, y la cierra con rollback; el mismo `INSERT` falla con
-  SQLSTATE 25006 (*cannot execute INSERT in a read-only transaction*). Prueba contra un PostgreSQL
-  desechable, nunca contra un ERP: `../revision-2026-11-18/solo-lectura.sh`, salida en
-  `../revision-2026-11-18/salidas/solo-lectura-pgjdbc.txt`.
+- **La conexión de la aplicación rechaza la mayoría de las escrituras, pero no todas.** Esto vale
+  aunque el usuario configurado en el conector pudiera escribir.
+  - **Antes de la revisión** el conector llamaba a `setReadOnly(true)` con autocommit activo, y con
+    pgjdbc 42.6.0 eso no tiene efecto: un `INSERT` con un usuario con permiso de escritura se aceptó.
+  - **Ahora** el conector abre la conexión sin autocommit, en sólo lectura y, en PostgreSQL, con
+    `default_transaction_read_only=on`; la cierra con rollback.
+  - **Comprobado** contra un PostgreSQL desechable (nunca contra un ERP), con un usuario que puede
+    escribir. Rechaza:
+    - un `INSERT` (SQLSTATE 25006);
+    - un `INSERT` después de un `COMMIT` dentro de la misma consulta;
+    - `SET TRANSACTION READ WRITE` (25001);
+    - `SET SESSION CHARACTERISTICS … READ WRITE` seguido de una escritura.
+  - **No puede impedir** `COMMIT; BEGIN READ WRITE; INSERT …` en una consulta de varias sentencias: un
+    `BEGIN READ WRITE` explícito pasa por encima de cualquier configuración de la conexión. Se probaron
+    características de sesión, `default_transaction_read_only`, `readOnlyMode=always` y los tres
+    `preferQueryMode`. Esa consulta la rechaza el filtro de SQL, por el `;` intermedio. Pero el filtro
+    revisa texto y ya tuvo un hueco: una cadena `E'…'` podía esconder un `;`, y se cerró en la segunda
+    ronda.
+  - Salidas: `../revision-2026-11-18/salidas/ronda2/comprobacion-varias-sentencias.txt`,
+    `comprobacion-configuraciones.txt` y `solo-lectura-pgjdbc.txt`.
+
+**La garantía que no depende de la consulta es el rol `protys_ro`:** no tiene permiso para escribir, y
+la prueba de integración muestra que un rol con sólo `SELECT` tampoco escribe con `BEGIN READ WRITE`.
 
 En la corrida del 2026-11-16 y su re-corrida del 2026-11-17, la única garantía era la del rol.
 

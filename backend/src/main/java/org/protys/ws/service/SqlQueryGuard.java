@@ -13,10 +13,16 @@ import java.util.regex.Pattern;
  * {@code MERGE}) y cualquier {@code ;}, salvo uno solo al final, que se descarta (los casos W3C D011 y D015
  * terminan así).
  *
+ * <p>Cadenas: en {@code E'…'} la barra invertida escapa el carácter siguiente; en las comunes (y {@code U&'…'})
+ * sólo {@code ''} escapa una comilla, y una barra invertida se rechaza, porque su sentido depende de
+ * {@code standard_conforming_strings} en el servidor. Ante la duda se rechaza: nunca se acepta algo que este
+ * análisis no entiende.
+ *
  * <p><b>No es una barrera de seguridad.</b> Un filtro de texto no puede garantizar que una consulta no
- * escriba (por ejemplo, una función con efectos llamada desde un SELECT). Las garantías son la conexión de
- * sólo lectura que abre {@link ERPConnectorService} y un rol de base de datos con permiso de SELECT sobre las
- * tablas mapeadas. Este filtro sólo da un error claro y temprano ante mapeos mal formados.
+ * escriba (por ejemplo, una función con efectos llamada desde un SELECT). La conexión que abre
+ * {@link ERPConnectorService} rechaza casi todas las escrituras, pero no un {@code BEGIN READ WRITE} explícito
+ * en una consulta de varias sentencias, que hoy frena este filtro. La garantía que no depende de la consulta es
+ * el rol de la base, con permiso de SELECT sólo sobre las tablas mapeadas.
  */
 public final class SqlQueryGuard {
 
@@ -72,9 +78,18 @@ public final class SqlQueryGuard {
         while (i < n) {
             char c = sql.charAt(i);
             if (c == '\'' || c == '"') {
+                // Cadena de escape E'…' (PostgreSQL): la barra invertida escapa el carácter siguiente.
+                boolean escape = c == '\'' && i > 0 && (sql.charAt(i - 1) == 'E' || sql.charAt(i - 1) == 'e')
+                        && (i == 1 || !isIdentifierChar(sql.charAt(i - 2)));
                 int end = i + 1;
                 while (end < n) {
-                    if (sql.charAt(end) == c) {
+                    char d = sql.charAt(end);
+                    if (escape && d == '\\') { end += 2; continue; }
+                    // En una cadena común la barra es literal sólo si standard_conforming_strings está activo:
+                    // como depende del servidor, se rechaza (ante la duda, rechazar).
+                    if (!escape && c == '\'' && d == '\\')
+                        throw new RejectedQuery("backslash in a string literal is ambiguous (depends on standard_conforming_strings); use E'…'");
+                    if (d == c) {
                         if (end + 1 < n && sql.charAt(end + 1) == c) { end += 2; continue; }
                         break;
                     }
@@ -116,6 +131,10 @@ public final class SqlQueryGuard {
             }
         }
         return out.toString();
+    }
+
+    private static boolean isIdentifierChar(char c) {
+        return Character.isLetterOrDigit(c) || c == '_' || c == '$';
     }
 
     private static void blank(StringBuilder out, int length) {

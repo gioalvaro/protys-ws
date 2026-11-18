@@ -58,6 +58,29 @@ class SqlQueryGuardTest {
     }
 
     @Test
+    void lasCadenasDeEscapeNoEscondenUnPuntoYComa() {
+        // Reproducción de la segunda revisión: antes se aceptaba entera.
+        var error = assertThrows(SqlQueryGuard.RejectedQuery.class,
+                () -> SqlQueryGuard.check("SELECT E'\\'' ; COMMIT; DELETE FROM t; --'"));
+        assertTrue(error.getMessage().contains("';' is not allowed"), error.getMessage());
+        // E'a\'b' es una sola cadena: la comilla escapada no la cierra.
+        assertEquals("SELECT E'a\\'b' AS x FROM t", SqlQueryGuard.check("SELECT E'a\\'b' AS x FROM t"));
+        assertEquals("SELECT e'a\\'b' AS x FROM t", SqlQueryGuard.check("SELECT e'a\\'b' AS x FROM t"));
+        // E'\\' es una barra escapada: la cadena termina ahí y el ';' siguiente es intermedio.
+        var barra = assertThrows(SqlQueryGuard.RejectedQuery.class,
+                () -> SqlQueryGuard.check("SELECT E'\\\\' ; DELETE FROM t"));
+        assertTrue(barra.getMessage().contains("';' is not allowed"), barra.getMessage());
+    }
+
+    @Test
+    void unaBarraEnUnaCadenaComunSeRechazaPorqueDependeDelServidor() {
+        var error = assertThrows(SqlQueryGuard.RejectedQuery.class,
+                () -> SqlQueryGuard.check("SELECT '\\'' ; DELETE FROM t; --'"));
+        assertTrue(error.getMessage().contains("standard_conforming_strings"), error.getMessage());
+        SqlQueryGuard.check("SELECT U&'data' AS x FROM t"); // U&'…' sin barra: igual que una cadena común
+    }
+
+    @Test
     void elProcesadorRechazaElMapeoConElMotivo() {
         String mapping = mapping("SELECT id FROM t FOR UPDATE");
         var error = assertThrows(RuntimeException.class, () -> R2RMLProcessor.parse(mapping, "http://e.org/"));
