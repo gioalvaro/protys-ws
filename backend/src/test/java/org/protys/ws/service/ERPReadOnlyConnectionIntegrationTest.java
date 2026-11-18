@@ -217,4 +217,48 @@ class ERPReadOnlyConnectionIntegrationTest {
         intentar(BEGIN_READ_WRITE, "lector", "lector_demo");
         assertEquals(0, filas(), "un rol con sólo SELECT no debería poder escribir");
     }
+
+    /** En PostgreSQL, pgjdbc informa timestamptz como TIMESTAMP: sin la rama propia se perdería el desplazamiento. */
+    @Test
+    void timestamptzDePostgresqlConservaElDesplazamiento() throws Exception {
+        try (Connection c = DriverManager.getConnection(url, user, password); var st = c.createStatement()) {
+            st.execute("DROP TABLE IF EXISTS orden");
+            st.execute("CREATE TABLE orden (id int PRIMARY KEY, cuando timestamptz)");
+            st.execute("INSERT INTO orden VALUES (1, '2026-11-18 10:15:30-03')");
+        }
+        String mapping = """
+                @prefix rr: <http://www.w3.org/ns/r2rml#> .
+                <#Orden> rr:logicalTable [ rr:tableName "orden" ] ;
+                    rr:subjectMap [ rr:template "http://e.org/orden/{id}" ] ;
+                    rr:predicateObjectMap [ rr:predicate <http://e.org/cuando> ; rr:objectMap [ rr:column "cuando" ] ] .
+                """;
+        try (Connection c = ERPConnectorService.openReadOnly(url, user, password)) {
+            var graph = R2RMLProcessor.execute(R2RMLProcessor.parse(mapping, "http://e.org/"), c).getDefaultGraph();
+            var o = graph.find(org.apache.jena.graph.NodeFactory.createURI("http://e.org/orden/1"),
+                    org.apache.jena.graph.NodeFactory.createURI("http://e.org/cuando"), org.apache.jena.graph.Node.ANY).next().getObject();
+            c.rollback();
+            assertEquals("http://www.w3.org/2001/XMLSchema#dateTime", o.getLiteralDatatypeURI());
+            String lexical = o.getLiteralLexicalForm();
+            assertTrue(lexical.matches(".*(Z|[+-]\\d\\d:\\d\\d)$"), "sin desplazamiento: " + lexical);
+            assertEquals(java.time.OffsetDateTime.parse("2026-11-18T10:15:30-03:00").toInstant(),
+                    java.time.OffsetDateTime.parse(lexical).toInstant());
+            System.out.println("PGJDBC timestamptz '2026-11-18 10:15:30-03' -> \"" + lexical + "\"^^xsd:dateTime");
+        }
+    }
+
+    /** El tiempo máximo corta la consulta en PostgreSQL (SQLSTATE 57014) con el mensaje del procesador. */
+    @Test
+    void elTiempoMaximoCortaUnaConsultaLentaEnPostgresql() throws Exception {
+        var parsed = R2RMLProcessor.parse(SqlQueryGuardTest.mapping("SELECT 1 AS id FROM pg_sleep(5)"), "http://e.org/");
+        try (Connection c = ERPConnectorService.openReadOnly(url, user, password)) {
+            long start = System.nanoTime();
+            var error = assertThrows(R2RMLProcessor.R2RMLDataException.class,
+                    () -> R2RMLProcessor.execute(parsed, c, new R2RMLProcessor.Limits(1, 100)));
+            long seconds = (System.nanoTime() - start) / 1_000_000_000L;
+            c.rollback();
+            assertTrue(error.getMessage().contains("exceeded the query timeout of 1 s"), error.getMessage());
+            assertTrue(seconds < 4, "no cortó a tiempo: " + seconds + " s");
+            System.out.println("PGJDBC pg_sleep(5) con límite de 1 s -> " + error.getMessage() + " (" + seconds + " s)");
+        }
+    }
 }

@@ -399,4 +399,15 @@ class OntologyServiceTest {
         assertNotNull(result);
         assertTrue(result.isEmpty());
     }
+
+    @Test
+    void unModuloQueNoExisteLanzaModuleNotFound() {
+        java.util.UUID id = java.util.UUID.randomUUID();
+        when(ontologyModuleRepository.findById(id)).thenReturn(java.util.Optional.empty());
+        var jerarquia = assertThrows(org.protys.ws.exception.ModuleNotFoundException.class, () -> ontologyService.getClassHierarchy(id));
+        assertEquals("Module not found: " + id, jerarquia.getMessage());
+        var validacion = assertThrows(org.protys.ws.exception.ModuleNotFoundException.class, () -> ontologyService.validateDetailed(id));
+        assertEquals("Module not found: " + id, validacion.getMessage());
+        verifyNoInteractions(fusekiService);
+    }
 }

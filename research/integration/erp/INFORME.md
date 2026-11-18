@@ -159,6 +159,13 @@ y `08-catalogo-con-erp/`). Ninguna consulta pierde filas.
 - **Datos de demostración, no industriales.** El volumen es chico (549 triples). No hay owl:sameAs entre
   ERP: los catálogos no comparten productos. La consulta conjunta combina por clases comunes, no por identidad.
 - **`/history`** del conector devuelve una lista vacía: es un esqueleto anterior a este trabajo y no se implementó.
+- **Relevamiento de esquemas.** `scripts/relevar-esquemas.sh` usa el superusuario de cada base y sólo
+  lee (cuenta filas y lista columnas). La plataforma se conecta siempre con `protys_ro`.
+- **Rechazos conocidos del filtro de SQL.** Rechaza consultas válidas que empiezan con paréntesis
+  (`(SELECT …) UNION (SELECT …)`), un `WITH` con una columna sin comillas llamada `insert`, `update`,
+  `delete` o `merge`, y cualquier barra invertida en una cadena que no sea `E'…'`, también en `U&'…'`.
+  Es a propósito: ante la duda rechaza. Ninguna consulta de los mapeos de ADempiere y Odoo, ni de la
+  suite W3C, cae en esos casos.
 - **Provisión de Odoo.** Para que el rol de sólo lectura no pudiera crear tablas, hubo que quitar a
   PUBLIC el permiso CREATE sobre el esquema `public` (Odoo lo deja abierto). Ocurre al preparar el
   entorno, antes de la huella "antes". La huella cubre el esquema, no el contenido de las filas.

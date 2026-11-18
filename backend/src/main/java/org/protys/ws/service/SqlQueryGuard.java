@@ -18,6 +18,11 @@ import java.util.regex.Pattern;
  * {@code standard_conforming_strings} en el servidor. Ante la duda se rechaza: nunca se acepta algo que este
  * análisis no entiende.
  *
+ * <p>Rechazos conocidos de consultas válidas, a propósito: una consulta que empieza con paréntesis
+ * ({@code (SELECT …) UNION (SELECT …)}); un {@code WITH} con una columna sin comillas llamada {@code insert},
+ * {@code update}, {@code delete} o {@code merge} (entre comillas se acepta); y una barra invertida en una cadena
+ * que no sea {@code E'…'}, también en {@code U&'…'}.
+ *
  * <p><b>No es una barrera de seguridad.</b> Un filtro de texto no puede garantizar que una consulta no
  * escriba (por ejemplo, una función con efectos llamada desde un SELECT). La conexión que abre
  * {@link ERPConnectorService} rechaza casi todas las escrituras, pero no un {@code BEGIN READ WRITE} explícito

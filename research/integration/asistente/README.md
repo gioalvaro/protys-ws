@@ -304,6 +304,8 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
 
 ## Qué no puede afirmar
 - Que el control `H3_pre_extension_no_classification` se reprodujo en la plataforma.
+- Que el asistente de la versión evaluada (`tesis-cierre-2026-10-03-v1`) podía hacer esta
+  incorporación: no podía (Fase 3).
 
 ## Limitaciones del asistente
 - **Efecto global al completar.** Completar deja activas todas las reglas verificadas en el paso 4,
@@ -313,8 +315,12 @@ a que `protys-init` termine bien, tampoco volvía a levantar.
   el resultado del completado repite la lista. Pruebas: `WizardSessionRulesTest.elPaso4AvisaQueReglasInactivasVaAReactivar`
   y `Wizard.test.jsx` («rules that completion will reactivate…»), salidas en
   `../revision-2026-11-18/salidas/backend-pruebas.txt` y `frontend-pruebas.txt`.
-- Que el asistente de la versión evaluada (`tesis-cierre-2026-10-03-v1`) podía hacer esta
-  incorporación: no podía (Fase 3).
+- **Reversión al cancelar, por nombre local.** Para deshacer un completado cortado, las reglas se
+  reconocen por su nombre local (`R27`), igual que en el registro de reglas. Dos reglas con el mismo
+  nombre local en espacios de nombres distintos no se distinguen.
+- **Triples con nodos en blanco.** De lo que el completado suma al grafo de reglas fuera de las
+  definiciones, sólo se registran (y se deshacen al cancelar) los triples sin nodos en blanco. Las
+  definiciones de regla, que sí los tienen, se quitan regla por regla.
 
 ## Pulido para compartir (2026-11-17)
 

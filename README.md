@@ -307,6 +307,7 @@ evaluación 16 de 16 (`research/integration/revision-2026-11-18/salidas/evaluaci
 
 - **API sin autenticación.** `SecurityConfig` deja abierto `/api/**`. Docker Compose publica todos los puertos sólo en `127.0.0.1`; la plataforma no está pensada para exponerse en una red.
 - **Ruta del mapeo leída del servidor.** Un conector ERP guarda `r2rmlMappingPath`, una ruta de archivo dentro del contenedor del backend, y el servicio lo lee de ahí. Quien registra un conector elige qué archivo del servidor se lee.
+- **Esquema de la base de la plataforma.** `application-docker.yml` declara `ddl-auto: validate`, pero `docker/docker-compose.yml` lo reemplaza por `update` (`SPRING_JPA_HIBERNATE_DDL_AUTO`). Así se crean las columnas nuevas, como `ruleChangesJson`; con `validate`, una base anterior a esa columna no arrancaría. No hay migraciones versionadas.
 - **Contraseña del conector en texto plano.** Se guarda tal cual en PostgreSQL (la API no la devuelve: es de sólo escritura en el JSON). Las credenciales del entorno de prueba son de demostración (`docker/integration/.env.example`).
 
 ## Stack tecnológico
