@@ -1,0 +1,77 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "energyKWh",
+      "ghgKgCO2e"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "energyKWh": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "115.333333"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "57.6666665"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "energyKWh": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "230.666667"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "115.3333335"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "energyKWh": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "115.333333"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "57.6666665"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "energyKWh": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        },
+        "ghgKgCO2e": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0.0"
+        }
+      }
+    ]
+  }
+}

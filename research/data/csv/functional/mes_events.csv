@@ -1,0 +1,9 @@
+event_iri,lot_iri,process_iri,event_kind,event_time_seconds,time_reference,scenario_role
+http://w3id.org/protys/fixture#BatchA_EventStart,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,Start,0,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_EventEnd,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,End,6600,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_EventStart,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,Start,20000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_EventEnd,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,End,33200,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchC_EventStart,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,Start,40000,COMMON_ARBITRARY_ORIGIN_SECONDS,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_EventEnd,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,End,46600,COMMON_ARBITRARY_ORIGIN_SECONDS,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_EventStart,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,Start,60000,COMMON_ARBITRARY_ORIGIN_SECONDS,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_EventEnd,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,End,66600,COMMON_ARBITRARY_ORIGIN_SECONDS,DELIBERATE_NEGATIVE_TEST_RECORD

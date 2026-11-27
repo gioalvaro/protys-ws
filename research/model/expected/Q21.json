@@ -1,0 +1,29 @@
+{
+  "head": {
+    "vars": [
+      "entity",
+      "currentVersion",
+      "priorVersion"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "entity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#GridFactor"
+        },
+        "currentVersion": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "2"
+        },
+        "priorVersion": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "1"
+        }
+      }
+    ]
+  }
+}

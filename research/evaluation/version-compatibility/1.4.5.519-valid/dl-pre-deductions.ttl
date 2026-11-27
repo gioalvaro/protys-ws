@@ -1,0 +1,6 @@
+<https://example.org/B>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<https://example.org/x>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <https://example.org/B> .

@@ -1,0 +1,19 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+f:CE_Product a owl:NamedIndividual, c:Product . f:CE_ProductFlow a owl:NamedIndividual, e:ProductFlow ; t:flowRefersToProduct f:CE_Product ; owl:differentFrom f:CE_Product .
+f:CE_Manufacturing a owl:NamedIndividual, i:ManufacturingProcess ; t:hasInventoryRepresentation f:CE_LCI ; owl:differentFrom f:CE_LCI . f:CE_LCI a owl:NamedIndividual, e:UnitProcess .
+f:CE_ConsumedResource a owl:NamedIndividual, i:ManufacturingResource ; i:resourceCurrentState a:Consumed . f:CE_PurchasedInput a owl:NamedIndividual, e:ProductFlow ; t:inputFlowForResource f:CE_ConsumedResource ; owl:differentFrom f:CE_ConsumedResource .
+f:CE_Facility a owl:NamedIndividual, i:ManufacturingFacility ; t:facilityInBoundary f:CE_Boundary ; owl:differentFrom f:CE_Boundary . f:CE_Boundary a owl:NamedIndividual, e:SystemBoundary .
+f:CE_Impact a owl:NamedIndividual, e:ImpactIndicator ; t:indicatorForLot f:CE_Lot ; owl:differentFrom f:CE_Quality . f:CE_Quality a owl:NamedIndividual, i:QualityAttribute ; t:qualityForLot f:CE_Lot . f:CE_Lot a owl:NamedIndividual, i:Lot .
+f:CE_Allocation a owl:NamedIndividual, e:AllocationProcedure ; t:allocationForOperation f:CE_Operation ; owl:differentFrom f:CE_Operation ; t:scenarioRole "Optional illustrative allocation relation; no allocation algorithm executed in painting"^^xsd:string . f:CE_Operation a owl:NamedIndividual, i:ProcessOperation ; i:hasInput f:Water .
+f:CE_Inventory a owl:NamedIndividual, e:LifeCycleInventory ; t:inventoryForPlan f:CE_Plan ; owl:differentFrom f:CE_Plan . f:CE_Plan a owl:NamedIndividual, i:ProcessPlan .
+

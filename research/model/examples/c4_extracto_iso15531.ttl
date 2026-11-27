@@ -1,0 +1,22 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+# Extracto de declaraciones nombradas y vínculos directos.
+# Fuente: ontologies/iso15531-module.owl; no reproduce todas sus restricciones.
+i:ManufacturingResource a owl:Class .
+i:EquipmentResource a owl:Class .
+i:EquipmentResource rdfs:subClassOf i:ManufacturingResource .
+i:HumanResource a owl:Class .
+i:HumanResource rdfs:subClassOf i:ManufacturingResource .
+i:ManufacturingProcess a owl:Class .
+i:ProcessOperation a owl:Class .
+i:ProcessPlan a owl:Class .
+i:requiresResource a owl:ObjectProperty .
+i:requiresResource rdfs:domain i:ProcessOperation .
+i:requiresResource rdfs:range i:ManufacturingResource .
+i:hasCapability a owl:ObjectProperty .
+i:hasCapability rdfs:domain i:ManufacturingResource .
+i:hasCapability rdfs:range i:ManufacturingCapability .
+i:hasInput a owl:ObjectProperty .
+i:hasInput rdfs:domain i:ProcessOperation .
+i:hasInput rdfs:range i:ManufacturingResource .

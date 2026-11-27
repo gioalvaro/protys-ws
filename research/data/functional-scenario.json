@@ -1,0 +1,675 @@
+{
+  "seed": 42,
+  "nature": "constructed computational test scenario, not plant observations",
+  "electricity_factor_kgCO2e_per_kWh": 0.5,
+  "declared_indicator_threshold": {
+    "record": "f:ElectricityGHGThreshold",
+    "value": 5,
+    "unit": "kg CO2e",
+    "category": "GHG_ELECTRICITY_PRODUCTION",
+    "scope": "Hypothetical scenario threshold, not regulatory or industrial"
+  },
+  "numeric_contract": "One numeric energy and one selected electricity factor IRI per operation. Numerically equivalent literals count once; contradictory values block numeric evaluation. Aggregates require all selected same-process operations.",
+  "system_boundary": "electricity consumed by operations only; raw material manufacturing excluded",
+  "density_assumption_kg_per_L": 1.25,
+  "mass_balance": "abs(input-output-registered_loss)/input <= 0.01; input must be positive",
+  "material_accounting": "Recipe is inventoried once per process; hasInput/consumesMaterial at multiple stages denotes the same circulating materials, not fresh additions. Constant circulating mass before final registered losses is a deliberate functional simplification, not a physical mass-flow simulation.",
+  "human_resource_scope": "One named operator is assigned throughout the executable functional fixture; management and specialized quality roles in contextual diagrams are not additional executed resource instances.",
+  "stages": [
+    "Recepción e inspección",
+    "Dispersión de pigmentos",
+    "Mezcla principal",
+    "Ajuste de viscosidad",
+    "Filtrado",
+    "Control de calidad",
+    "Envasado"
+  ],
+  "equipment": {
+    "PearlMill_01": {
+      "capacityLiters": 50,
+      "powerKW": 30,
+      "role": "FineGrinding"
+    },
+    "MixingReactor_02": {
+      "capacityLiters": 5000,
+      "powerKW": 150,
+      "role": "MainMixing"
+    },
+    "DosingSystem_03": {
+      "capacityLiters": 1000,
+      "powerKW": 10,
+      "role": "ViscosityAdjustment"
+    },
+    "FilterSystem_04": {
+      "capacityLiters": 5000,
+      "powerKW": 20,
+      "role": "Filtering"
+    },
+    "PackagingMachine_05": {
+      "capacityUnitsPerMinute": 30,
+      "powerKW": 2,
+      "role": "Packaging"
+    }
+  },
+  "materials": {
+    "TitaniumDioxide": {
+      "factor": 5.6,
+      "water": 40,
+      "supplier": "Supplier_A",
+      "recipe": 0.2
+    },
+    "AcrylicResin": {
+      "factor": 3.8,
+      "water": 127,
+      "supplier": "Supplier_B",
+      "recipe": 0.3
+    },
+    "Water": {
+      "factor": 0,
+      "water": 1,
+      "supplier": "Supplier_A",
+      "recipe": 0.49
+    },
+    "Biocide": {
+      "factor": 3.5,
+      "water": 15,
+      "supplier": "Supplier_B",
+      "recipe": 0.01
+    },
+    "Coalescent": {
+      "factor": 4.2,
+      "water": 10,
+      "supplier": "Supplier_B",
+      "recipe": 0
+    },
+    "ThresholdMaterial": {
+      "factor": 5,
+      "water": 50,
+      "supplier": "Supplier_A",
+      "recipe": 0
+    }
+  },
+  "batches": [
+    {
+      "id": "BatchA",
+      "family": "White_Matte",
+      "status": "APPROVED",
+      "input": 125,
+      "output": 123,
+      "loss": 2,
+      "liters": 98.4,
+      "start": 0,
+      "scale": 1,
+      "indicator": "57.6666665",
+      "operations": [
+        {
+          "id": "f:BatchA_Op1",
+          "stage": "Recepción e inspección",
+          "index": 1,
+          "duration": 10,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchA_Op2",
+          "stage": "Dispersión de pigmentos",
+          "index": 2,
+          "duration": 20,
+          "energy": "10",
+          "ghg": "5.0",
+          "resources": [
+            "f:PearlMill_01"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": [
+            {
+              "id": "f:BatchA_Op2_Subload1",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "600",
+              "endSeconds": "1200.000000"
+            },
+            {
+              "id": "f:BatchA_Op2_Subload2",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "1200.000000",
+              "endSeconds": "1800.000000"
+            }
+          ]
+        },
+        {
+          "id": "f:BatchA_Op3",
+          "stage": "Mezcla principal",
+          "index": 3,
+          "duration": 30,
+          "energy": "75",
+          "ghg": "37.5",
+          "resources": [
+            "f:MixingReactor_02"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchA_Op4",
+          "stage": "Ajuste de viscosidad",
+          "index": 4,
+          "duration": 10,
+          "energy": "26.666667",
+          "ghg": "13.3333335",
+          "resources": [
+            "f:MixingReactor_02",
+            "f:DosingSystem_03"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchA_Op5",
+          "stage": "Filtrado",
+          "index": 5,
+          "duration": 10,
+          "energy": "3.333333",
+          "ghg": "1.6666665",
+          "resources": [
+            "f:FilterSystem_04"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchA_Op6",
+          "stage": "Control de calidad",
+          "index": 6,
+          "duration": 20,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchA_Op7",
+          "stage": "Envasado",
+          "index": 7,
+          "duration": 10,
+          "energy": "0.333333",
+          "ghg": "0.1666665",
+          "resources": [
+            "f:PackagingMachine_05"
+          ],
+          "input": "125",
+          "output": "123",
+          "loss": "2",
+          "outputVolumeL": "98.4",
+          "yieldPercent": "98.400",
+          "subloads": []
+        }
+      ]
+    },
+    {
+      "id": "BatchB",
+      "family": "White_Satin",
+      "status": "APPROVED",
+      "input": 250,
+      "output": 244,
+      "loss": 3.5,
+      "liters": 195.2,
+      "start": 20000,
+      "scale": 2,
+      "indicator": "115.3333335",
+      "operations": [
+        {
+          "id": "f:BatchB_Op1",
+          "stage": "Recepción e inspección",
+          "index": 1,
+          "duration": 20,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "250",
+          "output": "250",
+          "loss": "0",
+          "outputVolumeL": "2E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchB_Op2",
+          "stage": "Dispersión de pigmentos",
+          "index": 2,
+          "duration": 40,
+          "energy": "20",
+          "ghg": "10.0",
+          "resources": [
+            "f:PearlMill_01"
+          ],
+          "input": "250",
+          "output": "250",
+          "loss": "0",
+          "outputVolumeL": "2E+2",
+          "yieldPercent": "100",
+          "subloads": [
+            {
+              "id": "f:BatchB_Op2_Subload1",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "21200",
+              "endSeconds": "21800.000000"
+            },
+            {
+              "id": "f:BatchB_Op2_Subload2",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "21800.000000",
+              "endSeconds": "22400.000000"
+            },
+            {
+              "id": "f:BatchB_Op2_Subload3",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "22400.000000",
+              "endSeconds": "23000.000000"
+            },
+            {
+              "id": "f:BatchB_Op2_Subload4",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "23000.000000",
+              "endSeconds": "23600.000000"
+            }
+          ]
+        },
+        {
+          "id": "f:BatchB_Op3",
+          "stage": "Mezcla principal",
+          "index": 3,
+          "duration": 60,
+          "energy": "150",
+          "ghg": "75.0",
+          "resources": [
+            "f:MixingReactor_02"
+          ],
+          "input": "250",
+          "output": "250",
+          "loss": "0",
+          "outputVolumeL": "2E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchB_Op4",
+          "stage": "Ajuste de viscosidad",
+          "index": 4,
+          "duration": 20,
+          "energy": "53.333333",
+          "ghg": "26.6666665",
+          "resources": [
+            "f:MixingReactor_02",
+            "f:DosingSystem_03"
+          ],
+          "input": "250",
+          "output": "250",
+          "loss": "0",
+          "outputVolumeL": "2E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchB_Op5",
+          "stage": "Filtrado",
+          "index": 5,
+          "duration": 20,
+          "energy": "6.666667",
+          "ghg": "3.3333335",
+          "resources": [
+            "f:FilterSystem_04"
+          ],
+          "input": "250",
+          "output": "250",
+          "loss": "0",
+          "outputVolumeL": "2E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchB_Op6",
+          "stage": "Control de calidad",
+          "index": 6,
+          "duration": 40,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "250",
+          "output": "250",
+          "loss": "0",
+          "outputVolumeL": "2E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchB_Op7",
+          "stage": "Envasado",
+          "index": 7,
+          "duration": 20,
+          "energy": "0.666667",
+          "ghg": "0.3333335",
+          "resources": [
+            "f:PackagingMachine_05"
+          ],
+          "input": "250",
+          "output": "244",
+          "loss": "3.5",
+          "outputVolumeL": "195.2",
+          "yieldPercent": "97.600",
+          "subloads": []
+        }
+      ]
+    },
+    {
+      "id": "BatchC",
+      "family": "White_Matte",
+      "status": "REJECTED",
+      "input": 125,
+      "output": 121.74,
+      "loss": 2,
+      "liters": 97.392,
+      "start": 40000,
+      "scale": 1,
+      "indicator": "57.6666665",
+      "operations": [
+        {
+          "id": "f:BatchC_Op1",
+          "stage": "Recepción e inspección",
+          "index": 1,
+          "duration": 10,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchC_Op2",
+          "stage": "Dispersión de pigmentos",
+          "index": 2,
+          "duration": 20,
+          "energy": "10",
+          "ghg": "5.0",
+          "resources": [
+            "f:PearlMill_01"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": [
+            {
+              "id": "f:BatchC_Op2_Subload1",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "40600",
+              "endSeconds": "41200.000000"
+            },
+            {
+              "id": "f:BatchC_Op2_Subload2",
+              "volumeL": "50",
+              "durationMinutes": "10.000000",
+              "startSeconds": "41200.000000",
+              "endSeconds": "41800.000000"
+            }
+          ]
+        },
+        {
+          "id": "f:BatchC_Op3",
+          "stage": "Mezcla principal",
+          "index": 3,
+          "duration": 30,
+          "energy": "75",
+          "ghg": "37.5",
+          "resources": [
+            "f:MixingReactor_02"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchC_Op4",
+          "stage": "Ajuste de viscosidad",
+          "index": 4,
+          "duration": 10,
+          "energy": "26.666667",
+          "ghg": "13.3333335",
+          "resources": [
+            "f:MixingReactor_02",
+            "f:DosingSystem_03"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchC_Op5",
+          "stage": "Filtrado",
+          "index": 5,
+          "duration": 10,
+          "energy": "3.333333",
+          "ghg": "1.6666665",
+          "resources": [
+            "f:FilterSystem_04"
+          ],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchC_Op6",
+          "stage": "Control de calidad",
+          "index": 6,
+          "duration": 20,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "125",
+          "output": "125",
+          "loss": "0",
+          "outputVolumeL": "1E+2",
+          "yieldPercent": "100",
+          "subloads": []
+        },
+        {
+          "id": "f:BatchC_Op7",
+          "stage": "Envasado",
+          "index": 7,
+          "duration": 10,
+          "energy": "0.333333",
+          "ghg": "0.1666665",
+          "resources": [
+            "f:PackagingMachine_05"
+          ],
+          "input": "125",
+          "output": "121.74",
+          "loss": "2",
+          "outputVolumeL": "97.392",
+          "yieldPercent": "97.39200",
+          "subloads": []
+        }
+      ]
+    },
+    {
+      "id": "BatchZero",
+      "family": "White_Matte",
+      "status": "INVALID_TEST_RECORD",
+      "input": 0,
+      "output": 0,
+      "loss": 0,
+      "liters": 0,
+      "start": 60000,
+      "scale": 1,
+      "indicator": "0.0",
+      "operations": [
+        {
+          "id": "f:BatchZero_Op1",
+          "stage": "Recepción e inspección",
+          "index": 1,
+          "duration": 10,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        },
+        {
+          "id": "f:BatchZero_Op2",
+          "stage": "Dispersión de pigmentos",
+          "index": 2,
+          "duration": 20,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [
+            "f:PearlMill_01"
+          ],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        },
+        {
+          "id": "f:BatchZero_Op3",
+          "stage": "Mezcla principal",
+          "index": 3,
+          "duration": 30,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [
+            "f:MixingReactor_02"
+          ],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        },
+        {
+          "id": "f:BatchZero_Op4",
+          "stage": "Ajuste de viscosidad",
+          "index": 4,
+          "duration": 10,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [
+            "f:MixingReactor_02",
+            "f:DosingSystem_03"
+          ],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        },
+        {
+          "id": "f:BatchZero_Op5",
+          "stage": "Filtrado",
+          "index": 5,
+          "duration": 10,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [
+            "f:FilterSystem_04"
+          ],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        },
+        {
+          "id": "f:BatchZero_Op6",
+          "stage": "Control de calidad",
+          "index": 6,
+          "duration": 20,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        },
+        {
+          "id": "f:BatchZero_Op7",
+          "stage": "Envasado",
+          "index": 7,
+          "duration": 10,
+          "energy": "0",
+          "ghg": "0.0",
+          "resources": [
+            "f:PackagingMachine_05"
+          ],
+          "input": "0",
+          "output": "0",
+          "loss": "0",
+          "outputVolumeL": "0E+2",
+          "yieldPercent": null,
+          "subloads": []
+        }
+      ]
+    }
+  ],
+  "derivation": "energy_kWh=sum(power_kW of assigned equipment)*duration_minutes/60, rounded6 decimals; GHG=energy*0.5; kgCO2e/L=sum distinct operation contributions/litres; package outputMass/1.25=litres; BatchB residue2.5kg/250kg=1%, BatchC1.26/125=1.008%, BatchZero invalid input",
+  "original_generator": "source artifact preserved outside repository; inherited seed42, stage order and mill50L30kW; no internal path required"
+}

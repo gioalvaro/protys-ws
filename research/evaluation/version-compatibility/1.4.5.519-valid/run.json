@@ -1,0 +1,56 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "cleaning_evaluation" : {
+    "required_pair_count" : 0,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "context_evaluation" : {
+    "declared_link_count" : 0,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "numeric_evaluation" : {
+    "selected_operation_count" : 0,
+    "scope" : "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+    "output_checked" : false,
+    "status" : "NOT_APPLICABLE"
+  },
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "dl_materialized_triples" : 3,
+  "dl_axiom_preservation" : {
+    "stage" : "named_dl_export_reload_owlapi5",
+    "comparison" : "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+    "expected_anonymous_individual_count" : 0,
+    "observed_anonymous_individual_count" : 0,
+    "expected_axiom_count" : 5,
+    "observed_axiom_count" : 8,
+    "retained_axiom_count" : 5,
+    "lost_axiom_count" : 0,
+    "status" : "RETAINED"
+  },
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 199.279666,
+  "owl_validation_status" : "CONSISTENT",
+  "constructs" : [ ],
+  "construct_added_triples" : 0,
+  "raw_input_triples" : 5,
+  "input_named_individuals" : 1,
+  "materialized_named_individuals" : 1,
+  "queries" : [ {
+    "id" : "DL_CLASSIFICATION",
+    "query_ms" : 2.543625,
+    "result_count" : 0,
+    "boolean" : true
+  } ],
+  "input_triples" : 5,
+  "materialized_triples" : 8,
+  "load_ms" : 218.539625,
+  "reasoning_stage_ms" : 216.571625,
+  "query_stage_ms" : 3.480833,
+  "total_ms" : 439.166416,
+  "peak_heap_bytes" : 57638432,
+  "java" : "17.0.20.1"
+}

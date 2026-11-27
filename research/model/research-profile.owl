@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Ontology rdf:about="http://w3id.org/protys/ontology/research/common">
+    <owl:versionInfo>2.0.0</owl:versionInfo>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#RatioObservation"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#Measurement"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#Supplier"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#Subload"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#ThresholdRecord"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#NumericInputValid"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#EmissionFactor"/>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#ElectricityEmissionFactor">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/research#EmissionFactor"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://w3id.org/protys/ontology/research#MaterialEmissionFactor">
+    <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/research#EmissionFactor"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasGHGContribution"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#forOperation"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#forIndicator"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#nextLot"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#cleanedResource"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#belongsToProcess"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#forLot"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#producesProduct"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasPlan"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#planProduces"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#providedBy"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#eventForProcess"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasFormulation"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasStageResource"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasMeasurement"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#subloadOfOperation"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#componentOf"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#flowRefersToProduct"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasInventoryRepresentation"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#inputFlowForResource"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#facilityInBoundary"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#indicatorForLot"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#qualityForLot"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#allocationForOperation"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#inventoryForPlan"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#inventoryForProcess"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasEmissionFactor"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#usesEmissionFactor"/>
+  <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/research#hasThreshold"/>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#operationIndicatorRatio">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#startTimeSeconds">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#endTimeSeconds">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#eventTimeSeconds">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#inputMassKg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#outputMassKg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#registeredLossKg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#stageIndex">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#energyKWh">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#ghgKgCO2e">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#waterL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#materialQuantityKg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#materialFactorKgCO2ePerKg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#waterFootprintLPerKg">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#powerKW">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#capacityLiters">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#capacityUnitsPerMinute">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#availabilityPercent">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#yieldPercent">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#oeePercent">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#unit">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#lifecycleStage">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#scenarioRole">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#productFamilyCode">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#outputVolumeL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#densityKgPerL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#subloadVolumeL">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#subloadDurationMinutes">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/core#modifiedInVersion">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#factorValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#factorUnit">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#qualityStatus">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#thresholdValue">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/research#ThresholdRecord"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#thresholdUnit">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/research#ThresholdRecord"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#thresholdCategory">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/research#ThresholdRecord"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#indicatorCategory">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/research#maintenanceStatus">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+</rdf:RDF>

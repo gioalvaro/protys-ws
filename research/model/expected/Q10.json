@@ -1,0 +1,128 @@
+{
+  "head": {
+    "vars": [
+      "supplier",
+      "material",
+      "factor",
+      "value"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "supplier": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Supplier_A"
+        },
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide_Factor"
+        },
+        "value": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5.6"
+        }
+      },
+      {
+        "supplier": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Supplier_B"
+        },
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin_Factor"
+        },
+        "value": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "3.8"
+        }
+      },
+      {
+        "supplier": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Supplier_A"
+        },
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water_Factor"
+        },
+        "value": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "0"
+        }
+      },
+      {
+        "supplier": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Supplier_B"
+        },
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide_Factor"
+        },
+        "value": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "3.5"
+        }
+      },
+      {
+        "supplier": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Supplier_B"
+        },
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Coalescent"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Coalescent_Factor"
+        },
+        "value": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "4.2"
+        }
+      },
+      {
+        "supplier": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Supplier_A"
+        },
+        "material": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#ThresholdMaterial"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#ThresholdMaterial_Factor"
+        },
+        "value": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "5"
+        }
+      }
+    ]
+  }
+}

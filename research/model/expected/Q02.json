@@ -1,0 +1,734 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "plan",
+      "product",
+      "resource"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "product": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      }
+    ]
+  }
+}

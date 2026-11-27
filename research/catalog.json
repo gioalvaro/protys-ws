@@ -1,0 +1,1141 @@
+{
+  "schema_version": "1.0",
+  "boundary": "Electricity consumed by production operations only, factors declared as scenario assumptions; no upstream manufacturing footprint or industrial validation",
+  "queries": [
+    {
+      "id": "Q01",
+      "title": "Ranking de procesos por electricidad y emisiones acumuladas",
+      "path": "research/model/queries/Q01.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q01.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q01.json",
+        "iso14040": "research/model/expected/iso14040/Q01.json",
+        "union": "research/model/expected/union/Q01.json",
+        "integrated": "research/model/expected/Q01.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "process",
+        "energyKWh",
+        "ghgKgCO2e"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q02",
+      "title": "Trazabilidad lote, plan, producto, recursos requeridos e insumos",
+      "path": "research/model/queries/Q02.sparql",
+      "competency_questions": [
+        "P2",
+        "P3",
+        "P5"
+      ],
+      "expected_path": "research/model/expected/Q02.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q02.json",
+        "iso14040": "research/model/expected/iso14040/Q02.json",
+        "union": "research/model/expected/union/Q02.json",
+        "integrated": "research/model/expected/Q02.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "lot",
+        "plan",
+        "product",
+        "resource"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q03",
+      "title": "Electricidad y emisiones por lote, sin fuentes de materias primas",
+      "path": "research/model/queries/Q03.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q03.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q03.json",
+        "iso14040": "research/model/expected/iso14040/Q03.json",
+        "union": "research/model/expected/union/Q03.json",
+        "integrated": "research/model/expected/Q03.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "lot",
+        "energyKWh",
+        "ghgKgCO2e"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q04",
+      "title": "Recursos requeridos e insumos materiales por proceso",
+      "path": "research/model/queries/Q04.sparql",
+      "competency_questions": [
+        "P1"
+      ],
+      "expected_path": "research/model/expected/Q04.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q04.json",
+        "iso14040": "research/model/expected/iso14040/Q04.json",
+        "union": "research/model/expected/union/Q04.json",
+        "integrated": "research/model/expected/Q04.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "process",
+        "resource"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q05",
+      "title": "Materiales según factores hipotéticos del escenario, excluidos de Q06",
+      "path": "research/model/queries/Q05.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q05.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q05.json",
+        "iso14040": "research/model/expected/iso14040/Q05.json",
+        "union": "research/model/expected/union/Q05.json",
+        "integrated": "research/model/expected/Q05.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "material",
+        "carbonFactor",
+        "waterFactor",
+        "exceedsDeclaredCarbonThreshold"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q06",
+      "title": "Intensidad de emisiones eléctricas del proceso productivo en kg CO2e/L",
+      "path": "research/model/queries/Q06.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q06.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q06.json",
+        "iso14040": "research/model/expected/iso14040/Q06.json",
+        "union": "research/model/expected/union/Q06.json",
+        "integrated": "research/model/expected/Q06.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "product",
+        "lot",
+        "liters",
+        "ghgKgCO2e",
+        "kgCO2ePerL"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q07",
+      "title": "Residuo de balance después de pérdidas registradas, tolerancia máxima 1%",
+      "path": "research/model/queries/Q07.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q07.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q07.json",
+        "iso14040": "research/model/expected/iso14040/Q07.json",
+        "union": "research/model/expected/union/Q07.json",
+        "integrated": "research/model/expected/Q07.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "operation",
+        "inputMassKg",
+        "outputMassKg",
+        "registeredLossKg",
+        "residueKg",
+        "status"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q08",
+      "title": "Rendimiento másico, electricidad e intensidad de emisiones por operación",
+      "path": "research/model/queries/Q08.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q08.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q08.json",
+        "iso14040": "research/model/expected/iso14040/Q08.json",
+        "union": "research/model/expected/union/Q08.json",
+        "integrated": "research/model/expected/Q08.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "operation",
+        "stageName",
+        "yieldPercent",
+        "energyKWh",
+        "ghgKgCO2e",
+        "outputVolumeL",
+        "kgCO2ePerL"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q09",
+      "title": "Dependencias de indicadores respecto de factores y versiones",
+      "path": "research/model/queries/Q09.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q09.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q09.json",
+        "iso14040": "research/model/expected/iso14040/Q09.json",
+        "union": "research/model/expected/union/Q09.json",
+        "integrated": "research/model/expected/Q09.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "factor",
+        "version",
+        "process",
+        "indicator",
+        "value"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q10",
+      "title": "Proveedores y factores hipotéticos de materiales, separados del inventario eléctrico",
+      "path": "research/model/queries/Q10.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q10.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q10.json",
+        "iso14040": "research/model/expected/iso14040/Q10.json",
+        "union": "research/model/expected/union/Q10.json",
+        "integrated": "research/model/expected/Q10.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "supplier",
+        "material",
+        "factor",
+        "value"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q11",
+      "title": "Emisiones eléctricas y cantidad de no conformidades por lote",
+      "path": "research/model/queries/Q11.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q11.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q11.json",
+        "iso14040": "research/model/expected/iso14040/Q11.json",
+        "union": "research/model/expected/union/Q11.json",
+        "integrated": "research/model/expected/Q11.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "lot",
+        "ghgKgCO2e",
+        "numNC"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q12",
+      "title": "Trazabilidad indicador, proceso, operación y recurso vinculados",
+      "path": "research/model/queries/Q12.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q12.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q12.json",
+        "iso14040": "research/model/expected/iso14040/Q12.json",
+        "union": "research/model/expected/union/Q12.json",
+        "integrated": "research/model/expected/Q12.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "indicator",
+        "process",
+        "operation",
+        "resource",
+        "value"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q13",
+      "title": "Inventario explícito de flujos materiales por proceso",
+      "path": "research/model/queries/Q13.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q13.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q13.json",
+        "iso14040": "research/model/expected/iso14040/Q13.json",
+        "union": "research/model/expected/union/Q13.json",
+        "integrated": "research/model/expected/Q13.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "process",
+        "flow",
+        "material",
+        "quantityKg",
+        "unit"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q14",
+      "title": "Falta de registro de limpieza del mismo equipo entre lotes consecutivos",
+      "path": "research/model/queries/Q14.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q14.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q14.json",
+        "iso14040": "research/model/expected/iso14040/Q14.json",
+        "union": "research/model/expected/union/Q14.json",
+        "integrated": "research/model/expected/Q14.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "lotA",
+        "lotB",
+        "equipment"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q15",
+      "title": "Agua registrada por operación auxiliar de limpieza",
+      "path": "research/model/queries/Q15.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q15.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q15.json",
+        "iso14040": "research/model/expected/iso14040/Q15.json",
+        "union": "research/model/expected/union/Q15.json",
+        "integrated": "research/model/expected/Q15.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "clean",
+        "waterL"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q16",
+      "title": "Tiempo de uso y OEE registrado por recurso y plan",
+      "path": "research/model/queries/Q16.sparql",
+      "competency_questions": [
+        "P2"
+      ],
+      "expected_path": "research/model/expected/Q16.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q16.json",
+        "iso14040": "research/model/expected/iso14040/Q16.json",
+        "union": "research/model/expected/union/Q16.json",
+        "integrated": "research/model/expected/Q16.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "plan",
+        "resource",
+        "usedTimeMinutes",
+        "oeePercent"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q17",
+      "title": "Emisiones eléctricas por unidad funcional de salida, litros positivos",
+      "path": "research/model/queries/Q17.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q17.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q17.json",
+        "iso14040": "research/model/expected/iso14040/Q17.json",
+        "union": "research/model/expected/union/Q17.json",
+        "integrated": "research/model/expected/Q17.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "lot",
+        "functionalUnit",
+        "outputLiters",
+        "impactPerFU"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q18",
+      "title": "Actividades del plan, orden explícito y duración de cadena lineal",
+      "path": "research/model/queries/Q18.sparql",
+      "competency_questions": [
+        "P4"
+      ],
+      "expected_path": "research/model/expected/Q18.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q18.json",
+        "iso14040": "research/model/expected/iso14040/Q18.json",
+        "union": "research/model/expected/union/Q18.json",
+        "integrated": "research/model/expected/Q18.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "plan",
+        "activity",
+        "stageIndex",
+        "stageName",
+        "lifecycleStage",
+        "totalDurationMinutes"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q19",
+      "title": "Ranking de lotes por emisiones eléctricas acumuladas",
+      "path": "research/model/queries/Q19.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q19.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q19.json",
+        "iso14040": "research/model/expected/iso14040/Q19.json",
+        "union": "research/model/expected/union/Q19.json",
+        "integrated": "research/model/expected/Q19.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "lot",
+        "ghgKgCO2e"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q20",
+      "title": "Datos críticos ausentes por tipo, con criterio explícito",
+      "path": "research/model/queries/Q20.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q20.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q20.json",
+        "iso14040": "research/model/expected/iso14040/Q20.json",
+        "union": "research/model/expected/union/Q20.json",
+        "integrated": "research/model/expected/Q20.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "entity",
+        "kind",
+        "missingProperty"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    },
+    {
+      "id": "Q21",
+      "title": "Términos con versión modificada respecto de la registrada",
+      "path": "research/model/queries/Q21.sparql",
+      "competency_questions": [],
+      "expected_path": "research/model/expected/Q21.json",
+      "expected_paths": {
+        "iso15531": "research/model/expected/iso15531/Q21.json",
+        "iso14040": "research/model/expected/iso14040/Q21.json",
+        "union": "research/model/expected/union/Q21.json",
+        "integrated": "research/model/expected/Q21.json"
+      },
+      "inputs": [
+        "research/data/functional.ttl"
+      ],
+      "units": {
+        "energy": "kWh",
+        "GHG": "kg CO2e",
+        "volume": "L",
+        "duration": "min",
+        "mass": "kg"
+      },
+      "output_variables": [
+        "entity",
+        "currentVersion",
+        "priorVersion"
+      ],
+      "test": "Independent fixture-table expectation for each source projection; compare all bindings as multiset, including explicitly expected empty outputs; numeric tolerance1e-9",
+      "scope": "formalized production stage only"
+    }
+  ],
+  "validations": [
+    {
+      "id": "R07",
+      "path": "research/model/validations/R07.sparql",
+      "expected": true,
+      "meaning": "true = at least one missing required record in the closed snapshot; not physical contamination or OWL inconsistency"
+    },
+    {
+      "id": "R16",
+      "path": "research/model/validations/R16.sparql",
+      "expected": true,
+      "meaning": "true = at least one missing required record in the closed snapshot; not physical contamination or OWL inconsistency"
+    },
+    {
+      "id": "R19",
+      "path": "research/model/validations/R19.sparql",
+      "expected": true,
+      "meaning": "true = at least one missing required record in the closed snapshot; not physical contamination or OWL inconsistency"
+    },
+    {
+      "id": "R26",
+      "path": "research/model/validations/R26.sparql",
+      "expected": true,
+      "meaning": "true = at least one missing required record in the closed snapshot; not physical contamination or OWL inconsistency"
+    }
+  ],
+  "configurations": [
+    {
+      "id": "iso15531",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional-manufacturing.ttl"
+      ],
+      "rules_paths": [],
+      "enabled_rule_ids": [],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [],
+      "expected_results_configuration": "iso15531",
+      "numeric_controls_enabled": false,
+      "run_pre_inference_constructs": false,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium-manufacturing.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "iso14040",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional-environmental.ttl"
+      ],
+      "rules_paths": [],
+      "enabled_rule_ids": [],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [],
+      "expected_results_configuration": "iso14040",
+      "numeric_controls_enabled": false,
+      "run_pre_inference_constructs": false,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium-environmental.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "union",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional-union.ttl"
+      ],
+      "rules_paths": [],
+      "enabled_rule_ids": [],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [],
+      "expected_results_configuration": "union",
+      "numeric_controls_enabled": false,
+      "run_pre_inference_constructs": false,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium-union.ttl"
+      ],
+      "enabled_rules": "NONE",
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "integrated",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional.ttl"
+      ],
+      "rules_paths": [
+        "ontologies/alignment-rules.owl"
+      ],
+      "enabled_rule_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25"
+      ],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [
+        "R07",
+        "R16",
+        "R19",
+        "R26"
+      ],
+      "expected_results_configuration": "integrated",
+      "numeric_controls_enabled": true,
+      "run_pre_inference_constructs": true,
+      "skip_golden": false,
+      "benchmark": true,
+      "benchmark_abox": [
+        "research/data/load-medium.ttl"
+      ],
+      "enabled_rules": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25"
+      ],
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    },
+    {
+      "id": "h3_extended",
+      "tbox_paths": [
+        "ontologies/core-concepts.owl",
+        "ontologies/product-module.owl",
+        "ontologies/process-module.owl",
+        "ontologies/resource-module.owl",
+        "ontologies/enterprise-module.owl",
+        "research/model/research-profile.owl",
+        "ontologies/iso15531-module.owl",
+        "research/model/manufacturing-profile.owl",
+        "ontologies/iso14040-module.owl",
+        "research/model/environmental-profile.owl",
+        "ontologies/paint-case-extension.owl",
+        "ontologies/iso10303-ap242-fragment.owl"
+      ],
+      "abox_paths": [
+        "research/data/functional.ttl",
+        "research/data/automotive.ttl"
+      ],
+      "rules_paths": [
+        "ontologies/alignment-rules.owl",
+        "ontologies/iso10303-alignment-rules.owl"
+      ],
+      "enabled_rule_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R27",
+        "R28",
+        "R29"
+      ],
+      "query_ids": [
+        "Q01",
+        "Q02",
+        "Q03",
+        "Q04",
+        "Q05",
+        "Q06",
+        "Q07",
+        "Q08",
+        "Q09",
+        "Q10",
+        "Q11",
+        "Q12",
+        "Q13",
+        "Q14",
+        "Q15",
+        "Q16",
+        "Q17",
+        "Q18",
+        "Q19",
+        "Q20",
+        "Q21"
+      ],
+      "validation_ids": [
+        "R07",
+        "R16",
+        "R19",
+        "R26"
+      ],
+      "expected_results_configuration": "integrated",
+      "numeric_controls_enabled": true,
+      "run_pre_inference_constructs": true,
+      "skip_golden": false,
+      "benchmark": false,
+      "benchmark_abox": [],
+      "enabled_rules": [
+        "R01",
+        "R02",
+        "R03",
+        "R04",
+        "R05",
+        "R06",
+        "R08",
+        "R09",
+        "R10",
+        "R11",
+        "R12",
+        "R13",
+        "R14",
+        "R15",
+        "R17",
+        "R18",
+        "R20",
+        "R21",
+        "R22",
+        "R23",
+        "R24",
+        "R25",
+        "R27",
+        "R28",
+        "R29"
+      ],
+      "comparison_scope": "Standard-specific vocabularies and projected records, their union without alignment, and integrated union with seven contextual correspondences, 22 SWRL and four ASK; zero universal cross-standard class equivalences. All21 queries are executed and compared with independently authored per-configuration expectations; response presence is fixture-specific, not a general completeness proof or speed superiority."
+    }
+  ],
+  "additional_controls": [
+    {
+      "id": "C26",
+      "path": "research/model/validations/C26-context-completeness.sparql",
+      "scope": "Additional required-pair context check, outside the four canonical ASK; true means cleaning context not evaluable, never OWL inconsistency or observed contamination."
+    },
+    {
+      "id": "CCTX",
+      "path": "research/model/validations/CCTX-context-completeness.sparql",
+      "scope": "Additional lot-operation-process and plan context integrity control, outside the four canonical ASK. True means a declared activity, contribution or plan activity lacks a matching manufacturing process; not OWL inconsistency."
+    },
+    {
+      "id": "CNUM",
+      "path": "research/model/validations/CNUM-input-invalid.sparql",
+      "scope": "One numeric energy and one selected factor IRI per matching lot/process operation. Value-equivalent literals count once. Contradictions block numeric inference; missing data is separately not evaluable. Foreign links remain visible through CCTX and are excluded from the numeric scope. Totals require every selected same-process operation, never a partial sum.",
+      "kind": "snapshot numeric contract",
+      "states": [
+        "VALID",
+        "AMBIGUOUS_INPUT",
+        "NOT_EVALUABLE",
+        "NOT_APPLICABLE"
+      ],
+      "applicable_configurations": [
+        "integrated",
+        "h3_extended"
+      ],
+      "stage_paths": {
+        "applicable": "research/model/validations/CNUM-applicable.sparql",
+        "ambiguous_input": "research/model/validations/CNUM-input-ambiguous.sparql",
+        "invalid_output": "research/model/validations/CNUM-output-invalid.sparql"
+      }
+    }
+  ],
+  "pre_inference_constructs": [
+    "research/model/validations/R07-materialize.sparql",
+    "research/model/validations/CNUM-materialize.sparql"
+  ],
+  "competency_questions": {
+    "P1": "Recursos requeridos por un proceso X",
+    "P2": "Recursos para ejecutar un plan de proceso X",
+    "P3": "Productos que usan un recurso X",
+    "P4": "Actividades de un plan de proceso X",
+    "P5": "Producto generado por un plan de proceso X"
+  },
+  "rule_count": {
+    "base_SWRL": 22,
+    "base_ASK": 4,
+    "extension_SWRL": 3,
+    "policy": "count parsed rules, not labels or RDF annotations"
+  },
+  "expected_derivation": {
+    "source": "research/data/functional-scenario.json",
+    "method": "Independent table traversal and arithmetic; no execution outputs are used as expected values",
+    "worked_examples": {
+      "BatchA_ghg_kgCO2e": "(10+75+26.666667+3.333333+0.333333)*0.5=57.6666665",
+      "BatchA_kgCO2e_per_L": "57.6666665/98.4",
+      "BatchA_Op2_intensity": "10kWh*0.5kgCO2e/kWh/(125kg/1.25kg/L)=0.05kgCO2e/L",
+      "BatchA_Op2_subloads": "100L total;2 sequential subloads50L,10min each;sum20min*30kW/60=10kWh",
+      "BatchB_mass_boundary": "abs(250-244-3.5)=2.5;2.5/250=1%;OK",
+      "BatchC_mass_above": "abs(125-121.74-2)=1.26;1.26/125=1.008%;REVISAR",
+      "Coalescent_handling": "4.2 >5 is false",
+      "zero_volume": "excluded fromQ06,Q08,Q17; unit must be L in Q06/Q17; no invented zero or infinite intensity"
+    },
+    "configuration_matrix": "research/model/configuration-expectation-matrix.json"
+  }
+}

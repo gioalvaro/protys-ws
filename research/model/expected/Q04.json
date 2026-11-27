@@ -1,0 +1,412 @@
+{
+  "head": {
+    "vars": [
+      "process",
+      "resource"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#DosingSystem_03"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#FilterSystem_04"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#MixingReactor_02"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water"
+        }
+      },
+      {
+        "process": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        "resource": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide"
+        }
+      }
+    ]
+  }
+}

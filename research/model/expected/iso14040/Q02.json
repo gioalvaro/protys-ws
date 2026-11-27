@@ -1,0 +1,13 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "plan",
+      "product",
+      "resource"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

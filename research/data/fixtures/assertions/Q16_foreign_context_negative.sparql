@@ -1,0 +1,15 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK { { SELECT ?plan ?resource (SUM(?duration) AS ?usedTimeMinutes) ?oeePercent
+WHERE { { SELECT DISTINCT ?plan ?operation ?resource ?duration WHERE {
+?lot t:hasPlan ?plan ; i:hasProcess ?process . ?plan a i:ProcessPlan ; i:includesActivity ?operation .
+?operation i:partOfProcess ?process ; i:usesResource ?resource ; i:duration ?duration . } }
+OPTIONAL { ?resource t:oeePercent ?oeePercent } } GROUP BY ?plan ?resource ?oeePercent ORDER BY ?plan ?resource } FILTER(?plan=f:ScopePlan && ?resource=f:FilterSystem_04) }

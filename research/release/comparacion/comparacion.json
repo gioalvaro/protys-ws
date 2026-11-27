@@ -1,0 +1,577 @@
+{
+ "diferencias": {
+  "functional.json": [],
+  "capacity.json": [],
+  "demonstration.json": [],
+  "census.json": [],
+  "runs.jsonl": [],
+  "demonstration/http-responses": [],
+  "respuestas SPARQL crudas": []
+ },
+ "listas_en_otro_orden": {
+  "functional.json": [],
+  "capacity.json": [],
+  "demonstration.json": [],
+  "census.json": [],
+  "runs.jsonl": [],
+  "demonstration/http-responses": [
+   "004.json"
+  ],
+  "respuestas SPARQL crudas": []
+ },
+ "hashes_de_serializacion_isomorfos": [
+  {
+   "ruta": "functional.json:.configurations[3].result.swrl.input_sha256",
+   "referencia": "aace6a5c6c20309c42e12ba02dc4432f9c91483c77c61122d7ba90dae5c04d0e",
+   "candidata": "64580d1854d9fb9dcbdc10c589c7dc1ab1834acf8f3c67ece35210259463d59d",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 4725,
+   "triples_candidata": 4725
+  },
+  {
+   "ruta": "functional.json:.configurations[3].result.swrl.materialized_sha256",
+   "referencia": "e9b8c369d01de8d7fa2e0aeeb05cd94899fe03edd370a7fde056494ad5b0af3e",
+   "candidata": "2ddcf6570039ef9c3967b4cc28657cbc50e582c12aed7a1aefcc8043bf5265d6",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 5384,
+   "triples_candidata": 5384
+  },
+  {
+   "ruta": "functional.json:.configurations[4].result.swrl.input_sha256",
+   "referencia": "d6eb02e0c1d72092583aeb82aa9233adcb8614e9c41970e51cdaddfdbbdc12bf",
+   "candidata": "8b0742e102187653eed367125ab9d400e932b74a3a35ae4a95fe7c68dcf6486f",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 5123,
+   "triples_candidata": 5123
+  },
+  {
+   "ruta": "functional.json:.configurations[4].result.swrl.materialized_sha256",
+   "referencia": "5a2d9b10f18ce6b9d0775af7d6089ed3290fad1c1fd17d14b09cc22f288fff94",
+   "candidata": "f08c7ebdfd7e0016beede1f95a614fba92aacb673991e7a287a2c959afd7d109",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 5972,
+   "triples_candidata": 5972
+  },
+  {
+   "ruta": "capacity.json:.pilots[0].result.swrl.input_sha256",
+   "referencia": "a086d021c6b543376df07121c6907b53aaa685d70c2d6cf3a35cc4f72981581d",
+   "candidata": "c7c0a8405d1fdf73639546dbb4d5d84b76c78ac6b30220e2c2b4f78e57a425ba",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "capacity.json:.pilots[0].result.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "demonstration.json:.http_exchanges[1].request.file_sha256",
+   "referencia": "76c7bab23ef7e7589900fccbe17f8b5ec4e5e844e85b577c45cdfc4b141b8161",
+   "candidata": "815acf4744a917ebabd12bd71fd4507ff6e45e0d5d579d8aa93595777da4919b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 4296,
+   "triples_candidata": 4296
+  },
+  {
+   "ruta": "demonstration.json:.http_exchanges[3].request.file_sha256",
+   "referencia": "50944ff37c746fde0bb38b0a15fd0d0342774bd058d6573a6af3b908a414f366",
+   "candidata": "f70705095288493c27b35ec6fe04d86e1a18fd7742db55f26f82c85fcf915b78",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 1374,
+   "triples_candidata": 1374
+  },
+  {
+   "ruta": "demonstration.json:.raw_input.sha256",
+   "referencia": "76c7bab23ef7e7589900fccbe17f8b5ec4e5e844e85b577c45cdfc4b141b8161",
+   "candidata": "815acf4744a917ebabd12bd71fd4507ff6e45e0d5d579d8aa93595777da4919b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 4296,
+   "triples_candidata": 4296
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r00.swrl.input_sha256",
+   "referencia": "203dfd4958ac7f436c516f64dbb784d4f482f8f23c7f86919471f4d25011a0fb",
+   "candidata": "ea994e5fadd67f8399d80b14f683d794d17cc66bb6e935a29cb4f1876fc16969",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r00.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r01.swrl.input_sha256",
+   "referencia": "4baeabaa679fcf26eae7fc1153b368ed6ff3a3155d2ef5166f3d6bb0c60e043a",
+   "candidata": "72de9342ceceb8a784c922d8385295c16283afe8c4b1fb30baaf48e22f52dba1",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r01.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r02.swrl.input_sha256",
+   "referencia": "4846dce9e42faa58d83d561b446e34e569f5c7f8369cb9765d8fd8b8240a2f44",
+   "candidata": "49b6e43a39897ccab2cb33865f829455edf5b122f6db39cef18d61ba102bd027",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r02.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r03.swrl.input_sha256",
+   "referencia": "ab6d1ba7ad61b127b2a3c5d34a1d213adc50931675a4177370e47ab0cbeacb58",
+   "candidata": "15d9e6965830b43c3b1817856710f57fc4d57cb8f9833991547030fbfe47608f",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r03.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r04.swrl.input_sha256",
+   "referencia": "b0a7c153fd565de3ed1d9683cc2646cfbbd40d115d6fe5a1337808576f78e1d5",
+   "candidata": "5798e76f1f3b05a4e082d87b50a7eea92ac0fc81700f8b740fe7e84a0e96ceef",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r04.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r05.swrl.input_sha256",
+   "referencia": "239d2ec191e1a0f5152255fe06f920c4ac912410caa160dc6c274340c80f3398",
+   "candidata": "f70ece5a28b5edb75f22dd4e7b0f67ba587395885289e6a946a703377dbf5bcc",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r05.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r06.swrl.input_sha256",
+   "referencia": "f321f703ef9c6b97d947e82fc1931e6a4688e47a7b88853c08a2784deb185748",
+   "candidata": "c96c1a349ee0919c02aeba8aa3865951bc5a427c7325d9e330fcd8cacbe3b51b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r06.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r07.swrl.input_sha256",
+   "referencia": "b486c179ecbaa9ccb8e3a87fa59886dbfcda1cec90fd93b27d7fbead6c4dd335",
+   "candidata": "c32a44abc21eef6c9480fc06f7040801cd02b53a146987de44e42298645978dd",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r07.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r08.swrl.input_sha256",
+   "referencia": "3394eea8a1b989538f22586b02923ed93c6f8ef1b752a01cafb279780ed2183a",
+   "candidata": "4601f792d95042c79990e218bca2b5e5b18377289022a35dcf5ba5c726a9d63f",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r08.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r09.swrl.input_sha256",
+   "referencia": "3e2e600850a5048f68c3474e79f8ee6143beb9b79cffdde6dc0885a2ce4a1c8d",
+   "candidata": "4c658efd82e96b5fd21b22a59d72b1c61b38cc35871055419d271507ce5696f1",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r09.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r10.swrl.input_sha256",
+   "referencia": "273400d6a301790d10574b1b170a13ec84dd30695e04f413f9a79077684ebc87",
+   "candidata": "e1c92684d3fc63b6d09031111f948f6c1efc81b9368689c4150633e568cd2514",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r10.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r11.swrl.input_sha256",
+   "referencia": "f9e8efc88111efb6e99828c6bb14183f11b4077922bb7f9e084bd5d474ac9c42",
+   "candidata": "2b9c4f7fe4be378e72ce52a2033ee1845d45202d283910d46a94b053355704b9",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r11.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r12.swrl.input_sha256",
+   "referencia": "7e407b2789d68c87205dc45c2523563602e8d2a57f69a5ca92d68354d9d6c313",
+   "candidata": "872ad1cfe3f2c8e400e1c2736cab1c78e4a8d431b08b29b397ca8a940f1a9136",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r12.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r13.swrl.input_sha256",
+   "referencia": "911ecac323cfd7dbfbf646cabb188f742f7df08c22af24c9a01ea1f45c3329a2",
+   "candidata": "890216ce0c8f56e62f2e58db88910117c0edb4cc9ec11115bec830046218568d",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r13.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r14.swrl.input_sha256",
+   "referencia": "56ebf1aacfea3915cfca819f1716c65a3d18ba9337a376d1a906be49ccc01c56",
+   "candidata": "e77fb1cd7b8aa50060029d47854c77d3ad34c01123d150e8a5ed32625a91abd6",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r14.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r15.swrl.input_sha256",
+   "referencia": "2653e19a4606c2016ccaffcd55d663476ae13ec4bf8013e284ffea8ad6e74ad0",
+   "candidata": "a3d032158583bb52d6084c6d0fc50a20d2fa26ee5e2306e9d2661e06431cb7a8",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r15.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r16.swrl.input_sha256",
+   "referencia": "d6c5a7727b79a16f6a642cc3a8a2618f3b7ba13981fbeb57bf6c938ecddf3be7",
+   "candidata": "31b7eee1cea0d5a3a07cdb2e0f662b64ec5221ec9ef9e4f16297eaf0c2257188",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r16.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r17.swrl.input_sha256",
+   "referencia": "129b28f00d66795fae29c83ebe2b39db3c1e56e0cc81bcb83520b4e4aef73836",
+   "candidata": "4b2aa770d7b0bf50e4571551d507a087072923aa66fb828c8d878784b03e4d9d",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r17.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r18.swrl.input_sha256",
+   "referencia": "71638c3042ba4439c247f67e9e46a344d9b875e5d5529f335f254b532c64f559",
+   "candidata": "6084e8364e33ea441bb26bf1f6973082612899c188b41c974956e6a496a49be2",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r18.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r19.swrl.input_sha256",
+   "referencia": "0b7efbd42fc62c9adfeceb6d96da24e5c90a16d24a7a00b7c093acec5edca9a8",
+   "candidata": "a78fe1ed3dc36ea8ebbe6142337af06ca35e4d14a2ee15756bf59a045360866c",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r19.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r20.swrl.input_sha256",
+   "referencia": "b3ec2aa27157e744ecdaef1bf301ec9f90f9c4f2187de88be73fdc86f35ea478",
+   "candidata": "de876239d673157a39b6cc412aef3ff97e6c5cb4aeb7f70be6d6d910e15e6e25",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r20.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r21.swrl.input_sha256",
+   "referencia": "73cc9ed8395e664ca1cfce6cf6036414b874af60189619c6095ba2976fbc8e07",
+   "candidata": "15e22b7dad7e0cf32a0f3bdd30a47b812b7c83fdf797afd4beaee52ef4131a15",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r21.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r22.swrl.input_sha256",
+   "referencia": "bc47efd7c8c08b22a4d90d944753b70911498cc9a734a3b08468c8da0a2d3ed0",
+   "candidata": "55eb9ddb018d5916ac28c78da31d2cb5e27ef2fd2618727d304c199b42df0a95",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r22.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r23.swrl.input_sha256",
+   "referencia": "2565749cc3a909fcd76255d08d0416ee999c6a62bf1fc8151f34e3b12a0a1952",
+   "candidata": "9814163ec419424793927327b84cac66b4f64eaf9f508810ff5452d490232df6",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r23.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r24.swrl.input_sha256",
+   "referencia": "4c05edf37b1d81b0d1e14e0d393a824bcb457aa7ed28a8a16d6caef889b745a9",
+   "candidata": "89577d1fc29c5dbe6b4fcb4cc21b57268a21536758bbf5315a2a5edb1993e56a",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r24.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r25.swrl.input_sha256",
+   "referencia": "86dffd9b58b0c474855cb66aef6c185907dee69a25363c30937b5f142b55574c",
+   "candidata": "4ce22b78754c4fe651fcde15d6da4a8e2b6c0b39e2c4c6488ec8ee7596f6071c",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r25.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r26.swrl.input_sha256",
+   "referencia": "0561633e1cfd146fa9fddcb6cc3dd285d9ed1574118b95ceeb3ad314743dd8f4",
+   "candidata": "60a92e989fce01b0598b7b3623d50b5d747a51a539f568ff09d43faa630d93ba",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r26.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r27.swrl.input_sha256",
+   "referencia": "7147e61a5019626314d1c95d2dd4553968fac626cacd77fb0634effe90283a0f",
+   "candidata": "b3e2b072404dcb0c3951f8b8ea18a06fd501d69ae0b709552716274e113e9d8e",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r27.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r28.swrl.input_sha256",
+   "referencia": "1a18016bb2bb168c6dd2e1008f3fcca5bd841d49f0bac3be6bcd410f7b0ba31b",
+   "candidata": "19898558f8c94ed151f0a0e50cfa6e3ee832258cc749829a5770112678330117",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r28.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r29.swrl.input_sha256",
+   "referencia": "95704cb2752dec7c1ce336df4b1389667a4c1045b3afe8e77fc147f7cfe61e04",
+   "candidata": "f11ba93215d4fb8b42e5b74f9085dd599947d4d2a5b190efbf7680e06c8893dd",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 50389,
+   "triples_candidata": 50389
+  },
+  {
+   "ruta": "runs.jsonl:integrated#r29.swrl.materialized_sha256",
+   "referencia": "e872b973687ac6c5e3690280dbb44e9b7d931db1c1c387ed8cfb5abb2785a90a",
+   "candidata": "9fcd753ca37d0fae92059d98165552b5d21d00678d8a1d1ab337098fdf06c97b",
+   "criterio": "isomorfos sin rdfs:comment",
+   "triples_referencia": 62867,
+   "triples_candidata": 62867
+  }
+ ],
+ "hashes_de_serializacion_sin_explicar": []
+}

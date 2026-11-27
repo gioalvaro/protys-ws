@@ -1,0 +1,27 @@
+{
+  "head": {
+    "vars": [
+      "lotA",
+      "lotB",
+      "equipment"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "lotA": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "lotB": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "equipment": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#PearlMill_01"
+        }
+      }
+    ]
+  }
+}

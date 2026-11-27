@@ -1,0 +1,12 @@
+{
+  "files": [
+    "research/evaluation/version-compatibility/valid.ttl"
+  ],
+  "enabled_rules": "NONE",
+  "queries": [
+    {
+      "id": "DL_CLASSIFICATION",
+      "path": "research/evaluation/version-compatibility/classify.sparql"
+    }
+  ]
+}

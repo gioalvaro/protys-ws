@@ -1,0 +1,6 @@
+equipment_iri,role,power_kw,power_unit,capacity_l,capacity_unit,capacity_units_per_minute,scenario_role
+http://w3id.org/protys/fixture#PearlMill_01,FineGrinding,30,kW,50,L,,DECLARED_SCENARIO_EQUIPMENT_NO_PLANT_OBSERVATION
+http://w3id.org/protys/fixture#MixingReactor_02,MainMixing,150,kW,5000,L,,DECLARED_SCENARIO_EQUIPMENT_NO_PLANT_OBSERVATION
+http://w3id.org/protys/fixture#DosingSystem_03,ViscosityAdjustment,10,kW,1000,L,,DECLARED_SCENARIO_EQUIPMENT_NO_PLANT_OBSERVATION
+http://w3id.org/protys/fixture#FilterSystem_04,Filtering,20,kW,5000,L,,DECLARED_SCENARIO_EQUIPMENT_NO_PLANT_OBSERVATION
+http://w3id.org/protys/fixture#PackagingMachine_05,Packaging,2,kW,,,30,DECLARED_SCENARIO_EQUIPMENT_NO_PLANT_OBSERVATION

@@ -1,0 +1,34 @@
+{
+  "status": "CREATED",
+  "source_runs_sha256": "9c1a5bc93845961b0bea8b180cb284392658c57efba53e5bbef0536c51c3eb4c",
+  "independent_audit_sha256": "63c5b2c1c93ce028268d8de949c74b72179a4224656ad0c301a48741adc85ae7",
+  "plotter_script_sha256": "06ef7433fff9098790a9427d5e4b0669179b38c69f17adbc469bb8065b67d752",
+  "verifier_script_sha256": "a772245d60e3414cb5b4edf249b87be6b0ed59f4bc26a053f8a91d7707a11806",
+  "python_version": "3.12.11",
+  "matplotlib_version": "3.11.2",
+  "resolved_font": "/System/Library/Fonts/Supplemental/Arial.ttf",
+  "figure_size_inches": [
+    6.27,
+    5.5
+  ],
+  "minimum_font_pt": 9.5,
+  "outputs": [
+    {
+      "path": "research/release/figures/figura4_7_resultados_definitivos.png",
+      "sha256": "c0ac6d465c1fcbe7e8643136b41ceac077dc382b129ee439d64efb729bd59967",
+      "bytes": 351059
+    },
+    {
+      "path": "research/release/figures/figura4_7_resultados_definitivos.svg",
+      "sha256": "8e00901b66568eea269e607a4b32a78a480b5a6eb63b4b448fbfa95de6d325c7",
+      "bytes": 52611
+    },
+    {
+      "path": "research/release/figures/figura4_7_resultados_definitivos.pdf",
+      "sha256": "3af7c62863f6a1708fb88ce101ef0644e1d120f9dc53a64fc4d439c4eb3894bd",
+      "bytes": 30087
+    }
+  ],
+  "method": "All 30 conserved replicates per configuration; no bootstrap or fabricated values. Whiskers use 1.5 IQR; all observed points are shown. Fixed display offsets do not modify measurements.",
+  "interpretation": "Configurations perform different semantic tasks. Internal time excludes process startup. RSS is the sum sampled every 100 ms, not instantaneous memory peak. No industrial observations or speed superiority are inferred."
+}

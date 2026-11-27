@@ -1,0 +1,16 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+# Extracto de declaraciones nombradas y vínculos directos.
+# Fuente: ontologies/iso14040-module.owl; no reproduce todas sus restricciones.
+e:LCAStudy a owl:Class .
+e:LifeCycleInventory a owl:Class .
+e:ElementaryFlow a owl:Class .
+e:ProductFlow a owl:Class .
+e:UnitProcess a owl:Class .
+e:ImpactIndicator a owl:Class .
+e:hasFunctionalUnit a owl:ObjectProperty .
+e:hasFunctionalUnit rdf:type owl:FunctionalProperty .
+e:hasFunctionalUnit rdfs:domain e:LCAStudy .
+e:hasFunctionalUnit rdfs:range e:FunctionalUnit .

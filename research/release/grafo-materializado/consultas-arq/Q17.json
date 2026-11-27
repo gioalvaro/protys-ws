@@ -1,0 +1,74 @@
+{
+ "head": {
+  "vars": [
+   "lot",
+   "functionalUnit",
+   "outputLiters",
+   "impactPerFU"
+  ]
+ },
+ "results": {
+  "bindings": [
+   {
+    "lot": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#BatchA"
+    },
+    "functionalUnit": {
+     "type": "literal",
+     "value": "L"
+    },
+    "outputLiters": {
+     "type": "literal",
+     "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+     "value": "98.4"
+    },
+    "impactPerFU": {
+     "type": "literal",
+     "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+     "value": "0.586043358739837398373984"
+    }
+   },
+   {
+    "lot": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#BatchB"
+    },
+    "functionalUnit": {
+     "type": "literal",
+     "value": "L"
+    },
+    "outputLiters": {
+     "type": "literal",
+     "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+     "value": "195.2"
+    },
+    "impactPerFU": {
+     "type": "literal",
+     "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+     "value": "0.590846995389344262295082"
+    }
+   },
+   {
+    "lot": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#BatchC"
+    },
+    "functionalUnit": {
+     "type": "literal",
+     "value": "L"
+    },
+    "outputLiters": {
+     "type": "literal",
+     "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+     "value": "97.392"
+    },
+    "impactPerFU": {
+     "type": "literal",
+     "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+     "value": "0.592108864177755873172334"
+    }
+   }
+  ]
+ }
+}

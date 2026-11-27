@@ -1,0 +1,177 @@
+{
+  "arq": "Apache Jena version 4.10.0",
+  "grafo": "integrado-funcional-materializado.ttl",
+  "consultas": 21,
+  "coinciden": 21,
+  "iguales_al_evaluador": 21,
+  "detalle": [
+    {
+      "consulta": "Q01",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 4,
+      "filas_esperadas": 4,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q02",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 40,
+      "filas_esperadas": 40,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q03",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 4,
+      "filas_esperadas": 4,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q04",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 40,
+      "filas_esperadas": 40,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q05",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 5,
+      "filas_esperadas": 5,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q06",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 3,
+      "filas_esperadas": 3,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q07",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 28,
+      "filas_esperadas": 28,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q08",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 21,
+      "filas_esperadas": 21,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q09",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 4,
+      "filas_esperadas": 4,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q10",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 6,
+      "filas_esperadas": 6,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q11",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 4,
+      "filas_esperadas": 4,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q12",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 52,
+      "filas_esperadas": 52,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q13",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 16,
+      "filas_esperadas": 16,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q14",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 1,
+      "filas_esperadas": 1,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q15",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 3,
+      "filas_esperadas": 3,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q16",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 24,
+      "filas_esperadas": 24,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q17",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 3,
+      "filas_esperadas": 3,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q18",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 28,
+      "filas_esperadas": 28,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q19",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 4,
+      "filas_esperadas": 4,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q20",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 4,
+      "filas_esperadas": 4,
+      "igual_al_evaluador": true
+    },
+    {
+      "consulta": "Q21",
+      "codigo": 0,
+      "estado": "COINCIDE",
+      "filas_obtenidas": 1,
+      "filas_esperadas": 1,
+      "igual_al_evaluador": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:e="https://example.org/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#">
+  <owl:Class rdf:about="https://example.org/A">
+    <owl:disjointWith>
+      <owl:Class rdf:about="https://example.org/B"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <e:B rdf:about="https://example.org/x">
+    <rdf:type rdf:resource="https://example.org/A"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  </e:B>
+</rdf:RDF>

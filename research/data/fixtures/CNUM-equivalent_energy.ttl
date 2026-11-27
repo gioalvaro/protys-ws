@@ -1,0 +1,14 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:NLot a owl:NamedIndividual, i:Lot ; i:hasProcess f:NP ; i:hasActivity f:NO ; t:producesProduct f:NPaint ; i:functionalUnit "L"^^xsd:string ; i:producesQuantity "100"^^xsd:decimal .
+f:NP a owl:NamedIndividual, i:ManufacturingProcess . f:NPaint a owl:NamedIndividual, c:Product .
+f:NO a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:NP ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:NF .
+f:NF a owl:NamedIndividual, t:ElectricityEmissionFactor ; t:factorValue "0.5"^^xsd:decimal ; t:factorUnit "kg CO2e/kWh"^^xsd:string . f:NO i:consumesEnergyKWh "10.0"^^xsd:decimal .

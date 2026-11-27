@@ -1,0 +1,13 @@
+{
+  "head": {
+    "vars": [
+      "material",
+      "carbonFactor",
+      "waterFactor",
+      "exceedsDeclaredCarbonThreshold"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

@@ -1,0 +1,20 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:Threshold a owl:NamedIndividual,t:ThresholdRecord ; t:thresholdValue "5"^^xsd:decimal ; t:thresholdUnit "kg CO2e"^^xsd:string ; t:thresholdCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string .
+f:lot a owl:NamedIndividual,i:Lot ; i:hasActivity f:op ; i:hasProcess f:process .
+f:order a owl:NamedIndividual,i:WorkOrder ; i:producesLot f:lot .
+f:op a owl:NamedIndividual,i:ProcessOperation,t:FineGrindingOperation ; i:partOfProcess f:process ; i:requiresResource f:mill ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:factor ; i:cycleTime "20"^^xsd:decimal ; i:duration "20"^^xsd:decimal ; i:yield "98"^^xsd:decimal .
+f:mill a owl:NamedIndividual,i:EquipmentResource .
+f:factor a owl:NamedIndividual,t:ElectricityEmissionFactor ; t:factorValue "0.5"^^xsd:decimal ; t:factorUnit "kg CO2e/kWh"^^xsd:string .
+f:process a owl:NamedIndividual,i:ManufacturingProcess ; t:hasInventoryRepresentation f:lci ; owl:differentFrom f:lci .
+f:lci a owl:NamedIndividual,e:UnitProcess ; e:hasInventoryFlow f:flow .
+f:flow a owl:NamedIndividual,e:ProductFlow .
+f:indicator a owl:NamedIndividual,e:ImpactIndicator ; e:computedForProcess f:lci ; e:indicatorValue "5"^^xsd:decimal ; e:hasIndicatorValue "5"^^xsd:decimal ; t:unit "kg CO2e"^^xsd:string ; t:indicatorCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string ; t:hasThreshold f:Threshold .
+f:ratio a owl:NamedIndividual,t:RatioObservation ; t:forOperation f:op ; t:forIndicator f:indicator .
+a:FineGrinding a owl:NamedIndividual,i:ManufacturingCapability .

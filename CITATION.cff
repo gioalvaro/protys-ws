@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Si usás este software, citalo con estos datos."
+title: "PROTYS-WS y PROTYS(KB)"
+type: software
+authors:
+  - family-names: "Fraga"
+    given-names: "Alvaro Luis"
+    affiliation: "Universidad Tecnológica Nacional, Facultad Regional Santa Fe"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-26"

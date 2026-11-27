@@ -1,0 +1,49 @@
+{
+  "status": "IDENTICAL_RESULT_COPIES_PREPARED_FOR_PUBLICATION",
+  "timestamp_utc": "2026-11-27T01:30:55.630743+00:00",
+  "copies": [
+    {
+      "source": "research/evaluation/current/functional.json",
+      "copy": "research/release/functional.json",
+      "bytes": 538288,
+      "sha256": "9768cf617e9175dbdc91e3d4889466e0e67658b20b35070de9068b04ba405682"
+    },
+    {
+      "source": "research/evaluation/current/summary.json",
+      "copy": "research/release/summary.json",
+      "bytes": 14341,
+      "sha256": "ebecd80ab94014d9c2bbee72054068888240e25ad03a12fc28b4a1ee8226c136"
+    },
+    {
+      "source": "research/evaluation/current/summary.csv",
+      "copy": "research/release/summary.csv",
+      "bytes": 372,
+      "sha256": "f3b0699a750fb5531dac467c6b3056efef6dffa96cdfae54162203a4f4cc6b02"
+    },
+    {
+      "source": "research/evaluation/current/environment.json",
+      "copy": "research/release/environment.json",
+      "bytes": 1211,
+      "sha256": "8167b62945d7b0b836c24fa9d9d417943d055215d8127097630513edc018b568"
+    },
+    {
+      "source": "research/evaluation/current/demonstration.json",
+      "copy": "research/release/demonstration.json",
+      "bytes": 194174,
+      "sha256": "e7028b5906adf6fc80e52357711d8d950b5a60f60b705900f68798af0f989ab4"
+    },
+    {
+      "source": "research/evaluation/current/capacity/capacity.json",
+      "copy": "research/release/capacity.json",
+      "bytes": 11351,
+      "sha256": "589a4f384f74a81cad3f25ca0fb7bbfd1d5e4d2a8be5ffd957a737b3de287048"
+    },
+    {
+      "source": "research/evaluation/current/runs.jsonl",
+      "copy": "research/release/runs.jsonl",
+      "bytes": 487127,
+      "sha256": "9c1a5bc93845961b0bea8b180cb284392658c57efba53e5bbef0536c51c3eb4c"
+    }
+  ],
+  "limits": "Las copias locales no prueban por sí mismas que la publicación remota exista; la publicación se comprueba aparte contra el commit, la etiqueta y los adjuntos."
+}

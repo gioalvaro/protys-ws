@@ -1,0 +1,9 @@
+subload_iri,operation_iri,lot_iri,volume_l,volume_unit,duration_minutes,start_seconds,end_seconds,time_reference,scenario_role
+http://w3id.org/protys/fixture#BatchA_Op2_Subload1,http://w3id.org/protys/fixture#BatchA_Op2,http://w3id.org/protys/fixture#BatchA,50,L,10.000000,600,1200.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op2_Subload2,http://w3id.org/protys/fixture#BatchA_Op2,http://w3id.org/protys/fixture#BatchA,50,L,10.000000,1200.000000,1800.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op2_Subload1,http://w3id.org/protys/fixture#BatchB_Op2,http://w3id.org/protys/fixture#BatchB,50,L,10.000000,21200,21800.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op2_Subload2,http://w3id.org/protys/fixture#BatchB_Op2,http://w3id.org/protys/fixture#BatchB,50,L,10.000000,21800.000000,22400.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op2_Subload3,http://w3id.org/protys/fixture#BatchB_Op2,http://w3id.org/protys/fixture#BatchB,50,L,10.000000,22400.000000,23000.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op2_Subload4,http://w3id.org/protys/fixture#BatchB_Op2,http://w3id.org/protys/fixture#BatchB,50,L,10.000000,23000.000000,23600.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchC_Op2_Subload1,http://w3id.org/protys/fixture#BatchC_Op2,http://w3id.org/protys/fixture#BatchC,50,L,10.000000,40600,41200.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op2_Subload2,http://w3id.org/protys/fixture#BatchC_Op2,http://w3id.org/protys/fixture#BatchC,50,L,10.000000,41200.000000,41800.000000,COMMON_ARBITRARY_ORIGIN_SECONDS,DELIBERATE_NEGATIVE_TEST_RECORD

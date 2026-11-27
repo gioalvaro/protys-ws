@@ -1,0 +1,1528 @@
+{
+  "prefixes": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "swrl": "http://www.w3.org/2003/11/swrl#",
+    "swrlb": "http://www.w3.org/2003/11/swrlb#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "i": "http://w3id.org/protys/ontology/iso15531#",
+    "e": "http://w3id.org/protys/ontology/iso14040#",
+    "c": "http://w3id.org/protys/ontology/core#",
+    "a": "http://w3id.org/protys/ontology/alignment#",
+    "t": "http://w3id.org/protys/ontology/research#"
+  },
+  "mechanisms": [
+    {
+      "id": "R01",
+      "kind": "SWRL",
+      "title": "GHG de electricidad por operación",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ProcessOperation(?op) ^\nt:NumericInputValid(?op) ^\ni:consumesEnergyKWh(?op, ?kwh) ^\nt:hasEmissionFactor(?op, ?factor) ^\nt:ElectricityEmissionFactor(?factor) ^\nt:factorUnit(?factor, \"kg CO2e/kWh\"^^xsd:string) ^\nt:factorValue(?factor, ?f) ^\nswrlb:greaterThanOrEqual(?kwh, 0) ^\nswrlb:greaterThanOrEqual(?f, 0) ^\nswrlb:multiply(?ghg, ?kwh, ?f)\n→\ne:hasGHGImpactKgCO2e(?op, ?ghg)",
+      "body": [
+        [
+          "class",
+          "i:ProcessOperation",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "class",
+          "t:NumericInputValid",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "data",
+          "i:consumesEnergyKWh",
+          [
+            "?op",
+            "?kwh"
+          ]
+        ],
+        [
+          "object",
+          "t:hasEmissionFactor",
+          [
+            "?op",
+            "?factor"
+          ]
+        ],
+        [
+          "class",
+          "t:ElectricityEmissionFactor",
+          [
+            "?factor"
+          ]
+        ],
+        [
+          "data",
+          "t:factorUnit",
+          [
+            "?factor",
+            [
+              "string",
+              "kg CO2e/kWh"
+            ]
+          ]
+        ],
+        [
+          "data",
+          "t:factorValue",
+          [
+            "?factor",
+            "?f"
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:greaterThanOrEqual",
+          [
+            "?kwh",
+            0
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:greaterThanOrEqual",
+          [
+            "?f",
+            0
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:multiply",
+          [
+            "?ghg",
+            "?kwh",
+            "?f"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "data",
+          "e:hasGHGImpactKgCO2e",
+          [
+            "?op",
+            "?ghg"
+          ]
+        ]
+      ],
+      "units_and_effect": "kg CO2e =kWh×kg CO2e/kWh; entrada numérica única y factor seleccionado único, preparados por CNUM",
+      "test_positive": "R01_positive",
+      "test_negative": "R01_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R02",
+      "kind": "SWRL",
+      "title": "Presencia de inventario de agua del proceso",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ProcessOperation(?op) ^\ni:consumesWaterL(?op, ?water) ^\ni:partOfProcess(?op, ?process) ^\na:hasInventoryRepresentation(?process, ?lci)\n→\ne:hasInventoryFlow(?lci, c:WaterFlow)",
+      "body": [
+        [
+          "class",
+          "i:ProcessOperation",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "data",
+          "i:consumesWaterL",
+          [
+            "?op",
+            "?water"
+          ]
+        ],
+        [
+          "object",
+          "i:partOfProcess",
+          [
+            "?op",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "a:hasInventoryRepresentation",
+          [
+            "?process",
+            "?lci"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "e:hasInventoryFlow",
+          [
+            "?lci",
+            "c:WaterFlow"
+          ]
+        ]
+      ],
+      "units_and_effect": "Presencia de flujo de agua; sin suma cuantitativa",
+      "test_positive": "R02_positive",
+      "test_negative": "R02_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R03",
+      "kind": "SWRL",
+      "title": "Vincular insumo comprado al lote mediante su representación LCI",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\ni:producesLot(?order, ?lot) ^\ni:hasProcess(?lot, ?process) ^\na:hasInventoryRepresentation(?process, ?lci) ^\ne:UnitProcess(?lci) ^\ne:hasInventoryFlow(?lci, ?flow) ^\ne:ProductFlow(?flow)\n→\na:hasRecordedInputFlowForLot(?lot, ?flow)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "i:producesLot",
+          [
+            "?order",
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "i:hasProcess",
+          [
+            "?lot",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "a:hasInventoryRepresentation",
+          [
+            "?process",
+            "?lci"
+          ]
+        ],
+        [
+          "class",
+          "e:UnitProcess",
+          [
+            "?lci"
+          ]
+        ],
+        [
+          "object",
+          "e:hasInventoryFlow",
+          [
+            "?lci",
+            "?flow"
+          ]
+        ],
+        [
+          "class",
+          "e:ProductFlow",
+          [
+            "?flow"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "a:hasRecordedInputFlowForLot",
+          [
+            "?lot",
+            "?flow"
+          ]
+        ]
+      ],
+      "units_and_effect": "IRI del flujo y del lote",
+      "test_positive": "R03_positive",
+      "test_negative": "R03_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R04",
+      "kind": "SWRL",
+      "title": "Indicador por umbral explícito de la misma unidad y categoría",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "e:ImpactIndicator(?indicator) ^\nt:hasThreshold(?indicator, ?record) ^\nt:ThresholdRecord(?record) ^\ne:hasIndicatorValue(?indicator, ?value) ^\nt:unit(?indicator, ?unit) ^\nt:indicatorCategory(?indicator, ?category) ^\nt:thresholdValue(?record, ?threshold) ^\nt:thresholdUnit(?record, ?unit) ^\nt:thresholdCategory(?record, ?category) ^\nswrlb:greaterThan(?value, ?threshold)\n→\nc:HighImpactIndicator(?indicator)",
+      "body": [
+        [
+          "class",
+          "e:ImpactIndicator",
+          [
+            "?indicator"
+          ]
+        ],
+        [
+          "object",
+          "t:hasThreshold",
+          [
+            "?indicator",
+            "?record"
+          ]
+        ],
+        [
+          "class",
+          "t:ThresholdRecord",
+          [
+            "?record"
+          ]
+        ],
+        [
+          "data",
+          "e:hasIndicatorValue",
+          [
+            "?indicator",
+            "?value"
+          ]
+        ],
+        [
+          "data",
+          "t:unit",
+          [
+            "?indicator",
+            "?unit"
+          ]
+        ],
+        [
+          "data",
+          "t:indicatorCategory",
+          [
+            "?indicator",
+            "?category"
+          ]
+        ],
+        [
+          "data",
+          "t:thresholdValue",
+          [
+            "?record",
+            "?threshold"
+          ]
+        ],
+        [
+          "data",
+          "t:thresholdUnit",
+          [
+            "?record",
+            "?unit"
+          ]
+        ],
+        [
+          "data",
+          "t:thresholdCategory",
+          [
+            "?record",
+            "?category"
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:greaterThan",
+          [
+            "?value",
+            "?threshold"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "class",
+          "c:HighImpactIndicator",
+          [
+            "?indicator"
+          ]
+        ]
+      ],
+      "units_and_effect": "Indicador y ThresholdRecord explícito con la misma unidad y categoría; valor, unidad y categoría del mismo registro; frontera estricta >",
+      "test_positive": "R04_positive",
+      "test_negative": "R04_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R05",
+      "kind": "SWRL",
+      "title": "Vincular al lote los indicadores de sus procesos, sin sumar",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\ni:hasProcess(?lot, ?process) ^\na:hasInventoryRepresentation(?process, ?lci) ^\ne:hasImpact(?lci, ?indicator)\n→\ne:hasImpact(?lot, ?indicator)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "i:hasProcess",
+          [
+            "?lot",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "a:hasInventoryRepresentation",
+          [
+            "?process",
+            "?lci"
+          ]
+        ],
+        [
+          "object",
+          "e:hasImpact",
+          [
+            "?lci",
+            "?indicator"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "e:hasImpact",
+          [
+            "?lot",
+            "?indicator"
+          ]
+        ]
+      ],
+      "units_and_effect": "IRI del indicador del proceso; asociación sin suma",
+      "test_positive": "R05_positive",
+      "test_negative": "R05_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R06",
+      "kind": "SWRL",
+      "title": "Asociar factor al flujo del material correspondiente",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "e:ProductFlow(?flow) ^\ne:refersToMaterial(?flow, ?material) ^\nt:hasEmissionFactor(?material, ?factor)\n→\nt:usesEmissionFactor(?flow, ?factor)",
+      "body": [
+        [
+          "class",
+          "e:ProductFlow",
+          [
+            "?flow"
+          ]
+        ],
+        [
+          "object",
+          "e:refersToMaterial",
+          [
+            "?flow",
+            "?material"
+          ]
+        ],
+        [
+          "object",
+          "t:hasEmissionFactor",
+          [
+            "?material",
+            "?factor"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "t:usesEmissionFactor",
+          [
+            "?flow",
+            "?factor"
+          ]
+        ]
+      ],
+      "units_and_effect": "IRI del factor del material",
+      "test_positive": "R06_positive",
+      "test_negative": "R06_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R07",
+      "kind": "SPARQL ASK",
+      "title": "Datos ambientales obligatorios ausentes del proceso",
+      "source": "research/model/validations/R07.sparql",
+      "code": "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nASK { ?process a i:ManufacturingProcess . FILTER NOT EXISTS { ?process t:hasInventoryRepresentation ?lci . ?indicator a e:ImpactIndicator ; e:computedForProcess ?lci ; e:indicatorValue ?value . } }",
+      "units_and_effect": "true means missing required record in the closed snapshot, not OWL inconsistency or physical contamination",
+      "test_positive": "R07_missing",
+      "test_negative": "R07_complete"
+    },
+    {
+      "id": "R08",
+      "kind": "SWRL",
+      "title": "Cantidad de unidad funcional del lote",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\ni:functionalUnit(?lot, ?unit) ^\ni:producesQuantity(?lot, ?qty)\n→\ne:hasFunctionalUnitQuantity(?lot, ?qty)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "data",
+          "i:functionalUnit",
+          [
+            "?lot",
+            "?unit"
+          ]
+        ],
+        [
+          "data",
+          "i:producesQuantity",
+          [
+            "?lot",
+            "?qty"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "data",
+          "e:hasFunctionalUnitQuantity",
+          [
+            "?lot",
+            "?qty"
+          ]
+        ]
+      ],
+      "units_and_effect": "Cantidad en unidad funcional declarada; no conversión automática",
+      "test_positive": "R08_positive",
+      "test_negative": "R08_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R09",
+      "kind": "SWRL",
+      "title": "Uso del recurso requerido y asignado en el mismo plan",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ProcessPlan(?plan) ^\ni:assignsResource(?plan, ?resource) ^\ni:includesActivity(?plan, ?op) ^\ni:requiresResource(?op, ?resource)\n→\ni:usesResource(?op, ?resource)",
+      "body": [
+        [
+          "class",
+          "i:ProcessPlan",
+          [
+            "?plan"
+          ]
+        ],
+        [
+          "object",
+          "i:assignsResource",
+          [
+            "?plan",
+            "?resource"
+          ]
+        ],
+        [
+          "object",
+          "i:includesActivity",
+          [
+            "?plan",
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "i:requiresResource",
+          [
+            "?op",
+            "?resource"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "i:usesResource",
+          [
+            "?op",
+            "?resource"
+          ]
+        ]
+      ],
+      "units_and_effect": "IRI de recurso/operación/plan",
+      "test_positive": "R09_positive",
+      "test_negative": "R09_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R10",
+      "kind": "SWRL",
+      "title": "Registrar estado propagable del mismo lote",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\ni:hasQualityStatus(?lot, ?status)\n→\ni:propagatedQualityStatus(?lot, ?status)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "data",
+          "i:hasQualityStatus",
+          [
+            "?lot",
+            "?status"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "data",
+          "i:propagatedQualityStatus",
+          [
+            "?lot",
+            "?status"
+          ]
+        ]
+      ],
+      "units_and_effect": "Estado textual del mismo lote",
+      "test_positive": "R10_positive",
+      "test_negative": "R10_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R11",
+      "kind": "SWRL",
+      "title": "Razón rendimiento sobre duración positiva de operación",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ProcessOperation(?op) ^\ni:yield(?op, ?yield) ^\ni:duration(?op, ?duration) ^\nswrlb:greaterThan(?duration, 0) ^\nswrlb:multiply(?preciseYield, ?yield, \"1.0000000000000000\"^^xsd:decimal) ^\nswrlb:divide(?efficiency, ?preciseYield, ?duration)\n→\na:hasEfficiency(?op, ?efficiency)",
+      "body": [
+        [
+          "class",
+          "i:ProcessOperation",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "data",
+          "i:yield",
+          [
+            "?op",
+            "?yield"
+          ]
+        ],
+        [
+          "data",
+          "i:duration",
+          [
+            "?op",
+            "?duration"
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:greaterThan",
+          [
+            "?duration",
+            0
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:multiply",
+          [
+            "?preciseYield",
+            "?yield",
+            [
+              "decimal",
+              "1.0000000000000000"
+            ]
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:divide",
+          [
+            "?efficiency",
+            "?preciseYield",
+            "?duration"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "data",
+          "a:hasEfficiency",
+          [
+            "?op",
+            "?efficiency"
+          ]
+        ]
+      ],
+      "units_and_effect": "%/min; razón de rendimiento másico sobre duración",
+      "test_positive": "R11_positive",
+      "test_negative": "R11_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated",
+      "arithmetic_precision": "Dividend multiplied by decimal1.0000000000000000 before guarded division to retain at least16 fractional places in SWRLAPI2.1.3; mathematical formula and units unchanged. This is computational precision, not physical measurement accuracy."
+    },
+    {
+      "id": "R12",
+      "kind": "SWRL",
+      "title": "Capacidad FineGrinding por operación de molienda explícita",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:EquipmentResource(?resource) ^\nt:FineGrindingOperation(?op) ^\ni:requiresResource(?op, ?resource)\n→\ni:hasCapability(?resource, a:FineGrinding)",
+      "body": [
+        [
+          "class",
+          "i:EquipmentResource",
+          [
+            "?resource"
+          ]
+        ],
+        [
+          "class",
+          "t:FineGrindingOperation",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "i:requiresResource",
+          [
+            "?op",
+            "?resource"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "i:hasCapability",
+          [
+            "?resource",
+            "a:FineGrinding"
+          ]
+        ]
+      ],
+      "units_and_effect": "Capacidad de molienda explícita; no umbral numérico",
+      "test_positive": "R12_positive",
+      "test_negative": "R12_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R13",
+      "kind": "SWRL",
+      "title": "Precedencia de eventos MES del mismo lote y proceso",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ManufacturingData(?e1) ^\ni:ManufacturingData(?e2) ^\nt:forLot(?e1, ?lot) ^\nt:forLot(?e2, ?lot) ^\nt:eventForProcess(?e1, ?process) ^\nt:eventForProcess(?e2, ?process) ^\nt:eventTimeSeconds(?e1, ?t1) ^\nt:eventTimeSeconds(?e2, ?t2) ^\nswrlb:lessThan(?t1, ?t2)\n→\ni:precedesEvent(?e1, ?e2)",
+      "body": [
+        [
+          "class",
+          "i:ManufacturingData",
+          [
+            "?e1"
+          ]
+        ],
+        [
+          "class",
+          "i:ManufacturingData",
+          [
+            "?e2"
+          ]
+        ],
+        [
+          "object",
+          "t:forLot",
+          [
+            "?e1",
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "t:forLot",
+          [
+            "?e2",
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "t:eventForProcess",
+          [
+            "?e1",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "t:eventForProcess",
+          [
+            "?e2",
+            "?process"
+          ]
+        ],
+        [
+          "data",
+          "t:eventTimeSeconds",
+          [
+            "?e1",
+            "?t1"
+          ]
+        ],
+        [
+          "data",
+          "t:eventTimeSeconds",
+          [
+            "?e2",
+            "?t2"
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:lessThan",
+          [
+            "?t1",
+            "?t2"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "i:precedesEvent",
+          [
+            "?e1",
+            "?e2"
+          ]
+        ]
+      ],
+      "units_and_effect": "Segundos desde origen común, mismo lote/proceso",
+      "test_positive": "R13_positive",
+      "test_negative": "R13_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R14",
+      "kind": "SWRL",
+      "title": "Operador responsable de la operación de su orden",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:WorkOrder(?order) ^\ni:executedBy(?order, ?operator) ^\ni:HumanResource(?operator) ^\ni:executesActivity(?order, ?op)\n→\ni:responsibleOperator(?op, ?operator)",
+      "body": [
+        [
+          "class",
+          "i:WorkOrder",
+          [
+            "?order"
+          ]
+        ],
+        [
+          "object",
+          "i:executedBy",
+          [
+            "?order",
+            "?operator"
+          ]
+        ],
+        [
+          "class",
+          "i:HumanResource",
+          [
+            "?operator"
+          ]
+        ],
+        [
+          "object",
+          "i:executesActivity",
+          [
+            "?order",
+            "?op"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "i:responsibleOperator",
+          [
+            "?op",
+            "?operator"
+          ]
+        ]
+      ],
+      "units_and_effect": "IRI de operador responsable",
+      "test_positive": "R14_positive",
+      "test_negative": "R14_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R15",
+      "kind": "SWRL",
+      "title": "Marcar indisponibilidad temporal por mantenimiento ACTIVE en la instantánea",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ManufacturingResource(?resource) ^\ni:hasMaintenance(?resource, ?maintenance) ^\nt:maintenanceStatus(?maintenance, \"ACTIVE\"^^xsd:string)\n→\ni:temporarilyUnavailable(?resource)",
+      "body": [
+        [
+          "class",
+          "i:ManufacturingResource",
+          [
+            "?resource"
+          ]
+        ],
+        [
+          "object",
+          "i:hasMaintenance",
+          [
+            "?resource",
+            "?maintenance"
+          ]
+        ],
+        [
+          "data",
+          "t:maintenanceStatus",
+          [
+            "?maintenance",
+            [
+              "string",
+              "ACTIVE"
+            ]
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "class",
+          "i:temporarilyUnavailable",
+          [
+            "?resource"
+          ]
+        ]
+      ],
+      "units_and_effect": "Indisponibilidad temporal sólo con mantenimiento ACTIVE de la instantánea; no registro histórico/programado",
+      "test_positive": "R15_positive",
+      "test_negative": "R15_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R16",
+      "kind": "SPARQL ASK",
+      "title": "Entrada material ausente de la operación",
+      "source": "research/model/validations/R16.sparql",
+      "code": "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nASK { ?operation a i:ProcessOperation . FILTER NOT EXISTS { ?operation i:hasInput ?input . } }",
+      "units_and_effect": "true means missing required record in the closed snapshot, not OWL inconsistency or physical contamination",
+      "test_positive": "R16_missing",
+      "test_negative": "R16_complete"
+    },
+    {
+      "id": "R17",
+      "kind": "SWRL",
+      "title": "Requerir limpieza entre lotes consecutivos de familia distinta",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?l1) ^\ni:Lot(?l2) ^\ni:processedOn(?l1, ?equipment) ^\ni:processedOn(?l2, ?equipment) ^\nt:nextLot(?l1, ?l2) ^\nt:productFamilyCode(?l1, ?f1) ^\nt:productFamilyCode(?l2, ?f2) ^\nswrlb:notEqual(?f1, ?f2)\n→\ni:requiresCleaningBetween(?l1, ?l2)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?l1"
+          ]
+        ],
+        [
+          "class",
+          "i:Lot",
+          [
+            "?l2"
+          ]
+        ],
+        [
+          "object",
+          "i:processedOn",
+          [
+            "?l1",
+            "?equipment"
+          ]
+        ],
+        [
+          "object",
+          "i:processedOn",
+          [
+            "?l2",
+            "?equipment"
+          ]
+        ],
+        [
+          "object",
+          "t:nextLot",
+          [
+            "?l1",
+            "?l2"
+          ]
+        ],
+        [
+          "data",
+          "t:productFamilyCode",
+          [
+            "?l1",
+            "?f1"
+          ]
+        ],
+        [
+          "data",
+          "t:productFamilyCode",
+          [
+            "?l2",
+            "?f2"
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:notEqual",
+          [
+            "?f1",
+            "?f2"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "i:requiresCleaningBetween",
+          [
+            "?l1",
+            "?l2"
+          ]
+        ]
+      ],
+      "units_and_effect": "Código entero de categoría, mismo equipo y par consecutivo",
+      "test_positive": "R17_positive",
+      "test_negative": "R17_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R18",
+      "kind": "SWRL",
+      "title": "Marcar lote candidato a reproceso por no conformidad",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\ni:hasNonConformity(?lot, ?nonconformity)\n→\ni:requiresReprocess(?lot)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "i:hasNonConformity",
+          [
+            "?lot",
+            "?nonconformity"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "class",
+          "i:requiresReprocess",
+          [
+            "?lot"
+          ]
+        ]
+      ],
+      "units_and_effect": "Clase candidato a reproceso; sin ejecución de operación nueva",
+      "test_positive": "R18_positive",
+      "test_negative": "R18_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R19",
+      "kind": "SPARQL ASK",
+      "title": "Medición ausente del control de calidad",
+      "source": "research/model/validations/R19.sparql",
+      "code": "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nASK { ?operation a i:Quality_Control_Activity . FILTER NOT EXISTS { ?operation i:hasMeasurement ?measurement . } }",
+      "units_and_effect": "true means missing required record in the closed snapshot, not OWL inconsistency or physical contamination",
+      "test_positive": "R19_missing",
+      "test_negative": "R19_complete"
+    },
+    {
+      "id": "R20",
+      "kind": "SWRL",
+      "title": "Puente flujo y operación de consumo del mismo proceso",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:ProcessOperation(?op) ^\ni:consumesMaterial(?op, ?material) ^\ni:partOfProcess(?op, ?process) ^\na:hasInventoryRepresentation(?process, ?lci) ^\ne:ProductFlow(?flow) ^\ne:hasInventoryFlow(?lci, ?flow) ^\ne:refersToMaterial(?flow, ?material) ^\nt:belongsToProcess(?flow, ?process)\n→\nc:bridgesFlowToActivity(?flow, ?op)",
+      "body": [
+        [
+          "class",
+          "i:ProcessOperation",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "i:consumesMaterial",
+          [
+            "?op",
+            "?material"
+          ]
+        ],
+        [
+          "object",
+          "i:partOfProcess",
+          [
+            "?op",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "a:hasInventoryRepresentation",
+          [
+            "?process",
+            "?lci"
+          ]
+        ],
+        [
+          "class",
+          "e:ProductFlow",
+          [
+            "?flow"
+          ]
+        ],
+        [
+          "object",
+          "e:hasInventoryFlow",
+          [
+            "?lci",
+            "?flow"
+          ]
+        ],
+        [
+          "object",
+          "e:refersToMaterial",
+          [
+            "?flow",
+            "?material"
+          ]
+        ],
+        [
+          "object",
+          "t:belongsToProcess",
+          [
+            "?flow",
+            "?process"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "c:bridgesFlowToActivity",
+          [
+            "?flow",
+            "?op"
+          ]
+        ]
+      ],
+      "units_and_effect": "IRI de flujo/material/operación del mismo proceso",
+      "test_positive": "R20_positive",
+      "test_negative": "R20_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R21",
+      "kind": "SWRL",
+      "title": "Contribución eléctrica identificable por operación del lote",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\nt:NumericInputValid(?op) ^\ni:hasActivity(?lot, ?op) ^\ni:partOfProcess(?op, ?process) ^\ni:hasProcess(?lot, ?process) ^\nt:hasEmissionFactor(?op, ?factor) ^\nt:factorUnit(?factor, \"kg CO2e/kWh\"^^xsd:string) ^\ne:hasGHGImpactKgCO2e(?op, ?ghg)\n→\nt:hasGHGContribution(?lot, ?op)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "class",
+          "t:NumericInputValid",
+          [
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "i:hasActivity",
+          [
+            "?lot",
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "i:partOfProcess",
+          [
+            "?op",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "i:hasProcess",
+          [
+            "?lot",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "t:hasEmissionFactor",
+          [
+            "?op",
+            "?factor"
+          ]
+        ],
+        [
+          "data",
+          "t:factorUnit",
+          [
+            "?factor",
+            [
+              "string",
+              "kg CO2e/kWh"
+            ]
+          ]
+        ],
+        [
+          "data",
+          "e:hasGHGImpactKgCO2e",
+          [
+            "?op",
+            "?ghg"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "object",
+          "t:hasGHGContribution",
+          [
+            "?lot",
+            "?op"
+          ]
+        ]
+      ],
+      "units_and_effect": "Contribución identificada por IRI de operación, evitando colapso de literales iguales",
+      "test_positive": "R21_positive",
+      "test_negative": "R21_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R22",
+      "kind": "SWRL",
+      "title": "Hotspot vinculado al mismo proceso y recurso cuello de botella",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "c:HighImpactIndicator(?indicator) ^\ne:computedForProcess(?indicator, ?lci) ^\na:hasInventoryRepresentation(?process, ?lci) ^\ni:partOfProcess(?op, ?process) ^\ni:requiresResource(?op, ?resource) ^\nc:BottleneckResource(?resource)\n→\nc:Hotspot(?resource)",
+      "body": [
+        [
+          "class",
+          "c:HighImpactIndicator",
+          [
+            "?indicator"
+          ]
+        ],
+        [
+          "object",
+          "e:computedForProcess",
+          [
+            "?indicator",
+            "?lci"
+          ]
+        ],
+        [
+          "object",
+          "a:hasInventoryRepresentation",
+          [
+            "?process",
+            "?lci"
+          ]
+        ],
+        [
+          "object",
+          "i:partOfProcess",
+          [
+            "?op",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "i:requiresResource",
+          [
+            "?op",
+            "?resource"
+          ]
+        ],
+        [
+          "class",
+          "c:BottleneckResource",
+          [
+            "?resource"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "class",
+          "c:Hotspot",
+          [
+            "?resource"
+          ]
+        ]
+      ],
+      "units_and_effect": "Clase hotspot; cuello de botella declarado como entrada",
+      "test_positive": "R22_positive",
+      "test_negative": "R22_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R23",
+      "kind": "SWRL",
+      "title": "Razón por operación e indicador vinculados, sin normalización",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "i:Lot(?lot) ^\ni:WorkOrder(?order) ^\ni:producesLot(?order, ?lot) ^\ni:hasActivity(?lot, ?op) ^\ni:hasProcess(?lot, ?process) ^\ni:partOfProcess(?op, ?process) ^\na:hasInventoryRepresentation(?process, ?lci) ^\ni:cycleTime(?op, ?time) ^\ne:computedForProcess(?indicator, ?lci) ^\ne:indicatorValue(?indicator, ?value) ^\nt:forOperation(?ratio, ?op) ^\nt:forIndicator(?ratio, ?indicator) ^\nswrlb:greaterThan(?value, 0) ^\nswrlb:multiply(?preciseTime, ?time, \"1.0000000000000000\"^^xsd:decimal) ^\nswrlb:divide(?result, ?preciseTime, ?value)\n→\nt:operationIndicatorRatio(?ratio, ?result)",
+      "body": [
+        [
+          "class",
+          "i:Lot",
+          [
+            "?lot"
+          ]
+        ],
+        [
+          "class",
+          "i:WorkOrder",
+          [
+            "?order"
+          ]
+        ],
+        [
+          "object",
+          "i:producesLot",
+          [
+            "?order",
+            "?lot"
+          ]
+        ],
+        [
+          "object",
+          "i:hasActivity",
+          [
+            "?lot",
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "i:hasProcess",
+          [
+            "?lot",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "i:partOfProcess",
+          [
+            "?op",
+            "?process"
+          ]
+        ],
+        [
+          "object",
+          "a:hasInventoryRepresentation",
+          [
+            "?process",
+            "?lci"
+          ]
+        ],
+        [
+          "data",
+          "i:cycleTime",
+          [
+            "?op",
+            "?time"
+          ]
+        ],
+        [
+          "object",
+          "e:computedForProcess",
+          [
+            "?indicator",
+            "?lci"
+          ]
+        ],
+        [
+          "data",
+          "e:indicatorValue",
+          [
+            "?indicator",
+            "?value"
+          ]
+        ],
+        [
+          "object",
+          "t:forOperation",
+          [
+            "?ratio",
+            "?op"
+          ]
+        ],
+        [
+          "object",
+          "t:forIndicator",
+          [
+            "?ratio",
+            "?indicator"
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:greaterThan",
+          [
+            "?value",
+            0
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:multiply",
+          [
+            "?preciseTime",
+            "?time",
+            [
+              "decimal",
+              "1.0000000000000000"
+            ]
+          ]
+        ],
+        [
+          "builtin",
+          "swrlb:divide",
+          [
+            "?result",
+            "?preciseTime",
+            "?value"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "data",
+          "t:operationIndicatorRatio",
+          [
+            "?ratio",
+            "?result"
+          ]
+        ]
+      ],
+      "units_and_effect": "min/unidad del indicador; razón por pareja, sin normalización",
+      "test_positive": "R23_positive",
+      "test_negative": "R23_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated",
+      "arithmetic_precision": "Dividend multiplied by decimal1.0000000000000000 before guarded division to retain at least16 fractional places in SWRLAPI2.1.3; mathematical formula and units unchanged. This is computational precision, not physical measurement accuracy."
+    },
+    {
+      "id": "R24",
+      "kind": "SWRL",
+      "title": "Marcar brecha de cobertura desde faltante ambiental detectado",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "c:MissingEnvironmentalData(?process)\n→\nc:CoverageGap(?process)",
+      "body": [
+        [
+          "class",
+          "c:MissingEnvironmentalData",
+          [
+            "?process"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "class",
+          "c:CoverageGap",
+          [
+            "?process"
+          ]
+        ]
+      ],
+      "units_and_effect": "Clase brecha de cobertura desde core:MissingEnvironmentalData",
+      "test_positive": "R24_positive",
+      "test_negative": "R24_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R25",
+      "kind": "SWRL",
+      "title": "Marcar factor modificado que requiere recálculo",
+      "source": "ontologies/alignment-rules.owl",
+      "code": "t:EmissionFactor(?factor) ^\nc:hasVersion(?factor, ?version) ^\nc:modifiedInVersion(?factor, ?version)\n→\nc:RequiresRecomputeIndicators(?factor)",
+      "body": [
+        [
+          "class",
+          "t:EmissionFactor",
+          [
+            "?factor"
+          ]
+        ],
+        [
+          "data",
+          "c:hasVersion",
+          [
+            "?factor",
+            "?version"
+          ]
+        ],
+        [
+          "data",
+          "c:modifiedInVersion",
+          [
+            "?factor",
+            "?version"
+          ]
+        ]
+      ],
+      "head": [
+        [
+          "class",
+          "c:RequiresRecomputeIndicators",
+          [
+            "?factor"
+          ]
+        ]
+      ],
+      "units_and_effect": "Clase requiere recálculo; sin recalcular el valor",
+      "test_positive": "R25_positive",
+      "test_negative": "R25_negative",
+      "operational_semantics": "SWRLAPI/Drools over named fixture individuals; class assertions accumulate and individuals are not generated"
+    },
+    {
+      "id": "R26",
+      "kind": "SPARQL ASK",
+      "title": "Registro de limpieza ausente en el intervalo y equipo correspondientes",
+      "source": "research/model/validations/R26.sparql",
+      "code": "PREFIX i: <http://w3id.org/protys/ontology/iso15531#>\nPREFIX e: <http://w3id.org/protys/ontology/iso14040#>\nPREFIX c: <http://w3id.org/protys/ontology/core#>\nPREFIX a: <http://w3id.org/protys/ontology/alignment#>\nPREFIX t: <http://w3id.org/protys/ontology/research#>\nPREFIX p: <http://w3id.org/protys/ontology/paint-ext#>\nPREFIX r: <http://w3id.org/protys/ontology/resource#>\nPREFIX f: <http://w3id.org/protys/fixture#>\nPREFIX owl: <http://www.w3.org/2002/07/owl#>\nPREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\nASK { ?lotA i:requiresCleaningBetween ?lotB ; i:processedOn ?equipment .\n?lotB i:processedOn ?equipment .\n?lotA t:endTimeSeconds ?endA .\nFILTER(isNumeric(?endA))\nFILTER NOT EXISTS { ?lotA t:endTimeSeconds ?pairEndOther .\nFILTER(!isNumeric(?pairEndOther) || ?pairEndOther != ?endA) }\n?lotB t:startTimeSeconds ?startB .\nFILTER(isNumeric(?startB))\nFILTER NOT EXISTS { ?lotB t:startTimeSeconds ?pairStartOther .\nFILTER(!isNumeric(?pairStartOther) || ?pairStartOther != ?startB) }\nFILTER(?endA <= ?startB)\nFILTER NOT EXISTS { ?clean a i:CleaningOperation ; t:cleanedResource ?equipment .\n?clean t:startTimeSeconds ?cleanStart .\nFILTER(isNumeric(?cleanStart))\nFILTER NOT EXISTS { ?clean t:startTimeSeconds ?cleanStartOther .\nFILTER(!isNumeric(?cleanStartOther) || ?cleanStartOther != ?cleanStart) }\n?clean t:endTimeSeconds ?cleanEnd .\nFILTER(isNumeric(?cleanEnd))\nFILTER NOT EXISTS { ?clean t:endTimeSeconds ?cleanEndOther .\nFILTER(!isNumeric(?cleanEndOther) || ?cleanEndOther != ?cleanEnd) }\nFILTER(?cleanStart >= ?endA && ?cleanEnd <= ?startB && ?cleanEnd >= ?cleanStart) } }",
+      "units_and_effect": "true means missing required record in the closed snapshot, not OWL inconsistency or physical contamination",
+      "test_positive": "R26_missing",
+      "test_negative": "R26_valid"
+    }
+  ]
+}

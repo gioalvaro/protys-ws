@@ -1,0 +1,30 @@
+{
+  "scope": "47 explicitly marked component records and their marked assembly in a local operational pilot; accumulating PROTYS role types on existing IRIs, not creating physical objects or universally classifying AP242 records",
+  "sources": [
+    "https://www.steptools.com/stds/stp_aim/html/t_configuration_item.html",
+    "https://www.steptools.com/stds/stp_aim/html/t_product_definition.html"
+  ],
+  "rules": [
+    {
+      "id": "R27",
+      "title": "Registro del perfil piloto representa un producto",
+      "code": "ap:Product_Definition(?x) ^ t:PilotProductRecord(?x) → c:Product(?x)"
+    },
+    {
+      "id": "R28",
+      "title": "Registro marcado representa un componente del ensamblaje piloto",
+      "code": "ap:Configuration_Item(?x) ^ t:PilotComponentRecord(?x) ^ t:componentOf(?x, ?assembly) ^ t:PilotProductRecord(?assembly) → prod:Production_Component(?x)"
+    },
+    {
+      "id": "R29",
+      "title": "Representación geométrica del producto del perfil piloto",
+      "code": "ap:Shape_Representation(?x) ^ ap:hasShapeRepresentation(?assembly, ?x) ^ t:PilotProductRecord(?assembly) → prod:Product_Information(?x)"
+    }
+  ],
+  "negative_cases": [
+    "Configuration_Item without PilotComponentRecord",
+    "Product_Definition without PilotProductRecord",
+    "Shape_Representation not linked to a marked product record"
+  ],
+  "identity_policy": "Same source IRI and AP242 type remain; whole named individual sets are compared before/after materialization"
+}

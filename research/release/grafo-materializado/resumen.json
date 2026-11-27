@@ -1,0 +1,21 @@
+{
+  "configuracion": "integrated",
+  "conjunto": "funcional (research/data/functional.ttl)",
+  "triples_de_entrada": 4325,
+  "triples_materializados": 5384,
+  "grafos_con_nombre": 0,
+  "origen": "research/evaluation/current/functional/integrated/result-model.ttl",
+  "origen_sha256": "4898b59595ce6033bbc62acad5c2cb54d715cdb75005cb06fa536bae5774c11a",
+  "archivos": {
+    "integrado-funcional-materializado.ttl": {
+      "sha256": "4898b59595ce6033bbc62acad5c2cb54d715cdb75005cb06fa536bae5774c11a",
+      "bytes": 360689,
+      "triples": 5384
+    },
+    "integrado-funcional-materializado.rdf": {
+      "sha256": "a740949d0ceda81e448405bc30f4fe49fb990ed51e57bb6f228c4e7151b341f1",
+      "bytes": 549342,
+      "triples": 5384
+    }
+  }
+}

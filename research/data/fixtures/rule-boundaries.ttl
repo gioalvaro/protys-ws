@@ -1,0 +1,49 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+f:Maintenance01 a owl:NamedIndividual ; t:maintenanceStatus "ACTIVE"^^xsd:string .
+f:FilterSystem_04 i:hasMaintenance f:Maintenance01 .
+f:ZeroDurationOperation a owl:NamedIndividual, i:ProcessOperation ; i:yield "100"^^xsd:decimal ; i:duration "0"^^xsd:decimal ; i:hasInput f:Water .
+f:NegativeEnergyOperation a owl:NamedIndividual, i:ProcessOperation ; i:consumesEnergyKWh "-1"^^xsd:decimal ; t:hasEmissionFactor f:GridFactor ; i:hasInput f:Water .
+f:ThresholdIndicator a owl:NamedIndividual, e:ImpactIndicator ; e:hasIndicatorValue "5"^^xsd:decimal ; t:unit "kg CO2e"^^xsd:string ; t:indicatorCategory "GHG_ELECTRICITY_PRODUCTION"^^xsd:string ; t:hasThreshold f:ElectricityGHGThreshold .
+f:WrongProcessEvent a owl:NamedIndividual, i:ManufacturingData ; t:forLot f:BatchA ; t:eventForProcess f:BatchB_Process ; t:eventTimeSeconds "10000"^^xsd:decimal .
+f:WrongRatio a owl:NamedIndividual, t:RatioObservation ; t:forOperation f:BatchA_Op2 ; t:forIndicator f:BatchB_Indicator .
+f:IncompatibleKgLot a owl:NamedIndividual, i:Lot ; i:functionalUnit "kg"^^xsd:string ; i:producesQuantity "100"^^xsd:decimal ; t:producesProduct f:WhitePaint ; t:hasGHGContribution f:BatchA_Op2 .
+f:ZeroLitersLot a owl:NamedIndividual, i:Lot ; i:functionalUnit "L"^^xsd:string ; i:producesQuantity "0"^^xsd:decimal ; t:producesProduct f:WhitePaint ; t:hasGHGContribution f:BatchA_Op2 .
+f:MissingQuantityLot a owl:NamedIndividual, i:Lot ; i:functionalUnit "L"^^xsd:string ; t:producesProduct f:WhitePaint ; t:hasGHGContribution f:BatchA_Op2 .
+f:DuplicateContributionProcess a owl:NamedIndividual, i:ManufacturingProcess .
+f:DuplicateContributionLot a owl:NamedIndividual, i:Lot ; i:functionalUnit "L"^^xsd:string ; i:producesQuantity "100"^^xsd:decimal ; t:producesProduct f:WhitePaint ; i:hasProcess f:DuplicateContributionProcess ; i:hasActivity f:EqualContribution1, f:EqualContribution2 .
+f:EqualContribution1 a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:DuplicateContributionProcess ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:GridFactor ; i:hasInput f:Water .
+f:EqualContribution2 a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:DuplicateContributionProcess ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:GridFactor ; i:hasInput f:Water .
+f:MissingMassOperation a owl:NamedIndividual, i:ProcessOperation ; t:outputMassKg "1"^^xsd:decimal ; t:registeredLossKg "0"^^xsd:decimal ; i:hasInput f:Water .
+f:UnchangedVersionEntity a owl:NamedIndividual ; c:hasVersion "2"^^xsd:string ; c:hasPriorVersion "2"^^xsd:string .
+f:WrongUnitFactor a owl:NamedIndividual, t:ElectricityEmissionFactor ; t:factorValue "0.5"^^xsd:decimal ; t:factorUnit "kg CO2e/kg"^^xsd:string .
+f:MissingUnitFactor a owl:NamedIndividual, t:ElectricityEmissionFactor ; t:factorValue "0.5"^^xsd:decimal .
+f:WrongUnitOperation a owl:NamedIndividual, i:ProcessOperation ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:WrongUnitFactor ; i:hasInput f:Water .
+f:MissingUnitOperation a owl:NamedIndividual, i:ProcessOperation ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:MissingUnitFactor ; i:hasInput f:Water .
+f:PrecisionLot a owl:NamedIndividual, i:Lot ; i:hasProcess f:PrecisionProcess ; i:hasActivity f:PrecisionOperation1, f:PrecisionOperation2, f:PrecisionOperation3 .
+f:PrecisionProcess a owl:NamedIndividual, i:ManufacturingProcess ; t:hasInventoryRepresentation f:PrecisionLCI .
+f:PrecisionLCI a owl:NamedIndividual, e:UnitProcess .
+f:PrecisionOrder a owl:NamedIndividual, i:WorkOrder ; i:producesLot f:PrecisionLot .
+f:PrecisionOperation1 a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:PrecisionProcess ; i:cycleTime "100"^^xsd:decimal ; i:yield "100"^^xsd:decimal ; i:duration "40"^^xsd:decimal ; i:hasInput f:Water .
+f:PrecisionOperation2 a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:PrecisionProcess ; i:cycleTime "1"^^xsd:decimal ; i:yield "1"^^xsd:decimal ; i:duration "3"^^xsd:decimal ; i:hasInput f:Water .
+f:PrecisionOperation3 a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:PrecisionProcess ; i:cycleTime "1.25"^^xsd:decimal ; i:yield "1.25"^^xsd:decimal ; i:duration "2.5"^^xsd:decimal ; i:hasInput f:Water .
+f:PrecisionIndicator1 a owl:NamedIndividual, e:ImpactIndicator ; e:computedForProcess f:PrecisionLCI ; e:indicatorValue "40"^^xsd:decimal .
+f:PrecisionIndicator2 a owl:NamedIndividual, e:ImpactIndicator ; e:computedForProcess f:PrecisionLCI ; e:indicatorValue "3"^^xsd:decimal .
+f:PrecisionIndicator3 a owl:NamedIndividual, e:ImpactIndicator ; e:computedForProcess f:PrecisionLCI ; e:indicatorValue "2.5"^^xsd:decimal .
+f:PrecisionRatio1 a owl:NamedIndividual, t:RatioObservation ; t:forOperation f:PrecisionOperation1 ; t:forIndicator f:PrecisionIndicator1 .
+f:PrecisionRatio2 a owl:NamedIndividual, t:RatioObservation ; t:forOperation f:PrecisionOperation2 ; t:forIndicator f:PrecisionIndicator2 .
+f:PrecisionRatio3 a owl:NamedIndividual, t:RatioObservation ; t:forOperation f:PrecisionOperation3 ; t:forIndicator f:PrecisionIndicator3 .
+<https://example.org/mass-unit-test#inputMassG> a owl:DatatypeProperty .
+<https://example.org/mass-unit-test#outputMassG> a owl:DatatypeProperty .
+<https://example.org/mass-unit-test#registeredLossG> a owl:DatatypeProperty .
+f:MassInGramsOperation a owl:NamedIndividual, i:ProcessOperation ; i:hasInput f:Water ; <https://example.org/mass-unit-test#inputMassG> "1000"^^xsd:decimal ; <https://example.org/mass-unit-test#outputMassG> "990"^^xsd:decimal ; <https://example.org/mass-unit-test#registeredLossG> "10"^^xsd:decimal .
+

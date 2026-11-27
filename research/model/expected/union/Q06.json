@@ -1,0 +1,14 @@
+{
+  "head": {
+    "vars": [
+      "product",
+      "lot",
+      "liters",
+      "ghgKgCO2e",
+      "kgCO2ePerL"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

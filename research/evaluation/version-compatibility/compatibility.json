@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "selected_HermiT": "1.4.5.519",
+  "checks": [
+    {
+      "HermiT": "1.4.5.456",
+      "OWLAPI": "5.1.20",
+      "case": "valid",
+      "exit_code": 3,
+      "validation": {
+        "status": "NOT_EVALUATED",
+        "profile_valid": true,
+        "cleaning_evaluation": {
+          "required_pair_count": 0,
+          "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "context_evaluation": {
+          "declared_link_count": 0,
+          "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "numeric_evaluation": {
+          "selected_operation_count": 0,
+          "scope": "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+          "output_checked": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "swrl_rule_count": 0,
+        "profile_violations": [],
+        "error": "java.lang.NoSuchMethodError: 'com.google.common.base.Optional org.semanticweb.owlapi.model.OWLOntologyID.getDefaultDocumentIRI()'",
+        "failure_kind": "OWL_VALIDATION_ERROR",
+        "dl_ms": 229.243791,
+        "owl_validation_status": "NOT_EVALUATED"
+      }
+    },
+    {
+      "HermiT": "1.4.5.519",
+      "OWLAPI": "5.1.20",
+      "case": "valid",
+      "exit_code": 0,
+      "validation": {
+        "status": "CONSISTENT",
+        "profile_valid": true,
+        "cleaning_evaluation": {
+          "required_pair_count": 0,
+          "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "context_evaluation": {
+          "declared_link_count": 0,
+          "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "numeric_evaluation": {
+          "selected_operation_count": 0,
+          "scope": "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+          "output_checked": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "swrl_rule_count": 0,
+        "profile_violations": [],
+        "dl_materialized_triples": 3,
+        "dl_axiom_preservation": {
+          "stage": "named_dl_export_reload_owlapi5",
+          "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+          "expected_anonymous_individual_count": 0,
+          "observed_anonymous_individual_count": 0,
+          "expected_axiom_count": 5,
+          "observed_axiom_count": 8,
+          "retained_axiom_count": 5,
+          "lost_axiom_count": 0,
+          "status": "RETAINED"
+        },
+        "unsatisfiable_classes": [],
+        "dl_ms": 199.279666,
+        "owl_validation_status": "CONSISTENT"
+      },
+      "classified_parent_type": true
+    },
+    {
+      "HermiT": "1.4.5.519",
+      "OWLAPI": "5.1.20",
+      "case": "inconsistent",
+      "exit_code": 3,
+      "validation": {
+        "status": "INCONSISTENT",
+        "profile_valid": true,
+        "cleaning_evaluation": {
+          "required_pair_count": 0,
+          "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "context_evaluation": {
+          "declared_link_count": 0,
+          "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+          "status": "NOT_APPLICABLE"
+        },
+        "numeric_evaluation": {
+          "selected_operation_count": 0,
+          "scope": "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+          "output_checked": false,
+          "status": "NOT_APPLICABLE"
+        },
+        "swrl_rule_count": 0,
+        "profile_violations": [],
+        "failure_kind": "OWL_INCONSISTENT",
+        "unsatisfiable_classes": [],
+        "dl_ms": 161.784167,
+        "owl_validation_status": "INCONSISTENT"
+      }
+    }
+  ]
+}

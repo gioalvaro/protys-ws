@@ -1,0 +1,7 @@
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+c:precedes a owl:ObjectProperty ;
+  rdfs:domain c:Process ;
+  rdfs:range c:Process .
+# Propiedad simple: no transitividad ni disyunción de propiedades añadidas.

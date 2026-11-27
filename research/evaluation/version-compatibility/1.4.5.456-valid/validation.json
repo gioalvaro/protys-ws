@@ -1,0 +1,26 @@
+{
+  "status" : "NOT_EVALUATED",
+  "profile_valid" : true,
+  "cleaning_evaluation" : {
+    "required_pair_count" : 0,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "context_evaluation" : {
+    "declared_link_count" : 0,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "numeric_evaluation" : {
+    "selected_operation_count" : 0,
+    "scope" : "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+    "output_checked" : false,
+    "status" : "NOT_APPLICABLE"
+  },
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "error" : "java.lang.NoSuchMethodError: 'com.google.common.base.Optional org.semanticweb.owlapi.model.OWLOntologyID.getDefaultDocumentIRI()'",
+  "failure_kind" : "OWL_VALIDATION_ERROR",
+  "dl_ms" : 229.243791,
+  "owl_validation_status" : "NOT_EVALUATED"
+}

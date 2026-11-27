@@ -1,0 +1,587 @@
+{
+  "replicates": 120,
+  "dataset_seed": 42,
+  "order_seed": 20261003,
+  "descriptive_statistics": [
+    {
+      "configuration": "iso15531",
+      "n": 30,
+      "total_ms": {
+        "mean": 5452.128386066667,
+        "sd": 184.4004126987163,
+        "median": 5405.1842915,
+        "min": 5113.547916,
+        "max": 5954.417875
+      },
+      "load_ms": {
+        "mean": 750.2873374666667,
+        "sd": 20.876697023261244,
+        "median": 745.5499795000001,
+        "min": 718.286708,
+        "max": 822.044958
+      },
+      "reasoning_stage_ms": {
+        "mean": 4435.521275066667,
+        "sd": 156.32797086822637,
+        "median": 4400.965104,
+        "min": 4151.241959,
+        "max": 4857.249958
+      },
+      "query_stage_ms": {
+        "mean": 226.3870291,
+        "sd": 28.3571682239124,
+        "median": 231.49393750000002,
+        "min": 182.820125,
+        "max": 285.709458
+      },
+      "wall_process_ms": {
+        "mean": 6078.860837533342,
+        "sd": 175.1389388089591,
+        "median": 6040.679062499976,
+        "min": 5746.137125000018,
+        "max": 6521.1473330000445
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "mean": 611077324.8,
+        "sd": 64691773.39604218,
+        "median": 594329600.0,
+        "min": 562610176,
+        "max": 906182656
+      },
+      "raw_input_triples": {
+        "mean": 37038,
+        "sd": 0.0,
+        "median": 37038.0,
+        "min": 37038,
+        "max": 37038
+      },
+      "input_triples": {
+        "mean": 37038,
+        "sd": 0.0,
+        "median": 37038.0,
+        "min": 37038,
+        "max": 37038
+      },
+      "materialized_triples": {
+        "mean": 41031,
+        "sd": 0.0,
+        "median": 41031.0,
+        "min": 41031,
+        "max": 41031
+      },
+      "input_named_individuals": {
+        "mean": 3211,
+        "sd": 0.0,
+        "median": 3211.0,
+        "min": 3211,
+        "max": 3211
+      },
+      "materialized_named_individuals": {
+        "mean": 3211,
+        "sd": 0.0,
+        "median": 3211.0,
+        "min": 3211,
+        "max": 3211
+      },
+      "dl_ms": {
+        "mean": 4067.5608902999998,
+        "sd": 149.0208569047497,
+        "median": 4041.3084795,
+        "min": 3796.574417,
+        "max": 4485.01225
+      },
+      "post_swrl_dl_ms": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "dl_materialized_triples": {
+        "mean": 3993,
+        "sd": 0.0,
+        "median": 3993.0,
+        "min": 3993,
+        "max": 3993
+      },
+      "post_swrl_dl_materialized_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "construct_added_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_swrl_ms": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_new_axiom_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_engine_inferred_axiom_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_imported_rule_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "configuration": "iso14040",
+      "n": 30,
+      "total_ms": {
+        "mean": 2583.9122597,
+        "sd": 142.68027692365303,
+        "median": 2538.7115205,
+        "min": 2416.460667,
+        "max": 3007.296333
+      },
+      "load_ms": {
+        "mean": 451.34631253333333,
+        "sd": 15.639048973797136,
+        "median": 449.679896,
+        "min": 422.263833,
+        "max": 493.3645
+      },
+      "reasoning_stage_ms": {
+        "mean": 2033.1187014666666,
+        "sd": 138.79025144150722,
+        "median": 1983.0208954999998,
+        "min": 1872.664417,
+        "max": 2457.553958
+      },
+      "query_stage_ms": {
+        "mean": 83.19492073333333,
+        "sd": 5.637113441577812,
+        "median": 81.025542,
+        "min": 75.585292,
+        "max": 99.464
+      },
+      "wall_process_ms": {
+        "mean": 3192.871037500002,
+        "sd": 141.25917178272252,
+        "median": 3153.0518544999636,
+        "min": 2991.7672500000663,
+        "max": 3500.376707999976
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "mean": 460177408,
+        "sd": 18139707.21965415,
+        "median": 455647232.0,
+        "min": 419774464,
+        "max": 503021568
+      },
+      "raw_input_triples": {
+        "mean": 10349,
+        "sd": 0.0,
+        "median": 10349.0,
+        "min": 10349,
+        "max": 10349
+      },
+      "input_triples": {
+        "mean": 10349,
+        "sd": 0.0,
+        "median": 10349.0,
+        "min": 10349,
+        "max": 10349
+      },
+      "materialized_triples": {
+        "mean": 12842,
+        "sd": 0.0,
+        "median": 12842.0,
+        "min": 12842,
+        "max": 12842
+      },
+      "input_named_individuals": {
+        "mean": 1725,
+        "sd": 0.0,
+        "median": 1725.0,
+        "min": 1725,
+        "max": 1725
+      },
+      "materialized_named_individuals": {
+        "mean": 1725,
+        "sd": 0.0,
+        "median": 1725.0,
+        "min": 1725,
+        "max": 1725
+      },
+      "dl_ms": {
+        "mean": 1909.1312596333332,
+        "sd": 136.87760091154985,
+        "median": 1854.7627495000002,
+        "min": 1749.329958,
+        "max": 2334.669791
+      },
+      "post_swrl_dl_ms": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "dl_materialized_triples": {
+        "mean": 2493,
+        "sd": 0.0,
+        "median": 2493.0,
+        "min": 2493,
+        "max": 2493
+      },
+      "post_swrl_dl_materialized_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "construct_added_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_swrl_ms": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_new_axiom_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_engine_inferred_axiom_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_imported_rule_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "configuration": "union",
+      "n": 30,
+      "total_ms": {
+        "mean": 6986.637940166666,
+        "sd": 262.4665867059395,
+        "median": 6967.2067289999995,
+        "min": 6437.479,
+        "max": 7706.217958
+      },
+      "load_ms": {
+        "mean": 812.5290708333333,
+        "sd": 21.505281706933847,
+        "median": 811.6161460000001,
+        "min": 771.159583,
+        "max": 853.554209
+      },
+      "reasoning_stage_ms": {
+        "mean": 5898.281438833334,
+        "sd": 240.30654440663096,
+        "median": 5849.784250000001,
+        "min": 5345.038,
+        "max": 6583.61275
+      },
+      "query_stage_ms": {
+        "mean": 230.01737913333332,
+        "sd": 22.913794702454247,
+        "median": 230.127625,
+        "min": 196.882708,
+        "max": 283.928
+      },
+      "wall_process_ms": {
+        "mean": 7618.7024430333295,
+        "sd": 269.4830567544394,
+        "median": 7631.410354000025,
+        "min": 7022.981208000033,
+        "max": 8302.675791999945
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "mean": 600647816.5333333,
+        "sd": 62004378.09454367,
+        "median": 574267392.0,
+        "min": 539033600,
+        "max": 771473408
+      },
+      "raw_input_triples": {
+        "mean": 42395,
+        "sd": 0.0,
+        "median": 42395.0,
+        "min": 42395,
+        "max": 42395
+      },
+      "input_triples": {
+        "mean": 42395,
+        "sd": 0.0,
+        "median": 42395.0,
+        "min": 42395,
+        "max": 42395
+      },
+      "materialized_triples": {
+        "mean": 47106,
+        "sd": 0.0,
+        "median": 47106.0,
+        "min": 47106,
+        "max": 47106
+      },
+      "input_named_individuals": {
+        "mean": 3211,
+        "sd": 0.0,
+        "median": 3211.0,
+        "min": 3211,
+        "max": 3211
+      },
+      "materialized_named_individuals": {
+        "mean": 3211,
+        "sd": 0.0,
+        "median": 3211.0,
+        "min": 3211,
+        "max": 3211
+      },
+      "dl_ms": {
+        "mean": 5481.069113933333,
+        "sd": 229.8218254218598,
+        "median": 5443.0558755,
+        "min": 4917.553833,
+        "max": 6111.146209
+      },
+      "post_swrl_dl_ms": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "dl_materialized_triples": {
+        "mean": 4711,
+        "sd": 0.0,
+        "median": 4711.0,
+        "min": 4711,
+        "max": 4711
+      },
+      "post_swrl_dl_materialized_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "construct_added_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_swrl_ms": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_new_axiom_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_engine_inferred_axiom_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "worker_imported_rule_count": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "configuration": "integrated",
+      "n": 30,
+      "total_ms": {
+        "mean": 20167.881394433334,
+        "sd": 429.06633052120634,
+        "median": 20256.798125499998,
+        "min": 19539.462166,
+        "max": 21226.841666
+      },
+      "load_ms": {
+        "mean": 901.8702180666667,
+        "sd": 23.804189825781915,
+        "median": 895.833208,
+        "min": 876.020375,
+        "max": 983.180625
+      },
+      "reasoning_stage_ms": {
+        "mean": 18397.477249933334,
+        "sd": 402.4862003434011,
+        "median": 18476.547542,
+        "min": 17809.578583,
+        "max": 19402.894167
+      },
+      "query_stage_ms": {
+        "mean": 785.3918694333333,
+        "sd": 37.96977241991218,
+        "median": 778.340292,
+        "min": 740.766583,
+        "max": 898.045292
+      },
+      "wall_process_ms": {
+        "mean": 20782.74389573333,
+        "sd": 423.47059301626507,
+        "median": 20843.04725000004,
+        "min": 20131.362375000008,
+        "max": 21894.27787499994
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "mean": 1585649527.4666667,
+        "sd": 188400133.5027571,
+        "median": 1596776448.0,
+        "min": 1210400768,
+        "max": 1909161984
+      },
+      "raw_input_triples": {
+        "mean": 43744,
+        "sd": 0.0,
+        "median": 43744.0,
+        "min": 43744,
+        "max": 43744
+      },
+      "input_triples": {
+        "mean": 44444,
+        "sd": 0.0,
+        "median": 44444.0,
+        "min": 44444,
+        "max": 44444
+      },
+      "materialized_triples": {
+        "mean": 62867,
+        "sd": 0.0,
+        "median": 62867.0,
+        "min": 62867,
+        "max": 62867
+      },
+      "input_named_individuals": {
+        "mean": 3218,
+        "sd": 0.0,
+        "median": 3218.0,
+        "min": 3218,
+        "max": 3218
+      },
+      "materialized_named_individuals": {
+        "mean": 3218,
+        "sd": 0.0,
+        "median": 3218.0,
+        "min": 3218,
+        "max": 3218
+      },
+      "dl_ms": {
+        "mean": 5904.5066833,
+        "sd": 159.05096896635743,
+        "median": 5917.380666499999,
+        "min": 5597.939,
+        "max": 6232.289084
+      },
+      "post_swrl_dl_ms": {
+        "mean": 5697.602277733334,
+        "sd": 87.54125762604083,
+        "median": 5696.983,
+        "min": 5550.963917,
+        "max": 5863.613458
+      },
+      "dl_materialized_triples": {
+        "mean": 5945,
+        "sd": 0.0,
+        "median": 5945.0,
+        "min": 5945,
+        "max": 5945
+      },
+      "post_swrl_dl_materialized_triples": {
+        "mean": 0,
+        "sd": 0.0,
+        "median": 0.0,
+        "min": 0,
+        "max": 0
+      },
+      "construct_added_triples": {
+        "mean": 700,
+        "sd": 0.0,
+        "median": 700.0,
+        "min": 700,
+        "max": 700
+      },
+      "worker_swrl_ms": {
+        "mean": 1346.7656305,
+        "sd": 53.885451633916055,
+        "median": 1350.3906040000002,
+        "min": 1232.548208,
+        "max": 1451.275417
+      },
+      "worker_new_axiom_count": {
+        "mean": 9725,
+        "sd": 0.0,
+        "median": 9725.0,
+        "min": 9725,
+        "max": 9725
+      },
+      "worker_engine_inferred_axiom_count": {
+        "mean": 14028,
+        "sd": 0.0,
+        "median": 14028.0,
+        "min": 14028,
+        "max": 14028
+      },
+      "worker_imported_rule_count": {
+        "mean": 22,
+        "sd": 0.0,
+        "median": 22.0,
+        "min": 22,
+        "max": 22
+      }
+    }
+  ],
+  "memory_method": "Maximum observed sum of RSS for parent JVM and SWRL subprocess sampled every100ms; not instantaneous peak or live heap. Parent peak_heap_bytes is separate.",
+  "cache_control": "Each run starts a fresh parent JVM and, where enabled, a fresh SWRL worker. Application caches are not reused; operating-system disk caches, thermal state and CPU scheduling are not controlled.",
+  "inference_counts": "DL pre/post counts are named RDF consequences exported by HermiT; worker new_axiom_count combines OWL2RL and active SWRL consequences. Only the same-input OWL_ONLY ablation attributes additional consequences to SWRL. CONSTRUCT counts are recorded separately.",
+  "interpretation": "Observed computation on synthetic case; configurations perform different semantic tasks; no automatic industrial benefit or normalized percentage."
+}

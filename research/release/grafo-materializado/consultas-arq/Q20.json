@@ -1,0 +1,69 @@
+{
+ "head": {
+  "vars": [
+   "entity",
+   "kind",
+   "missingProperty"
+  ]
+ },
+ "results": {
+  "bindings": [
+   {
+    "entity": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#MissingOperation"
+    },
+    "kind": {
+     "type": "literal",
+     "value": "ProcessOperation"
+    },
+    "missingProperty": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/ontology/iso15531#hasInput"
+    }
+   },
+   {
+    "entity": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#MissingProcess"
+    },
+    "kind": {
+     "type": "literal",
+     "value": "ManufacturingProcess"
+    },
+    "missingProperty": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+    }
+   },
+   {
+    "entity": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#MissingQC"
+    },
+    "kind": {
+     "type": "literal",
+     "value": "ProcessOperation"
+    },
+    "missingProperty": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/ontology/iso15531#hasInput"
+    }
+   },
+   {
+    "entity": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/fixture#MissingQC"
+    },
+    "kind": {
+     "type": "literal",
+     "value": "QualityControl"
+    },
+    "missingProperty": {
+     "type": "uri",
+     "value": "http://w3id.org/protys/ontology/iso15531#hasMeasurement"
+    }
+   }
+  ]
+ }
+}

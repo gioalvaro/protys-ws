@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:core="http://w3id.org/protys/ontology/core#" xml:base="http://w3id.org/protys/ontology/core">
+
+    <owl:Ontology rdf:about="http://w3id.org/protys/ontology/core">
+        <rdfs:label xml:lang="es">PROTYS(KB) - Módulo Principal (CoreConcepts)</rdfs:label>
+        <rdfs:label xml:lang="en">PROTYS(KB) - Core Concepts Module</rdfs:label>
+        <rdfs:comment xml:lang="es">Nivel Principal de la red de ontologías PROTYS(KB).
+Por decisión arquitectónica contiene únicamente los cuatro conceptos fundamentales de la industria
+manufacturera según Zhao et al. (1999), Lin y Harding (2007), Chungoora et al. (2013) y Usman et al. (2013):
+Process, Product, Resource y Enterprise, junto con las relaciones producedBy, usedBy, isHeldBy e involve.</rdfs:comment>
+        <owl:versionInfo>2.0</owl:versionInfo>
+    </owl:Ontology>
+
+    <!-- ========================================
+         CLASES DEL NIVEL PRINCIPAL (4)
+         ======================================== -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Product">
+        <rdfs:label xml:lang="en">Product</rdfs:label>
+        <rdfs:label xml:lang="es">Producto</rdfs:label>
+        <rdfs:comment xml:lang="es">Concepto general de producto elegido para el Nivel Principal de PROTYS(KB), que se refina en el Módulo de Producto. Su descripción mediante cosa o sustancia pertenece a la conceptualización local; no se presenta como una definición literal compartida por ISO 10303, ISO 15531 e ISO 15926.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Process">
+        <rdfs:label xml:lang="en">Process</rdfs:label>
+        <rdfs:label xml:lang="es">Proceso</rdfs:label>
+        <rdfs:comment xml:lang="es">Concepto local para un procedimiento con pasos u operaciones que puede producir un producto o modificar sus características. ISO 10303-49 es una referencia normativa de contexto; esta descripción propuesta no se presenta como una definición literal de una cláusula identificada. Se refina en el Módulo de Proceso.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Resource">
+        <rdfs:label xml:lang="en">Resource</rdfs:label>
+        <rdfs:label xml:lang="es">Recurso</rdfs:label>
+        <rdfs:comment xml:lang="es">Concepto local para entidades utilizadas por los procesos productivos y descritas mediante comportamientos y capacidades. Las referencias a ISO 10303-49 e ISO 15531 contextualizan la propuesta; no se atribuye esta formulación a una cláusula normativa literal. Se refina en el Módulo de Recurso.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/core#Enterprise">
+        <rdfs:label xml:lang="en">Enterprise</rdfs:label>
+        <rdfs:label xml:lang="es">Empresa</rdfs:label>
+        <rdfs:comment xml:lang="es">Concepto local para una organización o agrupación de organizaciones con objetivos de ofrecer productos o servicios. ISO 10303-239 se conserva como referencia normativa de contexto, sin presentar esta descripción como una definición literal del estándar. Se refina en el Módulo de Empresa.</rdfs:comment>
+    </owl:Class>
+
+    <!-- ========================================
+         PROPIEDADES DE OBJETO
+         ======================================== -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#producedBy">
+        <rdfs:label>producedBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Un Product es producido por un Process.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#produces">
+        <rdfs:label>produces</rdfs:label>
+        <rdfs:comment xml:lang="es">Inversa de producedBy: un Process produce un Product.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Product"/>
+        <owl:inverseOf rdf:resource="http://w3id.org/protys/ontology/core#producedBy"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#usedBy">
+        <rdfs:label>usedBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Un Resource es usado por un Process.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#hasResource">
+        <rdfs:label>hasResource</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad de conveniencia: un Process dispone de un Resource. Inversa de usedBy.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+        <owl:inverseOf rdf:resource="http://w3id.org/protys/ontology/core#usedBy"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#isHeldBy">
+        <rdfs:label>isHeldBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Vincula una entidad (típicamente un Resource) con la Enterprise o instalación que la posee o alberga.</rdfs:comment>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#involve">
+        <rdfs:label>involve</rdfs:label>
+        <rdfs:comment xml:lang="es">Asociación local entre Enterprise y Process, declarados como dominio y rango de involve. Representa la vinculación de una empresa con sus procesos; no se presenta como reproducción literal de una relación de ISO 15531 o ISO 18629 ni impone una cantidad mínima de procesos.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Enterprise"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#hasProcess">
+        <rdfs:label>hasProcess</rdfs:label>
+        <rdfs:comment xml:lang="es">Propiedad de conveniencia: relaciona una entidad con un proceso que contiene o realiza. Subpropiedad de involve para el caso Enterprise-Process.</rdfs:comment>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+        <rdfs:subPropertyOf rdf:resource="http://w3id.org/protys/ontology/core#involve"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/core#precedes">
+        <rdfs:label>precedes</rdfs:label>
+        <rdfs:comment xml:lang="es">Orden entre procesos: un Process precede a otro Process en el plan de proceso.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:ObjectProperty>
+
+    <!-- ========================================
+         PROPIEDADES DE DATOS
+         ======================================== -->
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/core#hasName">
+        <rdfs:label>hasName</rdfs:label>
+        <rdfs:comment xml:lang="es">Nombre o identificador textual de una entidad.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/core#hasDescription">
+        <rdfs:label>hasDescription</rdfs:label>
+        <rdfs:comment xml:lang="es">Descripción textual de una entidad.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/core#hasVersion">
+        <rdfs:label>hasVersion</rdfs:label>
+        <rdfs:comment xml:lang="es">Versión vigente de un término o entidad (consulta Q21 y regla R25); P5 corresponde al producto generado por un plan de proceso.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <owl:DatatypeProperty rdf:about="http://w3id.org/protys/ontology/core#hasPriorVersion">
+        <rdfs:label>hasPriorVersion</rdfs:label>
+        <rdfs:comment xml:lang="es">Versión anterior de un término o entidad, usada por Q21; no redefine la pregunta de competencia P5.</rdfs:comment>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+</rdf:RDF>

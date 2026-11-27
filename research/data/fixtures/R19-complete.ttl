@@ -1,0 +1,11 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:O a owl:NamedIndividual, i:Quality_Control_Activity ; i:hasMeasurement f:M . f:M a owl:NamedIndividual .

@@ -1,0 +1,7 @@
+{
+  "files": [
+    "research/evaluation/version-compatibility/inconsistent.ttl"
+  ],
+  "enabled_rules": "NONE",
+  "queries": []
+}

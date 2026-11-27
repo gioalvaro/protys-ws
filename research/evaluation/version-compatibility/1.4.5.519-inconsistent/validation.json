@@ -1,0 +1,26 @@
+{
+  "status" : "INCONSISTENT",
+  "profile_valid" : true,
+  "cleaning_evaluation" : {
+    "required_pair_count" : 0,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "context_evaluation" : {
+    "declared_link_count" : 0,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "numeric_evaluation" : {
+    "selected_operation_count" : 0,
+    "scope" : "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+    "output_checked" : false,
+    "status" : "NOT_APPLICABLE"
+  },
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "failure_kind" : "OWL_INCONSISTENT",
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 161.784167,
+  "owl_validation_status" : "INCONSISTENT"
+}

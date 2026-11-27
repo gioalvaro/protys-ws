@@ -1,0 +1,14 @@
+{
+  "head": {
+    "vars": [
+      "factor",
+      "version",
+      "process",
+      "indicator",
+      "value"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "ghgKgCO2e",
+      "numNC"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

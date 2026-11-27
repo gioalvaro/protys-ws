@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:core="http://w3id.org/protys/ontology/core#" xmlns:resource="http://w3id.org/protys/ontology/resource#" xml:base="http://w3id.org/protys/ontology/resource">
+
+    <owl:Ontology rdf:about="http://w3id.org/protys/ontology/resource">
+        <rdfs:label xml:lang="es">PROTYS(KB) - Módulo de Recurso (ResourceMod)</rdfs:label>
+        <rdfs:comment xml:lang="es">Conceptualización propia del Nivel de Refinamiento de PROTYS(KB), que profundiza Resource del Nivel Principal mediante Behaviour, Capability, Tool, Equip, Device, Material, Person, Role y File. ISO 10303-49, ISO 15531, ISO 18629 y las partes de ISO 10303 consideradas para materiales son referencias normativas de contexto; la jerarquía y las asociaciones propuestas no se presentan como una transcripción literal de esos estándares.</rdfs:comment>
+        <owl:versionInfo>2.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/core"/>
+    </owl:Ontology>
+
+    <!-- ============ CLASES ============ -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Behaviour">
+        <rdfs:label xml:lang="en">Behaviour</rdfs:label>
+        <rdfs:comment xml:lang="es">Categoría local para describir el comportamiento de un Resource mediante hasBehaviour. ISO 10303-49 es una referencia de contexto; no se atribuye esta categoría propuesta a una cláusula normativa literal identificada.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Capability">
+        <rdfs:label xml:lang="en">Capability</rdfs:label>
+        <rdfs:comment xml:lang="es">Categoría local para describir la capacidad de un Resource mediante hasCapability. ISO 10303-49 es una referencia de contexto; no se atribuye esta categoría propuesta a una cláusula normativa literal identificada.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Tool">
+        <rdfs:label xml:lang="en">Tool</rdfs:label>
+        <rdfs:comment xml:lang="es">Especialización local de core:Resource para herramientas manuales o consumibles empleados en operaciones, como cepillos o raspadores. ISO 15531 e ISO 18629 son referencias de contexto; no se presenta esta especialización como una definición literal común a ambos estándares.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Equip">
+        <rdfs:label xml:lang="en">Equip</rdfs:label>
+        <rdfs:comment xml:lang="es">Equipo industrial fijo que ejecuta operaciones de transformación (molinos, reactores, dosificadores). Especialización directa de Resource. Relevante para el caso de estudio de pintura, donde los equipos de molienda son instancias de Equip.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Device">
+        <rdfs:label xml:lang="en">Device</rdfs:label>
+        <rdfs:comment xml:lang="es">Dispositivo de medición y control que supervisa variables del proceso (sensores, manómetros, válvulas inteligentes). Especialización directa de Resource.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:AllDisjointClasses>
+        <owl:members rdf:parseType="Collection">
+            <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Tool"/>
+            <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Equip"/>
+            <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Device"/>
+        </owl:members>
+    </owl:AllDisjointClasses>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Material">
+        <rdfs:label xml:lang="en">Material</rdfs:label>
+        <rdfs:comment xml:lang="es">Especialización local de core:Resource para materiales gestionados en las fases de producción. Las referencias a ISO 10303-232, ISO 10303-227 e ISO 10303-1082 contextualizan el análisis; la jerarquía propuesta no se atribuye literalmente a esas partes.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Process_Material">
+        <rdfs:label xml:lang="en">Process_Material</rdfs:label>
+        <rdfs:comment xml:lang="es">Material requerido para llevar a cabo una Process_Activity; vincula el Módulo de Proceso con el Módulo de Recursos (definición canónica en ResourceMod).</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Material"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Product_Material">
+        <rdfs:label xml:lang="en">Product_Material</rdfs:label>
+        <rdfs:comment xml:lang="es">Material que forma parte del producto.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Material"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Raw_Material">
+        <rdfs:label xml:lang="en">Raw_Material</rdfs:label>
+        <rdfs:comment xml:lang="es">Materia prima de entrada a las actividades productivas.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#Material"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Person">
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+        <rdfs:comment xml:lang="es">Recurso humano dentro de la industria; especialización de Resource. Los individuos de Person se relacionan con Role para determinar sus capacidades específicas.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Role">
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+        <rdfs:comment xml:lang="es">Rol que determina las capacidades específicas de una Person y sus permisos de acceso a las actividades del sistema.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#File">
+        <rdfs:label xml:lang="en">File</rdfs:label>
+        <rdfs:comment xml:lang="es">Archivo digital general, gestionado como un tipo particular de recurso.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Resource_Related_File">
+        <rdfs:label xml:lang="en">Resource_Related_File</rdfs:label>
+        <rdfs:comment xml:lang="es">Archivo asociado a recursos específicos.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#File"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Product_Related_File">
+        <rdfs:label xml:lang="en">Product_Related_File</rdfs:label>
+        <rdfs:comment xml:lang="es">Archivo relacionado con productos, p. ej. diseños CAD.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/resource#File"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/resource#Activity">
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+        <rdfs:comment xml:lang="es">Concepto genérico de actividad usado para las relaciones Activity-Resource. Process_Activity del Módulo de Proceso se corresponde con esta clase.</rdfs:comment>
+    </owl:Class>
+
+    <!-- ============ PROPIEDADES DE OBJETO ============ -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#hasBehaviour">
+        <rdfs:label>hasBehaviour</rdfs:label>
+        <rdfs:comment xml:lang="es">Asociación local de core:Resource con Behaviour, declarados como dominio y rango de hasBehaviour. No exige que cada recurso tenga un comportamiento registrado ni impone una cardinalidad; la referencia a ISO 10303-49 es de contexto.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Behaviour"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#hasCapability">
+        <rdfs:label>hasCapability</rdfs:label>
+        <rdfs:comment xml:lang="es">Asociación local de core:Resource con Capability, declarados como dominio y rango de hasCapability. No exige que cada recurso tenga una capacidad registrada ni impone una cardinalidad; la referencia a ISO 10303-49 es de contexto.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Capability"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#executedByResource">
+        <rdfs:label>executedByResource</rdfs:label>
+        <rdfs:comment xml:lang="es">El recurso ejecuta directamente la actividad.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#requiresResource">
+        <rdfs:label>requiresResource</rdfs:label>
+        <rdfs:comment xml:lang="es">La actividad requiere el recurso pero no necesariamente lo ejecuta.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#consumesResource">
+        <rdfs:label>consumesResource</rdfs:label>
+        <rdfs:comment xml:lang="es">La actividad consume el recurso durante su ejecución.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#producesResource">
+        <rdfs:label>producesResource</rdfs:label>
+        <rdfs:comment xml:lang="es">La actividad genera o modifica el recurso como resultado.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#usesResource">
+        <rdfs:label>usesResource</rdfs:label>
+        <rdfs:comment xml:lang="es">La actividad utiliza el recurso sin consumirlo.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/core#Resource"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#hasRole">
+        <rdfs:label>hasRole</rdfs:label>
+        <rdfs:comment xml:lang="es">Asociación local de Person con Role, declarados como dominio y rango de hasRole. Permite registrar roles vinculados a capacidades sin imponer una cardinalidad mínima 1 ni una agregación 1..n.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Person"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Role"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#canBeConsultedBy">
+        <rdfs:label>canBeConsultedBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Asociación local de Activity con Role, declarados como dominio y rango de canBeConsultedBy, para representar roles que pueden consultar actividades. No impone una multiplicidad formal n:n ni constituye por sí sola un mecanismo ejecutado de control de acceso.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Role"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#isInputToActivity">
+        <rdfs:label>isInputToActivity</rdfs:label>
+        <rdfs:comment xml:lang="es">Un File es entrada de una Activity (se adopta el nombre isInputToActivity).</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#File"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/resource#isOutputOfActivity">
+        <rdfs:label>isOutputOfActivity</rdfs:label>
+        <rdfs:comment xml:lang="es">Un File es salida de una Activity.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/resource#File"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/resource#Activity"/>
+    </owl:ObjectProperty>
+
+</rdf:RDF>

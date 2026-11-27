@@ -1,0 +1,29 @@
+operation_iri,lot_iri,process_iri,stage_index,stage_name,duration_minutes,energy_kwh,energy_unit,input_mass_kg,output_mass_kg,registered_loss_kg,mass_unit,scenario_role
+http://w3id.org/protys/fixture#BatchA_Op1,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,1,Recepción e inspección,10,0,kWh,125,125,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op2,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,2,Dispersión de pigmentos,20,10,kWh,125,125,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op3,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,3,Mezcla principal,30,75,kWh,125,125,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op4,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,4,Ajuste de viscosidad,10,26.666667,kWh,125,125,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op5,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,5,Filtrado,10,3.333333,kWh,125,125,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op6,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,6,Control de calidad,20,0,kWh,125,125,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchA_Op7,http://w3id.org/protys/fixture#BatchA,http://w3id.org/protys/fixture#BatchA_Process,7,Envasado,10,0.333333,kWh,125,123,2,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op1,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,1,Recepción e inspección,20,0,kWh,250,250,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op2,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,2,Dispersión de pigmentos,40,20,kWh,250,250,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op3,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,3,Mezcla principal,60,150,kWh,250,250,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op4,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,4,Ajuste de viscosidad,20,53.333333,kWh,250,250,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op5,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,5,Filtrado,20,6.666667,kWh,250,250,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op6,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,6,Control de calidad,40,0,kWh,250,250,0,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchB_Op7,http://w3id.org/protys/fixture#BatchB,http://w3id.org/protys/fixture#BatchB_Process,7,Envasado,20,0.666667,kWh,250,244,3.5,kg,SIMULATED_PRODUCTION_CASE
+http://w3id.org/protys/fixture#BatchC_Op1,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,1,Recepción e inspección,10,0,kWh,125,125,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op2,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,2,Dispersión de pigmentos,20,10,kWh,125,125,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op3,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,3,Mezcla principal,30,75,kWh,125,125,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op4,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,4,Ajuste de viscosidad,10,26.666667,kWh,125,125,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op5,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,5,Filtrado,10,3.333333,kWh,125,125,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op6,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,6,Control de calidad,20,0,kWh,125,125,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchC_Op7,http://w3id.org/protys/fixture#BatchC,http://w3id.org/protys/fixture#BatchC_Process,7,Envasado,10,0.333333,kWh,125,121.74,2,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op1,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,1,Recepción e inspección,10,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op2,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,2,Dispersión de pigmentos,20,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op3,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,3,Mezcla principal,30,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op4,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,4,Ajuste de viscosidad,10,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op5,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,5,Filtrado,10,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op6,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,6,Control de calidad,20,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD
+http://w3id.org/protys/fixture#BatchZero_Op7,http://w3id.org/protys/fixture#BatchZero,http://w3id.org/protys/fixture#BatchZero_Process,7,Envasado,10,0,kWh,0,0,0,kg,DELIBERATE_NEGATIVE_TEST_RECORD

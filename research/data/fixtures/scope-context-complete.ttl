@@ -1,0 +1,18 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+f:ScopeLot a owl:NamedIndividual, i:Lot ; i:hasProcess f:ScopeProcess ; i:hasActivity f:ScopeOperation ; t:hasPlan f:ScopePlan ; t:producesProduct f:WhitePaint ; i:functionalUnit "L"^^xsd:string ; i:producesQuantity "100"^^xsd:decimal .
+f:ScopeProcess a owl:NamedIndividual, i:ManufacturingProcess .
+f:ForeignProcess a owl:NamedIndividual, i:ManufacturingProcess .
+f:ScopePlan a owl:NamedIndividual, i:ProcessPlan ; i:includesActivity f:ScopeOperation ; i:assignsResource f:PearlMill_01, f:FilterSystem_04 ; t:planProduces f:WhitePaint ; t:lifecycleStage "Producción"^^xsd:string .
+f:ScopeOperation a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:ScopeProcess ; i:consumesEnergyKWh "10"^^xsd:decimal ; t:hasEmissionFactor f:GridFactor ; i:duration "20"^^xsd:decimal ; i:requiresResource f:PearlMill_01 ; i:hasInput f:Water ; c:hasName "Operación del proceso propio"^^xsd:string ; t:stageIndex "1"^^xsd:integer .
+f:ForeignOperation a owl:NamedIndividual, i:ProcessOperation ; i:partOfProcess f:ForeignProcess ; i:consumesEnergyKWh "200"^^xsd:decimal ; t:hasEmissionFactor f:GridFactor ; i:duration "200"^^xsd:decimal ; i:requiresResource f:FilterSystem_04 ; i:hasInput f:Water ; c:hasName "Operación del proceso ajeno"^^xsd:string ; t:stageIndex "2"^^xsd:integer .
+

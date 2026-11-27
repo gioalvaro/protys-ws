@@ -1,0 +1,36 @@
+@prefix :        <#> .
+@prefix fuseki:  <http://jena.apache.org/fuseki#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ja:      <http://jena.hpl.hp.com/2005/11/Assembler#> .
+@prefix tdb2:    <http://jena.apache.org/2016/tdb#> .
+
+# ============================================================================
+# PROTYS(KB) - Apache Jena Fuseki 4.10.0 Configuration
+# TDB2 Triple Store for Manufacturing Ontology Network
+# ============================================================================
+
+[] rdf:type fuseki:Server ;
+   fuseki:services (
+     :protys_service
+   ) .
+
+:protys_service rdf:type fuseki:Service ;
+    fuseki:name                "protys_canonical" ;
+    fuseki:serviceQuery        "sparql", "query" ;
+    fuseki:serviceUpdate       "update" ;
+    fuseki:serviceUpload       "upload" ;
+    fuseki:serviceReadWriteGraphStore "data" ;
+    fuseki:serviceReadGraphStore "get" ;
+    fuseki:dataset             :protys_dataset ;
+    .
+
+:protys_dataset rdf:type tdb2:DatasetTDB2 ;
+    tdb2:location "/fuseki/databases/protys" ;
+    tdb2:unionDefaultGraph true ;
+    .
+
+# ============================================================================
+# Canonical files/graphs are resolved from research/catalog.json by load_canonical.py.
+# Counts are observed by the academic runtime, not hardcoded in this configuration.
+# Historical ERP fixtures are optional and loaded only into a separate dataset.

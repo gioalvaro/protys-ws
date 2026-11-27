@@ -1,0 +1,11 @@
+{
+  "head": {
+    "vars": [
+      "process",
+      "resource"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

@@ -1,0 +1,27 @@
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix c: <http://w3id.org/protys/ontology/core#> .
+@prefix a: <http://w3id.org/protys/ontology/alignment#> .
+@prefix t: <http://w3id.org/protys/ontology/research#> .
+@prefix p: <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix prod: <http://w3id.org/protys/ontology/product#> .
+@prefix f: <http://w3id.org/protys/fixture#> .
+@prefix ap: <http://w3id.org/protys/ontology/iso10303#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+f:PearlMill_01 a owl:NamedIndividual .
+f:PearlMill_01 a i:EquipmentResource .
+f:PearlMill_01 a r:Equip .
+f:PearlMill_01 t:powerKW "30"^^xsd:decimal .
+f:PearlMill_01 t:capacityLiters "50"^^xsd:decimal .
+f:PearlMill_01 t:availabilityPercent "90"^^xsd:decimal .
+f:PearlMill_01 t:oeePercent "82"^^xsd:decimal .
+f:PearlMill_01 a owl:NamedIndividual .
+f:PearlMill_01 a c:BottleneckResource .
+  f:PearlMill_01 t:scenarioRole
+  "Entrada explícita de cuello de botella del escenario; no resultado de medición industrial"^^xsd:string
+  .
+f:Operator_01 a owl:NamedIndividual .
+f:Operator_01 a i:HumanResource .
+f:Operator_01 i:skillCode "PAINT_OPERATOR"^^xsd:string .

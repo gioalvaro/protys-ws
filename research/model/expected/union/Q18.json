@@ -1,0 +1,856 @@
+{
+  "head": {
+    "vars": [
+      "plan",
+      "activity",
+      "stageIndex",
+      "stageName",
+      "lifecycleStage",
+      "totalDurationMinutes"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op1"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Recepción e inspección"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op2"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Dispersión de pigmentos"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op3"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Mezcla principal"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op4"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Ajuste de viscosidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op5"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Filtrado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op6"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Control de calidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op7"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Envasado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op1"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Recepción e inspección"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op2"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Dispersión de pigmentos"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op3"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Mezcla principal"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op4"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Ajuste de viscosidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op5"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Filtrado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op6"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Control de calidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op7"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Envasado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "220"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op1"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Recepción e inspección"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op2"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Dispersión de pigmentos"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op3"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Mezcla principal"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op4"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Ajuste de viscosidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op5"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Filtrado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op6"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Control de calidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op7"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Envasado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op1"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "1"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Recepción e inspección"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op2"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "2"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Dispersión de pigmentos"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op3"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "3"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Mezcla principal"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op4"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "4"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Ajuste de viscosidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op5"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "5"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Filtrado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op6"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "6"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Control de calidad"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      },
+      {
+        "plan": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Plan"
+        },
+        "activity": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op7"
+        },
+        "stageIndex": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#integer",
+          "value": "7"
+        },
+        "stageName": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Envasado"
+        },
+        "lifecycleStage": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#string",
+          "value": "Producción"
+        },
+        "totalDurationMinutes": {
+          "type": "literal",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal",
+          "value": "110"
+        }
+      }
+    ]
+  }
+}

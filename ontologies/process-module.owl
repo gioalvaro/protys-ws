@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:core="http://w3id.org/protys/ontology/core#" xmlns:process="http://w3id.org/protys/ontology/process#" xml:base="http://w3id.org/protys/ontology/process">
+
+    <owl:Ontology rdf:about="http://w3id.org/protys/ontology/process">
+        <rdfs:label xml:lang="es">PROTYS(KB) - Módulo de Proceso (ProcessMod)</rdfs:label>
+        <rdfs:comment xml:lang="es">Conceptualización propia del Nivel de Refinamiento de PROTYS(KB), que profundiza Process del Nivel Principal. Las referencias a ISO 8000, ISO 10303, ISO 13584, ISO 15531, ISO 15926 e ISO 18629 constituyen el contexto normativo del análisis; no se presenta esta jerarquía local como una taxonomía derivada literalmente de todos esos estándares. Los recursos de las actividades se representan en el Módulo de Recursos y se referencian sin redefinirlos aquí.</rdfs:comment>
+        <owl:versionInfo>2.0</owl:versionInfo>
+        <owl:imports rdf:resource="http://w3id.org/protys/ontology/core"/>
+    </owl:Ontology>
+
+    <!-- ============ CLASES ============ -->
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Natural_Process">
+        <rdfs:label xml:lang="en">Natural_Process</rdfs:label>
+        <rdfs:comment xml:lang="es">Categoría local de PROTYS(KB) para procesos naturales, declarada como subclase de core:Process y disjunta con Artificial_Process. Esta clasificación pertenece a la conceptualización propuesta; no se atribuye como definición literal compartida por los estándares ISO considerados.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+        <owl:disjointWith rdf:resource="http://w3id.org/protys/ontology/process#Artificial_Process"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Artificial_Process">
+        <rdfs:label xml:lang="en">Artificial_Process</rdfs:label>
+        <rdfs:comment xml:lang="es">Categoría local de PROTYS(KB) para procesos artificiales, incluidos los procesos industriales planificados, declarada como subclase de core:Process. Su distinción respecto de Natural_Process es una decisión de la conceptualización propuesta, con referencias normativas de contexto.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure">
+        <rdfs:label xml:lang="en">Procedure</rdfs:label>
+        <rdfs:comment xml:lang="es">Método o protocolo para ejecutar un proceso en la conceptualización local. La propiedad specifiedBy declara core:Process como dominio y Procedure como rango. Esa asociación propuesta no se atribuye a una definición literal de ISO 10303 sin una cláusula normativa identificada.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Process_Activity">
+        <rdfs:label xml:lang="en">Process_Activity</rdfs:label>
+        <rdfs:comment xml:lang="es">Paso u operación atómica dentro de un proceso.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity">
+        <rdfs:label xml:lang="en">Procedure_Activity</rdfs:label>
+        <rdfs:comment xml:lang="es">Instanciación o ejecución concreta de una Process_Activity; permite diferenciar entre la definición abstracta de una actividad y su realización específica.</rdfs:comment>
+        <rdfs:subClassOf rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Process_Plan">
+        <rdfs:label xml:lang="en">Process_Plan</rdfs:label>
+        <rdfs:comment xml:lang="es">Conjunto ordenado de procesos requeridos para fabricar un producto.</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://w3id.org/protys/ontology/core#isHeldBy"/>
+                <owl:someValuesFrom rdf:resource="http://w3id.org/protys/ontology/process#Process_Plant"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Process_Plant">
+        <rdfs:label xml:lang="en">Process_Plant</rdfs:label>
+        <rdfs:comment xml:lang="es">Instalación física donde ocurre la transformación; en ella se ejecuta el Process_Plan.</rdfs:comment>
+    </owl:Class>
+
+    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Parameters">
+        <rdfs:label xml:lang="en">Parameters</rdfs:label>
+        <rdfs:comment xml:lang="es">Valores concretos de configuración (temperatura, presión, tiempo) necesarios para la correcta ejecución de actividades y procedimientos.</rdfs:comment>
+    </owl:Class>
+
+    <!-- ============ PROPIEDADES DE OBJETO ============ -->
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/process#specifiedBy">
+        <rdfs:label>specifiedBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Un Process está especificado por un Procedure.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/process#Procedure"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/process#composedBy">
+        <rdfs:label>composedBy</rdfs:label>
+        <rdfs:comment xml:lang="es">Asociación local de core:Process con Process_Activity, declarados como dominio y rango de composedBy. Los axiomas actuales de esta propiedad no imponen una cardinalidad mínima 1 ni una agregación 1..n.</rdfs:comment>
+        <rdfs:domain rdf:resource="http://w3id.org/protys/ontology/core#Process"/>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/process#Process_Activity"/>
+    </owl:ObjectProperty>
+
+    <owl:ObjectProperty rdf:about="http://w3id.org/protys/ontology/process#hasParameter">
+        <rdfs:label>hasParameter</rdfs:label>
+        <rdfs:comment xml:lang="es">Procedure y Procedure_Activity están vinculados a Parameters (agregación).</rdfs:comment>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure"/>
+                    <owl:Class rdf:about="http://w3id.org/protys/ontology/process#Procedure_Activity"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://w3id.org/protys/ontology/process#Parameters"/>
+    </owl:ObjectProperty>
+
+</rdf:RDF>

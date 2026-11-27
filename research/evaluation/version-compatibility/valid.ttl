@@ -1,0 +1,1 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> . @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . @prefix e: <https://example.org/> . e:A a owl:Class; rdfs:subClassOf e:B . e:B a owl:Class . e:x a owl:NamedIndividual,e:A .

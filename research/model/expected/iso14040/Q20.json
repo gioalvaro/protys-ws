@@ -1,0 +1,12 @@
+{
+  "head": {
+    "vars": [
+      "entity",
+      "kind",
+      "missingProperty"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}

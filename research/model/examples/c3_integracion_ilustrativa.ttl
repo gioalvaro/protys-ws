@@ -1,0 +1,7 @@
+@prefix step: <urn:protys:example:step:> .
+@prefix env: <urn:protys:example:environment:> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+step:Assembly_Structure a owl:Class .
+step:Component a owl:Class .
+env:Environmental_Impact a owl:Class .
+env:appliesTo a owl:ObjectProperty .

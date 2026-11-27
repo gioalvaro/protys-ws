@@ -1,0 +1,18 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+PREFIX p: <http://w3id.org/protys/ontology/paint-ext#>
+PREFIX r: <http://w3id.org/protys/ontology/resource#>
+PREFIX f: <http://w3id.org/protys/fixture#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+ASK { { SELECT ?entity ?kind ?missingProperty WHERE {
+{ ?entity a i:ManufacturingProcess . BIND("ManufacturingProcess" AS ?kind) BIND(e:computedForProcess AS ?missingProperty)
+FILTER NOT EXISTS { ?entity t:hasInventoryRepresentation ?lci . ?indicator a e:ImpactIndicator ; e:computedForProcess ?lci ; e:indicatorValue ?value . } }
+UNION { ?entity a i:ProcessOperation . BIND("ProcessOperation" AS ?kind) BIND(i:hasInput AS ?missingProperty)
+FILTER NOT EXISTS { ?entity i:hasInput ?input . } }
+UNION { ?entity a i:Quality_Control_Activity . BIND("QualityControl" AS ?kind) BIND(i:hasMeasurement AS ?missingProperty)
+FILTER NOT EXISTS { ?entity i:hasMeasurement ?measurement . } }
+} ORDER BY ?entity ?kind } FILTER(?entity=f:MissingProcess && ?kind="ManufacturingProcess") }

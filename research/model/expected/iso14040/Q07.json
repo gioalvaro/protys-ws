@@ -1,0 +1,15 @@
+{
+  "head": {
+    "vars": [
+      "operation",
+      "inputMassKg",
+      "outputMassKg",
+      "registeredLossKg",
+      "residueKg",
+      "status"
+    ]
+  },
+  "results": {
+    "bindings": []
+  }
+}
