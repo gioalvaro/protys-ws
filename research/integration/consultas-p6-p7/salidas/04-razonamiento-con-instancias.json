@@ -1,0 +1,59 @@
+{
+  "resumen": {
+    "codigo": 201,
+    "ms_reloj": 8858,
+    "status": "SUCCESS",
+    "validationStatus": "CONSISTENT",
+    "owlValidationStatus": "CONSISTENT",
+    "activeRules": 22,
+    "inputTripleCount": 4804,
+    "inferredTripleCount": 1447,
+    "reasoningTimeMs": 4979,
+    "executionTimeMs": 8825,
+    "cacheHit": false,
+    "errorMessage": null
+  },
+  "respuesta": {
+    "totalRules": null,
+    "activeRules": 22,
+    "totalInferences": null,
+    "reasoningTimeMs": 4979,
+    "executionTimeMs": 8825,
+    "startedAt": "2026-11-27T02:52:58.211322415",
+    "completedAt": "2026-11-27T02:53:07.036453529",
+    "lastExecutedAt": null,
+    "inputTripleCount": 4804,
+    "dataGraphs": [],
+    "inferredTripleCount": 1447,
+    "newClassCount": 34,
+    "newIndividualCount": 0,
+    "status": "SUCCESS",
+    "validationStatus": "CONSISTENT",
+    "cacheHit": false,
+    "cleaningEvaluation": {
+      "required_pair_count": 2,
+      "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+      "incomplete_context": false,
+      "missing_record": true,
+      "status": "MISSING_CLEANING_RECORD"
+    },
+    "contextEvaluation": {
+      "declared_link_count": 84,
+      "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+      "invalid_declared_link": false,
+      "status": "CONTEXT_VALID"
+    },
+    "numericEvaluation": {
+      "selected_operation_count": 28,
+      "scope": "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+      "output_checked": true,
+      "ambiguous_input": false,
+      "invalid_input": false,
+      "invalid_output": false,
+      "status": "VALID"
+    },
+    "owlValidationStatus": "CONSISTENT",
+    "errorMessage": null,
+    "ruleResults": null
+  }
+}

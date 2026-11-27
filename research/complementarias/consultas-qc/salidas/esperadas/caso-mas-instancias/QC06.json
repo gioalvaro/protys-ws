@@ -1,0 +1,56 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "quantity"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "quantity": {
+          "type": "literal",
+          "value": "98.4",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "quantity": {
+          "type": "literal",
+          "value": "195.2",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "quantity": {
+          "type": "literal",
+          "value": "97.392",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "quantity": {
+          "type": "literal",
+          "value": "0",
+          "datatype": "http://www.w3.org/2001/XMLSchema#decimal"
+        }
+      }
+    ]
+  }
+}

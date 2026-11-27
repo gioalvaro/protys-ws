@@ -29,7 +29,7 @@ a:hasInventoryRepresentation(?process, ?lci)
 e:hasInventoryFlow(?lci, c:WaterFlow)
 ```
 
-## R03 — Vincular insumo comprado al lote mediante su representación LCI
+## R03 — Vincular al lote los flujos de producto registrados en la representación LCI de su proceso
 Tipo: SWRL. IRI del flujo y del lote.
 ```
 i:Lot(?lot) ^

@@ -34,7 +34,8 @@ apiClient.interceptors.response.use(
       localStorage.removeItem('authToken');
       window.location.href = '/login';
     }
-    console.error('API Error:', error.response?.data || error.message);
+    // Response bodies can contain submitted credentials echoed by an upstream error.
+    console.error('API request failed', error.response?.status || 'NETWORK_ERROR');
     return Promise.reject(error);
   }
 );
@@ -88,29 +89,40 @@ export const ontologyAPI = {
     return response.data;
   },
 
-  // GET /api/ontology/individuals/{uri}
+  // Individuos: el IRI viaja siempre en el parámetro de consulta "uri" (axios lo codifica).
+  // GET /api/ontology/individuals?classUri=
+  listIndividuals: async (classUri) => {
+    const response = await apiClient.get('/ontology/individuals', { params: { classUri } });
+    return response.data;
+  },
+
+  // GET /api/ontology/individuals?uri=
   getIndividual: async (uri) => {
-    const response = await apiClient.get(`/ontology/individuals/${uri}`);
+    const response = await apiClient.get('/ontology/individuals', { params: { uri } });
     return response.data;
   },
 
-  // POST /api/ontology/individuals
-  createIndividual: async (classUri, properties) => {
-    const response = await apiClient.post('/ontology/individuals', properties, {
-      params: { classUri },
-    });
+  // POST /api/ontology/individuals?classUri=  body {uri?, label?, properties?}
+  createIndividual: async (classUri, body) => {
+    const response = await apiClient.post('/ontology/individuals', body, { params: { classUri } });
     return response.data;
   },
 
-  // PUT /api/ontology/individuals/{uri}
-  updateIndividual: async (uri, properties) => {
-    const response = await apiClient.put(`/ontology/individuals/${uri}`, properties);
+  // PUT /api/ontology/individuals?uri=  body {label?, properties?}
+  updateIndividual: async (uri, body) => {
+    const response = await apiClient.put('/ontology/individuals', body, { params: { uri } });
     return response.data;
   },
 
-  // DELETE /api/ontology/individuals/{uri}
+  // DELETE /api/ontology/individuals?uri=
   deleteIndividual: async (uri) => {
-    const response = await apiClient.delete(`/ontology/individuals/${uri}`);
+    const response = await apiClient.delete('/ontology/individuals', { params: { uri } });
+    return response.data;
+  },
+
+  // POST /api/ontology/individuals/edits/{editId}/undo
+  undoIndividualEdit: async (editId) => {
+    const response = await apiClient.post(`/ontology/individuals/edits/${encodeURIComponent(editId)}/undo`);
     return response.data;
   },
 
@@ -241,7 +253,10 @@ export const erpAPI = {
 
   // PUT /api/erp/connectors/{id}
   updateConnector: async (connectorId, connectorConfig) => {
-    const response = await apiClient.put(`/erp/connectors/${connectorId}`, connectorConfig);
+    const payload = { ...connectorConfig };
+    delete payload.hasPassword;
+    if (!payload.password) delete payload.password;
+    const response = await apiClient.put(`/erp/connectors/${connectorId}`, payload);
     return response.data;
   },
 
@@ -292,6 +307,26 @@ export const wizardAPI = {
     return response.data;
   },
 
+  // POST /api/wizard/step1/data/{tempId}: datos de instancia opcionales de la sesión
+  step1UploadData: async (tempId, file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await apiClient.post(`/wizard/step1/data/${tempId}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data;
+  },
+
+  // POST /api/wizard/step3/rules/{tempId}: reglas SWRL nuevas de la sesión
+  step3UploadRules: async (tempId, file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const response = await apiClient.post(`/wizard/step3/rules/${tempId}`, formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+    });
+    return response.data;
+  },
+
   // POST /api/wizard/step2/validate/{tempId}
   step2Validate: async (tempId) => {
     const response = await apiClient.post(`/wizard/step2/validate/${tempId}`);
@@ -313,6 +348,11 @@ export const wizardAPI = {
   // POST /api/wizard/complete/{tempId}
   completeIncorporation: async (tempId) => {
     const response = await apiClient.post(`/wizard/complete/${tempId}`);
+    return response.data;
+  },
+
+  cancelIncorporation: async (tempId) => {
+    const response = await apiClient.delete(`/wizard/${tempId}`);
     return response.data;
   },
 };

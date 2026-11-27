@@ -1,0 +1,9 @@
+OK W1-clase-con-individuos.png
+OK W2-alta-formulario.png
+OK W3-alta-validada.png
+OK W4-detalle.png
+OK W5-modificacion-validada.png
+OK W6-baja-confirmacion.png
+OK W7-baja-validada.png
+OK W8-deshacer.png
+{"inicial":1,"tras_alta":2,"avisos_alta":1,"tras_baja":1,"tras_deshacer":1,"dialogos":0,"peticiones":[{"metodo":"POST","url":"/api/ontology/individuals?classUri=http:%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource","codigo":201},{"metodo":"PUT","url":"/api/ontology/individuals?uri=http:%2F%2Fexample.org%2Findividuos%2Foperario-web","codigo":200},{"metodo":"DELETE","url":"/api/ontology/individuals?uri=http:%2F%2Fexample.org%2Findividuos%2Foperario-web","codigo":200},{"metodo":"POST","url":"/api/ontology/individuals?classUri=http:%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource","codigo":201},{"metodo":"POST","url":"/api/ontology/individuals/edits/cdc21316-7936-4e53-820d-b26e7968a364/undo","codigo":200}]}

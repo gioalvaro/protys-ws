@@ -1,0 +1,172 @@
+{
+  "head": {
+    "vars": [
+      "flow",
+      "factor"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Flow_Biocide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Flow_Water"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Flow_Biocide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Flow_Water"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Flow_Biocide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Flow_Water"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#AcrylicResin_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Flow_Biocide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Biocide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#TitaniumDioxide_Factor"
+        }
+      },
+      {
+        "flow": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Flow_Water"
+        },
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Water_Factor"
+        }
+      }
+    ]
+  }
+}

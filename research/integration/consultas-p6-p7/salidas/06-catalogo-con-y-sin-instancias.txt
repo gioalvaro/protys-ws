@@ -1,0 +1,18 @@
+DISTINTO tablero
+    {'totalModules': 1, 'totalClasses': 128, 'totalIndividuals': 165, 'totalTriples': 4318, 'activeAlignmentRules': 22, 'connectedERPs': 0} -> {'totalModules': 2, 'totalClasses': 128, 'totalIndividuals': 223, 'totalTriples': 4804, 'activeAlignmentRules': 22, 'connectedERPs': 0}
+DISTINTO modulos
+    [['Canonical_Catalog_Integrated', 4318]] -> [['Canonical_Catalog_Integrated', 4318], ['paint-case-study-instances', 488]]
+IGUAL    reglas_activas
+IGUAL    plantillas
+IGUAL    plantillas_competencia
+DISTINTO grafos
+    {'http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#': 4318, 'http://w3id.org/protys/ontology/active-rule-definitions': 1374, 'http://w3id.org/protys/ontology/inference-results': 1167, 'urn:protys:bootstrap:metadata': 1} -> {'http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#': 4318, 'http://w3id.org/protys/ontology/active-rule-definitions': 1374, 'http://w3id.org/protys/ontology/inference-results': 1447, 'http://w3id.org/protys/ontology/paint-case-study-instances#': 488, 'urn:protys:bootstrap:metadata': 1}
+IGUAL    grafo_canonico
+IGUAL    individuos_instances
+DISTINTO catalogo
+    Q20: 4 -> 8 filas; nuevas 4, quitadas 0
+       + {"entity": "http://w3id.org/protys/ontology/paint-ext#QualityControl_Stage", "kind": "ProcessOperation", "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasInput"}
+       + {"entity": "http://w3id.org/protys/ontology/paint-ext#QualityControl_Stage", "kind": "QualityControl", "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasMeasurement"}
+       + {"entity": "http://w3id.org/protys/ontology/paint-ext#RawMaterialInspection", "kind": "ProcessOperation", "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasInput"}
+       + {"entity": "http://w3id.org/protys/ontology/paint-ext#RawMaterialInspection", "kind": "QualityControl", "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasMeasurement"}
+RESULTADO: ESTADO DISTINTO

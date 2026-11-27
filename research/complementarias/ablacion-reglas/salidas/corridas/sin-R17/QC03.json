@@ -1,0 +1,23 @@
+{
+  "head" : {
+    "vars" : [ "indicator" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "indicator" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Indicator"
+      }
+    }, {
+      "indicator" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Indicator"
+      }
+    }, {
+      "indicator" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Indicator"
+      }
+    } ]
+  }
+}

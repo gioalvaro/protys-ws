@@ -1,0 +1,10 @@
+{
+  "archivo": "invalido.ttl (generado: le falta el objeto)",
+  "codigo": 400,
+  "respuesta": {
+    "message": "The file is not valid Turtle: [line: 2, col: 11] Unrecognized (expected an RDF Term): [DOT]"
+  },
+  "modulos_registrados_despues": [
+    "Canonical_Catalog_Integrated"
+  ]
+}

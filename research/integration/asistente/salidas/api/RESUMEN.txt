@@ -1,0 +1,13 @@
+Resumen — incorporación completa por la API (2026-11-27T02:22:11Z)
+APROBADO  0 línea de base                                     módulos=1 reglas=22 activas=22 razonamiento=SUCCESS owl=CONSISTENT
+APROBADO  1 subir fragmento AP242                              http=201 sesión=00836a91-6b71-472c-8eee-b14dec800c79 triples=46
+APROBADO  1b subir datos del piloto (automotive.ttl)           http=201 triples=203
+APROBADO  2 validar (red + fragmento + datos)                  http=200 OWL consistency verified for this session and permanent modules
+APROBADO  3a cargar R27–R29 como reglas de la sesión        http=201 reglas=R27,R28,R29
+APROBADO  3b seleccionar las 22 reglas registradas             http=200 seleccionadas=22
+APROBADO  4 verificar (22 + 3 reglas)                          http=200 ejecutadas=25 Verified 22 selected rules and 3 session rules; inferred 1419 triples
+APROBADO  5 completar la incorporación                        http=201 módulo=7eaedf9a-8056-4be8-84f7-34c87ef41318 activadas=25
+APROBADO  6a reglas activas en la plataforma                   activas=25 (22 + R27–R29), como h3_extended
+APROBADO  6b razonamiento global consistente                   owl CONSISTENT → CONSISTENT; entrada 4318 → 4662; inferidos 1167 → 1419
+APROBADO  6c las 21 consultas del catálogo                    idénticas antes y después
+APROBADO  6d controles H3 (g30) contra lo esperado             8 de 8 iguales

@@ -1,0 +1,9 @@
+# QC07 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué estado de calidad propagable tiene cada lote?
+# R10: Registrar estado propagable del mismo lote. Estado textual del mismo lote
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?lot ?status WHERE { ?lot i:propagatedQualityStatus ?status . } ORDER BY ?lot ?status

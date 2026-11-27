@@ -1,0 +1,9 @@
+OK B1-paso1-estandar-y-datos.png
+OK B2-paso2-validado.png
+OK B3a-paso3-reglas-seleccion.png
+OK B3b-paso3-reglas-sesion.png
+OK B4a-paso4-verificado.png
+OK B4b-paso4-verificado.png
+OK B5-paso5-confirmar.png
+OK B6-completado.png
+OK B7-explorador-con-piloto.png

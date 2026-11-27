@@ -1,0 +1,2 @@
+imagen[protys-backend]=protys-v110-backend:maintenance id=sha256:7119c951d6599b5f42a27ab97e853bb004a8d68eccd74c4a910117862f229153
+imagen[protys-fuseki]=protys-v110-backend:maintenance id=sha256:7119c951d6599b5f42a27ab97e853bb004a8d68eccd74c4a910117862f229153

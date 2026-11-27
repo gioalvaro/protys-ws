@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "operation", "stageName", "yieldPercent", "energyKWh", "ghgKgCO2e", "outputVolumeL", "kgCO2ePerL" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

@@ -1,0 +1,32 @@
+# Reinicio completo de la plataforma (2026-11-27T02:22:11Z)
+$ docker compose -p protys-v110 -f /Users/Shared/protys-ws/docker/docker-compose.yml stop protys-frontend protys-backend protys-fuseki protys-postgres
+ Container protys-v110-protys-fuseki-1 Stopped 
+$ docker compose -p protys-v110 -f /Users/Shared/protys-ws/docker/docker-compose.yml up -d --build --wait protys-frontend
+exit=0
+protys-backend Up 13 seconds (healthy)
+protys-frontend Up 5 seconds (healthy)
+protys-fuseki Up 19 seconds (healthy)
+protys-init Exited (0) 5 seconds ago
+protys-postgres Up 19 seconds (healthy)
+## protys-init (última línea, resumida)
+{
+ "status": "PRESERVED",
+ "rule_activation_preserved": true,
+ "added_modules": [
+  "http://w3id.org/protys/ontology/incorporated/00836a91-6b71-472c-8eee-b14dec800c79",
+  "http://w3id.org/protys/ontology/incorporated/00836a91-6b71-472c-8eee-b14dec800c79/data"
+ ],
+ "added_rules": [
+  "R27",
+  "R28",
+  "R29"
+ ],
+ "platform_graphs": []
+}
+## módulos registrados
+Canonical_Catalog_Integrated http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#
+ISO 10303-242 (fragmento piloto) — datos de instancia http://w3id.org/protys/ontology/incorporated/00836a91-6b71-472c-8eee-b14dec800c79/data
+ISO 10303-242 (fragmento piloto) http://w3id.org/protys/ontology/incorporated/00836a91-6b71-472c-8eee-b14dec800c79
+## reglas activas
+25 R01 R02 R03 R04 R05 R06 R08 R09 R10 R11 R12 R13 R14 R15 R17 R18 R20 R21 R22 R23 R24 R25 R27 R28 R29
+## interfaz: HTTP 200

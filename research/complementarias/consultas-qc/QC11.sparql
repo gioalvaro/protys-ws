@@ -1,0 +1,9 @@
+# QC11 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué operador es responsable de cada operación?
+# R14: Operador responsable de la operación de su orden. IRI de operador responsable
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?operation ?operator WHERE { ?operation i:responsibleOperator ?operator . } ORDER BY ?operation ?operator

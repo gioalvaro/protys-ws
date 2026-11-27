@@ -1,0 +1,9 @@
+# QC02 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué flujos de producto del inventario de su proceso quedan registrados como entrada de cada lote?
+# R03: Vincular al lote los flujos de producto registrados en la representación LCI de su proceso. IRI del flujo y del lote
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?lot ?flow WHERE { ?lot a:hasRecordedInputFlowForLot ?flow . } ORDER BY ?lot ?flow

@@ -1,0 +1,10 @@
+IGUAL    tablero
+IGUAL    modulos
+IGUAL    reglas_activas
+IGUAL    plantillas
+IGUAL    plantillas_competencia
+IGUAL    grafos
+IGUAL    grafo_canonico
+IGUAL    individuos_instances
+IGUAL    catalogo
+RESULTADO: MISMO ESTADO

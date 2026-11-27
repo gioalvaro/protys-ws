@@ -1,0 +1,52 @@
+{
+  "head": {
+    "vars": [
+      "lot",
+      "indicator"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA"
+        },
+        "indicator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Indicator"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB"
+        },
+        "indicator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Indicator"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC"
+        },
+        "indicator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Indicator"
+        }
+      },
+      {
+        "lot": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        "indicator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Indicator"
+        }
+      }
+    ]
+  }
+}

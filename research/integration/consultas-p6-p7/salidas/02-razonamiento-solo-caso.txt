@@ -1,0 +1,1 @@
+{"codigo": 201, "ms_reloj": 9143, "status": "SUCCESS", "validationStatus": "CONSISTENT", "owlValidationStatus": "CONSISTENT", "activeRules": 22, "inputTripleCount": 4318, "inferredTripleCount": 1167, "reasoningTimeMs": 4669, "executionTimeMs": 9110, "cacheHit": false, "errorMessage": null}

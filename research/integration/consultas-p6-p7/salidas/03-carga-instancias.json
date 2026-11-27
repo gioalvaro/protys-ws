@@ -1,0 +1,14 @@
+{
+  "id" : "66cb8d12-e445-4fe4-af22-ebc68bed52fc",
+  "name" : "paint-case-study-instances",
+  "description" : null,
+  "baseUri" : "http://w3id.org/protys/ontology/paint-case-study-instances",
+  "namedGraph" : "http://w3id.org/protys/ontology/paint-case-study-instances#",
+  "classCount" : null,
+  "individualCount" : null,
+  "tripleCount" : 488,
+  "status" : "LOADED",
+  "createdAt" : "2026-11-27T02:52:57.80797749",
+  "updatedAt" : "2026-11-27T02:52:57.807981365",
+  "classes" : null
+}

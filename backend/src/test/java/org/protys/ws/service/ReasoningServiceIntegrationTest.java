@@ -44,6 +44,21 @@ class ReasoningServiceIntegrationTest {
   }
 
   @Test
+  void evidenceDirKeepsThePreparedInputOnlyWhenConfigured(@org.junit.jupiter.api.io.TempDir Path tmp) throws Exception {
+    ReasoningService s = service();
+    s.setEvidenceDir(tmp.toString());
+    assertEquals("CONSISTENT", s.classify(valid()).getValidationStatus());
+    try (var runs = java.nio.file.Files.list(tmp)) {
+      Path run = runs.findFirst().orElseThrow();
+      assertTrue(java.nio.file.Files.isRegularFile(run.resolve("out/prepared-input.ttl")));
+      assertTrue(java.nio.file.Files.isRegularFile(run.resolve("request.json")));
+    }
+    ReasoningService none = service();
+    none.setEvidenceDir("");
+    assertEquals("CONSISTENT", none.classify(valid()).getValidationStatus());
+  }
+
+  @Test
   void inconsistentIsNotAccepted() {
     ReasoningService s = service();
     Model m = valid();

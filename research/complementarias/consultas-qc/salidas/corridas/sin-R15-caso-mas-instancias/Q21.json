@@ -1,0 +1,21 @@
+{
+  "head" : {
+    "vars" : [ "entity", "currentVersion", "priorVersion" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "entity" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#GridFactor"
+      },
+      "currentVersion" : {
+        "type" : "literal",
+        "value" : "2"
+      },
+      "priorVersion" : {
+        "type" : "literal",
+        "value" : "1"
+      }
+    } ]
+  }
+}

@@ -1,0 +1,771 @@
+## ADempiere (base adempiere, esquema adempiere) — 2026-11-27T02:45:56Z
+### adempiere.m_product  filas=62
+m_product_id numeric
+ad_client_id numeric
+ad_org_id numeric
+isactive character
+created timestamp without time zone
+createdby numeric
+updated timestamp without time zone
+updatedby numeric
+value character varying
+name character varying
+description character varying
+documentnote character varying
+help character varying
+upc character varying
+sku character varying
+c_uom_id numeric
+salesrep_id numeric
+issummary character
+isstocked character
+ispurchased character
+issold character
+isbom character
+isinvoiceprintdetails character
+ispicklistprintdetails character
+isverified character
+c_revenuerecognition_id numeric
+m_product_category_id numeric
+classification character varying
+volume numeric
+weight numeric
+shelfwidth numeric
+shelfheight numeric
+shelfdepth numeric
+unitsperpallet numeric
+c_taxcategory_id numeric
+s_resource_id numeric
+discontinued character
+discontinuedby timestamp without time zone
+processing character
+s_expensetype_id numeric
+producttype character
+imageurl character varying
+descriptionurl character varying
+guaranteedays numeric
+r_mailtext_id numeric
+versionno character varying
+m_attributeset_id numeric
+m_attributesetinstance_id numeric
+downloadurl character varying
+m_freightcategory_id numeric
+m_locator_id numeric
+guaranteedaysmin numeric
+iswebstorefeatured character
+isselfservice character
+c_subscriptiontype_id numeric
+isdropship character
+isexcludeautodelivery character
+group1 character varying
+group2 character varying
+istoformule character
+lowlevel numeric
+unitsperpack numeric
+discontinuedat timestamp without time zone
+copyfrom character
+m_parttype_id numeric
+iskanban character
+ismanufactured character
+m_product_class_id numeric
+m_product_group_id numeric
+m_product_classification_id numeric
+isphantom character
+uuid character varying
+c_taxtype_id numeric
+parent_product_id numeric
+
+### adempiere.pp_product_planning  filas=219
+ad_client_id numeric
+ad_org_id numeric
+ad_workflow_id numeric
+created timestamp without time zone
+createdby numeric
+deliverytime_promised numeric
+isactive character
+iscreateplan character
+isissue character
+ismps character
+isphantom character
+isrequiredmrp character
+m_product_id numeric
+m_warehouse_id numeric
+order_max numeric
+order_min numeric
+order_pack numeric
+order_period numeric
+order_policy character varying
+order_qty numeric
+pp_product_bom_id numeric
+pp_product_planning_id numeric
+planner_id numeric
+s_resource_id numeric
+timefence numeric
+transfertime numeric
+updated timestamp without time zone
+updatedby numeric
+workingtime numeric
+yield numeric
+dd_networkdistribution_id numeric
+safetystock numeric
+isrequireddrp character
+uuid character varying
+
+### adempiere.pp_product_bom  filas=8
+value character varying
+name character varying
+documentno character varying
+revision character varying
+description character varying
+copyfrom character
+created timestamp without time zone
+createdby numeric
+help character varying
+isactive character
+ad_client_id numeric
+m_changenotice_id numeric
+m_product_id numeric
+pp_product_bom_id numeric
+processing character
+updated timestamp without time zone
+updatedby numeric
+validfrom timestamp without time zone
+validto timestamp without time zone
+m_attributesetinstance_id numeric
+ad_org_id numeric
+bomtype character
+bomuse character
+c_uom_id numeric
+isdefault character
+uuid character varying
+
+### adempiere.pp_product_bomline  filas=30
+feature character varying
+ad_org_id numeric
+assay numeric
+backflushgroup character varying
+c_uom_id numeric
+componenttype character
+created timestamp without time zone
+createdby numeric
+description character varying
+forecast numeric
+help character varying
+isactive character
+iscritical character
+isqtypercentage character
+issuemethod character
+leadtimeoffset numeric
+line numeric
+m_attributesetinstance_id numeric
+m_changenotice_id numeric
+m_product_id numeric
+pp_product_bomline_id numeric
+pp_product_bom_id numeric
+qtybom numeric
+qtybatch numeric
+scrap numeric
+updated timestamp without time zone
+updatedby numeric
+validfrom timestamp without time zone
+ad_client_id numeric
+validto timestamp without time zone
+costallocationperc numeric
+uuid character varying
+
+### adempiere.ad_workflow  filas=68
+ad_workflow_id numeric
+ad_client_id numeric
+ad_org_id numeric
+isactive character
+created timestamp without time zone
+createdby numeric
+updated timestamp without time zone
+updatedby numeric
+name character varying
+description character varying
+help character varying
+accesslevel character
+ad_wf_node_id numeric
+entitytype character varying
+durationunit character
+author character varying
+version numeric
+validfrom timestamp without time zone
+validto timestamp without time zone
+priority numeric
+limit numeric
+duration numeric
+cost numeric
+workingtime numeric
+waitingtime numeric
+ad_wf_responsible_id numeric
+publishstatus character
+ad_workflowprocessor_id numeric
+value character varying
+isdefault character
+ad_table_id numeric
+validateworkflow character
+workflowtype character
+docvaluelogic character varying
+isvalid character
+s_resource_id numeric
+setuptime numeric
+movingtime numeric
+processtype character
+documentno character varying
+qtybatchsize numeric
+queuingtime numeric
+isbetafunctionality character
+yield numeric
+unitscycles numeric
+overlapunits numeric
+uuid character varying
+
+### adempiere.ad_wf_node  filas=305
+ad_wf_node_id numeric
+ad_client_id numeric
+ad_org_id numeric
+isactive character
+created timestamp without time zone
+createdby numeric
+updated timestamp without time zone
+updatedby numeric
+name character varying
+description character varying
+help character varying
+ad_workflow_id numeric
+iscentrallymaintained character
+action character
+ad_window_id numeric
+workflow_id numeric
+ad_task_id numeric
+ad_process_id numeric
+ad_form_id numeric
+entitytype character varying
+xposition numeric
+yposition numeric
+ad_wf_block_id numeric
+subflowexecution character
+startmode character
+finishmode character
+limit numeric
+priority numeric
+duration numeric
+cost numeric
+workingtime numeric
+waitingtime numeric
+ad_wf_responsible_id numeric
+ad_image_id numeric
+joinelement character
+splitelement character
+waittime numeric
+ad_column_id numeric
+attributename character varying
+attributevalue character varying
+docaction character
+value character varying
+dynpriorityunit character
+dynprioritychange numeric
+emailrecipient character
+email character varying
+r_mailtext_id numeric
+validto timestamp without time zone
+ismilestone character
+issubcontracting character
+unitscycles numeric
+movingtime numeric
+overlapunits numeric
+c_bpartner_id numeric
+queuingtime numeric
+s_resource_id numeric
+setuptime numeric
+validfrom timestamp without time zone
+yield numeric
+ad_view_id numeric
+ad_browse_id numeric
+uuid character varying
+
+### adempiere.ad_wf_nodenext  filas=238
+ad_wf_nodenext_id numeric
+ad_client_id numeric
+ad_org_id numeric
+isactive character
+created timestamp without time zone
+createdby numeric
+updated timestamp without time zone
+updatedby numeric
+ad_wf_node_id numeric
+ad_wf_next_id numeric
+description character varying
+seqno numeric
+entitytype character varying
+transitioncode character varying
+isstduserworkflow character
+uuid character varying
+
+### adempiere.s_resource  filas=11
+s_resource_id numeric
+ad_client_id numeric
+ad_org_id numeric
+isactive character
+created timestamp without time zone
+createdby numeric
+updated timestamp without time zone
+updatedby numeric
+value character varying
+name character varying
+description character varying
+s_resourcetype_id numeric
+m_warehouse_id numeric
+isavailable character
+ad_user_id numeric
+chargeableqty numeric
+percentutilization numeric
+dailycapacity numeric
+ismanufacturingresource character
+waitingtime numeric
+manufacturingresourcetype character
+queuingtime numeric
+planninghorizon numeric
+uuid character varying
+
+### adempiere.s_resourcetype  filas=3
+s_resourcetype_id numeric
+ad_client_id numeric
+ad_org_id numeric
+isactive character
+created timestamp without time zone
+createdby numeric
+updated timestamp without time zone
+updatedby numeric
+value character varying
+name character varying
+description character varying
+issingleassignment character
+c_uom_id numeric
+allowuomfractions character
+timeslotstart timestamp without time zone
+timeslotend timestamp without time zone
+istimeslot character
+isdateslot character
+onsunday character
+onmonday character
+ontuesday character
+onwednesday character
+onthursday character
+onfriday character
+onsaturday character
+m_product_category_id numeric
+c_taxcategory_id numeric
+chargeableqty numeric
+uuid character varying
+c_taxtype_id numeric
+
+### adempiere.pp_order  filas=2
+documentno character varying
+s_resource_id numeric
+m_product_id numeric
+m_warehouse_id numeric
+assay numeric
+c_activity_id numeric
+c_campaign_id numeric
+c_doctypetarget_id numeric
+c_doctype_id numeric
+c_orderline_id numeric
+c_project_id numeric
+c_uom_id numeric
+copyfrom character
+created timestamp without time zone
+createdby numeric
+dateconfirm timestamp without time zone
+datedelivered timestamp without time zone
+datefinish timestamp without time zone
+datefinishschedule timestamp without time zone
+dateordered timestamp without time zone
+datepromised timestamp without time zone
+datestart timestamp without time zone
+datestartschedule timestamp without time zone
+description character varying
+docaction character
+docstatus character
+floatafter numeric
+floatbefored numeric
+isactive character
+isapproved character
+isprinted character
+isqtypercentage character
+issotrx character
+isselected character
+line numeric
+lot character varying
+m_attributesetinstance_id numeric
+ordertype character varying
+pp_order_id numeric
+pp_product_bom_id numeric
+planner_id numeric
+posted character
+priorityrule character
+processed character
+processing character
+qtybatchsize numeric
+qtybatchs numeric
+qtydelivered numeric
+qtyentered numeric
+qtyordered numeric
+qtyreject numeric
+qtyreserved numeric
+qtyscrap numeric
+scheduletype character varying
+serno character varying
+updated timestamp without time zone
+updatedby numeric
+user1_id numeric
+user2_id numeric
+ad_client_id numeric
+yield numeric
+ad_orgtrx_id numeric
+ad_org_id numeric
+ad_workflow_id numeric
+processedon numeric
+c_projectphase_id numeric
+c_projecttask_id numeric
+m_shipper_id numeric
+deliveryrule character
+deliveryviarule character
+freightcostrule character
+m_freightcategory_id numeric
+trackingno character varying
+user3_id numeric
+user4_id numeric
+uuid character varying
+
+### adempiere.pp_order_node  filas=2
+name character varying
+ad_column_id numeric
+ad_form_id numeric
+ad_image_id numeric
+ad_org_id numeric
+ad_process_id numeric
+ad_task_id numeric
+ad_wf_block_id numeric
+ad_wf_node_id numeric
+ad_wf_responsible_id numeric
+ad_window_id numeric
+ad_workflow_id numeric
+action character
+attributename character varying
+attributevalue character varying
+c_bpartner_id numeric
+cost numeric
+created timestamp without time zone
+createdby numeric
+datefinish timestamp without time zone
+datefinishschedule timestamp without time zone
+datestart timestamp without time zone
+datestartschedule timestamp without time zone
+description character varying
+docaction character
+docstatus character
+duration numeric
+durationreal numeric
+durationrequired numeric
+entitytype character varying
+finishmode character
+help character varying
+isactive character
+iscentrallymaintained character
+ismilestone character
+issubcontracting character
+joinelement character
+limit numeric
+movingtime numeric
+overlapunits numeric
+pp_order_id numeric
+pp_order_node_id numeric
+pp_order_workflow_id numeric
+priority numeric
+qtydelivered numeric
+qtyreject numeric
+qtyrequired numeric
+qtyscrap numeric
+queuingtime numeric
+s_resource_id numeric
+setuptime numeric
+setuptimereal numeric
+setuptimerequired numeric
+splitelement character
+startmode character
+subflowexecution character
+unitscycles numeric
+updated timestamp without time zone
+updatedby numeric
+validfrom timestamp without time zone
+validto timestamp without time zone
+value character varying
+waitingtime numeric
+workflow_id numeric
+workingtime numeric
+xposition numeric
+ad_client_id numeric
+yposition numeric
+yield numeric
+uuid character varying
+
+### adempiere.pp_order_bomline  filas=4
+description character varying
+feature character varying
+m_product_id numeric
+backflushgroup character varying
+c_uom_id numeric
+componenttype character
+created timestamp without time zone
+createdby numeric
+datedelivered timestamp without time zone
+forecast numeric
+help character varying
+isactive character
+iscritical character
+isqtypercentage character
+issuemethod character
+leadtimeoffset numeric
+line numeric
+m_attributesetinstance_id numeric
+m_changenotice_id numeric
+m_locator_id numeric
+m_warehouse_id numeric
+pp_order_bomline_id numeric
+pp_order_bom_id numeric
+pp_order_id numeric
+qtybom numeric
+qtybatch numeric
+qtydelivered numeric
+qtyentered numeric
+qtypost numeric
+qtyreject numeric
+qtyrequired numeric
+qtyreserved numeric
+qtyscrap numeric
+scrap numeric
+updated timestamp without time zone
+updatedby numeric
+validfrom timestamp without time zone
+ad_client_id numeric
+validto timestamp without time zone
+ad_org_id numeric
+assay numeric
+ad_user_id numeric
+costallocationperc numeric
+uuid character varying
+
+## Odoo (base odoo, esquema public)
+### public.product_template  filas=41
+id integer
+sequence integer
+categ_id integer
+uom_id integer
+uom_po_id integer
+company_id integer
+color integer
+create_uid integer
+write_uid integer
+detailed_type character varying
+type character varying
+default_code character varying
+priority character varying
+name jsonb
+description jsonb
+description_purchase jsonb
+description_sale jsonb
+product_properties jsonb
+list_price numeric
+volume numeric
+weight numeric
+sale_ok boolean
+purchase_ok boolean
+active boolean
+can_image_1024_be_zoomed boolean
+has_configurable_attributes boolean
+create_date timestamp without time zone
+write_date timestamp without time zone
+sale_delay integer
+tracking character varying
+description_picking jsonb
+description_pickingout jsonb
+description_pickingin jsonb
+
+### public.product_product  filas=44
+id integer
+product_tmpl_id integer
+create_uid integer
+write_uid integer
+default_code character varying
+barcode character varying
+combination_indices character varying
+volume numeric
+weight numeric
+active boolean
+can_image_variant_1024_be_zoomed boolean
+write_date timestamp without time zone
+create_date timestamp without time zone
+lot_properties_definition jsonb
+
+### public.mrp_bom  filas=8
+id integer
+product_tmpl_id integer
+product_id integer
+product_uom_id integer
+sequence integer
+picking_type_id integer
+company_id integer
+produce_delay integer
+days_to_prepare_mo integer
+create_uid integer
+write_uid integer
+code character varying
+type character varying
+ready_to_produce character varying
+consumption character varying
+product_qty numeric
+active boolean
+allow_operation_dependencies boolean
+create_date timestamp without time zone
+write_date timestamp without time zone
+
+### public.mrp_bom_line  filas=17
+id integer
+product_id integer
+product_tmpl_id integer
+company_id integer
+product_uom_id integer
+sequence integer
+bom_id integer
+operation_id integer
+create_uid integer
+write_uid integer
+product_qty numeric
+manual_consumption boolean
+create_date timestamp without time zone
+write_date timestamp without time zone
+
+### public.mrp_routing_workcenter  filas=5
+id integer
+workcenter_id integer
+sequence integer
+bom_id integer
+time_mode_batch integer
+create_uid integer
+write_uid integer
+name character varying
+worksheet_type character varying
+worksheet_google_slide character varying
+time_mode character varying
+note text
+active boolean
+create_date timestamp without time zone
+write_date timestamp without time zone
+time_cycle_manual double precision
+
+### public.mrp_workcenter  filas=3
+id integer
+resource_id integer
+company_id integer
+resource_calendar_id integer
+sequence integer
+color integer
+create_uid integer
+write_uid integer
+name character varying
+code character varying
+working_state character varying
+note text
+active boolean
+create_date timestamp without time zone
+write_date timestamp without time zone
+time_efficiency double precision
+default_capacity double precision
+costs_hour double precision
+time_start double precision
+time_stop double precision
+oee_target double precision
+
+### public.resource_resource  filas=3
+id integer
+company_id integer
+user_id integer
+calendar_id integer
+create_uid integer
+write_uid integer
+name character varying
+resource_type character varying
+tz character varying
+active boolean
+create_date timestamp without time zone
+write_date timestamp without time zone
+time_efficiency double precision
+
+### public.mrp_production  filas=4
+id integer
+backorder_sequence integer
+product_id integer
+product_uom_id integer
+lot_producing_id integer
+picking_type_id integer
+location_src_id integer
+location_dest_id integer
+bom_id integer
+user_id integer
+company_id integer
+procurement_group_id integer
+orderpoint_id integer
+production_location_id integer
+create_uid integer
+write_uid integer
+name character varying
+priority character varying
+origin character varying
+state character varying
+reservation_state character varying
+product_description_variants character varying
+consumption character varying
+product_qty numeric
+qty_producing numeric
+propagate_cancel boolean
+is_locked boolean
+is_planned boolean
+allow_workorder_dependencies boolean
+is_outdated_bom boolean
+date_deadline timestamp without time zone
+date_start timestamp without time zone
+date_finished timestamp without time zone
+create_date timestamp without time zone
+write_date timestamp without time zone
+product_uom_qty double precision
+
+### public.mrp_workorder  filas=3
+id integer
+workcenter_id integer
+product_id integer
+product_uom_id integer
+production_id integer
+leave_id integer
+duration_percent integer
+operation_id integer
+create_uid integer
+write_uid integer
+name character varying
+barcode character varying
+production_availability character varying
+state character varying
+qty_produced numeric
+duration_expected numeric
+qty_reported_from_previous_wo numeric
+date_start timestamp without time zone
+date_finished timestamp without time zone
+production_date timestamp without time zone
+create_date timestamp without time zone
+write_date timestamp without time zone
+duration double precision
+duration_unit double precision
+costs_hour double precision
+

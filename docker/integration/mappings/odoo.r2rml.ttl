@@ -1,0 +1,140 @@
+# Mapeo R2RML: Odoo 17.0 (módulo mrp, datos de demostración) → PROTYS(KB).
+# Correspondencias: research/integration/erp/correspondencias.md (E = entidad, R = relación).
+# Base PostgreSQL, esquema "public"; identificadores sin comillas (PostgreSQL los pliega a minúsculas).
+# Todas las consultas son SELECT y se ejecutan con el rol de sólo lectura protys_ro.
+
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix c:    <http://w3id.org/protys/ontology/core#> .
+@prefix r:    <http://w3id.org/protys/ontology/resource#> .
+@prefix prod: <http://w3id.org/protys/ontology/product#> .
+@prefix i:    <http://w3id.org/protys/ontology/iso15531#> .
+@prefix m:    <http://w3id.org/protys/erp/odoo/mapping#> .
+
+# E1 Producto fabricado: variante cuya plantilla tiene una lista de materiales normal.
+m:Product rr:logicalTable [ rr:sqlQuery """
+    SELECT DISTINCT pp.id, pt.name->>'en_US' AS name
+    FROM product_product pp
+    JOIN product_template pt ON pt.id = pp.product_tmpl_id
+    JOIN mrp_bom b ON b.product_tmpl_id = pt.id AND (b.product_id IS NULL OR b.product_id = pp.id)
+    WHERE b.type = 'normal' AND b.active""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/product/{id}" ; rr:class c:Product ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E2 Componente: variante referida por una línea de lista de materiales.
+m:Component rr:logicalTable [ rr:sqlQuery """
+    SELECT DISTINCT pp.id, pt.name->>'en_US' AS name
+    FROM mrp_bom_line l
+    JOIN product_product pp ON pp.id = l.product_id
+    JOIN product_template pt ON pt.id = pp.product_tmpl_id""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/product/{id}" ;
+                  rr:class prod:Production_Component, r:Material ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# R7 El producto se compone del componente.
+m:Composition rr:logicalTable [ rr:sqlQuery """
+    SELECT pp.id AS parent_id, l.product_id AS component_id
+    FROM mrp_bom_line l
+    JOIN mrp_bom b ON b.id = l.bom_id
+    JOIN product_product pp ON pp.product_tmpl_id = b.product_tmpl_id AND (b.product_id IS NULL OR b.product_id = pp.id)
+    WHERE b.type = 'normal' AND b.active""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/product/{parent_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate prod:isComposedOF ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/product/{component_id}" ] ] .
+
+# E3 Plan de proceso: lista de materiales normal (en Odoo 17 lleva su ruta de operaciones).
+m:Plan rr:logicalTable [ rr:sqlQuery """
+    SELECT b.id, 'Plan ' || (pt.name->>'en_US') || COALESCE(' ' || b.code, '') AS plan_name
+    FROM mrp_bom b JOIN product_template pt ON pt.id = b.product_tmpl_id
+    WHERE b.type = 'normal' AND b.active""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/plan/{id}" ; rr:class i:ProcessPlan ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "plan_name" ] ] .
+
+# E4 Proceso de manufactura: la ruta de una lista de materiales que tiene operaciones.
+# R6 el proceso produce el producto de la lista.
+m:Process rr:logicalTable [ rr:sqlQuery """
+    SELECT b.id AS bom_id, pp.id AS product_id, 'Ruta ' || (pt.name->>'en_US') || COALESCE(' ' || b.code, '') AS process_name
+    FROM mrp_bom b
+    JOIN product_template pt ON pt.id = b.product_tmpl_id
+    JOIN product_product pp ON pp.product_tmpl_id = b.product_tmpl_id AND (b.product_id IS NULL OR b.product_id = pp.id)
+    WHERE b.type = 'normal' AND b.active
+      AND EXISTS (SELECT 1 FROM mrp_routing_workcenter o WHERE o.bom_id = b.id AND o.active)""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/process/{bom_id}" ; rr:class i:ManufacturingProcess ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "process_name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate c:produces ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/product/{product_id}" ] ] .
+
+# E5 Operación. R2 el plan la incluye, R3 parte del proceso, R4 recurso requerido,
+# R9 secuencia, R11 duración (time_cycle_manual, minutos).
+m:Operation rr:logicalTable [ rr:sqlQuery """
+    SELECT o.id, o.bom_id, o.name, o.workcenter_id, o.sequence, CAST(o.time_cycle_manual AS numeric) AS duration_min
+    FROM mrp_routing_workcenter o JOIN mrp_bom b ON b.id = o.bom_id
+    WHERE o.active AND b.active AND b.type = 'normal'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{id}" ; rr:class i:ProcessOperation ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:partOfProcess ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/process/{bom_id}" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:requiresResource ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/workcenter/{workcenter_id}" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:operationSequence ; rr:objectMap [ rr:column "sequence" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:duration ; rr:objectMap [ rr:column "duration_min" ] ] .
+
+m:PlanIncludes rr:logicalTable [ rr:sqlQuery """
+    SELECT o.id, o.bom_id FROM mrp_routing_workcenter o JOIN mrp_bom b ON b.id = o.bom_id
+    WHERE o.active AND b.active AND b.type = 'normal'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/plan/{bom_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate i:includesActivity ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{id}" ] ] .
+
+# R10 Precedencia: la operación siguiente por secuencia dentro de la misma lista.
+m:Precedence rr:logicalTable [ rr:sqlQuery """
+    SELECT id, LEAD(id) OVER (PARTITION BY bom_id ORDER BY sequence, id) AS next_id
+    FROM mrp_routing_workcenter WHERE active""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{id}" ] ;
+  rr:predicateObjectMap [ rr:predicate i:precedes ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{next_id}" ] ] .
+
+# R8 La operación consume el insumo (sólo líneas con operation_id).
+m:OperationInput rr:logicalTable [ rr:sqlQuery """
+    SELECT operation_id, product_id FROM mrp_bom_line WHERE operation_id IS NOT NULL""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{operation_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate i:hasInput ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/product/{product_id}" ] ] .
+
+# E6 Centro de trabajo (el nombre vive en resource_resource).
+m:WorkCenter rr:logicalTable [ rr:sqlQuery """
+    SELECT w.id, r.name FROM mrp_workcenter w JOIN resource_resource r ON r.id = w.resource_id WHERE w.active""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/workcenter/{id}" ; rr:class i:ManufacturingResource ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E8 Orden de producción.
+m:ProductionOrder rr:logicalTable [ rr:sqlQuery """SELECT id, name FROM mrp_production""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/order/{id}" ; rr:class i:ProductionOrder ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E9 Orden de trabajo. R12 ejecuta la operación, R13 se ejecuta en un centro de trabajo.
+m:WorkOrder rr:logicalTable [ rr:sqlQuery """
+    SELECT id, name, operation_id, workcenter_id FROM mrp_workorder""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/workorder/{id}" ; rr:class i:WorkOrder ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:executesActivity ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/operation/{operation_id}" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:executedBy ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/workcenter/{workcenter_id}" ] ] .
+
+# E10 Organización: compañía de Odoo (res_company). Clase core:Enterprise, que el Módulo de
+# Empresa refina.
+m:Company rr:logicalTable [ rr:sqlQuery """
+    SELECT id, name FROM res_company""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/company/{id}" ; rr:class c:Enterprise ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# R14 La empresa tiene el proceso: compañía de la lista de materiales (mrp_bom.company_id), sólo
+# para las listas con operaciones, que son las que se mapean como proceso (E4).
+m:CompanyProcess rr:logicalTable [ rr:sqlQuery """
+    SELECT b.id AS bom_id, b.company_id FROM mrp_bom b
+    WHERE b.type = 'normal' AND b.active AND b.company_id IS NOT NULL
+      AND EXISTS (SELECT 1 FROM mrp_routing_workcenter o WHERE o.bom_id = b.id AND o.active)""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/odoo/company/{company_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasProcess ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/odoo/process/{bom_id}" ] ] .

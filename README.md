@@ -4,9 +4,14 @@
 
 ## 1. Qué es
 
-PROTYS-WS es el prototipo que pone en operación PROTYS(KB), una red de ontologías para la interoperabilidad semántica entre sistemas de información de manufactura. Permite explorar, consultar y gestionar formalizaciones de subconjuntos de ISO 15531 (ISO/TC 184/SC 4) e ISO 14040 (ISO/TC 207/SC 5), con un piloto separado de ISO 10303 AP242, y ejecutar razonamiento OWL y reglas SWRL. Incluye conectores y ejemplos de mapeos R2RML para ERP; esta versión no acredita una integración con ERP industriales.
+PROTYS-WS es el prototipo que pone en operación PROTYS(KB), una red de ontologías para la interoperabilidad semántica entre sistemas de información de manufactura. Permite explorar, consultar y gestionar formalizaciones de subconjuntos de ISO 15531 (ISO/TC 184/SC 4) e ISO 14040 (ISO/TC 207/SC 5), con un piloto separado de ISO 10303 AP242, y ejecutar razonamiento OWL y reglas SWRL. Se conecta en sólo lectura a bases de ERP (probado con ADempiere 3.9.4 y Odoo 17.0) y materializa sus datos con mapeos R2RML, y permite dar de alta, modificar, eliminar y deshacer individuos con validación OWL posterior.
 
-Esta versión (`v1.0.0`) es la versión evaluada, con la evaluación reproducible de la red y del caso. Contiene el código, la red, los datos del caso, el protocolo de evaluación y sus resultados.
+Esta versión (`v1.1.0`) contiene el código, la red, los datos del caso, el protocolo de evaluación, los resultados de la evaluación de `v1.0.0` y la evidencia de esta versión.
+
+### Versiones
+
+- `v1.0.0`: versión evaluada; red, caso, evaluación reproducible y sus resultados.
+- `v1.1.0`: conectores ERP de sólo lectura con ADempiere y Odoo, gestión de individuos, módulo opcional de disyunciones, instancias ilustrativas del caso y pruebas complementarias (disyunciones, consultas QC01–QC18, ablación por regla y curva de costo).
 
 ### Red de ontologías
 
@@ -30,6 +35,8 @@ La red se organiza en cuatro niveles:
 | `research/model/validations/` | Validaciones SPARQL ASK R07, R16, R19 y R26 | |
 | `ontologies/paint-case-extension.owl` | Extensión del caso de pintura (ontología derivada) | |
 | `ontologies/iso10303-ap242-fragment.owl`, `iso10303-alignment-rules.owl` | Piloto ISO 10303 AP242 y reglas R27–R29 | |
+| `ontologies/disjointness-module.ttl` | Módulo opcional: 75 pares de clases de primer nivel disjuntas | |
+| `ontologies/paint-case-study-instances.ttl` | Instancias ilustrativas del caso de pintura (planta, celdas, equipos y un registro de mantenimiento), usadas por P6, P7 y la plataforma | |
 
 Todos los prefijos cuelgan de `http://w3id.org/protys/ontology/` (por ejemplo `http://w3id.org/protys/ontology/core#Product`). Las IRI son identificadores lógicos. Las instancias usan `http://w3id.org/protys/instances/` y los datos materializados desde ERP, `http://w3id.org/protys/erp/`.
 
@@ -59,8 +66,9 @@ Todos los prefijos cuelgan de `http://w3id.org/protys/ontology/` (por ejemplo `h
 | `ontologies/` | PROTYS(KB) en OWL 2 y Turtle |
 | `docker/` | Composición de Fuseki, PostgreSQL, API e interfaz |
 | `research/` | Modelo, datos, ejecutores y evaluación reproducible; ver [research/README.md](research/README.md) |
-| `scripts/` | Normalización de metadatos, conservación de resultados y comparación de ejecuciones |
+| `scripts/` | Conservación de resultados, comparación de ejecuciones, exportación y consulta del grafo materializado, y arranque y parada de una demostración en Docker |
 | `sql/` | Esquemas ERP de ejemplo |
+| `docker/integration/` | ADempiere y Odoo de prueba y los mapeos R2RML de cada uno |
 
 ### Caso de estudio
 
@@ -104,7 +112,7 @@ La investigación incluye además una herramienta de generación semiautomática
 | Evaluación | JDK 17 (la ejecución publicada usó Temurin 17.0.20.1), Python 3.9 o posterior, Docker (para la demostración REST) |
 | Figura de resultados | Python 3.12 con `research/evaluation/figures-requirements.txt` |
 | Desarrollo de la API | JDK 17; Maven se obtiene con `backend/mvnw` |
-| Interfaz | Node.js 20 |
+| Interfaz | Node.js 24.18.0 y npm 11.16.0 (fijados en `frontend/package.json` y `frontend/.nvmrc`) |
 | Plataforma en contenedores | Docker y Docker Compose |
 
 ## 4. Instalación y arranque
@@ -118,18 +126,19 @@ cd backend
 
 # Interfaz en http://localhost:3000 (en otra terminal)
 cd frontend
-npm install
+npm ci
 npm start
 ```
 
 ### Plataforma con Docker Compose
 
 ```bash
-cd docker
-cp .env.example .env      # valores de demostración; cambiarlos fuera de un entorno local
-docker compose up -d
-./init-fuseki.sh          # carga las ontologías en Fuseki
+docker compose -f docker/docker-compose.yml up -d --build
 ```
+
+Interfaz en http://127.0.0.1:8081, API en http://127.0.0.1:8080/api y Fuseki en http://127.0.0.1:3030. El servicio
+`protys-init` carga la red integrada en Fuseki al arrancar. `docker/.env.example` tiene los valores de demostración
+de las variables (puertos y credenciales de los contenedores).
 
 La imagen del backend no incluye los procesos de la evaluación académica; la evaluación se ejecuta con el punto de entrada de la sección 5.
 
@@ -146,64 +155,66 @@ La imagen del backend no incluye los procesos de la evaluación académica; la e
 | `POST` | `/api/alignment/reasoning/execute` | Razonamiento |
 | `POST` | `/api/erp/connectors` | Registro de un conector ERP |
 | `POST` | `/api/erp/connectors/{id}/materialize` | Materialización de un mapeo R2RML |
+| `GET`, `POST`, `PUT`, `DELETE` | `/api/ontology/individuals` | Individuos de una clase (`classUri`) o uno por su IRI (`uri`) |
+| `POST` | `/api/ontology/individuals/edits/{id}/undo` | Deshacer una edición |
 | `POST` | `/api/standards` | Incorporación de un estándar |
 | `POST` | `/api/wizard/step1/upload` | Asistente de incorporación, paso 1 |
 
 ## 5. Cómo reproducir la evaluación
 
-La validación y clasificación usan OWL API 5.1.20 con HermiT 1.4.5.519; las reglas SWRL corren en un proceso separado con SWRLAPI 2.1.3, Drools 7.74.1.Final y OWL API 4.5.27. El protocolo completo, las configuraciones y los límites están en [research/README.md](research/README.md).
+La validación y clasificación usan OWL API 5.1.20 con HermiT 1.4.5.519; las reglas SWRL corren en un proceso separado con SWRLAPI 2.1.3, Drools 7.74.1.Final y OWL API 4.5.27. El protocolo completo y las configuraciones están en [research/README.md](research/README.md). Los resultados publicados en `research/release/` son los de `v1.0.0`; `research/integration/diferencias-versiones/` mide el efecto de los cambios de `ontologies/` de esta versión (las 21 consultas siguen coincidiendo con las esperadas).
 
-Desde la raíz, con `JAVA_HOME` en un JDK 17:
+Desde la raíz, con `JAVA_HOME` en un JDK 17. `E` es la carpeta de la ejecución, donde quedan las salidas crudas, y `A` la de la auditoría, la figura, el grafo materializado, el manifiesto y los archivos comprimidos. Ninguna de las dos se versiona.
 
 ```bash
+E=research/evaluation/runs/mi-ejecucion
+A=research/evaluation/auditorias/mi-ejecucion
+
 # 0. JAR de la API (lo usa la demostración REST)
 ./backend/mvnw -q -DskipTests -f backend/pom.xml package
 
 # 1. Comprobaciones funcionales: 243 aserciones y 21 consultas en cinco configuraciones,
 #    y comprobación de sintaxis de los ejemplos, consultas y validaciones de research/model/
-./research/reproduce.sh --functional
-python3 research/evaluation/comprobar_sintaxis.py
+./research/reproduce.sh --functional --output $E
+python3 research/evaluation/comprobar_sintaxis.py --salida $E
 
 # 2. Demostración REST sobre la API (contenedor PostgreSQL y Fuseki propios, que se eliminan al terminar)
-python3 research/evaluation/demonstrate.py
+python3 research/evaluation/demonstrate.py --output $E
 
 # 3. Piloto de capacidad (100 lotes)
-python3 research/evaluation/capacity_pilot.py
+python3 research/evaluation/capacity_pilot.py --output $E
 
 # 4. Rendimiento: 30 réplicas por configuración, 120 en total
-./research/reproduce.sh --benchmark
+./research/reproduce.sh --benchmark --output $E
 
 # 5. Auditoría independiente de las 120 réplicas
-python3 research/evaluation/verificar_benchmark.py --repo . --output research/release/benchmark-audit.json
+python3 research/evaluation/verificar_benchmark.py --repo . --evaluation-dir $E --output $A/benchmark-audit.json
 
 # 6. Figura de resultados
 python3.12 -m venv research/.cache/figures-venv
 research/.cache/figures-venv/bin/python -m pip install -r research/evaluation/figures-requirements.txt
 research/.cache/figures-venv/bin/python research/evaluation/crear_figura4_7.py \
-  --runs research/evaluation/current/runs.jsonl \
-  --audit research/release/benchmark-audit.json \
-  --output-directory research/release/figures
+  --runs $E/runs.jsonl --audit $A/benchmark-audit.json --output-directory $A/figures
 
-# 7. Copia de los resúmenes a research/release/ con registro de copias idénticas,
-#    y grafo materializado de la configuración integrada en Turtle y RDF/XML
-python3 scripts/conservar_resultados.py
-python3 scripts/exportar_grafo_materializado.py
+# 7. Grafo materializado de la configuración integrada en Turtle y RDF/XML
+python3 scripts/exportar_grafo_materializado.py --ejecucion $E --destino $A/grafo-materializado
 
-# 8. Manifiesto de toda la evidencia y archivos comprimidos para adjuntar a la publicación
-python3 research/evaluation/empaquetar_evidencia.py --repo . \
-  --audit research/release/benchmark-audit.json \
-  --assets ../protys-evidence/v1.0.0 \
-  --manifest research/release/evidence-manifest.json --tag v1.0.0
+# 8. Manifiesto de toda la evidencia y archivos comprimidos
+python3 research/evaluation/empaquetar_evidencia.py --repo . --evaluation-dir $E \
+  --audit $A/benchmark-audit.json --assets $A/archivos \
+  --manifest $A/evidence-manifest.json --tag mi-ejecucion
 ```
 
-Las salidas crudas quedan en `research/evaluation/current/`, que no se versiona. Entre la ejecución y la auditoría no deben cambiar `ontologies/`, `research/model/`, `research/data/`, `research/runtime/` ni los guiones de `research/evaluation/`: el verificador compara sus hashes.
+Entre la ejecución y la auditoría no deben cambiar `ontologies/`, `research/model/`, `research/data/`, `research/runtime/` ni los guiones de `research/evaluation/`: el verificador compara sus hashes. `scripts/conservar_resultados.py --ejecucion $E` copia los resúmenes a `research/release/`, que tiene los de `v1.0.0`.
 
 Para comparar una ejecución nueva con la publicada:
 
 ```bash
-python3 scripts/comparar_ejecuciones.py research/release research/evaluation/current \
+python3 scripts/comparar_ejecuciones.py research/release $E \
   --census-referencia research/model/census.json --census-candidata research/model/census.json
 ```
+
+Con esta versión, la comparación muestra las rutas de la carpeta nueva y los cambios que mide `research/integration/diferencias-versiones/` (un triple más de entrada en la configuración integrada y sus consecuencias).
 
 ## 6. Dónde está cada resultado
 
@@ -226,21 +237,38 @@ python3 scripts/comparar_ejecuciones.py research/release research/evaluation/cur
 
 El resumen de los resultados está en [research/release/README.md](research/release/README.md).
 
+Evidencia de esta versión:
+
+| Resultado | Archivo | Campo |
+|---|---|---|
+| 76 pares de disyunciones propuestos; el único que vuelve inconsistente la red | `research/complementarias/disyunciones/salidas/pares/resultado.json`, `pares.csv` | |
+| Módulo de 75 pares con el caso y con las instancias; 87 clases y 119 propiedades con y sin él | `research/complementarias/disyunciones/salidas/modulo/resultado.json` | `corridas`, `censo_ocho_modulos_base` |
+| QC01–QC18, obtenidas y esperadas | `research/complementarias/consultas-qc/salidas/tabla.md`, `resumen.json` | `tabla` |
+| Consultas que cambian al quitar cada regla | `research/complementarias/ablacion-reglas/salidas/ablacion-regla-x-consulta.csv`, `resumen.json` | `consultas_por_regla`, `reglas_sin_efecto_en_ninguna_consulta` |
+| Tiempo y memoria con 20, 50, 100 y 200 lotes | `research/complementarias/curva-costo/salidas/tabla.md`, `resumen.json` | |
+| Plataforma con las instancias: 4804 triples de entrada, 1447 inferidos, P6, P7 y Q20 | `research/integration/consultas-p6-p7/salidas/04-razonamiento-con-instancias.json`, `05-p6p7-razonadas.txt`, `06-catalogo-con-y-sin-instancias.txt` | `inputTripleCount`, `inferredTripleCount` |
+| Conectores ERP con ADempiere y Odoo | `research/integration/erp/salidas/e2e/RESUMEN.txt` | |
+| Gestión de individuos | `research/integration/gestion-individuos/salidas/` | |
+| Diferencias con `v1.0.0` | `research/integration/diferencias-versiones/salidas/` | |
+| Suites de pruebas | `research/integration/suites/` | |
+
 ## 7. Pruebas
 
 ```bash
-cd backend && ./mvnw test                     # API: 48 pruebas
-cd frontend && npm test -- --watchAll=false   # interfaz
-python3 -m unittest discover -s scripts/tests # guiones de scripts/: 10 pruebas
+cd backend && ./mvnw test                                 # API: 288 pruebas, 17 salteadas (las de sólo lectura con PostgreSQL)
+cd frontend && npm ci && npm test -- --watchAll=false     # interfaz: 88 pruebas en 16 suites
+python3 -m unittest discover -s scripts/tests             # guiones de scripts/: 29 pruebas
+python3 -m unittest discover -s research/evaluation/tests # evaluación: 16 pruebas
+sh research/integration/erp-solo-lectura/solo-lectura.sh  # las 17 de sólo lectura, con un PostgreSQL desechable
 ```
+
+`sh research/integration/suites/correr.sh` corre todas y guarda las salidas en `research/integration/suites/`.
 
 ## 8. Alcance
 
-- La API no tiene autenticación.
-- Los conectores ERP son demostradores.
-- Las respuestas y las mediciones de rendimiento corresponden a los datos y conceptos formalizados de un caso simulado.
-- Las dependencias de la interfaz se declaran por rango, sin archivo de bloqueo.
+- La API no tiene autenticación y publica sus puertos en 127.0.0.1.
+- Los datos del caso son sintéticos; las mediciones de rendimiento se tomaron sobre ellos.
 
 ## 9. Cómo citar
 
-Fraga, A. L. (2026). *PROTYS-WS y PROTYS(KB): versión evaluada* (v1.0.0) [Software]. Universidad Tecnológica Nacional, Facultad Regional Santa Fe. Los mismos datos, en formato legible por máquina, están en [CITATION.cff](CITATION.cff).
+Fraga, A. L. (2026). *PROTYS-WS y PROTYS(KB)* (v1.1.0) [Software]. Universidad Tecnológica Nacional, Facultad Regional Santa Fe. Los mismos datos, en formato legible por máquina, están en [CITATION.cff](CITATION.cff).

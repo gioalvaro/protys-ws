@@ -1,0 +1,255 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix core: <http://w3id.org/protys/ontology/core#> .
+@prefix product: <http://w3id.org/protys/ontology/product#> .
+@prefix process: <http://w3id.org/protys/ontology/process#> .
+@prefix resource: <http://w3id.org/protys/ontology/resource#> .
+@prefix enterprise: <http://w3id.org/protys/ontology/enterprise#> .
+@prefix iso15531: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix iso14040: <http://w3id.org/protys/ontology/iso14040#> .
+
+# PROTYS(KB) - Módulo de Disyunciones (opcional).
+# Un owl:disjointWith por par. La fuente y la justificación de cada par están en
+# research/complementarias/disyunciones/salidas/pares.csv.
+# No lo cargan la plataforma (docker/load_canonical.py) ni la evaluación (research/catalog.json); para usarlo hay
+# que agregarlo a la carga junto con la red.
+
+<http://w3id.org/protys/ontology/disjointness> a owl:Ontology ;
+    rdfs:label "PROTYS(KB) - Módulo de Disyunciones (opcional)"@es ;
+    rdfs:label "PROTYS(KB) - Disjointness Module (optional)"@en ;
+    rdfs:comment """Módulo opcional. Declara 75 pares de clases disjuntas entre clases de primer nivel de los módulos Principal, de Producto, de Proceso, de Recursos, de Empresa, ISO 15531 e ISO 14040. Cada par se justifica con la definición del término y la norma que cita, con el rdfs:comment de las clases o con ambos. No forma parte de la carga por defecto de la plataforma ni de las configuraciones de research/catalog.json."""@es ;
+    rdfs:comment """core:Product y core:Resource no se declaran disjuntos: una materia prima es producto de quien la provee y recurso de quien la usa. Con los datos del caso de pintura, ese par vuelve inconsistente la red: el dióxido de titanio, el agua, la resina acrílica y el biocida son materia prima (resource:Raw_Material, y por eso core:Resource) y a la vez objeto de flowRefersToProduct, cuyo rango es core:Product."""@es ;
+    owl:versionInfo "1.0" ;
+    owl:imports <http://w3id.org/protys/ontology/core> ;
+    owl:imports <http://w3id.org/protys/ontology/product> ;
+    owl:imports <http://w3id.org/protys/ontology/process> ;
+    owl:imports <http://w3id.org/protys/ontology/resource> ;
+    owl:imports <http://w3id.org/protys/ontology/enterprise> ;
+    owl:imports <http://w3id.org/protys/ontology/iso15531> ;
+    owl:imports <http://w3id.org/protys/ontology/iso14040> .
+
+# core:Product ⊥ core:Process. Fuente: definición y norma citada, y rdfs:comment.
+core:Product owl:disjointWith core:Process .
+
+# core:Product ⊥ core:Enterprise. Fuente: definición y norma citada, y rdfs:comment.
+core:Product owl:disjointWith core:Enterprise .
+
+# core:Process ⊥ core:Resource. Fuente: definición y norma citada, y rdfs:comment.
+core:Process owl:disjointWith core:Resource .
+
+# core:Process ⊥ core:Enterprise. Fuente: definición y norma citada, y rdfs:comment.
+core:Process owl:disjointWith core:Enterprise .
+
+# core:Resource ⊥ core:Enterprise. Fuente: definición y norma citada, y rdfs:comment.
+core:Resource owl:disjointWith core:Enterprise .
+
+# product:Substance ⊥ product:Product_Information. Fuente: ISO 10303-1.
+product:Substance owl:disjointWith product:Product_Information .
+
+# product:Substance ⊥ product:Customer. Fuente: ISO 10303-1; ISO 10303-41.
+product:Substance owl:disjointWith product:Customer .
+
+# product:Product_Information ⊥ product:Customer. Fuente: ISO 10303-1; ISO 10303-41.
+product:Product_Information owl:disjointWith product:Customer .
+
+# process:Process_Plan ⊥ process:Process_Plant. Fuente: ISO 15531 y rdfs:comment.
+process:Process_Plan owl:disjointWith process:Process_Plant .
+
+# process:Procedure ⊥ process:Parameters. Fuente: ISO 10303-49 y rdfs:comment.
+process:Procedure owl:disjointWith process:Parameters .
+
+# process:Process_Plant ⊥ process:Procedure. Fuente: definición y norma citada, y rdfs:comment.
+process:Process_Plant owl:disjointWith process:Procedure .
+
+# process:Process_Plant ⊥ process:Parameters. Fuente: definición y norma citada, y rdfs:comment.
+process:Process_Plant owl:disjointWith process:Parameters .
+
+# process:Process_Plan ⊥ process:Parameters. Fuente: definición y norma citada, y rdfs:comment.
+process:Process_Plan owl:disjointWith process:Parameters .
+
+# process:Process_Plant ⊥ core:Process. Fuente: definición y norma citada, y rdfs:comment.
+process:Process_Plant owl:disjointWith core:Process .
+
+# resource:Person ⊥ resource:Material. Fuente: ISO 15531; ISO 18629 / ISO 10303-232.
+resource:Person owl:disjointWith resource:Material .
+
+# resource:Person ⊥ resource:Equip. Fuente: definición y norma citada.
+resource:Person owl:disjointWith resource:Equip .
+
+# resource:Person ⊥ resource:Tool. Fuente: definición y norma citada.
+resource:Person owl:disjointWith resource:Tool .
+
+# resource:Person ⊥ resource:Device. Fuente: definición y norma citada.
+resource:Person owl:disjointWith resource:Device .
+
+# resource:Person ⊥ resource:File. Fuente: definición y norma citada.
+resource:Person owl:disjointWith resource:File .
+
+# resource:File ⊥ resource:Material. Fuente: definición y norma citada.
+resource:File owl:disjointWith resource:Material .
+
+# resource:File ⊥ resource:Equip. Fuente: definición y norma citada.
+resource:File owl:disjointWith resource:Equip .
+
+# resource:File ⊥ resource:Tool. Fuente: definición y norma citada.
+resource:File owl:disjointWith resource:Tool .
+
+# resource:File ⊥ resource:Device. Fuente: definición y norma citada.
+resource:File owl:disjointWith resource:Device .
+
+# resource:Material ⊥ resource:Equip. Fuente: definición y norma citada, y rdfs:comment.
+resource:Material owl:disjointWith resource:Equip .
+
+# resource:Material ⊥ resource:Device. Fuente: definición y norma citada.
+resource:Material owl:disjointWith resource:Device .
+
+# resource:Behaviour ⊥ resource:Capability. Fuente: ISO 10303-49 y rdfs:comment.
+resource:Behaviour owl:disjointWith resource:Capability .
+
+# resource:Behaviour ⊥ core:Resource. Fuente: rdfs:comment.
+resource:Behaviour owl:disjointWith core:Resource .
+
+# resource:Capability ⊥ core:Resource. Fuente: rdfs:comment.
+resource:Capability owl:disjointWith core:Resource .
+
+# resource:Role ⊥ resource:Person. Fuente: definición y norma citada, y rdfs:comment.
+resource:Role owl:disjointWith resource:Person .
+
+# resource:Activity ⊥ core:Resource. Fuente: definición y norma citada, y rdfs:comment.
+resource:Activity owl:disjointWith core:Resource .
+
+# enterprise:Factory ⊥ enterprise:Shop. Fuente: Zhao et al., 1999.
+enterprise:Factory owl:disjointWith enterprise:Shop .
+
+# enterprise:Factory ⊥ enterprise:Cell. Fuente: Zhao et al., 1999.
+enterprise:Factory owl:disjointWith enterprise:Cell .
+
+# enterprise:Factory ⊥ enterprise:Station. Fuente: Zhao et al., 1999.
+enterprise:Factory owl:disjointWith enterprise:Station .
+
+# enterprise:Shop ⊥ enterprise:Cell. Fuente: Zhao et al., 1999.
+enterprise:Shop owl:disjointWith enterprise:Cell .
+
+# enterprise:Shop ⊥ enterprise:Station. Fuente: Zhao et al., 1999.
+enterprise:Shop owl:disjointWith enterprise:Station .
+
+# enterprise:Cell ⊥ enterprise:Station. Fuente: Zhao et al., 1999.
+enterprise:Cell owl:disjointWith enterprise:Station .
+
+# enterprise:Location ⊥ enterprise:Factory. Fuente: definición y norma citada, y rdfs:comment.
+enterprise:Location owl:disjointWith enterprise:Factory .
+
+# enterprise:Location ⊥ enterprise:Shop. Fuente: definición y norma citada, y rdfs:comment.
+enterprise:Location owl:disjointWith enterprise:Shop .
+
+# enterprise:Location ⊥ enterprise:Cell. Fuente: definición y norma citada, y rdfs:comment.
+enterprise:Location owl:disjointWith enterprise:Cell .
+
+# enterprise:Location ⊥ enterprise:Station. Fuente: definición y norma citada, y rdfs:comment.
+enterprise:Location owl:disjointWith enterprise:Station .
+
+# enterprise:Location ⊥ core:Enterprise. Fuente: definición y norma citada, y rdfs:comment.
+enterprise:Location owl:disjointWith core:Enterprise .
+
+# iso15531:ManufacturingResource ⊥ iso15531:ManufacturingProcess. Fuente: ISO 15531-32:2005, 3.1.20 y 3.1.16.
+iso15531:ManufacturingResource owl:disjointWith iso15531:ManufacturingProcess .
+
+# iso15531:ManufacturingResource ⊥ iso15531:ProcessOperation. Fuente: ISO 15531-32:2005, 3.1.20.
+iso15531:ManufacturingResource owl:disjointWith iso15531:ProcessOperation .
+
+# iso15531:ManufacturingResource ⊥ iso15531:Lot. Fuente: definición y norma citada.
+iso15531:ManufacturingResource owl:disjointWith iso15531:Lot .
+
+# iso15531:ManufacturingResource ⊥ iso15531:ManufacturingData. Fuente: definición y norma citada.
+iso15531:ManufacturingResource owl:disjointWith iso15531:ManufacturingData .
+
+# iso15531:ManufacturingResource ⊥ iso15531:ManufacturingCapability. Fuente: definición y norma citada.
+iso15531:ManufacturingResource owl:disjointWith iso15531:ManufacturingCapability .
+
+# iso15531:ManufacturingProcess ⊥ iso15531:ProcessPlan. Fuente: ISO 15531-32:2005, 3.1.16.
+iso15531:ManufacturingProcess owl:disjointWith iso15531:ProcessPlan .
+
+# iso15531:ProcessOperation ⊥ iso15531:ProcessPlan. Fuente: definición y norma citada.
+iso15531:ProcessOperation owl:disjointWith iso15531:ProcessPlan .
+
+# iso15531:Lot ⊥ iso15531:ManufacturingProcess. Fuente: definición y norma citada.
+iso15531:Lot owl:disjointWith iso15531:ManufacturingProcess .
+
+# iso15531:Lot ⊥ iso15531:ProcessOperation. Fuente: definición y norma citada.
+iso15531:Lot owl:disjointWith iso15531:ProcessOperation .
+
+# iso15531:ProductionOrder ⊥ iso15531:WorkOrder. Fuente: definición y norma citada.
+iso15531:ProductionOrder owl:disjointWith iso15531:WorkOrder .
+
+# iso15531:ProductionOrder ⊥ iso15531:Lot. Fuente: definición y norma citada.
+iso15531:ProductionOrder owl:disjointWith iso15531:Lot .
+
+# iso15531:WorkOrder ⊥ iso15531:Lot. Fuente: definición y norma citada.
+iso15531:WorkOrder owl:disjointWith iso15531:Lot .
+
+# iso15531:ProcessState ⊥ iso15531:ResourceState. Fuente: definición y norma citada.
+iso15531:ProcessState owl:disjointWith iso15531:ResourceState .
+
+# iso15531:QualityAttribute ⊥ iso15531:CostAttribute. Fuente: definición y norma citada.
+iso15531:QualityAttribute owl:disjointWith iso15531:CostAttribute .
+
+# iso15531:QualityAttribute ⊥ iso15531:TimeAttribute. Fuente: definición y norma citada.
+iso15531:QualityAttribute owl:disjointWith iso15531:TimeAttribute .
+
+# iso15531:CostAttribute ⊥ iso15531:TimeAttribute. Fuente: definición y norma citada.
+iso15531:CostAttribute owl:disjointWith iso15531:TimeAttribute .
+
+# iso14040:GoalAndScopeDefinition ⊥ iso14040:LifeCycleInventory. Fuente: ISO 14040:2006, 5.2 y 3.3.
+iso14040:GoalAndScopeDefinition owl:disjointWith iso14040:LifeCycleInventory .
+
+# iso14040:GoalAndScopeDefinition ⊥ iso14040:LifeCycleImpactAssessment. Fuente: ISO 14040:2006, 5.2 y 3.4.
+iso14040:GoalAndScopeDefinition owl:disjointWith iso14040:LifeCycleImpactAssessment .
+
+# iso14040:GoalAndScopeDefinition ⊥ iso14040:Interpretation. Fuente: ISO 14040:2006, 5.2 y 3.5.
+iso14040:GoalAndScopeDefinition owl:disjointWith iso14040:Interpretation .
+
+# iso14040:LifeCycleInventory ⊥ iso14040:LifeCycleImpactAssessment. Fuente: ISO 14040:2006, 3.3 y 3.4.
+iso14040:LifeCycleInventory owl:disjointWith iso14040:LifeCycleImpactAssessment .
+
+# iso14040:LifeCycleInventory ⊥ iso14040:Interpretation. Fuente: ISO 14040:2006, 3.3 y 3.5.
+iso14040:LifeCycleInventory owl:disjointWith iso14040:Interpretation .
+
+# iso14040:LifeCycleImpactAssessment ⊥ iso14040:Interpretation. Fuente: ISO 14040:2006, 3.4 y 3.5.
+iso14040:LifeCycleImpactAssessment owl:disjointWith iso14040:Interpretation .
+
+# iso14040:LCAStudy ⊥ iso14040:GoalAndScopeDefinition. Fuente: ISO 14040:2006, 3.2.
+iso14040:LCAStudy owl:disjointWith iso14040:GoalAndScopeDefinition .
+
+# iso14040:LCAStudy ⊥ iso14040:LifeCycleInventory. Fuente: ISO 14040:2006, 3.2.
+iso14040:LCAStudy owl:disjointWith iso14040:LifeCycleInventory .
+
+# iso14040:LCAStudy ⊥ iso14040:LifeCycleImpactAssessment. Fuente: ISO 14040:2006, 3.2.
+iso14040:LCAStudy owl:disjointWith iso14040:LifeCycleImpactAssessment .
+
+# iso14040:LCAStudy ⊥ iso14040:Interpretation. Fuente: ISO 14040:2006, 3.2.
+iso14040:LCAStudy owl:disjointWith iso14040:Interpretation .
+
+# iso14040:UnitProcess ⊥ iso14040:ElementaryFlow. Fuente: ISO 14040:2006, 3.34 y 3.12.
+iso14040:UnitProcess owl:disjointWith iso14040:ElementaryFlow .
+
+# iso14040:UnitProcess ⊥ iso14040:ProductFlow. Fuente: ISO 14040:2006, 3.34 y 3.27.
+iso14040:UnitProcess owl:disjointWith iso14040:ProductFlow .
+
+# iso14040:UnitProcess ⊥ iso14040:SystemBoundary. Fuente: ISO 14040:2006, 3.34 y 3.32.
+iso14040:UnitProcess owl:disjointWith iso14040:SystemBoundary .
+
+# iso14040:UnitProcess ⊥ iso14040:AllocationProcedure. Fuente: ISO 14040:2006, 3.34 y 3.17.
+iso14040:UnitProcess owl:disjointWith iso14040:AllocationProcedure .
+
+# iso14040:FunctionalUnit ⊥ iso14040:SystemBoundary. Fuente: ISO 14040:2006, 3.20 y 3.32.
+iso14040:FunctionalUnit owl:disjointWith iso14040:SystemBoundary .
+
+# iso14040:ImpactCategory ⊥ iso14040:ImpactIndicator. Fuente: ISO 14040:2006, 3.39 y 3.40.
+iso14040:ImpactCategory owl:disjointWith iso14040:ImpactIndicator .
+
+# iso14040:ImpactCategory ⊥ iso14040:CharacterizationFactor. Fuente: ISO 14040:2006, 3.39 y 3.37.
+iso14040:ImpactCategory owl:disjointWith iso14040:CharacterizationFactor .
+
+# iso14040:ImpactIndicator ⊥ iso14040:CharacterizationFactor. Fuente: ISO 14040:2006, 3.40 y 3.37.
+iso14040:ImpactIndicator owl:disjointWith iso14040:CharacterizationFactor .

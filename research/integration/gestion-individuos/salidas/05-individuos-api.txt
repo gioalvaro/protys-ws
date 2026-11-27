@@ -1,0 +1,34 @@
+A1.1 crear (IRI y rdfs:label): 201 | validación CONSISTENT 1931 ms cache=False | control 3 triples
+A1.2 leer: 200
+A1.2 listar los individuos de la clase: 200
+A1.3 modificar la etiqueta: 200 | validación CONSISTENT 1829 ms cache=False | control 3 triples
+A1.4 eliminar: 200 | validación CONSISTENT 1858 ms cache=False | control 0 triples
+A1.5 leer después de eliminar: 404 | Individual not found: http://example.org/individuos/operario-api
+A4.1 clase inexistente: 400 | Class not declared in any registered module: http://w3id.org/protys/ontology/iso15531#ClaseQueNoExiste
+A4.2 classUri que no es un IRI: 400 | Malformed IRI in classUri: esto no es un IRI
+A4.3 classUri relativo: 400 | Malformed IRI in classUri: relativo
+A4.4 sin classUri: 400 | Missing required parameter: classUri
+A4.5 IRI del individuo mal formado: 400 | Malformed IRI in uri: no es un IRI
+A4.6 clave de propiedad que no es un IRI: 400 | Malformed IRI in properties key: uri
+A4.7 individuo que ya existe en el caso (fixture:Operator_01): 409 | Individual already exists: http://w3id.org/protys/fixture#Operator_01 (module Canonical_Catalog_Integrated) | control 5 triples
+A4.8 duplicado, primer envío: 201 | validación CONSISTENT 1917 ms cache=False
+A4.8 duplicado, segundo envío idéntico: 409 | Individual already exists: http://example.org/individuos/duplicado (module Canonical_Catalog_Integrated) | control 3 triples
+A4.8 limpieza del duplicado: 200 | validación CONSISTENT 39 ms cache=True | control 0 triples
+A4.9 modificar un individuo inexistente: 404 | Individual not found: http://example.org/individuos/nadie
+A4.10 eliminar un individuo inexistente: 404 | Individual not found: http://example.org/individuos/nadie
+A4.11 forma anterior: IRI en la ruta (ya no se admite): 400
+A5.1 crear para deshacer: 201 | validación CONSISTENT 2008 ms cache=False | control 3 triples
+A5.2 deshacer el alta: 200 | validación CONSISTENT 24 ms cache=True | control 0 triples
+A5.3 deshacer otra vez la misma edición: 404 | Edit not found or no longer undoable: c672b288-16c4-46c2-9f6c-b8a2163c0266
+A5.4 alta que contradice el rango xsd:integer de paint-ext:numberOfEmployees: 201 | validación INCONSISTENT 1498 ms cache=False | control 4 triples
+A5.5 deshacer el alta inconsistente: 200 | validación CONSISTENT 28 ms cache=True | control 0 triples
+A6.1 alta: 201 | validación CONSISTENT 1910 ms cache=False
+A6.1 modificación: 200 | validación CONSISTENT 1847 ms cache=False
+A6.1 baja: 200 | validación CONSISTENT 27 ms cache=True | control 0 triples
+A6.2 alta: 201 | validación CONSISTENT 1887 ms cache=False
+A6.2 modificación: 200 | validación CONSISTENT 1880 ms cache=False
+A6.2 baja: 200 | validación CONSISTENT 29 ms cache=True | control 0 triples
+A6.3 alta: 201 | validación CONSISTENT 1810 ms cache=False
+A6.3 modificación: 200 | validación CONSISTENT 1861 ms cache=False
+A6.3 baja: 200 | validación CONSISTENT 23 ms cache=True | control 0 triples
+tiempos: {"ediciones_validadas": 18, "sin_cache": 12, "validacion_ms_sin_cache": {"min": 1498, "mediana": 1880, "max": 2008}, "con_cache": [23, 24, 27, 28, 29, 39]}

@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "earlier", "later" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

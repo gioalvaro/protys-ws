@@ -1,0 +1,17 @@
+módulo                                                   clases      p. objeto       p. datos
+ontologies/core-concepts.owl                          4 -> 4          8 -> 8          4 -> 4    
+ontologies/product-module.owl                        11 -> 11         4 -> 4          0 -> 0    
+ontologies/process-module.owl                         8 -> 8          3 -> 3          0 -> 0    
+ontologies/resource-module.owl                       15 -> 15        11 -> 11         0 -> 0    
+ontologies/enterprise-module.owl                      5 -> 5          2 -> 2          0 -> 0    
+ontologies/iso15531-module.owl                       18 -> 18        21 -> 21        16 -> 16   
+ontologies/iso14040-module.owl                       15 -> 15        11 -> 11        12 -> 12   
+ontologies/alignment-rules.owl                       11 -> 11        21 -> 21         6 -> 6    
+ontologies/paint-case-extension.owl                  30 -> 30        14 -> 14        33 -> 33   
+ontologies/iso10303-ap242-fragment.owl                6 -> 6          3 -> 3          2 -> 2    
+ontologies/iso10303-alignment-rules.owl               0 -> 0          0 -> 0          0 -> 0    
+research/model/environmental-profile.owl              1 -> 1          0 -> 0          0 -> 0    
+research/model/manufacturing-profile.owl              4 -> 4          1 -> 1          0 -> 0    
+research/model/research-profile.owl                   9 -> 9         29 -> 29        37 -> 37   
+base ocho (únicos): v1.0.0 {'Class': 87, 'ObjectProperty': 81, 'DatatypeProperty': 38} 119 propiedades | v1.1.0 {'Class': 87, 'ObjectProperty': 81, 'DatatypeProperty': 38} 119 propiedades
+census.json: {'base_eight_unique_counts': {'Class': 87, 'ObjectProperty': 81, 'DatatypeProperty': 38}, 'complete_explicit_union_counts': {'Class': 134, 'ObjectProperty': 119, 'DatatypeProperty': 109}}

@@ -1,0 +1,5 @@
+fecha_utc=2026-11-27T02:38:37Z
+node=v24.18.0
+playwright=1.58.2
+imagen[protys-backend]=protys-v110-backend:maintenance id=sha256:b48f20df3cdb228dc616da9d77ecd8e0be16c1e88c765114f64f56d3a72125a9
+imagen[protys-frontend]=protys-v110-protys-frontend id=sha256:108847c492a816557d850c2127f2bab465c0000319277ad386b83a328f1a188c

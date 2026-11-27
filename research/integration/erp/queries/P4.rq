@@ -1,0 +1,26 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX prod: <http://w3id.org/protys/ontology/product#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# P4 Actividades de un plan de proceso X.
+# Variante de Q18: Q18 exige t:lifecycleStage y etapas del escenario de pintura, que no existen en los
+# ERP. Acá: operaciones del plan con su secuencia y duración registradas en el ERP, y la duración
+# total por plan.
+SELECT ?g ?plan ?planName ?activity ?activityName ?sequence ?duration ?totalDuration
+WHERE {
+  GRAPH ?g {
+    ?plan a i:ProcessPlan ; i:includesActivity ?activity .
+    OPTIONAL { ?activity i:operationSequence ?sequence }
+    OPTIONAL { ?activity i:duration ?duration }
+  }
+  FILTER(STRSTARTS(STR(?g), "http://w3id.org/protys/erp/"))
+  OPTIONAL { GRAPH ?g { ?plan c:hasName ?planName } }
+  OPTIONAL { GRAPH ?g { ?activity c:hasName ?activityName } }
+  {
+    SELECT ?plan (SUM(?d) AS ?totalDuration)
+    WHERE { GRAPH ?h { ?plan i:includesActivity ?a . OPTIONAL { ?a i:duration ?d } }
+            FILTER(STRSTARTS(STR(?h), "http://w3id.org/protys/erp/")) }
+    GROUP BY ?plan
+  }
+}
+ORDER BY ?g ?plan ?sequence

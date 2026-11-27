@@ -14,6 +14,8 @@ import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.riot.Lang;
+import org.apache.jena.graph.NodeFactory;
+import org.apache.jena.riot.out.NodeFmtLib;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.protys.ws.dto.SPARQLRequest;
@@ -25,6 +27,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.time.Instant;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -165,6 +168,54 @@ public class FusekiService {
             log.error("Failed to retrieve model from Fuseki: {}", namedGraph, e);
             throw new ProtysFusekiException("Failed to retrieve model: " + e.getMessage(), e);
         }
+    }
+
+    /** Reads a possibly absent graph without treating an empty/new graph as an HTTP 404. */
+    public Model getModelOrEmpty(String namedGraph) {
+        String graph = NodeFmtLib.strNT(NodeFactory.createURI(namedGraph));
+        try (RDFConnection conn = RDFConnectionFactory.connect(fusekiEndpoint)) {
+            return conn.queryConstruct("CONSTRUCT { ?s ?p ?o } WHERE { GRAPH " + graph + " { ?s ?p ?o } }");
+        } catch (Exception e) {
+            throw new ProtysFusekiException("Failed to read graph for publication recovery");
+        }
+    }
+
+    /**
+     * One conditional SPARQL update restores a snapshot only while the graph exactly
+     * matches our ground publication. No GET/PUT race and no auxiliary graphs are used.
+     * The WHERE has one solution, so INSERT blank nodes are created only once.
+     * Returns whether the previous content can be verified after the update.
+     */
+    public boolean restoreModelIfUnchanged(String namedGraph, Model expected, Model previous) {
+        if (expected.isEmpty()) throw new IllegalArgumentException("A nonempty publication is required");
+        String graph = NodeFmtLib.strNT(NodeFactory.createURI(namedGraph));
+        StringBuilder values = new StringBuilder();
+        expected.listStatements().forEachRemaining(statement -> {
+            if (statement.getSubject().isAnon() || statement.getObject().isAnon()) {
+                throw new IllegalArgumentException("Publication recovery requires ground triples");
+            }
+            values.append('(').append(NodeFmtLib.strNT(statement.getSubject().asNode())).append(' ')
+                    .append(NodeFmtLib.strNT(statement.getPredicate().asNode())).append(' ')
+                    .append(NodeFmtLib.strNT(statement.getObject().asNode())).append(")\n");
+        });
+        String update = "DELETE { GRAPH " + graph + " { " + ntriples(expected) + " } } "
+                + "INSERT { GRAPH " + graph + " { " + ntriples(previous) + " } } "
+                + "WHERE { { SELECT (COUNT(*) AS ?currentCount) WHERE { GRAPH " + graph + " { ?s ?p ?o } } } "
+                + "FILTER (?currentCount = " + expected.size() + ") "
+                + "FILTER NOT EXISTS { VALUES (?requiredS ?requiredP ?requiredO) { " + values + " } "
+                + "FILTER NOT EXISTS { GRAPH " + graph + " { ?requiredS ?requiredP ?requiredO } } } }";
+        try (RDFConnection conn = RDFConnectionFactory.connect(fusekiEndpoint)) {
+            conn.update(update);
+        } catch (Exception e) {
+            throw new ProtysFusekiException("Conditional graph recovery failed");
+        }
+        return getModelOrEmpty(namedGraph).isIsomorphicWith(previous);
+    }
+
+    private String ntriples(Model model) {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        RDFDataMgr.write(output, model, Lang.NTRIPLES);
+        return output.toString(StandardCharsets.UTF_8);
     }
 
     /**

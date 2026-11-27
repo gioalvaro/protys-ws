@@ -1,0 +1,169 @@
+{
+  "estado": "caso + instancias, sin razonamiento",
+  "consultas": {
+    "P6": {
+      "codigo": 200,
+      "variables": [
+        "planta",
+        "instalacion",
+        "etiqueta"
+      ],
+      "filas_obtenidas": 5,
+      "filas_esperadas": 5,
+      "iguales": true,
+      "faltan": [],
+      "sobran": [],
+      "respuesta": {
+        "head": {
+          "vars": [
+            "planta",
+            "instalacion",
+            "etiqueta"
+          ]
+        },
+        "results": {
+          "bindings": [
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "instalacion": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Cell_Dispersion"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Celda de Dispersión de Pigmento"
+              }
+            },
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "instalacion": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Cell_Mixing"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Celda de Mezcla y Ajuste"
+              }
+            },
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "instalacion": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Cell_Packaging"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Celda de Empaquetado"
+              }
+            },
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "instalacion": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Workshop_Production"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Production Workshop"
+              }
+            },
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "instalacion": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Workshop_QC"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Quality Control Workshop"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "P7": {
+      "codigo": 200,
+      "variables": [
+        "planta",
+        "persona",
+        "etiqueta"
+      ],
+      "filas_obtenidas": 3,
+      "filas_esperadas": 3,
+      "iguales": true,
+      "faltan": [],
+      "sobran": [],
+      "respuesta": {
+        "head": {
+          "vars": [
+            "planta",
+            "persona",
+            "etiqueta"
+          ]
+        },
+        "results": {
+          "bindings": [
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "persona": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Chemist_Maria"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Quality Chemist Maria"
+              }
+            },
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "persona": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Operator_John"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Machine Operator John"
+              }
+            },
+            {
+              "planta": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+              },
+              "persona": {
+                "type": "uri",
+                "value": "http://w3id.org/protys/ontology/paint-ext#Supervisor_Carlos"
+              },
+              "etiqueta": {
+                "type": "literal",
+                "value": "Production Supervisor Carlos"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "status" : "EXECUTED",
+  "engine" : "SWRLAPI Drools",
+  "axiom_preservation" : {
+    "status" : "RETAINED",
+    "scope" : "All non-SWRL axioms parsed from the local input ontology, including annotation axioms. Excludes deliberately deactivated SWRL rules, removed imports, ontology identifiers/header annotations and RDF not represented as parsed OWL axioms; no equivalence with complete ISO standards.",
+    "input_non_swrl_axiom_count" : 4382,
+    "post_inference_non_swrl_axiom_count" : 4900,
+    "input_anonymous_individual_count" : 0,
+    "anonymous_identity_limit" : "Exact structural comparison; no anonymous-individual renaming correspondence. A mismatch involving an anonymous individual is NOT_EVALUABLE, not a claim of scientific information loss. OWL anonymous expressions and RDF lists are compared as parsed axioms.",
+    "intentionally_removed_swrl_rule_count" : 0,
+    "after_inference" : {
+      "stage" : "after_inference",
+      "comparison" : "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+      "expected_anonymous_individual_count" : 0,
+      "observed_anonymous_individual_count" : 0,
+      "expected_axiom_count" : 4382,
+      "observed_axiom_count" : 4900,
+      "retained_axiom_count" : 4382,
+      "lost_axiom_count" : 0,
+      "status" : "RETAINED"
+    },
+    "saved_materialized_reload" : {
+      "stage" : "saved_complete_post_inference_reload_owlapi4",
+      "comparison" : "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+      "expected_anonymous_individual_count" : 0,
+      "observed_anonymous_individual_count" : 0,
+      "expected_axiom_count" : 4900,
+      "observed_axiom_count" : 5017,
+      "retained_axiom_count" : 4900,
+      "lost_axiom_count" : 0,
+      "status" : "RETAINED"
+    },
+    "saved_deductions_reload" : {
+      "stage" : "saved_deductions_reload_owlapi4",
+      "comparison" : "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+      "expected_anonymous_individual_count" : 0,
+      "observed_anonymous_individual_count" : 0,
+      "expected_axiom_count" : 518,
+      "observed_axiom_count" : 753,
+      "retained_axiom_count" : 518,
+      "lost_axiom_count" : 0,
+      "status" : "RETAINED"
+    },
+    "verification_and_serialization_ms" : 191.485451
+  },
+  "input_sha256" : "48332f858d04f30aaf409fbdb0000d3569a7493512f1c00c042f7b9eca052847",
+  "materialized_sha256" : "854f2f83f942b0b4765ff453965c144acc52a796191252c06743e10230f4ac25",
+  "deductions_sha256" : "7e30022b59e78699caa1e14026353f83c275ceb63d26dbc73dd8becc76a44eac",
+  "swrlapi" : "2.1.3",
+  "owlapi" : "4.5.27",
+  "drools" : "7.74.1.Final",
+  "input_rule_count" : 22,
+  "active_rule_count" : 22,
+  "imported_rule_count" : 22,
+  "new_axiom_count" : 518,
+  "engine_inferred_axiom_count" : 1886,
+  "peak_heap_bytes" : 144904704,
+  "load_ms" : 1393.500996,
+  "swrl_ms" : 531.797407,
+  "total_ms" : 2133.505569
+}

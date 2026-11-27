@@ -1,0 +1,218 @@
+{
+  "head" : {
+    "vars" : [ "operation", "efficiency" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op1"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "10.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op2"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op3"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "3.3333333333333333"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op4"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "10.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op5"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "10.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op6"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Op7"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "9.84000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op1"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op2"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "2.5000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op3"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "1.6666666666666667"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op4"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op5"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op6"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "2.5000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Op7"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "4.88000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op1"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "10.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op2"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op3"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "3.3333333333333333"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op4"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "10.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op5"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "10.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op6"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "5.0000000000000000"
+      }
+    }, {
+      "operation" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Op7"
+      },
+      "efficiency" : {
+        "type" : "literal",
+        "datatype" : "http://www.w3.org/2001/XMLSchema#decimal",
+        "value" : "9.7392000000000000000"
+      }
+    } ]
+  }
+}

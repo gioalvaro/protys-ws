@@ -77,82 +77,57 @@ export const useValidateModule = () => {
   });
 };
 
-/**
- * Fetches individual details
- */
-export const useIndividual = (uri, options = {}) => {
+/** Mensaje de la validación que la API ejecuta después de cada edición. */
+export function validationSummary(validation) {
+  if (!validation) return 'validation not reported';
+  const seconds = (validation.timeMs / 1000).toFixed(1);
+  if (validation.status === 'CONSISTENT') return `network consistent (validated in ${seconds} s)`;
+  if (validation.status === 'INCONSISTENT') return `network INCONSISTENT (validated in ${seconds} s)`;
+  return `validation not evaluated: ${validation.message || 'see details'} (${seconds} s)`;
+}
+
+function errorMessage(error, fallback) {
+  return error.response?.data?.message || fallback;
+}
+
+/** Individuos de una clase (rdf:type exacto), en todos los módulos registrados. */
+export const useClassIndividuals = (classUri, options = {}) => {
   return useQuery({
-    queryKey: ['individuals', uri],
-    queryFn: async () => {
-      return await ontologyAPI.getIndividual(uri);
-    },
-    enabled: !!uri,
-    staleTime: 5 * 60 * 1000,
+    queryKey: ['individuals', 'class', classUri],
+    queryFn: async () => ontologyAPI.listIndividuals(classUri),
+    enabled: !!classUri,
     ...options,
   });
 };
 
-/**
- * Mutation for creating a new individual
- */
-export const useCreateIndividual = () => {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: async ({ classUri, properties }) => {
-      return await ontologyAPI.createIndividual(classUri, properties);
-    },
-    onSuccess: (data) => {
-      queryClient.invalidateQueries({ queryKey: ['individuals'] });
-      toast.success('Individual created successfully');
-    },
-    onError: (error) => {
-      const message = error.response?.data?.message || 'Failed to create individual';
-      toast.error(message);
-    },
+/** Detalle de un individuo. */
+export const useIndividual = (uri, options = {}) => {
+  return useQuery({
+    queryKey: ['individuals', 'detail', uri],
+    queryFn: async () => ontologyAPI.getIndividual(uri),
+    enabled: !!uri,
+    ...options,
   });
 };
 
-/**
- * Mutation for updating an individual
- */
-export const useUpdateIndividual = () => {
+// Las mutaciones no muestran avisos: el componente muestra un único aviso con el resultado de la validación.
+function useIndividualMutation(mutationFn, fallback) {
   const queryClient = useQueryClient();
-
   return useMutation({
-    mutationFn: async ({ uri, properties }) => {
-      return await ontologyAPI.updateIndividual(uri, properties);
-    },
-    onSuccess: (_, { uri }) => {
-      queryClient.invalidateQueries({ queryKey: ['individuals', uri] });
-      toast.success('Individual updated successfully');
-    },
-    onError: (error) => {
-      const message = error.response?.data?.message || 'Failed to update individual';
-      toast.error(message);
-    },
+    mutationFn,
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['individuals'] }),
+    onError: (error) => toast.error(errorMessage(error, fallback)),
   });
-};
+}
 
-/**
- * Mutation for deleting an individual
- */
-export const useDeleteIndividual = () => {
-  const queryClient = useQueryClient();
+export const useCreateIndividual = () =>
+  useIndividualMutation(({ classUri, body }) => ontologyAPI.createIndividual(classUri, body), 'Failed to create individual');
 
-  return useMutation({
-    mutationFn: async (uri) => {
-      await ontologyAPI.deleteIndividual(uri);
-      return uri;
-    },
-    onSuccess: (uri) => {
-      queryClient.invalidateQueries({ queryKey: ['individuals'] });
-      queryClient.removeQueries({ queryKey: ['individuals', uri] });
-      toast.success('Individual deleted successfully');
-    },
-    onError: (error) => {
-      const message = error.response?.data?.message || 'Failed to delete individual';
-      toast.error(message);
-    },
-  });
-};
+export const useUpdateIndividual = () =>
+  useIndividualMutation(({ uri, body }) => ontologyAPI.updateIndividual(uri, body), 'Failed to update individual');
+
+export const useDeleteIndividual = () =>
+  useIndividualMutation((uri) => ontologyAPI.deleteIndividual(uri), 'Failed to delete individual');
+
+export const useUndoIndividualEdit = () =>
+  useIndividualMutation((editId) => ontologyAPI.undoIndividualEdit(editId), 'Failed to undo the edit');

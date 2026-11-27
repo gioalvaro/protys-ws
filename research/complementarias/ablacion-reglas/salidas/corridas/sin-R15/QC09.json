@@ -1,0 +1,13 @@
+{
+  "head" : {
+    "vars" : [ "resource" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "resource" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#PearlMill_01"
+      }
+    } ]
+  }
+}

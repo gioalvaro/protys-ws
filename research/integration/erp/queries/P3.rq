@@ -1,0 +1,18 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX prod: <http://w3id.org/protys/ontology/product#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# P3 Productos que usan un recurso X.
+# Variante de Q02: el producto se llega por proceso (c:produces), no por lote. Un producto "usa" un
+# recurso si alguna operación del proceso que lo produce requiere ese recurso.
+SELECT DISTINCT ?g ?resource ?resourceName ?product ?productName
+WHERE {
+  GRAPH ?g {
+    ?op i:requiresResource ?resource ; i:partOfProcess ?process .
+    ?process c:produces ?product .
+  }
+  FILTER(STRSTARTS(STR(?g), "http://w3id.org/protys/erp/"))
+  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }
+  OPTIONAL { GRAPH ?g { ?product c:hasName ?productName } }
+}
+ORDER BY ?g ?resource ?product

@@ -19,7 +19,8 @@ export const useDashboardStats = (options = {}) => {
 
 /**
  * Fetches system health information with 60-second refetch interval
- * Includes service availability status
+ * Returns the API response status and statically declared registered services.
+ * This endpoint does not probe the availability of its external dependencies.
  */
 export const useSystemHealth = (options = {}) => {
   return useQuery({
@@ -34,7 +35,7 @@ export const useSystemHealth = (options = {}) => {
 };
 
 /**
- * Fetches recent system activity log
+ * Fetches an aggregate activity snapshot object, not a list of logged events.
  */
 export const useRecentActivity = (options = {}) => {
   return useQuery({

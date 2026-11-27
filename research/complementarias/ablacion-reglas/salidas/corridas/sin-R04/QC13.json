@@ -1,0 +1,13 @@
+{
+  "head" : {
+    "vars" : [ "lot" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      }
+    } ]
+  }
+}

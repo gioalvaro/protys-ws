@@ -6,28 +6,122 @@ import {
   TrashIcon,
   CheckCircleIcon,
   XCircleIcon,
+  MinusCircleIcon,
   ArrowPathIcon,
   Cog6ToothIcon,
+  TableCellsIcon,
 } from '@heroicons/react/24/outline';
 import {
   useConnectors,
   useConnector,
   useRegisterConnector,
   useTestConnection,
+  useIntrospectSchema,
   useMaterialize,
   useDeleteConnector,
 } from '../../hooks/useERP';
 
+// Contrato de la API (ERPConnectorResponse): status es REGISTERED, CONNECTED, MATERIALIZED o ERROR;
+// type es ADEMPIERE, ODOO o CUSTOM; la contraseña es de sólo escritura y nunca vuelve.
+export const STATUS_STYLE = {
+  CONNECTED: { label: 'Connected', className: 'bg-green-100 text-green-700', textClass: 'text-green-600', Icon: CheckCircleIcon },
+  MATERIALIZED: { label: 'Materialized', className: 'bg-green-100 text-green-700', textClass: 'text-green-600', Icon: CheckCircleIcon },
+  REGISTERED: { label: 'Registered', className: 'bg-gray-100 text-gray-700', textClass: 'text-gray-700', Icon: MinusCircleIcon },
+  ERROR: { label: 'Error', className: 'bg-red-100 text-red-700', textClass: 'text-red-600', Icon: XCircleIcon },
+};
+const UNKNOWN_STATUS = { label: 'Unknown', className: 'bg-gray-100 text-gray-700', textClass: 'text-gray-700', Icon: MinusCircleIcon };
+export const statusStyle = (status) => STATUS_STYLE[status] || { ...UNKNOWN_STATUS, label: status || 'Unknown' };
+
+const TYPE_LABEL = { ADEMPIERE: 'ADempiere', ODOO: 'Odoo', CUSTOM: 'Custom (JDBC)' };
+const typeLabel = (type) => TYPE_LABEL[type] || type || '';
+
+/**
+ * Servidor, puerto y base de una URL JDBC, sin credenciales ni parámetros. Devuelve null si la URL no
+ * tiene la forma jdbc:<driver>://<servidor>[:<puerto>]/<base>.
+ */
+export function describeJdbcUrl(jdbcUrl) {
+  const match = /^jdbc:[a-z0-9]+:\/\/(?:[^@/?;]*@)?([^/?;:]+)(?::(\d+))?\/([^?;/]*)/i.exec(jdbcUrl || '');
+  if (!match) return null;
+  return { host: match[1], port: match[2] || null, database: match[3] || null };
+}
+
+// La API devuelve LocalDateTime sin zona (hora del servidor): se muestra tal cual, sin convertirla.
+const formatServerTime = (value) => (value ? String(value).replace('T', ' ').slice(0, 16) : null);
+
+const EMPTY_FORM = {
+  name: '',
+  type: 'CUSTOM',
+  jdbcUrl: '',
+  username: '',
+  password: '',
+  namedGraph: '',
+  r2rmlMappingPath: '',
+};
+
+/** Cuerpo de POST /api/erp/connectors con los nombres del modelo ERPConnector. */
+export function connectorRequestBody(form) {
+  const body = {
+    name: form.name.trim(),
+    type: form.type,
+    jdbcUrl: form.jdbcUrl.trim(),
+    username: form.username.trim() || null,
+    password: form.password || null,
+    namedGraph: form.namedGraph.trim(),
+    r2rmlMappingPath: form.r2rmlMappingPath.trim() || null,
+  };
+  const database = describeJdbcUrl(body.jdbcUrl)?.database;
+  if (database) body.databaseName = database;
+  return body;
+}
+
+function ConnectionSummary({ connector }) {
+  const server = describeJdbcUrl(connector.jdbcUrl);
+  return (
+    <dl className="grid grid-cols-[auto,1fr] gap-x-3 gap-y-1 text-xs text-gray-600">
+      <dt className="text-gray-500">Server</dt>
+      <dd className="text-gray-800">{server ? `${server.host}${server.port ? `:${server.port}` : ''}` : '—'}</dd>
+      <dt className="text-gray-500">Database</dt>
+      <dd className="text-gray-800">{server?.database || connector.databaseName || '—'}</dd>
+      <dt className="text-gray-500">User</dt>
+      <dd className="text-gray-800">{connector.username || '—'}</dd>
+      {connector.namedGraph && (
+        <>
+          <dt className="text-gray-500">Target graph</dt>
+          <dd className="text-gray-800 break-all">{connector.namedGraph}</dd>
+        </>
+      )}
+      {connector.lastMaterializationAt && (
+        <>
+          <dt className="text-gray-500">Last materialized</dt>
+          <dd className="text-gray-800">
+            {formatServerTime(connector.lastMaterializationAt)}
+            {connector.tripleCount != null && ` · ${connector.tripleCount} triples`}
+          </dd>
+        </>
+      )}
+    </dl>
+  );
+}
+
+function StatusBadge({ status }) {
+  const style = statusStyle(status);
+  return (
+    <div
+      data-testid="connector-status"
+      data-status={status}
+      className={`px-2 py-1 text-xs font-medium rounded-full flex items-center gap-1 ${style.className}`}
+    >
+      <style.Icon className="w-3 h-3" />
+      {style.label}
+    </div>
+  );
+}
+
 function ErpIntegration() {
   const [showAddConnector, setShowAddConnector] = useState(false);
   const [selectedConnector, setSelectedConnector] = useState(null);
-  const [formData, setFormData] = useState({
-    name: '',
-    type: 'sap',
-    connectionString: '',
-    username: '',
-    password: '',
-  });
+  const [formData, setFormData] = useState(EMPTY_FORM);
+  const [actionResult, setActionResult] = useState(null);
   const queryClient = useQueryClient();
 
   const { data: connectors, isLoading: connectorsLoading } = useConnectors();
@@ -37,30 +131,52 @@ function ErpIntegration() {
 
   const registerConnectorMutation = useRegisterConnector();
   const testConnectionMutation = useTestConnection();
+  const introspectMutation = useIntrospectSchema();
   const materializeMutation = useMaterialize();
   const deleteConnectorMutation = useDeleteConnector();
+  const busy = testConnectionMutation.isPending || introspectMutation.isPending
+    || materializeMutation.isPending || deleteConnectorMutation.isPending;
+
+  const closeConnectorForm = () => {
+    if (registerConnectorMutation.isPending) return;
+    setFormData((current) => ({ ...current, password: '' }));
+    setShowAddConnector(false);
+  };
 
   const handleCreateConnector = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.connectionString) {
-      toast.error('Please fill in all required fields');
+    if (!formData.name.trim() || !formData.jdbcUrl.trim() || !formData.namedGraph.trim()) {
+      toast.error('Name, JDBC URL and target graph are required');
       return;
     }
-    registerConnectorMutation.mutate(formData, {
+    registerConnectorMutation.mutate(connectorRequestBody(formData), {
       onSuccess: () => {
-        toast.success('Connector created successfully');
         setShowAddConnector(false);
-        setFormData({
-          name: '',
-          type: 'sap',
-          connectionString: '',
-          username: '',
-          password: '',
-        });
+        setFormData(EMPTY_FORM);
         queryClient.invalidateQueries({ queryKey: ['erp', 'connectors'] });
       },
     });
   };
+
+  const selectConnector = (connector) => {
+    setSelectedConnector(connector);
+    setActionResult(null);
+  };
+
+  const runAction = (mutation, label, describe) => {
+    const id = selectedConnector.id;
+    mutation.mutate(id, {
+      onSuccess: (result) => {
+        setActionResult({ ok: true, text: describe(result) });
+        queryClient.invalidateQueries({ queryKey: ['erp', 'connectors'] });
+      },
+      onError: (error) => {
+        setActionResult({ ok: false, text: `${label}: ${error.response?.data?.message || 'request failed'}` });
+      },
+    });
+  };
+
+  const detail = selectedConnectorDetail || selectedConnector;
 
   return (
     <div className="space-y-6">
@@ -71,7 +187,8 @@ function ErpIntegration() {
           <p className="text-sm text-gray-600">Connect and materialize external systems</p>
         </div>
         <button
-          onClick={() => setShowAddConnector(!showAddConnector)}
+          onClick={() => showAddConnector ? closeConnectorForm() : setShowAddConnector(true)}
+          disabled={registerConnectorMutation.isPending}
           className="btn-primary flex items-center gap-2"
         >
           <PlusIcon className="w-4 h-4" />
@@ -86,63 +203,93 @@ function ErpIntegration() {
           <form onSubmit={handleCreateConnector} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="label">Connector Name</label>
+                <label className="label" htmlFor="erp-name">Connector Name</label>
                 <input
+                  id="erp-name"
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="e.g., SAP Production"
+                  placeholder="e.g., odoo-production"
                   className="input"
                   required
                 />
               </div>
               <div>
-                <label className="label">ERP Type</label>
+                <label className="label" htmlFor="erp-type">ERP Type</label>
                 <select
+                  id="erp-type"
                   value={formData.type}
                   onChange={(e) => setFormData({ ...formData, type: e.target.value })}
                   className="input"
                 >
-                  <option value="sap">SAP</option>
-                  <option value="oracle">Oracle EBS</option>
-                  <option value="dynamics">Microsoft Dynamics</option>
-                  <option value="salesforce">Salesforce</option>
-                  <option value="custom">Custom SQL</option>
+                  <option value="ADEMPIERE">ADempiere</option>
+                  <option value="ODOO">Odoo</option>
+                  <option value="CUSTOM">Custom (JDBC)</option>
                 </select>
               </div>
             </div>
 
             <div>
-              <label className="label">Connection String</label>
+              <label className="label" htmlFor="erp-jdbc-url">JDBC URL</label>
               <input
+                id="erp-jdbc-url"
                 type="text"
-                value={formData.connectionString}
-                onChange={(e) => setFormData({ ...formData, connectionString: e.target.value })}
-                placeholder="jdbc:mysql://host:3306/database or http://endpoint"
-                className="input"
+                value={formData.jdbcUrl}
+                onChange={(e) => setFormData({ ...formData, jdbcUrl: e.target.value })}
+                placeholder="jdbc:postgresql://host:5432/database"
+                className="input font-mono"
                 required
               />
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="label">Username</label>
+                <label className="label" htmlFor="erp-username">Username</label>
                 <input
+                  id="erp-username"
                   type="text"
                   value={formData.username}
                   onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                  placeholder="Database user"
+                  placeholder="Read-only (SELECT-only) database user"
                   className="input"
                 />
               </div>
               <div>
-                <label className="label">Password</label>
+                <label className="label" htmlFor="erp-password">Password</label>
                 <input
+                  id="erp-password"
                   type="password"
+                  autoComplete="new-password"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                  placeholder="Database password"
+                  placeholder="Not shown after saving"
                   className="input"
+                />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="label" htmlFor="erp-graph">Target graph</label>
+                <input
+                  id="erp-graph"
+                  type="text"
+                  value={formData.namedGraph}
+                  onChange={(e) => setFormData({ ...formData, namedGraph: e.target.value })}
+                  placeholder="http://w3id.org/protys/erp/<source>"
+                  className="input font-mono"
+                  required
+                />
+              </div>
+              <div>
+                <label className="label" htmlFor="erp-mapping">R2RML mapping path (on the server)</label>
+                <input
+                  id="erp-mapping"
+                  type="text"
+                  value={formData.r2rmlMappingPath}
+                  onChange={(e) => setFormData({ ...formData, r2rmlMappingPath: e.target.value })}
+                  placeholder="/opt/protys/mappings/source.r2rml.ttl"
+                  className="input font-mono"
                 />
               </div>
             </div>
@@ -150,7 +297,8 @@ function ErpIntegration() {
             <div className="flex gap-2 pt-4">
               <button
                 type="button"
-                onClick={() => setShowAddConnector(false)}
+                onClick={closeConnectorForm}
+                disabled={registerConnectorMutation.isPending}
                 className="btn-secondary flex-1"
               >
                 Cancel
@@ -183,7 +331,8 @@ function ErpIntegration() {
               {connectors.map((connector) => (
                 <div
                   key={connector.id}
-                  onClick={() => setSelectedConnector(connector)}
+                  data-testid="connector-card"
+                  onClick={() => selectConnector(connector)}
                   className={`p-4 border rounded-lg cursor-pointer transition-colors duration-150 ${
                     selectedConnector?.id === connector.id
                       ? 'border-protys-500 bg-protys-50'
@@ -193,30 +342,11 @@ function ErpIntegration() {
                   <div className="flex items-start justify-between mb-2">
                     <div>
                       <h3 className="font-semibold text-gray-900">{connector.name}</h3>
-                      <p className="text-sm text-gray-600">{connector.type.toUpperCase()}</p>
+                      <p className="text-sm text-gray-600">{typeLabel(connector.type)}</p>
                     </div>
-                    <div
-                      className={`px-2 py-1 text-xs font-medium rounded-full flex items-center gap-1 ${
-                        connector.status === 'connected'
-                          ? 'bg-green-100 text-green-700'
-                          : 'bg-red-100 text-red-700'
-                      }`}
-                    >
-                      {connector.status === 'connected' ? (
-                        <CheckCircleIcon className="w-3 h-3" />
-                      ) : (
-                        <XCircleIcon className="w-3 h-3" />
-                      )}
-                      {connector.status}
-                    </div>
+                    <StatusBadge status={connector.status} />
                   </div>
-
-                  <div className="text-xs text-gray-500">
-                    <p>Connection: {connector.connectionString}</p>
-                    {connector.lastMaterialized && (
-                      <p>Last materialized: {new Date(connector.lastMaterialized).toLocaleDateString()}</p>
-                    )}
-                  </div>
+                  <ConnectionSummary connector={connector} />
                 </div>
               ))}
             </div>
@@ -238,67 +368,65 @@ function ErpIntegration() {
                   <div key={i} className="h-8 bg-gray-200 rounded skeleton"></div>
                 ))}
               </div>
-            ) : selectedConnectorDetail ? (
+            ) : detail ? (
               <>
                 <div className="space-y-2 text-sm">
                   <div>
                     <p className="text-gray-600">Type</p>
-                    <p className="font-medium text-gray-900">{selectedConnectorDetail.type.toUpperCase()}</p>
+                    <p className="font-medium text-gray-900">{typeLabel(detail.type)}</p>
                   </div>
                   <div>
                     <p className="text-gray-600">Status</p>
-                    <p
-                      className={`font-medium ${
-                        selectedConnectorDetail.status === 'connected'
-                          ? 'text-green-600'
-                          : 'text-red-600'
-                      }`}
-                    >
-                      {selectedConnectorDetail.status}
-                    </p>
+                    <p className={`font-medium ${statusStyle(detail.status).textClass}`}>{statusStyle(detail.status).label}</p>
                   </div>
-                  {selectedConnectorDetail.statistics && (
-                    <>
-                      <div>
-                        <p className="text-gray-600">Tables</p>
-                        <p className="font-medium text-gray-900">
-                          {selectedConnectorDetail.statistics.tableCount}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">Records</p>
-                        <p className="font-medium text-gray-900">
-                          {selectedConnectorDetail.statistics.recordCount}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-gray-600">Triples Materialized</p>
-                        <p className="font-medium text-gray-900">
-                          {selectedConnectorDetail.statistics.tripleCount}
-                        </p>
-                      </div>
-                    </>
+                  {detail.r2rmlMappingPath && (
+                    <div>
+                      <p className="text-gray-600">Mapping</p>
+                      <p className="font-medium text-gray-900 break-all">{detail.r2rmlMappingPath}</p>
+                    </div>
+                  )}
+                  {detail.tripleCount != null && (
+                    <div>
+                      <p className="text-gray-600">Triples Materialized</p>
+                      <p className="font-medium text-gray-900">{detail.tripleCount}</p>
+                    </div>
                   )}
                 </div>
 
+                {actionResult && (
+                  <p
+                    role="status"
+                    className={`text-sm rounded-md p-2 ${actionResult.ok ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}
+                  >
+                    {actionResult.text}
+                  </p>
+                )}
+
                 <div className="space-y-2 pt-4 border-t border-gray-200">
                   <button
-                    onClick={() => testConnectionMutation.mutate(selectedConnector.id)}
-                    disabled={testConnectionMutation.isPending}
+                    onClick={() => runAction(testConnectionMutation, 'Connection test',
+                      (r) => (r.connected ? 'Connection test passed' : 'Connection test failed'))}
+                    disabled={busy}
                     className="btn-secondary w-full flex justify-center gap-2 disabled:opacity-50"
                   >
                     <ArrowPathIcon className="w-4 h-4" />
                     {testConnectionMutation.isPending ? 'Testing...' : 'Test Connection'}
                   </button>
                   <button
-                    onClick={() =>
-                      materializeMutation.mutate(selectedConnector.id, {
-                        onSuccess: () => {
-                          queryClient.invalidateQueries({ queryKey: ['erp', 'connectors'] });
-                        },
-                      })
-                    }
-                    disabled={materializeMutation.isPending}
+                    onClick={() => runAction(introspectMutation, 'Schema inspection',
+                      (r) => `Schema inspected: ${Object.keys(r || {}).length} tables`)}
+                    disabled={busy}
+                    className="btn-secondary w-full flex justify-center gap-2 disabled:opacity-50"
+                  >
+                    <TableCellsIcon className="w-4 h-4" />
+                    {introspectMutation.isPending ? 'Inspecting...' : 'Inspect Schema'}
+                  </button>
+                  <button
+                    onClick={() => runAction(materializeMutation, 'Materialization',
+                      (r) => (r.status === 'SUCCESS'
+                        ? `Materialized: ${r.tripleCount ?? 0} triples in ${r.namedGraph || detail.namedGraph}`
+                        : `Materialization ${String(r.status || 'not confirmed').toLowerCase()}: no data was published`))}
+                    disabled={busy}
                     className="btn-success w-full flex justify-center gap-2 disabled:opacity-50"
                   >
                     <Cog6ToothIcon className="w-4 h-4" />
@@ -310,11 +438,12 @@ function ErpIntegration() {
                         deleteConnectorMutation.mutate(selectedConnector.id, {
                           onSuccess: () => {
                             setSelectedConnector(null);
+                            setActionResult(null);
                           },
                         });
                       }
                     }}
-                    disabled={deleteConnectorMutation.isPending}
+                    disabled={busy}
                     className="btn-danger w-full flex justify-center gap-2 disabled:opacity-50"
                   >
                     <TrashIcon className="w-4 h-4" />
@@ -333,7 +462,7 @@ function ErpIntegration() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <h3 className="font-medium text-gray-900 mb-2">1. Connect System</h3>
-            <p className="text-sm text-gray-600">Create a new connector with your ERP credentials</p>
+            <p className="text-sm text-gray-600">Register the ERP database with a read-only (SELECT-only) user</p>
           </div>
           <div>
             <h3 className="font-medium text-gray-900 mb-2">2. Test Connection</h3>

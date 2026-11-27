@@ -43,6 +43,9 @@ public class OntologyModule {
     @Column(name = "file_path")
     private String filePath;
 
+    @Column(name = "incorporation_session_id", unique = true)
+    private UUID incorporationSessionId;
+
     @Column(nullable = false)
     private String version;
 

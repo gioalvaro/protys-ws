@@ -1,0 +1,485 @@
+{
+  "checks" : [ {
+    "path" : "<repo>/research/model/examples/Q01_presentacion.sparql",
+    "sha256" : "a5be7ae0908b25d4fddc8a3fe9b04f7b0069ad6a33692e5dee61a1b40c9eb78b",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q02_presentacion.sparql",
+    "sha256" : "1f1db35616635f358500b4087161ffd33268baa738b045136373030a844adc40",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q03_presentacion.sparql",
+    "sha256" : "86327b8cac2e5378288af16f7d98c903ad931531c2d668feddbd91327a9d86ec",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q04_presentacion.sparql",
+    "sha256" : "597aea0c97a436ec670e9269eaf0872f721f8830d739b0758698f0e108e42b42",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q05_presentacion.sparql",
+    "sha256" : "07c710a52dabbe0803932070e46c92bf72bd8a8f2503c1c986050463cf0664c9",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q06_presentacion.sparql",
+    "sha256" : "da06171a55a88626bff3c1cc6b95178afd4c362d1f7eca2b3832f5140314f966",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q07_presentacion.sparql",
+    "sha256" : "3d4ff6c828039ba1fee14add50d4610d61db43b16743fd18408516021604dba7",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q08_presentacion.sparql",
+    "sha256" : "025cc684b51f05e66e347621023153460acb6771ad4b5ce5e25e9028aa016fde",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q09_presentacion.sparql",
+    "sha256" : "629c43d0058c3726a2996599e9839667b4285c08b5be9a7a964aefac23449f7e",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q10_presentacion.sparql",
+    "sha256" : "21a14125579697b1c615a9d84cdf264573d51e25d14e8ebbebeb79342330e234",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q11_presentacion.sparql",
+    "sha256" : "a3a8fa8dfe9e5e00d7b8c12f19a4761a8a4f96963eea1748a0833d50a528b8c7",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q12_presentacion.sparql",
+    "sha256" : "14a15efd7a0b2d9a46a2c55979561772698021167d0b9a59a9228c4866622d6e",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q13_presentacion.sparql",
+    "sha256" : "98e5f338d759a5ff6b0965eada2801b9cef9cb3214ebeb9027c153711281ed0a",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q14_presentacion.sparql",
+    "sha256" : "0301703ca5ff1d1a11e7989f2365a9b2917f85cf6930c1bde812717392b919a7",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q15_presentacion.sparql",
+    "sha256" : "5a2f88aac25968ae9c6933439ef695136028b427733d48f10e17db2dce2b6dd4",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q16_presentacion.sparql",
+    "sha256" : "07dea1b1931e14e72f4dc7f6aee61320ba2eb58e07db0a912b9314e3681b9923",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q17_presentacion.sparql",
+    "sha256" : "413de163cb3ca5f7986500f88d8158c667230d9edb5c2547d8912c4a0882b768",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q18_presentacion.sparql",
+    "sha256" : "4bdfaaa4828b02f13385858f751c5d4533a13c8b70aacd71f37f30eeb8654351",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q19_presentacion.sparql",
+    "sha256" : "17960141c1af4c477c00afa39bc20fde2172d3f17ddeb9c8effb880a168fbec1",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q20_presentacion.sparql",
+    "sha256" : "e733723883ad57a8f00804df50ea1268bbc7fa241f2936d95b793102eada5020",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/Q21_presentacion.sparql",
+    "sha256" : "707492ff5dc90d31f818735b5fba56c33e3aae24e72f858be54a89e3a3daa9a5",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/R07_presentacion.sparql",
+    "sha256" : "5609e5b4a4d8a2df0df616e206b9dbfb95e971591c1bab8e2920cd08e8ce4705",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/R16_presentacion.sparql",
+    "sha256" : "b3e7c739af7154846dcd64fd1318cf1fc4accadb4506eb9857f83d03431a7dc2",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/R19_presentacion.sparql",
+    "sha256" : "d7b24e6bf1811dbba0c3f806a3b3e25dbe566ee4ebb12132f0d26a0541346645",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/R26_presentacion.sparql",
+    "sha256" : "87113a9ebbec9ee17cdc77b5f57c338159a144ed2bc8987b00fd9f034252ab85",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c3_consulta_q04.sparql",
+    "sha256" : "597aea0c97a436ec670e9269eaf0872f721f8830d739b0758698f0e108e42b42",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c3_extracto_alineamiento.ttl",
+    "sha256" : "8bb43cbe8ca972a32ebaa2455f79fc60ad4d3710683b3b186f4559ea854e7d56",
+    "kind" : "RDF",
+    "triples" : 40,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c3_extracto_iso14040.ttl",
+    "sha256" : "358691bc2bbf6fa616b4b7f5a4744381b707595521aaea40680f3f441f102047",
+    "kind" : "RDF",
+    "triples" : 15,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c3_extracto_iso15531.ttl",
+    "sha256" : "33c7314306bf1f9dd490a5ed67e4ac20bb13b3822b2297b709798344d4456938",
+    "kind" : "RDF",
+    "triples" : 20,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c3_integracion_ilustrativa.sparql",
+    "sha256" : "e3fb2a477bb2a00dfcaf09b8027427333ba142d2df940205a2b30e8a576cd99c",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c3_integracion_ilustrativa.ttl",
+    "sha256" : "ae96714312bd5b3fbe530041c325b9d83007c09fd00bb9de9243ca9be40485e8",
+    "kind" : "RDF",
+    "triples" : 4,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_datos_factores_materiales.ttl",
+    "sha256" : "0ceaafd8ce408996f7cd9d23b1d0fe5c85bfb94fb2c66e9b7ce0e425a12bf9a0",
+    "kind" : "RDF",
+    "triples" : 12,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_datos_operacion_batcha_op2.ttl",
+    "sha256" : "ddb5f87b8aa7e67287c6a8a574316f4908c45d9d0226613c28ee150cb54528c1",
+    "kind" : "RDF",
+    "triples" : 68,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_datos_pearlmill.ttl",
+    "sha256" : "6fddc3bf6f362d8e3b221987bf6b3f86b4f32a678cf182ebb5e1f957e5ce3155",
+    "kind" : "RDF",
+    "triples" : 12,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_cardinalidades.ttl",
+    "sha256" : "afd66fe35c72787ca18aab9775a20b51a7da17d7e3370ba90c3266dec4d455c4",
+    "kind" : "RDF",
+    "triples" : 8,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_disyunciones.ttl",
+    "sha256" : "97eeb9a503a106f8d4f7e27839186ed2daec92bfa8353bf13f3c5dfd1ead71f7",
+    "kind" : "RDF",
+    "triples" : 20,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_iso14040.ttl",
+    "sha256" : "8f7ca23e2e4e05d8548d06fb9c958c8f3c9506b1b293cc16f0b5d16f3d9bec3b",
+    "kind" : "RDF",
+    "triples" : 10,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_iso15531.ttl",
+    "sha256" : "ca3e3c29ae313c760c12d4a12cde91cfecabd5b57f4496719430e4d534587eef",
+    "kind" : "RDF",
+    "triples" : 17,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_jerarquia_planta.ttl",
+    "sha256" : "08bba8e76252779cbe3b5d4b89d498c66a0b81c54832cb7adb423e0db9b9d915",
+    "kind" : "RDF",
+    "triples" : 18,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_precedes.ttl",
+    "sha256" : "358f6488757d7b71152556c1d543a5c6d97d0d42466373c9550f07aed4f9e4a0",
+    "kind" : "RDF",
+    "triples" : 3,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_propiedades_operacion.ttl",
+    "sha256" : "5b2af3bd30f30e57df39e4b37e3b845ea2cf57af09c5f0bcd6039555f7d159cc",
+    "kind" : "RDF",
+    "triples" : 6,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c4_extracto_union.ttl",
+    "sha256" : "b9ddeb66d7bbf0e4c804b392e41220faad49a989726f05fac666f8aa74209627",
+    "kind" : "RDF",
+    "triples" : 14,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c5_consulta_q04.sparql",
+    "sha256" : "597aea0c97a436ec670e9269eaf0872f721f8830d739b0758698f0e108e42b42",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c5_consulta_q05.sparql",
+    "sha256" : "07c710a52dabbe0803932070e46c92bf72bd8a8f2503c1c986050463cf0664c9",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c5_consulta_q06.sparql",
+    "sha256" : "da06171a55a88626bff3c1cc6b95178afd4c362d1f7eca2b3832f5140314f966",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c5_datos_pearlmill.ttl",
+    "sha256" : "841b754ea039a16fe7ea25d97cbfb5aa5865252aca409fb0cd25b488d1cf29e9",
+    "kind" : "RDF",
+    "triples" : 21,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/examples/c5_r2rml_productos_ilustrativo.ttl",
+    "sha256" : "3441bcc9abda3616dc09897e00aef0459d180ac7d108c2366d412829419b4d8e",
+    "kind" : "RDF",
+    "triples" : 15,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q01.sparql",
+    "sha256" : "4ec7fdb663981a6a31c0283c00af1bf59069f2a263d4c3a89c02eb1dc0e0ac77",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q02.sparql",
+    "sha256" : "51e9d30e8f81bb115f7b48cbd2b6aae3129fd1a9978117511708706887953b34",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q03.sparql",
+    "sha256" : "97124e7e8499667be01d24a06104337fe9bfb1513bcb5a7c98f1a6ffe9d65415",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q04.sparql",
+    "sha256" : "c6184cec13493fa22965edbeb0907258b0202f8f6b99ee63577a577ddce5a51c",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q05.sparql",
+    "sha256" : "f7602bf6b95e6e745105d4f10206dc1e36600f247d4d10f32d6371371d403f25",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q06.sparql",
+    "sha256" : "538903efa4495650a41930c5d972f4dd857acdfe9577d64fe313ac85922980ad",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q07.sparql",
+    "sha256" : "11b2f58bebb208e0b2fb51ecb48d69e75d47ccf0cacdd956a769ea03caec7936",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q08.sparql",
+    "sha256" : "025cc684b51f05e66e347621023153460acb6771ad4b5ce5e25e9028aa016fde",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q09.sparql",
+    "sha256" : "87552b466f81f84416c24e4d73732309f160961ac088cc507b6165136d3e99d2",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q10.sparql",
+    "sha256" : "aecad67338a8ee6323906ab9303511f2a55de3fed3ddd355c89f30e19bea2fba",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q11.sparql",
+    "sha256" : "00e0ca2aa6268a647d9576b20def761660aee0c14f01b9a826d280470859a9f5",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q12.sparql",
+    "sha256" : "997660f43fe8233c1c1ce77fc57db18b6de3486540b45a398bbab7b2fc26c38d",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q13.sparql",
+    "sha256" : "299d73864c22e872996389fdc569c6e14100fc04a4b1c2845232094edbfcccb8",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q14.sparql",
+    "sha256" : "0301703ca5ff1d1a11e7989f2365a9b2917f85cf6930c1bde812717392b919a7",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q15.sparql",
+    "sha256" : "60b577ef7e2f580334765261399047f40ef5d932ca8bef03cd7970d660c3d6c8",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q16.sparql",
+    "sha256" : "e344b5647213b926a2f656bcb3d2e3c3275e576d105b7d6b40c8e2a735321c9c",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q17.sparql",
+    "sha256" : "cc79e7a67b5c294a1a4b31e88a632f6fc271a0479256e67a7d8b426afb597a79",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q18.sparql",
+    "sha256" : "1c6e17a0c564dea3d78a156df6626e41a2155d56f29b3a9c89360eb1ea0a6c88",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q19.sparql",
+    "sha256" : "cd95c444579d976a81caec766e574a410b78408c409e112033b2a423ea987760",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q20.sparql",
+    "sha256" : "df173936d44b2b8c80ec03e1725d2c1e8da329b3edbe623fc729df06bbd6e9ed",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/queries/Q21.sparql",
+    "sha256" : "f1b0d9498d424438f6e1e1effb470cd5050dae27027d941686ff8e12a5f8e03c",
+    "kind" : "SPARQL",
+    "query_type" : 111,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/C26-context-completeness.sparql",
+    "sha256" : "427907baf5da285b2f2c1e1b86cf439d238272683b09c1eb72e481f63afabcbd",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/CCTX-context-completeness.sparql",
+    "sha256" : "a0089079b6eee46559cf7fe9a49b86a474aa44c05f674e61368ad1bef6ceba72",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/CNUM-applicable.sparql",
+    "sha256" : "14bd30931f4046d52b2b61788b331bbf065ebca803e49d57327cb2a64e1edd56",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/CNUM-input-ambiguous.sparql",
+    "sha256" : "901696f169bca200c242789b7d470c4294069ef0bd5d5ca12b2fd7d975d8d5aa",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/CNUM-input-invalid.sparql",
+    "sha256" : "83bb5720f1a6af4b2c595820112d84e3745a2602a5fa9e94a9e4a4bafaac31fd",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/CNUM-materialize.sparql",
+    "sha256" : "562ad48e69bf8d63d95b433841318fdd0a4869c103398c999bb63296b18d3dea",
+    "kind" : "SPARQL",
+    "query_type" : 222,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/CNUM-output-invalid.sparql",
+    "sha256" : "dee4bbc47322fa48cc96db01cc07fcf5571d81ee506dcc39c5736014092c1390",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/R07-materialize.sparql",
+    "sha256" : "52af68a6ad66d634346e29afa377672ffed2820b5d170970bd60755b4e3a8bf9",
+    "kind" : "SPARQL",
+    "query_type" : 222,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/R07.sparql",
+    "sha256" : "adbed0417fce42d131d78b7179d86e41b5cc977b0863574b89d2851f7a6ed34e",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/R16.sparql",
+    "sha256" : "3c000640da464556b86dec6f1b30ae2850b1c60046fb4a4bc3a4e450366ad379",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/R19.sparql",
+    "sha256" : "7af8d1a17cfe79ad472eccbfc6a0e4afee9914badef2f7b31ec838af226fcacb",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  }, {
+    "path" : "<repo>/research/model/validations/R26.sparql",
+    "sha256" : "87113a9ebbec9ee17cdc77b5f57c338159a144ed2bc8987b00fd9f034252ab85",
+    "kind" : "SPARQL",
+    "query_type" : 444,
+    "status" : "PASS"
+  } ],
+  "scope" : "Syntax only; no OWL profile, consistency or SWRL execution assessed.",
+  "status" : "PASS"
+}

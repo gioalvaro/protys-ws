@@ -1,0 +1,28 @@
+{
+  "head" : {
+    "vars" : [ "inventory" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "inventory" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_LCIProcess"
+      }
+    }, {
+      "inventory" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_LCIProcess"
+      }
+    }, {
+      "inventory" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_LCIProcess"
+      }
+    }, {
+      "inventory" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_LCIProcess"
+      }
+    } ]
+  }
+}

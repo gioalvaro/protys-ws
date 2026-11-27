@@ -1,0 +1,860 @@
+<http://w3id.org/protys/fixture#BatchB_LCIProcess>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op2_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#WrongEquipmentCleaning>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/iso15531#ProcessOperation> .
+
+<http://w3id.org/protys/fixture#BatchC_Flow_Biocide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Biocide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Biocide> .
+
+<http://w3id.org/protys/fixture#BatchC>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ProductionOrder>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op2>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/fixture#BatchZero_Plan>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op5>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> .
+
+<http://w3id.org/protys/ontology/iso15531#WorkOrder>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op6_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#QualityAttribute>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Indicator>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#indicatorForLot>
+                <http://w3id.org/protys/fixture#BatchB> .
+
+<http://w3id.org/protys/fixture#BatchA_Order>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/core#HighImpactIndicator>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/enterprise#Station>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op4>
+        a       <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/ontology/enterprise#Cell>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Process>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation>
+                <http://w3id.org/protys/fixture#BatchA_LCIProcess> .
+
+<http://w3id.org/protys/fixture#BatchC_Op2_Subload2>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ManufacturingResource>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op2_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#SystemBoundary>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op3_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#ElectricityGHGThreshold>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#AcrylicResin_Factor>
+        a       <http://w3id.org/protys/ontology/research#EmissionFactor> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op7>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> .
+
+<http://w3id.org/protys/fixture#BatchB_EventStart>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op4>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Activity> .
+
+<http://w3id.org/protys/fixture#BatchB_Flow_Biocide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Biocide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Biocide> .
+
+<http://w3id.org/protys/ontology/iso15531#TimeAttribute>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/research#Supplier>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_EventEnd>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#ThresholdMaterial_Factor>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/research#EmissionFactor> .
+
+<http://w3id.org/protys/fixture#HistoricalCleaning>
+        a       <http://w3id.org/protys/ontology/iso15531#ProcessOperation> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#GoalAndScopeDefinition>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ManufacturingProcess>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_LCIProcess>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op7_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op6_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Flow_Water>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Water>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Water> .
+
+<http://w3id.org/protys/ontology/enterprise#Shop>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#FilterSystem_04>
+        a       <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://w3id.org/protys/ontology/core#Resource> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/resource#Activity>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op2>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/ontology/alignment#GlobalConfig>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op3_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op2_Subload2>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/enterprise#Factory>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op1>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/ontology/iso15531#ManufacturingCapability>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Process>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation>
+                <http://w3id.org/protys/fixture#BatchZero_LCIProcess> .
+
+<http://w3id.org/protys/fixture#BatchB_Inventory>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#inventoryForPlan>
+                <http://w3id.org/protys/fixture#BatchB_Plan> .
+
+<http://w3id.org/protys/fixture#BatchA_Flow_Biocide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Biocide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Biocide> .
+
+<http://w3id.org/protys/fixture#BatchA_Op7_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#ValidCleaning>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/iso15531#ProcessOperation> .
+
+<http://w3id.org/protys/ontology/alignment#SPARQLValidationPattern>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Indicator>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#indicatorForLot>
+                <http://w3id.org/protys/fixture#BatchC> .
+
+<http://w3id.org/protys/fixture#Water_Factor>
+        a       <http://w3id.org/protys/ontology/research#EmissionFactor> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ProcessPlan>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#CharacterizationFactor>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/paint-ext#Intermediate_Product>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://w3id.org/protys/ontology/product#Product> .
+
+<http://w3id.org/protys/fixture#BatchB_Op1>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op3_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op4>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/iso14040#LifeCycleInventory>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_EventStart>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#AcrylicResin>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#AcrylicResin> .
+
+<http://w3id.org/protys/ontology/core#Product>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://w3id.org/protys/ontology/product#Production_Item> .
+
+<http://w3id.org/protys/ontology/iso14040#FunctionalUnit>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#ElementaryFlow>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op7>
+        a       <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/ontology/research#EnvironmentalEnergyRecord>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Operator_01>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> .
+
+<http://w3id.org/protys/ontology/process#Procedure>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op2_Subload2>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op7_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Flow_Water>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Water>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Water> .
+
+<http://w3id.org/protys/fixture#BatchA_Indicator>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#indicatorForLot>
+                <http://w3id.org/protys/fixture#BatchA> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op6>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/fixture#BatchB_Order>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#ImpactCategory>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Plan>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#AcrylicResin>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#AcrylicResin> .
+
+<http://w3id.org/protys/fixture#ThresholdMaterial>
+        a       <http://w3id.org/protys/ontology/core#Resource> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Material> .
+
+<http://w3id.org/protys/fixture#BatchA_Plan>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#AssessedFacility>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#facilityInBoundary>
+                <http://w3id.org/protys/fixture#ElectricityOnlyBoundary> .
+
+<http://w3id.org/protys/fixture#BatchZero_EventEnd>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op6>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/fixture#TitaniumDioxide_Factor>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/research#EmissionFactor> .
+
+<http://w3id.org/protys/ontology/product#Product_Information>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#EnvironmentalAspect>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/process#Process_Plant>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op4_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op3_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#TitaniumDioxide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#TitaniumDioxide> .
+
+<http://w3id.org/protys/ontology/core#CoverageGap>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#CostAttribute>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_EventEnd>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Indicator>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#indicatorForLot>
+                <http://w3id.org/protys/fixture#BatchZero> .
+
+<http://w3id.org/protys/ontology/core#RequiresRecomputeIndicators>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#ElectricityOnlyBoundary>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_QualityRecord>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#qualityForLot>
+                <http://w3id.org/protys/fixture#BatchB> .
+
+<http://w3id.org/protys/fixture#BatchA_Op1>
+        a       <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#TitaniumDioxide>
+        a       <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/core#Resource> , <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/core#Product> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> .
+
+<http://w3id.org/protys/fixture#BatchC_Inventory>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#inventoryForPlan>
+                <http://w3id.org/protys/fixture#BatchC_Plan> .
+
+<http://w3id.org/protys/fixture#BatchC_EventStart>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/product#Thing>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op4>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#AcrylicResin>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#AcrylicResin> .
+
+<http://w3id.org/protys/fixture#BatchZero_LCIProcess>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op2_Subload4>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Water>
+        a       <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://w3id.org/protys/ontology/core#Resource> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/core#Product> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/product#Production_Item> .
+
+<http://w3id.org/protys/fixture#BatchA_Op4_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op3>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/research#Measurement>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Flow_Water>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Water>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Water> .
+
+<http://w3id.org/protys/ontology/core#WaterFlow>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op2_Subload1>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ManufacturingFacility>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_EventEnd>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Inventory>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#inventoryForPlan>
+                <http://w3id.org/protys/fixture#BatchA_Plan> .
+
+<http://w3id.org/protys/fixture#Supplier_B>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op3>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> .
+
+<http://w3id.org/protys/ontology/research#NumericInputValid>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op6>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/fixture#BatchZero_Order>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op4_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/research#RatioObservation>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/core#Hotspot>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op6_Measurement>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_EventStart>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/alignment#Consumed>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_NC>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Inventory>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#inventoryForPlan>
+                <http://w3id.org/protys/fixture#BatchZero_Plan> .
+
+<http://w3id.org/protys/fixture#BatchC_Op1>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ManufacturingData>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/paint-ext#Final_Product>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://w3id.org/protys/ontology/product#Product> .
+
+<http://w3id.org/protys/ontology/iso15531#ProcessState>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Order>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op2_Subload1>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Coalescent>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/fixture#MixingReactor_02>
+        a       <http://w3id.org/protys/ontology/core#Resource> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> .
+
+<http://w3id.org/protys/fixture#BatchC_Op1_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#MissingQC>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#TitaniumDioxide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#TitaniumDioxide> .
+
+<http://w3id.org/protys/ontology/iso14040#ProductFlow>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#TitaniumDioxide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#TitaniumDioxide> .
+
+<http://w3id.org/protys/ontology/alignment#FineGrinding>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op6_Measurement>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#MissingProcess>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/core#Resource>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op5_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op4_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/process#Process_Plan>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op3>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/alignment#R16_ValidationPattern>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#WhitePaint>
+        a       <http://w3id.org/protys/ontology/product#Thing> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/product#Product> .
+
+<http://w3id.org/protys/ontology/research#Subload>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Process>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation>
+                <http://w3id.org/protys/fixture#BatchB_LCIProcess> .
+
+<http://w3id.org/protys/fixture#BatchC_Op6>
+        a       <http://w3id.org/protys/ontology/core#Process> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/process#Process_Activity> .
+
+<http://w3id.org/protys/ontology/iso14040#UnitProcess>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op1_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#Interpretation>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#GridFactor>
+        a       <http://w3id.org/protys/ontology/research#EmissionFactor> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op2_Subload1>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ResourceState>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ManufacturingFlow>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op6_Measurement>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op5>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#TitaniumDioxide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#TitaniumDioxide> .
+
+<http://w3id.org/protys/ontology/core#Enterprise>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#LCAStudy>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op5_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#AcrylicResin>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#AcrylicResin> .
+
+<http://w3id.org/protys/fixture#BatchZero_Flow_Water>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Water>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Water> .
+
+<http://w3id.org/protys/ontology/core#Process>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/core#MissingEnvironmentalData>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#PearlMill_01>
+        a       <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/ontology/iso14040#LifeCycleImpactAssessment>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op5>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op1_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#UnrelatedBottleneck>
+        a       <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/alignment#R07_ValidationPattern>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op5_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/resource#Behaviour>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Process>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation>
+                <http://w3id.org/protys/fixture#BatchC_LCIProcess> .
+
+<http://w3id.org/protys/ontology/research#EmissionFactor>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Biocide_Factor>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/research#EmissionFactor> .
+
+<http://w3id.org/protys/fixture#BatchC_Op3>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#DosingSystem_03>
+        a       <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://w3id.org/protys/ontology/core#Resource> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op2_Subload3>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/product#Customer>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op2>
+        a       <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op6_Measurement>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Plan>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso15531#ProcessOperation>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Biocide>
+        a       <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/core#Product> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/core#Resource> , <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://w3id.org/protys/ontology/product#Production_Item> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Substance> .
+
+<http://w3id.org/protys/fixture#BatchC_QualityRecord>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#qualityForLot>
+                <http://w3id.org/protys/fixture#BatchC> .
+
+<http://w3id.org/protys/ontology/iso15531#Lot>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_LCIProcess>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Coalescent_Factor>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/research#EmissionFactor> .
+
+<http://w3id.org/protys/fixture#BatchC_Op2_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op1_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/alignment#R19_ValidationPattern>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/iso14040#AllocationProcedure>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#PackagingMachine_05>
+        a       <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/core#Resource> .
+
+<http://w3id.org/protys/fixture#MissingOperation>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#Supplier_A>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_QualityRecord>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#qualityForLot>
+                <http://w3id.org/protys/fixture#BatchZero> .
+
+<http://w3id.org/protys/ontology/alignment#R26_ValidationPattern>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op2>
+        a       <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op5>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/fixture#BatchB_Op5_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchC_Op6_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#AcrylicResin>
+        a       <http://w3id.org/protys/ontology/core#Resource> , <http://w3id.org/protys/ontology/product#Production_Item> , <http://w3id.org/protys/ontology/resource#Material> , <http://w3id.org/protys/ontology/product#Product> , <http://w3id.org/protys/ontology/core#Product> , <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/product#Thing> , <http://w3id.org/protys/ontology/product#Substance> , <http://w3id.org/protys/ontology/iso15531#ManufacturingResource> .
+
+<http://w3id.org/protys/fixture#BatchZero_Flow_Biocide>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#flowRefersToProduct>
+                <http://w3id.org/protys/fixture#Biocide>;
+        <http://w3id.org/protys/ontology/alignment#inputFlowForResource>
+                <http://w3id.org/protys/fixture#Biocide> .
+
+<http://w3id.org/protys/ontology/process#Parameters>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op2_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchZero_Op7>
+        a       <http://www.w3.org/2002/07/owl#Thing> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> .
+
+<http://w3id.org/protys/ontology/research#ThresholdRecord>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/resource#Capability>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_QualityRecord>
+        a       <http://www.w3.org/2002/07/owl#Thing>;
+        <http://w3id.org/protys/ontology/alignment#qualityForLot>
+                <http://w3id.org/protys/fixture#BatchA> .
+
+<http://w3id.org/protys/ontology/iso14040#ImpactIndicator>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op7_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchA_Op6_Ratio>
+        a       <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/enterprise#Location>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/ontology/resource#Role>
+        <http://www.w3.org/2000/01/rdf-schema#subClassOf>
+                <http://www.w3.org/2002/07/owl#Thing> .
+
+<http://w3id.org/protys/fixture#BatchB_Op7>
+        a       <http://w3id.org/protys/ontology/resource#Activity> , <http://w3id.org/protys/ontology/core#Process> , <http://w3id.org/protys/ontology/process#Process_Activity> , <http://www.w3.org/2002/07/owl#Thing> .

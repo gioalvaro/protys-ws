@@ -1,0 +1,9 @@
+# QC12 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué recursos están temporalmente no disponibles por un mantenimiento activo?
+# R15: Marcar indisponibilidad temporal por mantenimiento ACTIVE en la instantánea. Indisponibilidad temporal sólo con mantenimiento ACTIVE de la instantánea; no registro histórico/programado
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?resource WHERE { ?resource a i:temporarilyUnavailable . } ORDER BY ?resource

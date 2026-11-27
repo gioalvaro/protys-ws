@@ -1,0 +1,142 @@
+# Mapeo R2RML: ADempiere 3.9.4 (cliente demo GardenWorld) → PROTYS(KB).
+# Correspondencias: research/integration/erp/correspondencias.md (E = entidad, R = relación).
+# Base PostgreSQL, esquema "adempiere"; identificadores sin comillas (PostgreSQL los pliega a minúsculas).
+# Todas las consultas son SELECT y se ejecutan con el rol de sólo lectura protys_ro.
+
+@prefix rr:   <http://www.w3.org/ns/r2rml#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix c:    <http://w3id.org/protys/ontology/core#> .
+@prefix r:    <http://w3id.org/protys/ontology/resource#> .
+@prefix prod: <http://w3id.org/protys/ontology/product#> .
+@prefix i:    <http://w3id.org/protys/ontology/iso15531#> .
+@prefix m:    <http://w3id.org/protys/erp/adempiere/mapping#> .
+
+# E1 Producto fabricado: producto de una lista de materiales de GardenWorld.
+m:Product rr:logicalTable [ rr:sqlQuery """
+    SELECT DISTINCT p.m_product_id, p.value, p.name
+    FROM adempiere.m_product p JOIN adempiere.pp_product_bom b ON b.m_product_id = p.m_product_id
+    WHERE b.ad_client_id = 11 AND b.isactive = 'Y'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/product/{m_product_id}" ; rr:class c:Product ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E2 Componente: producto referido por una línea de lista de materiales.
+m:Component rr:logicalTable [ rr:sqlQuery """
+    SELECT DISTINCT p.m_product_id, p.name
+    FROM adempiere.m_product p JOIN adempiere.pp_product_bomline l ON l.m_product_id = p.m_product_id
+    WHERE l.ad_client_id = 11 AND l.isactive = 'Y'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/product/{m_product_id}" ;
+                  rr:class prod:Production_Component, r:Material ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# R7 El producto se compone del componente.
+m:Composition rr:logicalTable [ rr:sqlQuery """
+    SELECT b.m_product_id AS parent_id, l.m_product_id AS component_id
+    FROM adempiere.pp_product_bomline l JOIN adempiere.pp_product_bom b ON b.pp_product_bom_id = l.pp_product_bom_id
+    WHERE b.ad_client_id = 11 AND l.isactive = 'Y'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/product/{parent_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate prod:isComposedOF ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/product/{component_id}" ] ] .
+
+# E3 Plan de proceso: planificación del producto con lista de materiales y flujo de manufactura.
+# R5 el plan asigna la planta; R6 el proceso del plan produce el producto.
+m:Plan rr:logicalTable [ rr:sqlQuery """
+    SELECT pl.pp_product_planning_id, pl.m_product_id, pl.ad_workflow_id, pl.s_resource_id,
+           'Plan ' || p.name AS plan_name
+    FROM adempiere.pp_product_planning pl JOIN adempiere.m_product p ON p.m_product_id = pl.m_product_id
+    WHERE pl.ad_client_id = 11 AND pl.pp_product_bom_id IS NOT NULL AND pl.ad_workflow_id IS NOT NULL""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/plan/{pp_product_planning_id}" ; rr:class i:ProcessPlan ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "plan_name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:assignsResource ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/resource/{s_resource_id}" ] ] .
+
+m:ProcessProduces rr:logicalTable [ rr:sqlQuery """
+    SELECT DISTINCT pl.ad_workflow_id, pl.m_product_id
+    FROM adempiere.pp_product_planning pl
+    WHERE pl.ad_client_id = 11 AND pl.pp_product_bom_id IS NOT NULL AND pl.ad_workflow_id IS NOT NULL""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/process/{ad_workflow_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate c:produces ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/product/{m_product_id}" ] ] .
+
+# R2 El plan incluye las operaciones del flujo que referencia.
+m:PlanIncludes rr:logicalTable [ rr:sqlQuery """
+    SELECT pl.pp_product_planning_id, n.ad_wf_node_id
+    FROM adempiere.pp_product_planning pl JOIN adempiere.ad_wf_node n ON n.ad_workflow_id = pl.ad_workflow_id
+    WHERE pl.ad_client_id = 11 AND pl.pp_product_bom_id IS NOT NULL AND n.isactive = 'Y'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/plan/{pp_product_planning_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate i:includesActivity ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/operation/{ad_wf_node_id}" ] ] .
+
+# E4 Proceso de manufactura: flujo de tipo M (Manufacturing).
+m:Process rr:logicalTable [ rr:sqlQuery """
+    SELECT w.ad_workflow_id, w.name FROM adempiere.ad_workflow w
+    WHERE w.ad_client_id = 11 AND w.workflowtype = 'M'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/process/{ad_workflow_id}" ; rr:class i:ManufacturingProcess ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E5 Operación: nodo de un flujo M. R3 parte del proceso, R4 recurso requerido,
+# R9 secuencia (columna value: 10, 20…), R11 duración en minutos.
+m:Operation rr:logicalTable [ rr:sqlQuery """
+    SELECT n.ad_wf_node_id, n.ad_workflow_id, n.name, n.s_resource_id,
+           CASE WHEN n.value ~ '^[0-9]+$' THEN CAST(n.value AS integer) END AS seq,
+           CAST(n.duration AS numeric) AS duration_min
+    FROM adempiere.ad_wf_node n JOIN adempiere.ad_workflow w ON w.ad_workflow_id = n.ad_workflow_id
+    WHERE w.ad_client_id = 11 AND w.workflowtype = 'M' AND n.isactive = 'Y'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/operation/{ad_wf_node_id}" ; rr:class i:ProcessOperation ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:partOfProcess ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/process/{ad_workflow_id}" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:requiresResource ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/resource/{s_resource_id}" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:operationSequence ; rr:objectMap [ rr:column "seq" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:duration ; rr:objectMap [ rr:column "duration_min" ] ] .
+
+# R10 Precedencia entre operaciones de un flujo M.
+m:Precedence rr:logicalTable [ rr:sqlQuery """
+    SELECT nn.ad_wf_node_id, nn.ad_wf_next_id
+    FROM adempiere.ad_wf_nodenext nn
+    JOIN adempiere.ad_wf_node n ON n.ad_wf_node_id = nn.ad_wf_node_id
+    JOIN adempiere.ad_workflow w ON w.ad_workflow_id = n.ad_workflow_id
+    WHERE w.ad_client_id = 11 AND w.workflowtype = 'M' AND nn.isactive = 'Y'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/operation/{ad_wf_node_id}" ] ;
+  rr:predicateObjectMap [ rr:predicate i:precedes ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/operation/{ad_wf_next_id}" ] ] .
+
+# E6 Centro de trabajo o línea de producción (recurso productivo que no es planta).
+m:WorkCenter rr:logicalTable [ rr:sqlQuery """
+    SELECT s_resource_id, name FROM adempiere.s_resource
+    WHERE ad_client_id = 11 AND ismanufacturingresource = 'Y' AND manufacturingresourcetype IN ('WC', 'PL')""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/resource/{s_resource_id}" ; rr:class i:ManufacturingResource ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E7 Planta.
+m:Plant rr:logicalTable [ rr:sqlQuery """
+    SELECT s_resource_id, name FROM adempiere.s_resource
+    WHERE ad_client_id = 11 AND ismanufacturingresource = 'Y' AND manufacturingresourcetype = 'PT'""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/resource/{s_resource_id}" ; rr:class i:ManufacturingFacility ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .
+
+# E8 Orden de producción.
+m:ProductionOrder rr:logicalTable [ rr:sqlQuery """
+    SELECT pp_order_id, 'Orden ' || documentno AS order_name FROM adempiere.pp_order WHERE ad_client_id = 11""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/order/{pp_order_id}" ; rr:class i:ProductionOrder ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "order_name" ] ] .
+
+# E9 Orden de trabajo. R12 ejecuta la operación, R13 se ejecuta en un recurso.
+m:WorkOrder rr:logicalTable [ rr:sqlQuery """
+    SELECT pp_order_node_id, ad_wf_node_id, s_resource_id, name
+    FROM adempiere.pp_order_node WHERE ad_client_id = 11""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/workorder/{pp_order_node_id}" ; rr:class i:WorkOrder ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:executesActivity ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/operation/{ad_wf_node_id}" ] ] ;
+  rr:predicateObjectMap [ rr:predicate i:executedBy ;
+    rr:objectMap [ rr:template "http://w3id.org/protys/erp/adempiere/resource/{s_resource_id}" ] ] .
+
+# E10 Organización: AD_Org del cliente GardenWorld (ad_client_id = 11; la organización comodín
+# "*", id 0, es del cliente de sistema y queda afuera). Clase core:Enterprise, que el Módulo de
+# Empresa refina. Sin relación con procesos: los flujos de manufactura de la demo están en la
+# organización "*" (ad_org_id = 0), es decir, no pertenecen a ninguna organización concreta.
+m:Organization rr:logicalTable [ rr:sqlQuery """
+    SELECT ad_org_id, name FROM adempiere.ad_org WHERE ad_client_id = 11""" ] ;
+  rr:subjectMap [ rr:template "http://w3id.org/protys/erp/adempiere/organization/{ad_org_id}" ; rr:class c:Enterprise ] ;
+  rr:predicateObjectMap [ rr:predicate c:hasName, rdfs:label ; rr:objectMap [ rr:column "name" ] ] .

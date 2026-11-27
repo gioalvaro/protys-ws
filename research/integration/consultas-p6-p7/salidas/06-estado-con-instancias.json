@@ -1,0 +1,2092 @@
+{
+  "tablero": {
+    "totalModules": 2,
+    "totalClasses": 128,
+    "totalIndividuals": 223,
+    "totalTriples": 4804,
+    "activeAlignmentRules": 22,
+    "connectedERPs": 0
+  },
+  "modulos": [
+    [
+      "Canonical_Catalog_Integrated",
+      4318
+    ],
+    [
+      "paint-case-study-instances",
+      488
+    ]
+  ],
+  "reglas_activas": 22,
+  "plantillas": 21,
+  "plantillas_competencia": [
+    "Q02",
+    "Q04",
+    "Q16",
+    "Q18"
+  ],
+  "grafos": {
+    "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#": 4318,
+    "http://w3id.org/protys/ontology/active-rule-definitions": 1374,
+    "http://w3id.org/protys/ontology/inference-results": 1447,
+    "http://w3id.org/protys/ontology/paint-case-study-instances#": 488,
+    "urn:protys:bootstrap:metadata": 1
+  },
+  "grafo_canonico": {
+    "triples": 4318,
+    "sha256_canonico": "339c5cb32ccc0c2bc6a12b831855f737280a4e5a13751cf70e12094a7f7598ba"
+  },
+  "individuos_instances": 0,
+  "catalogo": {
+    "Q01": {
+      "filas": 4,
+      "sha256": "172dad74edf8137d8a05be75927b29a832324bd1dbed50809326afce4f07d05e",
+      "respuesta": [
+        {
+          "energyKWh": "0.0",
+          "ghgKgCO2e": "0.0",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process"
+        },
+        {
+          "energyKWh": "115.333333",
+          "ghgKgCO2e": "57.6666665",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process"
+        },
+        {
+          "energyKWh": "115.333333",
+          "ghgKgCO2e": "57.6666665",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process"
+        },
+        {
+          "energyKWh": "230.666667",
+          "ghgKgCO2e": "115.3333335",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process"
+        }
+      ]
+    },
+    "Q02": {
+      "filas": 40,
+      "sha256": "040bb794518345dab87ffa19549de640d910f3059d6973aea0dce7fe0c54324d",
+      "respuesta": [
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "product": "http://w3id.org/protys/fixture#WhitePaint",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        }
+      ]
+    },
+    "Q03": {
+      "filas": 4,
+      "sha256": "cb0174c6d6e2cc7cfe81aa0e2cf7d76e4434ad71d23128769b9d9e27a2370dbb",
+      "respuesta": [
+        {
+          "energyKWh": "0.0",
+          "ghgKgCO2e": "0.0",
+          "lot": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        {
+          "energyKWh": "115.333333",
+          "ghgKgCO2e": "57.6666665",
+          "lot": "http://w3id.org/protys/fixture#BatchA"
+        },
+        {
+          "energyKWh": "115.333333",
+          "ghgKgCO2e": "57.6666665",
+          "lot": "http://w3id.org/protys/fixture#BatchC"
+        },
+        {
+          "energyKWh": "230.666667",
+          "ghgKgCO2e": "115.3333335",
+          "lot": "http://w3id.org/protys/fixture#BatchB"
+        }
+      ]
+    },
+    "Q04": {
+      "filas": 40,
+      "sha256": "8de2ad949123621ae3ff9bab98e8e4b5da2a706f8641cdf7d68be98c5d2369d3",
+      "respuesta": [
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#AcrylicResin"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Biocide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#TitaniumDioxide"
+        },
+        {
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Water"
+        }
+      ]
+    },
+    "Q05": {
+      "filas": 5,
+      "sha256": "45710852da2f8d2eb7755c04e21f494779658ea6f5fcd6db15ba64a74834c365",
+      "respuesta": [
+        {
+          "carbonFactor": "3.5",
+          "exceedsDeclaredCarbonThreshold": "false",
+          "material": "http://w3id.org/protys/fixture#Biocide",
+          "waterFactor": "15"
+        },
+        {
+          "carbonFactor": "3.8",
+          "exceedsDeclaredCarbonThreshold": "false",
+          "material": "http://w3id.org/protys/fixture#AcrylicResin",
+          "waterFactor": "127"
+        },
+        {
+          "carbonFactor": "4.2",
+          "exceedsDeclaredCarbonThreshold": "false",
+          "material": "http://w3id.org/protys/fixture#Coalescent",
+          "waterFactor": "10"
+        },
+        {
+          "carbonFactor": "5",
+          "exceedsDeclaredCarbonThreshold": "false",
+          "material": "http://w3id.org/protys/fixture#ThresholdMaterial",
+          "waterFactor": "50"
+        },
+        {
+          "carbonFactor": "5.6",
+          "exceedsDeclaredCarbonThreshold": "true",
+          "material": "http://w3id.org/protys/fixture#TitaniumDioxide",
+          "waterFactor": "40"
+        }
+      ]
+    },
+    "Q06": {
+      "filas": 3,
+      "sha256": "c0972a0a70b89c5e385d5d968a8b7b4b50151a47a6bc8eaf149d26b2ab28e201",
+      "respuesta": [
+        {
+          "ghgKgCO2e": "115.3333335",
+          "kgCO2ePerL": "0.590846995389344262295082",
+          "liters": "195.2",
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "product": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        {
+          "ghgKgCO2e": "57.6666665",
+          "kgCO2ePerL": "0.586043358739837398373984",
+          "liters": "98.4",
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "product": "http://w3id.org/protys/fixture#WhitePaint"
+        },
+        {
+          "ghgKgCO2e": "57.6666665",
+          "kgCO2ePerL": "0.592108864177755873172334",
+          "liters": "97.392",
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "product": "http://w3id.org/protys/fixture#WhitePaint"
+        }
+      ]
+    },
+    "Q07": {
+      "filas": 28,
+      "sha256": "9c7c0c69368af4b9328f19ffe15ef2ac03733a1415666d60ad43114fcf2c3eea",
+      "respuesta": [
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op1",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op2",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op3",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op4",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op5",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op6",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "0",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op7",
+          "outputMassKg": "0",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "INVALID_INPUT"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op1",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op2",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op3",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op4",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op5",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op6",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op7",
+          "outputMassKg": "123",
+          "registeredLossKg": "2",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op1",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op2",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op3",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op4",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op5",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op6",
+          "outputMassKg": "125",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "125",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op7",
+          "outputMassKg": "121.74",
+          "registeredLossKg": "2",
+          "residueKg": "1.26",
+          "status": "REVISAR"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op1",
+          "outputMassKg": "250",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op2",
+          "outputMassKg": "250",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op3",
+          "outputMassKg": "250",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op4",
+          "outputMassKg": "250",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op5",
+          "outputMassKg": "250",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op6",
+          "outputMassKg": "250",
+          "registeredLossKg": "0",
+          "residueKg": "0.0",
+          "status": "OK"
+        },
+        {
+          "inputMassKg": "250",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op7",
+          "outputMassKg": "244",
+          "registeredLossKg": "3.5",
+          "residueKg": "2.5",
+          "status": "OK"
+        }
+      ]
+    },
+    "Q08": {
+      "filas": 21,
+      "sha256": "3dc72b9c600d0eedbe984d284ac50ab78171fcec814a378edb3b787dc076e2f6",
+      "respuesta": [
+        {
+          "energyKWh": "0",
+          "ghgKgCO2e": "0.0",
+          "kgCO2ePerL": "0.0",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op1",
+          "outputVolumeL": "100",
+          "stageName": "Recepción e inspección",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "0",
+          "ghgKgCO2e": "0.0",
+          "kgCO2ePerL": "0.0",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op6",
+          "outputVolumeL": "100",
+          "stageName": "Control de calidad",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "0",
+          "ghgKgCO2e": "0.0",
+          "kgCO2ePerL": "0.0",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op1",
+          "outputVolumeL": "200",
+          "stageName": "Recepción e inspección",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "0",
+          "ghgKgCO2e": "0.0",
+          "kgCO2ePerL": "0.0",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op6",
+          "outputVolumeL": "200",
+          "stageName": "Control de calidad",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "0",
+          "ghgKgCO2e": "0.0",
+          "kgCO2ePerL": "0.0",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op1",
+          "outputVolumeL": "100",
+          "stageName": "Recepción e inspección",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "0",
+          "ghgKgCO2e": "0.0",
+          "kgCO2ePerL": "0.0",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op6",
+          "outputVolumeL": "100",
+          "stageName": "Control de calidad",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "0.333333",
+          "ghgKgCO2e": "0.1666665",
+          "kgCO2ePerL": "0.00169376524390243902439",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op7",
+          "outputVolumeL": "98.4",
+          "stageName": "Envasado",
+          "yieldPercent": "98.4"
+        },
+        {
+          "energyKWh": "0.333333",
+          "ghgKgCO2e": "0.1666665",
+          "kgCO2ePerL": "0.00171129558896007885658",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op7",
+          "outputVolumeL": "97.392",
+          "stageName": "Envasado",
+          "yieldPercent": "97.392"
+        },
+        {
+          "energyKWh": "0.666667",
+          "ghgKgCO2e": "0.3333335",
+          "kgCO2ePerL": "0.001707651127049180327869",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op7",
+          "outputVolumeL": "195.2",
+          "stageName": "Envasado",
+          "yieldPercent": "97.6"
+        },
+        {
+          "energyKWh": "10",
+          "ghgKgCO2e": "5.0",
+          "kgCO2ePerL": "0.05",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op2",
+          "outputVolumeL": "100",
+          "stageName": "Dispersión de pigmentos",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "10",
+          "ghgKgCO2e": "5.0",
+          "kgCO2ePerL": "0.05",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op2",
+          "outputVolumeL": "100",
+          "stageName": "Dispersión de pigmentos",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "150",
+          "ghgKgCO2e": "75.0",
+          "kgCO2ePerL": "0.375",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op3",
+          "outputVolumeL": "200",
+          "stageName": "Mezcla principal",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "20",
+          "ghgKgCO2e": "10.0",
+          "kgCO2ePerL": "0.05",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op2",
+          "outputVolumeL": "200",
+          "stageName": "Dispersión de pigmentos",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "26.666667",
+          "ghgKgCO2e": "13.3333335",
+          "kgCO2ePerL": "0.133333335",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op4",
+          "outputVolumeL": "100",
+          "stageName": "Ajuste de viscosidad",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "26.666667",
+          "ghgKgCO2e": "13.3333335",
+          "kgCO2ePerL": "0.133333335",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op4",
+          "outputVolumeL": "100",
+          "stageName": "Ajuste de viscosidad",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "3.333333",
+          "ghgKgCO2e": "1.6666665",
+          "kgCO2ePerL": "0.016666665",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op5",
+          "outputVolumeL": "100",
+          "stageName": "Filtrado",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "3.333333",
+          "ghgKgCO2e": "1.6666665",
+          "kgCO2ePerL": "0.016666665",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op5",
+          "outputVolumeL": "100",
+          "stageName": "Filtrado",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "53.333333",
+          "ghgKgCO2e": "26.6666665",
+          "kgCO2ePerL": "0.1333333325",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op4",
+          "outputVolumeL": "200",
+          "stageName": "Ajuste de viscosidad",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "6.666667",
+          "ghgKgCO2e": "3.3333335",
+          "kgCO2ePerL": "0.0166666675",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op5",
+          "outputVolumeL": "200",
+          "stageName": "Filtrado",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "75",
+          "ghgKgCO2e": "37.5",
+          "kgCO2ePerL": "0.375",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op3",
+          "outputVolumeL": "100",
+          "stageName": "Mezcla principal",
+          "yieldPercent": "100"
+        },
+        {
+          "energyKWh": "75",
+          "ghgKgCO2e": "37.5",
+          "kgCO2ePerL": "0.375",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op3",
+          "outputVolumeL": "100",
+          "stageName": "Mezcla principal",
+          "yieldPercent": "100"
+        }
+      ]
+    },
+    "Q09": {
+      "filas": 4,
+      "sha256": "40d9f28bdb956de310d0f3c50b6e3ca9c10fbd3da841c0c698239d06f03719f8",
+      "respuesta": [
+        {
+          "factor": "http://w3id.org/protys/fixture#GridFactor",
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "value": "57.6666665",
+          "version": "2"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#GridFactor",
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "value": "115.3333335",
+          "version": "2"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#GridFactor",
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "value": "57.6666665",
+          "version": "2"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#GridFactor",
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "value": "0.0",
+          "version": "2"
+        }
+      ]
+    },
+    "Q10": {
+      "filas": 6,
+      "sha256": "ff1cafe3c45b059444616746f3692c3fdc6abf9d56d749b7eb1b273f89bfc8db",
+      "respuesta": [
+        {
+          "factor": "http://w3id.org/protys/fixture#AcrylicResin_Factor",
+          "material": "http://w3id.org/protys/fixture#AcrylicResin",
+          "supplier": "http://w3id.org/protys/fixture#Supplier_B",
+          "value": "3.8"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#Biocide_Factor",
+          "material": "http://w3id.org/protys/fixture#Biocide",
+          "supplier": "http://w3id.org/protys/fixture#Supplier_B",
+          "value": "3.5"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#Coalescent_Factor",
+          "material": "http://w3id.org/protys/fixture#Coalescent",
+          "supplier": "http://w3id.org/protys/fixture#Supplier_B",
+          "value": "4.2"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#ThresholdMaterial_Factor",
+          "material": "http://w3id.org/protys/fixture#ThresholdMaterial",
+          "supplier": "http://w3id.org/protys/fixture#Supplier_A",
+          "value": "5"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#TitaniumDioxide_Factor",
+          "material": "http://w3id.org/protys/fixture#TitaniumDioxide",
+          "supplier": "http://w3id.org/protys/fixture#Supplier_A",
+          "value": "5.6"
+        },
+        {
+          "factor": "http://w3id.org/protys/fixture#Water_Factor",
+          "material": "http://w3id.org/protys/fixture#Water",
+          "supplier": "http://w3id.org/protys/fixture#Supplier_A",
+          "value": "0"
+        }
+      ]
+    },
+    "Q11": {
+      "filas": 4,
+      "sha256": "d6174e579ed5dc47e2445423e7f18a0e38bb39b11f904da9518fa2341426b0a6",
+      "respuesta": [
+        {
+          "ghgKgCO2e": "0.0",
+          "lot": "http://w3id.org/protys/fixture#BatchZero",
+          "numNC": "0"
+        },
+        {
+          "ghgKgCO2e": "115.3333335",
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "numNC": "0"
+        },
+        {
+          "ghgKgCO2e": "57.6666665",
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "numNC": "0"
+        },
+        {
+          "ghgKgCO2e": "57.6666665",
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "numNC": "1"
+        }
+      ]
+    },
+    "Q12": {
+      "filas": 52,
+      "sha256": "eee890d9c880fd1e816ee13984d488b1d70a974c2d7191b9bee0d9749c982c35",
+      "respuesta": [
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op1",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op6",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchA_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchA_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op1",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op6",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchB_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchB_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "value": "115.3333335"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op1",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op6",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchC_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchC_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "value": "57.6666665"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op1",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op2",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op3",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op4",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op5",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op6",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "value": "0.0"
+        },
+        {
+          "indicator": "http://w3id.org/protys/fixture#BatchZero_Indicator",
+          "operation": "http://w3id.org/protys/fixture#BatchZero_Op7",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "value": "0.0"
+        }
+      ]
+    },
+    "Q13": {
+      "filas": 16,
+      "sha256": "1ee717e6fe679080c82639b9cdf8be91c43a8fc795e0d495fd932a95c651c3ca",
+      "respuesta": [
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin",
+          "material": "http://w3id.org/protys/fixture#AcrylicResin",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "quantityKg": "37.5",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchA_Flow_Biocide",
+          "material": "http://w3id.org/protys/fixture#Biocide",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "quantityKg": "1.25",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide",
+          "material": "http://w3id.org/protys/fixture#TitaniumDioxide",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "quantityKg": "25",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchA_Flow_Water",
+          "material": "http://w3id.org/protys/fixture#Water",
+          "process": "http://w3id.org/protys/fixture#BatchA_Process",
+          "quantityKg": "61.25",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin",
+          "material": "http://w3id.org/protys/fixture#AcrylicResin",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "quantityKg": "75",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchB_Flow_Biocide",
+          "material": "http://w3id.org/protys/fixture#Biocide",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "quantityKg": "2.5",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide",
+          "material": "http://w3id.org/protys/fixture#TitaniumDioxide",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "quantityKg": "50",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchB_Flow_Water",
+          "material": "http://w3id.org/protys/fixture#Water",
+          "process": "http://w3id.org/protys/fixture#BatchB_Process",
+          "quantityKg": "122.5",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin",
+          "material": "http://w3id.org/protys/fixture#AcrylicResin",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "quantityKg": "37.5",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchC_Flow_Biocide",
+          "material": "http://w3id.org/protys/fixture#Biocide",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "quantityKg": "1.25",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide",
+          "material": "http://w3id.org/protys/fixture#TitaniumDioxide",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "quantityKg": "25",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchC_Flow_Water",
+          "material": "http://w3id.org/protys/fixture#Water",
+          "process": "http://w3id.org/protys/fixture#BatchC_Process",
+          "quantityKg": "61.25",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin",
+          "material": "http://w3id.org/protys/fixture#AcrylicResin",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "quantityKg": "0",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchZero_Flow_Biocide",
+          "material": "http://w3id.org/protys/fixture#Biocide",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "quantityKg": "0",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide",
+          "material": "http://w3id.org/protys/fixture#TitaniumDioxide",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "quantityKg": "0",
+          "unit": "kg"
+        },
+        {
+          "flow": "http://w3id.org/protys/fixture#BatchZero_Flow_Water",
+          "material": "http://w3id.org/protys/fixture#Water",
+          "process": "http://w3id.org/protys/fixture#BatchZero_Process",
+          "quantityKg": "0",
+          "unit": "kg"
+        }
+      ]
+    },
+    "Q14": {
+      "filas": 1,
+      "sha256": "34e401e731bd32b8c3de7e0ed419421b8345fd638710bc3c4a6dc525c8625b83",
+      "respuesta": [
+        {
+          "equipment": "http://w3id.org/protys/fixture#PearlMill_01",
+          "lotA": "http://w3id.org/protys/fixture#BatchB",
+          "lotB": "http://w3id.org/protys/fixture#BatchC"
+        }
+      ]
+    },
+    "Q15": {
+      "filas": 3,
+      "sha256": "ef41dcdf7c7aeffa0be36868542188573ce9edd5e51d42f53f193fb4ddde46e8",
+      "respuesta": [
+        {
+          "clean": "http://w3id.org/protys/fixture#HistoricalCleaning",
+          "waterL": "5"
+        },
+        {
+          "clean": "http://w3id.org/protys/fixture#ValidCleaning",
+          "waterL": "5"
+        },
+        {
+          "clean": "http://w3id.org/protys/fixture#WrongEquipmentCleaning",
+          "waterL": "5"
+        }
+      ]
+    },
+    "Q16": {
+      "filas": 24,
+      "sha256": "c726879a064da198975a1e164a798001e9df32a612b37b3b102b85220d6876c2",
+      "respuesta": [
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "usedTimeMinutes": "40.0"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "usedTimeMinutes": "20"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "usedTimeMinutes": "20"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "usedTimeMinutes": "20"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "usedTimeMinutes": "80.0"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "usedTimeMinutes": "20"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "usedTimeMinutes": "40"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "usedTimeMinutes": "40.0"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "usedTimeMinutes": "20"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "resource": "http://w3id.org/protys/fixture#DosingSystem_03",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "resource": "http://w3id.org/protys/fixture#FilterSystem_04",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "resource": "http://w3id.org/protys/fixture#MixingReactor_02",
+          "usedTimeMinutes": "40.0"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "resource": "http://w3id.org/protys/fixture#PackagingMachine_05",
+          "usedTimeMinutes": "10"
+        },
+        {
+          "oeePercent": "82",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "resource": "http://w3id.org/protys/fixture#PearlMill_01",
+          "usedTimeMinutes": "20"
+        },
+        {
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "usedTimeMinutes": "110.0"
+        },
+        {
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "usedTimeMinutes": "220.0"
+        },
+        {
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "usedTimeMinutes": "110.0"
+        },
+        {
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "resource": "http://w3id.org/protys/fixture#Operator_01",
+          "usedTimeMinutes": "110.0"
+        }
+      ]
+    },
+    "Q17": {
+      "filas": 3,
+      "sha256": "cbcd143272e613b2de930581db4cdfc201dd22890b6fec438c7362a1b89c3c1b",
+      "respuesta": [
+        {
+          "functionalUnit": "L",
+          "impactPerFU": "0.586043358739837398373984",
+          "lot": "http://w3id.org/protys/fixture#BatchA",
+          "outputLiters": "98.4"
+        },
+        {
+          "functionalUnit": "L",
+          "impactPerFU": "0.590846995389344262295082",
+          "lot": "http://w3id.org/protys/fixture#BatchB",
+          "outputLiters": "195.2"
+        },
+        {
+          "functionalUnit": "L",
+          "impactPerFU": "0.592108864177755873172334",
+          "lot": "http://w3id.org/protys/fixture#BatchC",
+          "outputLiters": "97.392"
+        }
+      ]
+    },
+    "Q18": {
+      "filas": 28,
+      "sha256": "f0cccad5c4fa4ef45be368a6e04648ae2ccb6ac63e0650869aaab1131dd5911e",
+      "respuesta": [
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op1",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "1",
+          "stageName": "Recepción e inspección",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op2",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "2",
+          "stageName": "Dispersión de pigmentos",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op3",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "3",
+          "stageName": "Mezcla principal",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op4",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "4",
+          "stageName": "Ajuste de viscosidad",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op5",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "5",
+          "stageName": "Filtrado",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op6",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "6",
+          "stageName": "Control de calidad",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchA_Op7",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchA_Plan",
+          "stageIndex": "7",
+          "stageName": "Envasado",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op1",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "1",
+          "stageName": "Recepción e inspección",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op2",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "2",
+          "stageName": "Dispersión de pigmentos",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op3",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "3",
+          "stageName": "Mezcla principal",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op4",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "4",
+          "stageName": "Ajuste de viscosidad",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op5",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "5",
+          "stageName": "Filtrado",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op6",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "6",
+          "stageName": "Control de calidad",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchB_Op7",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchB_Plan",
+          "stageIndex": "7",
+          "stageName": "Envasado",
+          "totalDurationMinutes": "220.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op1",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "1",
+          "stageName": "Recepción e inspección",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op2",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "2",
+          "stageName": "Dispersión de pigmentos",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op3",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "3",
+          "stageName": "Mezcla principal",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op4",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "4",
+          "stageName": "Ajuste de viscosidad",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op5",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "5",
+          "stageName": "Filtrado",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op6",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "6",
+          "stageName": "Control de calidad",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchC_Op7",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchC_Plan",
+          "stageIndex": "7",
+          "stageName": "Envasado",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op1",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "1",
+          "stageName": "Recepción e inspección",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op2",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "2",
+          "stageName": "Dispersión de pigmentos",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op3",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "3",
+          "stageName": "Mezcla principal",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op4",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "4",
+          "stageName": "Ajuste de viscosidad",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op5",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "5",
+          "stageName": "Filtrado",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op6",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "6",
+          "stageName": "Control de calidad",
+          "totalDurationMinutes": "110.0"
+        },
+        {
+          "activity": "http://w3id.org/protys/fixture#BatchZero_Op7",
+          "lifecycleStage": "Producción",
+          "plan": "http://w3id.org/protys/fixture#BatchZero_Plan",
+          "stageIndex": "7",
+          "stageName": "Envasado",
+          "totalDurationMinutes": "110.0"
+        }
+      ]
+    },
+    "Q19": {
+      "filas": 4,
+      "sha256": "dd071bde5d03c9916c766a26873ae7726b9dacc597383a3123bd05420ff523bb",
+      "respuesta": [
+        {
+          "ghgKgCO2e": "0.0",
+          "lot": "http://w3id.org/protys/fixture#BatchZero"
+        },
+        {
+          "ghgKgCO2e": "115.3333335",
+          "lot": "http://w3id.org/protys/fixture#BatchB"
+        },
+        {
+          "ghgKgCO2e": "57.6666665",
+          "lot": "http://w3id.org/protys/fixture#BatchA"
+        },
+        {
+          "ghgKgCO2e": "57.6666665",
+          "lot": "http://w3id.org/protys/fixture#BatchC"
+        }
+      ]
+    },
+    "Q20": {
+      "filas": 8,
+      "sha256": "46ff7b286170e61beea1c2b1a63d4f7f6293897de139f9de6092c3d4bf263242",
+      "respuesta": [
+        {
+          "entity": "http://w3id.org/protys/fixture#MissingOperation",
+          "kind": "ProcessOperation",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasInput"
+        },
+        {
+          "entity": "http://w3id.org/protys/fixture#MissingProcess",
+          "kind": "ManufacturingProcess",
+          "missingProperty": "http://w3id.org/protys/ontology/iso14040#computedForProcess"
+        },
+        {
+          "entity": "http://w3id.org/protys/fixture#MissingQC",
+          "kind": "ProcessOperation",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasInput"
+        },
+        {
+          "entity": "http://w3id.org/protys/fixture#MissingQC",
+          "kind": "QualityControl",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasMeasurement"
+        },
+        {
+          "entity": "http://w3id.org/protys/ontology/paint-ext#QualityControl_Stage",
+          "kind": "ProcessOperation",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasInput"
+        },
+        {
+          "entity": "http://w3id.org/protys/ontology/paint-ext#QualityControl_Stage",
+          "kind": "QualityControl",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasMeasurement"
+        },
+        {
+          "entity": "http://w3id.org/protys/ontology/paint-ext#RawMaterialInspection",
+          "kind": "ProcessOperation",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasInput"
+        },
+        {
+          "entity": "http://w3id.org/protys/ontology/paint-ext#RawMaterialInspection",
+          "kind": "QualityControl",
+          "missingProperty": "http://w3id.org/protys/ontology/iso15531#hasMeasurement"
+        }
+      ]
+    },
+    "Q21": {
+      "filas": 1,
+      "sha256": "c008203658de210be11b663bcfaf92b2e8c685709f5a5f7c25e74c67e72a583b",
+      "respuesta": [
+        {
+          "currentVersion": "2",
+          "entity": "http://w3id.org/protys/fixture#GridFactor",
+          "priorVersion": "1"
+        }
+      ]
+    }
+  }
+}

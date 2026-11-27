@@ -19,9 +19,7 @@ import java.util.UUID;
 /**
  * Standard incorporation entry point.
  *
- * This controller exposes the {@code POST /api/standards} endpoint documented
- * in Section 5.3 of the doctoral thesis ("Incorporación de nuevos estándares"):
- * it initiates the standard-incorporation pipeline by delegating to the first
+ * This controller exposes the {@code POST /api/standards} endpoint: it initiates the standard-incorporation pipeline by delegating to the first
  * step of the multi-step wizard ({@link StandardIncorporationService#step1_upload}).
  * The remaining pipeline steps (consistency validation, alignment-rule
  * definition, inference verification and final commit) are driven through the
@@ -31,7 +29,7 @@ import java.util.UUID;
 @Slf4j
 @RestController
 @RequestMapping("/api/standards")
-@Tag(name = "Standard Incorporation", description = "Entry point for the standard incorporation pipeline (thesis Section 5.3)")
+@Tag(name = "Standard Incorporation", description = "Entry point for the standard incorporation pipeline")
 @RequiredArgsConstructor
 public class StandardController {
 
@@ -39,7 +37,7 @@ public class StandardController {
 
     /**
      * Initiates the standard incorporation pipeline.
-     * Equivalent to Step 1 of the wizard (see Section 5.3 of the thesis);
+     * Equivalent to Step 1 of the wizard;
      * the response contains the wizard session id ({@code tempModuleId})
      * used to drive the subsequent pipeline steps.
      *
@@ -50,7 +48,7 @@ public class StandardController {
     @PostMapping
     @Operation(summary = "Start standard incorporation pipeline",
             description = "Uploads a standard ontology and initiates the incorporation pipeline "
-                    + "(thesis Section 5.3). Returns the wizard session id (tempModuleId) used by "
+                    + "and returns the wizard session id (tempModuleId) used by "
                     + "the /api/wizard/* endpoints for the remaining steps.")
     public ResponseEntity<StandardIncorporationResult> startIncorporation(
             @RequestParam("file") MultipartFile file,

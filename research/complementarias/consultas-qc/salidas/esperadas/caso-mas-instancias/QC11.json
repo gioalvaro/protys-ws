@@ -1,0 +1,292 @@
+{
+  "head": {
+    "vars": [
+      "operation",
+      "operator"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op1"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op2"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op3"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op4"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op5"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op6"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchA_Op7"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op1"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op2"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op3"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op4"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op5"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op6"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchB_Op7"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op1"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op2"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op3"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op4"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op5"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op6"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchC_Op7"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op1"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op2"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op3"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op4"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op5"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op6"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      },
+      {
+        "operation": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#BatchZero_Op7"
+        },
+        "operator": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#Operator_01"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "operation", "operator" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

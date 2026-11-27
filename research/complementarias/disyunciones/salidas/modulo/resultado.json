@@ -1,0 +1,112 @@
+{
+  "modulo": {
+    "ruta": "ontologies/disjointness-module.ttl",
+    "sha256": "8fa6c0e66f0d75e6afb078f9a4d12aac2d6c3b8aa8f61d9f5963cba3b30f18fd",
+    "triples": 88,
+    "pares_disjointWith": 75
+  },
+  "instancias": {
+    "ruta": "ontologies/paint-case-study-instances.ttl",
+    "sha256": "8c72c8fb91e03410e28e69c0aa235800d78bb2591f82ca9ee965f8ca3b49c8fb"
+  },
+  "censo_ocho_modulos_base": {
+    "sin_modulo": {
+      "Class": 87,
+      "ObjectProperty": 81,
+      "DatatypeProperty": 38,
+      "propiedades": 119
+    },
+    "con_modulo": {
+      "Class": 87,
+      "ObjectProperty": 81,
+      "DatatypeProperty": 38,
+      "propiedades": 119
+    }
+  },
+  "corridas": {
+    "caso-sin-modulo": {
+      "estado": "CONSISTENT",
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "inconsistente": false,
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "triples_entrada": 4326,
+      "triples_materializados": 5420,
+      "catalogo_21_distintas_de_la_corrida_sin_modulo": [],
+      "ask": {
+        "R07": true,
+        "R16": true,
+        "R19": true,
+        "R26": true
+      }
+    },
+    "caso-con-modulo": {
+      "estado": "CONSISTENT",
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "inconsistente": false,
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "triples_entrada": 4407,
+      "triples_materializados": 5499,
+      "catalogo_21_distintas_de_la_corrida_sin_modulo": [],
+      "ask": {
+        "R07": true,
+        "R16": true,
+        "R19": true,
+        "R26": true
+      }
+    },
+    "instancias-sin-modulo": {
+      "estado": "CONSISTENT",
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "inconsistente": false,
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "triples_entrada": 4812,
+      "triples_materializados": 6230,
+      "catalogo_21_distintas_de_la_corrida_sin_modulo": [],
+      "ask": {
+        "R07": true,
+        "R16": true,
+        "R19": true,
+        "R26": true
+      },
+      "P6_P7_filas": {
+        "P6": 5,
+        "P7": 3
+      },
+      "P6_P7_igual_a_la_esperada": {
+        "P6": true,
+        "P7": true
+      }
+    },
+    "instancias-con-modulo": {
+      "estado": "CONSISTENT",
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "inconsistente": false,
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "triples_entrada": 4893,
+      "triples_materializados": 6309,
+      "catalogo_21_distintas_de_la_corrida_sin_modulo": [],
+      "ask": {
+        "R07": true,
+        "R16": true,
+        "R19": true,
+        "R26": true
+      },
+      "P6_P7_filas": {
+        "P6": 5,
+        "P7": 3
+      },
+      "P6_P7_igual_a_la_esperada": {
+        "P6": true,
+        "P7": true
+      }
+    }
+  }
+}

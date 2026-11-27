@@ -1,0 +1,104 @@
+[
+  {
+    "extracto": "research/model/examples/c3_extracto_alineamiento.ttl",
+    "modulos": [
+      "ontologies/alignment-rules.owl"
+    ],
+    "triples": 40,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c3_extracto_iso14040.ttl",
+    "modulos": [
+      "ontologies/iso14040-module.owl"
+    ],
+    "triples": 15,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c3_extracto_iso15531.ttl",
+    "modulos": [
+      "ontologies/iso15531-module.owl"
+    ],
+    "triples": 20,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_cardinalidades.ttl",
+    "modulos": [
+      "ontologies/iso14040-module.owl",
+      "ontologies/iso15531-module.owl"
+    ],
+    "triples": 8,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_disyunciones.ttl",
+    "modulos": [
+      "ontologies/resource-module.owl",
+      "ontologies/iso14040-module.owl",
+      "ontologies/iso15531-module.owl"
+    ],
+    "triples": 20,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_iso14040.ttl",
+    "modulos": [
+      "ontologies/iso14040-module.owl"
+    ],
+    "triples": 10,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_iso15531.ttl",
+    "modulos": [
+      "ontologies/iso15531-module.owl"
+    ],
+    "triples": 17,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_jerarquia_planta.ttl",
+    "modulos": [
+      "ontologies/enterprise-module.owl"
+    ],
+    "triples": 18,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_precedes.ttl",
+    "modulos": [
+      "ontologies/core-concepts.owl"
+    ],
+    "triples": 3,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_propiedades_operacion.ttl",
+    "modulos": [
+      "ontologies/iso15531-module.owl"
+    ],
+    "triples": 6,
+    "contenido": true,
+    "faltan": []
+  },
+  {
+    "extracto": "research/model/examples/c4_extracto_union.ttl",
+    "modulos": [
+      "ontologies/iso14040-module.owl"
+    ],
+    "triples": 14,
+    "contenido": true,
+    "faltan": []
+  }
+]

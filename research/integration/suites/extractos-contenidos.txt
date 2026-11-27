@@ -1,0 +1,11 @@
+CONTENIDO research/model/examples/c3_extracto_alineamiento.ttl (40 triples) en ontologies/alignment-rules.owl
+CONTENIDO research/model/examples/c3_extracto_iso14040.ttl (15 triples) en ontologies/iso14040-module.owl
+CONTENIDO research/model/examples/c3_extracto_iso15531.ttl (20 triples) en ontologies/iso15531-module.owl
+CONTENIDO research/model/examples/c4_extracto_cardinalidades.ttl (8 triples) en ontologies/iso14040-module.owl, ontologies/iso15531-module.owl
+CONTENIDO research/model/examples/c4_extracto_disyunciones.ttl (20 triples) en ontologies/resource-module.owl, ontologies/iso14040-module.owl, ontologies/iso15531-module.owl
+CONTENIDO research/model/examples/c4_extracto_iso14040.ttl (10 triples) en ontologies/iso14040-module.owl
+CONTENIDO research/model/examples/c4_extracto_iso15531.ttl (17 triples) en ontologies/iso15531-module.owl
+CONTENIDO research/model/examples/c4_extracto_jerarquia_planta.ttl (18 triples) en ontologies/enterprise-module.owl
+CONTENIDO research/model/examples/c4_extracto_precedes.ttl (3 triples) en ontologies/core-concepts.owl
+CONTENIDO research/model/examples/c4_extracto_propiedades_operacion.ttl (6 triples) en ontologies/iso15531-module.owl
+CONTENIDO research/model/examples/c4_extracto_union.ttl (14 triples) en ontologies/iso14040-module.owl

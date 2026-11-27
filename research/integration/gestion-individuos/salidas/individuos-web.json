@@ -1,0 +1,117 @@
+{
+ "r": {
+  "chromium": "156.0.8078.4",
+  "dialogos": [],
+  "peticiones": [
+   {
+    "metodo": "POST",
+    "url": "/api/ontology/individuals?classUri=http:%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+    "codigo": 201
+   },
+   {
+    "metodo": "PUT",
+    "url": "/api/ontology/individuals?uri=http:%2F%2Fexample.org%2Findividuos%2Foperario-web",
+    "codigo": 200
+   },
+   {
+    "metodo": "DELETE",
+    "url": "/api/ontology/individuals?uri=http:%2F%2Fexample.org%2Findividuos%2Foperario-web",
+    "codigo": 200
+   },
+   {
+    "metodo": "POST",
+    "url": "/api/ontology/individuals?classUri=http:%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+    "codigo": 201
+   },
+   {
+    "metodo": "POST",
+    "url": "/api/ontology/individuals/edits/cdc21316-7936-4e53-820d-b26e7968a364/undo",
+    "codigo": 200
+   }
+  ],
+  "lista_inicial": [
+   "Operator_01\nhttp://w3id.org/protys/fixture#Operator_01"
+  ],
+  "alta": {
+   "banda": "Individual created in Canonical_Catalog_Integrated\n\nhttp://example.org/individuos/operario-web\n\nnetwork consistent (validated in 2.0 s)\n\nUndo\nDismiss",
+   "avisos": [
+    "Individual created: network consistent (validated in 2.0 s)"
+   ]
+  },
+  "lista_tras_alta": [
+   "Operario web\nhttp://example.org/individuos/operario-web",
+   "Operator_01\nhttp://w3id.org/protys/fixture#Operator_01"
+  ],
+  "detalle": "Select Ontology Module\n-- Select a module --\nCanonical_Catalog_Integrated\nSearch Classes\nClass Hierarchy\nRecurso de manufactura\nRecurso humano\n\nIndividual created in Canonical_Catalog_Integrated\n\nhttp://example.org/individuos/operario-web\n\nnetwork consistent (validated in 2.0 s)\n\nUndo\nDismiss\nBack to Recurso humano\nOperario web\n\nhttp://example.org/individuos/operario-web\n\nTypes\nHumanResource\nProperties\n\nlabel\n\nOperario web\n\nEdit\nDelete",
+  "modificacion": {
+   "banda": "Individual updated in Canonical_Catalog_Integrated\n\nhttp://example.org/individuos/operario-web\n\nnetwork consistent (validated in 1.9 s)\n\nUndo\nDismiss",
+   "titulo": "Operario web (modificado)"
+  },
+  "baja": {
+   "banda": "Individual deleted in Canonical_Catalog_Integrated\n\nhttp://example.org/individuos/operario-web\n\nnetwork consistent (validated in 0.0 s)\n\nUndo\nDismiss",
+   "lista": [
+    "Operator_01\nhttp://w3id.org/protys/fixture#Operator_01"
+   ]
+  },
+  "lista_antes_de_deshacer": [
+   "Operario para deshacer\nhttp://example.org/individuos/operario-web-deshacer",
+   "Operator_01\nhttp://w3id.org/protys/fixture#Operator_01"
+  ],
+  "deshacer": {
+   "banda": "Edit undone in Canonical_Catalog_Integrated\n\nhttp://example.org/individuos/operario-web-deshacer\n\nnetwork consistent (validated in 0.0 s)\n\nDismiss",
+   "lista": [
+    "Operator_01\nhttp://w3id.org/protys/fixture#Operator_01"
+   ]
+  }
+ },
+ "capturas": [
+  {
+   "archivo": "W1-clase-con-individuos.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:41.979Z",
+   "pasos": "Ontology Explorer → «Recurso humano»: el detalle lista los individuos de la clase."
+  },
+  {
+   "archivo": "W2-alta-formulario.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:43.709Z",
+   "pasos": "«Add Individual» con IRI y etiqueta."
+  },
+  {
+   "archivo": "W3-alta-validada.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:47.768Z",
+   "pasos": "«Create»: banda con la validación posterior y un único aviso."
+  },
+  {
+   "archivo": "W4-detalle.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:49.510Z",
+   "pasos": "Detalle del individuo creado: IRI como sujeto, tipo y rdfs:label."
+  },
+  {
+   "archivo": "W5-modificacion-validada.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:53.607Z",
+   "pasos": "«Edit» → nueva etiqueta → «Save»: banda con la validación."
+  },
+  {
+   "archivo": "W6-baja-confirmacion.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:55.346Z",
+   "pasos": "«Delete»: confirmación en la página (sin diálogo del navegador)."
+  },
+  {
+   "archivo": "W7-baja-validada.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:49:58.891Z",
+   "pasos": "«Confirm delete»: banda con la validación; la lista ya no tiene el individuo."
+  },
+  {
+   "archivo": "W8-deshacer.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:50:04.915Z",
+   "pasos": "Alta de otro individuo y «Undo» en la banda: «Edit undone» y la lista vuelve a como estaba."
+  }
+ ]
+}

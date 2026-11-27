@@ -1,0 +1,705 @@
+# Instancias ilustrativas del caso de pintura (planta, celdas, equipos, personal y materiales).
+# No forman parte de la evaluación de research/catalog.json, cuyo escenario está en research/data/.
+# Las usan las consultas P6 y P7 (research/integration/consultas-p6-p7/) y la plataforma.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix core:     <http://w3id.org/protys/ontology/core#> .
+@prefix product:  <http://w3id.org/protys/ontology/product#> .
+@prefix process:  <http://w3id.org/protys/ontology/process#> .
+@prefix resource: <http://w3id.org/protys/ontology/resource#> .
+@prefix enterprise: <http://w3id.org/protys/ontology/enterprise#> .
+@prefix iso14040: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix iso15531: <http://w3id.org/protys/ontology/iso15531#> .
+@prefix paint:    <http://w3id.org/protys/ontology/paint-ext#> .
+@prefix research: <http://w3id.org/protys/ontology/research#> .
+@prefix f:        <http://w3id.org/protys/fixture#> .
+
+# ========================================
+# PAINT MANUFACTURING CASE STUDY INSTANCES
+# ========================================
+
+# ========================================
+# MATERIALS
+# ========================================
+
+paint:TiO2_Material
+    rdf:type resource:Raw_Material ;
+    rdfs:label "Titanium Dioxide (TiO2)"@en ;
+    rdfs:label "Dióxido de Titanio (TiO2)"@es ;
+    core:hasName "TiO2 Pigment" ;
+    core:hasDescription "High-purity titanium dioxide for white paint formulations" ;
+    iso14040:carbonFootprintKgCO2eq 5.3 ;
+    iso14040:waterFootprintLiters 45.0 ;
+    paint:particleSize 0.25 ;
+    paint:purityPercent 98.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/TiO2_001"^^xsd:anyURI .
+
+paint:AcrylicResin
+    rdf:type paint:Chemical_Compound ;
+    rdfs:label "Acrylic Resin"@en ;
+    rdfs:label "Resina Acrílica"@es ;
+    core:hasName "Acrylic Binder Resin" ;
+    core:hasDescription "Water-soluble acrylic resin for paint binder formulation" ;
+    iso14040:waterFootprintLiters 127.0 ;
+    paint:volatileOrganicCompounds 2.5 ;
+    paint:solidContent 45.0 ;
+    paint:viscosity 500.0 ;
+    paint:shelfLifeMonths 12 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/AcrylicResin_001"^^xsd:anyURI .
+
+paint:AqueousSolvent
+    rdf:type resource:Raw_Material ;
+    rdfs:label "Aqueous Solvent"@en ;
+    rdfs:label "Disolvente Acuoso"@es ;
+    core:hasName "Water Solvent" ;
+    core:hasDescription "Deionized water used as primary solvent" ;
+    iso14040:waterFootprintLiters 100.0 ;
+    paint:solidContent 0.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/H2O_001"^^xsd:anyURI .
+
+paint:DispersantAdditive
+    rdf:type paint:Chemical_Compound ;
+    rdfs:label "Dispersant Additive"@en ;
+    rdfs:label "Aditivo Dispersante"@es ;
+    core:hasName "Pigment Dispersant" ;
+    core:hasDescription "Additive to improve pigment dispersion and stability" ;
+    paint:volatileOrganicCompounds 0.5 ;
+    paint:solidContent 85.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/Dispersant_001"^^xsd:anyURI .
+
+paint:AntifoamAdditive
+    rdf:type paint:Chemical_Compound ;
+    rdfs:label "Antifoam Additive"@en ;
+    rdfs:label "Aditivo Antiespuma"@es ;
+    core:hasName "Silicone-based Antifoam" ;
+    core:hasDescription "Reduces foam formation during mixing and application" ;
+    paint:solidContent 80.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/Antifoam_001"^^xsd:anyURI .
+
+paint:Biocide
+    rdf:type paint:Chemical_Compound ;
+    rdfs:label "Biocide"@en ;
+    rdfs:label "Biocida"@es ;
+    core:hasName "Preservative Biocide" ;
+    core:hasDescription "Antimicrobial agent for product preservation" ;
+    paint:solidContent 100.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/Biocide_001"^^xsd:anyURI .
+
+paint:RheologyModifier
+    rdf:type paint:Chemical_Compound ;
+    rdfs:label "Rheology Modifier"@en ;
+    rdfs:label "Modificador de Reología"@es ;
+    core:hasName "Viscosity Control Agent" ;
+    core:hasDescription "Controls paint viscosity and flow properties" ;
+    paint:solidContent 75.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/material/RheologyMod_001"^^xsd:anyURI .
+
+# ========================================
+# EQUIPMENT/MACHINERY
+# ========================================
+
+paint:PearlMill_01
+    rdf:type resource:Equip ;
+    rdfs:label "Pearl Mill Unit 01"@en ;
+    rdfs:label "Molino de Perlas Unidad 01"@es ;
+    core:hasName "PearlMill_01" ;
+    core:hasDescription "Horizontal pearl mill for fine grinding and pigment dispersion" ;
+    paint:energyConsumptionKW 75.0 ;
+    paint:capacityLitersPerHour 500.0 ;
+    paint:availabilityPercent 85.0 ;
+    paint:OEEPercent 82.0 ;
+    iso15531:hasCapability paint:Fine_Grinding ;
+    paint:hasURI "http://w3id.org/protys/instances/equipment/PearlMill_01"^^xsd:anyURI ;
+    paint:belongsTo paint:Cell_Dispersion .
+
+paint:Fine_Grinding
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Fine Grinding"@en ;
+    rdfs:label "Molienda Fina"@es ;
+    core:hasName "Fine_Grinding_Capability" .
+
+paint:MixingReactor_02
+    rdf:type resource:Equip ;
+    rdfs:label "Mixing Reactor Unit 02"@en ;
+    rdfs:label "Reactor Mezclador Unidad 02"@es ;
+    core:hasName "MixingReactor_02" ;
+    core:hasDescription "5000L capacity batch mixing reactor with temperature and speed control" ;
+    paint:capacityLitersPerHour 5000.0 ;
+    paint:availabilityPercent 90.0 ;
+    paint:OEEPercent 88.0 ;
+    iso15531:hasCapability paint:Batch_Mixing ;
+    paint:temperatureCelsius 40.0 ;
+    paint:speedRPM 150.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/equipment/MixingReactor_02"^^xsd:anyURI ;
+    paint:belongsTo paint:Cell_Mixing .
+
+paint:Batch_Mixing
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Batch Mixing"@en ;
+    rdfs:label "Mezcla por Lotes"@es ;
+    core:hasName "Batch_Mixing_Capability" .
+
+paint:DosingSystem_03
+    rdf:type resource:Equip ;
+    rdfs:label "Dosing System Unit 03"@en ;
+    rdfs:label "Sistema de Dosificación Unidad 03"@es ;
+    core:hasName "DosingSystem_03" ;
+    core:hasDescription "Precision metering system for additive dosing with ±0.1% accuracy" ;
+    paint:capacityLitersPerHour 100.0 ;
+    paint:availabilityPercent 95.0 ;
+    paint:OEEPercent 92.0 ;
+    iso15531:hasCapability paint:Precision_Metering ;
+    paint:hasURI "http://w3id.org/protys/instances/equipment/DosingSystem_03"^^xsd:anyURI ;
+    paint:belongsTo paint:Cell_Mixing .
+
+paint:Precision_Metering
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Precision Metering"@en ;
+    rdfs:label "Dosificación Precisa"@es ;
+    core:hasName "Precision_Metering_Capability" .
+
+paint:DryingDrum_04
+    rdf:type resource:Equip ;
+    rdfs:label "Drying Drum Unit 04"@en ;
+    rdfs:label "Tambor de Secado Unidad 04"@es ;
+    core:hasName "DryingDrum_04" ;
+    core:hasDescription "Industrial drying drum with temperature control 60-120°C and 5-20 rpm rotation" ;
+    paint:temperatureCelsius 90.0 ;
+    paint:speedRPM 10.0 ;
+    paint:availabilityPercent 88.0 ;
+    paint:OEEPercent 85.0 ;
+    iso15531:hasCapability paint:Thermal_Drying ;
+    paint:hasURI "http://w3id.org/protys/instances/equipment/DryingDrum_04"^^xsd:anyURI .
+
+paint:Thermal_Drying
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Thermal Drying"@en ;
+    rdfs:label "Secado Térmico"@es ;
+    core:hasName "Thermal_Drying_Capability" .
+
+paint:PackagingMachine_05
+    rdf:type resource:Equip ;
+    rdfs:label "Packaging Machine Unit 05"@en ;
+    rdfs:label "Máquina de Empaque Unidad 05"@es ;
+    core:hasName "PackagingMachine_05" ;
+    core:hasDescription "Automatic packaging machine for 30-120 units per minute with ±0.5% precision" ;
+    paint:capacityUnitsPerMinute 75.0 ;
+    paint:availabilityPercent 92.0 ;
+    paint:OEEPercent 90.0 ;
+    iso15531:hasCapability paint:Auto_Packaging ;
+    paint:hasURI "http://w3id.org/protys/instances/equipment/PackagingMachine_05"^^xsd:anyURI ;
+    paint:belongsTo paint:Cell_Packaging .
+
+paint:Auto_Packaging
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Automatic Packaging"@en ;
+    rdfs:label "Empaquetado Automático"@es ;
+    core:hasName "Auto_Packaging_Capability" .
+
+# ========================================
+# MANUFACTURING PROCESSES
+# ========================================
+
+paint:RawMaterialInspection
+    rdf:type paint:Inspection ;
+    rdfs:label "Raw Material Inspection"@en ;
+    rdfs:label "Inspección de Materia Prima"@es ;
+    core:hasName "RawMaterialInspection" ;
+    core:hasDescription "Quality inspection of incoming raw materials" ;
+    paint:durationMinutes 15.0 ;
+    core:precedes paint:PigmentDispersion ;
+    paint:belongsTo paint:Workshop_QC ;
+    paint:hasURI "http://w3id.org/protys/instances/process/RawMatInsp_001"^^xsd:anyURI .
+
+paint:PigmentDispersion
+    rdf:type process:Procedure_Activity ;
+    rdfs:label "Pigment Dispersion"@en ;
+    rdfs:label "Dispersión de Pigmento"@es ;
+    core:hasName "PigmentDispersion" ;
+    core:hasDescription "Fine grinding and dispersion of TiO2 pigment using pearl mill" ;
+    paint:durationMinutes 45.0 ;
+    paint:inputQuantity 500.0 ;
+    paint:outputQuantity 485.0 ;
+    paint:yieldPercent 97.0 ;
+    paint:speedRPM 1500.0 ;
+    paint:throughput 11.1 ;
+    resource:requiresResource paint:PearlMill_01 ;
+    resource:consumesResource paint:TiO2_Material ;
+    core:produces paint:PigmentPaste_Intermediate ;
+    core:precedes paint:MainMixing ;
+    paint:belongsTo paint:Cell_Dispersion ;
+    paint:hasURI "http://w3id.org/protys/instances/process/PigmentDisp_001"^^xsd:anyURI .
+
+paint:MainMixing
+    rdf:type paint:BatchProcess ;
+    rdfs:label "Main Mixing"@en ;
+    rdfs:label "Mezcla Principal"@es ;
+    core:hasName "MainMixing" ;
+    core:hasDescription "Batch mixing of pigment paste with acrylic resin and solvents" ;
+    paint:durationMinutes 25.0 ;
+    paint:inputQuantity 485.0 ;
+    paint:outputQuantity 510.0 ;
+    paint:yieldPercent 105.0 ;
+    paint:temperatureCelsius 45.0 ;
+    paint:speedRPM 250.0 ;
+    paint:throughput 20.4 ;
+    resource:requiresResource paint:MixingReactor_02 ;
+    resource:consumesResource paint:PigmentPaste_Intermediate ;
+    resource:consumesResource paint:AcrylicResin ;
+    resource:consumesResource paint:AqueousSolvent ;
+    core:produces paint:AdjustedMix_Intermediate ;
+    core:precedes paint:ViscosityAdjustment ;
+    paint:belongsTo paint:Cell_Mixing ;
+    paint:hasURI "http://w3id.org/protys/instances/process/MainMix_001"^^xsd:anyURI .
+
+paint:ViscosityAdjustment
+    rdf:type process:Procedure_Activity ;
+    rdfs:label "Viscosity Adjustment"@en ;
+    rdfs:label "Ajuste de Viscosidad"@es ;
+    core:hasName "ViscosityAdjustment" ;
+    core:hasDescription "Fine-tuning of paint viscosity to specifications using rheology modifiers" ;
+    paint:durationMinutes 15.0 ;
+    paint:inputQuantity 510.0 ;
+    paint:outputQuantity 515.0 ;
+    paint:yieldPercent 101.0 ;
+    resource:requiresResource paint:DosingSystem_03 ;
+    resource:consumesResource paint:RheologyModifier ;
+    core:precedes paint:Filtration ;
+    paint:belongsTo paint:Cell_Mixing ;
+    paint:hasURI "http://w3id.org/protys/instances/process/ViscAdj_001"^^xsd:anyURI .
+
+paint:Filtration
+    rdf:type process:Procedure_Activity ;
+    rdfs:label "Filtration"@en ;
+    rdfs:label "Filtración"@es ;
+    core:hasName "Filtration" ;
+    core:hasDescription "Removal of coarse particles and agglomerates through filtration" ;
+    paint:durationMinutes 10.0 ;
+    paint:inputQuantity 515.0 ;
+    paint:outputQuantity 512.0 ;
+    paint:yieldPercent 99.4 ;
+    paint:throughput 51.2 ;
+    core:precedes paint:QualityControl_Stage ;
+    paint:hasURI "http://w3id.org/protys/instances/process/Filtration_001"^^xsd:anyURI .
+
+paint:QualityControl_Stage
+    rdf:type paint:QualityControl ;
+    rdfs:label "Quality Control"@en ;
+    rdfs:label "Control de Calidad"@es ;
+    core:hasName "QualityControl" ;
+    core:hasDescription "Comprehensive quality testing and verification of final paint formulation" ;
+    paint:durationMinutes 30.0 ;
+    paint:inputQuantity 512.0 ;
+    resource:requiresResource paint:Workshop_QC ;
+    core:precedes paint:Packaging_Stage ;
+    paint:belongsTo paint:Workshop_QC ;
+    paint:hasURI "http://w3id.org/protys/instances/process/QC_001"^^xsd:anyURI .
+
+paint:Packaging_Stage
+    rdf:type paint:Packaging ;
+    rdfs:label "Packaging"@en ;
+    rdfs:label "Empaquetado"@es ;
+    core:hasName "Packaging" ;
+    core:hasDescription "Automatic packaging of finished paint into containers" ;
+    paint:durationMinutes 20.0 ;
+    paint:inputQuantity 500.0 ;
+    paint:outputQuantity 500.0 ;
+    paint:yieldPercent 100.0 ;
+    paint:capacityUnitsPerMinute 75.0 ;
+    paint:throughput 25.0 ;
+    resource:requiresResource paint:PackagingMachine_05 ;
+    core:produces paint:WhitePaint_WaterBased ;
+    paint:belongsTo paint:Cell_Packaging ;
+    paint:hasURI "http://w3id.org/protys/instances/process/Packaging_001"^^xsd:anyURI .
+
+# ========================================
+# PRODUCTS
+# ========================================
+
+paint:PigmentPaste_Intermediate
+    rdf:type paint:Intermediate_Product ;
+    rdfs:label "Pigment Paste (Intermediate)"@en ;
+    rdfs:label "Pasta de Pigmento (Intermedia)"@es ;
+    core:hasName "PigmentPaste_001" ;
+    core:hasDescription "Finely dispersed titanium dioxide pigment paste" ;
+    paint:solidContent 40.0 ;
+    paint:particleSize 0.25 ;
+    paint:purityPercent 97.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/product/PigmentPaste_001"^^xsd:anyURI .
+
+paint:AdjustedMix_Intermediate
+    rdf:type paint:Intermediate_Product ;
+    rdfs:label "Adjusted Mix (Intermediate)"@en ;
+    rdfs:label "Mezcla Ajustada (Intermedia)"@es ;
+    core:hasName "AdjustedMix_001" ;
+    core:hasDescription "Pre-final paint formulation after main mixing and adjustment" ;
+    paint:viscosity 85.0 ;
+    paint:solidContent 42.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/product/AdjustedMix_001"^^xsd:anyURI .
+
+paint:WhitePaint_WaterBased
+    rdf:type paint:Final_Product ;
+    rdfs:label "White Water-Based Paint"@en ;
+    rdfs:label "Pintura Blanca a Base de Agua"@es ;
+    core:hasName "WhitePaint_WaterBased_Final" ;
+    core:hasDescription "Final water-based acrylic white paint ready for market" ;
+    paint:viscosity 85.0 ;
+    paint:volatileOrganicCompounds 2.5 ;
+    paint:solidContent 42.0 ;
+    paint:shelfLifeMonths 12 ;
+    paint:hasFunction "Interior/Exterior Wall Coating" ;
+    paint:hasURI "http://w3id.org/protys/instances/product/WhitePaint_Final_001"^^xsd:anyURI .
+
+# ========================================
+# QUALITY SPECIFICATIONS
+# ========================================
+
+paint:Viscosity_KU_Spec
+    rdf:type paint:QualitySpec ;
+    rdfs:label "Viscosity Specification (KU)"@en ;
+    rdfs:label "Especificación de Viscosidad (KU)"@es ;
+    core:hasName "Viscosity_85±5_KU" ;
+    core:hasDescription "Viscosity must be 85 ± 5 Krebs Units" ;
+    paint:hasValue 85.0 ;
+    paint:impactUnit "KU (Krebs Units)" ;
+    paint:hasURI "http://w3id.org/protys/instances/spec/Viscosity_001"^^xsd:anyURI .
+
+paint:ParticleSize_Hegman_Spec
+    rdf:type paint:QualitySpec ;
+    rdfs:label "Particle Size Specification (Hegman)"@en ;
+    rdfs:label "Especificación de Tamaño de Partícula (Hegman)"@es ;
+    core:hasName "ParticleSize_Hegman_7plus" ;
+    core:hasDescription "Hegman grind gauge reading must be 7 or greater (finer than 25 micrometers)" ;
+    paint:hasValue 7.0 ;
+    paint:impactUnit "Hegman Gauge Points" ;
+    paint:hasURI "http://w3id.org/protys/instances/spec/ParticleSize_001"^^xsd:anyURI .
+
+# ========================================
+# ENTERPRISE STRUCTURE
+# ========================================
+
+paint:PaintPlant_LatAm
+    rdf:type paint:Plant ;
+    rdfs:label "Paint Plant"@en ;
+    rdfs:label "Planta de pintura"@es ;
+    core:hasName "PaintPlant" ;
+    core:hasDescription "Main paint manufacturing facility" ;
+    paint:location "Santa Fe, Argentina" ;
+    paint:capacityTonsPerMonth 5000.0 ;
+    paint:numberOfEmployees 250 ;
+    paint:hasURI "http://w3id.org/protys/instances/enterprise/PaintPlant_LatAm"^^xsd:anyURI ;
+    core:hasProcess paint:PigmentDispersion ;
+    core:hasProcess paint:MainMixing ;
+    core:hasProcess paint:ViscosityAdjustment ;
+    core:hasProcess paint:Filtration ;
+    core:hasProcess paint:QualityControl_Stage ;
+    core:hasProcess paint:Packaging_Stage .
+
+paint:Workshop_Production
+    rdf:type paint:Workshop ;
+    rdfs:label "Production Workshop"@en ;
+    rdfs:label "Taller de Producción"@es ;
+    core:hasName "Workshop_Production" ;
+    core:hasDescription "Main production workshop for paint manufacturing" ;
+    paint:partOfOrganization paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/enterprise/Workshop_Production"^^xsd:anyURI ;
+    paint:manages paint:Cell_Dispersion ;
+    paint:manages paint:Cell_Mixing ;
+    paint:manages paint:Cell_Packaging .
+
+paint:Workshop_QC
+    rdf:type paint:Workshop ;
+    rdfs:label "Quality Control Workshop"@en ;
+    rdfs:label "Taller de Control de Calidad"@es ;
+    core:hasName "Workshop_QC" ;
+    core:hasDescription "Quality control and testing laboratory" ;
+    paint:partOfOrganization paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/enterprise/Workshop_QC"^^xsd:anyURI .
+
+paint:Cell_Dispersion
+    rdf:type paint:ProductionCell ;
+    rdfs:label "Pigment Dispersion Cell"@en ;
+    rdfs:label "Celda de Dispersión de Pigmento"@es ;
+    core:hasName "Cell_Dispersion" ;
+    core:hasDescription "Production cell dedicated to pigment dispersion and grinding" ;
+    paint:capacityTonsPerMonth 1200.0 ;
+    paint:partOfOrganization paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/enterprise/Cell_Dispersion"^^xsd:anyURI ;
+    core:hasProcess paint:PigmentDispersion .
+
+paint:Cell_Mixing
+    rdf:type paint:ProductionCell ;
+    rdfs:label "Mixing and Adjustment Cell"@en ;
+    rdfs:label "Celda de Mezcla y Ajuste"@es ;
+    core:hasName "Cell_Mixing" ;
+    core:hasDescription "Production cell for main mixing and viscosity adjustment" ;
+    paint:capacityTonsPerMonth 1500.0 ;
+    paint:partOfOrganization paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/enterprise/Cell_Mixing"^^xsd:anyURI ;
+    core:hasProcess paint:MainMixing ;
+    core:hasProcess paint:ViscosityAdjustment ;
+    core:hasProcess paint:Filtration .
+
+paint:Cell_Packaging
+    rdf:type paint:ProductionCell ;
+    rdfs:label "Packaging Cell"@en ;
+    rdfs:label "Celda de Empaquetado"@es ;
+    core:hasName "Cell_Packaging" ;
+    core:hasDescription "Automated packaging and labeling cell" ;
+    paint:capacityTonsPerMonth 2000.0 ;
+    paint:partOfOrganization paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/enterprise/Cell_Packaging"^^xsd:anyURI ;
+    core:hasProcess paint:Packaging_Stage .
+
+# Las celdas no se vinculan a sus equipos con core:hasResource: es inversa de core:usedBy (rango core:Process)
+# y tiparía las celdas como core:Process. La pertenencia de cada equipo a su celda está afirmada en el equipo con
+# paint:belongsTo
+# (subpropiedad de core:isHeldBy): PearlMill_01 -> Cell_Dispersion, MixingReactor_02 y DosingSystem_03 -> Cell_Mixing,
+# PackagingMachine_05 -> Cell_Packaging.
+
+# ========================================
+# PERSONNEL
+# ========================================
+
+paint:Operator_John
+    rdf:type iso15531:HumanResource ;
+    rdfs:label "Machine Operator John"@en ;
+    rdfs:label "Operador de Máquinas John"@es ;
+    core:hasName "John Smith" ;
+    core:hasDescription "Experienced mill and mixer operator" ;
+    paint:yearOfExperience 10 ;
+    paint:hasSkill paint:Machine_Operation ;
+    paint:hasSkill paint:Equipment_Maintenance ;
+    paint:hasCertification paint:Certification_Level_II_Equipment_Operation ;
+    paint:belongsTo paint:Cell_Dispersion ;
+    paint:employedBy paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/personnel/Operator_John_001"^^xsd:anyURI .
+
+paint:Certification_Level_II_Equipment_Operation
+    rdf:type owl:NamedIndividual ;
+    rdfs:label "Level II - Equipment Operation" .
+
+paint:Machine_Operation
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Machine Operation"@en ;
+    rdfs:label "Operación de Máquinas"@es ;
+    core:hasName "Machine_Operation_Skill" ;
+    paint:certificationLevel "Advanced" .
+
+paint:Equipment_Maintenance
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Equipment Maintenance"@en ;
+    rdfs:label "Mantenimiento de Equipos"@es ;
+    core:hasName "Equipment_Maintenance_Skill" ;
+    paint:certificationLevel "Intermediate" .
+
+paint:Chemist_Maria
+    rdf:type iso15531:HumanResource ;
+    rdfs:label "Quality Chemist Maria"@en ;
+    rdfs:label "Química de Calidad María"@es ;
+    core:hasName "Maria García López" ;
+    core:hasDescription "Analytical chemist specializing in paint formulation and testing" ;
+    paint:yearOfExperience 8 ;
+    paint:hasSkill paint:Quality_Analysis ;
+    paint:hasSkill paint:Formulation_Development ;
+    paint:hasCertification paint:Certification_Level_III_Chemical_Analysis ;
+    paint:belongsTo paint:Workshop_QC ;
+    paint:employedBy paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/personnel/Chemist_Maria_001"^^xsd:anyURI .
+
+paint:Certification_Level_III_Chemical_Analysis
+    rdf:type owl:NamedIndividual ;
+    rdfs:label "Level III - Chemical Analysis" .
+
+paint:Quality_Analysis
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Quality Analysis"@en ;
+    rdfs:label "Análisis de Calidad"@es ;
+    core:hasName "Quality_Analysis_Skill" ;
+    paint:certificationLevel "Expert" .
+
+paint:Formulation_Development
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Formulation Development"@en ;
+    rdfs:label "Desarrollo de Formulaciones"@es ;
+    core:hasName "Formulation_Development_Skill" ;
+    paint:certificationLevel "Expert" .
+
+paint:Supervisor_Carlos
+    rdf:type iso15531:HumanResource ;
+    rdfs:label "Production Supervisor Carlos"@en ;
+    rdfs:label "Supervisor de Producción Carlos"@es ;
+    core:hasName "Carlos Rodríguez Martínez" ;
+    core:hasDescription "Senior production supervisor overseeing all manufacturing operations" ;
+    paint:yearOfExperience 15 ;
+    paint:hasSkill paint:Production_Management ;
+    paint:hasSkill paint:Team_Leadership ;
+    paint:hasSkill paint:Process_Optimization ;
+    paint:hasCertification paint:Certification_Level_III_Production_Management ;
+    paint:belongsTo paint:Workshop_Production ;
+    paint:employedBy paint:PaintPlant_LatAm ;
+    paint:hasURI "http://w3id.org/protys/instances/personnel/Supervisor_Carlos_001"^^xsd:anyURI .
+
+paint:Certification_Level_III_Production_Management
+    rdf:type owl:NamedIndividual ;
+    rdfs:label "Level III - Production Management" .
+
+paint:Production_Management
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Production Management"@en ;
+    rdfs:label "Gestión de Producción"@es ;
+    core:hasName "Production_Management_Skill" ;
+    paint:certificationLevel "Expert" .
+
+paint:Team_Leadership
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Team Leadership"@en ;
+    rdfs:label "Liderazgo de Equipo"@es ;
+    core:hasName "Team_Leadership_Skill" ;
+    paint:certificationLevel "Advanced" .
+
+paint:Process_Optimization
+    rdf:type iso15531:ManufacturingCapability ;
+    rdfs:label "Process Optimization"@en ;
+    rdfs:label "Optimización de Procesos"@es ;
+    core:hasName "Process_Optimization_Skill" ;
+    paint:certificationLevel "Advanced" .
+
+# ========================================
+# LCA - LIFE CYCLE ASSESSMENT DATA
+# ========================================
+
+paint:LCA_WhitePaint_Study
+    rdf:type iso14040:LCAStudy ;
+    rdfs:label "White Paint LCA Study"@en ;
+    rdfs:label "Estudio ACV Pintura Blanca"@es ;
+    core:hasName "LCA_WhitePaint_001" ;
+    core:hasDescription "Comprehensive life cycle assessment of water-based white paint" ;
+    paint:hasCarbonFootprint paint:CF_WhitePaint ;
+    paint:hasWaterFootprint paint:WF_WhitePaint ;
+    paint:hasVOCContent paint:VOC_WhitePaint ;
+    iso14040:hasSystemBoundary paint:SystemBoundary_CradleToGate ;
+    paint:hasURI "http://w3id.org/protys/instances/lca/WhitePaint_001"^^xsd:anyURI .
+
+paint:CF_WhitePaint
+    rdf:type iso14040:ImpactIndicator ;
+    rdfs:label "Carbon Footprint - White Paint"@en ;
+    rdfs:label "Huella de Carbono - Pintura Blanca"@es ;
+    paint:hasValue 3.8 ;
+    paint:impactUnit "kg CO2-eq/kg paint" ;
+    paint:hasCategory paint:ClimateChange_Category ;
+    paint:hasURI "http://w3id.org/protys/instances/impact/CF_WhitePaint_001"^^xsd:anyURI .
+
+paint:ClimateChange_Category
+    rdf:type iso14040:ImpactCategory ;
+    rdfs:label "Climate Change"@en ;
+    rdfs:label "Cambio Climático"@es ;
+    core:hasName "ClimateChange_ImpactCategory" .
+
+paint:WF_WhitePaint
+    rdf:type iso14040:ImpactIndicator ;
+    rdfs:label "Water Footprint - White Paint"@en ;
+    rdfs:label "Huella Hídrica - Pintura Blanca"@es ;
+    paint:hasValue 85.5 ;
+    paint:impactUnit "L/kg paint" ;
+    paint:hasCategory paint:WaterConsumption_Category ;
+    paint:hasURI "http://w3id.org/protys/instances/impact/WF_WhitePaint_001"^^xsd:anyURI .
+
+paint:WaterConsumption_Category
+    rdf:type iso14040:ImpactCategory ;
+    rdfs:label "Water Consumption"@en ;
+    rdfs:label "Consumo de Agua"@es ;
+    core:hasName "WaterConsumption_ImpactCategory" .
+
+paint:VOC_WhitePaint
+    rdf:type iso14040:ImpactIndicator ;
+    rdfs:label "VOC Emissions - White Paint"@en ;
+    rdfs:label "Emisiones de COV - Pintura Blanca"@es ;
+    paint:hasValue 2.5 ;
+    paint:impactUnit "g/L" ;
+    paint:hasCategory paint:PhotochemicalSmog_Category ;
+    paint:hasURI "http://w3id.org/protys/instances/impact/VOC_WhitePaint_001"^^xsd:anyURI .
+
+paint:PhotochemicalSmog_Category
+    rdf:type iso14040:ImpactCategory ;
+    rdfs:label "Photochemical Smog Potential"@en ;
+    rdfs:label "Potencial de Esmog Fotoquímico"@es ;
+    core:hasName "PhotochemicalSmog_ImpactCategory" .
+
+paint:SystemBoundary_CradleToGate
+    rdf:type iso14040:SystemBoundary ;
+    rdfs:label "Cradle-to-Gate Boundary"@en ;
+    rdfs:label "Límite Cuna a Puerta"@es ;
+    core:hasName "SystemBoundary_CradleToGate" ;
+    core:hasDescription "Includes raw material extraction through manufacturing gate" ;
+    paint:hasURI "http://w3id.org/protys/instances/boundary/CradleToGate_001"^^xsd:anyURI .
+
+# ========================================
+# PRODUCT BATCH INSTANCE
+# ========================================
+
+paint:WhitePaint_Batch_20250223
+    rdf:type paint:ProductBatch ;
+    rdfs:label "White Paint Batch (2025-02-23)"@en ;
+    rdfs:label "Lote de Pintura Blanca (2025-02-23)"@es ;
+    core:hasName "WhitePaint_Batch_20250223" ;
+    core:hasDescription "Production batch manufactured on 2025-02-23" ;
+    paint:batchQuantity 500.0 ;
+    paint:viscosity 85.0 ;
+    paint:volatileOrganicCompounds 2.5 ;
+    paint:solidContent 42.0 ;
+    paint:hasURI "http://w3id.org/protys/instances/batch/WhitePaint_20250223_001"^^xsd:anyURI .
+
+# ========================================
+# CROSS-REFERENCES AND RELATIONSHIPS
+# ========================================
+
+# Enterprise to Personnel
+paint:PaintPlant_LatAm paint:employs paint:Operator_John .
+paint:PaintPlant_LatAm paint:employs paint:Chemist_Maria .
+paint:PaintPlant_LatAm paint:employs paint:Supervisor_Carlos .
+
+# Personnel to Enterprise (alternative view)
+paint:Operator_John paint:belongsTo paint:Cell_Dispersion .
+paint:Chemist_Maria paint:belongsTo paint:Workshop_QC .
+paint:Supervisor_Carlos paint:belongsTo paint:Workshop_Production .
+
+# Process Sequence Chain
+paint:RawMaterialInspection core:precedes paint:PigmentDispersion .
+paint:PigmentDispersion core:precedes paint:MainMixing .
+paint:MainMixing core:precedes paint:ViscosityAdjustment .
+paint:ViscosityAdjustment core:precedes paint:Filtration .
+paint:Filtration core:precedes paint:QualityControl_Stage .
+paint:QualityControl_Stage core:precedes paint:Packaging_Stage .
+
+# Product to Process Mappings
+paint:WhitePaint_WaterBased paint:hasProcessPlan paint:MainMixing .
+paint:PigmentPaste_Intermediate paint:hasProcessPlan paint:PigmentDispersion .
+
+# Equipment Capabilities Linkage
+paint:PearlMill_01 iso15531:hasCapability paint:Fine_Grinding .
+paint:MixingReactor_02 iso15531:hasCapability paint:Batch_Mixing .
+paint:DosingSystem_03 iso15531:hasCapability paint:Precision_Metering .
+paint:PackagingMachine_05 iso15531:hasCapability paint:Auto_Packaging .
+
+# Quality Specification Links
+paint:WhitePaint_WaterBased paint:hasShelfLife paint:Viscosity_KU_Spec .
+paint:WhitePaint_WaterBased paint:hasShelfLife paint:ParticleSize_Hegman_Spec .
+
+# ========================================
+# MANTENIMIENTO (caso positivo de R15)
+# ========================================
+# Caso positivo de R15 sobre el equipo del caso f:PearlMill_01 (research/data/functional.ttl, i:EquipmentResource):
+# un registro de mantenimiento con estado ACTIVE en la instantánea. El tipo del equipo se repite acá para que el
+# antecedente i:ManufacturingResource(?resource) se cumpla también si este archivo se carga sin functional.ttl.
+
+f:PearlMill_01
+    rdf:type owl:NamedIndividual ;
+    rdf:type iso15531:EquipmentResource ;
+    iso15531:hasMaintenance f:M01 .
+
+f:M01
+    rdf:type owl:NamedIndividual ;
+    research:maintenanceStatus "ACTIVE"^^xsd:string .

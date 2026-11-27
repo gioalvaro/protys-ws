@@ -8,6 +8,10 @@ import {
   DocumentPlusIcon,
   EyeIcon,
   EyeSlashIcon,
+  RectangleStackIcon,
+  BoltIcon,
+  LightBulbIcon,
+  CircleStackIcon,
 } from '@heroicons/react/24/outline';
 import {
   useAlignmentRules,
@@ -73,22 +77,22 @@ function Alignment() {
         <StatCard
           label="Total Rules"
           value={rules?.length ?? 0}
-          icon="📋"
+          icon={RectangleStackIcon}
         />
         <StatCard
           label="Active Rules"
-          value={stats?.activeRules ?? 0}
-          icon="⚡"
+          value={stats?.activeRules ?? '-'}
+          icon={BoltIcon}
         />
         <StatCard
-          label="Last Inferences"
-          value={stats?.lastInferences ?? 0}
-          icon="🧠"
+          label="Materialized Inferred Triples"
+          value={stats?.inferredTripleCount ?? '-'}
+          icon={LightBulbIcon}
         />
         <StatCard
-          label="Total Inferences"
-          value={stats?.totalInferences ?? 0}
-          icon="📊"
+          label="Input Triples"
+          value={stats?.inputTripleCount ?? '-'}
+          icon={CircleStackIcon}
         />
       </div>
 
@@ -183,7 +187,7 @@ function Alignment() {
           </div>
         ) : rules && rules.length > 0 ? (
           <div className="space-y-3">
-            {rules.map((rule) => (
+            {sortRules(rules).map((rule) => (
               <div
                 key={rule.id}
                 className="flex items-start justify-between p-4 border border-gray-200 rounded-lg hover:border-gray-300 transition-colors duration-150"
@@ -201,15 +205,16 @@ function Alignment() {
                       {rule.active ? 'Active' : 'Inactive'}
                     </span>
                   </div>
-                  {rule.description && (
+                  {rule.description && rule.description !== rule.name && (
                     <p className="text-sm text-gray-600 mb-2">{rule.description}</p>
                   )}
-                  <div className="flex gap-4 text-xs text-gray-500">
-                    <span>Uploaded: {new Date(rule.uploadedAt).toLocaleDateString()}</span>
-                    {rule.lastExecuted && (
-                      <span>Last executed: {new Date(rule.lastExecuted).toLocaleDateString()}</span>
-                    )}
-                  </div>
+                  {rule.swrlExpression && rule.swrlExpression.includes('->') && (
+                    <details className="mb-2">
+                      <summary className="text-xs text-protys-600 cursor-pointer select-none">SWRL</summary>
+                      <code className="block mt-1 p-2 bg-gray-50 rounded text-xs text-gray-700 break-words whitespace-pre-wrap">{rule.swrlExpression}</code>
+                    </details>
+                  )}
+                  <RuleDates rule={rule} />
                 </div>
 
                 <div className="flex gap-2 ml-4">
@@ -221,14 +226,16 @@ function Alignment() {
                       })
                     }
                     disabled={toggleRuleMutation.isPending}
-                    className="btn-ghost btn-sm p-2"
+                    className="btn-ghost btn-sm flex items-center gap-1 text-xs"
                     title={rule.active ? 'Deactivate' : 'Activate'}
+                    aria-label={`${rule.active ? 'Deactivate' : 'Activate'} ${rule.name}`}
                   >
                     {rule.active ? (
                       <EyeIcon className="w-4 h-4 text-protys-600" />
                     ) : (
                       <EyeSlashIcon className="w-4 h-4 text-gray-400" />
                     )}
+                    <span className="hidden sm:inline">{rule.active ? 'Deactivate' : 'Activate'}</span>
                   </button>
                 </div>
               </div>
@@ -250,7 +257,25 @@ function Alignment() {
   );
 }
 
-function StatCard({ label, value, icon }) {
+export function RuleDates({ rule }) {
+  return (
+    <div className="flex flex-wrap gap-4 text-xs text-gray-500">
+      <span>Created: <RecordedDate value={rule.createdAt} /></span>
+      <span>Updated: <RecordedDate value={rule.updatedAt} /></span>
+      {rule.lastExecutedAt && (
+        <span>Last executed: <RecordedDate value={rule.lastExecutedAt} /></span>
+      )}
+    </div>
+  );
+}
+
+function RecordedDate({ value }) {
+  const date = value ? new Date(value) : null;
+  if (!date || Number.isNaN(date.getTime())) return <>Not recorded</>;
+  return <time dateTime={value}>{date.toLocaleDateString()}</time>;
+}
+
+function StatCard({ label, value, icon: Icon }) {
   return (
     <div className="card p-6">
       <div className="flex items-start justify-between">
@@ -258,9 +283,16 @@ function StatCard({ label, value, icon }) {
           <p className="text-sm text-gray-600 mb-1">{label}</p>
           <p className="text-3xl font-bold text-gray-900">{value}</p>
         </div>
-        <div className="text-3xl">{icon}</div>
+        {Icon && <Icon className="w-7 h-7 text-protys-500" aria-hidden="true" />}
       </div>
     </div>
+  );
+}
+
+/** Orden natural por identificador (R01, R02, …, R10, R27), no por orden de carga. */
+export function sortRules(rules) {
+  return [...rules].sort((left, right) =>
+    String(left.ruleId ?? left.name).localeCompare(String(right.ruleId ?? right.name), undefined, { numeric: true })
   );
 }
 

@@ -1,0 +1,14 @@
+3 archivos comunes de ontologies/ difieren entre v1.0.0 y v1.1.0
+solo_en_v1.0.0 []
+solo_en_v1.1.0 [{'ruta': 'ontologies/disjointness-module.ttl', 'triples': 88}, {'ruta': 'ontologies/paint-case-study-instances.ttl', 'triples': 488}]
+== ontologies/alignment-rules.owl: 1374 -> 1374 triples; {'lógico': 0, 'importación': 0, 'anotación': 2}
+   quitado  [anotación] <http://w3id.org/protys/ontology/alignment#R03> <http://www.w3.org/2000/01/rdf-schema#label> "R03: Vincular insumo comprado al lote mediante su representación LCI"
+   agregado [anotación] <http://w3id.org/protys/ontology/alignment#R03> <http://www.w3.org/2000/01/rdf-schema#label> "R03: Vincular al lote los flujos de producto registrados en la representación LCI de su proceso"
+== ontologies/process-module.owl: 58 -> 60 triples; {'lógico': 1, 'importación': 1, 'anotación': 2}
+   quitado  [anotación] <http://w3id.org/protys/ontology/process#Process_Activity> <http://www.w3.org/2000/01/rdf-schema#comment> "Paso u operación atómica dentro de un proceso."@es
+   agregado [importación] <http://w3id.org/protys/ontology/process> <http://www.w3.org/2002/07/owl#imports> <http://w3id.org/protys/ontology/resource>
+   agregado [anotación] <http://w3id.org/protys/ontology/process#Process_Activity> <http://www.w3.org/2000/01/rdf-schema#comment> "Actividad del plan de producción que transforma material hacia un producto o un producto intermedio, por lo general con maquinaria. Especializa resource:
+   agregado [lógico] <http://w3id.org/protys/ontology/process#Process_Activity> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://w3id.org/protys/ontology/resource#Activity>
+== ontologies/resource-module.owl: 124 -> 124 triples; {'lógico': 0, 'importación': 0, 'anotación': 2}
+   quitado  [anotación] <http://w3id.org/protys/ontology/resource#Activity> <http://www.w3.org/2000/01/rdf-schema#comment> "Concepto genérico de actividad usado para las relaciones Activity-Resource. Process_Activity del Módulo de Proceso se corresponde con esta clase."@es
+   agregado [anotación] <http://w3id.org/protys/ontology/resource#Activity> <http://www.w3.org/2000/01/rdf-schema#comment> "Concepto genérico de actividad usado para las relaciones Activity-Resource: cualquier actividad física realizada por personas o por máquinas, incluidas las de t

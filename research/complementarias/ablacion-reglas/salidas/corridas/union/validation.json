@@ -1,0 +1,39 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "cleaning_evaluation" : {
+    "required_pair_count" : 0,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "status" : "NOT_APPLICABLE"
+  },
+  "context_evaluation" : {
+    "declared_link_count" : 56,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "invalid_declared_link" : false,
+    "status" : "CONTEXT_VALID"
+  },
+  "numeric_evaluation" : {
+    "reason" : "Integrated electrical-inventory controls are not applicable to this source configuration.",
+    "selected_operation_count" : 0,
+    "output_checked" : false,
+    "status" : "NOT_APPLICABLE",
+    "applicable_configuration" : false
+  },
+  "swrl_rule_count" : 0,
+  "profile_violations" : [ ],
+  "dl_materialized_triples" : 345,
+  "dl_axiom_preservation" : {
+    "stage" : "named_dl_export_reload_owlapi5",
+    "comparison" : "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+    "expected_anonymous_individual_count" : 0,
+    "observed_anonymous_individual_count" : 0,
+    "expected_axiom_count" : 2853,
+    "observed_axiom_count" : 3198,
+    "retained_axiom_count" : 2853,
+    "lost_axiom_count" : 0,
+    "status" : "RETAINED"
+  },
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 776.413583,
+  "owl_validation_status" : "CONSISTENT"
+}

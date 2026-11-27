@@ -1,0 +1,341 @@
+ Image protys-v110-protys-init Building 
+ Image protys-v110-protys-frontend Building 
+ Image protys-v110-backend:maintenance Building 
+ Image protys-v110-backend:maintenance Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.30kB done
+#1 DONE 0.0s
+
+#2 [protys-frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.33kB 0.0s done
+#2 DONE 0.0s
+
+#3 [protys-fuseki internal] load build definition from Dockerfile
+#3 transferring dockerfile: 3.31kB done
+#3 DONE 0.0s
+
+#4 [protys-init internal] load build definition from Dockerfile
+#4 transferring dockerfile: 430B done
+#4 DONE 0.1s
+
+#5 [protys-init internal] load metadata for docker.io/library/python:3.12-slim
+#5 DONE 0.0s
+
+#6 [protys-init internal] load .dockerignore
+#6 transferring context: 221B done
+#6 DONE 0.0s
+
+#7 [protys-fuseki internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#7 ...
+
+#8 [protys-init 1/8] FROM docker.io/library/python:3.12-slim
+#8 DONE 0.0s
+
+#9 [protys-init internal] load build context
+#9 transferring context: 56.41kB 0.0s done
+#9 DONE 0.0s
+
+#10 [protys-init 2/8] RUN pip install --no-cache-dir rdflib==7.1.4
+#10 CACHED
+
+#11 [protys-init 3/8] WORKDIR /opt/protys
+#11 CACHED
+
+#12 [protys-init 6/8] COPY research/model/ research/model/
+#12 CACHED
+
+#13 [protys-init 5/8] COPY research/catalog.json research/catalog.json
+#13 CACHED
+
+#14 [protys-init 7/8] COPY research/data/ research/data/
+#14 CACHED
+
+#15 [protys-init 4/8] COPY ontologies/ ontologies/
+#15 CACHED
+
+#16 [protys-init 8/8] COPY docker/load_canonical.py docker/init-fuseki.sh docker/
+#16 CACHED
+
+#17 [protys-init] exporting to image
+#17 exporting layers done
+#17 writing image sha256:4684fd25826a7c1c8e49b024376c515d5e916b511f67cb90377c41119aa89f6e done
+#17 naming to docker.io/library/protys-v110-protys-init done
+#17 DONE 0.0s
+
+#18 [protys-init] resolving provenance for metadata file
+#18 DONE 0.0s
+
+#19 [protys-fuseki internal] load metadata for docker.io/library/eclipse-temurin:17-jre-jammy
+#19 DONE 1.1s
+
+#7 [protys-fuseki internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#7 DONE 1.1s
+
+#6 [protys-backend internal] load .dockerignore
+#6 CACHED
+
+#20 [protys-backend runtime  1/11] FROM docker.io/library/eclipse-temurin:17-jre-jammy@sha256:c6a5dd70fb24f4e07ef88cbda8efb613a5a649a1af071a41de8eaabd1ee6b5da
+#20 DONE 0.0s
+
+#21 [protys-backend builder 1/7] FROM docker.io/library/maven:3.9.9-eclipse-temurin-17@sha256:f58d59b6273e785ac0a4477f6e9b5ba1d7731c75b906c0f7b34076f1851318cc
+#21 DONE 0.0s
+
+#22 [protys-frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#22 DONE 1.2s
+
+#23 [protys-backend internal] load build context
+#23 transferring context: 11.71MB 0.1s done
+#23 DONE 0.1s
+
+#24 [protys-fuseki builder 2/7] WORKDIR /opt/protys
+#24 CACHED
+
+#25 [protys-backend builder 3/7] COPY backend/ backend/
+#25 ...
+
+#26 [protys-frontend internal] load metadata for docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#26 DONE 1.6s
+
+#27 [protys-frontend internal] load .dockerignore
+#27 transferring context: 101B done
+#27 DONE 0.0s
+
+#28 [protys-frontend builder 1/6] FROM docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#28 DONE 0.0s
+
+#29 [protys-frontend stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#29 DONE 0.0s
+
+#30 [protys-frontend internal] load build context
+#30 transferring context: 21.39kB done
+#30 DONE 0.0s
+
+#25 [protys-backend builder 3/7] COPY backend/ backend/
+#25 ...
+
+#31 [protys-frontend builder 3/6] COPY package.json package-lock.json .npmrc ./
+#31 CACHED
+
+#32 [protys-frontend builder 2/6] WORKDIR /app
+#32 CACHED
+
+#33 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#33 CACHED
+
+#25 [protys-fuseki builder 3/7] COPY backend/ backend/
+#25 DONE 0.6s
+
+#34 [protys-frontend builder 5/6] COPY . .
+#34 DONE 0.2s
+
+#35 [protys-backend builder 4/7] COPY research/runtime/ research/runtime/
+#35 DONE 0.1s
+
+#36 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#36 0.308 research/runtime/vendor/owlapi-parent-4.5.27.pom: OK
+#36 ...
+
+#37 [protys-frontend builder 6/6] RUN npm run build
+#37 0.709 
+#37 0.709 > protys-ws-frontend@1.1.0 build
+#37 0.709 > react-scripts build
+#37 0.709 
+#37 1.652 (node:24) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+#37 1.652 (Use `node --trace-deprecation ...` to show where the warning was created)
+#37 1.656 Creating an optimized production build...
+#37 1.776 Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+#37 1.776   npx update-browserslist-db@latest
+#37 1.776   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#37 9.708 Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+#37 9.708   npx update-browserslist-db@latest
+#37 9.708   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#37 10.13 Compiled successfully.
+#37 10.13 
+#37 10.13 File sizes after gzip:
+#37 10.13 
+#37 10.15   210.36 kB  build/static/js/main.cf5ffdf6.js
+#37 10.15   7.79 kB    build/static/css/main.e1708e48.css
+#37 10.15 
+#37 10.15 The project was built assuming it is hosted at /.
+#37 10.15 You can control this with the homepage field in your package.json.
+#37 10.15 
+#37 10.15 The build folder is ready to be deployed.
+#37 10.15 You may serve it with a static server:
+#37 10.15 
+#37 10.15   npm install -g serve
+#37 10.15   serve -s build
+#37 10.15 
+#37 10.15 Find out more about deployment here:
+#37 10.15 
+#37 10.15   https://cra.link/deployment
+#37 10.15 
+#37 DONE 10.3s
+
+#36 [protys-fuseki builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#36 ...
+
+#38 [protys-frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#38 CACHED
+
+#39 [protys-frontend stage-1 3/3] COPY --from=builder /app/build /usr/share/nginx/html
+#39 CACHED
+
+#40 [protys-frontend] exporting to image
+#40 exporting layers done
+#40 writing image sha256:7ce8569aa90007a12504ac80b74040f1904a953450e52c07eb2af493f70e7410 done
+#40 naming to docker.io/library/protys-v110-protys-frontend done
+#40 DONE 0.0s
+
+#41 [protys-frontend] resolving provenance for metadata file
+#41 DONE 0.0s
+
+#36 [protys-fuseki builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#36 DONE 70.1s
+
+#42 [protys-fuseki builder 6/7] RUN set -eu; for artifact in log4j-api log4j-core log4j-slf4j-impl; do       mvn -q -f research/runtime/validator/pom.xml dependency:copy         -Dartifact="org.apache.logging.log4j:$artifact:2.21.0"         -DoutputDirectory=/opt/protys/research/runtime/validator/target/fuseki-dependency;     done;     { tr ':' '\n' < research/runtime/validator/target/classpath.txt | sed '/\/slf4j-simple-/d';       find /opt/protys/research/runtime/validator/target/fuseki-dependency -name '*.jar'; }       | LC_ALL=C sort | paste -sd: - > research/runtime/validator/target/fuseki-classpath.txt
+#42 DONE 4.4s
+
+#43 [protys-backend builder 7/7] RUN java -Djava.awt.headless=true       -cp "research/runtime/swrl-worker/target/classes:$(cat research/runtime/swrl-worker/target/classpath.txt)"       org.protys.research.SwrlSmokeTest research/runtime/swrl-worker/target/docker-smoke.json  && java -Djava.awt.headless=true       -cp "research/runtime/validator/target/classes:$(cat research/runtime/validator/target/fuseki-classpath.txt)"       org.apache.jena.fuseki.main.cmds.FusekiMainCmd --help  && mvn -q -f backend/pom.xml package -DskipTests
+#43 6.489 fuseki [--config=FILE] [--mem|--desc=AssemblerFile|--file=FILE] [--port PORT] /DatasetPathName
+#43 6.489   Fuseki Main
+#43 6.489       --mem                  Create an in-memory, non-persistent dataset for the server
+#43 6.489       --file=FILE            Create an in-memory, non-persistent dataset for the server, initialised with the contents of the file
+#43 6.489       --tdb2                 Use TDB2 for command line persistent datasets
+#43 6.489       --tdb1                 Use TDB1 for command line persistent datasets (default is TDB2)
+#43 6.489       --loc=DIR              Use an existing TDB database (or create if does not exist)
+#43 6.489       --memTDB               Create an in-memory, non-persistent dataset using TDB (testing only)
+#43 6.489       --rdfs=FILE            Apply RDFS on top of the dataset
+#43 6.489       --config=FILE          Use a configuration file to determine the services
+#43 6.489       --desc=                Assembler description file
+#43 6.489       --port                 Listen on this port number
+#43 6.489       --localhost            Listen only on the localhost interface
+#43 6.489       --timeout=             Global timeout applied to queries (value in ms) -- format is X[,Y] 
+#43 6.489       --update               Allow updates (via SPARQL Update and SPARQL HTTP Update)
+#43 6.489       --gzip=on|off          Enable GZip compression (HTTP Accept-Encoding) if request header set
+#43 6.489       --base=DIR             Directory for static content
+#43 6.489       --pathBase=DIR         Context path for datasets
+#43 6.489       --sparqler=DIR         Run with SPARQLer services Directory for static content
+#43 6.489       --validators           Install validators
+#43 6.489       --general=PATH         Add a general SPARQL endpoint (without a dataset) at /PATH
+#43 6.489       --auth=[basic|digest]   Run the server using basic or digest authentication
+#43 6.489       --https=CONF           https certificate access details. JSON file { "cert":FILE , "passwd"; SECRET } 
+#43 6.489       --httpsPort=NUM        https port (default port is 3043)
+#43 6.489       --passwd=FILE          Password file
+#43 6.489       --jetty=FILE           jetty.xml server configuration
+#43 6.489       --no-cors              Disable CORS
+#43 6.489       --ping                 Enable /$/ping
+#43 6.489       --stats                Enable /$/stats
+#43 6.489       --metrics              Enable /$/metrics
+#43 6.489       --compact              Enable /$/compact/*
+#43 6.489       --modules=true|false   Enable Fuseki modules
+#43 6.489   Symbol definition
+#43 6.489       --set                  Set a configuration symbol to a value
+#43 6.489   General
+#43 6.489       -v   --verbose         Verbose
+#43 6.489       -q   --quiet           Run with minimal output
+#43 6.489       --debug                Output information for debugging
+#43 6.489       --help
+#43 6.489       --version              Version information
+#43 6.489       --strict               Operate in strict SPARQL mode (no extensions of any kind)
+#43 DONE 39.1s
+
+#44 [protys-fuseki runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#44 CACHED
+
+#45 [protys-fuseki runtime  3/11] WORKDIR /opt/protys
+#45 CACHED
+
+#44 [protys-backend runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#44 CACHED
+
+#45 [protys-backend runtime  3/11] WORKDIR /opt/protys
+#45 CACHED
+
+#46 [protys-fuseki runtime  4/11] COPY --from=builder /opt/protys/backend/target/protys-ws-*.jar backend/app.jar
+#46 DONE 0.1s
+
+#47 [protys-backend runtime  5/11] COPY --from=builder /opt/protys/research/runtime/ research/runtime/
+#47 DONE 0.1s
+
+#48 [protys-backend runtime  6/11] COPY ontologies/ ontologies/
+#48 DONE 0.1s
+
+#49 [protys-backend runtime  7/11] COPY research/catalog.json research/catalog.json
+#49 DONE 0.1s
+
+#50 [protys-backend runtime  8/11] COPY research/model/ research/model/
+#50 DONE 0.1s
+
+#51 [protys-fuseki runtime  9/11] COPY research/data/ research/data/
+#51 DONE 0.2s
+
+#52 [protys-fuseki runtime 10/11] COPY docker/fuseki-config.ttl docker/fuseki-config.ttl
+#52 DONE 0.1s
+
+#53 [protys-fuseki runtime 11/11] WORKDIR /opt/protys/backend
+#53 DONE 0.0s
+
+#54 [protys-fuseki] exporting to image
+#54 exporting layers
+#54 exporting layers 0.2s done
+#54 writing image sha256:5c9d4006e02607a0e48b0e9812d4ea158510c58d46212e18aa18b50a0bed1777 done
+#54 naming to docker.io/library/protys-v110-backend:maintenance done
+#54 DONE 0.2s
+
+#55 [protys-fuseki] resolving provenance for metadata file
+#55 DONE 0.0s
+
+#56 [protys-backend] exporting to image
+#56 exporting layers 0.2s done
+#56 writing image sha256:0547a9d38cc6d44fc5497bfb48bc118b5c27d1c46898d5ef6768dabea93b0695 0.2s done
+#56 naming to docker.io/library/protys-v110-backend:maintenance done
+#56 DONE 0.5s
+
+#57 [protys-backend] resolving provenance for metadata file
+#57 DONE 0.0s
+ Image protys-v110-backend:maintenance Built 
+ Image protys-v110-backend:maintenance Built 
+ Image protys-v110-protys-init Built 
+ Image protys-v110-protys-frontend Built 
+ Volume protys-v110_postgres-data Creating 
+ Volume protys-v110_postgres-data Creating 
+ Volume protys-v110_fuseki-data Creating 
+ Volume protys-v110_fuseki-data Creating 
+ Network protys-v110_protys-network Creating 
+ Network protys-v110_protys-network Creating 
+ Volume protys-v110_postgres-data Created 
+ Volume protys-v110_postgres-data Created 
+ Volume protys-v110_fuseki-data Created 
+ Volume protys-v110_fuseki-data Created 
+ Network protys-v110_protys-network Created 
+ Network protys-v110_protys-network Created 
+ Container protys-v110-protys-postgres-1 Creating 
+ Container protys-v110-protys-fuseki-1 Creating 
+ Container protys-v110-protys-fuseki-1 Created 
+ Container protys-v110-protys-postgres-1 Created 
+ Container protys-v110-protys-backend-1 Creating 
+ Container protys-v110-protys-backend-1 Created 
+ Container protys-v110-protys-init-1 Creating 
+ Container protys-v110-protys-init-1 Created 
+ Container protys-v110-protys-frontend-1 Creating 
+ Container protys-v110-protys-frontend-1 Created 
+ Container protys-v110-protys-postgres-1 Starting 
+ Container protys-v110-protys-fuseki-1 Starting 
+ Container protys-v110-protys-fuseki-1 Started 
+ Container protys-v110-protys-postgres-1 Started 
+ Container protys-v110-protys-fuseki-1 Waiting 
+ Container protys-v110-protys-postgres-1 Waiting 
+ Container protys-v110-protys-postgres-1 Healthy 
+ Container protys-v110-protys-fuseki-1 Healthy 
+ Container protys-v110-protys-backend-1 Starting 
+ Container protys-v110-protys-backend-1 Started 
+ Container protys-v110-protys-backend-1 Waiting 
+ Container protys-v110-protys-fuseki-1 Waiting 
+ Container protys-v110-protys-fuseki-1 Healthy 
+ Container protys-v110-protys-backend-1 Healthy 
+ Container protys-v110-protys-init-1 Starting 
+ Container protys-v110-protys-init-1 Started 
+ Container protys-v110-protys-init-1 Waiting 
+ Container protys-v110-protys-init-1 Exited 
+ Container protys-v110-protys-frontend-1 Starting 
+ Container protys-v110-protys-frontend-1 Started 

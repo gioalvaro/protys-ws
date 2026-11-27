@@ -1,0 +1,24 @@
+{
+  "K1_grafo_del_caso_igual": true,
+  "K2_inferidos_sobre_el_caso": {
+    "sin_modulo": 933,
+    "con_modulo": 934,
+    "iguales": false,
+    "agregados": [
+      "<http://w3id.org/protys/fixture#PearlMill_01> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://w3id.org/protys/ontology/iso15531#temporarilyUnavailable> ."
+    ],
+    "quitados": []
+  },
+  "K3_sameAs_con_individuos_del_caso": [],
+  "K4_individuos": {
+    "del_caso": 258,
+    "del_archivo": 59,
+    "en_la_red_con_el_modulo": 316,
+    "ajenos_a_caso_y_archivo": []
+  },
+  "inferidos_totales": {
+    "sin_modulo": 1167,
+    "con_modulo": 1447
+  },
+  "todos_pasan": false
+}

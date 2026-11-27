@@ -1,0 +1,14 @@
+fecha_utc=2026-11-27T02:50:10Z
+instancias_sha256=8c72c8fb91e03410e28e69c0aa235800d78bb2591f82ca9ee965f8ca3b49c8fb
+instancias_triples=488
+docker=29.8.2
+compose=5.5.0
+python=Python 3.9.6
+rdflib=7.6.0
+node=v24.18.0
+playwright=1.58.2
+imagen[protys-fuseki]=protys-v110-backend:maintenance id=sha256:0547a9d38cc6d44fc5497bfb48bc118b5c27d1c46898d5ef6768dabea93b0695
+imagen[protys-postgres]=postgres:15@sha256:0dda651c259bfe50e2bcc28ca23d1fcca772fa90b0210803aa7b97379ccf4e85 id=sha256:3b50b13a8e1eccf58bcb314b4dda76ddc01577026bfacefe0678d746b8f80853
+imagen[protys-backend]=protys-v110-backend:maintenance id=sha256:0547a9d38cc6d44fc5497bfb48bc118b5c27d1c46898d5ef6768dabea93b0695
+imagen[protys-frontend]=protys-v110-protys-frontend id=sha256:7ce8569aa90007a12504ac80b74040f1904a953450e52c07eb2af493f70e7410
+java_backend=openjdk version "17.0.21" 2026-10-20

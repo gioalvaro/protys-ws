@@ -23,7 +23,6 @@
         <jena.version>4.10.0</jena.version>
         <owlapi.version>5.1.20</owlapi.version>
         <hermit.version>1.4.5.519</hermit.version>
-        <carml.version>0.4.3</carml.version>
         <springdoc-openapi.version>2.3.0</springdoc-openapi.version>
     </properties>
 
@@ -87,7 +86,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <scope>runtime</scope>
+            <!-- compile: SqlQueryGuard usa el divisor de sentencias del driver (org.postgresql.core.Parser) -->
         </dependency>
 
         <!-- OWL API Dependencies -->
@@ -118,13 +117,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- R2RML Processing - CARML Engine -->
-        <dependency>
-            <groupId>io.carml</groupId>
-            <artifactId>carml-engine</artifactId>
-            <version>${carml.version}</version>
-        </dependency>
-
         <!-- Jackson XML Support -->
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
@@ -142,6 +134,13 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Isolated persistence checks for wizard ownership and recovery. -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

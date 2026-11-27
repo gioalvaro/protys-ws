@@ -1,0 +1,44 @@
+{
+  "head" : {
+    "vars" : [ "lot", "status" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA"
+      },
+      "status" : {
+        "type" : "literal",
+        "value" : "APPROVED"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB"
+      },
+      "status" : {
+        "type" : "literal",
+        "value" : "APPROVED"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      },
+      "status" : {
+        "type" : "literal",
+        "value" : "REJECTED"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero"
+      },
+      "status" : {
+        "type" : "literal",
+        "value" : "INVALID_TEST_RECORD"
+      }
+    } ]
+  }
+}

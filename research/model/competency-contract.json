@@ -73,7 +73,7 @@
           "f:BatchA_Op2"
         ],
         "input_asserts_usesResource": false,
-        "scope": "Complementary authored ASK fixture, outside21SELECT/fourASK canonical mechanisms. Actual execution pending final runtime."
+        "scope": "Complementary authored ASK fixture, outside the 21 SELECT queries and the four canonical ASK mechanisms. Executed in the functional phase as P3_WhitePaint_PearlMill_formal_use and P3_WhitePaint_PearlMill_without_R09."
       }
     },
     {

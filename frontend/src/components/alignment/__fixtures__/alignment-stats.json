@@ -1,0 +1,23 @@
+{
+  "totalRules" : null,
+  "activeRules" : 22,
+  "totalInferences" : null,
+  "reasoningTimeMs" : null,
+  "executionTimeMs" : null,
+  "startedAt" : null,
+  "completedAt" : null,
+  "lastExecutedAt" : null,
+  "inputTripleCount" : 4316,
+  "inferredTripleCount" : 1132,
+  "newClassCount" : null,
+  "newIndividualCount" : null,
+  "status" : "READY",
+  "validationStatus" : null,
+  "cacheHit" : false,
+  "cleaningEvaluation" : null,
+  "contextEvaluation" : null,
+  "numericEvaluation" : null,
+  "owlValidationStatus" : null,
+  "errorMessage" : null,
+  "ruleResults" : null
+}

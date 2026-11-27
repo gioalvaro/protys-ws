@@ -1,0 +1,228 @@
+{
+  "corridas": {
+    "ALL-caso": {
+      "status": "CONSISTENT",
+      "input_triples": 4326,
+      "materialized_triples": 5420
+    },
+    "ALL-caso-mas-instancias": {
+      "status": "CONSISTENT",
+      "input_triples": 4812,
+      "materialized_triples": 6230
+    },
+    "sin-R15-caso-mas-instancias": {
+      "status": "CONSISTENT",
+      "input_triples": 4812,
+      "materialized_triples": 6198
+    }
+  },
+  "coinciden_caso": 18,
+  "coinciden_caso_mas_instancias": 18,
+  "consultas_que_cambian_sin_R15": [
+    "QC12"
+  ],
+  "tabla": [
+    {
+      "consulta": "QC01",
+      "caso_obtenidas": 4,
+      "caso_esperadas": 4,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 4,
+      "caso_mas_instancias_esperadas": 4,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 4,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC02",
+      "caso_obtenidas": 20,
+      "caso_esperadas": 16,
+      "caso_coincide": false,
+      "caso_esperadas_encadenada": 20,
+      "caso_coincide_encadenada": true,
+      "caso_mas_instancias_obtenidas": 20,
+      "caso_mas_instancias_esperadas": 16,
+      "caso_mas_instancias_coincide": false,
+      "caso_mas_instancias_esperadas_encadenada": 20,
+      "caso_mas_instancias_coincide_encadenada": true,
+      "sin_R15_obtenidas": 20,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC03",
+      "caso_obtenidas": 3,
+      "caso_esperadas": 3,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 3,
+      "caso_mas_instancias_esperadas": 3,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 3,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC04",
+      "caso_obtenidas": 4,
+      "caso_esperadas": 4,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 4,
+      "caso_mas_instancias_esperadas": 4,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 4,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC05",
+      "caso_obtenidas": 16,
+      "caso_esperadas": 16,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 16,
+      "caso_mas_instancias_esperadas": 16,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 16,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC06",
+      "caso_obtenidas": 4,
+      "caso_esperadas": 4,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 4,
+      "caso_mas_instancias_esperadas": 4,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 4,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC07",
+      "caso_obtenidas": 4,
+      "caso_esperadas": 4,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 4,
+      "caso_mas_instancias_esperadas": 4,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 4,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC08",
+      "caso_obtenidas": 21,
+      "caso_esperadas": 21,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 21,
+      "caso_mas_instancias_esperadas": 21,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 21,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC09",
+      "caso_obtenidas": 1,
+      "caso_esperadas": 1,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 1,
+      "caso_mas_instancias_esperadas": 1,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 1,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC10",
+      "caso_obtenidas": 4,
+      "caso_esperadas": 4,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 4,
+      "caso_mas_instancias_esperadas": 4,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 4,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC11",
+      "caso_obtenidas": 28,
+      "caso_esperadas": 28,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 28,
+      "caso_mas_instancias_esperadas": 28,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 28,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC12",
+      "caso_obtenidas": 0,
+      "caso_esperadas": 0,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 1,
+      "caso_mas_instancias_esperadas": 1,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 0,
+      "sin_R15_igual_a_ALL": false
+    },
+    {
+      "consulta": "QC13",
+      "caso_obtenidas": 1,
+      "caso_esperadas": 1,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 1,
+      "caso_mas_instancias_esperadas": 1,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 1,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC14",
+      "caso_obtenidas": 112,
+      "caso_esperadas": 112,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 112,
+      "caso_mas_instancias_esperadas": 112,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 112,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC15",
+      "caso_obtenidas": 1,
+      "caso_esperadas": 1,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 1,
+      "caso_mas_instancias_esperadas": 1,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 1,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC16",
+      "caso_obtenidas": 21,
+      "caso_esperadas": 21,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 21,
+      "caso_mas_instancias_esperadas": 21,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 21,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC17",
+      "caso_obtenidas": 1,
+      "caso_esperadas": 1,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 1,
+      "caso_mas_instancias_esperadas": 1,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 1,
+      "sin_R15_igual_a_ALL": true
+    },
+    {
+      "consulta": "QC18",
+      "caso_obtenidas": 1,
+      "caso_esperadas": 1,
+      "caso_coincide": true,
+      "caso_mas_instancias_obtenidas": 1,
+      "caso_mas_instancias_esperadas": 1,
+      "caso_mas_instancias_coincide": true,
+      "sin_R15_obtenidas": 1,
+      "sin_R15_igual_a_ALL": true
+    }
+  ]
+}

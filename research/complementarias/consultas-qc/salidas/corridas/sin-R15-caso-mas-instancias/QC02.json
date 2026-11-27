@@ -1,0 +1,188 @@
+{
+  "head" : {
+    "vars" : [ "lot", "flow" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Flow_AcrylicResin"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Flow_Biocide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Flow_TitaniumDioxide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_Flow_Water"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/ontology/core#WaterFlow"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Flow_AcrylicResin"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Flow_Biocide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Flow_TitaniumDioxide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_Flow_Water"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/ontology/core#WaterFlow"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Flow_AcrylicResin"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Flow_Biocide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Flow_TitaniumDioxide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_Flow_Water"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/ontology/core#WaterFlow"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_AcrylicResin"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_Biocide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_TitaniumDioxide"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_Flow_Water"
+      }
+    }, {
+      "lot" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero"
+      },
+      "flow" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/ontology/core#WaterFlow"
+      }
+    } ]
+  }
+}

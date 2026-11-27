@@ -1,0 +1,97 @@
+ Image protys-v110-erp-protys-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 568B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.33kB 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#3 DONE 0.1s
+
+#4 [internal] load metadata for docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#4 DONE 0.1s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 101B done
+#5 DONE 0.0s
+
+#6 [builder 1/6] FROM docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#7 DONE 0.0s
+
+#8 [internal] load build context
+#8 transferring context: 27.70kB 0.0s done
+#8 DONE 0.0s
+
+#9 [builder 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [builder 3/6] COPY package.json package-lock.json .npmrc ./
+#10 CACHED
+
+#11 [builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#11 CACHED
+
+#12 [builder 5/6] COPY . .
+#12 DONE 0.1s
+
+#13 [builder 6/6] RUN npm run build
+#13 0.534 
+#13 0.534 > protys-ws-frontend@1.1.0 build
+#13 0.534 > react-scripts build
+#13 0.534 
+#13 1.469 (node:24) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+#13 1.469 (Use `node --trace-deprecation ...` to show where the warning was created)
+#13 1.475 Creating an optimized production build...
+#13 1.602 Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+#13 1.602   npx update-browserslist-db@latest
+#13 1.602   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#13 9.890 Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+#13 9.890   npx update-browserslist-db@latest
+#13 9.890   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#13 10.42 Compiled successfully.
+#13 10.42 
+#13 10.42 File sizes after gzip:
+#13 10.42 
+#13 10.43   210.36 kB  build/static/js/main.cf5ffdf6.js
+#13 10.43   7.79 kB    build/static/css/main.e1708e48.css
+#13 10.43 
+#13 10.43 The project was built assuming it is hosted at /.
+#13 10.43 You can control this with the homepage field in your package.json.
+#13 10.43 
+#13 10.43 The build folder is ready to be deployed.
+#13 10.43 You may serve it with a static server:
+#13 10.43 
+#13 10.43   npm install -g serve
+#13 10.43   serve -s build
+#13 10.43 
+#13 10.43 Find out more about deployment here:
+#13 10.43 
+#13 10.43   https://cra.link/deployment
+#13 10.43 
+#13 DONE 10.7s
+
+#14 [stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=builder /app/build /usr/share/nginx/html
+#15 DONE 0.1s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 0.0s done
+#16 writing image sha256:c7882ff2f48a4cfd5d2fdb580c0be81e88ba5c342d958633e511c1e680d6dec5 done
+#16 naming to docker.io/library/protys-v110-erp-protys-frontend done
+#16 DONE 0.1s
+
+#17 resolving provenance for metadata file
+#17 DONE 0.0s
+ Image protys-v110-erp-protys-frontend Built 
+ Container protys-v110-erp-protys-frontend-1 Creating 
+ Container protys-v110-erp-protys-frontend-1 Created 
+ Container protys-v110-erp-protys-frontend-1 Starting 
+ Container protys-v110-erp-protys-frontend-1 Started 

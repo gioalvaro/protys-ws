@@ -1,0 +1,14 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX prod: <http://w3id.org/protys/ontology/product#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# Efecto del razonamiento sobre los individuos ERP: tipos que no están afirmados en el grafo del
+# conector y que el razonador dedujo (grafo de resultados de inferencia de la plataforma).
+SELECT ?individual ?inferredType
+WHERE {
+  GRAPH <http://w3id.org/protys/ontology/inference-results> { ?individual a ?inferredType }
+  FILTER(STRSTARTS(STR(?individual), "http://w3id.org/protys/erp/"))
+  FILTER(STRSTARTS(STR(?inferredType), "http://w3id.org/protys/ontology/"))
+  FILTER NOT EXISTS { GRAPH ?g { ?individual a ?inferredType } FILTER(STRSTARTS(STR(?g), "http://w3id.org/protys/erp/")) }
+}
+ORDER BY ?individual ?inferredType

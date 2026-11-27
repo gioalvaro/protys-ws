@@ -9,8 +9,6 @@ import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -42,6 +40,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AlignmentService {
 
+    static final String RULE_GRAPH = "http://w3id.org/protys/ontology/active-rule-definitions";
+
+    /** Includes legacy abandoned wizard modules only in explicit session cleanup, never global reasoning. */
+    static boolean isPermanentModule(OntologyModule module) {
+        return module.getNamedGraph() != null && !module.getNamedGraph().startsWith("http://w3id.org/protys/ontology/temp/");
+    }
+
     private final FusekiService fusekiService;
     private final AlignmentRuleRepository alignmentRuleRepository;
     private final OntologyModuleRepository ontologyModuleRepository;
@@ -49,6 +54,10 @@ public class AlignmentService {
 
     /**
      * Loads alignment rules (SWRL rules) from an OWL file.
+     *
+     * <p>Una regla nueva se registra activa. Una regla que ya estaba registrada actualiza su texto y su
+     * descripción, pero conserva su fecha de creación y su estado: recargar no reactiva una regla
+     * desactivada. La respuesta trae cada regla con su estado.
      *
      * @param rulesFile the MultipartFile containing SWRL rules
      * @return List of loaded AlignmentRule entities
@@ -59,8 +68,8 @@ public class AlignmentService {
         log.info("Loading alignment rules from file");
 
         try {
-            Model model = ModelFactory.createDefaultModel();
-            RDFDataMgr.read(model, rulesFile.getInputStream(), Lang.RDFXML);
+            // Lector según la extensión (la interfaz ofrece .rdf, .owl, .ttl y .n3); RDF/XML si no se reconoce.
+            Model model = StandardIncorporationService.parse(rulesFile);
 
             List<AlignmentRule> rules = new ArrayList<>();
 
@@ -74,20 +83,25 @@ public class AlignmentService {
                 Resource ruleResource = stmt.getSubject();
 
                 AlignmentRule rule = alignmentRuleRepository.findByRuleId(ruleResource.getLocalName()).orElseGet(AlignmentRule::new);
+                boolean isNew = rule.getId() == null;
                 rule.setRuleId(ruleResource.getLocalName());
                 rule.setRuleType(AlignmentRule.RuleType.INFERENCE);
                 rule.setName(ruleResource.getLocalName());
-                rule.setSwrlExpression(stmt.getObject().toString());
-                rule.setActive(true);
-                rule.setCreatedAt(LocalDateTime.now());
+                rule.setSwrlExpression(SwrlText.of(ruleResource));
+                rule.setDescription(SwrlText.description(ruleResource));
+                if (isNew) {
+                    rule.setActive(true);
+                    rule.setCreatedAt(LocalDateTime.now());
+                }
                 rule.setUpdatedAt(LocalDateTime.now());
 
                 rules.add(rule);
                 log.debug("Parsed alignment rule: {}", rule.getName());
             }
 
-            // Preserve the executable RDF lists, variable declarations and rule heads.
-            fusekiService.putModel("http://w3id.org/protys/ontology/active-rule-definitions", model);
+            // Suma las definiciones (listas RDF, variables y cabezas) a las ya cargadas, sin reemplazarlas:
+            // antes un putModel borraba las definiciones de las demás reglas registradas.
+            fusekiService.putModel(RULE_GRAPH, mergeRuleDefinitions(fusekiService.getModelOrEmpty(RULE_GRAPH), model));
 
             // Save all rules
             List<AlignmentRule> saved = alignmentRuleRepository.saveAll(rules);
@@ -112,7 +126,19 @@ public class AlignmentService {
      */
     @Transactional
     public InferenceStats executeReasoning() {
-        log.info("Starting reasoning execution");
+        return executeReasoning(List.of());
+    }
+
+    /** Prefijo obligatorio de los grafos de datos que se pueden sumar al razonamiento. */
+    static final String DATA_GRAPH_PREFIX = "http://w3id.org/protys/erp/";
+
+    /**
+     * Razona sobre los módulos registrados más los grafos de datos indicados (grafos materializados
+     * por conectores ERP, bajo {@link #DATA_GRAPH_PREFIX}). Sin grafos de datos el resultado es el
+     * mismo que {@link #executeReasoning()} antes de existir este parámetro.
+     */
+    public InferenceStats executeReasoning(List<String> dataGraphs) {
+        log.info("Starting reasoning execution with {} data graphs", dataGraphs == null ? 0 : dataGraphs.size());
         long startTime = System.currentTimeMillis();
 
         InferenceStats stats = new InferenceStats();
@@ -120,20 +146,29 @@ public class AlignmentService {
 
         try {
             // Load all ontology modules into a combined model
-            List<OntologyModule> modules = ontologyModuleRepository.findAll();
+            List<OntologyModule> modules = ontologyModuleRepository.findAll().stream().filter(AlignmentService::isPermanentModule).toList();
             if(modules.isEmpty())throw new ProtysFusekiException("NOT_EVALUATED: no registered ontology modules");
             Model combinedModel = ModelFactory.createDefaultModel();
 
-            long inputTriples = 0;
             for (OntologyModule module : modules) {
                 Model moduleModel = fusekiService.getModel(module.getNamedGraph());
                 if(moduleModel.isEmpty())throw new ProtysFusekiException("NOT_EVALUATED: required module graph is empty: "+module.getName());
                 combinedModel.add(withoutRuleDefinitions(moduleModel));
-                inputTriples += moduleModel.size();
             }
 
+            List<String> graphs = dataGraphs == null ? List.of() : List.copyOf(dataGraphs);
+            for (String graph : graphs) {
+                if (graph == null || !graph.startsWith(DATA_GRAPH_PREFIX)) {
+                    throw new ProtysFusekiException("NOT_EVALUATED: data graph outside " + DATA_GRAPH_PREFIX + ": " + graph);
+                }
+                Model data = fusekiService.getModelOrEmpty(graph);
+                if (data.isEmpty()) throw new ProtysFusekiException("NOT_EVALUATED: data graph is empty: " + graph);
+                combinedModel.add(data);
+            }
+            stats.setDataGraphs(graphs);
+
             combinedModel.add(fusekiService.getModel("http://w3id.org/protys/ontology/active-rule-definitions"));
-            inputTriples = combinedModel.size();
+            long inputTriples = combinedModel.size();
             stats.setInputTripleCount((int) inputTriples);
             log.debug("Combined model contains {} triples from {} modules",
                     inputTriples, modules.size());
@@ -249,7 +284,7 @@ public class AlignmentService {
 
         try {
             // Load all ontologies
-            List<OntologyModule> modules = ontologyModuleRepository.findAll();
+            List<OntologyModule> modules = ontologyModuleRepository.findAll().stream().filter(AlignmentService::isPermanentModule).toList();
             Model combinedModel = ModelFactory.createDefaultModel();
 
             for (OntologyModule module : modules) {
@@ -301,7 +336,7 @@ public class AlignmentService {
                     .orElseThrow(() -> new ProtysFusekiException("Rule not found: " + ruleId));
 
             Model combined = ModelFactory.createDefaultModel();
-            for (OntologyModule module : ontologyModuleRepository.findAll()) combined.add(withoutRuleDefinitions(fusekiService.getModel(module.getNamedGraph())));
+            for (OntologyModule module : ontologyModuleRepository.findAll()) if (isPermanentModule(module)) combined.add(withoutRuleDefinitions(fusekiService.getModel(module.getNamedGraph())));
             combined.add(fusekiService.getModel("http://w3id.org/protys/ontology/active-rule-definitions"));
             var validation=reasoningService.classify(combined,List.of(rule.getName()));
             return validation.isConsistent() && validation.getImportedRuleCount()==1;
@@ -310,6 +345,47 @@ public class AlignmentService {
             log.error("Rule validation failed: {}", ruleId, e);
             return false;
         }
+    }
+
+    private static final String SWRL_IMP = "http://www.w3.org/2003/11/swrl#Imp";
+
+    /**
+     * Devuelve las definiciones existentes más las reglas SWRL de {@code incoming}.
+     * Una regla ya presente con la misma definición (isomorfa) no se vuelve a sumar, así un reintento
+     * no duplica sus listas RDF; una regla presente con otra definición se rechaza. El resto del archivo
+     * (encabezado, declaraciones de variables) se suma tal cual.
+     */
+    static Model mergeRuleDefinitions(Model existing, Model incoming) {
+        Model merged = ModelFactory.createDefaultModel().add(existing);
+        var imp = incoming.createResource(SWRL_IMP);
+        for (Resource rule : incoming.listSubjectsWithProperty(org.apache.jena.vocabulary.RDF.type, imp).toList()) {
+            if (rule.isAnon()) throw new ProtysMappingException("Cada regla SWRL necesita un IRI");
+            Model definition = ruleDefinition(incoming, rule);
+            if (existing.contains(rule, org.apache.jena.vocabulary.RDF.type, imp)) {
+                if (!ruleDefinition(existing, rule).isIsomorphicWith(definition))
+                    throw new ProtysMappingException("La regla " + rule.getLocalName() + " ya está cargada con otra definición");
+                continue;
+            }
+            merged.add(definition);
+        }
+        merged.add(withoutRuleDefinitions(incoming));
+        return merged;
+    }
+
+    /** Las sentencias de la regla y de todos los nodos en blanco que cuelgan de ella (cuerpo y cabeza). */
+    static Model ruleDefinition(Model source, Resource rule) {
+        Model definition = ModelFactory.createDefaultModel();
+        var queue = new java.util.ArrayDeque<Resource>(List.of(rule));
+        var seen = new java.util.HashSet<Resource>();
+        while (!queue.isEmpty()) {
+            Resource subject = queue.remove();
+            if (!seen.add(subject)) continue;
+            for (Statement statement : source.listStatements(subject, null, (org.apache.jena.rdf.model.RDFNode) null).toList()) {
+                definition.add(statement);
+                if (statement.getObject().isAnon()) queue.add(statement.getObject().asResource());
+            }
+        }
+        return definition;
     }
 
     /** Executable definitions have one authoritative graph; copied RDF lists must not coexist. */

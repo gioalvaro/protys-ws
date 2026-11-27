@@ -1,0 +1,9 @@
+# QC14 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué flujo de inventario se vincula con cada operación que consume su material en el mismo proceso?
+# R20: Puente flujo y operación de consumo del mismo proceso. IRI de flujo/material/operación del mismo proceso
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?flow ?operation WHERE { ?flow c:bridgesFlowToActivity ?operation . } ORDER BY ?flow ?operation

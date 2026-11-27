@@ -1,0 +1,43 @@
+{
+  "status" : "CONSISTENT",
+  "profile_valid" : true,
+  "cleaning_evaluation" : {
+    "required_pair_count" : 2,
+    "scope" : "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "incomplete_context" : false,
+    "missing_record" : true,
+    "status" : "MISSING_CLEANING_RECORD"
+  },
+  "context_evaluation" : {
+    "declared_link_count" : 84,
+    "scope" : "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "invalid_declared_link" : false,
+    "status" : "CONTEXT_VALID"
+  },
+  "numeric_evaluation" : {
+    "selected_operation_count" : 28,
+    "scope" : "Electrical energy, selected factor and GHG values for lot operations of the same manufacturing process; no global data completeness or physical measurement approval.",
+    "output_checked" : true,
+    "ambiguous_input" : false,
+    "invalid_input" : false,
+    "invalid_output" : false,
+    "status" : "VALID"
+  },
+  "swrl_rule_count" : 22,
+  "profile_violations" : [ ],
+  "dl_materialized_triples" : 0,
+  "dl_axiom_preservation" : {
+    "stage" : "named_dl_export_reload_owlapi5",
+    "comparison" : "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+    "expected_anonymous_individual_count" : 0,
+    "observed_anonymous_individual_count" : 0,
+    "expected_axiom_count" : 3953,
+    "observed_axiom_count" : 3953,
+    "retained_axiom_count" : 3953,
+    "lost_axiom_count" : 0,
+    "status" : "RETAINED"
+  },
+  "unsatisfiable_classes" : [ ],
+  "dl_ms" : 430.781334,
+  "owl_validation_status" : "CONSISTENT"
+}

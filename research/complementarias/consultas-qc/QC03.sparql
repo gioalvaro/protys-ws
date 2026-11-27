@@ -1,0 +1,9 @@
+# QC03 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué indicadores de impacto superan su umbral explícito de la misma unidad y categoría?
+# R04: Indicador por umbral explícito de la misma unidad y categoría. Indicador y ThresholdRecord explícito con la misma unidad y categoría; valor, unidad y categoría del mismo registro; frontera estricta >
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?indicator WHERE { ?indicator a c:HighImpactIndicator . } ORDER BY ?indicator

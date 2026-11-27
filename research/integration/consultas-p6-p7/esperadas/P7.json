@@ -1,0 +1,55 @@
+{
+  "head": {
+    "vars": [
+      "planta",
+      "persona",
+      "etiqueta"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "persona": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Chemist_Maria"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Quality Chemist Maria"
+        }
+      },
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "persona": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Operator_John"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Machine Operator John"
+        }
+      },
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "persona": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Supervisor_Carlos"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Production Supervisor Carlos"
+        }
+      }
+    ]
+  }
+}

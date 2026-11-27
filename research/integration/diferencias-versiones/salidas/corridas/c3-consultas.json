@@ -1,0 +1,384 @@
+{
+  "v1.0.0": {
+    "Q01": {
+      "esperado": "research/model/expected/Q01.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q02": {
+      "esperado": "research/model/expected/Q02.json",
+      "iguales": true,
+      "filas_esperadas": 40,
+      "filas_obtenidas": 40,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q03": {
+      "esperado": "research/model/expected/Q03.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q04": {
+      "esperado": "research/model/expected/Q04.json",
+      "iguales": true,
+      "filas_esperadas": 40,
+      "filas_obtenidas": 40,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q05": {
+      "esperado": "research/model/expected/Q05.json",
+      "iguales": true,
+      "filas_esperadas": 5,
+      "filas_obtenidas": 5,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q06": {
+      "esperado": "research/model/expected/Q06.json",
+      "iguales": true,
+      "filas_esperadas": 3,
+      "filas_obtenidas": 3,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q07": {
+      "esperado": "research/model/expected/Q07.json",
+      "iguales": true,
+      "filas_esperadas": 28,
+      "filas_obtenidas": 28,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q08": {
+      "esperado": "research/model/expected/Q08.json",
+      "iguales": true,
+      "filas_esperadas": 21,
+      "filas_obtenidas": 21,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q09": {
+      "esperado": "research/model/expected/Q09.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q10": {
+      "esperado": "research/model/expected/Q10.json",
+      "iguales": true,
+      "filas_esperadas": 6,
+      "filas_obtenidas": 6,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q11": {
+      "esperado": "research/model/expected/Q11.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q12": {
+      "esperado": "research/model/expected/Q12.json",
+      "iguales": true,
+      "filas_esperadas": 52,
+      "filas_obtenidas": 52,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q13": {
+      "esperado": "research/model/expected/Q13.json",
+      "iguales": true,
+      "filas_esperadas": 16,
+      "filas_obtenidas": 16,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q14": {
+      "esperado": "research/model/expected/Q14.json",
+      "iguales": true,
+      "filas_esperadas": 1,
+      "filas_obtenidas": 1,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q15": {
+      "esperado": "research/model/expected/Q15.json",
+      "iguales": true,
+      "filas_esperadas": 3,
+      "filas_obtenidas": 3,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q16": {
+      "esperado": "research/model/expected/Q16.json",
+      "iguales": true,
+      "filas_esperadas": 24,
+      "filas_obtenidas": 24,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q17": {
+      "esperado": "research/model/expected/Q17.json",
+      "iguales": true,
+      "filas_esperadas": 3,
+      "filas_obtenidas": 3,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q18": {
+      "esperado": "research/model/expected/Q18.json",
+      "iguales": true,
+      "filas_esperadas": 28,
+      "filas_obtenidas": 28,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q19": {
+      "esperado": "research/model/expected/Q19.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q20": {
+      "esperado": "research/model/expected/Q20.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q21": {
+      "esperado": "research/model/expected/Q21.json",
+      "iguales": true,
+      "filas_esperadas": 1,
+      "filas_obtenidas": 1,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    }
+  },
+  "v1.1.0": {
+    "Q01": {
+      "esperado": "research/model/expected/Q01.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q02": {
+      "esperado": "research/model/expected/Q02.json",
+      "iguales": true,
+      "filas_esperadas": 40,
+      "filas_obtenidas": 40,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q03": {
+      "esperado": "research/model/expected/Q03.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q04": {
+      "esperado": "research/model/expected/Q04.json",
+      "iguales": true,
+      "filas_esperadas": 40,
+      "filas_obtenidas": 40,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q05": {
+      "esperado": "research/model/expected/Q05.json",
+      "iguales": true,
+      "filas_esperadas": 5,
+      "filas_obtenidas": 5,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q06": {
+      "esperado": "research/model/expected/Q06.json",
+      "iguales": true,
+      "filas_esperadas": 3,
+      "filas_obtenidas": 3,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q07": {
+      "esperado": "research/model/expected/Q07.json",
+      "iguales": true,
+      "filas_esperadas": 28,
+      "filas_obtenidas": 28,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q08": {
+      "esperado": "research/model/expected/Q08.json",
+      "iguales": true,
+      "filas_esperadas": 21,
+      "filas_obtenidas": 21,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q09": {
+      "esperado": "research/model/expected/Q09.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q10": {
+      "esperado": "research/model/expected/Q10.json",
+      "iguales": true,
+      "filas_esperadas": 6,
+      "filas_obtenidas": 6,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q11": {
+      "esperado": "research/model/expected/Q11.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q12": {
+      "esperado": "research/model/expected/Q12.json",
+      "iguales": true,
+      "filas_esperadas": 52,
+      "filas_obtenidas": 52,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q13": {
+      "esperado": "research/model/expected/Q13.json",
+      "iguales": true,
+      "filas_esperadas": 16,
+      "filas_obtenidas": 16,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q14": {
+      "esperado": "research/model/expected/Q14.json",
+      "iguales": true,
+      "filas_esperadas": 1,
+      "filas_obtenidas": 1,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q15": {
+      "esperado": "research/model/expected/Q15.json",
+      "iguales": true,
+      "filas_esperadas": 3,
+      "filas_obtenidas": 3,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q16": {
+      "esperado": "research/model/expected/Q16.json",
+      "iguales": true,
+      "filas_esperadas": 24,
+      "filas_obtenidas": 24,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q17": {
+      "esperado": "research/model/expected/Q17.json",
+      "iguales": true,
+      "filas_esperadas": 3,
+      "filas_obtenidas": 3,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q18": {
+      "esperado": "research/model/expected/Q18.json",
+      "iguales": true,
+      "filas_esperadas": 28,
+      "filas_obtenidas": 28,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q19": {
+      "esperado": "research/model/expected/Q19.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q20": {
+      "esperado": "research/model/expected/Q20.json",
+      "iguales": true,
+      "filas_esperadas": 4,
+      "filas_obtenidas": 4,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    },
+    "Q21": {
+      "esperado": "research/model/expected/Q21.json",
+      "iguales": true,
+      "filas_esperadas": 1,
+      "filas_obtenidas": 1,
+      "variables_iguales": true,
+      "sin_par_esperadas": [],
+      "sin_par_obtenidas": []
+    }
+  }
+}

@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  PieChart,
-  Pie,
   BarChart,
   Bar,
   XAxis,
@@ -11,13 +9,18 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Cell,
 } from 'recharts';
 import {
   ArrowRightIcon,
   DocumentPlusIcon,
   CommandLineIcon,
   SparklesIcon,
+  CubeIcon,
+  RectangleGroupIcon,
+  UserGroupIcon,
+  LinkIcon,
+  BoltIcon,
+  CircleStackIcon,
 } from '@heroicons/react/24/outline';
 import {
   useDashboardStats,
@@ -25,27 +28,31 @@ import {
   useRecentActivity,
 } from '../../hooks/useDashboard';
 
-const CHART_COLORS = ['#0ea5e9', '#14b8a6', '#a855f7', '#f59e0b', '#ef4444', '#06b6d4'];
+// Nombres largos de módulos (p. ej. «… — datos de instancia») se acortan en el eje.
+const shortName = (name, max = 28) => (name && name.length > max ? `${name.slice(0, max - 1)}…` : name);
+
+/** Una fila por módulo a partir de moduleStats, ordenada por tamaño. */
+export function moduleChartData(stats) {
+  return (stats?.moduleStats ?? [])
+    .map((module) => ({
+      name: module.moduleName,
+      label: shortName(module.moduleName),
+      triples: module.tripleCount ?? 0,
+      classes: module.classCount ?? 0,
+      individuals: module.individualCount ?? 0,
+    }))
+    .sort((left, right) => right.triples - left.triples);
+}
 
 function Dashboard() {
   const { data: stats, isLoading: statsLoading, error: statsError } = useDashboardStats();
 
-  const { data: health, isLoading: healthLoading } = useSystemHealth();
+  const { data: health, isLoading: healthLoading, error: healthError } = useSystemHealth();
 
   const { data: activity, isLoading: activityLoading } = useRecentActivity();
 
-  // Derive chart data from stats
-  const chartData = stats
-    ? {
-        moduleComposition: [
-          { name: 'Modules', value: stats.totalModules || 0 },
-        ],
-        tripleDistribution: [
-          { name: 'Triples', count: stats.totalTriples || 0 },
-        ],
-      }
-    : null;
-
+  const modules = moduleChartData(stats);
+  const chartHeight = Math.max(160, modules.length * 56 + 60);
   const chartLoading = statsLoading;
 
   if (statsError) {
@@ -64,49 +71,49 @@ function Dashboard() {
         <StatCard
           label="Total Modules"
           value={stats?.totalModules ?? '-'}
-          icon="📦"
+          icon={CubeIcon}
           loading={statsLoading}
           trend={stats?.modulesTrend}
         />
         <StatCard
           label="Total Classes"
           value={stats?.totalClasses ?? '-'}
-          icon="📋"
+          icon={RectangleGroupIcon}
           loading={statsLoading}
           trend={stats?.classesTrend}
         />
         <StatCard
           label="Total Individuals"
           value={stats?.totalIndividuals ?? '-'}
-          icon="👥"
+          icon={UserGroupIcon}
           loading={statsLoading}
           trend={stats?.individualsTrend}
         />
         <StatCard
           label="Total Triples"
           value={stats?.totalTriples ?? '-'}
-          icon="🔗"
+          icon={LinkIcon}
           loading={statsLoading}
           trend={stats?.triplesTrend}
         />
         <StatCard
           label="Active Rules"
-          value={stats?.activeRules ?? '-'}
-          icon="⚡"
+          value={stats?.activeAlignmentRules ?? '-'}
+          icon={BoltIcon}
           loading={statsLoading}
           trend={stats?.rulesTrend}
         />
         <StatCard
           label="Connected ERPs"
-          value={stats?.connectedErps ?? '-'}
-          icon="🔌"
+          value={stats?.connectedERPs ?? '-'}
+          icon={CircleStackIcon}
           loading={statsLoading}
         />
       </div>
 
       {/* System Health */}
       <div className="card p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">System Health</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-4">API Status</h2>
         {healthLoading ? (
           <div className="space-y-3">
             {[1, 2, 3].map((i) => (
@@ -114,64 +121,52 @@ function Dashboard() {
             ))}
           </div>
         ) : (
-          <div className="space-y-3">
-            <HealthIndicator label="API Server" status={health?.apiStatus} />
-            <HealthIndicator label="Triple Store" status={health?.tripleStoreStatus} />
-            <HealthIndicator label="Reasoning Engine" status={health?.reasoningStatus} />
-            <HealthIndicator label="ERP Connectors" status={health?.erpStatus} />
-          </div>
+          <ApiStatus health={health} error={healthError} />
         )}
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Module Composition Chart */}
+        {/* Triples por módulo */}
         <div className="card p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Module Composition</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">Triples per Module</h2>
+          <p className="text-xs text-gray-500 mb-4">Asserted triples stored in each registered module graph.</p>
           {chartLoading ? (
             <div className="h-64 bg-gray-200 rounded animate-pulse"></div>
-          ) : chartData?.moduleComposition ? (
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={chartData.moduleComposition}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}`}
-                  outerRadius={80}
-                  fill="#0ea5e9"
-                  dataKey="value"
-                >
-                  {chartData.moduleComposition.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          ) : (
-            <div className="text-center text-gray-500 py-8">No data available</div>
-          )}
-        </div>
-
-        {/* Triple Distribution Chart */}
-        <div className="card p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Triple Distribution</h2>
-          {chartLoading ? (
-            <div className="h-64 bg-gray-200 rounded animate-pulse"></div>
-          ) : chartData?.tripleDistribution ? (
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={chartData.tripleDistribution}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="count" fill="#0ea5e9" radius={[8, 8, 0, 0]} />
+          ) : modules.length > 0 ? (
+            <ResponsiveContainer width="100%" height={chartHeight}>
+              <BarChart data={modules} layout="vertical" margin={{ left: 8, right: 24 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" horizontal={false} />
+                <XAxis type="number" allowDecimals={false} />
+                <YAxis type="category" dataKey="label" width={190} tick={{ fontSize: 12 }} />
+                <Tooltip labelFormatter={(_, payload) => payload?.[0]?.payload?.name ?? ''} />
+                <Bar dataKey="triples" name="Triples" fill="#0ea5e9" radius={[0, 6, 6, 0]} />
               </BarChart>
             </ResponsiveContainer>
           ) : (
-            <div className="text-center text-gray-500 py-8">No data available</div>
+            <div className="text-center text-gray-500 py-8">No modules registered</div>
+          )}
+        </div>
+
+        {/* Clases e individuos por módulo */}
+        <div className="card p-6">
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">Classes and Individuals per Module</h2>
+          <p className="text-xs text-gray-500 mb-4">Declared OWL classes and named individuals in each module graph.</p>
+          {chartLoading ? (
+            <div className="h-64 bg-gray-200 rounded animate-pulse"></div>
+          ) : modules.length > 0 ? (
+            <ResponsiveContainer width="100%" height={chartHeight}>
+              <BarChart data={modules} layout="vertical" margin={{ left: 8, right: 24 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" horizontal={false} />
+                <XAxis type="number" allowDecimals={false} />
+                <YAxis type="category" dataKey="label" width={190} tick={{ fontSize: 12 }} />
+                <Tooltip labelFormatter={(_, payload) => payload?.[0]?.payload?.name ?? ''} />
+                <Legend />
+                <Bar dataKey="classes" name="Classes" fill="#a855f7" radius={[0, 6, 6, 0]} />
+                <Bar dataKey="individuals" name="Individuals" fill="#14b8a6" radius={[0, 6, 6, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          ) : (
+            <div className="text-center text-gray-500 py-8">No modules registered</div>
           )}
         </div>
       </div>
@@ -179,30 +174,15 @@ function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Recent Activity */}
         <div className="lg:col-span-2 card p-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-4">Activity Snapshot</h2>
           {activityLoading ? (
             <div className="space-y-3">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="h-12 bg-gray-200 rounded skeleton"></div>
               ))}
             </div>
-          ) : activity?.length > 0 ? (
-            <div className="space-y-3">
-              {activity.slice(0, 5).map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-start gap-3 pb-3 border-b border-gray-200 last:border-0"
-                >
-                  <div className="w-2 h-2 bg-protys-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <div className="flex-1">
-                    <p className="text-sm text-gray-900">{item.description}</p>
-                    <p className="text-xs text-gray-500 mt-1">{item.timestamp}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           ) : (
-            <div className="text-center text-gray-500 py-8">No recent activity</div>
+            <ActivitySnapshot activity={activity} />
           )}
         </div>
 
@@ -247,7 +227,7 @@ function Dashboard() {
   );
 }
 
-function StatCard({ label, value, icon, loading, trend }) {
+function StatCard({ label, value, icon: Icon, loading, trend }) {
   return (
     <div className="card p-6">
       <div className="flex items-start justify-between">
@@ -264,33 +244,67 @@ function StatCard({ label, value, icon, loading, trend }) {
             </p>
           )}
         </div>
-        <div className="text-3xl">{icon}</div>
+        {Icon && <Icon className="w-7 h-7 text-protys-500" aria-hidden="true" />}
       </div>
     </div>
   );
 }
 
-function HealthIndicator({ label, status }) {
-  const statusColor = {
-    'healthy': 'bg-green-100 text-green-700',
-    'warning': 'bg-yellow-100 text-yellow-700',
-    'error': 'bg-red-100 text-red-700',
-  }[status] || 'bg-gray-100 text-gray-700';
-
-  const statusIcon = {
-    'healthy': '✓',
-    'warning': '⚠',
-    'error': '✕',
-  }[status] || '?';
-
+export function ApiStatus({ health, error }) {
+  const status = error ? 'Request failed' : health?.status ?? 'Not reported';
+  const services = !error && health?.services ? Object.entries(health.services) : [];
   return (
-    <div className="flex items-center justify-between py-2">
-      <span className="text-sm text-gray-700">{label}</span>
-      <span className={`px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${statusColor}`}>
-        <span>{statusIcon}</span>
-        <span className="capitalize">{status || 'unknown'}</span>
-      </span>
+    <div className="space-y-3">
+      <div className="flex items-center justify-between py-2">
+        <span className="text-sm text-gray-700">API response</span>
+        <span className={`px-3 py-1 rounded-full text-xs font-medium ${error ? 'bg-red-100 text-red-700' : 'bg-gray-100 text-gray-700'}`}>
+          {status}
+        </span>
+      </div>
+      <h3 className="text-sm font-semibold text-gray-900">Registered services</h3>
+      <p className="text-xs text-gray-600">The API declares these services. Availability of the triple store, reasoning engine and ERP connections requires separate checks.</p>
+      {services.length > 0 ? (
+        <ul className="space-y-2">
+          {services.map(([name, declaredStatus]) => (
+            <li key={name} className="flex flex-wrap items-center justify-between gap-2 text-sm text-gray-700">
+              <span>{name}</span>
+              <span className="text-xs text-gray-500">Declared: {declaredStatus}</span>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className="text-sm text-gray-500">No service declaration received</p>
+      )}
     </div>
+  );
+}
+
+/** «2026-11-17T14:54:05.353452769» → «2026-11-17 14:54:05» (hora del servidor, sin fracciones). */
+export function formatTimestamp(value) {
+  if (typeof value !== 'string') return value;
+  const match = value.match(/^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2}:\d{2})/);
+  return match ? `${match[1]} ${match[2]}` : value;
+}
+
+export function ActivitySnapshot({ activity }) {
+  if (!activity) return <p className="text-sm text-gray-500">No activity snapshot received</p>;
+  const entries = [
+    ['Snapshot timestamp', formatTimestamp(activity.timestamp)],
+    ['Last updated', formatTimestamp(activity.lastUpdated)],
+    ['Loaded modules', activity.loadedModules],
+    ['Classes', activity.totalClasses],
+    ['Individuals', activity.totalIndividuals],
+    ['Triples', activity.totalTriples],
+  ];
+  return (
+    <dl className="space-y-3">
+      {entries.map(([label, value]) => (
+        <div key={label} className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 pb-2">
+          <dt className="text-sm text-gray-600">{label}</dt>
+          <dd className="text-sm text-gray-900 break-all">{value ?? 'Not recorded'}</dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 

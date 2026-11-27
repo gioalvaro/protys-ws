@@ -1,0 +1,28 @@
+{
+  "fecha_utc": "2026-11-27T02:09:51Z",
+  "ontologias_sha256": {
+    "alignment-rules.owl": "487b2ba1ce4466376459378a522210500c9c7311fbeb209741deae88a7bd3712",
+    "core-concepts.owl": "89a0e860ad9e80e56fa2b6606c02122b9232954721dd009abba5fbdb6382e9bb",
+    "disjointness-module.ttl": "8fa6c0e66f0d75e6afb078f9a4d12aac2d6c3b8aa8f61d9f5963cba3b30f18fd",
+    "enterprise-module.owl": "ab03f20a4e94dc8f9b210c05daddd55b4eda5998f1a693e8f072128443db79d9",
+    "iso10303-alignment-rules.owl": "7dec45d5f10d855f39d4c89e3fed4c1bec063995a0380e06b659cc71ee881eee",
+    "iso10303-ap242-fragment.owl": "30488c54cf62da7563f560d375df960b19a39798f8b02f9b40991ca144a01113",
+    "iso14040-module.owl": "1738d323af4563cfc306ff1de15bb66666424f09d4744f26d62d2c6db6c7ea4c",
+    "iso15531-module.owl": "8fb84e9b7aad568738196ae658e9b0e0f6cc193c0b4bb050fdbc536044bf02e5",
+    "paint-case-extension.owl": "0639b8b66304748dd326e2adb641f4a2d463c02edd94e9f9e8198af400d9dc7b",
+    "paint-case-study-instances.ttl": "8c72c8fb91e03410e28e69c0aa235800d78bb2591f82ca9ee965f8ca3b49c8fb",
+    "process-module.owl": "02943be434619a783cbadb9c257f093ac91099dcc9b530fa4e14c8d3a6b07378",
+    "product-module.owl": "c86c5653a05dcc0c1dff13feaf151287d166b4a99128ecf1f15cbf51453de89f",
+    "resource-module.owl": "6fda910aa02b531b9278ea1e8cc4adf8b5d629d524c28d78c2c4fbf1b16790ae"
+  },
+  "plataforma": "macOS-27.2-arm64-arm-64bit",
+  "maquina": "arm64",
+  "cpu_count": 14,
+  "hw.model": "Mac16,8",
+  "cpu": "Apple M4 Pro",
+  "hw.memsize": "25769803776",
+  "java_home": "/Users/Shared/protys-herramientas/temurin-17.0.20.1/jdk-17.0.20.1+1/Contents/Home",
+  "java_version": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n",
+  "parametros_jvm": "-Xmx2g -Djava.awt.headless=true (proceso principal); el trabajador SWRL lo lanza AcademicRunner con -Xmx2g",
+  "python": "3.9.6"
+}

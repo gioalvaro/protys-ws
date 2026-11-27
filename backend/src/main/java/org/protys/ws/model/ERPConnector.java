@@ -1,5 +1,6 @@
 package org.protys.ws.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -38,12 +39,15 @@ public class ERPConnector {
     private ERPType type;
 
     @Column(name = "jdbc_url", nullable = false, length = 500)
+    @ToString.Exclude
     private String jdbcUrl;
 
     @Column(name = "username", length = 255)
     private String username;
 
     @Column(name = "password", columnDefinition = "TEXT")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ToString.Exclude
     private String password; // Should be encrypted at rest
 
     @Column(name = "database_name", length = 255)
@@ -79,6 +83,11 @@ public class ERPConnector {
     @Column(name = "updated_at")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    /** Lombok builders also generate toString; never let it print an in-flight credential. */
+    public static class ERPConnectorBuilder {
+        @Override public String toString() { return "ERPConnectorBuilder(credentials omitted)"; }
+    }
 
     /**
      * Enumeration for ERP system types.

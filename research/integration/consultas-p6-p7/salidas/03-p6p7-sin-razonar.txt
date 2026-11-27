@@ -1,0 +1,2 @@
+P6 (caso + instancias, sin razonamiento): 5 filas, esperadas 5, iguales True
+P7 (caso + instancias, sin razonamiento): 3 filas, esperadas 3, iguales True

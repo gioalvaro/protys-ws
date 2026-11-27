@@ -12,6 +12,7 @@ import statistics
 import sys
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
+from output_paths import evaluation_dir
 
 # Required assertions cannot be disabled in a certification utility.
 if sys.flags.optimize:
@@ -57,11 +58,13 @@ def environment_java(environment):
     return match.group(1)
 
 
-def require_safe_output(repo,path):
+def require_safe_output(repo,path,evaluation=None):
     """Writing evidence must never alter a frozen input, binary or raw record."""
     destination=path.resolve()
-    protected=['ontologies','research/model','research/data','research/runtime','research/evaluation/current']
+    protected=['ontologies','research/model','research/data','research/runtime','research/evaluation/current','research/evaluation/runs']
     assert not any(destination.is_relative_to((repo/relative).resolve()) for relative in protected), 'Output belongs to protected source or evidence tree: '+str(path)
+    if evaluation is not None:
+        assert not destination.is_relative_to(evaluation.resolve()), 'Output belongs to selected raw evidence'
     fixed=['research/catalog.json','research/reproduce.sh']
     fixed += [str(file.relative_to(repo)) for file in (repo/'research/evaluation').glob('*.py') if file.is_file()]
     assert destination not in {(repo/relative).resolve() for relative in fixed}, 'Output would replace an evaluated input'
@@ -453,8 +456,9 @@ def audit_functional(repo,catalog,functional,out):
     return evidence
 
 
-def audit(repo):
-    out=repo/'research/evaluation/current'
+def audit(repo,evaluation=None):
+    out=evaluation_dir(evaluation,repo=repo)
+    assert not (out/'.evaluation-lock').exists(), 'Selected evaluation still has an active or stale writer lock'
     catalog=read(repo/'research/catalog.json')
     functional=read(out/'functional.json')
     functional_evidence=audit_functional(repo,catalog,functional,out)
@@ -462,13 +466,16 @@ def audit(repo):
     binary_before=read(out/'benchmark-runtime-hashes.json')
     assert source_before==read(out/'benchmark-input-hashes-after.json')==functional['input_hashes']==read(out/'artifacts.json')==live_source_hashes(repo)
     assert binary_before==read(out/'benchmark-runtime-hashes-after.json')==functional['runtime_hashes']==read(out/'runtime-binaries.json')==live_runtime_hashes(repo)
-    environment=read(out/'environment.json')
+    benchmark_environment=out/'benchmark-environment.json'
+    environment=read(benchmark_environment if benchmark_environment.exists() else out/'environment.json')
     versions={'OWLAPI-validator':'5.1.20','HermiT':'1.4.5.519','Jena':'4.10.0','SWRLAPI':'2.1.3','SWRLAPI-Drools-Engine':'2.1.3','Drools':'7.74.1.Final','OWLAPI-worker':'4.5.27'}
     assert environment['versions']==versions and environment['headless'] is True
     assert environment['jvm_heap_limit']=='2g parent +2g worker'
     expected_java=environment_java(environment)
     assert nonnegative_integer(environment['cpu_count']) and environment['cpu_count']>0
-    for field in ['timestamp_utc','platform','machine','cpu_count','python_version','maven_version','hw.model','hw.memsize','machdep.cpu.brand_string']:
+    fields=['timestamp_utc','platform','machine','cpu_count','python_version','maven_version']
+    if environment['platform'].startswith('macOS'):fields+=['hw.model','hw.memsize','machdep.cpu.brand_string']
+    for field in fields:
         assert environment.get(field), field
     configs=[c for c in catalog['configurations'] if c.get('benchmark')]
     assert len(configs)==4 and len({c['id'] for c in configs})==4
@@ -522,6 +529,7 @@ def audit(repo):
         for field,metric,statistic in [('mean_ms','total_ms','mean'),('sd_ms','total_ms','sd'),('median_ms','total_ms','median'),('mean_rss_bytes','observed_peak_process_tree_rss_bytes','mean')]:
             assert math.isclose(float(row[field]),reported[metric][statistic],rel_tol=1e-12,abs_tol=1e-9)
     global_files=['functional.json','environment.json','artifacts.json','runtime-binaries.json','runs.jsonl','summary.json','summary.csv','replicate-order.json','benchmark-input-hashes.json','benchmark-input-hashes-after.json','benchmark-runtime-hashes.json','benchmark-runtime-hashes-after.json']
+    if benchmark_environment.exists():global_files.append('benchmark-environment.json')
     return {'status':'PASS','method':'Independent conserved-file, request, hash, multiset and arithmetic audit; no new model execution.',
             'replicates':120,'replicates_by_configuration':{c:30 for c in sorted(ids)},
             'functional_assertions':len(functional['assertions']),'golden_checks':105,
@@ -537,10 +545,12 @@ if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--repo',type=Path,required=True)
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--evaluation-dir',help='Raw evaluation directory relative to --repo; or PROTYS_EVALUATION_OUT (default: current)')
     args=parser.parse_args()
-    require_safe_output(args.repo.resolve(),args.output)
+    selected=evaluation_dir(args.evaluation_dir,repo=args.repo.resolve())
+    require_safe_output(args.repo.resolve(),args.output,selected)
     assert not args.output.exists(), 'Preserve previous audit: '+str(args.output)
-    report=audit(args.repo.resolve())
+    report=audit(args.repo.resolve(),selected)
     assert not args.output.exists(), 'Preserve previous audit: '+str(args.output)
     args.output.parent.mkdir(parents=True,exist_ok=True)
     with args.output.open('x') as stream:

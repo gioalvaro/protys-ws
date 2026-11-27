@@ -27,12 +27,35 @@ public class StandardIncorporationResult {
     private Map<String,Object> contextEvaluation;
     private Map<String,Object> numericEvaluation;
     private String owlValidationStatus;
+    private List<UUID> selectedRuleIds;
+    /** Reglas SWRL nuevas cargadas en la sesión (paso 3); se registran al completar. */
+    private List<String> sessionRuleIds;
+    /** Reglas que quedaron activas en la plataforma al completar (las verificadas en el paso 4). */
+    private List<String> activatedRules;
+    /**
+     * Reglas registradas que estaban inactivas y el completado deja activas para toda la plataforma.
+     * En el paso 4 es la vista previa; en el paso 5, lo que efectivamente se reactivó.
+     */
+    private List<String> reactivatedRules;
+    private List<ExecutedRule> executedRules;
+    private String ruleDefinitionsSha256;
+    private Boolean cleanupPending;
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ExecutedRule {
+        private UUID id;
+        private String name;
+    }
 
     // Pipeline tracking
     private Integer currentStep;
     private LocalDateTime startedAt;
     private Long executionTimeMs;
     private Integer tripleCount;
+    /** Triples del archivo opcional de datos de instancia de la sesión (null si no se subió). */
+    private Integer dataTripleCount;
     private String message;
     private UUID finalModuleId;
 

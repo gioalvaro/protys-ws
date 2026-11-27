@@ -1,0 +1,15 @@
+fecha_utc=2026-11-27T02:45:28Z
+mapeos_sha256=0caf31269ddbc0bed5de8410fca7708f0c34c412da4d7d89a09ab6a373188cb2
+docker=29.8.2
+compose=5.5.0
+imagen[adempiere-db]=protys-erp-adempiere-db:3.9.4 id=sha256:55f3a4a519c9a8a0a1e2abba1d8d4c639c93b4158e8984e98378ac7c39c27ed1
+imagen[odoo-db]=postgres:15.10@sha256:d609c3005478af92bddad773423df829b7402ea0b356d5b72edd2fd54d1ad3ea id=sha256:c4730599ff7510e9ac59d170f5c89f2c90da013ea55fe9d69dabf97726f71f08
+imagen[protys-fuseki]=protys-v110-erp-backend:maintenance id=sha256:f2f150b5572f08b58d0bf19f084c73c0044d1b037626299c5a1a3cb6c9d8844c
+imagen[protys-postgres]=postgres:15@sha256:0dda651c259bfe50e2bcc28ca23d1fcca772fa90b0210803aa7b97379ccf4e85 id=sha256:3b50b13a8e1eccf58bcb314b4dda76ddc01577026bfacefe0678d746b8f80853
+imagen[protys-backend]=protys-v110-erp-backend:maintenance id=sha256:f2f150b5572f08b58d0bf19f084c73c0044d1b037626299c5a1a3cb6c9d8844c
+imagenes_declaradas=odoo:17.0@sha256:8779f8157ddcc37b84014c94646073f46fd4ad776b7a5d95fc3b0dc73a24a8fa postgres:15.10@sha256:d609c3005478af92bddad773423df829b7402ea0b356d5b72edd2fd54d1ad3ea postgres:15@sha256:0dda651c259bfe50e2bcc28ca23d1fcca772fa90b0210803aa7b97379ccf4e85 protys-erp-adempiere-db:3.9.4 protys-v110-erp-backend:maintenance protys-v110-erp-protys-frontend protys-v110-erp-protys-init 
+odoo=Odoo Server 17.0-20260908
+adempiere_semilla=adempiere_postgresql_seed.tar.gz 3.9.4 sha256=ed4b2b3d33bbf831cb2443195cea0ede2f836e7212a123042e0b794ca87bbd1c
+java_backend=openjdk version "17.0.21" 2026-10-20
+postgres_adempiere=postgres (PostgreSQL) 15.10 (Debian 15.10-1.pgdg120+1)
+postgres_odoo=postgres (PostgreSQL) 15.10 (Debian 15.10-1.pgdg120+1)

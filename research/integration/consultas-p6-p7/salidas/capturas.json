@@ -1,0 +1,29 @@
+{
+ "r": {
+  "chromium": "156.0.8078.4",
+  "consultas": {
+   "P6": {
+    "resultado": "Results (5)",
+    "tabla": "planta\tinstalacion\tetiqueta\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Cell_Dispersion\t\nCelda de Dispersión de Pigmento\n\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Cell_Mixing\t\nCelda de Mezcla y Ajuste\n\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Cell_Packaging\t\nCelda de Empaquetado\n\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Workshop_Production\t\nProduction Workshop\n\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Workshop_QC\t\nQuality Control Workshop"
+   },
+   "P7": {
+    "resultado": "Results (3)",
+    "tabla": "planta\tpersona\tetiqueta\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Chemist_Maria\t\nQuality Chemist Maria\n\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Operator_John\t\nMachine Operator John\n\nhttp://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm\thttp://w3id.org/protys/ontology/paint-ext#Supervisor_Carlos\t\nProduction Supervisor Carlos"
+   }
+  }
+ },
+ "capturas": [
+  {
+   "archivo": "P6-consola.png",
+   "url": "http://127.0.0.1:38081/sparql",
+   "utc": "2026-11-27T02:53:20.428Z",
+   "pasos": "SPARQL Console → pegar consultas/P6.rq → Execute; desplazado hasta los resultados."
+  },
+  {
+   "archivo": "P7-consola.png",
+   "url": "http://127.0.0.1:38081/sparql",
+   "utc": "2026-11-27T02:53:28.076Z",
+   "pasos": "SPARQL Console → pegar consultas/P7.rq → Execute; desplazado hasta los resultados."
+  }
+ ]
+}

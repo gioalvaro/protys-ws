@@ -1,0 +1,24 @@
+# Código: P6 (consulta adicional, fuera del catálogo Q01–Q21)
+# Pregunta de competencia: ¿Qué instalaciones abarca una planta X?
+# Columnas:
+#   planta       IRI del individuo de paint:Plant.
+#   instalacion  IRI de un individuo que es parte de la planta, directa o transitivamente.
+#   etiqueta     la menor (orden de cadena) de las rdfs:label de la instalación, para que la respuesta sea determinista.
+# Clases y propiedades (todas de los módulos de la red):
+#   paint:Plant (paint-case-extension.owl, subclase de enterprise:Factory);
+#   enterprise:isPartOf (enterprise-module.owl) y paint:partOfOrganization (paint-case-extension.owl);
+#   rdfs:label.
+# Se consulta el grafo por defecto (unión de todos los grafos, tdb2:unionDefaultGraph), así que con razonamiento
+# también entran los triples inferidos. Para fijar la planta X: VALUES ?planta { <IRI> }.
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ent:   <http://w3id.org/protys/ontology/enterprise#>
+PREFIX paint: <http://w3id.org/protys/ontology/paint-ext#>
+SELECT ?planta ?instalacion (MIN(STR(?nombre)) AS ?etiqueta)
+WHERE {
+  ?planta rdf:type paint:Plant .
+  ?instalacion (ent:isPartOf|paint:partOfOrganization)+ ?planta .
+  OPTIONAL { ?instalacion rdfs:label ?nombre }
+}
+GROUP BY ?planta ?instalacion
+ORDER BY ?planta ?instalacion

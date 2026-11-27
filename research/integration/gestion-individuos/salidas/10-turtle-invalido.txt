@@ -1,0 +1,1 @@
+400 {'message': 'The file is not valid Turtle: [line: 2, col: 11] Unrecognized (expected an RDF Term): [DOT]'} ['Canonical_Catalog_Integrated']

@@ -1,0 +1,44 @@
+{
+  "head" : {
+    "vars" : [ "earlier", "later" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "earlier" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_EventStart"
+      },
+      "later" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchA_EventEnd"
+      }
+    }, {
+      "earlier" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_EventStart"
+      },
+      "later" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchB_EventEnd"
+      }
+    }, {
+      "earlier" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_EventStart"
+      },
+      "later" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchC_EventEnd"
+      }
+    }, {
+      "earlier" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_EventStart"
+      },
+      "later" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#BatchZero_EventEnd"
+      }
+    } ]
+  }
+}

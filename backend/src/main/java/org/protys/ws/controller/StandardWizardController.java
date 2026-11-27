@@ -55,6 +55,14 @@ public class StandardWizardController {
         }
     }
 
+    @PostMapping("/step1/data/{tempId}")
+    @Operation(summary = "Step 1b: Upload instance data (optional)", description = "Datos de instancia de la sesión, en un grafo temporal propio; se validan junto con el estándar y al completar se registran como su propio módulo")
+    public ResponseEntity<StandardIncorporationResult> uploadInstanceData(@PathVariable UUID tempId, @RequestParam("file") MultipartFile file) {
+        if (file.isEmpty() || !isValidOwlFile(file.getOriginalFilename())) return ResponseEntity.badRequest().build();
+        StandardIncorporationResult result = standardIncorporationService.step1_uploadData(tempId, file);
+        return ResponseEntity.status(Boolean.TRUE.equals(result.getStep1_parsed()) ? HttpStatus.CREATED : HttpStatus.UNPROCESSABLE_ENTITY).body(result);
+    }
+
     // Step 2: Validate Consistency
 
     @PostMapping("/step2/validate/{tempId}")
@@ -81,13 +89,13 @@ public class StandardWizardController {
     // Step 3: Define Alignment Rules
 
     @PostMapping("/step3/alignments/{tempId}")
-    @Operation(summary = "Step 3: Define alignment rules", description = "Define SWRL alignment rules between the standard and existing ontology")
+    @Operation(summary = "Step 3: Select registered alignment rules", description = "Select registered rule IDs for this session without changing global activation. An empty array explicitly selects no SWRL rules.")
     public ResponseEntity<StandardIncorporationResult> defineAlignmentRules(
             @PathVariable UUID tempId,
             @RequestBody List<AlignmentRule> rules) {
         log.info("Step 3: Defining alignment rules for tempId: {}",tempId);
         try {
-            if (rules == null || rules.isEmpty()) {
+            if (rules == null) {
                 log.warn("Invalid alignment data: missing rules");
                 return ResponseEntity.badRequest().build();
             }
@@ -95,11 +103,19 @@ public class StandardWizardController {
             StandardIncorporationResult alignmentResult = standardIncorporationService.step3_defineAlignments(tempId, rules);
 
             log.info("Alignment definition finished; error={}",alignmentResult.getStep3_error());
-            return ResponseEntity.ok(alignmentResult);
+            return ResponseEntity.status(Boolean.TRUE.equals(alignmentResult.getStep3_error()) ? HttpStatus.UNPROCESSABLE_ENTITY : HttpStatus.OK).body(alignmentResult);
         } catch (Exception e) {
             log.error("Error defining alignment rules", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
+    }
+
+    @PostMapping("/step3/rules/{tempId}")
+    @Operation(summary = "Step 3b: Upload session SWRL rules", description = "Reglas SWRL nuevas de la sesión (identificadores no registrados). El paso 4 razona con ellas; al completar se registran, se suman a las definiciones y quedan activas")
+    public ResponseEntity<StandardIncorporationResult> uploadSessionRules(@PathVariable UUID tempId, @RequestParam("file") MultipartFile file) {
+        if (file.isEmpty() || !isValidOwlFile(file.getOriginalFilename())) return ResponseEntity.badRequest().build();
+        StandardIncorporationResult result = standardIncorporationService.step3_uploadRules(tempId, file);
+        return ResponseEntity.status(Boolean.TRUE.equals(result.getStep3_error()) ? HttpStatus.UNPROCESSABLE_ENTITY : HttpStatus.CREATED).body(result);
     }
 
     // Step 4: Verify Inferences
@@ -136,11 +152,24 @@ public class StandardWizardController {
         }
     }
 
+    @DeleteMapping("/{tempId}")
+    @Operation(summary = "Cancel incorporation", description = "Remove only the graphs owned by this session; repeated cancellation is safe")
+    public ResponseEntity<Map<String, Object>> cancelIncorporation(@PathVariable UUID tempId) {
+        try {
+            standardIncorporationService.cancelIncorporation(tempId);
+            return ResponseEntity.ok(Map.of("status", "CANCELLED", "tempModuleId", tempId));
+        } catch (StandardIncorporationService.IncorporationAlreadyCompletedException completed) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("status", "COMPLETED", "tempModuleId", tempId, "message", completed.getMessage()));
+        } catch (Exception failure) {
+            log.error("Session cleanup failed; ownership retained for retry", failure);
+            return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(Map.of("status", "CLEANUP_PENDING", "tempModuleId", tempId, "message", "Cleanup did not complete; retry cancellation"));
+        }
+    }
+
     // Helper Methods
 
     private boolean isValidOwlFile(String filename) {
-        return filename != null && (filename.endsWith(".owl") ||
-                filename.endsWith(".rdf") ||
-                filename.endsWith(".ttl"));
+        // Lo que anuncia la interfaz: RDF, OWL, TTL, N3 o XML (el servicio elige el lector por extensión).
+        return filename != null && java.util.List.of(".owl", ".rdf", ".xml", ".ttl", ".n3", ".nt").stream().anyMatch(filename.toLowerCase()::endsWith);
     }
 }

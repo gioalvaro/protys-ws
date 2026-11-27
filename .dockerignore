@@ -1,0 +1,15 @@
+.git
+.local-demo
+**/node_modules
+**/target
+**/build
+**/__pycache__
+**/*.pyc
+**/*.log
+**/.DS_Store
+**/.env
+**/.env.*
+!docker/.env.example
+research/evaluation
+research/release
+logs

@@ -1,0 +1,13 @@
+{
+  "uri" : "http://w3id.org/protys/ontology/resource#Role",
+  "localName" : "Role",
+  "label" : "Role",
+  "description" : null,
+  "propertyCount" : 148,
+  "subclasses" : [ ],
+  "superClassUris" : null,
+  "individuals" : null,
+  "dataProperties" : null,
+  "objectProperties" : null,
+  "displayName" : "Role"
+}

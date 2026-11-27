@@ -1,0 +1,32 @@
+# Código: P7 (consulta adicional, fuera del catálogo Q01–Q21)
+# Pregunta de competencia: ¿Qué recursos humanos están asignados a una planta X?
+# Columnas:
+#   planta    IRI del individuo de paint:Plant.
+#   persona   IRI de un individuo de iso15531:HumanResource o resource:Person asignado a la planta.
+#   etiqueta  la menor (orden de cadena) de las rdfs:label de la persona, para que la respuesta sea determinista.
+# Asignación: la planta emplea a la persona (paint:employs), la persona es empleada por la planta (paint:employedBy)
+# o la persona pertenece (paint:belongsTo) a una instalación que es parte de la planta (enterprise:isPartOf |
+# paint:partOfOrganization, transitivo). Basta una de las tres.
+# Clases y propiedades (todas de los módulos de la red):
+#   paint:Plant, paint:employs, paint:employedBy, paint:belongsTo, paint:partOfOrganization (paint-case-extension.owl);
+#   iso15531:HumanResource (iso15531-module.owl); resource:Person (resource-module.owl);
+#   enterprise:isPartOf (enterprise-module.owl); rdfs:label.
+# Se consulta el grafo por defecto (unión de todos los grafos). Para fijar la planta X: VALUES ?planta { <IRI> }.
+PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ent:   <http://w3id.org/protys/ontology/enterprise#>
+PREFIX i:     <http://w3id.org/protys/ontology/iso15531#>
+PREFIX res:   <http://w3id.org/protys/ontology/resource#>
+PREFIX paint: <http://w3id.org/protys/ontology/paint-ext#>
+SELECT ?planta ?persona (MIN(STR(?nombre)) AS ?etiqueta)
+WHERE {
+  ?planta rdf:type paint:Plant .
+  VALUES ?clase { i:HumanResource res:Person }
+  ?persona rdf:type ?clase .
+  { ?planta paint:employs ?persona }
+  UNION { ?persona paint:employedBy ?planta }
+  UNION { ?persona paint:belongsTo ?instalacion . ?instalacion (ent:isPartOf|paint:partOfOrganization)+ ?planta }
+  OPTIONAL { ?persona rdfs:label ?nombre }
+}
+GROUP BY ?planta ?persona
+ORDER BY ?planta ?persona

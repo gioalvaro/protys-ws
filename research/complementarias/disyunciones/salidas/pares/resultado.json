@@ -1,0 +1,873 @@
+{
+  "pares_propuestos": 76,
+  "disyunciones_ya_declaradas_en_la_red": [
+    "process#Natural_Process ⊥ process#Artificial_Process (process-module.owl)",
+    "resource#Tool ⊥ Equip ⊥ Device (resource-module.owl)",
+    "iso15531#EquipmentResource ⊥ HumanResource (iso15531-module.owl)",
+    "iso14040#ElementaryFlow ⊥ ProductFlow (iso14040-module.owl)"
+  ],
+  "archivo": "research/complementarias/disyunciones/disjointness.ttl",
+  "sha256_archivo": "c702550a01c2267777751b74b898f978a2a2dbe8588611f5015b29bbeeec47bd",
+  "sin_disyunciones": {
+    "status": "CONSISTENT",
+    "perfil_valido": true,
+    "antes_de_las_reglas": "CONSISTENT",
+    "despues_de_las_reglas": "CONSISTENT",
+    "clases_insatisfacibles_antes": [],
+    "clases_insatisfacibles_despues": [],
+    "failure_kind": null,
+    "error": null
+  },
+  "con_todos_los_pares": {
+    "status": "INCONSISTENT",
+    "perfil_valido": true,
+    "antes_de_las_reglas": "INCONSISTENT",
+    "despues_de_las_reglas": "NO_EJECUTADO",
+    "clases_insatisfacibles_antes": [],
+    "clases_insatisfacibles_despues": null,
+    "failure_kind": "OWL_INCONSISTENT",
+    "error": null
+  },
+  "par_por_par": {
+    "core:Product ⊥ core:Resource": {
+      "status": "INCONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "INCONSISTENT",
+      "despues_de_las_reglas": "NO_EJECUTADO",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": null,
+      "failure_kind": "OWL_INCONSISTENT",
+      "error": null
+    },
+    "core:Product ⊥ core:Process": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "core:Product ⊥ core:Enterprise": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "core:Process ⊥ core:Resource": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "core:Process ⊥ core:Enterprise": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "core:Resource ⊥ core:Enterprise": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "product:Substance ⊥ product:Product_Information": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "product:Substance ⊥ product:Customer": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "product:Product_Information ⊥ product:Customer": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "process:Process_Plan ⊥ process:Process_Plant": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "process:Procedure ⊥ process:Parameters": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "process:Process_Plant ⊥ process:Procedure": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "process:Process_Plant ⊥ process:Parameters": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "process:Process_Plan ⊥ process:Parameters": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "process:Process_Plant ⊥ core:Process": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Person ⊥ resource:Material": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Person ⊥ resource:Equip": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Person ⊥ resource:Tool": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Person ⊥ resource:Device": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Person ⊥ resource:File": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:File ⊥ resource:Material": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:File ⊥ resource:Equip": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:File ⊥ resource:Tool": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:File ⊥ resource:Device": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Material ⊥ resource:Equip": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Material ⊥ resource:Device": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Behaviour ⊥ resource:Capability": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Behaviour ⊥ core:Resource": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Capability ⊥ core:Resource": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Role ⊥ resource:Person": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "resource:Activity ⊥ core:Resource": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Factory ⊥ enterprise:Shop": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Factory ⊥ enterprise:Cell": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Factory ⊥ enterprise:Station": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Shop ⊥ enterprise:Cell": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Shop ⊥ enterprise:Station": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Cell ⊥ enterprise:Station": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Location ⊥ enterprise:Factory": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Location ⊥ enterprise:Shop": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Location ⊥ enterprise:Cell": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Location ⊥ enterprise:Station": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "enterprise:Location ⊥ core:Enterprise": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ManufacturingResource ⊥ iso15531:ManufacturingProcess": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ManufacturingResource ⊥ iso15531:ProcessOperation": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ManufacturingResource ⊥ iso15531:Lot": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ManufacturingResource ⊥ iso15531:ManufacturingData": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ManufacturingResource ⊥ iso15531:ManufacturingCapability": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ManufacturingProcess ⊥ iso15531:ProcessPlan": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ProcessOperation ⊥ iso15531:ProcessPlan": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:Lot ⊥ iso15531:ManufacturingProcess": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:Lot ⊥ iso15531:ProcessOperation": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ProductionOrder ⊥ iso15531:WorkOrder": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ProductionOrder ⊥ iso15531:Lot": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:WorkOrder ⊥ iso15531:Lot": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:ProcessState ⊥ iso15531:ResourceState": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:QualityAttribute ⊥ iso15531:CostAttribute": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:QualityAttribute ⊥ iso15531:TimeAttribute": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso15531:CostAttribute ⊥ iso15531:TimeAttribute": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:GoalAndScopeDefinition ⊥ iso14040:LifeCycleInventory": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:GoalAndScopeDefinition ⊥ iso14040:LifeCycleImpactAssessment": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:GoalAndScopeDefinition ⊥ iso14040:Interpretation": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LifeCycleInventory ⊥ iso14040:LifeCycleImpactAssessment": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LifeCycleInventory ⊥ iso14040:Interpretation": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LifeCycleImpactAssessment ⊥ iso14040:Interpretation": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LCAStudy ⊥ iso14040:GoalAndScopeDefinition": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LCAStudy ⊥ iso14040:LifeCycleInventory": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LCAStudy ⊥ iso14040:LifeCycleImpactAssessment": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:LCAStudy ⊥ iso14040:Interpretation": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:UnitProcess ⊥ iso14040:ElementaryFlow": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:UnitProcess ⊥ iso14040:ProductFlow": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:UnitProcess ⊥ iso14040:SystemBoundary": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:UnitProcess ⊥ iso14040:AllocationProcedure": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:FunctionalUnit ⊥ iso14040:SystemBoundary": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:ImpactCategory ⊥ iso14040:ImpactIndicator": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:ImpactCategory ⊥ iso14040:CharacterizationFactor": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    },
+    "iso14040:ImpactIndicator ⊥ iso14040:CharacterizationFactor": {
+      "status": "CONSISTENT",
+      "perfil_valido": true,
+      "antes_de_las_reglas": "CONSISTENT",
+      "despues_de_las_reglas": "CONSISTENT",
+      "clases_insatisfacibles_antes": [],
+      "clases_insatisfacibles_despues": [],
+      "failure_kind": null,
+      "error": null
+    }
+  },
+  "pares_que_causan_inconsistencia": [
+    {
+      "par": "core:Product ⊥ core:Resource",
+      "antes": "INCONSISTENT",
+      "despues": "NO_EJECUTADO"
+    }
+  ],
+  "archivo_sin_pares_inconsistentes": "research/complementarias/disyunciones/disjointness-sin-pares-inconsistentes.ttl",
+  "sin_pares_inconsistentes": {
+    "status": "CONSISTENT",
+    "perfil_valido": true,
+    "antes_de_las_reglas": "CONSISTENT",
+    "despues_de_las_reglas": "CONSISTENT",
+    "clases_insatisfacibles_antes": [],
+    "clases_insatisfacibles_despues": [],
+    "failure_kind": null,
+    "error": null
+  },
+  "explicacion": {
+    "core:Product ⊥ core:Resource": {
+      "individuos_con_las_dos_clases_antes_de_las_reglas": [
+        "f:AcrylicResin",
+        "f:Biocide",
+        "f:TitaniumDioxide",
+        "f:Water"
+      ],
+      "individuos_con_las_dos_clases_despues_de_las_reglas": [
+        "f:AcrylicResin",
+        "f:Biocide",
+        "f:TitaniumDioxide",
+        "f:Water"
+      ],
+      "por_que": {
+        "f:AcrylicResin": {
+          "core#Product": [
+            "objeto de f:BatchA_Flow_AcrylicResin research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchB_Flow_AcrylicResin research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchC_Flow_AcrylicResin research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchZero_Flow_AcrylicResin research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product"
+          ],
+          "core#Resource": [
+            "tipo afirmado resource#Raw_Material ⊑ core#Resource"
+          ]
+        },
+        "f:Biocide": {
+          "core#Product": [
+            "objeto de f:BatchA_Flow_Biocide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchB_Flow_Biocide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchC_Flow_Biocide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchZero_Flow_Biocide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product"
+          ],
+          "core#Resource": [
+            "tipo afirmado resource#Raw_Material ⊑ core#Resource"
+          ]
+        },
+        "f:TitaniumDioxide": {
+          "core#Product": [
+            "objeto de f:BatchA_Flow_TitaniumDioxide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchB_Flow_TitaniumDioxide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchC_Flow_TitaniumDioxide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchZero_Flow_TitaniumDioxide research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product"
+          ],
+          "core#Resource": [
+            "tipo afirmado resource#Raw_Material ⊑ core#Resource"
+          ]
+        },
+        "f:Water": {
+          "core#Product": [
+            "objeto de f:BatchA_Flow_Water research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchB_Flow_Water research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchC_Flow_Water research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product",
+            "objeto de f:BatchZero_Flow_Water research#flowRefersToProduct; rango de alignment#flowRefersToProduct = core#Product"
+          ],
+          "core#Resource": [
+            "tipo afirmado resource#Raw_Material ⊑ core#Resource"
+          ]
+        }
+      }
+    }
+  }
+}

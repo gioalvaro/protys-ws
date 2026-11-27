@@ -172,6 +172,17 @@ export const useMaterialize = () => {
       }
     },
     onSuccess: (result) => {
+      if (result.status !== 'SUCCESS') {
+        setProgress({
+          isRunning: false,
+          currentStep: result.status === 'EMPTY' ? 'No data published; existing graph preserved' : 'Materialization was not confirmed',
+          percentage: 0,
+          tripleCount: 0,
+        });
+        if (result.status === 'EMPTY') toast.warning('The query returned no rows. No data was published; the existing graph was preserved.');
+        else toast.error('Materialization was not confirmed');
+        return;
+      }
       setProgress({
         isRunning: false,
         currentStep: 'Materialization completed',

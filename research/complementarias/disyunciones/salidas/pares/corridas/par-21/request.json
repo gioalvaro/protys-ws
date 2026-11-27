@@ -1,0 +1,126 @@
+{
+  "files": [
+    "ontologies/core-concepts.owl",
+    "ontologies/product-module.owl",
+    "ontologies/process-module.owl",
+    "ontologies/resource-module.owl",
+    "ontologies/enterprise-module.owl",
+    "research/model/research-profile.owl",
+    "ontologies/iso15531-module.owl",
+    "research/model/manufacturing-profile.owl",
+    "ontologies/iso14040-module.owl",
+    "research/model/environmental-profile.owl",
+    "ontologies/paint-case-extension.owl",
+    "research/data/functional.ttl",
+    "ontologies/alignment-rules.owl",
+    "/var/folders/15/b4jdvxts4mg78hgt6q740ly00000gn/T/complementarias.rcA2gq/pares/par-21.ttl"
+  ],
+  "enabled_rules": "R01,R02,R03,R04,R05,R06,R08,R09,R10,R11,R12,R13,R14,R15,R17,R18,R20,R21,R22,R23,R24,R25",
+  "numeric_controls_enabled": true,
+  "queries": [
+    {
+      "id": "Q01",
+      "path": "research/model/queries/Q01.sparql"
+    },
+    {
+      "id": "Q02",
+      "path": "research/model/queries/Q02.sparql"
+    },
+    {
+      "id": "Q03",
+      "path": "research/model/queries/Q03.sparql"
+    },
+    {
+      "id": "Q04",
+      "path": "research/model/queries/Q04.sparql"
+    },
+    {
+      "id": "Q05",
+      "path": "research/model/queries/Q05.sparql"
+    },
+    {
+      "id": "Q06",
+      "path": "research/model/queries/Q06.sparql"
+    },
+    {
+      "id": "Q07",
+      "path": "research/model/queries/Q07.sparql"
+    },
+    {
+      "id": "Q08",
+      "path": "research/model/queries/Q08.sparql"
+    },
+    {
+      "id": "Q09",
+      "path": "research/model/queries/Q09.sparql"
+    },
+    {
+      "id": "Q10",
+      "path": "research/model/queries/Q10.sparql"
+    },
+    {
+      "id": "Q11",
+      "path": "research/model/queries/Q11.sparql"
+    },
+    {
+      "id": "Q12",
+      "path": "research/model/queries/Q12.sparql"
+    },
+    {
+      "id": "Q13",
+      "path": "research/model/queries/Q13.sparql"
+    },
+    {
+      "id": "Q14",
+      "path": "research/model/queries/Q14.sparql"
+    },
+    {
+      "id": "Q15",
+      "path": "research/model/queries/Q15.sparql"
+    },
+    {
+      "id": "Q16",
+      "path": "research/model/queries/Q16.sparql"
+    },
+    {
+      "id": "Q17",
+      "path": "research/model/queries/Q17.sparql"
+    },
+    {
+      "id": "Q18",
+      "path": "research/model/queries/Q18.sparql"
+    },
+    {
+      "id": "Q19",
+      "path": "research/model/queries/Q19.sparql"
+    },
+    {
+      "id": "Q20",
+      "path": "research/model/queries/Q20.sparql"
+    },
+    {
+      "id": "Q21",
+      "path": "research/model/queries/Q21.sparql"
+    },
+    {
+      "id": "R07",
+      "path": "research/model/validations/R07.sparql"
+    },
+    {
+      "id": "R16",
+      "path": "research/model/validations/R16.sparql"
+    },
+    {
+      "id": "R19",
+      "path": "research/model/validations/R19.sparql"
+    },
+    {
+      "id": "R26",
+      "path": "research/model/validations/R26.sparql"
+    }
+  ],
+  "pre_inference_constructs": [
+    "research/model/validations/R07-materialize.sparql",
+    "research/model/validations/CNUM-materialize.sparql"
+  ]
+}

@@ -1,0 +1,453 @@
+{
+  "complementarias": [
+    {
+      "consulta": "QC01",
+      "regla": "R02",
+      "filas_esperadas": 4,
+      "filas_ALL": 4,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 4,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC02",
+      "regla": "R03",
+      "filas_esperadas": 16,
+      "filas_ALL": 20,
+      "coincide_ALL": false,
+      "ALL_faltan_de_la_esperada": 0,
+      "ALL_sobran_respecto_de_la_esperada": 4,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 16,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC03",
+      "regla": "R04",
+      "filas_esperadas": 3,
+      "filas_ALL": 3,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 3,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC04",
+      "regla": "R05",
+      "filas_esperadas": 4,
+      "filas_ALL": 4,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 4,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC05",
+      "regla": "R06",
+      "filas_esperadas": 16,
+      "filas_ALL": 16,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 16,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC06",
+      "regla": "R08",
+      "filas_esperadas": 4,
+      "filas_ALL": 4,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 4,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC07",
+      "regla": "R10",
+      "filas_esperadas": 4,
+      "filas_ALL": 4,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 4,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC08",
+      "regla": "R11",
+      "filas_esperadas": 21,
+      "filas_ALL": 21,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 21,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC09",
+      "regla": "R12",
+      "filas_esperadas": 1,
+      "filas_ALL": 1,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 1,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC10",
+      "regla": "R13",
+      "filas_esperadas": 4,
+      "filas_ALL": 4,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 4,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC11",
+      "regla": "R14",
+      "filas_esperadas": 28,
+      "filas_ALL": 28,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 28,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC12",
+      "regla": "R15",
+      "filas_esperadas": 0,
+      "filas_ALL": 0,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": true,
+      "ALL_igual_a_union": true
+    },
+    {
+      "consulta": "QC13",
+      "regla": "R18",
+      "filas_esperadas": 1,
+      "filas_ALL": 1,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 1,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC14",
+      "regla": "R20",
+      "filas_esperadas": 112,
+      "filas_ALL": 112,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 112,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC15",
+      "regla": "R22",
+      "filas_esperadas": 1,
+      "filas_ALL": 1,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 1,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC16",
+      "regla": "R23",
+      "filas_esperadas": 21,
+      "filas_ALL": 21,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 21,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC17",
+      "regla": "R24",
+      "filas_esperadas": 1,
+      "filas_ALL": 1,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 1,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    },
+    {
+      "consulta": "QC18",
+      "regla": "R25",
+      "filas_esperadas": 1,
+      "filas_ALL": 1,
+      "coincide_ALL": true,
+      "filas_union": 0,
+      "coincide_union": false,
+      "union_faltan_de_la_esperada": 1,
+      "union_sobran_respecto_de_la_esperada": 0,
+      "ALL_igual_a_union": false
+    }
+  ],
+  "consultas_por_regla": {
+    "R01": [
+      "Q01",
+      "Q03",
+      "Q06",
+      "Q08",
+      "Q11",
+      "Q17",
+      "Q19"
+    ],
+    "R02": [
+      "QC01",
+      "QC02"
+    ],
+    "R03": [
+      "QC02"
+    ],
+    "R04": [
+      "QC03",
+      "QC15"
+    ],
+    "R05": [
+      "QC04"
+    ],
+    "R06": [
+      "QC05"
+    ],
+    "R08": [
+      "QC06"
+    ],
+    "R09": [
+      "Q12",
+      "Q16"
+    ],
+    "R10": [
+      "QC07"
+    ],
+    "R11": [
+      "QC08"
+    ],
+    "R12": [
+      "QC09"
+    ],
+    "R13": [
+      "QC10"
+    ],
+    "R14": [
+      "QC11"
+    ],
+    "R15": [],
+    "R17": [
+      "Q14"
+    ],
+    "R18": [
+      "QC13"
+    ],
+    "R20": [
+      "QC14"
+    ],
+    "R21": [
+      "Q06",
+      "Q11",
+      "Q17",
+      "Q19"
+    ],
+    "R22": [
+      "QC15"
+    ],
+    "R23": [
+      "QC16"
+    ],
+    "R24": [
+      "QC17"
+    ],
+    "R25": [
+      "QC18"
+    ]
+  },
+  "reglas_sin_efecto_en_ninguna_consulta": [
+    "R15"
+  ],
+  "reglas_de_las_18_cuya_consulta_complementaria_cambia_al_quitarla": {
+    "R01": [],
+    "R02": [
+      "QC01",
+      "QC02"
+    ],
+    "R03": [
+      "QC02"
+    ],
+    "R04": [
+      "QC03",
+      "QC15"
+    ],
+    "R05": [
+      "QC04"
+    ],
+    "R06": [
+      "QC05"
+    ],
+    "R08": [
+      "QC06"
+    ],
+    "R09": [],
+    "R10": [
+      "QC07"
+    ],
+    "R11": [
+      "QC08"
+    ],
+    "R12": [
+      "QC09"
+    ],
+    "R13": [
+      "QC10"
+    ],
+    "R14": [
+      "QC11"
+    ],
+    "R15": [],
+    "R17": [],
+    "R18": [
+      "QC13"
+    ],
+    "R20": [
+      "QC14"
+    ],
+    "R21": [],
+    "R22": [
+      "QC15"
+    ],
+    "R23": [
+      "QC16"
+    ],
+    "R24": [
+      "QC17"
+    ],
+    "R25": [
+      "QC18"
+    ]
+  },
+  "complementarias_que_cambian_sin_una_regla_distinta_de_la_propia": {
+    "QC01": [],
+    "QC02": [
+      "R02"
+    ],
+    "QC03": [],
+    "QC04": [],
+    "QC05": [],
+    "QC06": [],
+    "QC07": [],
+    "QC08": [],
+    "QC09": [],
+    "QC10": [],
+    "QC11": [],
+    "QC12": [],
+    "QC13": [],
+    "QC14": [],
+    "QC15": [
+      "R04"
+    ],
+    "QC16": [],
+    "QC17": [],
+    "QC18": []
+  },
+  "extremos": {
+    "OWL_ONLY": {
+      "catalogo": [
+        "Q01",
+        "Q03",
+        "Q06",
+        "Q08",
+        "Q11",
+        "Q12",
+        "Q14",
+        "Q16",
+        "Q17",
+        "Q19"
+      ],
+      "complementarias": [
+        "QC01",
+        "QC02",
+        "QC03",
+        "QC04",
+        "QC05",
+        "QC06",
+        "QC07",
+        "QC08",
+        "QC09",
+        "QC10",
+        "QC11",
+        "QC13",
+        "QC14",
+        "QC15",
+        "QC16",
+        "QC17",
+        "QC18"
+      ]
+    },
+    "NONE": {
+      "catalogo": [
+        "Q01",
+        "Q03",
+        "Q06",
+        "Q08",
+        "Q11",
+        "Q12",
+        "Q14",
+        "Q16",
+        "Q17",
+        "Q19"
+      ],
+      "complementarias": [
+        "QC01",
+        "QC02",
+        "QC03",
+        "QC04",
+        "QC05",
+        "QC06",
+        "QC07",
+        "QC08",
+        "QC09",
+        "QC10",
+        "QC11",
+        "QC13",
+        "QC14",
+        "QC15",
+        "QC16",
+        "QC17",
+        "QC18"
+      ]
+    }
+  }
+}

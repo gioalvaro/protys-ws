@@ -1,0 +1,83 @@
+{
+  "head": {
+    "vars": [
+      "planta",
+      "instalacion",
+      "etiqueta"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "instalacion": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Cell_Dispersion"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Celda de Dispersión de Pigmento"
+        }
+      },
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "instalacion": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Cell_Mixing"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Celda de Mezcla y Ajuste"
+        }
+      },
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "instalacion": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Cell_Packaging"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Celda de Empaquetado"
+        }
+      },
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "instalacion": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Workshop_Production"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Production Workshop"
+        }
+      },
+      {
+        "planta": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#PaintPlant_LatAm"
+        },
+        "instalacion": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/ontology/paint-ext#Workshop_QC"
+        },
+        "etiqueta": {
+          "type": "literal",
+          "value": "Quality Control Workshop"
+        }
+      }
+    ]
+  }
+}

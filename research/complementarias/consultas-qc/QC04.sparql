@@ -1,0 +1,9 @@
+# QC04 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué indicadores de impacto de sus procesos tiene asociados cada lote?
+# R05: Vincular al lote los indicadores de sus procesos, sin sumar. IRI del indicador del proceso; asociación sin suma
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?lot ?indicator WHERE { ?lot a i:Lot ; e:hasImpact ?indicator . } ORDER BY ?lot ?indicator

@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "lot", "quantity" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

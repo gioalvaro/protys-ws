@@ -1,0 +1,2716 @@
+{
+ "fecha": "2026-11-26",
+ "ventana": "2014-2026",
+ "consultas": [
+  {
+   "consulta": "C1",
+   "campo": "TA",
+   "terminos": "ontology \"life cycle assessment\" manufacturing",
+   "registros": 13,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:ontology%20%22life%20cycle%20assessment%22%20manufacturing,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C2",
+   "campo": "TA",
+   "terminos": "ontology \"life cycle assessment\" product",
+   "registros": 40,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:ontology%20%22life%20cycle%20assessment%22%20product,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C3",
+   "campo": "TA",
+   "terminos": "ontology \"life cycle inventory\"",
+   "registros": 19,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:ontology%20%22life%20cycle%20inventory%22,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C4",
+   "campo": "TA",
+   "terminos": "ontology LCA manufacturing",
+   "registros": 9,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:ontology%20LCA%20manufacturing,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C5",
+   "campo": "TA",
+   "terminos": "ontology \"ISO 14040\"",
+   "registros": 1,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:ontology%20%22ISO%2014040%22,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C6",
+   "campo": "T",
+   "terminos": "ontology \"life cycle\"",
+   "registros": 66,
+   "url": "https://api.openalex.org/works?filter=title.search:ontology%20%22life%20cycle%22,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C7",
+   "campo": "T",
+   "terminos": "ontology sustainable manufacturing",
+   "registros": 7,
+   "url": "https://api.openalex.org/works?filter=title.search:ontology%20sustainable%20manufacturing,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C8",
+   "campo": "T",
+   "terminos": "semantic \"life cycle assessment\"",
+   "registros": 6,
+   "url": "https://api.openalex.org/works?filter=title.search:semantic%20%22life%20cycle%20assessment%22,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C9",
+   "campo": "TA",
+   "terminos": "\"knowledge graph\" LCA manufacturing",
+   "registros": 4,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:%22knowledge%20graph%22%20LCA%20manufacturing,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C10",
+   "campo": "TA",
+   "terminos": "\"semantic web\" LCA manufacturing",
+   "registros": 0,
+   "url": "https://api.openalex.org/works?filter=title_and_abstract.search:%22semantic%20web%22%20LCA%20manufacturing,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  },
+  {
+   "consulta": "C11",
+   "campo": "T",
+   "terminos": "ontology LCA",
+   "registros": 4,
+   "url": "https://api.openalex.org/works?filter=title.search:ontology%20LCA,publication_year:2014-2026&per-page=100&page=1&sort=cited_by_count:desc&select=id,doi,title,publication_year,type,authorships,primary_location,cited_by_count"
+  }
+ ],
+ "registros": [
+  {
+   "id": "https://openalex.org/W2407515456",
+   "doi": "https://doi.org/10.3233/978-1-61499-438-1-358",
+   "titulo": "An Ontological Core for Conformance Checking in the Engineering Life-cycle",
+   "anio": 2014,
+   "tipo": "book-chapter",
+   "autores": [
+    "Andreas Jordan",
+    "Matt Selway",
+    "Wolfgang Mayer",
+    "Georg Großmann",
+    "Markus Stumptner"
+   ],
+   "fuente": "Frontiers in artificial intelligence and applications",
+   "citas": 8,
+   "consultas": [
+    "C6"
+   ],
+   "n": 1,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2085495515",
+   "doi": "https://doi.org/10.1109/coase.2014.6899372",
+   "titulo": "An information classification system for life cycle and manufacturing standards",
+   "anio": 2014,
+   "tipo": "conference-paper",
+   "autores": [
+    "Sarah Jeannette Wolff",
+    "Anantha Narayanan",
+    "David Lechevalier",
+    "Katherine C. Morris"
+   ],
+   "fuente": "IEEE International Conference on Automation Science and Engineering (CASE)",
+   "citas": 4,
+   "consultas": [
+    "C1",
+    "C2"
+   ],
+   "n": 2,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2065756165",
+   "doi": "https://doi.org/10.1504/ijmso.2014.063135",
+   "titulo": "An ontology of controversial terms at the core of the systems life cycle",
+   "anio": 2014,
+   "tipo": "article",
+   "autores": [
+    "Lila Rao",
+    "Gunjan Mansingh",
+    "Evan W. Duggan"
+   ],
+   "fuente": "International Journal of Metadata Semantics and Ontologies",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 3,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2404602468",
+   "doi": null,
+   "titulo": "Community-Driven Approach to Large-Scaled Ontology Development based on OAM Framework: a Case Study on Life Cycle Assessment.",
+   "anio": 2014,
+   "tipo": "conference-paper",
+   "autores": [
+    "Akkharawoot Takhom",
+    "Prachya Boonkwan",
+    "Mitsuru Ikeda",
+    "Boontawee Suntisrivaraporn",
+    "Thepchai Supnithi"
+   ],
+   "fuente": "CEUR Workshop Proceedings",
+   "citas": 2,
+   "consultas": [
+    "C6"
+   ],
+   "n": 4,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2172793579",
+   "doi": "https://doi.org/10.1007/978-3-319-09156-3_55",
+   "titulo": "Conceptualizing Crop Life Cycle Events to Create a User Centered Ontology for Farmers",
+   "anio": 2014,
+   "tipo": "conference-paper",
+   "autores": [
+    "Anusha Indika Walisadeera",
+    "Athula Ginige",
+    "Gihan Nilendra Wikramanayake"
+   ],
+   "fuente": "Lecture notes in computer science",
+   "citas": 19,
+   "consultas": [
+    "C6"
+   ],
+   "n": 5,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W29172496",
+   "doi": "https://doi.org/10.7275/37zj-rc94",
+   "titulo": "Incorporating Boltzmann Machine Priors for Semantic Labeling in Images and Videos",
+   "anio": 2014,
+   "tipo": "dissertation",
+   "autores": [
+    "Andrew Kae"
+   ],
+   "fuente": "Scholarworks (University of Massachusetts Amherst)",
+   "citas": 2,
+   "consultas": [
+    "C2"
+   ],
+   "n": 6,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2077365542",
+   "doi": "https://doi.org/10.1016/j.jclepro.2014.08.053",
+   "titulo": "LCA-oriented semantic representation for the product life cycle",
+   "anio": 2014,
+   "tipo": "article",
+   "autores": [
+    "Yingzhong Zhang",
+    "Xiaofang Luo",
+    "Jennifer J. Buis",
+    "John W. Sutherland"
+   ],
+   "fuente": "Journal of Cleaner Production",
+   "citas": 78,
+   "consultas": [
+    "C2",
+    "C3"
+   ],
+   "n": 7,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W2023177969",
+   "doi": "https://doi.org/10.1007/s12583-014-0408-8",
+   "titulo": "Ontology dynamics in a data life cycle: Challenges and recommendations from a Geoscience Perspective",
+   "anio": 2014,
+   "tipo": "article",
+   "autores": [
+    "Xiaogang Ma",
+    "Peter Fox",
+    "Eric Rozell",
+    "Patrick Leslie West",
+    "Stephan Zednik"
+   ],
+   "fuente": "Journal of Earth Science",
+   "citas": 37,
+   "consultas": [
+    "C6"
+   ],
+   "n": 8,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W44722289",
+   "doi": "https://doi.org/10.7275/e04y-9x19",
+   "titulo": "Sustainability-Based Product Design in a Decision Support Semantic Framework",
+   "anio": 2014,
+   "tipo": "dissertation",
+   "autores": [
+    "Douglas C. Eddy"
+   ],
+   "fuente": "Iowa State University Digital Repository (Iowa State University)",
+   "citas": 2,
+   "consultas": [
+    "C2"
+   ],
+   "n": 9,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4251936616",
+   "doi": "https://doi.org/10.6028/nist.ir.8008",
+   "titulo": "Toward ontology evaluation across the life cycle",
+   "anio": 2014,
+   "tipo": "report",
+   "autores": [
+    "Fabian Neuhaus",
+    "Steve Ray",
+    "Ram D. Sriram"
+   ],
+   "fuente": null,
+   "citas": 16,
+   "consultas": [
+    "C6"
+   ],
+   "n": 10,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W1809235633",
+   "doi": null,
+   "titulo": "A minimal ontology pattern for life cycle assessment data",
+   "anio": 2015,
+   "tipo": "conference-paper",
+   "autores": [
+    "Krzysztof Janowicz",
+    "Adila Alfa Krisnadhi",
+    "Yingjie Hu",
+    "Sangwon Suh",
+    "Bo P. Weidema",
+    "Beatriz Rivela"
+   ],
+   "fuente": "VBN Forskningsportal (Aalborg Universitet)",
+   "citas": 26,
+   "consultas": [
+    "C2",
+    "C3",
+    "C6"
+   ],
+   "n": 11,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W2401520721",
+   "doi": null,
+   "titulo": "An Ontology For Specifying Spatiotemporal Scopes in Life Cycle Assessment.",
+   "anio": 2015,
+   "tipo": "conference-paper",
+   "autores": [
+    "Bo Yan",
+    "Yingjie Hu",
+    "Brandon Kuczenski",
+    "Krzysztof Janowicz",
+    "Andrea Ballatore",
+    "Adila Alfa Krisnadhi"
+   ],
+   "fuente": "CEUR Workshop Proceedings",
+   "citas": 12,
+   "consultas": [
+    "C2",
+    "C6"
+   ],
+   "n": 12,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W1642137055",
+   "doi": "https://doi.org/10.3103/s1068371215060115",
+   "titulo": "Construction of an ontological model of the life cycle of electrotechnical equipment",
+   "anio": 2015,
+   "tipo": "article",
+   "autores": [
+    "Anton B. Petrochenkov",
+    "S. V. Bochkarev",
+    "Mikhail Ovsyannikov",
+    "S. A. Bukhanov"
+   ],
+   "fuente": "Russian Electrical Engineering",
+   "citas": 19,
+   "consultas": [
+    "C6"
+   ],
+   "n": 13,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2336493212",
+   "doi": "https://doi.org/10.14288/1.0064693",
+   "titulo": "Evaluation of materials impact on sustainability for buildings",
+   "anio": 2015,
+   "tipo": "conference-paper",
+   "autores": [
+    "Orozco, Javier"
+   ],
+   "fuente": "cIRcle (University of British Columbia)",
+   "citas": 0,
+   "consultas": [
+    "C4"
+   ],
+   "n": 14,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W1590055280",
+   "doi": "https://doi.org/10.1109/sai.2015.7237259",
+   "titulo": "Ontological approach to the formal specification of the standard life cycle",
+   "anio": 2015,
+   "tipo": "conference-paper",
+   "autores": [
+    "Е. М. Лаврищева"
+   ],
+   "fuente": "Science and Information Conference",
+   "citas": 20,
+   "consultas": [
+    "C6"
+   ],
+   "n": 15,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W1528403460",
+   "doi": "https://doi.org/10.4236/jsea.2015.87033",
+   "titulo": "Ontology of Domains. Ontological Description Software Engineering Domain—The Standard Life Cycle",
+   "anio": 2015,
+   "tipo": "article",
+   "autores": [
+    "Ekaterina Mikhailovna Lavrischeva"
+   ],
+   "fuente": "Journal of Software Engineering and Applications",
+   "citas": 5,
+   "consultas": [
+    "C6"
+   ],
+   "n": 16,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2556899539",
+   "doi": "https://doi.org/10.14257/ijunesst.2015.8.11.03",
+   "titulo": "Research on Tourism Enterprise Life Cycle Management Based on Ontology and Description Logic",
+   "anio": 2015,
+   "tipo": "article",
+   "autores": [
+    "Ye Hong",
+    "Ning Zuoyong"
+   ],
+   "fuente": "International Journal of u- and e- Service Science and Technology",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 17,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2323973982",
+   "doi": "https://doi.org/10.14257/astl.2015.111.05",
+   "titulo": "Tourism Enterprise Life Cycle Management Based on Ontology and Description Logic",
+   "anio": 2015,
+   "tipo": "conference-paper",
+   "autores": [
+    "Ye Hong",
+    "Ning Zuoyong"
+   ],
+   "fuente": "Advanced science and technology letters",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 18,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W1748816400",
+   "doi": "https://doi.org/10.2991/ict4s-env-15.2015.18",
+   "titulo": "Toward Collaborative LCA Ontology Development: a Scenario-Based Recommender System for Environmental Data Qualification",
+   "anio": 2015,
+   "tipo": "conference-paper",
+   "autores": [
+    "Akkharawoot Takhom",
+    "Mitsuru Ikeda",
+    "Boontawee Suntisrivaraporn",
+    "Thepchai Supnithi"
+   ],
+   "fuente": "Advances in computer science research",
+   "citas": 12,
+   "consultas": [
+    "C3",
+    "C11"
+   ],
+   "n": 19,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2566926495",
+   "doi": "https://doi.org/10.1109/tla.2016.7786314",
+   "titulo": "A Systematic Mapping of the Ontology-Based Modeling Phase of Context Life Cycle",
+   "anio": 2016,
+   "tipo": "article",
+   "autores": [
+    "Ernesto Fonseca Veiga",
+    "Renato F. Bulcão-Neto"
+   ],
+   "fuente": "IEEE Latin America Transactions",
+   "citas": 2,
+   "consultas": [
+    "C6"
+   ],
+   "n": 20,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2588590832",
+   "doi": "https://doi.org/10.1504/ijwmc.2016.082290",
+   "titulo": "A method of production carbon footprint analysis in a supply chain based on life cycle assessment",
+   "anio": 2016,
+   "tipo": "article",
+   "autores": [
+    "Jinyu Song",
+    "Renwang Li",
+    "Wu Xinli",
+    "Renwang Li"
+   ],
+   "fuente": "International Journal of Wireless and Mobile Computing",
+   "citas": 5,
+   "consultas": [
+    "C2"
+   ],
+   "n": 21,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2559836046",
+   "doi": "https://doi.org/10.5281/zenodo.1127961",
+   "titulo": "An Ontology Model For Systems Engineering Derived From Iso/Iec/Ieee 15288: 2015: Systems And Software Engineering - System Life Cycle Processes",
+   "anio": 2016,
+   "tipo": "article",
+   "autores": [
+    "Lan Yang",
+    "Kathryn T. Cormican",
+    "Ming Yang Yu"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 16,
+   "consultas": [
+    "C6"
+   ],
+   "n": 22,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2511050824",
+   "doi": "https://doi.org/10.14236/ewic/ics2016.5",
+   "titulo": "Ontology and life cycle of knowledge for ICS security assessments",
+   "anio": 2016,
+   "tipo": "conference-paper",
+   "autores": [
+    "Christopher Tebbe",
+    "Karl-Heinz Niemann",
+    "Alexander Fay"
+   ],
+   "fuente": "Electronic workshops in computing",
+   "citas": 17,
+   "consultas": [
+    "C6"
+   ],
+   "n": 23,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2478889385",
+   "doi": "https://doi.org/10.1016/j.jclepro.2016.07.216",
+   "titulo": "Semantic catalogs for life cycle assessment data",
+   "anio": 2016,
+   "tipo": "article",
+   "autores": [
+    "Brandon Kuczenski",
+    "Christopher B. Davis",
+    "Beatriz Rivela",
+    "Krzysztof Janowicz"
+   ],
+   "fuente": "Journal of Cleaner Production",
+   "citas": 53,
+   "consultas": [
+    "C8"
+   ],
+   "n": 24,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W7135582851",
+   "doi": null,
+   "titulo": "The Life Cycles of Objects in Public Administration Ontological Model",
+   "anio": 2016,
+   "tipo": "dissertation",
+   "autores": [
+    "Jana Novotná"
+   ],
+   "fuente": "Digital Repository (National Repository of Grey Literature)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 25,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2598262086",
+   "doi": null,
+   "titulo": "Towards a harmonized framework for assessing the sustainability of agricultural value chains: identification of key challenges and perspectives for research",
+   "anio": 2016,
+   "tipo": "conference-paper",
+   "autores": [
+    "Claudine Basset-Mens",
+    "Yannick Biard",
+    "Flavia Fabiano",
+    "Pauline Feschet",
+    "Frédéric Lançon",
+    "Pierre Martin"
+   ],
+   "fuente": "Agritrop (Cirad)",
+   "citas": 0,
+   "consultas": [
+    "C2"
+   ],
+   "n": 26,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2942729208",
+   "doi": null,
+   "titulo": "A Life Cycle Approach to the Development and Validation of an Ontology of the U.S. Common Rule (45 C.F.R. § 46)",
+   "anio": 2017,
+   "tipo": "dissertation",
+   "autores": [
+    "Francis J. Manion"
+   ],
+   "fuente": "Digital Commons-TMC (Texas Medical Center)",
+   "citas": 2,
+   "consultas": [
+    "C6"
+   ],
+   "n": 27,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2761999236",
+   "doi": "https://doi.org/10.1007/s11367-017-1398-4",
+   "titulo": "On the boundary between economy and environment in life cycle assessment",
+   "anio": 2017,
+   "tipo": "article",
+   "autores": [
+    "Bo P. Weidema",
+    "Jannick Hoejrup Schmidt",
+    "Peter Fantke",
+    "Stefan Pauliuk"
+   ],
+   "fuente": "The International Journal of Life Cycle Assessment",
+   "citas": 37,
+   "consultas": [
+    "C2"
+   ],
+   "n": 28,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2747807005",
+   "doi": "https://doi.org/10.1016/j.proeng.2017.08.065",
+   "titulo": "Ontology of BIM in a Construction Project Life Cycle",
+   "anio": 2017,
+   "tipo": "conference-paper",
+   "autores": [
+    "Petr Matějka",
+    "Aleš Tomek"
+   ],
+   "fuente": "Procedia Engineering",
+   "citas": 47,
+   "consultas": [
+    "C6"
+   ],
+   "n": 29,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2773295041",
+   "doi": "https://doi.org/10.1021/acssuschemeng.7b03379",
+   "titulo": "Toward Automated Inventory Modeling in Life Cycle Assessment: The Utility of Semantic Data Modeling to Predict Real-World Chemical Production",
+   "anio": 2017,
+   "tipo": "article",
+   "autores": [
+    "Vinit K. Mittal",
+    "Sidney C. Bailin",
+    "Michael A. Gonzalez",
+    "David E. Meyer",
+    "William Martin Barrett",
+    "Raymond L. Smith"
+   ],
+   "fuente": "ACS Sustainable Chemistry & Engineering",
+   "citas": 27,
+   "consultas": [
+    "C1",
+    "C3",
+    "C8"
+   ],
+   "n": 30,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2766661833",
+   "doi": "https://doi.org/10.1109/syseng.2017.8088299",
+   "titulo": "Towards a methodology for systems engineering ontology development — An ontology for system life cycle processes",
+   "anio": 2017,
+   "tipo": "conference-paper",
+   "autores": [
+    "Lan Yang",
+    "Kathryn T. Cormican",
+    "Ming Yang Yu"
+   ],
+   "fuente": "IEEE International Symposium on Systems Engineering",
+   "citas": 11,
+   "consultas": [
+    "C6"
+   ],
+   "n": 31,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2952940161",
+   "doi": null,
+   "titulo": "A Requirement Ontology To Guide The Analysis Of System Life Cycle Processes",
+   "anio": 2018,
+   "tipo": "dissertation",
+   "autores": [
+    "Ronaldo Gutierrez"
+   ],
+   "fuente": "Spectrum Research Repository (Concordia University)",
+   "citas": 12,
+   "consultas": [
+    "C6"
+   ],
+   "n": 32,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2906536945",
+   "doi": "https://doi.org/10.1016/j.compind.2018.12.007",
+   "titulo": "A product life cycle ontology for additive manufacturing",
+   "anio": 2018,
+   "tipo": "article",
+   "autores": [
+    "Munira Mohd Ali",
+    "Rahul Rai",
+    "J. Neil Otte",
+    "Barry Smith"
+   ],
+   "fuente": "Computers in Industry",
+   "citas": 83,
+   "consultas": [
+    "C6"
+   ],
+   "n": 33,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2795064269",
+   "doi": "https://doi.org/10.1587/transinf.2016iip0028",
+   "titulo": "Collaborative Ontology Development Approach for Multidisciplinary Knowledge: A Scenario-Based Knowledge Construction System in Life Cycle Assessment",
+   "anio": 2018,
+   "tipo": "article",
+   "autores": [
+    "Akkharawoot Takhom",
+    "Sasiporn Usanavasin",
+    "Thepchai Supnithi",
+    "Mitsuru Ikeda"
+   ],
+   "fuente": "IEICE Transactions on Information and Systems",
+   "citas": 13,
+   "consultas": [
+    "C6"
+   ],
+   "n": 34,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3024190094",
+   "doi": null,
+   "titulo": "Data and model framework for a community Industrial Ecology Socio-environmental Model",
+   "anio": 2018,
+   "tipo": "article",
+   "autores": [
+    "Christopher Mutel",
+    "Stefan Pauliuk"
+   ],
+   "fuente": "ScholarsArchive  (Brigham Young University)",
+   "citas": 0,
+   "consultas": [
+    "C2"
+   ],
+   "n": 35,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7151710455",
+   "doi": null,
+   "titulo": "Industrial automation systems and integration — Integration of life-cycle data for process plants including oil and gas production facilities — Part 12: Life-cycle integration ontology represented in Web Ontology Language (OWL)",
+   "anio": 2018,
+   "tipo": "article",
+   "autores": [],
+   "fuente": "Vytautas Magnus University",
+   "citas": 2,
+   "consultas": [
+    "C6"
+   ],
+   "n": 36,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2892948307",
+   "doi": "https://doi.org/10.5220/0006957703030311",
+   "titulo": "ODYSSEY: Software Development Life Cycle Ontology",
+   "anio": 2018,
+   "tipo": "conference-paper",
+   "autores": [
+    "Joanna Isabelle Olszewska",
+    "Ian K. Allison"
+   ],
+   "fuente": "International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management",
+   "citas": 18,
+   "consultas": [
+    "C6"
+   ],
+   "n": 37,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7139018151",
+   "doi": "https://doi.org/10.5220/0006957700002053",
+   "titulo": "ODYSSEY: Software Development Life Cycle Ontology",
+   "anio": 2018,
+   "tipo": "conference-paper",
+   "autores": [
+    "J. I. Olszewska",
+    "I. K. Allison"
+   ],
+   "fuente": "International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 38,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2901361676",
+   "doi": "https://doi.org/10.1177/1687814018812277",
+   "titulo": "Ontology based social life cycle assessment for product development",
+   "anio": 2018,
+   "tipo": "article",
+   "autores": [
+    "Zhen Shang",
+    "Meidan Wang",
+    "Daizhong Su",
+    "Qinhui Liu",
+    "Shifan Zhu"
+   ],
+   "fuente": "Advances in Mechanical Engineering",
+   "citas": 21,
+   "consultas": [
+    "C2",
+    "C6"
+   ],
+   "n": 39,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W2895500808",
+   "doi": "https://doi.org/10.1038/s41538-018-0027-3",
+   "titulo": "Review of the sustainability of food systems and transition using the Internet of Food",
+   "anio": 2018,
+   "tipo": "review",
+   "autores": [
+    "Nicholas M. Holden",
+    "Eoin P. White",
+    "Matthew C Lange",
+    "Thomas L. Oldfield"
+   ],
+   "fuente": "npj Science of Food",
+   "citas": 136,
+   "consultas": [
+    "C2"
+   ],
+   "n": 40,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2942649029",
+   "doi": null,
+   "titulo": "Robotic Ontological Standard Development Life Cycle",
+   "anio": 2018,
+   "tipo": "conference-paper",
+   "autores": [
+    "Joanna Isabelle Olszewska",
+    "Michael A. Houghtaling",
+    "Paulo J. S. Gonçalves",
+    "Tamás P. Haidegger",
+    "Nicola Fabiano",
+    "Joel Luís Carbonera"
+   ],
+   "fuente": "Repository of the Academy's Library (Library of the Hungarian Academy of Sciences)",
+   "citas": 9,
+   "consultas": [
+    "C6"
+   ],
+   "n": 41,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2944908514",
+   "doi": "https://doi.org/10.25777/b3se-zt18",
+   "titulo": "A Hierarchical Core Reference Ontology for New Technology Insertion Design in Long Life Cycle, Complex Mission Critical Systems",
+   "anio": 2019,
+   "tipo": "article",
+   "autores": [
+    "Kevin J. Michael"
+   ],
+   "fuente": "ODU Digital Commons (Old Dominion University)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 42,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2972689257",
+   "doi": "https://doi.org/10.1007/978-3-030-32327-1_15",
+   "titulo": "An Open Source Dataset and Ontology for Product Footprinting",
+   "anio": 2019,
+   "tipo": "conference-paper",
+   "autores": [
+    "Agneta Ghose",
+    "Katja Hose",
+    "Matteo Lissandrini",
+    "Bo P. Weidema"
+   ],
+   "fuente": "Lecture notes in computer science",
+   "citas": 11,
+   "consultas": [
+    "C2"
+   ],
+   "n": 43,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W2939183765",
+   "doi": "https://doi.org/10.3233/ao-190210",
+   "titulo": "An ontological approach to representing the product life cycle",
+   "anio": 2019,
+   "tipo": "article",
+   "autores": [
+    "J. Neil Otte",
+    "Dimitris Kiritsi",
+    "Munira Mohd Ali",
+    "Ruoyu Yang",
+    "Binbin Zhang",
+    "Ron Rudnicki"
+   ],
+   "fuente": "Applied Ontology",
+   "citas": 65,
+   "consultas": [
+    "C6"
+   ],
+   "n": 44,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2997827240",
+   "doi": "https://doi.org/10.1016/j.scitotenv.2019.136263",
+   "titulo": "Enhancing life cycle chemical exposure assessment through ontology modeling",
+   "anio": 2019,
+   "tipo": "article",
+   "autores": [
+    "David E. Meyer",
+    "Sidney C. Bailin",
+    "Daniel Alan Vallero",
+    "Peter Paul Egeghy",
+    "Shi V. Liu",
+    "Elaine A. Cohen Hubal"
+   ],
+   "fuente": "The Science of The Total Environment",
+   "citas": 27,
+   "consultas": [
+    "C3",
+    "C4",
+    "C6"
+   ],
+   "n": 45,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3048192852",
+   "doi": "https://doi.org/10.3303/cet1974210",
+   "titulo": "Framework for Sustainable Management of Agricultural By-Product Valorization",
+   "anio": 2019,
+   "tipo": "article",
+   "autores": [
+    "Jean‐Pierre Belaud",
+    "Nancy Prioux",
+    "Claire Vialle",
+    "Patrice Buche",
+    "Sébastien Destercke",
+    "Abdellatif Barakat"
+   ],
+   "fuente": "Chemical engineering transactions",
+   "citas": 5,
+   "consultas": [
+    "C3"
+   ],
+   "n": 46,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2916830529",
+   "doi": "https://doi.org/10.1088/1757-899x/471/10/102007",
+   "titulo": "Ontology as a Tool for Building Life Cycle Modelling",
+   "anio": 2019,
+   "tipo": "conference-paper",
+   "autores": [
+    "Vladimír Nývlt",
+    "Radimír Novotný"
+   ],
+   "fuente": "IOP Conference Series Materials Science and Engineering",
+   "citas": 3,
+   "consultas": [
+    "C6"
+   ],
+   "n": 47,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3201671461",
+   "doi": null,
+   "titulo": "Opportunities for Ontologies in Medical Device Total Product Life Cycle (TPLC) Evaluation.",
+   "anio": 2019,
+   "tipo": "conference-paper",
+   "autores": [
+    "Asiyah Yu Lin"
+   ],
+   "fuente": "CEUR Workshop Proceedings",
+   "citas": 1,
+   "consultas": [
+    "C6"
+   ],
+   "n": 48,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W2984268957",
+   "doi": "https://doi.org/10.1007/s11367-019-01687-7",
+   "titulo": "The role of services and capital in footprint modelling",
+   "anio": 2019,
+   "tipo": "article",
+   "autores": [
+    "David Font Vivanco"
+   ],
+   "fuente": "The International Journal of Life Cycle Assessment",
+   "citas": 28,
+   "consultas": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+   ],
+   "n": 49,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3167837090",
+   "doi": "https://doi.org/10.5821/dissertation-2117-341606",
+   "titulo": "Decision support strategies for the efficient implementation of circular economy principles in process systems",
+   "anio": 2020,
+   "tipo": "dissertation",
+   "autores": [
+    "Ana Somoza-Tornos"
+   ],
+   "fuente": "UPCommons institutional repository (Universitat Politècnica de Catalunya)",
+   "citas": 2,
+   "consultas": [
+    "C2"
+   ],
+   "n": 50,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3134207436",
+   "doi": null,
+   "titulo": "Evolutionary Materialism: Towards a Theory of Anticipatory Adaptive Assemblages",
+   "anio": 2020,
+   "tipo": "dissertation",
+   "autores": [
+    "Magnus Larsson"
+   ],
+   "fuente": "KTH Publication Database DiVA (KTH Royal Institute of Technology)",
+   "citas": 0,
+   "consultas": [
+    "C1"
+   ],
+   "n": 51,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3010620298",
+   "doi": "https://doi.org/10.1002/sys.21532",
+   "titulo": "Extending the scope of configuration management for the development and life cycle support of systems of systems—An ontology‐driven framework applied to the Enceladus Submarine Exploration Lander",
+   "anio": 2020,
+   "tipo": "article",
+   "autores": [
+    "Mario Kossmann",
+    "Ahmad Abdelhafiz Ali Samhan",
+    "Mohammed Odeh",
+    "Eman Qaddoumi",
+    "Abdelghani Tbakhi",
+    "Stephen Watts"
+   ],
+   "fuente": "Systems Engineering",
+   "citas": 14,
+   "consultas": [
+    "C6"
+   ],
+   "n": 52,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3083143688",
+   "doi": "https://doi.org/10.5194/isprs-annals-vi-4-w1-2020-85-2020",
+   "titulo": "LIFE CYCLE ASSESSMENT OF TECHNICAL BUILDING SERVICES OF LARGE RESIDENTIAL BUILDING STOCKS USING SEMANTIC 3D CITY MODELS",
+   "anio": 2020,
+   "tipo": "article",
+   "autores": [
+    "Hannes Harter",
+    "Bruno Willenborg",
+    "Werner Lang",
+    "Thomas H. Kolbe"
+   ],
+   "fuente": "ISPRS annals of the photogrammetry, remote sensing and spatial information sciences",
+   "citas": 8,
+   "consultas": [
+    "C8"
+   ],
+   "n": 53,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3100749091",
+   "doi": "https://doi.org/10.1061/9780784482865.116",
+   "titulo": "Machine Learning-Based Building Life-Cycle Cost Prediction: A Framework and Ontology",
+   "anio": 2020,
+   "tipo": "conference-paper",
+   "autores": [
+    "Xinghua Gao",
+    "Pardis Pishdad-Bozorgi",
+    "Dennis Shelden",
+    "Shu Tang"
+   ],
+   "fuente": "ASCE Construction Research Congress (CRC)",
+   "citas": 12,
+   "consultas": [
+    "C6"
+   ],
+   "n": 54,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3040389722",
+   "doi": "https://doi.org/10.1201/9781003092278-1",
+   "titulo": "Mapping of unit product system/processes for pavement life-cycle assessment",
+   "anio": 2020,
+   "tipo": "book-chapter",
+   "autores": [
+    "Chaitanya Ganesh Bhat",
+    "Amlan Mukherjee",
+    "Joep Meijer"
+   ],
+   "fuente": "CRC Press eBooks",
+   "citas": 4,
+   "consultas": [
+    "C2"
+   ],
+   "n": 55,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3120780630",
+   "doi": "https://doi.org/10.17513/snt.38417",
+   "titulo": "ONTOLOGICAL MODEL FOR MANAGING THE LIFE CYCLE OF SPACE FORCES WEAPONS",
+   "anio": 2020,
+   "tipo": "article",
+   "autores": [
+    "D.V. Reshetnikov",
+    "R.M. Vivchar",
+    "E.N. Esipov"
+   ],
+   "fuente": "Современные наукоемкие технологии (Modern High Technologies)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 56,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4407907675",
+   "doi": "https://doi.org/10.31891/2307-5732-2020-281-1-77-81",
+   "titulo": "STRUCTURE OF ONTOLOGY-BASED AGENT-ORIENTED INFORMATION TECHNOLOGY FOR ASSESSMENT OF THE BEGINNING STAGES OF THE SOFTWARE LIFE CYCLE",
+   "anio": 2020,
+   "tipo": "article",
+   "autores": [
+    "Tetiana Oleksandrivna Hovorushchenko",
+    "Olga Pavlova",
+    "M TONENKA"
+   ],
+   "fuente": "Herald of Khmelnytskyi National University Technical sciences",
+   "citas": 1,
+   "consultas": [
+    "C6"
+   ],
+   "n": 57,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4200023506",
+   "doi": "https://doi.org/10.1111/jiec.13220",
+   "titulo": "A core ontology for modeling life cycle sustainability assessment on the Semantic Web",
+   "anio": 2021,
+   "tipo": "article",
+   "autores": [
+    "Agneta Ghose",
+    "Matteo Lissandrini",
+    "Emil Riis Hansen",
+    "Bo P. Weidema"
+   ],
+   "fuente": "Journal of Industrial Ecology",
+   "citas": 67,
+   "consultas": [
+    "C6"
+   ],
+   "n": 58,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W4394047823",
+   "doi": "https://doi.org/10.5281/zenodo.8205609",
+   "titulo": "A core ontology for modeling life cycle sustainability assessment on the Semantic Web with Accompanying Database",
+   "anio": 2021,
+   "tipo": "dataset",
+   "autores": [
+    "Agneta Ghose",
+    "Matteo Lissandrini",
+    "Emil Riis Hansen",
+    "Bo P. Weidema"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 59,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3192152774",
+   "doi": "https://doi.org/10.1108/jedt-05-2021-0265",
+   "titulo": "A knowledge with ontology representation for product life cycle to support eco-design activities",
+   "anio": 2021,
+   "tipo": "article",
+   "autores": [
+    "Jeremy S Liang"
+   ],
+   "fuente": "Journal of Engineering Design and Technology",
+   "citas": 12,
+   "consultas": [
+    "C2",
+    "C6"
+   ],
+   "n": 60,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3137677181",
+   "doi": "https://doi.org/10.1088/1757-899x/1092/1/012049",
+   "titulo": "Eco-Ontology for supporting Interoperability in Product Life Cycle within Product Sustainability",
+   "anio": 2021,
+   "tipo": "conference-paper",
+   "autores": [
+    "M Mohammed",
+    "Awanis Romli",
+    "Rozlina Binti Mohamed",
+    "Ahmad Noormazlinah"
+   ],
+   "fuente": "IOP Conference Series Materials Science and Engineering",
+   "citas": 12,
+   "consultas": [
+    "C1",
+    "C2",
+    "C6"
+   ],
+   "n": 61,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W3159401607",
+   "doi": "https://doi.org/10.1016/j.cosrev.2021.100401",
+   "titulo": "Eco-assessment software: A quantitative review involving papers and patents",
+   "anio": 2021,
+   "tipo": "article",
+   "autores": [
+    "Christian Spreafico",
+    "Davide Russo"
+   ],
+   "fuente": "Computer Science Review",
+   "citas": 11,
+   "consultas": [
+    "C2"
+   ],
+   "n": 62,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3204014703",
+   "doi": "https://doi.org/10.33278/sae-2020.book1.452-455",
+   "titulo": "Formal ontology of the product life cycle",
+   "anio": 2021,
+   "tipo": "conference-paper",
+   "autores": [
+    "Mikhail Ovsyannikov"
+   ],
+   "fuente": "System Analysis in Economics: International Research and Practice Conference-Biennale",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 63,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3198339832",
+   "doi": "https://doi.org/10.1061/jpeodx.0000308",
+   "titulo": "Life Cycle Information Models: Parameterized Linked Data Structures to Facilitate the Consistent Use of Life-Cycle Assessment in Decision Making",
+   "anio": 2021,
+   "tipo": "article",
+   "autores": [
+    "Chaitanya Ganesh Bhat",
+    "Amlan Mukherjee",
+    "Joep Meijer"
+   ],
+   "fuente": "Journal of Transportation Engineering Part B Pavements",
+   "citas": 17,
+   "consultas": [
+    "C2",
+    "C3"
+   ],
+   "n": 64,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4287115979",
+   "doi": null,
+   "titulo": "Presentation for BIDEDE workshop:Towards an Emulation Tool based on Ontologies and Data Life Cycles for Studying Smart Buildings",
+   "anio": 2021,
+   "tipo": "other",
+   "autores": [
+    "Christophe Cérin",
+    "Frédéric Andrès",
+    "Danielle Geldwerth-Feniger"
+   ],
+   "fuente": "HAL",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 65,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3157822818",
+   "doi": "https://doi.org/10.3389/fcell.2021.668025",
+   "titulo": "The Ontology of the Amphioxus Anatomy and Life Cycle (AMPHX)",
+   "anio": 2021,
+   "tipo": "article",
+   "autores": [
+    "Stéphanie Bertrand",
+    "João E. Carvalho",
+    "Delphine Dauga",
+    "Nicolas Matentzoglu",
+    "Vladimir Daric",
+    "Jr‐Kai Yu"
+   ],
+   "fuente": "Frontiers in Cell and Developmental Biology",
+   "citas": 16,
+   "consultas": [
+    "C6"
+   ],
+   "n": 66,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3165209714",
+   "doi": "https://doi.org/10.1145/3460866.3461772",
+   "titulo": "Towards an emulation tool based on ontologies and data life cycles for studying smart buildings",
+   "anio": 2021,
+   "tipo": "conference-paper",
+   "autores": [
+    "Christophe Cérin",
+    "Frédéric Andrès",
+    "Danielle Geldwerth-Feniger"
+   ],
+   "fuente": "International Workshop on Big Data in Emergent Distributed Environments (BiDEDE)",
+   "citas": 5,
+   "consultas": [
+    "C6"
+   ],
+   "n": 67,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W3214819337",
+   "doi": "https://doi.org/10.1109/itss-ioe53029.2021.9615289",
+   "titulo": "Using Ontology to Enhance Decision-Making for Product Sustainability in Smart Manufacturing",
+   "anio": 2021,
+   "tipo": "conference-paper",
+   "autores": [
+    "Moseed Mohammed",
+    "Awanis Romli",
+    "Rozlina Binti Mohamed"
+   ],
+   "fuente": "International Conference on Intelligent Technology, System and Service for Internet of Everything (ITSS-IoE)",
+   "citas": 4,
+   "consultas": [
+    "C7"
+   ],
+   "n": 68,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4308177661",
+   "doi": null,
+   "titulo": "Adapting MEANS-InOut LCA software to food engineering, in relation to the PO² food ontology and PO²-BaGaTel food engineering database",
+   "anio": 2022,
+   "tipo": "conference-paper",
+   "autores": [
+    "Julie Auberger",
+    "Geneviève Gésan-Guiziou",
+    "Caroline Malnoë",
+    "Guilhem Rostain",
+    "Magalie Weber",
+    "Hervé Guillemin"
+   ],
+   "fuente": "Agritrop (Cirad)",
+   "citas": 1,
+   "consultas": [
+    "C11"
+   ],
+   "n": 69,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4289933066",
+   "doi": "https://doi.org/10.1016/j.resenv.2022.100086",
+   "titulo": "An ontology-based KBE application for supply chain sustainability assessment",
+   "anio": 2022,
+   "tipo": "article",
+   "autores": [
+    "Liang Zhang",
+    "Anna Ivanova Olsen",
+    "Andrei Lobov"
+   ],
+   "fuente": "Resources Environment and Sustainability",
+   "citas": 24,
+   "consultas": [
+    "C2"
+   ],
+   "n": 70,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W4206727579",
+   "doi": "https://doi.org/10.1016/j.spc.2022.01.010",
+   "titulo": "Can TRIZ (Theory of Inventive Problem Solving) strategies improve material substitution in eco-design?",
+   "anio": 2022,
+   "tipo": "article",
+   "autores": [
+    "Christian Spreafico"
+   ],
+   "fuente": "Sustainable Production and Consumption",
+   "citas": 48,
+   "consultas": [
+    "C2"
+   ],
+   "n": 71,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4309525212",
+   "doi": "https://doi.org/10.3403/30340172u",
+   "titulo": "Industrial automation systems and integration � Integration of life-cycle data for process plants including oil and gas production facilities: Part 12: Life cycle integration ontology represented in OWL",
+   "anio": 2022,
+   "tipo": "standard",
+   "autores": [],
+   "fuente": "BSI Standards",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 72,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4309525214",
+   "doi": "https://doi.org/10.3403/30340172",
+   "titulo": "Industrial automation systems and integration � Integration of life-cycle data for process plants including oil and gas production facilities: Part 12: Life cycle integration ontology represented in OWL",
+   "anio": 2022,
+   "tipo": "standard",
+   "autores": [],
+   "fuente": "BSI Standards",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 73,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4312890718",
+   "doi": "https://doi.org/10.52348/2712-8873_mmtt_2022_11_88",
+   "titulo": "ON THE POSSIBILITIES OF ONTOLOGICAL MODELING OF THE LIFE CYCLE OF SOFTWARE DEVELOPMENT",
+   "anio": 2022,
+   "tipo": "article",
+   "autores": [
+    "Tatiana Erikovna Shulga",
+    "Dmitrii Eduardovich Khramov"
+   ],
+   "fuente": "Mathematical Methods in Technologies and Technics",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 74,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4281395762",
+   "doi": "https://doi.org/10.1061/9780784483893.091",
+   "titulo": "Ontology Approach for Building Life Cycle Data Management",
+   "anio": 2022,
+   "tipo": "conference-paper",
+   "autores": [
+    "Janakiram Karlapudi",
+    "Prathap Valluru",
+    "Karsten Menzel"
+   ],
+   "fuente": "ASCE International Conference on Computing in Civil Engineering (i3CE)",
+   "citas": 10,
+   "consultas": [
+    "C6"
+   ],
+   "n": 75,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4225488011",
+   "doi": "https://doi.org/10.1016/j.procir.2022.02.066",
+   "titulo": "Ontology-based approach to support life cycle engineering: Development of a data and knowledge structure",
+   "anio": 2022,
+   "tipo": "article",
+   "autores": [
+    "Anna-Sophia Wilde",
+    "Felix Wanielik",
+    "Maximilian Rolinck",
+    "Mark Mennenga",
+    "Tim Abraham",
+    "Felipe Cerdas"
+   ],
+   "fuente": "Procedia CIRP",
+   "citas": 20,
+   "consultas": [
+    "C6"
+   ],
+   "n": 76,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W4353070484",
+   "doi": "https://doi.org/10.3390/su15065531",
+   "titulo": "Automation of Life Cycle Assessment—A Critical Review of Developments in the Field of Life Cycle Inventory Analysis",
+   "anio": 2023,
+   "tipo": "article",
+   "autores": [
+    "Bianca Köck",
+    "Anton Friedl",
+    "Sebastian Serna Loaiza",
+    "Walter Wukovits",
+    "Bettina Mihalyi"
+   ],
+   "fuente": "Sustainability",
+   "citas": 84,
+   "consultas": [
+    "C3"
+   ],
+   "n": 77,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4375859036",
+   "doi": "https://doi.org/10.1016/j.enbuild.2023.113141",
+   "titulo": "Climate-neutral municipal building stock - life cycle assessment of large residential building stocks based on semantic 3D city models",
+   "anio": 2023,
+   "tipo": "article",
+   "autores": [
+    "Hannes Harter",
+    "Bruno Willenborg",
+    "Werner Lang",
+    "Thomas H. Kolbe"
+   ],
+   "fuente": "Energy and Buildings",
+   "citas": 18,
+   "consultas": [
+    "C8"
+   ],
+   "n": 78,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W6959742462",
+   "doi": "https://doi.org/10.13124/9788860461919_55",
+   "titulo": "Design of energy-neutral smart buildings: An ontological framework to integrate LCA, BIM and PLM",
+   "anio": 2023,
+   "tipo": "book-chapter",
+   "autores": [
+    "Kumar, Tarun",
+    "Mani, Monto"
+   ],
+   "fuente": "Bozen-Bolzano University Press eBooks",
+   "citas": 3,
+   "consultas": [
+    "C11"
+   ],
+   "n": 79,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4320009498",
+   "doi": "https://doi.org/10.1063/5.0114132",
+   "titulo": "Eco-design based on ontology: State of the art and directions",
+   "anio": 2023,
+   "tipo": "conference-paper",
+   "autores": [
+    "Moseed Mohammed",
+    "Awanis Romli",
+    "Rozlina Binti Mohamed",
+    "Ahmad Noormazlinah",
+    "M. Noor Mohazan"
+   ],
+   "fuente": "AIP conference proceedings",
+   "citas": 0,
+   "consultas": [
+    "C1",
+    "C2"
+   ],
+   "n": 80,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W4353044712",
+   "doi": "https://doi.org/10.3403/30190521",
+   "titulo": "Industrial automation systems and integration - Integration of life-cycle data for process plants including oil and gas production facilities: Part 8: Implementation methods for the integration of distributed systems: Web Ontology Language (OWL) implementation",
+   "anio": 2023,
+   "tipo": "standard",
+   "autores": [],
+   "fuente": "BSI Standards",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 81,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4364362192",
+   "doi": "https://doi.org/10.1016/j.jclepro.2023.137164",
+   "titulo": "Life Cycle Assessment of building energy systems on neighbourhood level based on semantic 3D city models",
+   "anio": 2023,
+   "tipo": "article",
+   "autores": [
+    "Hannes Harter",
+    "Bruno Willenborg",
+    "Werner Lang",
+    "Thomas H. Kolbe"
+   ],
+   "fuente": "Journal of Cleaner Production",
+   "citas": 34,
+   "consultas": [
+    "C8"
+   ],
+   "n": 82,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4367310225",
+   "doi": "https://doi.org/10.24143/2072-9502-2023-2-66-74",
+   "titulo": "Life cycle ontology of software engineering",
+   "anio": 2023,
+   "tipo": "article",
+   "autores": [
+    "Tatiana Erikovna Shulga",
+    "Dmitrii Eduardovich Khramov"
+   ],
+   "fuente": "VESTNIK OF ASTRAKHAN STATE TECHNICAL UNIVERSITY SERIES MANAGEMENT COMPUTER SCIENCE AND INFORMATICS",
+   "citas": 5,
+   "consultas": [
+    "C6"
+   ],
+   "n": 83,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4384558130",
+   "doi": "https://doi.org/10.3390/jmse11071418",
+   "titulo": "Ontology Framework for Sustainability Evaluation of Cement–Steel-Slag-Stabilized Soft Soil Based on Life Cycle Assessment Approach",
+   "anio": 2023,
+   "tipo": "article",
+   "autores": [
+    "Chunyang Yu",
+    "Jia Yuan",
+    "Chunyi Cui",
+    "Jiuye Zhao",
+    "Fang Liu",
+    "Gang Li"
+   ],
+   "fuente": "Journal of Marine Science and Engineering",
+   "citas": 13,
+   "consultas": [
+    "C6"
+   ],
+   "n": 84,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4386716624",
+   "doi": "https://doi.org/10.1007/978-3-031-43688-8_35",
+   "titulo": "Produce It Sustainably: Life Cycle Assessment of a Biomanufacturing Process Through the Ontology Lens",
+   "anio": 2023,
+   "tipo": "conference-paper",
+   "autores": [
+    "Ana Nikolov",
+    "Miloš Drobnjaković",
+    "Boonserm Kulvatunyou"
+   ],
+   "fuente": "IFIP advances in information and communication technology",
+   "citas": 7,
+   "consultas": [
+    "C1",
+    "C4",
+    "C5",
+    "C6"
+   ],
+   "n": 85,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W4405944421",
+   "doi": "https://doi.org/10.3390/app15010175",
+   "titulo": "A Knowledge Graph Framework to Support Life Cycle Assessment for Sustainable Decision-Making",
+   "anio": 2024,
+   "tipo": "article",
+   "autores": [
+    "Lucas Greif",
+    "Svenja Hauck",
+    "Andreas Kimmig",
+    "Jivka Ovtcharova"
+   ],
+   "fuente": "Applied Sciences",
+   "citas": 21,
+   "consultas": [
+    "C9"
+   ],
+   "n": 86,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4400484626",
+   "doi": "https://doi.org/10.3390/su16145873",
+   "titulo": "Advancing Sustainable Manufacturing: Reinforcement Learning with Adaptive Reward Machine Using an Ontology-Based Approach",
+   "anio": 2024,
+   "tipo": "article",
+   "autores": [
+    "Fatemeh Golpayegani",
+    "Saeedeh Ghanadbashi",
+    "Akram Zarchini"
+   ],
+   "fuente": "Sustainability",
+   "citas": 11,
+   "consultas": [
+    "C7"
+   ],
+   "n": 87,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4392450750",
+   "doi": "https://doi.org/10.1016/j.aei.2024.102430",
+   "titulo": "An ontology of eco-design for additive manufacturing with informative sustainability analysis",
+   "anio": 2024,
+   "tipo": "article",
+   "autores": [
+    "Yanan Wang",
+    "Tao Peng",
+    "Yi Xiong",
+    "Samyeon Kim",
+    "Yi Zhu",
+    "Renzhong Tang"
+   ],
+   "fuente": "Advanced Engineering Informatics",
+   "citas": 25,
+   "consultas": [
+    "C7"
+   ],
+   "n": 88,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4401458312",
+   "doi": "https://doi.org/10.35490/ec3.2024.319",
+   "titulo": "Asset Management Ontology Requirements to Support Life Cycle Cost Analysis",
+   "anio": 2024,
+   "tipo": "conference-paper",
+   "autores": [
+    "Conor Shaw",
+    "Flavia De Andrade Pereira",
+    "James O’Donnell"
+   ],
+   "fuente": "Computing in construction",
+   "citas": 1,
+   "consultas": [
+    "C6"
+   ],
+   "n": 89,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4400380310",
+   "doi": "https://doi.org/10.47982/jfde.2024.305",
+   "titulo": "Data-driven and LCA-based Framework for environmental and circular assessment of Modular Curtain Walls",
+   "anio": 2024,
+   "tipo": "article",
+   "autores": [
+    "Luca Morganti",
+    "Peru Elguezabal",
+    "Alessandro Pracucci",
+    "Theo Zaffagnini",
+    "Verónica García-Cortés",
+    "Andreas Rudenå"
+   ],
+   "fuente": "Journal of Facade Design and Engineering",
+   "citas": 31,
+   "consultas": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+   ],
+   "n": 90,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4404651252",
+   "doi": "https://doi.org/10.1002/adem.202401702",
+   "titulo": "Environmental Impact Assessment of Copper‐Alloy Production Using Process Simulation and Semantic Modeling",
+   "anio": 2024,
+   "tipo": "article",
+   "autores": [
+    "Mohsin Sajjad",
+    "K. Gerald van den Boogaart",
+    "Leon Steinmeier",
+    "Ashak Mahmud Parvez"
+   ],
+   "fuente": "Advanced Engineering Materials",
+   "citas": 6,
+   "consultas": [
+    "C2"
+   ],
+   "n": 91,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W7163187484",
+   "doi": "https://doi.org/10.5281/zenodo.20426862",
+   "titulo": "MACRAMÉ Deliverable Report D1.2: Needs Assessment Report of Regulatory & Policy Frameworks",
+   "anio": 2024,
+   "tipo": "report",
+   "autores": [
+    "Samia Ouhajji",
+    "Luis Mauricio Ortiz-Galvez",
+    "Anna Pohl",
+    "Elisabeth Heunisch",
+    "Govind Gupta",
+    "Thomas E. Exner"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C2"
+   ],
+   "n": 92,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4397028726",
+   "doi": "https://doi.org/10.48550/arxiv.2405.10235",
+   "titulo": "Novel Data Models for Inter-operable LCA Frameworks",
+   "anio": 2024,
+   "tipo": "preprint",
+   "autores": [
+    "Kourosh Malek",
+    "Max Dreger",
+    "Zirui Tang",
+    "Qingshi Tu"
+   ],
+   "fuente": "arXiv",
+   "citas": 12,
+   "consultas": [
+    "C2"
+   ],
+   "n": 93,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W4404685183",
+   "doi": "https://doi.org/10.24294/jipd5318",
+   "titulo": "Ontological perception of a smart unified organizational compliance model to mitigate financial risk and promote sustainability in the manufacturing sector",
+   "anio": 2024,
+   "tipo": "article",
+   "autores": [
+    "Tarnima Warda Andalib",
+    "Thurasamy Ramayah",
+    "Tonny Tabassum",
+    "Shosunth Chandra Sarker",
+    "Fairuza Mehreen",
+    "Md. Tanvir Hasan"
+   ],
+   "fuente": "Journal of Infrastructure Policy and Development",
+   "citas": 4,
+   "consultas": [
+    "C7"
+   ],
+   "n": 94,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4401753145",
+   "doi": "https://doi.org/10.23919/egg62010.2024.10631220",
+   "titulo": "Why Should We Share Material Data? The Positive Impact of Public/Private Databases Access Through Digital Twins Along the Product Value Chain",
+   "anio": 2024,
+   "tipo": "conference-paper",
+   "autores": [
+    "O. Hölck",
+    "S. Voges",
+    "Karl‐Friedrich Becker",
+    "Eduard Wagner",
+    "Martin Schneider‐Ramelow"
+   ],
+   "fuente": "Electronics Goes Green",
+   "citas": 1,
+   "consultas": [
+    "C1",
+    "C2",
+    "C4"
+   ],
+   "n": 95,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7116885128",
+   "doi": "https://doi.org/10.1088/1755-1315/1554/1/012043",
+   "titulo": "BIM-based material property enrichment using text-based and ontology-based semantic similarity matching",
+   "anio": 2025,
+   "tipo": "conference-paper",
+   "autores": [
+    "Kasimir Forth",
+    "Julia Kaltenegger",
+    "Ekaterina Petrova",
+    "Catherine De Wolf"
+   ],
+   "fuente": "IOP Conference Series Earth and Environmental Science",
+   "citas": 7,
+   "consultas": [
+    "C2"
+   ],
+   "n": 96,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4411583130",
+   "doi": "https://doi.org/10.1201/9781003610762-3",
+   "titulo": "Building Information Modelling, Semantic Web Technology, and Life Cycle Assessment",
+   "anio": 2025,
+   "tipo": "book-chapter",
+   "autores": [
+    "Subarna Sivashanmugam",
+    "Sergio Rodríguez",
+    "Farzad Pour Rahimian"
+   ],
+   "fuente": "Routledge eBooks",
+   "citas": 0,
+   "consultas": [
+    "C8"
+   ],
+   "n": 97,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4411495244",
+   "doi": "https://doi.org/10.3390/su17135685",
+   "titulo": "Cost Efficiency in Buildings: An Ontological Perspective for Sustainable Life Cycle Management",
+   "anio": 2025,
+   "tipo": "article",
+   "autores": [
+    "Martina Signorini",
+    "Chiara Gatto",
+    "Jacopo Cassandro",
+    "Alberto Pavan",
+    "Sonia Lupica Spagnolo"
+   ],
+   "fuente": "Sustainability",
+   "citas": 7,
+   "consultas": [
+    "C6"
+   ],
+   "n": 98,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4414959406",
+   "doi": "https://doi.org/10.46254/eu08.20250467",
+   "titulo": "Generic Bills-of-Materials-Operations-Sustainability (GBOMOS) for Reconfigurable Green Manufacturing:A Cognitive Intelligent Reasoning Pilot through Retrieval Augmented Generation (RAG)",
+   "anio": 2025,
+   "tipo": "conference-paper",
+   "autores": [
+    "Catherine K. Jiao",
+    "Mulang Song",
+    "Yiyun Fei",
+    "Shu Wang",
+    "Bening Mayanti"
+   ],
+   "fuente": "International Conference on Industrial Engineering and Operations Management (IEOM)",
+   "citas": 1,
+   "consultas": [
+    "C9"
+   ],
+   "n": 99,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4416300579",
+   "doi": "https://doi.org/10.1016/j.eiar.2025.108261",
+   "titulo": "Knowledge graph embeddings for extrapolation life cycle inventory data: A novel approach to bridge data gaps in environmental impact assessment",
+   "anio": 2025,
+   "tipo": "article",
+   "autores": [
+    "Mohamed Saad",
+    "Yingzhong Zhang",
+    "Jia Jia",
+    "Mohamed Magdy",
+    "Feng Gong"
+   ],
+   "fuente": "Environmental Impact Assessment Review",
+   "citas": 6,
+   "consultas": [
+    "C3"
+   ],
+   "n": 100,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4408983239",
+   "doi": "https://doi.org/10.1002/adem.202401735",
+   "titulo": "KupferDigital: Ontology‐Based Digital Representation for the Copper Life Cycle",
+   "anio": 2025,
+   "tipo": "article",
+   "autores": [
+    "Miriam Eisenbart",
+    "Thomas Hanke",
+    "F. Bauer",
+    "Hossein Beygi Nasrabadi",
+    "Kurt Junghanns",
+    "Gordian Dziwis"
+   ],
+   "fuente": "Advanced Engineering Materials",
+   "citas": 5,
+   "consultas": [
+    "C1",
+    "C2",
+    "C6"
+   ],
+   "n": 101,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  },
+  {
+   "id": "https://openalex.org/W7160425174",
+   "doi": "https://doi.org/10.18154/rwth-2026-03194",
+   "titulo": "Ontology-based harmonization of disparate datasets for early-phase building life cycle assessment",
+   "anio": 2025,
+   "tipo": "dissertation",
+   "autores": [
+    "Georgi Tsakov"
+   ],
+   "fuente": "RWTH Publications (RWTH Aachen)",
+   "citas": 2,
+   "consultas": [
+    "C2",
+    "C6"
+   ],
+   "n": 102,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7163700083",
+   "doi": "https://doi.org/10.33111/mise.105.2",
+   "titulo": "Ontology-oriented information support for decision support systems for cost optimization of the software systems life cycle",
+   "anio": 2025,
+   "tipo": "article",
+   "autores": [
+    "Andrii Korolov",
+    "Ivan Varava",
+    "O. Haharin",
+    "V. Haidrarzhy"
+   ],
+   "fuente": "Modeling and Information Systems in Economics",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 103,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4406132137",
+   "doi": "https://doi.org/10.3389/fmars.2024.1496213",
+   "titulo": "Plastics’ circular economy for the Galápagos Islands? Exploring plastics governance with implications for social and ocean equity in a UNESCO World Heritage Site",
+   "anio": 2025,
+   "tipo": "article",
+   "autores": [
+    "Juan José Alava",
+    "María José Barragán‐Paladines",
+    "Jessica M. Vandenberg",
+    "Gabriela Alonso-Yañez",
+    "Marcia Moreno‐Báez",
+    "Nastenka Calle"
+   ],
+   "fuente": "Frontiers in Marine Science",
+   "citas": 8,
+   "consultas": [
+    "C1",
+    "C2"
+   ],
+   "n": 104,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W4413060717",
+   "doi": "https://doi.org/10.3390/app15148001",
+   "titulo": "Smart Routing for Sustainable Supply Chain Networks: An AI and Knowledge Graph Driven Approach",
+   "anio": 2025,
+   "tipo": "article",
+   "autores": [
+    "Manuel Felder",
+    "Matteo De Marchi",
+    "Patrick Dallasega",
+    "Erwin Rauch"
+   ],
+   "fuente": "Applied Sciences",
+   "citas": 21,
+   "consultas": [
+    "C9"
+   ],
+   "n": 105,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7212388047",
+   "doi": "https://doi.org/10.47820/recima21.v7i9.9010",
+   "titulo": "A ONTOLOGIA E ETOLOGIA DA REBELDIA HUMANIZADA: UMA REVISÃO SISTEMÁTICA DA CONDUTA DESAFIANTE, DESENVOLVIMENTO PSICOSSOCIAL E PSICOPATOLOGIA AO LONGO DO CICLO VITAL",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Edgar José",
+    "Pascoal Ludovino Mendonça Neto",
+    "Catarina Esmeralda Chingufo Nunda"
+   ],
+   "fuente": "RECIMA21 - Revista Científica Multidisciplinar",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 106,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7220668307",
+   "doi": "https://doi.org/10.23939/istcmtm2026.03.045",
+   "titulo": "A SYSTEMIC-ONTOLOGICAL APPROACH TO ANALYZING THE LIFE CYCLE OF COMPLEX TECHNICAL OBJECTS",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Марія Руда",
+    "Taras Boyko"
+   ],
+   "fuente": "Measuring Equipment and Metrology",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 107,
+   "clasificacion": "Descartado: ciclo de vida de software, de sistemas o de productos sin representación ambiental",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7165033302",
+   "doi": "https://doi.org/10.21203/rs.3.rs-9881650/v1",
+   "titulo": "A modeling approach for product life cycle inventory based on MBD model and knowledge driven",
+   "anio": 2026,
+   "tipo": "preprint",
+   "autores": [
+    "Jinghai Tian",
+    "Yingzhong Zhang",
+    "Mohamed Saad"
+   ],
+   "fuente": "Research Square",
+   "citas": 0,
+   "consultas": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+   ],
+   "n": 108,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7201844024",
+   "doi": "https://doi.org/10.30525/2256-0742/2026-12-4-1-7",
+   "titulo": "AI-DRIVEN STRUCTURING AND SEMANTIC MATCHING OF CONSTRUCTION COST DATA FOR EFFICIENCY AND CO₂ IMPACT ASSESSMENT",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Oskars Bagants",
+    "Raita Rollande",
+    "Juris Klonovs"
+   ],
+   "fuente": "Baltic Journal of Economic Studies",
+   "citas": 0,
+   "consultas": [
+    "C2"
+   ],
+   "n": 109,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7141523430",
+   "doi": "https://doi.org/10.14288/1.0451734",
+   "titulo": "Advancing life cycle assessment of bio-based chemicals through artificial intelligence-driven data extraction",
+   "anio": 2026,
+   "tipo": "dissertation",
+   "autores": [
+    "Zirui Tang"
+   ],
+   "fuente": "cIRcle (University of British Columbia)",
+   "citas": 0,
+   "consultas": [
+    "C9"
+   ],
+   "n": 110,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7155046200",
+   "doi": "https://doi.org/10.2139/ssrn.6618557",
+   "titulo": "An ontology model of semantic alignment for life cycle inventory databases",
+   "anio": 2026,
+   "tipo": "preprint",
+   "autores": [
+    "Jinghai Tian",
+    "Yingzhong Zhang",
+    "Mohamed Saad"
+   ],
+   "fuente": "SSRN Electronic Journal",
+   "citas": 0,
+   "consultas": [
+    "C3",
+    "C6"
+   ],
+   "n": 111,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7143301966",
+   "doi": "https://doi.org/10.3390/su18073352",
+   "titulo": "Bridging the Semantic Gap: A Review of Data Interoperability Challenges and Advanced Methodologies from BIM to LCA",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Yilong Jia",
+    "Peng Zhang",
+    "Qinjun Liu"
+   ],
+   "fuente": "Sustainability",
+   "citas": 8,
+   "consultas": [
+    "C3"
+   ],
+   "n": 112,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7224353995",
+   "doi": "https://doi.org/10.1115/drivn2026-190850",
+   "titulo": "Development of a Fuel-Pathway-Specific TEA and LCA Data Repository For Biomass-Derived Fuel Decision Making",
+   "anio": 2026,
+   "tipo": "conference-paper",
+   "autores": [
+    "Jin Wook Ro",
+    "Maggie R. Davis"
+   ],
+   "fuente": null,
+   "citas": 0,
+   "consultas": [
+    "C2"
+   ],
+   "n": 113,
+   "clasificacion": "Descartado: agroalimentación y otros dominios",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7161555834",
+   "doi": "https://doi.org/10.5281/zenodo.20267815",
+   "titulo": "FLWPR actions database",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Manuel Amador Cervera",
+    "Haizea Cruz Elejalde",
+    "Wilmer Garzón",
+    "Aritz Madariaga Gómez"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C3"
+   ],
+   "n": 114,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7160373402",
+   "doi": "https://doi.org/10.5281/zenodo.20052975",
+   "titulo": "From Naked Core to Sovereign Territory: A Structural Ontology of the Human Life Cycle Through the NC/SP Model",
+   "anio": 2026,
+   "tipo": "dissertation",
+   "autores": [
+    "outail benhadid"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 115,
+   "clasificacion": "Descartado: sin relación con el tema",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7168370458",
+   "doi": "https://doi.org/10.1007/s44498-026-00135-8",
+   "titulo": "From literature to knowledge graphs: automated extraction and retrieval of life cycle assessment data with large language models",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Zirui Tang",
+    "Max Dreger",
+    "Peijin Jiang",
+    "Kourosh Malek",
+    "Qingshi Tu"
+   ],
+   "fuente": "Journal of Industrial Ecology",
+   "citas": 3,
+   "consultas": [
+    "C2",
+    "C3"
+   ],
+   "n": 116,
+   "clasificacion": "Retenido: datos de ACV de uso general",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7224630588",
+   "doi": "https://doi.org/10.55845/hanesd36",
+   "titulo": "Integrating Product Environmental Footprint and Digital Product Passports: an Ontology for Traceable and Reusable Environmental Performance Information",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Berend Mintjes",
+    "Francesco Barilli",
+    "Alice Mondello",
+    "Sander S. van Nielen",
+    "Roland Hischier",
+    "Didier Beloin‐Saint‐Pierre"
+   ],
+   "fuente": "Journal of Circular Economy",
+   "citas": 0,
+   "consultas": [
+    "C2",
+    "C3"
+   ],
+   "n": 117,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7134163117",
+   "doi": "https://doi.org/10.3390/polym18050658",
+   "titulo": "Investigation on Ontology-Driven Semantic Simulation of PVC Composite Sustainable Manufacturing: Lifecycle Assessment Approach and Industrial Case Study with Reinforced Agro-Industrial Waste Fillers",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Alexander Chinaka Chidara",
+    "Kai Cheng",
+    "David Gallear"
+   ],
+   "fuente": "Polymers",
+   "citas": 1,
+   "consultas": [
+    "C4",
+    "C7"
+   ],
+   "n": 118,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7167796331",
+   "doi": "https://doi.org/10.5281/zenodo.21277997",
+   "titulo": "NC/SP V3: Complete Ada/SPARK Framework for Deterministic Human Resilience, Life Cycle Ontology, and Stress Matrix Modeling from Birth to Extinction",
+   "anio": 2026,
+   "tipo": "software",
+   "autores": [
+    "outail benhadid"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 119,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7167208909",
+   "doi": "https://doi.org/10.1007/978-981-95-4717-3_41",
+   "titulo": "Ontologies for Architecting Circular and Sustainable Manufacturing-as-a-Service Systems",
+   "anio": 2026,
+   "tipo": "conference-paper",
+   "autores": [
+    "Milan Vathoopan",
+    "Jalil Boudjadar",
+    "Devarajan Ramanujan"
+   ],
+   "fuente": "Lecture notes in mechanical engineering",
+   "citas": 2,
+   "consultas": [
+    "C7"
+   ],
+   "n": 120,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7222068615",
+   "doi": "https://doi.org/10.3390/polym18202525",
+   "titulo": "Ontology- and Data-Driven Circularity Assessment of Waste-Derived Rigid PVC-u: A Micro–Macro Decision Framework for Sustainable Recycling and Smart Manufacturing",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Alexander Chinaka Chidara",
+    "Shouxun Ji",
+    "Anietie Austin Awak"
+   ],
+   "fuente": "Polymers",
+   "citas": 0,
+   "consultas": [
+    "C7"
+   ],
+   "n": 121,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7123574929",
+   "doi": "https://doi.org/10.1108/ecam-07-2025-1209",
+   "titulo": "Ontology-driven BIM–LCA integration for assessing GHG emissions in metro station construction",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Linghui Xie",
+    "Xueqing Zhang"
+   ],
+   "fuente": "Engineering Construction & Architectural Management",
+   "citas": 3,
+   "consultas": [
+    "C11"
+   ],
+   "n": 122,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7221006826",
+   "doi": "https://doi.org/10.5281/zenodo.23217059",
+   "titulo": "PEFDPP ontology and battery case study",
+   "anio": 2026,
+   "tipo": "dataset",
+   "autores": [
+    "Berend Mintjes",
+    "Francesco Barilli",
+    "Sander S. van Nielen"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C2",
+    "C3"
+   ],
+   "n": 123,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7225163730",
+   "doi": "https://doi.org/10.5281/zenodo.23916211",
+   "titulo": "PINK training series - Life Cycle Assessment with SMILES to Impact and Agentic Inventory Building",
+   "anio": 2026,
+   "tipo": "other",
+   "autores": [
+    "Gustavo Larrea‐Gallegos",
+    "Florian Cogoni",
+    "Benjamin Punz"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C2",
+    "C3"
+   ],
+   "n": 124,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7225241333",
+   "doi": "https://doi.org/10.5281/zenodo.23935352",
+   "titulo": "STARLI / RESEARCH FAMILY III / FLAGSHIPS 281–285 Ten Research Flagships · Letters to Future Laboratories Five research architectures for calibration succession, automated discovery, collaboration, self-repair and quantum sensor recovery. F281 | NANO-QUANTUM RESEARCH SYSTEM CROSS-GENERATION CALIBRATION AT THE LIMIT Three-coupling: long-horizon scientific memory × traceable calibration and reference transfer × intergenerational evidence transfer. The primary proposal tests measurement unit definition survival under a concealed challenge: swap a noncommutable reference standard. Measures: reference-transfer bias [nT]; separate witness: uncertainty coverage [fraction]. Strong comparator: independent reference magnetometry with fixed calibration transfer. Failures remain reportable. F282 | INTELLIGENT MICROROBOTIC AUTOMATED SCIENTIFIC DISCOVERY AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × uncertainty-aware bounded decision. The primary proposal tests sequential experiment acquisition bias under a concealed challenge: change a microgripper contact force. Measures: held-out experiment information gain [bits]; separate witness: hypothesis replication success [fraction]. Strong comparator: randomized factorial design and classical active learning under matched budgets. Failures remain reportable. F283 | NANO-QUANTUM RESEARCH AGENT COLLABORATION AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × intergenerational evidence transfer. The primary proposal tests conflicting measurement ontology negotiation under a concealed challenge: corrupt one agent clock. Measures: causally valid agreement [fraction]; separate witness: external reconstruction success [fraction]. Strong comparator: single authorized controller with independent scientific adjudicator. Failures remain reportable. F284 | MICROSCALE RESEARCH PLATFORM AUTONOMOUS REPAIR AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × intergenerational evidence transfer. The primary proposal tests reference-sensor replacement after failure under a concealed challenge: mask a cleaning reagent carryover. Measures: verified restoration yield [fraction]; separate witness: post-repair alignment bias [um]. Strong comparator: manual maintenance under frozen physical qualification limits. Failures remain reportable. F285 | QUANTUM SENSOR RESOURCE CYCLING AND RECOVERY AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × intergenerational evidence transfer. The primary proposal tests microcoil solder fatigue under a concealed challenge: reuse a shield with unlogged hysteresis. Measures: sensor functional recovery [fraction]; separate witness: recovered component mass [mg]. Strong comparator: new-component replacement with matched metrology and life-cycle accounting. Failures remain reportable. FORMAT Each flagship: 777 English pages · 30 formula plates · 82 chapters / 410 one-page investigations · 200 three-letter Research Gates · 33 Phoenix proposals. All assertions are candidate research designs, not experimental outcomes. STARLI / RESEARCH FAMILY III / FLAGSHIPS 286–290 Evidence, Renewal and Independent Succession Five bounded designs for energy autonomy, remote experimental operation, digital twins, regional quantum networks, and research resilience. F286 | NANOROBOTIC RESEARCH ENERGY AUTONOMY AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × intergenerational evidence transfer. The primary proposal tests heat accumulation during power recovery under a concealed challenge: insert a low-voltage reset. Measures: usable autonomous runtime [h]; separate witness: mission abort probability [fraction]. Strong comparator: tethered power with full mission and sample-integrity matched accounting. Failures remain reportable. F287 | MICROSCALE AUTONOMOUS RESEARCH STATION REMOTE OPERATION AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × intergenerational evidence transfer. The primary proposal tests teleoperation feedback bandwidth under a concealed challenge: insert a duplicate remote command. Measures: remote command causal latency [s]; separate witness: blind mission completion [fraction]. Strong comparator: local supervised microfluidic operation at matched physical and operator budgets. Failures remain reportable. F288 | NANO-QUANTUM LABORATORY TRUSTWORTHY DIGITAL TWIN AT THE LIMIT Three-coupling: long-horizon scientific memory × modular autonomous infrastructure × intergenerational evidence transfer. The primary proposal tests microfluidic geometry representation error under a concealed challenge: substitute an untrained device geometry. Measures: normalized held-out physical residual [dimensionless]; separate witness: calibration parameter identifiability [fraction]. Strong",
+   "anio": 2026,
+   "tipo": "other",
+   "autores": [
+    "33"
+   ],
+   "fuente": "Zenodo (CERN European Organization for Nuclear Research)",
+   "citas": 0,
+   "consultas": [
+    "C6"
+   ],
+   "n": 125,
+   "clasificacion": "Descartado: no es una publicación",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7138866542",
+   "doi": "https://doi.org/10.1016/j.buildenv.2026.114497",
+   "titulo": "Ten questions concerning building information modeling (BIM): Energy-efficiency in design, construction, and operation",
+   "anio": 2026,
+   "tipo": "article",
+   "autores": [
+    "Sascha Hammes",
+    "Philipp Zech",
+    "David Geisler‐Moroder",
+    "Johannes Weninger",
+    "Gernot Steindl",
+    "Martin Hauer"
+   ],
+   "fuente": "Building and Environment",
+   "citas": 9,
+   "consultas": [
+    "C1",
+    "C4"
+   ],
+   "n": 126,
+   "clasificacion": "Descartado: construcción, edificación e infraestructura",
+   "leido": false
+  },
+  {
+   "id": "https://openalex.org/W7139094187",
+   "doi": "https://doi.org/10.5220/0014402100004058",
+   "titulo": "Towards an Ontology-Driven MBSE Framework for Life Cycle Assessment",
+   "anio": 2026,
+   "tipo": "conference-paper",
+   "autores": [
+    "Fatima Danash",
+    "Imen Azouzi",
+    "Saadia Dhouib",
+    "Chokri Mraidha"
+   ],
+   "fuente": "International Conference on Model-Based Software and Systems Engineering (MODELSWARD)",
+   "citas": 0,
+   "consultas": [
+    "C2",
+    "C6"
+   ],
+   "n": 127,
+   "clasificacion": "Retenido: productos o procesos de manufactura",
+   "leido": true
+  }
+ ],
+ "criterios": {
+  "retencion": "Propone una ontología o un grafo de conocimiento y representa conceptos del ACV o del impacto ambiental; se distinguen los que modelan datos de ACV de uso general y los que se aplican a productos o procesos de manufactura.",
+  "base": "Título y, cuando OpenAlex lo ofrece, resumen."
+ },
+ "totales": {
+  "registros": 169,
+  "distintos": 127,
+  "retenidos": 43,
+  "descartados": 84,
+  "leidos": 16
+ }
+}

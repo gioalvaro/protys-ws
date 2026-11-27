@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "lotA", "lotB", "equipment" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

@@ -1,0 +1,9 @@
+# QC13 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué lotes son candidatos a reproceso por una no conformidad?
+# R18: Marcar lote candidato a reproceso por no conformidad. Clase candidato a reproceso; sin ejecución de operación nueva
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?lot WHERE { ?lot a i:requiresReprocess . } ORDER BY ?lot

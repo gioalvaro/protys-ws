@@ -170,7 +170,7 @@ def update_annotations(repo_dir):
                           'does_not_establish': 'Thing/Substance or universal ISO definitions',
                           'applies_to': 'Product/component annotations only; not the process taxonomy'},
             'process_annotation_scope': 'Process taxonomy and Procedure association are local conceptualization, with normative references as context; no new claim of direct ISO derivation.',
-            'normative_annotation_scope': 'One bounded pass over the eight base modules: local conceptualization, existing domain/range and actual cardinality effects. No invented normative clauses, new references, changed guards or decisions on pending contracts.',
+            'normative_annotation_scope': 'One bounded pass over the eight base modules: local conceptualization, existing domain/range and actual cardinality effects. No invented normative clauses, new references or changed guards.',
             'files': files, 'status': 'PASS'}
 
 

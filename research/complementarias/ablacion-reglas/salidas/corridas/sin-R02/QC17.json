@@ -1,0 +1,13 @@
+{
+  "head" : {
+    "vars" : [ "process" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "process" : {
+        "type" : "uri",
+        "value" : "http://w3id.org/protys/fixture#MissingProcess"
+      }
+    } ]
+  }
+}

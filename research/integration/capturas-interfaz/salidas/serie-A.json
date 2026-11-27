@@ -1,0 +1,78 @@
+{
+ "r": {
+  "serie": "A",
+  "chromium": "156.0.8078.4",
+  "dialogos": [],
+  "razonamiento": "Alignment & Reasoning\n\nManage alignment rules and execute reasoning\n\nUpload Rules\n\nTotal Rules\n\n22\n\nActive Rules\n\n22\n\nMaterialized Inferred Triples\n\n0\n\nInput Triples\n\n4318\n\nExecuting...\nAlignment Rules\nR01\nActive\n\nR01: GHG de electricidad por operación\n\nSWRL\nProcessOperation(?var_op) ^ NumericInputValid(?var_op) ^ consumesEnergyKWh(?var_op, ?var_kwh) ^ hasEmissionFactor(?var_op, ?var_factor) ^ ElectricityEmissionFactor(?var_factor) ^ factorUnit(?var_factor, \"kg CO2e/kWh\") ^ factorValue(?var_factor, ?var_f) ^ swrlb:greaterThanOrEqual(?var_kwh, \"0\") ^ swrlb:greaterThanOrEqual(?var_f, \"0\") ^ swrlb:multiply(?var_ghg, ?var_kwh, ?var_f) -> hasGHGImpactKgCO2e(?var_op, ?var_ghg)\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR02\nActive\n\nR02: Presencia de inventario de agua del proceso\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR03\nActive\n\nR03: Vincular al lote los flujos de producto registrados en la representación LCI de su proceso\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR04\nActive\n\nR04: Indicador por umbral explícito de la misma unidad y categoría\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR05\nActive\n\nR05: Vincular al lote los indicadores de sus procesos, sin sumar\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR06\nActive\n\nR06: Asociar factor al flujo del material correspondiente\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR08\nActive\n\nR08: Cantidad de unidad funcional del lote\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR09\nActive\n\nR09: Uso del recurso requerido y asignado en el mismo plan\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR10\nActive\n\nR10: Registrar estado propagable del mismo lote\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR11\nActive\n\nR11: Razón rendimiento sobre duración positiva de operación\n\nSWRL\nCreated: 11/27/2026\nUpdated: 11/27/2026\nDeactivate\nR12\nActive\n\nR12: Capacidad FineGrinding por operación de molienda explícita\n\nSWRL\nCreated: 11/27/2026\nU",
+  "Q06": "Results (3)",
+  "Q04": "Results (40)"
+ },
+ "capturas": [
+  {
+   "archivo": "A1a-tablero.png",
+   "url": "http://127.0.0.1:38081/",
+   "utc": "2026-11-27T02:39:33.300Z",
+   "pasos": "Dashboard."
+  },
+  {
+   "archivo": "A1b-tablero-graficos.png",
+   "url": "http://127.0.0.1:38081/",
+   "utc": "2026-11-27T02:39:40.077Z",
+   "pasos": "Dashboard desplazado hasta «Triples per Module»."
+  },
+  {
+   "archivo": "A6-alineamiento-reglas.png",
+   "url": "http://127.0.0.1:38081/alignment",
+   "utc": "2026-11-27T02:39:48.305Z",
+   "pasos": "Alignment → desplegar «SWRL» de R01; desplazado hasta «Alignment Rules»."
+  },
+  {
+   "archivo": "A7-razonamiento-controles.png",
+   "url": "http://127.0.0.1:38081/alignment",
+   "utc": "2026-11-27T02:40:03.755Z",
+   "pasos": "Alignment → Execute Reasoning → esperar el resultado."
+  },
+  {
+   "archivo": "A2-explorador-jerarquia.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:40:15.977Z",
+   "pasos": "Ontology Explorer → «Canonical_Catalog_Integrated» → abrir Proceso, Artificial_Process, Recurso y Device; desplazado hasta Proceso."
+  },
+  {
+   "archivo": "A3-explorador-detalle-clase.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:40:27.381Z",
+   "pasos": "Ontology Explorer → «Canonical_Catalog_Integrated» → filtrar «Device» → abrir Recurso → elegir Device."
+  },
+  {
+   "archivo": "A4a-consulta-Q06.png",
+   "url": "http://127.0.0.1:38081/sparql",
+   "utc": "2026-11-27T02:40:38.038Z",
+   "pasos": "SPARQL Console → Templates → Q06 → agrandar el campo de la consulta → Execute; vista de la consulta."
+  },
+  {
+   "archivo": "A4b-consulta-Q06.png",
+   "url": "http://127.0.0.1:38081/sparql",
+   "utc": "2026-11-27T02:40:44.774Z",
+   "pasos": "La misma pantalla, desplazada hasta «Results (3)»."
+  },
+  {
+   "archivo": "A5a-consulta-Q04.png",
+   "url": "http://127.0.0.1:38081/sparql",
+   "utc": "2026-11-27T02:40:55.424Z",
+   "pasos": "SPARQL Console → Templates → Q04 → agrandar el campo de la consulta → Execute; vista de la consulta."
+  },
+  {
+   "archivo": "A5b-consulta-Q04.png",
+   "url": "http://127.0.0.1:38081/sparql",
+   "utc": "2026-11-27T02:41:02.145Z",
+   "pasos": "La misma pantalla, desplazada hasta «Results (40)»."
+  },
+  {
+   "archivo": "A8-erp-conectores.png",
+   "url": "http://127.0.0.1:38081/erp",
+   "utc": "2026-11-27T02:41:09.726Z",
+   "pasos": "/erp sin conectores registrados."
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+# Extracto de ontologies/iso14040-module.owl e iso15531-module.owl: cardinalidad exacta y mínima.
+e:LCAStudy rdfs:subClassOf [ a owl:Restriction ; owl:onProperty e:hasFunctionalUnit ; owl:cardinality "1"^^xsd:nonNegativeInteger ] .
+i:WorkOrder rdfs:subClassOf [ a owl:Restriction ; owl:onProperty i:executedBy ; owl:minCardinality "1"^^xsd:nonNegativeInteger ] .

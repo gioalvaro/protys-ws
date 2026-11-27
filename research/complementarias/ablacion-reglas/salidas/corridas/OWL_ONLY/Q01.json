@@ -1,0 +1,8 @@
+{
+  "head" : {
+    "vars" : [ "process", "energyKWh", "ghgKgCO2e" ]
+  },
+  "results" : {
+    "bindings" : [ ]
+  }
+}

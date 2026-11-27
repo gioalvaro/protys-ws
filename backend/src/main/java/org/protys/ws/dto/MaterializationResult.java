@@ -51,6 +51,9 @@ public class MaterializationResult {
      * Get human-readable status message.
      */
     public String getStatusMessage() {
+        if ("EMPTY".equals(status)) {
+            return "Queries completed without rows; the existing graph and connector metadata were preserved";
+        }
         if (isSuccess()) {
             return String.format("Successfully materialized %d triples in %d ms",
                     tripleCount, executionTimeMs);

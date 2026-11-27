@@ -1,0 +1,9 @@
+# QC05 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué factor de emisión usa cada flujo de producto, según el material al que se refiere?
+# R06: Asociar factor al flujo del material correspondiente. IRI del factor del material
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?flow ?factor WHERE { ?flow a e:ProductFlow ; t:usesEmissionFactor ?factor . } ORDER BY ?flow ?factor

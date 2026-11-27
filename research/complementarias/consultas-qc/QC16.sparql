@@ -1,0 +1,9 @@
+# QC16 (consulta complementaria, fuera del catálogo Q01-Q21)
+# Pregunta: ¿Qué razón entre tiempo de ciclo y valor del indicador tiene cada par operación-indicador?
+# R23: Razón por operación e indicador vinculados, sin normalización. min/unidad del indicador; razón por pareja, sin normalización
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX e: <http://w3id.org/protys/ontology/iso14040#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX a: <http://w3id.org/protys/ontology/alignment#>
+PREFIX t: <http://w3id.org/protys/ontology/research#>
+SELECT DISTINCT ?observation ?operation ?indicator ?ratio WHERE { ?observation t:forOperation ?operation ; t:forIndicator ?indicator ; t:operationIndicatorRatio ?ratio . } ORDER BY ?observation ?ratio

@@ -1,0 +1,9 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix r: <http://w3id.org/protys/ontology/resource#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+@prefix i: <http://w3id.org/protys/ontology/iso15531#> .
+# Extracto de ontologies/resource-module.owl, iso14040-module.owl e iso15531-module.owl: las tres disyunciones declaradas.
+[] a owl:AllDisjointClasses ; owl:members ( r:Tool r:Equip r:Device ) .
+[] a owl:AllDisjointClasses ; owl:members ( e:ElementaryFlow e:ProductFlow ) .
+[] a owl:AllDisjointClasses ; owl:members ( i:EquipmentResource i:HumanResource ) .

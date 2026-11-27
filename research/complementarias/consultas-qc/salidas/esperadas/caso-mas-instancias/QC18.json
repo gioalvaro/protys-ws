@@ -1,0 +1,17 @@
+{
+  "head": {
+    "vars": [
+      "factor"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "factor": {
+          "type": "uri",
+          "value": "http://w3id.org/protys/fixture#GridFactor"
+        }
+      }
+    ]
+  }
+}

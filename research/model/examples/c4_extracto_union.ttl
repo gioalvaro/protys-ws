@@ -1,0 +1,7 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix e: <http://w3id.org/protys/ontology/iso14040#> .
+# Extracto de ontologies/iso14040-module.owl: rango de hasInventoryFlow y dominio de refersToMaterial como unión de flujos.
+e:hasInventoryFlow rdfs:range [ a owl:Class ; owl:unionOf ( e:ElementaryFlow e:ProductFlow ) ] .
+e:refersToMaterial rdfs:domain [ a owl:Class ; owl:unionOf ( e:ElementaryFlow e:ProductFlow ) ] .

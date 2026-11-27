@@ -1,0 +1,71 @@
+{
+ "r": {
+  "serie": "B",
+  "chromium": "156.0.8078.4",
+  "dialogos": [],
+  "reglas_seleccionables": 22,
+  "completado": "1\n2\n3\n4\n5\nUpload\nValidate\nAlign\nVerify\nComplete\n\nLast incorporation: iso10303-ap242-fragment\n\nRules active after completion (25): R15, R23, R04, R21, R20, R22, R06, R24, R09, R13, R01, R12, R02, R10, R08, R14, R05, R11, R03, R25, R17, R18, R27, R28, R29\n\nStep 1: Upload Ontology\n\nSelect an ontology file to get started\n\nClick to upload or drag and drop\n\nRDF, OWL, TTL, N3, NT or XML files (max 50 MB)\n\nInstance data (optional)\n\nIndividuals validated together with the standard and registered as their own module on completion.\n\nUpload & Continue",
+  "modulos": [
+   "-- Select a module --",
+   "Canonical_Catalog_Integrated",
+   "iso10303-ap242-fragment — datos de instancia",
+   "iso10303-ap242-fragment"
+  ]
+ },
+ "capturas": [
+  {
+   "archivo": "B1-paso1-estandar-y-datos.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:41:14.186Z",
+   "pasos": "/wizard → elegir el fragmento AP242 y, en «Instance data (optional)», automotive.ttl."
+  },
+  {
+   "archivo": "B2-paso2-validado.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:41:23.910Z",
+   "pasos": "«Upload & Continue» → «Validate & Continue»; el resultado del paso 2 aparece al abrir el paso 3."
+  },
+  {
+   "archivo": "B3a-paso3-reglas-seleccion.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:41:26.351Z",
+   "pasos": "Paso 3: las 22 reglas registradas, marcadas."
+  },
+  {
+   "archivo": "B3b-paso3-reglas-sesion.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:41:29.561Z",
+   "pasos": "Paso 3, al final: «Session rules (SWRL)» con iso10303-alignment-rules.owl cargado."
+  },
+  {
+   "archivo": "B4a-paso4-verificado.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:42:09.576Z",
+   "pasos": "«Configure & Continue» → «Verify & Continue»: pantalla de cierre con «Executed Rules»."
+  },
+  {
+   "archivo": "B4b-paso4-verificado.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:42:11.779Z",
+   "pasos": "La misma, desplazada hasta «Executed Rules»."
+  },
+  {
+   "archivo": "B5-paso5-confirmar.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:42:13.976Z",
+   "pasos": "La misma, al final: «Summary» y «Create Ontology», antes de confirmar."
+  },
+  {
+   "archivo": "B6-completado.png",
+   "url": "http://127.0.0.1:38081/wizard",
+   "utc": "2026-11-27T02:42:21.773Z",
+   "pasos": "«Create Ontology»: la incorporación queda registrada."
+  },
+  {
+   "archivo": "B7-explorador-con-piloto.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-27T02:42:30.113Z",
+   "pasos": "Ontology Explorer → elegir «iso10303-ap242-fragment»."
+  }
+ ]
+}

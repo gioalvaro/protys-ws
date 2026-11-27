@@ -1,0 +1,542 @@
+{
+  "protocolo": "Proceso nuevo por corrida, -Xmx2g principal y trabajador, RSS del árbol de procesos cada 100 ms (máximo observado), límite 240 s; orden aleatorio con semilla 20261003; media, DE muestral y mediana.",
+  "repeticiones": 30,
+  "curva": [
+    {
+      "lotes": 20,
+      "configuracion": "integrated",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 6741.7984208,
+        "de": 160.53482153531604,
+        "mediana": 6696.84725,
+        "min": 6552.453,
+        "max": 7366.450584
+      },
+      "wall_process_ms": {
+        "media": 7425.441404099962,
+        "de": 160.1825309624574,
+        "mediana": 7391.352896000058,
+        "min": 7206.067249999705,
+        "max": 7995.668790999998
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 967089629.8666667,
+        "de": 88610762.79727994,
+        "mediana": 948314112.0,
+        "min": 773341184,
+        "max": 1128759296
+      },
+      "load_ms": {
+        "media": 523.019757,
+        "de": 9.67778495150826,
+        "mediana": 520.734812,
+        "min": 512.432583,
+        "max": 563.407459
+      },
+      "reasoning_stage_ms": {
+        "media": 5950.9440402,
+        "de": 150.1951600051249,
+        "mediana": 5902.9510835,
+        "min": 5775.287292,
+        "max": 6530.645333
+      },
+      "query_stage_ms": {
+        "media": 245.64566666666667,
+        "de": 6.262626781264705,
+        "mediana": 245.517521,
+        "min": 236.857584,
+        "max": 263.23625
+      },
+      "peak_heap_bytes": {
+        "media": 282714270.4,
+        "de": 17724621.39245375,
+        "mediana": 281855032.0,
+        "min": 254091576,
+        "max": 330847040
+      },
+      "conteos": {
+        "input_named_individuals": 668,
+        "raw_input_triples": 10855,
+        "construct_added_triples": 140,
+        "input_triples": 10995,
+        "materialized_triples": 15095,
+        "inferidos_materializados_menos_entrada": 4100,
+        "dl_pre": 1454,
+        "dl_post": 0,
+        "swrl_axiomas_nuevos": 2053
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 20,
+      "configuracion": "union",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 2275.5044472,
+        "de": 94.0551571981753,
+        "mediana": 2262.011146,
+        "min": 2178.55775,
+        "max": 2618.764292
+      },
+      "wall_process_ms": {
+        "media": 2952.8963806000193,
+        "de": 106.52321820256545,
+        "mediana": 2980.9115204999443,
+        "min": 2829.706917000067,
+        "max": 3254.692917
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 459115724.8,
+        "de": 20592537.1983538,
+        "mediana": 463462400.0,
+        "min": 413876224,
+        "max": 488144896
+      },
+      "load_ms": {
+        "media": 451.0554389,
+        "de": 10.363990850538709,
+        "mediana": 451.11039600000004,
+        "min": 432.489958,
+        "max": 475.314042
+      },
+      "reasoning_stage_ms": {
+        "media": 1716.3426235666666,
+        "de": 92.73408583901892,
+        "mediana": 1696.519729,
+        "min": 1620.410125,
+        "max": 2049.49
+      },
+      "query_stage_ms": {
+        "media": 94.89422216666667,
+        "de": 4.170419214069601,
+        "mediana": 95.062375,
+        "min": 86.154,
+        "max": 103.333917
+      },
+      "peak_heap_bytes": {
+        "media": 204321078.4,
+        "de": 1551543.5842445153,
+        "mediana": 204105144.0,
+        "min": 201836544,
+        "max": 208033280
+      },
+      "conteos": {
+        "input_named_individuals": 661,
+        "raw_input_triples": 9506,
+        "construct_added_triples": 0,
+        "input_triples": 9506,
+        "materialized_triples": 10686,
+        "inferidos_materializados_menos_entrada": 1180,
+        "dl_pre": 1180,
+        "dl_post": null,
+        "swrl_axiomas_nuevos": null
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 50,
+      "configuracion": "integrated",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 11289.2600681,
+        "de": 139.16488631795337,
+        "mediana": 11265.40075,
+        "min": 11086.634917,
+        "max": 11593.480375
+      },
+      "wall_process_ms": {
+        "media": 11985.429277766685,
+        "de": 155.12656953354525,
+        "mediana": 11942.450645499946,
+        "min": 11775.362959000064,
+        "max": 12328.934417000002
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 1271009553.0666666,
+        "de": 158839468.9838225,
+        "mediana": 1231642624.0,
+        "min": 1013153792,
+        "max": 1580171264
+      },
+      "load_ms": {
+        "media": 661.2244402,
+        "de": 9.095078217462614,
+        "mediana": 658.9604995,
+        "min": 651.056375,
+        "max": 688.721958
+      },
+      "reasoning_stage_ms": {
+        "media": 10121.219294566667,
+        "de": 128.80924474204554,
+        "mediana": 10120.939563,
+        "min": 9928.835667,
+        "max": 10381.730708
+      },
+      "query_stage_ms": {
+        "media": 462.0713889333333,
+        "de": 14.800886111617617,
+        "mediana": 459.57387500000004,
+        "min": 431.43225,
+        "max": 493.8545
+      },
+      "peak_heap_bytes": {
+        "media": 404482848.26666665,
+        "de": 27357594.552024044,
+        "mediana": 400117696.0,
+        "min": 371302656,
+        "max": 485272304
+      },
+      "conteos": {
+        "input_named_individuals": 1625,
+        "raw_input_triples": 23194,
+        "construct_added_triples": 350,
+        "input_triples": 23544,
+        "materialized_triples": 33281,
+        "inferidos_materializados_menos_entrada": 9737,
+        "dl_pre": 3401,
+        "dl_post": 0,
+        "swrl_axiomas_nuevos": 4933
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 50,
+      "configuracion": "union",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 3931.6093153,
+        "de": 73.85034186375184,
+        "mediana": 3921.6245630000003,
+        "min": 3845.514208,
+        "max": 4250.300292
+      },
+      "wall_process_ms": {
+        "media": 4619.30225143331,
+        "de": 94.61184721899023,
+        "mediana": 4641.870521000101,
+        "min": 4498.066541999833,
+        "max": 4888.468624999973
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 518584729.6,
+        "de": 29807608.468362782,
+        "mediana": 522575872.0,
+        "min": 475627520,
+        "max": 570638336
+      },
+      "load_ms": {
+        "media": 580.1706875333333,
+        "de": 10.015264304526921,
+        "mediana": 577.4553955,
+        "min": 566.928917,
+        "max": 610.539791
+      },
+      "reasoning_stage_ms": {
+        "media": 3189.7608985,
+        "de": 71.49021820748037,
+        "mediana": 3180.0239789999996,
+        "min": 3108.632,
+        "max": 3490.821167
+      },
+      "query_stage_ms": {
+        "media": 136.85454036666667,
+        "de": 9.709652624839892,
+        "mediana": 133.583396,
+        "min": 125.549584,
+        "max": 172.27975
+      },
+      "peak_heap_bytes": {
+        "media": 270940007.2,
+        "de": 12002132.029987266,
+        "mediana": 274823640.0,
+        "min": 251952656,
+        "max": 290646384
+      },
+      "conteos": {
+        "input_named_individuals": 1618,
+        "raw_input_triples": 21845,
+        "construct_added_triples": 0,
+        "input_triples": 21845,
+        "materialized_triples": 24612,
+        "inferidos_materializados_menos_entrada": 2767,
+        "dl_pre": 2767,
+        "dl_post": null,
+        "swrl_axiomas_nuevos": null
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 100,
+      "configuracion": "integrated",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 19120.063494533333,
+        "de": 329.96279287906356,
+        "mediana": 19002.495313,
+        "min": 18714.905542,
+        "max": 19834.976667
+      },
+      "wall_process_ms": {
+        "media": 19803.81693469998,
+        "de": 340.7530519530546,
+        "mediana": 19710.612250000053,
+        "min": 19347.286582999914,
+        "max": 20512.58283299967
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 1679730824.5333333,
+        "de": 179658926.29185912,
+        "mediana": 1667833856.0,
+        "min": 1305526272,
+        "max": 2021818368
+      },
+      "load_ms": {
+        "media": 863.8541459,
+        "de": 12.806691700885244,
+        "mediana": 860.5498749999999,
+        "min": 848.756959,
+        "max": 916.452625
+      },
+      "reasoning_stage_ms": {
+        "media": 17410.4898861,
+        "de": 309.5816293968649,
+        "mediana": 17291.525,
+        "min": 17036.387708,
+        "max": 18100.043833
+      },
+      "query_stage_ms": {
+        "media": 765.0017388,
+        "de": 23.44359905833037,
+        "mediana": 762.62725,
+        "min": 720.444666,
+        "max": 822.677
+      },
+      "peak_heap_bytes": {
+        "media": 732733086.9333333,
+        "de": 112359908.83945869,
+        "mediana": 761758464.0,
+        "min": 546189872,
+        "max": 953245696
+      },
+      "conteos": {
+        "input_named_individuals": 3218,
+        "raw_input_triples": 43745,
+        "construct_added_triples": 700,
+        "input_triples": 44445,
+        "materialized_triples": 63575,
+        "inferidos_materializados_menos_entrada": 19130,
+        "dl_pre": 6644,
+        "dl_post": 0,
+        "swrl_axiomas_nuevos": 9733
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 100,
+      "configuracion": "union",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 6648.729497233333,
+        "de": 132.25638369003542,
+        "mediana": 6634.578062500001,
+        "min": 6473.684791,
+        "max": 7217.958791
+      },
+      "wall_process_ms": {
+        "media": 7316.829611000027,
+        "de": 136.13079739327887,
+        "mediana": 7322.835708000184,
+        "min": 7097.679707999987,
+        "max": 7825.599917
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 614313164.8,
+        "de": 86409717.0278362,
+        "mediana": 584744960.0,
+        "min": 551583744,
+        "max": 986578944
+      },
+      "load_ms": {
+        "media": 774.370525,
+        "de": 14.417613943748615,
+        "mediana": 770.9878545,
+        "min": 749.499459,
+        "max": 819.001917
+      },
+      "reasoning_stage_ms": {
+        "media": 5629.558618,
+        "de": 112.27794273907939,
+        "mediana": 5620.0135415,
+        "min": 5455.9835,
+        "max": 6103.503083
+      },
+      "query_stage_ms": {
+        "media": 203.68967916666668,
+        "de": 18.152420688206053,
+        "mediana": 198.7307505,
+        "min": 183.440792,
+        "max": 275.394
+      },
+      "peak_heap_bytes": {
+        "media": 376899789.06666666,
+        "de": 55159260.445615835,
+        "mediana": 360645224.0,
+        "min": 318612320,
+        "max": 614528144
+      },
+      "conteos": {
+        "input_named_individuals": 3211,
+        "raw_input_triples": 42396,
+        "construct_added_triples": 0,
+        "input_triples": 42396,
+        "materialized_triples": 47806,
+        "inferidos_materializados_menos_entrada": 5410,
+        "dl_pre": 5410,
+        "dl_post": null,
+        "swrl_axiomas_nuevos": null
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 200,
+      "configuracion": "integrated",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 35437.8577375,
+        "de": 661.2212333925219,
+        "mediana": 35274.311499999996,
+        "min": 34527.037708,
+        "max": 37601.2865
+      },
+      "wall_process_ms": {
+        "media": 36148.1916445,
+        "de": 659.7105737197821,
+        "mediana": 35997.08939599998,
+        "min": 35271.29024999999,
+        "max": 38318.66162500001
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 2797646643.2,
+        "de": 304517998.6834952,
+        "mediana": 2728189952.0,
+        "min": 2325266432,
+        "max": 3344662528
+      },
+      "load_ms": {
+        "media": 1228.5463375333334,
+        "de": 20.903170685301028,
+        "mediana": 1227.4241044999999,
+        "min": 1197.780417,
+        "max": 1314.1335
+      },
+      "reasoning_stage_ms": {
+        "media": 32705.958557033333,
+        "de": 640.2851389818466,
+        "mediana": 32554.755854,
+        "min": 31813.651583,
+        "max": 34832.051375
+      },
+      "query_stage_ms": {
+        "media": 1361.8427152333334,
+        "de": 19.826474525038144,
+        "mediana": 1359.4176665,
+        "min": 1331.938875,
+        "max": 1403.500334
+      },
+      "peak_heap_bytes": {
+        "media": 1257163423.7333333,
+        "de": 207233013.2492836,
+        "mediana": 1276044800.0,
+        "min": 834371072,
+        "max": 1671331832
+      },
+      "conteos": {
+        "input_named_individuals": 6410,
+        "raw_input_triples": 84889,
+        "construct_added_triples": 1400,
+        "input_triples": 86289,
+        "materialized_triples": 124211,
+        "inferidos_materializados_menos_entrada": 37922,
+        "dl_pre": 13136,
+        "dl_post": 0,
+        "swrl_axiomas_nuevos": 19333
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    },
+    {
+      "lotes": 200,
+      "configuracion": "union",
+      "n": 30,
+      "n_consistentes": 30,
+      "total_ms": {
+        "media": 12144.723330533334,
+        "de": 203.97054648250676,
+        "mediana": 12115.198708,
+        "min": 11718.297167,
+        "max": 12585.6855
+      },
+      "wall_process_ms": {
+        "media": 12645.961302766638,
+        "de": 309.8626417287976,
+        "mediana": 12453.322875499907,
+        "min": 12365.800540999999,
+        "max": 13245.937499999996
+      },
+      "observed_peak_process_tree_rss_bytes": {
+        "media": 954664004.2666667,
+        "de": 157398050.87282002,
+        "mediana": 1014038528.0,
+        "min": 665993216,
+        "max": 1240072192
+      },
+      "load_ms": {
+        "media": 1125.4422291333333,
+        "de": 18.09994304117023,
+        "mediana": 1124.8023545,
+        "min": 1092.017625,
+        "max": 1179.647833
+      },
+      "reasoning_stage_ms": {
+        "media": 10637.242707,
+        "de": 185.27467823143647,
+        "mediana": 10607.2931875,
+        "min": 10271.203917,
+        "max": 11067.146959
+      },
+      "query_stage_ms": {
+        "media": 307.0313887666667,
+        "de": 14.973115488788277,
+        "mediana": 304.030937,
+        "min": 285.112916,
+        "max": 343.8995
+      },
+      "peak_heap_bytes": {
+        "media": 663331097.0666667,
+        "de": 98909937.02943516,
+        "mediana": 701632000.0,
+        "min": 498899968,
+        "max": 843504640
+      },
+      "conteos": {
+        "input_named_individuals": 6403,
+        "raw_input_triples": 83540,
+        "construct_added_triples": 0,
+        "input_triples": 83540,
+        "materialized_triples": 94242,
+        "inferidos_materializados_menos_entrada": 10702,
+        "dl_pre": 10702,
+        "dl_post": null,
+        "swrl_axiomas_nuevos": null
+      },
+      "conteos_constantes_en_las_repeticiones": true
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "status": "CONSISTENT",
+  "profile_valid": true,
+  "cleaning_evaluation": {
+    "required_pair_count": 0,
+    "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "status": "NOT_APPLICABLE"
+  },
+  "context_evaluation": {
+    "declared_link_count": 280,
+    "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "invalid_declared_link": false,
+    "status": "CONTEXT_VALID"
+  },
+  "numeric_evaluation": {
+    "output_checked": false,
+    "status": "NOT_APPLICABLE",
+    "applicable_configuration": false,
+    "reason": "Integrated electrical-inventory controls are not applicable to this source configuration.",
+    "selected_operation_count": 0
+  },
+  "swrl_rule_count": 0,
+  "profile_violations": [],
+  "dl_materialized_triples": 1180,
+  "dl_axiom_preservation": {
+    "stage": "named_dl_export_reload_owlapi5",
+    "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+    "expected_anonymous_individual_count": 0,
+    "observed_anonymous_individual_count": 0,
+    "expected_axiom_count": 9411,
+    "observed_axiom_count": 10591,
+    "retained_axiom_count": 9411,
+    "lost_axiom_count": 0,
+    "status": "RETAINED"
+  },
+  "unsatisfiable_classes": [],
+  "dl_ms": 1498.609541,
+  "owl_validation_status": "CONSISTENT",
+  "constructs": [],
+  "construct_added_triples": 0,
+  "raw_input_triples": 9506,
+  "input_named_individuals": 661,
+  "materialized_named_individuals": 661,
+  "queries": [
+    {
+      "id": "Q01",
+      "query_ms": 13.18725,
+      "result_count": 0
+    },
+    {
+      "id": "Q02",
+      "query_ms": 20.12475,
+      "result_count": 200
+    },
+    {
+      "id": "Q03",
+      "query_ms": 3.970375,
+      "result_count": 0
+    },
+    {
+      "id": "Q04",
+      "query_ms": 4.969666,
+      "result_count": 200
+    },
+    {
+      "id": "Q05",
+      "query_ms": 0.918917,
+      "result_count": 5
+    },
+    {
+      "id": "Q06",
+      "query_ms": 3.460667,
+      "result_count": 0
+    },
+    {
+      "id": "Q07",
+      "query_ms": 6.751042,
+      "result_count": 140
+    },
+    {
+      "id": "Q08",
+      "query_ms": 2.233958,
+      "result_count": 0
+    },
+    {
+      "id": "Q09",
+      "query_ms": 0.4265,
+      "result_count": 0
+    },
+    {
+      "id": "Q10",
+      "query_ms": 0.438041,
+      "result_count": 6
+    },
+    {
+      "id": "Q11",
+      "query_ms": 3.251333,
+      "result_count": 0
+    },
+    {
+      "id": "Q12",
+      "query_ms": 0.462541,
+      "result_count": 0
+    },
+    {
+      "id": "Q13",
+      "query_ms": 1.892833,
+      "result_count": 80
+    },
+    {
+      "id": "Q14",
+      "query_ms": 0.600666,
+      "result_count": 0
+    },
+    {
+      "id": "Q15",
+      "query_ms": 0.28525,
+      "result_count": 0
+    },
+    {
+      "id": "Q16",
+      "query_ms": 0.726167,
+      "result_count": 0
+    },
+    {
+      "id": "Q17",
+      "query_ms": 1.672709,
+      "result_count": 0
+    },
+    {
+      "id": "Q18",
+      "query_ms": 8.143833,
+      "result_count": 140
+    },
+    {
+      "id": "Q19",
+      "query_ms": 1.542,
+      "result_count": 0
+    },
+    {
+      "id": "Q20",
+      "query_ms": 0.941625,
+      "result_count": 0
+    },
+    {
+      "id": "Q21",
+      "query_ms": 0.414334,
+      "result_count": 1
+    }
+  ],
+  "input_triples": 9506,
+  "materialized_triples": 10686,
+  "load_ms": 451.060667,
+  "reasoning_stage_ms": 1620.410125,
+  "query_stage_ms": 94.741958,
+  "total_ms": 2179.2935,
+  "peak_heap_bytes": 208033280,
+  "java": "17.0.20.1",
+  "exit_code": 0,
+  "wall_process_ms": 2854.0232919999653,
+  "observed_peak_process_tree_rss_bytes": 477528064,
+  "rss_sampling_interval_ms": 100
+}

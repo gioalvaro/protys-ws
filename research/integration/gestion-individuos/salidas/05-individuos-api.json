@@ -1,0 +1,1004 @@
+{
+  "pasos": [
+    {
+      "paso": "A1.1 crear (IRI y rdfs:label)",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/operario-api",
+        "label": "Operario API"
+      },
+      "codigo": 201,
+      "ms_reloj": 2171,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/operario-api",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "a460454b-9aa8-4419-b7a9-7747dfb8506f",
+        "writeTimeMs": 187,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1931,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": [
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/iso15531#HumanResource"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#NamedIndividual"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/2000/01/rdf-schema#label",
+          "o": "Operario API"
+        }
+      ]
+    },
+    {
+      "paso": "A1.2 leer",
+      "peticion": "GET /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Foperario-api",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 31,
+      "respuesta": {
+        "uri": "http://example.org/individuos/operario-api",
+        "localName": "operario-api",
+        "label": "Operario API",
+        "type": "http://w3id.org/protys/ontology/iso15531#HumanResource",
+        "types": [
+          "http://w3id.org/protys/ontology/iso15531#HumanResource"
+        ],
+        "properties": {
+          "http://www.w3.org/2000/01/rdf-schema#label": [
+            "Operario API"
+          ]
+        },
+        "dataPropertyValues": null,
+        "objectPropertyValues": null,
+        "displayName": "Operario API"
+      }
+    },
+    {
+      "paso": "A1.2 listar los individuos de la clase",
+      "peticion": "GET /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 23,
+      "respuesta": [
+        {
+          "uri": "http://example.org/individuos/operario-api",
+          "localName": "operario-api",
+          "label": "Operario API",
+          "type": "http://w3id.org/protys/ontology/iso15531#HumanResource",
+          "types": null,
+          "properties": null,
+          "dataPropertyValues": null,
+          "objectPropertyValues": null,
+          "displayName": "Operario API"
+        },
+        {
+          "uri": "http://w3id.org/protys/fixture#Operator_01",
+          "localName": "Operator_01",
+          "label": null,
+          "type": "http://w3id.org/protys/ontology/iso15531#HumanResource",
+          "types": null,
+          "properties": null,
+          "dataPropertyValues": null,
+          "objectPropertyValues": null,
+          "displayName": "Operator_01"
+        }
+      ]
+    },
+    {
+      "paso": "A1.3 modificar la etiqueta",
+      "peticion": "PUT /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Foperario-api",
+      "cuerpo": {
+        "label": "Operario API (modificado)"
+      },
+      "codigo": 200,
+      "ms_reloj": 2017,
+      "respuesta": {
+        "operation": "UPDATE",
+        "uri": "http://example.org/individuos/operario-api",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "d8969d96-414b-4619-bf03-10cb045968b4",
+        "writeTimeMs": 154,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1829,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": [
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/iso15531#HumanResource"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#NamedIndividual"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/2000/01/rdf-schema#label",
+          "o": "Operario API (modificado)"
+        }
+      ]
+    },
+    {
+      "paso": "A1.4 eliminar",
+      "peticion": "DELETE /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Foperario-api",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 2051,
+      "respuesta": {
+        "operation": "DELETE",
+        "uri": "http://example.org/individuos/operario-api",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "5ef7c6f3-5e72-43dc-9a6b-864c4a48e5f1",
+        "writeTimeMs": 151,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1858,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    },
+    {
+      "paso": "A1.5 leer después de eliminar",
+      "peticion": "GET /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Foperario-api",
+      "cuerpo": null,
+      "codigo": 404,
+      "ms_reloj": 29,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.574460964",
+        "status": 404,
+        "error": "Not Found",
+        "message": "Individual not found: http://example.org/individuos/operario-api",
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.1 clase inexistente",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23ClaseQueNoExiste",
+      "cuerpo": {
+        "label": "x"
+      },
+      "codigo": 400,
+      "ms_reloj": 22,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.599067096",
+        "status": 400,
+        "error": "Validation Error",
+        "message": "Class not declared in any registered module: http://w3id.org/protys/ontology/iso15531#ClaseQueNoExiste",
+        "errors": [
+          "classUri must be an owl:Class or rdfs:Class declared in a registered module"
+        ],
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.2 classUri que no es un IRI",
+      "peticion": "POST /api/ontology/individuals?classUri=esto%20no%20es%20un%20IRI",
+      "cuerpo": {
+        "label": "x"
+      },
+      "codigo": 400,
+      "ms_reloj": 4,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.602888212",
+        "status": 400,
+        "error": "Validation Error",
+        "message": "Malformed IRI in classUri: esto no es un IRI",
+        "errors": [
+          "an IRI cannot contain spaces or <>\"{}|^`\\"
+        ],
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.3 classUri relativo",
+      "peticion": "POST /api/ontology/individuals?classUri=relativo",
+      "cuerpo": {
+        "label": "x"
+      },
+      "codigo": 400,
+      "ms_reloj": 2,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.606079199",
+        "status": 400,
+        "error": "Validation Error",
+        "message": "Malformed IRI in classUri: relativo",
+        "errors": [
+          "classUri must be an absolute IRI (with scheme)"
+        ],
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.4 sin classUri",
+      "peticion": "POST /api/ontology/individuals",
+      "cuerpo": {
+        "label": "x"
+      },
+      "codigo": 400,
+      "ms_reloj": 3,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.609308435",
+        "status": 400,
+        "error": "Validation Error",
+        "message": "Missing required parameter: classUri",
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.5 IRI del individuo mal formado",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "no es un IRI"
+      },
+      "codigo": 400,
+      "ms_reloj": 3,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.612458088",
+        "status": 400,
+        "error": "Validation Error",
+        "message": "Malformed IRI in uri: no es un IRI",
+        "errors": [
+          "an IRI cannot contain spaces or <>\"{}|^`\\"
+        ],
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.6 clave de propiedad que no es un IRI",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "properties": {
+          "uri": "x"
+        }
+      },
+      "codigo": 400,
+      "ms_reloj": 2,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.614923193",
+        "status": 400,
+        "error": "Validation Error",
+        "message": "Malformed IRI in properties key: uri",
+        "errors": [
+          "properties key must be an absolute IRI (with scheme)"
+        ],
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.7 individuo que ya existe en el caso (fixture:Operator_01)",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://w3id.org/protys/fixture#Operator_01"
+      },
+      "codigo": 409,
+      "ms_reloj": 20,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:10.633930109",
+        "status": 409,
+        "error": "Conflict",
+        "message": "Individual already exists: http://w3id.org/protys/fixture#Operator_01 (module Canonical_Catalog_Integrated)",
+        "path": "/api/ontology/individuals"
+      },
+      "control_sparql": [
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://w3id.org/protys/ontology/iso15531#skillCode",
+          "o": "PAINT_OPERATOR"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/iso15531#HumanResource"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#NamedIndividual"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/inference-results",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/inference-results",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#Thing"
+        }
+      ]
+    },
+    {
+      "paso": "A4.8 duplicado, primer envío",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/duplicado",
+        "label": "Duplicado"
+      },
+      "codigo": 201,
+      "ms_reloj": 2072,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/duplicado",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "21ec8aa1-6d23-47b6-9623-bbde1e56a2c5",
+        "writeTimeMs": 130,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1917,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A4.8 duplicado, segundo envío idéntico",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/duplicado",
+        "label": "Duplicado"
+      },
+      "codigo": 409,
+      "ms_reloj": 30,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:12.741620155",
+        "status": 409,
+        "error": "Conflict",
+        "message": "Individual already exists: http://example.org/individuos/duplicado (module Canonical_Catalog_Integrated)",
+        "path": "/api/ontology/individuals"
+      },
+      "control_sparql": [
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/iso15531#HumanResource"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#NamedIndividual"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/2000/01/rdf-schema#label",
+          "o": "Duplicado"
+        }
+      ]
+    },
+    {
+      "paso": "A4.8 limpieza del duplicado",
+      "peticion": "DELETE /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Fduplicado",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 175,
+      "respuesta": {
+        "operation": "DELETE",
+        "uri": "http://example.org/individuos/duplicado",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "1cedce16-afb5-4ff6-bba5-214a47309840",
+        "writeTimeMs": 112,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 39,
+          "cacheHit": true,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    },
+    {
+      "paso": "A4.9 modificar un individuo inexistente",
+      "peticion": "PUT /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Fnadie",
+      "cuerpo": {
+        "label": "x"
+      },
+      "codigo": 404,
+      "ms_reloj": 21,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:12.952558415",
+        "status": 404,
+        "error": "Not Found",
+        "message": "Individual not found: http://example.org/individuos/nadie",
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.10 eliminar un individuo inexistente",
+      "peticion": "DELETE /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Fnadie",
+      "cuerpo": null,
+      "codigo": 404,
+      "ms_reloj": 23,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:12.975062362",
+        "status": 404,
+        "error": "Not Found",
+        "message": "Individual not found: http://example.org/individuos/nadie",
+        "path": "/api/ontology/individuals"
+      }
+    },
+    {
+      "paso": "A4.11 forma anterior: IRI en la ruta (ya no se admite)",
+      "peticion": "GET /api/ontology/individuals/http%3A%2F%2Fexample.org%2Findividuos%2Foperario-api",
+      "cuerpo": null,
+      "codigo": 400,
+      "ms_reloj": 4,
+      "respuesta": "<!doctype html><html lang=\"en\"><head><title>HTTP Status 400 – Bad Request</title><style type=\"text/css\">body {font-family:Tahoma,Arial,sans-serif;} h1, h2, h3, b {color:white;background-color:#525D76;} h1 {font-size:22px;} h2 {font-size:16px;} h3 {font-size:14px;} p {font-size:12px;} a {color:black;} .line {height:1px;background-color:#525D76;border:none;}</style></head><body><h1>HTTP Status 400 – Bad Request</h1></body></html>"
+    },
+    {
+      "paso": "A5.1 crear para deshacer",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/para-deshacer",
+        "label": "Para deshacer"
+      },
+      "codigo": 201,
+      "ms_reloj": 2160,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/para-deshacer",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "c672b288-16c4-46c2-9f6c-b8a2163c0266",
+        "writeTimeMs": 127,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 2008,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": [
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/iso15531#HumanResource"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#NamedIndividual"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/2000/01/rdf-schema#label",
+          "o": "Para deshacer"
+        }
+      ]
+    },
+    {
+      "paso": "A5.2 deshacer el alta",
+      "peticion": "POST /api/ontology/individuals/edits/c672b288-16c4-46c2-9f6c-b8a2163c0266/undo",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 198,
+      "respuesta": {
+        "operation": "UNDO",
+        "uri": "http://example.org/individuos/para-deshacer",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": null,
+        "writeTimeMs": 139,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 24,
+          "cacheHit": true,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    },
+    {
+      "paso": "A5.3 deshacer otra vez la misma edición",
+      "peticion": "POST /api/ontology/individuals/edits/c672b288-16c4-46c2-9f6c-b8a2163c0266/undo",
+      "cuerpo": null,
+      "codigo": 404,
+      "ms_reloj": 3,
+      "respuesta": {
+        "timestamp": "2026-11-27T02:49:15.355668959",
+        "status": 404,
+        "error": "Not Found",
+        "message": "Edit not found or no longer undoable: c672b288-16c4-46c2-9f6c-b8a2163c0266",
+        "path": "/api/ontology/individuals/edits/c672b288-16c4-46c2-9f6c-b8a2163c0266/undo"
+      }
+    },
+    {
+      "paso": "A5.4 alta que contradice el rango xsd:integer de paint-ext:numberOfEmployees",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fpaint-ext%23Plant",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/planta-inconsistente",
+        "label": "Planta inconsistente",
+        "properties": {
+          "http://w3id.org/protys/ontology/paint-ext#numberOfEmployees": "muchos"
+        }
+      },
+      "codigo": 201,
+      "ms_reloj": 1658,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/planta-inconsistente",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "715f3c57-2afb-4c72-a911-1439b5af69a6",
+        "writeTimeMs": 128,
+        "validation": {
+          "status": "INCONSISTENT",
+          "consistent": false,
+          "timeMs": 1498,
+          "cacheHit": false,
+          "message": "INCONSISTENT",
+          "violations": []
+        }
+      },
+      "control_sparql": [
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://w3id.org/protys/ontology/paint-ext#numberOfEmployees",
+          "o": "muchos"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://w3id.org/protys/ontology/paint-ext#Plant"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+          "o": "http://www.w3.org/2002/07/owl#NamedIndividual"
+        },
+        {
+          "g": "http://w3id.org/protys/ontology/Canonical_Catalog_Integrated#",
+          "p": "http://www.w3.org/2000/01/rdf-schema#label",
+          "o": "Planta inconsistente"
+        }
+      ]
+    },
+    {
+      "paso": "A5.5 deshacer el alta inconsistente",
+      "peticion": "POST /api/ontology/individuals/edits/715f3c57-2afb-4c72-a911-1439b5af69a6/undo",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 183,
+      "respuesta": {
+        "operation": "UNDO",
+        "uri": "http://example.org/individuos/planta-inconsistente",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": null,
+        "writeTimeMs": 123,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 28,
+          "cacheHit": true,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    },
+    {
+      "paso": "A6.1 alta",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/tiempo-1",
+        "label": "Tiempo 1"
+      },
+      "codigo": 201,
+      "ms_reloj": 2046,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/tiempo-1",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "47d72354-8775-4476-8d57-59b02400791e",
+        "writeTimeMs": 112,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1910,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A6.1 modificación",
+      "peticion": "PUT /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Ftiempo-1",
+      "cuerpo": {
+        "label": "Tiempo 1 (modificado)"
+      },
+      "codigo": 200,
+      "ms_reloj": 2016,
+      "respuesta": {
+        "operation": "UPDATE",
+        "uri": "http://example.org/individuos/tiempo-1",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "e0425be7-8bde-4356-95d5-79b0d7d89257",
+        "writeTimeMs": 131,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1847,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A6.1 baja",
+      "peticion": "DELETE /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Ftiempo-1",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 212,
+      "respuesta": {
+        "operation": "DELETE",
+        "uri": "http://example.org/individuos/tiempo-1",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "10f1b561-abb6-40d4-9341-1c575e60613c",
+        "writeTimeMs": 153,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 27,
+          "cacheHit": true,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    },
+    {
+      "paso": "A6.2 alta",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/tiempo-2",
+        "label": "Tiempo 2"
+      },
+      "codigo": 201,
+      "ms_reloj": 2083,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/tiempo-2",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "69ca3614-0855-4995-8095-3d3ba3b76043",
+        "writeTimeMs": 173,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1887,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A6.2 modificación",
+      "peticion": "PUT /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Ftiempo-2",
+      "cuerpo": {
+        "label": "Tiempo 2 (modificado)"
+      },
+      "codigo": 200,
+      "ms_reloj": 2151,
+      "respuesta": {
+        "operation": "UPDATE",
+        "uri": "http://example.org/individuos/tiempo-2",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "b77b1fc1-af73-4f2b-8599-0ff2e0fe0ac1",
+        "writeTimeMs": 231,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1880,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A6.2 baja",
+      "peticion": "DELETE /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Ftiempo-2",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 227,
+      "respuesta": {
+        "operation": "DELETE",
+        "uri": "http://example.org/individuos/tiempo-2",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "3a6a33f0-ae1a-4460-bd70-bbbf9dc77548",
+        "writeTimeMs": 163,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 29,
+          "cacheHit": true,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    },
+    {
+      "paso": "A6.3 alta",
+      "peticion": "POST /api/ontology/individuals?classUri=http%3A%2F%2Fw3id.org%2Fprotys%2Fontology%2Fiso15531%23HumanResource",
+      "cuerpo": {
+        "uri": "http://example.org/individuos/tiempo-3",
+        "label": "Tiempo 3"
+      },
+      "codigo": 201,
+      "ms_reloj": 1951,
+      "respuesta": {
+        "operation": "CREATE",
+        "uri": "http://example.org/individuos/tiempo-3",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "48b2db90-dbfd-460a-831f-5ef83c7a15df",
+        "writeTimeMs": 113,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1810,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A6.3 modificación",
+      "peticion": "PUT /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Ftiempo-3",
+      "cuerpo": {
+        "label": "Tiempo 3 (modificado)"
+      },
+      "codigo": 200,
+      "ms_reloj": 2030,
+      "respuesta": {
+        "operation": "UPDATE",
+        "uri": "http://example.org/individuos/tiempo-3",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "d032c6cc-4fb2-42e8-a362-06eef553bcb5",
+        "writeTimeMs": 125,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 1861,
+          "cacheHit": false,
+          "message": null,
+          "violations": []
+        }
+      }
+    },
+    {
+      "paso": "A6.3 baja",
+      "peticion": "DELETE /api/ontology/individuals?uri=http%3A%2F%2Fexample.org%2Findividuos%2Ftiempo-3",
+      "cuerpo": null,
+      "codigo": 200,
+      "ms_reloj": 189,
+      "respuesta": {
+        "operation": "DELETE",
+        "uri": "http://example.org/individuos/tiempo-3",
+        "moduleId": "2322191f-8ecd-4212-bfc0-248d5cf85a96",
+        "moduleName": "Canonical_Catalog_Integrated",
+        "editId": "6a375e17-304f-4580-914b-1692ed001ff5",
+        "writeTimeMs": 128,
+        "validation": {
+          "status": "CONSISTENT",
+          "consistent": true,
+          "timeMs": 23,
+          "cacheHit": true,
+          "message": null,
+          "violations": []
+        }
+      },
+      "control_sparql": []
+    }
+  ],
+  "tiempos": [
+    {
+      "paso": "A1.1 crear (IRI y rdfs:label)",
+      "validacion_ms": 1931,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 187,
+      "reloj_ms": 2171
+    },
+    {
+      "paso": "A1.3 modificar la etiqueta",
+      "validacion_ms": 1829,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 154,
+      "reloj_ms": 2017
+    },
+    {
+      "paso": "A1.4 eliminar",
+      "validacion_ms": 1858,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 151,
+      "reloj_ms": 2051
+    },
+    {
+      "paso": "A4.8 duplicado, primer envío",
+      "validacion_ms": 1917,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 130,
+      "reloj_ms": 2072
+    },
+    {
+      "paso": "A4.8 limpieza del duplicado",
+      "validacion_ms": 39,
+      "cache": true,
+      "estado": "CONSISTENT",
+      "escritura_ms": 112,
+      "reloj_ms": 175
+    },
+    {
+      "paso": "A5.1 crear para deshacer",
+      "validacion_ms": 2008,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 127,
+      "reloj_ms": 2160
+    },
+    {
+      "paso": "A5.2 deshacer el alta",
+      "validacion_ms": 24,
+      "cache": true,
+      "estado": "CONSISTENT",
+      "escritura_ms": 139,
+      "reloj_ms": 198
+    },
+    {
+      "paso": "A5.4 alta que contradice el rango xsd:integer de paint-ext:numberOfEmployees",
+      "validacion_ms": 1498,
+      "cache": false,
+      "estado": "INCONSISTENT",
+      "escritura_ms": 128,
+      "reloj_ms": 1658
+    },
+    {
+      "paso": "A5.5 deshacer el alta inconsistente",
+      "validacion_ms": 28,
+      "cache": true,
+      "estado": "CONSISTENT",
+      "escritura_ms": 123,
+      "reloj_ms": 183
+    },
+    {
+      "paso": "A6.1 alta",
+      "validacion_ms": 1910,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 112,
+      "reloj_ms": 2046
+    },
+    {
+      "paso": "A6.1 modificación",
+      "validacion_ms": 1847,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 131,
+      "reloj_ms": 2016
+    },
+    {
+      "paso": "A6.1 baja",
+      "validacion_ms": 27,
+      "cache": true,
+      "estado": "CONSISTENT",
+      "escritura_ms": 153,
+      "reloj_ms": 212
+    },
+    {
+      "paso": "A6.2 alta",
+      "validacion_ms": 1887,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 173,
+      "reloj_ms": 2083
+    },
+    {
+      "paso": "A6.2 modificación",
+      "validacion_ms": 1880,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 231,
+      "reloj_ms": 2151
+    },
+    {
+      "paso": "A6.2 baja",
+      "validacion_ms": 29,
+      "cache": true,
+      "estado": "CONSISTENT",
+      "escritura_ms": 163,
+      "reloj_ms": 227
+    },
+    {
+      "paso": "A6.3 alta",
+      "validacion_ms": 1810,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 113,
+      "reloj_ms": 1951
+    },
+    {
+      "paso": "A6.3 modificación",
+      "validacion_ms": 1861,
+      "cache": false,
+      "estado": "CONSISTENT",
+      "escritura_ms": 125,
+      "reloj_ms": 2030
+    },
+    {
+      "paso": "A6.3 baja",
+      "validacion_ms": 23,
+      "cache": true,
+      "estado": "CONSISTENT",
+      "escritura_ms": 128,
+      "reloj_ms": 189
+    }
+  ],
+  "resumen_tiempos": {
+    "ediciones_validadas": 18,
+    "sin_cache": 12,
+    "validacion_ms_sin_cache": {
+      "min": 1498,
+      "mediana": 1880,
+      "max": 2008
+    },
+    "con_cache": [
+      23,
+      24,
+      27,
+      28,
+      29,
+      39
+    ]
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "status": "CONSISTENT",
+  "profile_valid": true,
+  "cleaning_evaluation": {
+    "required_pair_count": 0,
+    "scope": "Recorded cleaning interval and equipment only; no physical cleanliness approval.",
+    "status": "NOT_APPLICABLE"
+  },
+  "context_evaluation": {
+    "declared_link_count": 56,
+    "scope": "Declared lot activity, GHG contribution and plan-operation links only; no global completeness approval.",
+    "invalid_declared_link": false,
+    "status": "CONTEXT_VALID"
+  },
+  "numeric_evaluation": {
+    "reason": "Integrated electrical-inventory controls are not applicable to this source configuration.",
+    "selected_operation_count": 0,
+    "output_checked": false,
+    "status": "NOT_APPLICABLE",
+    "applicable_configuration": false
+  },
+  "swrl_rule_count": 0,
+  "profile_violations": [],
+  "dl_materialized_triples": 345,
+  "dl_axiom_preservation": {
+    "stage": "named_dl_export_reload_owlapi5",
+    "comparison": "EXACT_STRUCTURAL_AXIOM_SET_INCLUSION",
+    "expected_anonymous_individual_count": 0,
+    "observed_anonymous_individual_count": 0,
+    "expected_axiom_count": 2853,
+    "observed_axiom_count": 3198,
+    "retained_axiom_count": 2853,
+    "lost_axiom_count": 0,
+    "status": "RETAINED"
+  },
+  "unsatisfiable_classes": [],
+  "dl_ms": 776.413583,
+  "owl_validation_status": "CONSISTENT",
+  "constructs": [],
+  "construct_added_triples": 0,
+  "raw_input_triples": 2948,
+  "input_named_individuals": 158,
+  "materialized_named_individuals": 158,
+  "queries": [
+    {
+      "id": "Q01",
+      "query_ms": 10.131709,
+      "result_count": 0
+    },
+    {
+      "id": "Q02",
+      "query_ms": 6.943291,
+      "result_count": 40
+    },
+    {
+      "id": "Q03",
+      "query_ms": 3.085625,
+      "result_count": 0
+    },
+    {
+      "id": "Q04",
+      "query_ms": 2.434625,
+      "result_count": 40
+    },
+    {
+      "id": "Q05",
+      "query_ms": 0.915791,
+      "result_count": 5
+    },
+    {
+      "id": "Q06",
+      "query_ms": 2.936625,
+      "result_count": 0
+    },
+    {
+      "id": "Q07",
+      "query_ms": 3.178625,
+      "result_count": 28
+    },
+    {
+      "id": "Q08",
+      "query_ms": 1.950958,
+      "result_count": 0
+    },
+    {
+      "id": "Q09",
+      "query_ms": 0.474416,
+      "result_count": 0
+    },
+    {
+      "id": "Q10",
+      "query_ms": 0.612125,
+      "result_count": 6
+    },
+    {
+      "id": "Q11",
+      "query_ms": 2.435083,
+      "result_count": 0
+    },
+    {
+      "id": "Q12",
+      "query_ms": 0.430208,
+      "result_count": 0
+    },
+    {
+      "id": "Q13",
+      "query_ms": 0.960333,
+      "result_count": 16
+    },
+    {
+      "id": "Q14",
+      "query_ms": 0.629666,
+      "result_count": 0
+    },
+    {
+      "id": "Q15",
+      "query_ms": 0.560667,
+      "result_count": 3
+    },
+    {
+      "id": "Q16",
+      "query_ms": 0.701583,
+      "result_count": 0
+    },
+    {
+      "id": "Q17",
+      "query_ms": 1.7175,
+      "result_count": 0
+    },
+    {
+      "id": "Q18",
+      "query_ms": 3.6485,
+      "result_count": 28
+    },
+    {
+      "id": "Q19",
+      "query_ms": 1.606209,
+      "result_count": 0
+    },
+    {
+      "id": "Q20",
+      "query_ms": 0.981542,
+      "result_count": 4
+    },
+    {
+      "id": "Q21",
+      "query_ms": 0.414541,
+      "result_count": 1
+    },
+    {
+      "id": "QC01",
+      "query_ms": 0.331333,
+      "result_count": 0
+    },
+    {
+      "id": "QC02",
+      "query_ms": 0.281291,
+      "result_count": 0
+    },
+    {
+      "id": "QC03",
+      "query_ms": 0.267708,
+      "result_count": 0
+    },
+    {
+      "id": "QC04",
+      "query_ms": 0.304625,
+      "result_count": 0
+    },
+    {
+      "id": "QC05",
+      "query_ms": 0.333708,
+      "result_count": 0
+    },
+    {
+      "id": "QC06",
+      "query_ms": 0.393292,
+      "result_count": 0
+    },
+    {
+      "id": "QC07",
+      "query_ms": 0.326458,
+      "result_count": 0
+    },
+    {
+      "id": "QC08",
+      "query_ms": 0.315291,
+      "result_count": 0
+    },
+    {
+      "id": "QC09",
+      "query_ms": 0.284583,
+      "result_count": 0
+    },
+    {
+      "id": "QC10",
+      "query_ms": 0.25375,
+      "result_count": 0
+    },
+    {
+      "id": "QC11",
+      "query_ms": 0.459417,
+      "result_count": 0
+    },
+    {
+      "id": "QC12",
+      "query_ms": 0.334459,
+      "result_count": 0
+    },
+    {
+      "id": "QC13",
+      "query_ms": 0.284708,
+      "result_count": 0
+    },
+    {
+      "id": "QC14",
+      "query_ms": 0.2835,
+      "result_count": 0
+    },
+    {
+      "id": "QC15",
+      "query_ms": 0.256334,
+      "result_count": 0
+    },
+    {
+      "id": "QC16",
+      "query_ms": 0.359583,
+      "result_count": 0
+    },
+    {
+      "id": "QC17",
+      "query_ms": 0.25525,
+      "result_count": 0
+    },
+    {
+      "id": "QC18",
+      "query_ms": 0.292083,
+      "result_count": 0
+    }
+  ],
+  "input_triples": 2948,
+  "materialized_triples": 3293,
+  "load_ms": 363.69675,
+  "reasoning_stage_ms": 836.711917,
+  "query_stage_ms": 75.471167,
+  "total_ms": 1281.89875,
+  "peak_heap_bytes": 159951872,
+  "java": "17.0.20.1",
+  "exit_code": 0,
+  "wall_process_ms": 1948.805708,
+  "observed_peak_process_tree_rss_bytes": 391020544,
+  "rss_sampling_interval_ms": 100
+}

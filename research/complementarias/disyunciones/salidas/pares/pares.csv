@@ -1,0 +1,77 @@
+par,clase_a,clase_b,fuente,justificacion
+core:Product ⊥ core:Resource,core#Product,core#Resource,definición y norma citada (ISO 10303-1; ISO 15531-32 / ISO 10303-49; ISO 15531) y rdfs:comment,Product: «cosa o sustancia producida por un proceso»; Resource: «entidad utilizada por los procesos productivos». Ojo: las dos definiciones no excluyen por sí solas que una entidad producida en otro sistema se use como insumo.
+core:Product ⊥ core:Process,core#Product,core#Process,definición y norma citada y rdfs:comment,Cosa o sustancia frente a procedimiento con pasos u operaciones.
+core:Product ⊥ core:Enterprise,core#Product,core#Enterprise,definición y norma citada y rdfs:comment,Cosa o sustancia frente a organización.
+core:Process ⊥ core:Resource,core#Process,core#Resource,definición y norma citada y rdfs:comment,Procedimiento frente a entidad utilizada por los procesos.
+core:Process ⊥ core:Enterprise,core#Process,core#Enterprise,definición y norma citada y rdfs:comment,Procedimiento frente a organización.
+core:Resource ⊥ core:Enterprise,core#Resource,core#Enterprise,definición y norma citada y rdfs:comment,Entidad utilizada por los procesos frente a organización que ofrece productos o servicios.
+product:Substance ⊥ product:Product_Information,product#Substance,product#Product_Information,definición y norma citada (ISO 10303-1),Cosa con existencia material frente a información que define un ítem de producción.
+product:Substance ⊥ product:Customer,product#Substance,product#Customer,definición y norma citada (ISO 10303-1; ISO 10303-41),Cosa con existencia material producida frente a cliente que adquiere productos.
+product:Product_Information ⊥ product:Customer,product#Product_Information,product#Customer,definición y norma citada (ISO 10303-1; ISO 10303-41),Información frente a cliente.
+process:Process_Plan ⊥ process:Process_Plant,process#Process_Plan,process#Process_Plant,definición y norma citada (ISO 15531) y rdfs:comment,Conjunto ordenado de procesos frente a instalación física.
+process:Procedure ⊥ process:Parameters,process#Procedure,process#Parameters,definición y norma citada (ISO 10303-49) y rdfs:comment,Método o protocolo frente a valores concretos de configuración.
+process:Process_Plant ⊥ process:Procedure,process#Process_Plant,process#Procedure,definición y norma citada y rdfs:comment,Instalación física frente a método.
+process:Process_Plant ⊥ process:Parameters,process#Process_Plant,process#Parameters,definición y norma citada y rdfs:comment,Instalación física frente a valores de configuración.
+process:Process_Plan ⊥ process:Parameters,process#Process_Plan,process#Parameters,definición y norma citada y rdfs:comment,Conjunto ordenado de procesos frente a valores de configuración.
+process:Process_Plant ⊥ core:Process,process#Process_Plant,core#Process,definición y norma citada y rdfs:comment,Instalación física donde se ejecuta el plan frente a procedimiento.
+resource:Person ⊥ resource:Material,resource#Person,resource#Material,definición y norma citada (ISO 15531; ISO 18629 / ISO 10303-232),Recurso humano frente a material.
+resource:Person ⊥ resource:Equip,resource#Person,resource#Equip,definición y norma citada,Recurso humano frente a equipo industrial fijo.
+resource:Person ⊥ resource:Tool,resource#Person,resource#Tool,definición y norma citada,Recurso humano frente a herramienta.
+resource:Person ⊥ resource:Device,resource#Person,resource#Device,definición y norma citada,Recurso humano frente a dispositivo de medición y control.
+resource:Person ⊥ resource:File,resource#Person,resource#File,definición y norma citada,Recurso humano frente a archivo digital.
+resource:File ⊥ resource:Material,resource#File,resource#Material,definición y norma citada,Archivo digital frente a material.
+resource:File ⊥ resource:Equip,resource#File,resource#Equip,definición y norma citada,Archivo digital frente a equipo.
+resource:File ⊥ resource:Tool,resource#File,resource#Tool,definición y norma citada,Archivo digital frente a herramienta.
+resource:File ⊥ resource:Device,resource#File,resource#Device,definición y norma citada,Archivo digital frente a dispositivo.
+resource:Material ⊥ resource:Equip,resource#Material,resource#Equip,definición y norma citada y rdfs:comment,Material gestionado en producción frente a equipo fijo que ejecuta transformaciones. (Material ⊥ Tool no se propone: el comentario de Tool incluye consumibles.)
+resource:Material ⊥ resource:Device,resource#Material,resource#Device,definición y norma citada,Material frente a dispositivo de medición y control.
+resource:Behaviour ⊥ resource:Capability,resource#Behaviour,resource#Capability,definición y norma citada (ISO 10303-49) y rdfs:comment,Comportamiento frente a capacidad de un recurso: dos descripciones distintas.
+resource:Behaviour ⊥ core:Resource,resource#Behaviour,core#Resource,rdfs:comment,Describe el comportamiento de un Resource (hasBehaviour); no es el recurso.
+resource:Capability ⊥ core:Resource,resource#Capability,core#Resource,rdfs:comment,Describe la capacidad de un Resource (hasCapability); no es el recurso.
+resource:Role ⊥ resource:Person,resource#Role,resource#Person,definición y norma citada y rdfs:comment,Función que desempeña una persona frente a la persona.
+resource:Activity ⊥ core:Resource,resource#Activity,core#Resource,definición y norma citada y rdfs:comment,Actividad en la que intervienen recursos frente al recurso.
+enterprise:Factory ⊥ enterprise:Shop,enterprise#Factory,enterprise#Shop,"definición y norma citada (Zhao et al., 1999)",Niveles distintos de la jerarquía de manufactura.
+enterprise:Factory ⊥ enterprise:Cell,enterprise#Factory,enterprise#Cell,"definición y norma citada (Zhao et al., 1999)",Niveles distintos de la jerarquía.
+enterprise:Factory ⊥ enterprise:Station,enterprise#Factory,enterprise#Station,"definición y norma citada (Zhao et al., 1999)",Niveles distintos de la jerarquía.
+enterprise:Shop ⊥ enterprise:Cell,enterprise#Shop,enterprise#Cell,"definición y norma citada (Zhao et al., 1999)",Niveles distintos de la jerarquía.
+enterprise:Shop ⊥ enterprise:Station,enterprise#Shop,enterprise#Station,"definición y norma citada (Zhao et al., 1999)",Niveles distintos de la jerarquía.
+enterprise:Cell ⊥ enterprise:Station,enterprise#Cell,enterprise#Station,"definición y norma citada (Zhao et al., 1999)",Niveles distintos de la jerarquía.
+enterprise:Location ⊥ enterprise:Factory,enterprise#Location,enterprise#Factory,definición y norma citada y rdfs:comment,Ubicación geográfica frente a instalación.
+enterprise:Location ⊥ enterprise:Shop,enterprise#Location,enterprise#Shop,definición y norma citada y rdfs:comment,Ubicación geográfica frente a área de producción.
+enterprise:Location ⊥ enterprise:Cell,enterprise#Location,enterprise#Cell,definición y norma citada y rdfs:comment,Ubicación geográfica frente a agrupación de estaciones.
+enterprise:Location ⊥ enterprise:Station,enterprise#Location,enterprise#Station,definición y norma citada y rdfs:comment,Ubicación geográfica frente a estación.
+enterprise:Location ⊥ core:Enterprise,enterprise#Location,core#Enterprise,definición y norma citada y rdfs:comment,Ubicación geográfica frente a organización.
+iso15531:ManufacturingResource ⊥ iso15531:ManufacturingProcess,iso15531#ManufacturingResource,iso15531#ManufacturingProcess,"definición y norma citada (ISO 15531-32:2005, 3.1.20 y 3.1.16)",Medio disponible para la manufactura frente a conjunto de actividades.
+iso15531:ManufacturingResource ⊥ iso15531:ProcessOperation,iso15531#ManufacturingResource,iso15531#ProcessOperation,"definición y norma citada (ISO 15531-32:2005, 3.1.20)",Medio frente a operación.
+iso15531:ManufacturingResource ⊥ iso15531:Lot,iso15531#ManufacturingResource,iso15531#Lot,definición y norma citada,Medio frente a cantidad de producto obtenida en una ejecución.
+iso15531:ManufacturingResource ⊥ iso15531:ManufacturingData,iso15531#ManufacturingResource,iso15531#ManufacturingData,definición y norma citada,Medio frente a registro de datos.
+iso15531:ManufacturingResource ⊥ iso15531:ManufacturingCapability,iso15531#ManufacturingResource,iso15531#ManufacturingCapability,definición y norma citada,Recurso frente a la capacidad que posee.
+iso15531:ManufacturingProcess ⊥ iso15531:ProcessPlan,iso15531#ManufacturingProcess,iso15531#ProcessPlan,"definición y norma citada (ISO 15531-32:2005, 3.1.16)",Conjunto de actividades (ejecución) frente a plan.
+iso15531:ProcessOperation ⊥ iso15531:ProcessPlan,iso15531#ProcessOperation,iso15531#ProcessPlan,definición y norma citada,Operación frente a plan que reúne operaciones previstas.
+iso15531:Lot ⊥ iso15531:ManufacturingProcess,iso15531#Lot,iso15531#ManufacturingProcess,definición y norma citada,Cantidad de producto frente a actividades.
+iso15531:Lot ⊥ iso15531:ProcessOperation,iso15531#Lot,iso15531#ProcessOperation,definición y norma citada,Cantidad de producto frente a operación.
+iso15531:ProductionOrder ⊥ iso15531:WorkOrder,iso15531#ProductionOrder,iso15531#WorkOrder,definición y norma citada,Orden que solicita producción frente a orden que ejecuta una operación.
+iso15531:ProductionOrder ⊥ iso15531:Lot,iso15531#ProductionOrder,iso15531#Lot,definición y norma citada,Orden frente a lote.
+iso15531:WorkOrder ⊥ iso15531:Lot,iso15531#WorkOrder,iso15531#Lot,definición y norma citada,La orden de trabajo produce un lote; no es el lote.
+iso15531:ProcessState ⊥ iso15531:ResourceState,iso15531#ProcessState,iso15531#ResourceState,definición y norma citada,Estado de un proceso frente a estado de un recurso.
+iso15531:QualityAttribute ⊥ iso15531:CostAttribute,iso15531#QualityAttribute,iso15531#CostAttribute,definición y norma citada,Atributos de tipos distintos.
+iso15531:QualityAttribute ⊥ iso15531:TimeAttribute,iso15531#QualityAttribute,iso15531#TimeAttribute,definición y norma citada,Atributos de tipos distintos.
+iso15531:CostAttribute ⊥ iso15531:TimeAttribute,iso15531#CostAttribute,iso15531#TimeAttribute,definición y norma citada,Atributos de tipos distintos.
+iso14040:GoalAndScopeDefinition ⊥ iso14040:LifeCycleInventory,iso14040#GoalAndScopeDefinition,iso14040#LifeCycleInventory,"definición y norma citada (ISO 14040:2006, 5.2 y 3.3)",Fases distintas del estudio.
+iso14040:GoalAndScopeDefinition ⊥ iso14040:LifeCycleImpactAssessment,iso14040#GoalAndScopeDefinition,iso14040#LifeCycleImpactAssessment,"definición y norma citada (ISO 14040:2006, 5.2 y 3.4)",Fases distintas.
+iso14040:GoalAndScopeDefinition ⊥ iso14040:Interpretation,iso14040#GoalAndScopeDefinition,iso14040#Interpretation,"definición y norma citada (ISO 14040:2006, 5.2 y 3.5)",Fases distintas.
+iso14040:LifeCycleInventory ⊥ iso14040:LifeCycleImpactAssessment,iso14040#LifeCycleInventory,iso14040#LifeCycleImpactAssessment,"definición y norma citada (ISO 14040:2006, 3.3 y 3.4)",Fases distintas.
+iso14040:LifeCycleInventory ⊥ iso14040:Interpretation,iso14040#LifeCycleInventory,iso14040#Interpretation,"definición y norma citada (ISO 14040:2006, 3.3 y 3.5)",Fases distintas.
+iso14040:LifeCycleImpactAssessment ⊥ iso14040:Interpretation,iso14040#LifeCycleImpactAssessment,iso14040#Interpretation,"definición y norma citada (ISO 14040:2006, 3.4 y 3.5)",Fases distintas.
+iso14040:LCAStudy ⊥ iso14040:GoalAndScopeDefinition,iso14040#LCAStudy,iso14040#GoalAndScopeDefinition,"definición y norma citada (ISO 14040:2006, 3.2)",El estudio frente a una de sus fases.
+iso14040:LCAStudy ⊥ iso14040:LifeCycleInventory,iso14040#LCAStudy,iso14040#LifeCycleInventory,"definición y norma citada (ISO 14040:2006, 3.2)",El estudio frente a una de sus fases.
+iso14040:LCAStudy ⊥ iso14040:LifeCycleImpactAssessment,iso14040#LCAStudy,iso14040#LifeCycleImpactAssessment,"definición y norma citada (ISO 14040:2006, 3.2)",El estudio frente a una de sus fases.
+iso14040:LCAStudy ⊥ iso14040:Interpretation,iso14040#LCAStudy,iso14040#Interpretation,"definición y norma citada (ISO 14040:2006, 3.2)",El estudio frente a una de sus fases.
+iso14040:UnitProcess ⊥ iso14040:ElementaryFlow,iso14040#UnitProcess,iso14040#ElementaryFlow,"definición y norma citada (ISO 14040:2006, 3.34 y 3.12)",Proceso unitario frente a flujo.
+iso14040:UnitProcess ⊥ iso14040:ProductFlow,iso14040#UnitProcess,iso14040#ProductFlow,"definición y norma citada (ISO 14040:2006, 3.34 y 3.27)",Proceso unitario frente a flujo.
+iso14040:UnitProcess ⊥ iso14040:SystemBoundary,iso14040#UnitProcess,iso14040#SystemBoundary,"definición y norma citada (ISO 14040:2006, 3.34 y 3.32)",Proceso unitario frente a los criterios que lo incluyen.
+iso14040:UnitProcess ⊥ iso14040:AllocationProcedure,iso14040#UnitProcess,iso14040#AllocationProcedure,"definición y norma citada (ISO 14040:2006, 3.34 y 3.17)",Proceso frente al procedimiento que reparte sus flujos.
+iso14040:FunctionalUnit ⊥ iso14040:SystemBoundary,iso14040#FunctionalUnit,iso14040#SystemBoundary,"definición y norma citada (ISO 14040:2006, 3.20 y 3.32)",Desempeño cuantificado frente a criterios de delimitación.
+iso14040:ImpactCategory ⊥ iso14040:ImpactIndicator,iso14040#ImpactCategory,iso14040#ImpactIndicator,"definición y norma citada (ISO 14040:2006, 3.39 y 3.40)",Clase de cuestión ambiental frente a su representación cuantificable.
+iso14040:ImpactCategory ⊥ iso14040:CharacterizationFactor,iso14040#ImpactCategory,iso14040#CharacterizationFactor,"definición y norma citada (ISO 14040:2006, 3.39 y 3.37)",Categoría frente a factor de conversión.
+iso14040:ImpactIndicator ⊥ iso14040:CharacterizationFactor,iso14040#ImpactIndicator,iso14040#CharacterizationFactor,"definición y norma citada (ISO 14040:2006, 3.40 y 3.37)",Indicador frente a factor de conversión.

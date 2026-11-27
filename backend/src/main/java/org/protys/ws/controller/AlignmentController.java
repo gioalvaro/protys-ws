@@ -117,11 +117,20 @@ public class AlignmentController {
     // Reasoning Execution Endpoints
 
     @PostMapping("/reasoning/execute")
-    @Operation(summary = "Execute reasoning engine", description = "Trigger the reasoning engine to apply all active alignment rules")
-    public ResponseEntity<InferenceStats> executeReasoning() {
+    @Operation(summary = "Execute reasoning engine", description = "Trigger the reasoning engine to apply all active alignment rules. Optional body {\"dataGraphs\": [...]} adds ERP connector graphs (under http://w3id.org/protys/erp/) to the reasoned model")
+    public ResponseEntity<?> executeReasoning(
+            @org.springframework.web.bind.annotation.RequestBody(required = false) Map<String, List<String>> request) {
         log.info("Executing alignment reasoning");
+        if (request != null && request.containsKey("dataGraphs")
+                && (request.get("dataGraphs") == null || request.get("dataGraphs").contains(null))) {
+            return ResponseEntity.badRequest().body(Map.of("error", "dataGraphs must be a list of graph IRIs (null is not allowed)"));
+        }
         try {
-            InferenceStats result = alignmentService.executeReasoning();
+            // Cuerpo opcional {"dataGraphs": [...]}: grafos materializados por conectores ERP.
+            List<String> dataGraphs = request == null ? List.of() : request.getOrDefault("dataGraphs", List.of());
+            InferenceStats result = dataGraphs.isEmpty()
+                    ? alignmentService.executeReasoning()
+                    : alignmentService.executeReasoning(dataGraphs);
             log.info("Reasoning execution finished with status {}",result.getValidationStatus());
             return ResponseEntity.status("SUCCESS".equals(result.getStatus())?HttpStatus.CREATED:HttpStatus.UNPROCESSABLE_ENTITY).body(result);
         } catch (Exception e) {

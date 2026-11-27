@@ -1,0 +1,244 @@
+{
+  "metodo": "declaraciones OWL explícitas con IRI, deduplicadas por IRI completo (como census.json)",
+  "versiones": {
+    "v1.0.0": {
+      "por_modulo": [
+        {
+          "modulo": "ontologies/core-concepts.owl",
+          "alcance": "base eight modules",
+          "Class": 4,
+          "ObjectProperty": 8,
+          "DatatypeProperty": 4
+        },
+        {
+          "modulo": "ontologies/product-module.owl",
+          "alcance": "base eight modules",
+          "Class": 11,
+          "ObjectProperty": 4,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/process-module.owl",
+          "alcance": "base eight modules",
+          "Class": 8,
+          "ObjectProperty": 3,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/resource-module.owl",
+          "alcance": "base eight modules",
+          "Class": 15,
+          "ObjectProperty": 11,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/enterprise-module.owl",
+          "alcance": "base eight modules",
+          "Class": 5,
+          "ObjectProperty": 2,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/iso15531-module.owl",
+          "alcance": "base eight modules",
+          "Class": 18,
+          "ObjectProperty": 21,
+          "DatatypeProperty": 16
+        },
+        {
+          "modulo": "ontologies/iso14040-module.owl",
+          "alcance": "base eight modules",
+          "Class": 15,
+          "ObjectProperty": 11,
+          "DatatypeProperty": 12
+        },
+        {
+          "modulo": "ontologies/alignment-rules.owl",
+          "alcance": "base eight modules",
+          "Class": 11,
+          "ObjectProperty": 21,
+          "DatatypeProperty": 6
+        },
+        {
+          "modulo": "ontologies/paint-case-extension.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 30,
+          "ObjectProperty": 14,
+          "DatatypeProperty": 33
+        },
+        {
+          "modulo": "ontologies/iso10303-ap242-fragment.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 6,
+          "ObjectProperty": 3,
+          "DatatypeProperty": 2
+        },
+        {
+          "modulo": "ontologies/iso10303-alignment-rules.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 0,
+          "ObjectProperty": 0,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "research/model/environmental-profile.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 1,
+          "ObjectProperty": 0,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "research/model/manufacturing-profile.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 4,
+          "ObjectProperty": 1,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "research/model/research-profile.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 9,
+          "ObjectProperty": 29,
+          "DatatypeProperty": 37
+        }
+      ],
+      "base_ocho_unicos": {
+        "Class": 87,
+        "ObjectProperty": 81,
+        "DatatypeProperty": 38
+      },
+      "base_ocho_propiedades": 119,
+      "union_completa": {
+        "Class": 134,
+        "ObjectProperty": 119,
+        "DatatypeProperty": 109
+      }
+    },
+    "v1.1.0": {
+      "por_modulo": [
+        {
+          "modulo": "ontologies/core-concepts.owl",
+          "alcance": "base eight modules",
+          "Class": 4,
+          "ObjectProperty": 8,
+          "DatatypeProperty": 4
+        },
+        {
+          "modulo": "ontologies/product-module.owl",
+          "alcance": "base eight modules",
+          "Class": 11,
+          "ObjectProperty": 4,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/process-module.owl",
+          "alcance": "base eight modules",
+          "Class": 8,
+          "ObjectProperty": 3,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/resource-module.owl",
+          "alcance": "base eight modules",
+          "Class": 15,
+          "ObjectProperty": 11,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/enterprise-module.owl",
+          "alcance": "base eight modules",
+          "Class": 5,
+          "ObjectProperty": 2,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "ontologies/iso15531-module.owl",
+          "alcance": "base eight modules",
+          "Class": 18,
+          "ObjectProperty": 21,
+          "DatatypeProperty": 16
+        },
+        {
+          "modulo": "ontologies/iso14040-module.owl",
+          "alcance": "base eight modules",
+          "Class": 15,
+          "ObjectProperty": 11,
+          "DatatypeProperty": 12
+        },
+        {
+          "modulo": "ontologies/alignment-rules.owl",
+          "alcance": "base eight modules",
+          "Class": 11,
+          "ObjectProperty": 21,
+          "DatatypeProperty": 6
+        },
+        {
+          "modulo": "ontologies/paint-case-extension.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 30,
+          "ObjectProperty": 14,
+          "DatatypeProperty": 33
+        },
+        {
+          "modulo": "ontologies/iso10303-ap242-fragment.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 6,
+          "ObjectProperty": 3,
+          "DatatypeProperty": 2
+        },
+        {
+          "modulo": "ontologies/iso10303-alignment-rules.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 0,
+          "ObjectProperty": 0,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "research/model/environmental-profile.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 1,
+          "ObjectProperty": 0,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "research/model/manufacturing-profile.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 4,
+          "ObjectProperty": 1,
+          "DatatypeProperty": 0
+        },
+        {
+          "modulo": "research/model/research-profile.owl",
+          "alcance": "case/research/AP242 extension",
+          "Class": 9,
+          "ObjectProperty": 29,
+          "DatatypeProperty": 37
+        }
+      ],
+      "base_ocho_unicos": {
+        "Class": 87,
+        "ObjectProperty": 81,
+        "DatatypeProperty": 38
+      },
+      "base_ocho_propiedades": 119,
+      "union_completa": {
+        "Class": 134,
+        "ObjectProperty": 119,
+        "DatatypeProperty": 109
+      }
+    }
+  },
+  "census_json": {
+    "base_eight_unique_counts": {
+      "Class": 87,
+      "ObjectProperty": 81,
+      "DatatypeProperty": 38
+    },
+    "complete_explicit_union_counts": {
+      "Class": 134,
+      "ObjectProperty": 119,
+      "DatatypeProperty": 109
+    }
+  },
+  "por_modulo_iguales": true
+}

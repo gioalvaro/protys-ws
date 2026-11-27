@@ -1,0 +1,11 @@
+OK A1a-tablero.png
+OK A1b-tablero-graficos.png
+OK A6-alineamiento-reglas.png
+OK A7-razonamiento-controles.png
+OK A2-explorador-jerarquia.png
+OK A3-explorador-detalle-clase.png
+OK A4a-consulta-Q06.png
+OK A4b-consulta-Q06.png
+OK A5a-consulta-Q04.png
+OK A5b-consulta-Q04.png
+OK A8-erp-conectores.png

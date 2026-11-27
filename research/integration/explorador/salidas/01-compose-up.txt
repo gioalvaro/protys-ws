@@ -1,0 +1,248 @@
+ Image protys-v110-backend:maintenance Building 
+ Image protys-v110-backend:maintenance Building 
+ Image protys-v110-protys-init Building 
+ Image protys-v110-protys-frontend Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.30kB done
+#1 DONE 0.0s
+
+#2 [protys-frontend internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.33kB done
+#2 DONE 0.0s
+
+#3 [protys-init internal] load build definition from Dockerfile
+#3 transferring dockerfile: 430B done
+#3 DONE 0.0s
+
+#4 [protys-fuseki internal] load build definition from Dockerfile
+#4 transferring dockerfile: 3.31kB done
+#4 DONE 0.0s
+
+#5 [protys-init internal] load metadata for docker.io/library/python:3.12-slim
+#5 DONE 0.0s
+
+#6 [protys-init internal] load .dockerignore
+#6 transferring context: 221B done
+#6 DONE 0.0s
+
+#7 [protys-init 1/8] FROM docker.io/library/python:3.12-slim
+#7 DONE 0.0s
+
+#8 [protys-frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#8 DONE 0.0s
+
+#9 [protys-frontend internal] load metadata for docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#9 DONE 0.1s
+
+#10 [protys-init internal] load build context
+#10 transferring context: 56.01kB 0.0s done
+#10 DONE 0.0s
+
+#11 [protys-frontend internal] load .dockerignore
+#11 transferring context: 101B done
+#11 DONE 0.0s
+
+#12 [protys-init 2/8] RUN pip install --no-cache-dir rdflib==7.1.4
+#12 CACHED
+
+#13 [protys-init 5/8] COPY research/catalog.json research/catalog.json
+#13 CACHED
+
+#14 [protys-init 4/8] COPY ontologies/ ontologies/
+#14 CACHED
+
+#15 [protys-init 3/8] WORKDIR /opt/protys
+#15 CACHED
+
+#16 [protys-init 6/8] COPY research/model/ research/model/
+#16 CACHED
+
+#17 [protys-init 7/8] COPY research/data/ research/data/
+#17 CACHED
+
+#18 [protys-init 8/8] COPY docker/load_canonical.py docker/init-fuseki.sh docker/
+#18 CACHED
+
+#19 [protys-frontend builder 1/6] FROM docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#19 DONE 0.0s
+
+#20 [protys-frontend stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#20 DONE 0.0s
+
+#21 [protys-init] exporting to image
+#21 exporting layers done
+#21 writing image sha256:505d68d204f57b5fb10569c986dcedde5f96d8c460b1c0d452d5655688b0f9ec done
+#21 naming to docker.io/library/protys-v110-protys-init done
+#21 DONE 0.0s
+
+#22 [protys-frontend internal] load build context
+#22 transferring context: 3.67kB done
+#22 DONE 0.1s
+
+#23 [protys-backend internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#23 ...
+
+#24 [protys-frontend builder 5/6] COPY . .
+#24 CACHED
+
+#25 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#25 CACHED
+
+#26 [protys-frontend builder 6/6] RUN npm run build
+#26 CACHED
+
+#27 [protys-frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#27 CACHED
+
+#28 [protys-frontend builder 2/6] WORKDIR /app
+#28 CACHED
+
+#29 [protys-frontend builder 3/6] COPY package.json package-lock.json .npmrc ./
+#29 CACHED
+
+#30 [protys-frontend stage-1 3/3] COPY --from=builder /app/build /usr/share/nginx/html
+#30 CACHED
+
+#31 [protys-frontend] exporting to image
+#31 exporting layers done
+#31 writing image sha256:ce6a290dd5921311befea1dfc2084bc202a315e2bcc3179b04dc6025aab3f111 done
+#31 naming to docker.io/library/protys-v110-protys-frontend done
+#31 DONE 0.0s
+
+#32 [protys-init] resolving provenance for metadata file
+#32 DONE 0.0s
+
+#33 [protys-frontend] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#34 [protys-backend internal] load metadata for docker.io/library/eclipse-temurin:17-jre-jammy
+#34 DONE 0.4s
+
+#23 [protys-fuseki internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#23 DONE 0.5s
+
+#6 [protys-fuseki internal] load .dockerignore
+#6 CACHED
+
+#35 [protys-fuseki builder 1/7] FROM docker.io/library/maven:3.9.9-eclipse-temurin-17@sha256:f58d59b6273e785ac0a4477f6e9b5ba1d7731c75b906c0f7b34076f1851318cc
+#35 DONE 0.0s
+
+#36 [protys-fuseki runtime  1/11] FROM docker.io/library/eclipse-temurin:17-jre-jammy@sha256:c6a5dd70fb24f4e07ef88cbda8efb613a5a649a1af071a41de8eaabd1ee6b5da
+#36 DONE 0.0s
+
+#37 [protys-fuseki internal] load build context
+#37 transferring context: 11.71MB 0.1s done
+#37 transferring context: 11.71MB 0.1s done
+#37 DONE 0.1s
+
+#38 [protys-backend runtime  4/11] COPY --from=builder /opt/protys/backend/target/protys-ws-*.jar backend/app.jar
+#38 CACHED
+
+#39 [protys-backend builder 2/7] WORKDIR /opt/protys
+#39 CACHED
+
+#40 [protys-backend runtime 10/11] COPY docker/fuseki-config.ttl docker/fuseki-config.ttl
+#40 CACHED
+
+#41 [protys-backend runtime  9/11] COPY research/data/ research/data/
+#41 CACHED
+
+#42 [protys-backend builder 3/7] COPY backend/ backend/
+#42 CACHED
+
+#43 [protys-backend runtime  3/11] WORKDIR /opt/protys
+#43 CACHED
+
+#44 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#44 CACHED
+
+#45 [protys-backend runtime  7/11] COPY research/catalog.json research/catalog.json
+#45 CACHED
+
+#46 [protys-backend runtime  6/11] COPY ontologies/ ontologies/
+#46 CACHED
+
+#47 [protys-backend runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#47 CACHED
+
+#48 [protys-backend builder 7/7] RUN java -Djava.awt.headless=true       -cp "research/runtime/swrl-worker/target/classes:$(cat research/runtime/swrl-worker/target/classpath.txt)"       org.protys.research.SwrlSmokeTest research/runtime/swrl-worker/target/docker-smoke.json  && java -Djava.awt.headless=true       -cp "research/runtime/validator/target/classes:$(cat research/runtime/validator/target/fuseki-classpath.txt)"       org.apache.jena.fuseki.main.cmds.FusekiMainCmd --help  && mvn -q -f backend/pom.xml package -DskipTests
+#48 CACHED
+
+#49 [protys-backend builder 6/7] RUN set -eu; for artifact in log4j-api log4j-core log4j-slf4j-impl; do       mvn -q -f research/runtime/validator/pom.xml dependency:copy         -Dartifact="org.apache.logging.log4j:$artifact:2.21.0"         -DoutputDirectory=/opt/protys/research/runtime/validator/target/fuseki-dependency;     done;     { tr ':' '\n' < research/runtime/validator/target/classpath.txt | sed '/\/slf4j-simple-/d';       find /opt/protys/research/runtime/validator/target/fuseki-dependency -name '*.jar'; }       | LC_ALL=C sort | paste -sd: - > research/runtime/validator/target/fuseki-classpath.txt
+#49 CACHED
+
+#50 [protys-backend runtime  8/11] COPY research/model/ research/model/
+#50 CACHED
+
+#51 [protys-backend runtime  5/11] COPY --from=builder /opt/protys/research/runtime/ research/runtime/
+#51 CACHED
+
+#52 [protys-backend builder 4/7] COPY research/runtime/ research/runtime/
+#52 CACHED
+
+#53 [protys-backend runtime 11/11] WORKDIR /opt/protys/backend
+#53 CACHED
+
+#54 [protys-backend] exporting to image
+#54 exporting layers done
+#54 writing image sha256:7508f0310a2de78dbd5c1b67e9f3c90f7c66a4656930063dda92318db687a45f done
+#54 naming to docker.io/library/protys-v110-backend:maintenance done
+#54 DONE 0.0s
+
+#55 [protys-fuseki] exporting to image
+#55 exporting layers done
+#55 writing image sha256:7119c951d6599b5f42a27ab97e853bb004a8d68eccd74c4a910117862f229153 done
+#55 naming to docker.io/library/protys-v110-backend:maintenance done
+#55 DONE 0.0s
+
+#56 [protys-backend] resolving provenance for metadata file
+#56 DONE 0.0s
+
+#57 [protys-fuseki] resolving provenance for metadata file
+#57 DONE 0.0s
+ Image protys-v110-protys-init Built 
+ Image protys-v110-protys-frontend Built 
+ Image protys-v110-backend:maintenance Built 
+ Image protys-v110-backend:maintenance Built 
+ Network protys-v110_protys-network Creating 
+ Network protys-v110_protys-network Creating 
+ Volume protys-v110_fuseki-data Creating 
+ Volume protys-v110_fuseki-data Creating 
+ Volume protys-v110_postgres-data Creating 
+ Volume protys-v110_postgres-data Creating 
+ Volume protys-v110_fuseki-data Created 
+ Volume protys-v110_fuseki-data Created 
+ Volume protys-v110_postgres-data Created 
+ Volume protys-v110_postgres-data Created 
+ Network protys-v110_protys-network Created 
+ Network protys-v110_protys-network Created 
+ Container protys-v110-protys-postgres-1 Creating 
+ Container protys-v110-protys-fuseki-1 Creating 
+ Container protys-v110-protys-postgres-1 Created 
+ Container protys-v110-protys-fuseki-1 Created 
+ Container protys-v110-protys-backend-1 Creating 
+ Container protys-v110-protys-backend-1 Created 
+ Container protys-v110-protys-init-1 Creating 
+ Container protys-v110-protys-init-1 Created 
+ Container protys-v110-protys-frontend-1 Creating 
+ Container protys-v110-protys-frontend-1 Created 
+ Container protys-v110-protys-fuseki-1 Starting 
+ Container protys-v110-protys-postgres-1 Starting 
+ Container protys-v110-protys-fuseki-1 Started 
+ Container protys-v110-protys-postgres-1 Started 
+ Container protys-v110-protys-fuseki-1 Waiting 
+ Container protys-v110-protys-postgres-1 Waiting 
+ Container protys-v110-protys-fuseki-1 Healthy 
+ Container protys-v110-protys-postgres-1 Healthy 
+ Container protys-v110-protys-backend-1 Starting 
+ Container protys-v110-protys-backend-1 Started 
+ Container protys-v110-protys-fuseki-1 Waiting 
+ Container protys-v110-protys-backend-1 Waiting 
+ Container protys-v110-protys-fuseki-1 Healthy 
+ Container protys-v110-protys-backend-1 Healthy 
+ Container protys-v110-protys-init-1 Starting 
+ Container protys-v110-protys-init-1 Started 
+ Container protys-v110-protys-init-1 Waiting 
+ Container protys-v110-protys-init-1 Exited 
+ Container protys-v110-protys-frontend-1 Starting 
+ Container protys-v110-protys-frontend-1 Started 

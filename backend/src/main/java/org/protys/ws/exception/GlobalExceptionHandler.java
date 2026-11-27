@@ -198,6 +198,34 @@ public class GlobalExceptionHandler {
      * Handles all other uncaught exceptions.
      * Returns HTTP 500 Internal Server Error status.
      */
+    /** Recurso que ya existe: HTTP 409 con mensaje. */
+    @ExceptionHandler(ProtysConflictException.class)
+    public ResponseEntity<ErrorResponse> handleConflict(ProtysConflictException ex, WebRequest request) {
+        log.warn("Conflict: {}", ex.getMessage());
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.CONFLICT.value())
+                .error("Conflict")
+                .message(ex.getMessage())
+                .path(getRequestPath(request))
+                .build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.CONFLICT);
+    }
+
+    /** Parámetro obligatorio ausente: HTTP 400 con el nombre del parámetro, no 500. */
+    @ExceptionHandler(org.springframework.web.bind.MissingServletRequestParameterException.class)
+    public ResponseEntity<ErrorResponse> handleMissingParameter(
+            org.springframework.web.bind.MissingServletRequestParameterException ex, WebRequest request) {
+        ErrorResponse errorResponse = ErrorResponse.builder()
+                .timestamp(LocalDateTime.now())
+                .status(HttpStatus.BAD_REQUEST.value())
+                .error("Validation Error")
+                .message("Missing required parameter: " + ex.getParameterName())
+                .path(getRequestPath(request))
+                .build();
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGlobalException(
             Exception ex,

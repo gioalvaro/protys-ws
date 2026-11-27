@@ -120,6 +120,11 @@ protys:
   r2rml:
     path: classpath:r2rml/
 
+  # Conectores ERP: límites de cada consulta de un mapeo (superar el tope de filas es un error)
+  erp:
+    query-timeout-seconds: 60
+    max-rows: 500000
+
   # Semantic Reasoning Configuration
   reasoning:
     engine: hermit-swrlapi-drools

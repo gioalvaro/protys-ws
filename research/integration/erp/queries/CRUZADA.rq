@@ -1,0 +1,20 @@
+PREFIX i: <http://w3id.org/protys/ontology/iso15531#>
+PREFIX c: <http://w3id.org/protys/ontology/core#>
+PREFIX prod: <http://w3id.org/protys/ontology/product#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+# Consulta conjunta: en una sola respuesta, para cada ERP, cada recurso de manufactura con la
+# cantidad de operaciones que lo requieren, de procesos distintos y de productos fabricados.
+# El mismo patrón responde sobre los dos esquemas de origen porque ambos se expresan con PROTYS(KB).
+SELECT ?g ?resource ?resourceName (COUNT(DISTINCT ?op) AS ?operations)
+       (COUNT(DISTINCT ?process) AS ?processes) (COUNT(DISTINCT ?product) AS ?products)
+WHERE {
+  GRAPH ?g {
+    ?resource a i:ManufacturingResource .
+    ?op i:requiresResource ?resource ; i:partOfProcess ?process .
+    OPTIONAL { ?process c:produces ?product }
+  }
+  FILTER(STRSTARTS(STR(?g), "http://w3id.org/protys/erp/"))
+  OPTIONAL { GRAPH ?g { ?resource c:hasName ?resourceName } }
+}
+GROUP BY ?g ?resource ?resourceName
+ORDER BY ?g DESC(?operations) ?resource

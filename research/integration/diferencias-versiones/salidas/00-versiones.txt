@@ -1,0 +1,5 @@
+fecha_utc=2026-11-27T02:14:32Z
+etiqueta_v1.0.0=18e8951f65c9df9387d5bba29c5f79b925cdcc7b
+python=Python 3.9.6
+rdflib=7.6.0
+java=openjdk version "17.0.20.1" 2026-08-18

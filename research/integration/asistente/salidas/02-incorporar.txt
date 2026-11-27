@@ -1,0 +1,53 @@
+== Incorporación completa por la API — 2026-11-27T02:21:47Z
+== ontologies/iso10303-ap242-fragment.owl sha256=30488c54cf62da7563f560d375df960b19a39798f8b02f9b40991ca144a01113
+== research/data/automotive.ttl sha256=8e99de37fa5920c7779a50fd5179033ca68ea729ca0a1e4df837ac6477b8cd5a
+== ontologies/iso10303-alignment-rules.owl sha256=7dec45d5f10d855f39d4c89e3fed4c1bec063995a0380e06b659cc71ee881eee
+>>> [APROBADO] 0 línea de base — módulos=1 reglas=22 activas=22 razonamiento=SUCCESS owl=CONSISTENT
+>>> [APROBADO] 1 subir fragmento AP242 — http=201 sesión=00836a91-6b71-472c-8eee-b14dec800c79 triples=46
+>>> [APROBADO] 1b subir datos del piloto (automotive.ttl) — http=201 triples=203
+>>> [APROBADO] 2 validar (red + fragmento + datos) — http=200 OWL consistency verified for this session and permanent modules
+>>> [APROBADO] 3a cargar R27–R29 como reglas de la sesión — http=201 reglas=R27,R28,R29
+>>> [APROBADO] 3b seleccionar las 22 reglas registradas — http=200 seleccionadas=22
+>>> [APROBADO] 4 verificar (22 + 3 reglas) — http=200 ejecutadas=25 Verified 22 selected rules and 3 session rules; inferred 1419 triples
+>>> [APROBADO] 5 completar la incorporación — http=201 módulo=7eaedf9a-8056-4be8-84f7-34c87ef41318 activadas=25
+reglas registradas: 25 activas: 25
+R27–R29 activas: ['R27', 'R28', 'R29']
+módulos:
+  Canonical_Catalog_Integrated http://w3id.org/protys/ontology/Canonical_Catalog_Integrated# 4318
+  ISO 10303-242 (fragmento piloto) — datos de instancia http://w3id.org/protys/ontology/incorporated/00836a91-6b71-472c-8eee-b14dec800c79/data 203
+  ISO 10303-242 (fragmento piloto) http://w3id.org/protys/ontology/incorporated/00836a91-6b71-472c-8eee-b14dec800c79 46
+>>> [APROBADO] 6a reglas activas en la plataforma — activas=25 (22 + R27–R29), como h3_extended
+>>> [APROBADO] 6b razonamiento global consistente — owl CONSISTENT → CONSISTENT; entrada 4318 → 4662; inferidos 1167 → 1419
+>>> [APROBADO] 6c las 21 consultas del catálogo — idénticas antes y después
+# Controles H3 del piloto: plataforma contra la evaluación por programa
+
+Esperado: `research/evaluation/current/assertion-groups/{g30,g31}/H3_*.json` (resumido en `research/release/functional.json`).
+Antes y después: las mismas consultas ASK de `research/data/fixtures/assertions/` por `POST /api/sparql/execute`.
+
+| Control | Configuración evaluada | Esperado | Plataforma antes | Plataforma después | Resultado |
+|---|---|---|---|---|---|
+| H3_components_same_identity | g30 (h3_extended) | true | false | **true** | igual a lo esperado |
+| H3_configuration_without_pilot_marker | g30 (h3_extended) | false | false | **false** | igual a lo esperado |
+| H3_no_new_named_individuals | g30 (h3_extended) | true | false | **true** | igual a lo esperado |
+| H3_product_definition_without_pilot_marker | g30 (h3_extended) | false | false | **false** | igual a lo esperado |
+| H3_same_named_individual_set | g30 (h3_extended) | true | false | **true** | igual a lo esperado |
+| H3_shape_without_pilot_product | g30 (h3_extended) | false | false | **false** | igual a lo esperado |
+| H3_source_classes_preserved | g30 (h3_extended) | true | false | **true** | igual a lo esperado |
+| H3_unmapped_negative | g30 (h3_extended) | false | false | **false** | igual a lo esperado |
+| H3_pre_extension_no_classification | g31 (integrada + datos, sin extensión) | false | **false** | true | se compara con «antes» (sin el fragmento), pero sin los datos del piloto da falso de forma trivial: no es equivalente |
+
+Controles g30 comparables: 8 de 8 iguales a lo esperado.
+>>> [APROBADO] 6d controles H3 (g30) contra lo esperado — 8 de 8 iguales
+Resumen — incorporación completa por la API (2026-11-27T02:22:11Z)
+APROBADO  0 línea de base                                     módulos=1 reglas=22 activas=22 razonamiento=SUCCESS owl=CONSISTENT
+APROBADO  1 subir fragmento AP242                              http=201 sesión=00836a91-6b71-472c-8eee-b14dec800c79 triples=46
+APROBADO  1b subir datos del piloto (automotive.ttl)           http=201 triples=203
+APROBADO  2 validar (red + fragmento + datos)                  http=200 OWL consistency verified for this session and permanent modules
+APROBADO  3a cargar R27–R29 como reglas de la sesión        http=201 reglas=R27,R28,R29
+APROBADO  3b seleccionar las 22 reglas registradas             http=200 seleccionadas=22
+APROBADO  4 verificar (22 + 3 reglas)                          http=200 ejecutadas=25 Verified 22 selected rules and 3 session rules; inferred 1419 triples
+APROBADO  5 completar la incorporación                        http=201 módulo=7eaedf9a-8056-4be8-84f7-34c87ef41318 activadas=25
+APROBADO  6a reglas activas en la plataforma                   activas=25 (22 + R27–R29), como h3_extended
+APROBADO  6b razonamiento global consistente                   owl CONSISTENT → CONSISTENT; entrada 4318 → 4662; inferidos 1167 → 1419
+APROBADO  6c las 21 consultas del catálogo                    idénticas antes y después
+APROBADO  6d controles H3 (g30) contra lo esperado             8 de 8 iguales
