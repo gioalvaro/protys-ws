@@ -30,6 +30,8 @@ jobs:
         run: ./backend/mvnw -B -f backend/pom.xml verify
       - name: Verify output preservation
         run: python3 -m unittest discover -s research/evaluation/tests -v
+      - name: Install rdflib for the platform loader tests (same version as docker-compose.yml)
+        run: python3 -m pip install --user --break-system-packages rdflib==7.1.4
       - name: Verify ownership checks and interrupted rule restoration
         run: python3 -m unittest discover -s scripts/tests -v
       - name: Verify functional scenarios and complete query outputs
