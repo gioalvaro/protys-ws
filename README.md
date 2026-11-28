@@ -6,12 +6,13 @@
 
 PROTYS-WS es el prototipo que pone en operación PROTYS(KB), una red de ontologías para la interoperabilidad semántica entre sistemas de información de manufactura. Permite explorar, consultar y gestionar formalizaciones de subconjuntos de ISO 15531 (ISO/TC 184/SC 4) e ISO 14040 (ISO/TC 207/SC 5), con un piloto separado de ISO 10303 AP242, y ejecutar razonamiento OWL y reglas SWRL. Se conecta en sólo lectura a bases de ERP (probado con ADempiere 3.9.4 y Odoo 17.0) y materializa sus datos con mapeos R2RML, y permite dar de alta, modificar, eliminar y deshacer individuos con validación OWL posterior.
 
-Esta versión (`v1.1.0`) contiene el código, la red, los datos del caso, el protocolo de evaluación, los resultados de la evaluación de `v1.0.0` y la evidencia de esta versión.
+Esta versión (`v1.1.1`) contiene el código, la red, los datos del caso, el protocolo de evaluación, los resultados de la evaluación de `v1.0.0` y la evidencia de `v1.1.0` y de esta versión. La red (`ontologies/`) y los resultados de la evaluación no cambian respecto de `v1.1.0`.
 
 ### Versiones
 
 - `v1.0.0`: versión evaluada; red, caso, evaluación reproducible y sus resultados.
 - `v1.1.0`: conectores ERP de sólo lectura con ADempiere y Odoo, gestión de individuos, módulo opcional de disyunciones, instancias ilustrativas del caso y pruebas complementarias (disyunciones, consultas QC01–QC18, ablación por regla y curva de costo).
+- `v1.1.1`: el explorador muestra también las propiedades (RF-02): servicio `GET /api/ontology/modules/{id}/properties` con los árboles de propiedades de objeto y de datos del grafo declarado, vista «Classes | Properties» con el detalle de cada propiedad y, en el detalle de cada clase, las propiedades cuyo dominio declarado la incluye; la vista de clases distingue un error de carga de un módulo vacío.
 
 ### Red de ontologías
 
@@ -149,6 +150,8 @@ La imagen del backend no incluye los procesos de la evaluación académica; la e
 | `GET` | `/api/dashboard` | Estadísticas generales |
 | `GET` | `/api/ontology/modules` | Módulos cargados |
 | `POST` | `/api/ontology/modules/upload` | Carga de un módulo OWL |
+| `GET` | `/api/ontology/modules/{id}/classes` | Jerarquía de clases de un módulo (raíces con sus subclases) |
+| `GET` | `/api/ontology/modules/{id}/properties` | Árboles de propiedades de objeto y de datos de un módulo y cantidad de propiedades de anotación |
 | `POST` | `/api/sparql/execute` | Ejecución de una consulta SPARQL |
 | `GET` | `/api/sparql/templates/competency` | Plantillas de las preguntas P1–P5 |
 | `GET` | `/api/alignment/rules` | Reglas SWRL |
@@ -237,7 +240,7 @@ Con esta versión, la comparación muestra las rutas de la carpeta nueva y los c
 
 El resumen de los resultados está en [research/release/README.md](research/release/README.md).
 
-Evidencia de esta versión:
+Evidencia de `v1.1.0`:
 
 | Resultado | Archivo | Campo |
 |---|---|---|
@@ -252,17 +255,27 @@ Evidencia de esta versión:
 | Diferencias con `v1.0.0` | `research/integration/diferencias-versiones/salidas/` | |
 | Suites de pruebas | `research/integration/suites/` | |
 
+Evidencia de esta versión (`v1.1.1`):
+
+| Resultado | Archivo | Campo |
+|---|---|---|
+| Árboles de propiedades del catálogo integrado por la API: 116 de objeto (103 raíces, profundidad 2 contando la raíz como 1), 107 de datos (107 raíces, profundidad 1), 0 de anotación | `research/integration/explorador/salidas/api-properties.json`, `propiedades.txt` | `resumen` |
+| Conteo independiente con rdflib: los ocho módulos base frente a la Tabla 3.11, el conjunto integrado archivo por archivo y la comparación con el servicio | `research/integration/explorador/salidas/conteo-independiente.txt`, `conteo-independiente.json` | `A_ocho_modulos`, `B_integrated`, `E_comparacion` |
+| Jerarquía de clases de esta versión frente a la de `v1.1.0` (E-13): el mismo árbol de 128 clases y 65 raíces; cuatro clases cambian `propertyCount` | `research/integration/explorador/salidas/clases-v1.1.0-vs-v1.1.1.txt`, `api-classes-v1.1.1.json` | `clases_con_propertyCount_distinto` |
+| Capturas del explorador con el selector, el detalle de una propiedad y el de una clase con sus propiedades | `research/integration/capturas-interfaz/capturas/A2b-*.png`, `A3b-*.png`, `A9a-*.png` a `A9c-*.png` | |
+| Suites de pruebas de esta versión | `research/integration/suites/v1.1.1/` | |
+
 ## 7. Pruebas
 
 ```bash
-cd backend && ./mvnw test                                 # API: 288 pruebas, 17 salteadas (las de sólo lectura con PostgreSQL)
-cd frontend && npm ci && npm test -- --watchAll=false     # interfaz: 88 pruebas en 16 suites
+cd backend && ./mvnw test                                 # API: 298 pruebas, 17 salteadas (las de sólo lectura con PostgreSQL)
+cd frontend && npm ci && npm test -- --watchAll=false     # interfaz: 96 pruebas en 17 suites
 python3 -m unittest discover -s scripts/tests             # guiones de scripts/: 29 pruebas
 python3 -m unittest discover -s research/evaluation/tests # evaluación: 16 pruebas
 sh research/integration/erp-solo-lectura/solo-lectura.sh  # las 17 de sólo lectura, con un PostgreSQL desechable
 ```
 
-`sh research/integration/suites/correr.sh` corre todas y guarda las salidas en `research/integration/suites/`.
+`sh research/integration/suites/correr.sh` corre todas y guarda las salidas en `research/integration/suites/` (las de `v1.1.0`); las de esta versión están en `research/integration/suites/v1.1.1/`.
 
 ## 8. Alcance
 
@@ -271,4 +284,4 @@ sh research/integration/erp-solo-lectura/solo-lectura.sh  # las 17 de sólo lect
 
 ## 9. Cómo citar
 
-Fraga, A. L. (2026). *PROTYS-WS y PROTYS(KB)* (v1.1.0) [Software]. Universidad Tecnológica Nacional, Facultad Regional Santa Fe. Los mismos datos, en formato legible por máquina, están en [CITATION.cff](CITATION.cff).
+Fraga, A. L. (2026). *PROTYS-WS y PROTYS(KB)* (v1.1.1) [Software]. Universidad Tecnológica Nacional, Facultad Regional Santa Fe. Los mismos datos, en formato legible por máquina, están en [CITATION.cff](CITATION.cff).
