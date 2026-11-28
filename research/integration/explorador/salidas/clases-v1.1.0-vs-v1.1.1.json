@@ -1,0 +1,111 @@
+{
+ "v110": {
+  "raices": 65,
+  "clases_distintas": 128,
+  "nodos_del_arbol": 131,
+  "profundidad_maxima_por_nodos": 4,
+  "profundidad_maxima_por_aristas": 3
+ },
+ "v111": {
+  "raices": 65,
+  "clases_distintas": 128,
+  "nodos_del_arbol": 131,
+  "profundidad_maxima_por_nodos": 4,
+  "profundidad_maxima_por_aristas": 3
+ },
+ "mismo_arbol": true,
+ "campos_v110": [
+  "dataProperties",
+  "description",
+  "displayName",
+  "individuals",
+  "label",
+  "localName",
+  "objectProperties",
+  "propertyCount",
+  "subclasses",
+  "superClassUris",
+  "uri"
+ ],
+ "campos_v111": [
+  "dataProperties",
+  "description",
+  "displayName",
+  "individuals",
+  "label",
+  "localName",
+  "objectProperties",
+  "propertyCount",
+  "subclasses",
+  "superClassUris",
+  "uri"
+ ],
+ "campos_nuevos": [],
+ "otros_campos_que_cambian": [],
+ "campos_que_pasan_de_null_a_lista": {
+  "objectProperties": {
+   "null_en_v110": 131,
+   "lista_en_v111": 131,
+   "no_vacia_en_v111": 30
+  },
+  "dataProperties": {
+   "null_en_v110": 131,
+   "lista_en_v111": 131,
+   "no_vacia_en_v111": 6
+  }
+ },
+ "clases_con_propertyCount_distinto": [
+  {
+   "clase": "http://w3id.org/protys/ontology/process#Procedure_Activity",
+   "propertyCount_v110": 0,
+   "propertyCount_v111": 1,
+   "calculado_como_en_v110_con_rdflib": 0,
+   "entran": [
+    {
+     "propiedad": "http://w3id.org/protys/ontology/process#hasParameter",
+     "causa": "la clase forma parte de una unión declarada como dominio"
+    }
+   ],
+   "salen": []
+  },
+  {
+   "clase": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+   "propertyCount_v110": 3,
+   "propertyCount_v111": 4,
+   "calculado_como_en_v110_con_rdflib": 3,
+   "entran": [
+    {
+     "propiedad": "http://w3id.org/protys/ontology/iso14040#refersToMaterial",
+     "causa": "la clase forma parte de una unión declarada como dominio"
+    }
+   ],
+   "salen": []
+  },
+  {
+   "clase": "http://w3id.org/protys/ontology/iso14040#ElementaryFlow",
+   "propertyCount_v110": 0,
+   "propertyCount_v111": 1,
+   "calculado_como_en_v110_con_rdflib": 0,
+   "entran": [
+    {
+     "propiedad": "http://w3id.org/protys/ontology/iso14040#refersToMaterial",
+     "causa": "la clase forma parte de una unión declarada como dominio"
+    }
+   ],
+   "salen": []
+  },
+  {
+   "clase": "http://w3id.org/protys/ontology/process#Procedure",
+   "propertyCount_v110": 0,
+   "propertyCount_v111": 1,
+   "calculado_como_en_v110_con_rdflib": 0,
+   "entran": [
+    {
+     "propiedad": "http://w3id.org/protys/ontology/process#hasParameter",
+     "causa": "la clase forma parte de una unión declarada como dominio"
+    }
+   ],
+   "salen": []
+  }
+ ]
+}

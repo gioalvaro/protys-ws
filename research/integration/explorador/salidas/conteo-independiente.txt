@@ -1,0 +1,48 @@
+Conteo independiente con rdflib (sólo lo declarado, sin inferencia).
+Archivos de la configuración "integrated" leídos de research/catalog.json: 13
+
+A. Ocho módulos base de ontologies/ frente a la Tabla 3.11
+módulo        archivo                            clases loc/nuevas  objeto  datos  anot  Tabla 3.11 (clases loc/nuevas, objeto, datos)  ¿coincide?
+Núcleo        ontologies/core-concepts.owl              4/4              8      4     0  4/4, 8, 4  sí
+Producto      ontologies/product-module.owl            11/11             4      0     0  11/11, 4, 0  sí
+Proceso       ontologies/process-module.owl             8/8              3      0     0  8/8, 3, 0  sí
+Recursos      ontologies/resource-module.owl           15/15            11      0     0  15/15, 11, 0  sí
+Empresa       ontologies/enterprise-module.owl          5/5              2      0     0  5/5, 2, 0  sí
+ISO15531      ontologies/iso15531-module.owl           18/18            21     16     0  18/18, 21, 16  sí
+ISO14040      ontologies/iso14040-module.owl           15/15            11     12     0  15/15, 11, 12  sí
+Alineamiento  ontologies/alignment-rules.owl           11/11            21      6     0  11/11, 21, 6  sí
+Total de los ocho módulos (distintas): 87 clases, 81 de objeto, 38 de datos; Tabla 3.11: 87, 81, 38 (coincide)
+
+B. Configuración "integrated" (módulo Canonical_Catalog_Integrated), lo que agrega cada archivo
+archivo                                     clases  objeto  datos   (nuevas respecto de los archivos anteriores)
+ontologies/core-concepts.owl                     4       8      4
+ontologies/product-module.owl                   11       4      0
+ontologies/process-module.owl                    8       3      0
+ontologies/resource-module.owl                  15      11      0
+ontologies/enterprise-module.owl                 5       2      0
+research/model/research-profile.owl              9      29     37
+ontologies/iso15531-module.owl                  18      21     16
+research/model/manufacturing-profile.owl         4       1      0
+ontologies/iso14040-module.owl                  15      11     12
+research/model/environmental-profile.owl         1       0      0
+ontologies/paint-case-extension.owl             30      14     33
+research/data/functional.ttl                     0       0      0
+ontologies/alignment-rules.owl                   8      12      5
+Total "integrated": 128 clases, 116 de objeto, 107 de datos, 0 de anotación
+
+C. Archivos de "h3_extended" que no están en "integrated" (total de la tesis con piloto: 134 clases, 119 de objeto, 109 de datos)
++ ontologies/iso10303-ap242-fragment.owl         6       3      2   clases: Configuration_Item, PilotComponentRecord, PilotProductRecord, Product_Definition, Product_Definition_Formation, Shape_Representation; objeto: definesFormation, hasShapeRepresentation, managesConfigurationOf; datos: definitionId, versionId
++ research/data/automotive.ttl                   0       0      0   clases: —; objeto: —; datos: —
++ ontologies/iso10303-alignment-rules.owl        0       0      0   clases: —; objeto: —; datos: —
+Total "h3_extended": 134 clases, 119 de objeto, 109 de datos (coincide con el total de la tesis con piloto)
+
+D. Fuera de los árboles (conjunto "integrated")
+Propiedades con una característica declarada y sin owl:ObjectProperty ni owl:DatatypeProperty: 0
+Predicados usados que no están declarados como propiedad (fuera de RDF, RDFS, OWL, XSD y SWRL): 0
+Propiedades nombradas en reglas SWRL, rdfs:subPropertyOf, owl:inverseOf, owl:equivalentProperty u owl:onProperty sin declarar: 0
+rdfs:label, rdfs:comment y owl:versionInfo se usan como anotaciones incorporadas de RDFS y OWL; no se declaran como owl:AnnotationProperty y no se cuentan.
+
+E. Árboles con la regla del servicio (raíz = sin superpropiedad nombrada en el grupo) y comparación con el servicio
+de objeto: rdflib 116 propiedades, 103 raíces, profundidad 2 por nodos (1 por aristas); servicio 116 alcanzadas en el árbol (116 declaradas), 103 raíces, profundidad 2 por nodos. Coinciden
+de datos: rdflib 107 propiedades, 107 raíces, profundidad 1 por nodos (0 por aristas); servicio 107 alcanzadas en el árbol (107 declaradas), 107 raíces, profundidad 1 por nodos. Coinciden
+de anotación: rdflib 0, servicio 0 (coinciden)

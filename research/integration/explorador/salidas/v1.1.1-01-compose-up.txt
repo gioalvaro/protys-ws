@@ -1,0 +1,429 @@
+ Image protys-v110-backend:maintenance Building 
+ Image protys-v110-protys-init Building 
+ Image protys-v110-protys-frontend Building 
+ Image protys-v110-backend:maintenance Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.40kB done
+#1 DONE 0.0s
+
+#2 [protys-init internal] load build definition from Dockerfile
+#2 transferring dockerfile: 430B 0.0s done
+#2 DONE 0.0s
+
+#3 [protys-frontend internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.33kB done
+#3 DONE 0.0s
+
+#4 [protys-init internal] load metadata for docker.io/library/python:3.12-slim
+#4 DONE 0.0s
+
+#5 [protys-backend internal] load build definition from Dockerfile
+#5 transferring dockerfile: 3.31kB done
+#5 DONE 0.1s
+
+#6 [protys-init internal] load .dockerignore
+#6 transferring context: 221B 0.0s done
+#6 DONE 0.1s
+
+#7 [protys-init 1/8] FROM docker.io/library/python:3.12-slim
+#7 CACHED
+
+#8 [protys-frontend internal] load metadata for docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#8 DONE 0.1s
+
+#9 [protys-init internal] load build context
+#9 transferring context: 41.80kB 0.1s done
+#9 DONE 0.1s
+
+#10 [protys-frontend internal] load metadata for docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#10 DONE 0.2s
+
+#11 [protys-frontend internal] load .dockerignore
+#11 transferring context: 101B done
+#11 DONE 0.0s
+
+#12 [protys-frontend builder 1/6] FROM docker.io/library/node:24.18.0-alpine@sha256:a0b9bf06e4e6193cf7a0f58816cc935ff8c2a908f81e6f1a95432d679c54fbfd
+#12 DONE 0.0s
+
+#13 [protys-frontend builder 2/6] WORKDIR /app
+#13 CACHED
+
+#14 [protys-frontend stage-1 1/3] FROM docker.io/library/nginx:1.30.5-alpine@sha256:0985e772fb9f729e6fa0980da05fca5d9c468e870eed43071545afa9d2e27d94
+#14 CACHED
+
+#15 [protys-frontend internal] load build context
+#15 transferring context: 741.40kB 0.0s done
+#15 DONE 0.1s
+
+#16 [protys-frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#16 DONE 0.2s
+
+#17 [protys-frontend builder 3/6] COPY package.json package-lock.json .npmrc ./
+#17 DONE 0.2s
+
+#18 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#18 ...
+
+#6 [protys-backend internal] load .dockerignore
+#6 transferring context: 221B 0.0s done
+#6 DONE 0.1s
+
+#19 [protys-backend internal] load metadata for docker.io/library/maven:3.9.9-eclipse-temurin-17
+#19 DONE 1.6s
+
+#20 [protys-backend internal] load metadata for docker.io/library/eclipse-temurin:17-jre-jammy
+#20 DONE 1.6s
+
+#21 [protys-backend builder 1/7] FROM docker.io/library/maven:3.9.9-eclipse-temurin-17@sha256:f58d59b6273e785ac0a4477f6e9b5ba1d7731c75b906c0f7b34076f1851318cc
+#21 DONE 0.0s
+
+#22 [protys-backend builder 2/7] WORKDIR /opt/protys
+#22 CACHED
+
+#23 [protys-backend runtime  1/11] FROM docker.io/library/eclipse-temurin:17-jre-jammy@sha256:c6a5dd70fb24f4e07ef88cbda8efb613a5a649a1af071a41de8eaabd1ee6b5da
+#23 CACHED
+
+#24 [protys-backend internal] load build context
+#24 transferring context: 87.06kB 0.0s done
+#24 DONE 0.1s
+
+#25 [protys-fuseki builder 3/7] COPY backend/ backend/
+#25 DONE 0.3s
+
+#26 [protys-backend builder 4/7] COPY research/runtime/ research/runtime/
+#26 DONE 0.1s
+
+#27 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#27 0.225 research/runtime/vendor/owlapi-parent-4.5.27.pom: OK
+#27 ...
+
+#28 [protys-init 2/8] RUN pip install --no-cache-dir rdflib==7.1.4
+#28 1.954 Collecting rdflib==7.1.4
+#28 2.253   Downloading rdflib-7.1.4-py3-none-any.whl.metadata (11 kB)
+#28 2.317 Collecting pyparsing<4,>=2.1.0 (from rdflib==7.1.4)
+#28 2.351   Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+#28 2.386 Downloading rdflib-7.1.4-py3-none-any.whl (565 kB)
+#28 2.502    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 565.1/565.1 kB 8.5 MB/s eta 0:00:00
+#28 2.533 Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+#28 2.554 Installing collected packages: pyparsing, rdflib
+#28 2.790 Successfully installed pyparsing-3.3.3 rdflib-7.1.4
+#28 2.790 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#28 2.930 
+#28 2.930 [notice] A new release of pip is available: 25.0.1 -> 26.3
+#28 2.930 [notice] To update, run: pip install --upgrade pip
+#28 DONE 3.0s
+
+#29 [protys-init 3/8] WORKDIR /opt/protys
+#29 DONE 0.1s
+
+#30 [protys-init 4/8] COPY ontologies/ ontologies/
+#30 DONE 0.2s
+
+#31 [protys-backend runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#31 1.363 Get:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease [270 kB]
+#31 ...
+
+#32 [protys-init 5/8] COPY research/catalog.json research/catalog.json
+#32 DONE 0.1s
+
+#33 [protys-init 6/8] COPY research/model/ research/model/
+#33 DONE 0.2s
+
+#18 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#18 3.209 npm warn deprecated workbox-cacheable-response@6.6.0: workbox-background-sync@6.6.0
+#18 ...
+
+#34 [protys-init 7/8] COPY research/data/ research/data/
+#34 DONE 0.4s
+
+#18 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#18 3.226 npm warn deprecated whatwg-encoding@1.0.5: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+#18 3.249 npm warn deprecated workbox-google-analytics@6.6.0: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
+#18 3.300 npm warn deprecated w3c-hr-time@1.0.2: Use your platform's native performance.now() and performance.timeOrigin.
+#18 ...
+
+#35 [protys-init 8/8] COPY docker/load_canonical.py docker/init-fuseki.sh docker/
+#35 DONE 0.2s
+
+#36 [protys-init] exporting to image
+#36 exporting layers
+#36 exporting layers 0.2s done
+#36 writing image sha256:c11ddbe5fda12962d835622353ded66ae966fdd556d9df186d59c871056996a3
+#36 writing image sha256:c11ddbe5fda12962d835622353ded66ae966fdd556d9df186d59c871056996a3 done
+#36 naming to docker.io/library/protys-v110-protys-init 0.0s done
+#36 DONE 0.2s
+
+#37 [protys-init] resolving provenance for metadata file
+#37 DONE 0.0s
+
+#18 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#18 3.770 npm warn deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+#18 4.040 npm warn deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+#18 4.090 npm warn deprecated sourcemap-codec@1.4.8: Please use @jridgewell/sourcemap-codec instead
+#18 4.275 npm warn deprecated rollup-plugin-terser@7.0.2: This package has been deprecated and is no longer maintained. Please use @rollup/plugin-terser
+#18 4.307 npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+#18 4.908 npm warn deprecated q@1.5.1: You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
+#18 4.908 npm warn deprecated
+#18 4.908 npm warn deprecated (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
+#18 6.478 npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+#18 6.748 npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+#18 7.234 npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+#18 7.574 npm warn deprecated domexception@2.0.1: Use your platform's native DOMException instead
+#18 9.431 npm warn deprecated abab@2.0.6: Use your platform's native atob() and btoa() methods instead
+#18 ...
+
+#31 [protys-backend runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#31 3.109 Get:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease [128 kB]
+#31 3.621 Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-backports InRelease [127 kB]
+#31 4.283 Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease [129 kB]
+#31 4.734 Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 Packages [1,758 kB]
+#31 5.722 Get:6 http://ports.ubuntu.com/ubuntu-ports jammy/restricted arm64 Packages [24.2 kB]
+#31 5.722 Get:7 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 Packages [17.2 MB]
+#31 8.533 Get:8 http://ports.ubuntu.com/ubuntu-ports jammy/multiverse arm64 Packages [224 kB]
+#31 8.561 Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/multiverse arm64 Packages [81.6 kB]
+#31 8.566 Get:10 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 Packages [1,729 kB]
+#31 9.023 Get:11 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 Packages [4,702 kB]
+#31 9.485 Get:12 http://ports.ubuntu.com/ubuntu-ports jammy-updates/restricted arm64 Packages [8,581 kB]
+#31 10.43 Get:13 http://ports.ubuntu.com/ubuntu-ports jammy-backports/universe arm64 Packages [33.7 kB]
+#31 10.44 Get:14 http://ports.ubuntu.com/ubuntu-ports jammy-backports/main arm64 Packages [82.5 kB]
+#31 10.45 Get:15 http://ports.ubuntu.com/ubuntu-ports jammy-security/universe arm64 Packages [1,436 kB]
+#31 10.61 Get:16 http://ports.ubuntu.com/ubuntu-ports jammy-security/multiverse arm64 Packages [75.6 kB]
+#31 10.62 Get:17 http://ports.ubuntu.com/ubuntu-ports jammy-security/main arm64 Packages [4,387 kB]
+#31 11.09 Get:18 http://ports.ubuntu.com/ubuntu-ports jammy-security/restricted arm64 Packages [8,274 kB]
+#31 ...
+
+#18 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#18 12.70 npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+#18 12.85 npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+#18 ...
+
+#31 [protys-backend runtime  2/11] RUN apt-get update && apt-get install -y --no-install-recommends curl  && rm -rf /var/lib/apt/lists/*
+#31 12.25 Fetched 49.3 MB in 12s (4,130 kB/s)
+#31 12.25 Reading package lists...
+#31 13.03 Reading package lists...
+#31 13.73 Building dependency tree...
+#31 13.92 Reading state information...
+#31 14.10 curl is already the newest version (7.81.0-1ubuntu1.30).
+#31 14.10 0 upgraded, 0 newly installed, 0 to remove and 7 not upgraded.
+#31 DONE 14.3s
+
+#38 [protys-backend runtime  3/11] WORKDIR /opt/protys
+#38 DONE 0.1s
+
+#18 [protys-frontend builder 4/6] RUN test "$(node --version)" = "v24.18.0"     && test "$(npm --version)" = "11.16.0"     && npm ci --no-audit --no-fund
+#18 15.32 npm warn deprecated @babel/plugin-proposal-private-methods@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
+#18 15.34 npm warn deprecated @babel/plugin-proposal-numeric-separator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-numeric-separator instead.
+#18 15.36 npm warn deprecated @babel/plugin-proposal-nullish-coalescing-operator@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-nullish-coalescing-operator instead.
+#18 15.37 npm warn deprecated @babel/plugin-proposal-optional-chaining@7.21.0: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-optional-chaining instead.
+#18 15.40 npm warn deprecated @babel/plugin-proposal-class-properties@7.18.6: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-class-properties instead.
+#18 15.94 npm warn deprecated source-map@0.8.0-beta.0: The work that was done in this beta branch won't be included in future versions
+#18 17.08 npm warn deprecated @babel/plugin-proposal-private-property-in-object@7.21.11: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-property-in-object instead.
+#18 17.56 
+#18 17.56 added 1417 packages in 17s
+#18 17.56 npm warn allow-scripts 2 packages have install scripts not yet covered by allowScripts:
+#18 17.56 npm warn allow-scripts   core-js@3.48.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+#18 17.56 npm warn allow-scripts   core-js-pure@3.48.0 (postinstall: node -e "try{require('./postinstall')}catch(e){}")
+#18 17.56 npm warn allow-scripts
+#18 17.56 npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+#18 17.56 npm notice
+#18 17.56 npm notice New major version of npm available! 11.16.0 -> 12.2.3
+#18 17.56 npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+#18 17.56 npm notice To update run: npm install -g npm@12.2.3
+#18 17.56 npm notice
+#18 DONE 18.1s
+
+#27 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#27 ...
+
+#39 [protys-frontend builder 5/6] COPY . .
+#39 DONE 0.1s
+
+#40 [protys-frontend builder 6/6] RUN npm run build
+#40 0.229 
+#40 0.229 > protys-ws-frontend@1.1.1 build
+#40 0.229 > react-scripts build
+#40 0.229 
+#40 0.694 (node:24) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+#40 0.694 (Use `node --trace-deprecation ...` to show where the warning was created)
+#40 0.696 Creating an optimized production build...
+#40 0.756 Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+#40 0.756   npx update-browserslist-db@latest
+#40 0.756   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#40 9.928 Browserslist: browsers data (caniuse-lite) is 9 months old. Please run:
+#40 9.928   npx update-browserslist-db@latest
+#40 9.928   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+#40 10.66 Compiled successfully.
+#40 10.66 
+#40 10.66 File sizes after gzip:
+#40 10.66 
+#40 10.68   213.03 kB  build/static/js/main.954701e9.js
+#40 10.68   7.89 kB    build/static/css/main.cf1bb6bb.css
+#40 10.68 
+#40 10.68 The project was built assuming it is hosted at /.
+#40 10.68 You can control this with the homepage field in your package.json.
+#40 10.68 
+#40 10.68 The build folder is ready to be deployed.
+#40 10.68 You may serve it with a static server:
+#40 10.68 
+#40 10.68   npm install -g serve
+#40 10.68   serve -s build
+#40 10.68 
+#40 10.68 Find out more about deployment here:
+#40 10.68 
+#40 10.68   https://cra.link/deployment
+#40 10.68 
+#40 DONE 11.0s
+
+#27 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#27 ...
+
+#41 [protys-frontend stage-1 3/3] COPY --from=builder /app/build /usr/share/nginx/html
+#41 DONE 0.1s
+
+#42 [protys-frontend] exporting to image
+#42 exporting layers 0.0s done
+#42 writing image sha256:a90d6d2cc448b0aa6123c3f561cd63a5b64bdd4456984ed5e6d18bfe726b9ec3 done
+#42 naming to docker.io/library/protys-v110-protys-frontend done
+#42 DONE 0.1s
+
+#43 [protys-frontend] resolving provenance for metadata file
+#43 DONE 0.0s
+
+#27 [protys-backend builder 5/7] RUN set -eu; echo '1c61b3c4a7da306d9c5dc3d1a759f5f7c81604ed2bcf6a495a96d9c495866f28  research/runtime/vendor/owlapi-parent-4.5.27.pom' | sha256sum -c -  && mvn -q -f research/runtime/swrl-worker/pom.xml install:install-file       -Dfile=/opt/protys/research/runtime/vendor/owlapi-parent-4.5.27.pom       -DgroupId=net.sourceforge.owlapi -DartifactId=owlapi-parent       -Dversion=4.5.27 -Dpackaging=pom -DgeneratePom=false  && for module in swrl-worker validator; do       mvn -q -f "research/runtime/$module/pom.xml" package dependency:copy-dependencies         -DoutputDirectory=target/dependency || exit 1;       find "/opt/protys/research/runtime/$module/target/dependency" -name '*.jar'         | LC_ALL=C sort | paste -sd: - > "research/runtime/$module/target/classpath.txt";       test -s "research/runtime/$module/target/classpath.txt";     done
+#27 DONE 71.1s
+
+#44 [protys-fuseki builder 6/7] RUN set -eu; for artifact in log4j-api log4j-core log4j-slf4j-impl; do       mvn -q -f research/runtime/validator/pom.xml dependency:copy         -Dartifact="org.apache.logging.log4j:$artifact:2.21.0"         -DoutputDirectory=/opt/protys/research/runtime/validator/target/fuseki-dependency;     done;     { tr ':' '\n' < research/runtime/validator/target/classpath.txt | sed '/\/slf4j-simple-/d';       find /opt/protys/research/runtime/validator/target/fuseki-dependency -name '*.jar'; }       | LC_ALL=C sort | paste -sd: - > research/runtime/validator/target/fuseki-classpath.txt
+#44 DONE 4.7s
+
+#45 [protys-backend builder 7/7] RUN java -Djava.awt.headless=true       -cp "research/runtime/swrl-worker/target/classes:$(cat research/runtime/swrl-worker/target/classpath.txt)"       org.protys.research.SwrlSmokeTest research/runtime/swrl-worker/target/docker-smoke.json  && java -Djava.awt.headless=true       -cp "research/runtime/validator/target/classes:$(cat research/runtime/validator/target/fuseki-classpath.txt)"       org.apache.jena.fuseki.main.cmds.FusekiMainCmd --help  && mvn -q -f backend/pom.xml package -DskipTests
+#45 7.114 fuseki [--config=FILE] [--mem|--desc=AssemblerFile|--file=FILE] [--port PORT] /DatasetPathName
+#45 7.114   Fuseki Main
+#45 7.114       --mem                  Create an in-memory, non-persistent dataset for the server
+#45 7.114       --file=FILE            Create an in-memory, non-persistent dataset for the server, initialised with the contents of the file
+#45 7.114       --tdb2                 Use TDB2 for command line persistent datasets
+#45 7.114       --tdb1                 Use TDB1 for command line persistent datasets (default is TDB2)
+#45 7.114       --loc=DIR              Use an existing TDB database (or create if does not exist)
+#45 7.114       --memTDB               Create an in-memory, non-persistent dataset using TDB (testing only)
+#45 7.114       --rdfs=FILE            Apply RDFS on top of the dataset
+#45 7.114       --config=FILE          Use a configuration file to determine the services
+#45 7.114       --desc=                Assembler description file
+#45 7.114       --port                 Listen on this port number
+#45 7.114       --localhost            Listen only on the localhost interface
+#45 7.114       --timeout=             Global timeout applied to queries (value in ms) -- format is X[,Y] 
+#45 7.114       --update               Allow updates (via SPARQL Update and SPARQL HTTP Update)
+#45 7.114       --gzip=on|off          Enable GZip compression (HTTP Accept-Encoding) if request header set
+#45 7.114       --base=DIR             Directory for static content
+#45 7.114       --pathBase=DIR         Context path for datasets
+#45 7.114       --sparqler=DIR         Run with SPARQLer services Directory for static content
+#45 7.114       --validators           Install validators
+#45 7.114       --general=PATH         Add a general SPARQL endpoint (without a dataset) at /PATH
+#45 7.114       --auth=[basic|digest]   Run the server using basic or digest authentication
+#45 7.114       --https=CONF           https certificate access details. JSON file { "cert":FILE , "passwd"; SECRET } 
+#45 7.114       --httpsPort=NUM        https port (default port is 3043)
+#45 7.114       --passwd=FILE          Password file
+#45 7.114       --jetty=FILE           jetty.xml server configuration
+#45 7.114       --no-cors              Disable CORS
+#45 7.114       --ping                 Enable /$/ping
+#45 7.114       --stats                Enable /$/stats
+#45 7.114       --metrics              Enable /$/metrics
+#45 7.114       --compact              Enable /$/compact/*
+#45 7.114       --modules=true|false   Enable Fuseki modules
+#45 7.114   Symbol definition
+#45 7.114       --set                  Set a configuration symbol to a value
+#45 7.114   General
+#45 7.114       -v   --verbose         Verbose
+#45 7.114       -q   --quiet           Run with minimal output
+#45 7.114       --debug                Output information for debugging
+#45 7.114       --help
+#45 7.114       --version              Version information
+#45 7.114       --strict               Operate in strict SPARQL mode (no extensions of any kind)
+#45 DONE 38.5s
+
+#46 [protys-fuseki runtime  4/11] COPY --from=builder /opt/protys/backend/target/protys-ws-*.jar backend/app.jar
+#46 DONE 0.1s
+
+#47 [protys-backend runtime  5/11] COPY --from=builder /opt/protys/research/runtime/ research/runtime/
+#47 DONE 0.2s
+
+#48 [protys-fuseki runtime  6/11] COPY ontologies/ ontologies/
+#48 DONE 0.1s
+
+#49 [protys-backend runtime  7/11] COPY research/catalog.json research/catalog.json
+#49 DONE 0.1s
+
+#50 [protys-fuseki runtime  8/11] COPY research/model/ research/model/
+#50 DONE 0.2s
+
+#51 [protys-fuseki runtime  9/11] COPY research/data/ research/data/
+#51 DONE 0.3s
+
+#52 [protys-fuseki runtime 10/11] COPY docker/fuseki-config.ttl docker/fuseki-config.ttl
+#52 DONE 0.1s
+
+#53 [protys-backend runtime 11/11] WORKDIR /opt/protys/backend
+#53 DONE 0.1s
+
+#54 [protys-fuseki] exporting to image
+#54 exporting layers
+#54 exporting layers 0.3s done
+#54 writing image sha256:3c832794df8f28314c449e0dcaf607d0d131bc327f84c9c4819116a7673dc2d2 done
+#54 naming to docker.io/library/protys-v110-backend:maintenance done
+#54 DONE 0.4s
+
+#55 [protys-backend] exporting to image
+#55 exporting layers 0.4s done
+#55 writing image sha256:245775657ff398569a980e8d2c9638a54aa049b9177afd75dc2e9c34a02aae94 done
+#55 naming to docker.io/library/protys-v110-backend:maintenance done
+#55 DONE 0.4s
+
+#56 [protys-fuseki] resolving provenance for metadata file
+#56 DONE 0.1s
+
+#57 [protys-backend] resolving provenance for metadata file
+#57 DONE 0.0s
+ Image protys-v110-protys-init Built 
+ Image protys-v110-backend:maintenance Built 
+ Image protys-v110-protys-frontend Built 
+ Image protys-v110-backend:maintenance Built 
+ Network protys-v110_protys-network Creating 
+ Network protys-v110_protys-network Creating 
+ Volume protys-v110_postgres-data Creating 
+ Volume protys-v110_postgres-data Creating 
+ Volume protys-v110_fuseki-data Creating 
+ Volume protys-v110_fuseki-data Creating 
+ Volume protys-v110_postgres-data Created 
+ Volume protys-v110_postgres-data Created 
+ Volume protys-v110_fuseki-data Created 
+ Volume protys-v110_fuseki-data Created 
+ Network protys-v110_protys-network Created 
+ Network protys-v110_protys-network Created 
+ Container protys-v110-protys-postgres-1 Creating 
+ Container protys-v110-protys-fuseki-1 Creating 
+ Container protys-v110-protys-postgres-1 Created 
+ Container protys-v110-protys-fuseki-1 Created 
+ Container protys-v110-protys-backend-1 Creating 
+ Container protys-v110-protys-backend-1 Created 
+ Container protys-v110-protys-init-1 Creating 
+ Container protys-v110-protys-init-1 Created 
+ Container protys-v110-protys-frontend-1 Creating 
+ Container protys-v110-protys-frontend-1 Created 
+ Container protys-v110-protys-fuseki-1 Starting 
+ Container protys-v110-protys-postgres-1 Starting 
+ Container protys-v110-protys-fuseki-1 Started 
+ Container protys-v110-protys-postgres-1 Started 
+ Container protys-v110-protys-fuseki-1 Waiting 
+ Container protys-v110-protys-postgres-1 Waiting 
+ Container protys-v110-protys-postgres-1 Healthy 
+ Container protys-v110-protys-fuseki-1 Healthy 
+ Container protys-v110-protys-backend-1 Starting 
+ Container protys-v110-protys-backend-1 Started 
+ Container protys-v110-protys-fuseki-1 Waiting 
+ Container protys-v110-protys-backend-1 Waiting 
+ Container protys-v110-protys-fuseki-1 Healthy 
+ Container protys-v110-protys-backend-1 Healthy 
+ Container protys-v110-protys-init-1 Starting 
+ Container protys-v110-protys-init-1 Started 
+ Container protys-v110-protys-init-1 Waiting 
+ Container protys-v110-protys-init-1 Exited 
+ Container protys-v110-protys-frontend-1 Starting 
+ Container protys-v110-protys-frontend-1 Started 

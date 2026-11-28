@@ -1,0 +1,91 @@
+# solo-lectura.sh — 2026-11-28T04:30:21Z
+# PostgreSQL desechable: postgres:15@sha256:0dda651c259bfe50e2bcc28ca23d1fcca772fa90b0210803aa7b97379ccf4e85; Java: openjdk version "17.0.20.1" 2026-08-18
+# usuario 'escritor' = dueño de la base 'desechable' (puede escribir en la tabla prueba)
+PGJDBC timestamptz '2026-11-18 10:15:30-03' -> "2026-11-18T13:15:30Z"^^xsd:dateTime
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG session-characteristics execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG session-characteristics execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG session-characteristics execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG session-characteristics executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG session-characteristics execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG options-default_transaction_read_only executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG options-default_transaction_read_only execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas=0
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG readOnlyMode=always executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG readOnlyMode=always execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=simple executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=simple execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extended executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extended execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas=0
+PGJDBC CONFIG preferQueryMode=extendedForPrepared executeQuery [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas=1
+PGJDBC CONFIG preferQueryMode=extendedForPrepared execute [SELECT 1; COMMIT; SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> aceptada; filas=1
+PGJDBC pg_sleep(5) con límite de 1 s -> R2RML_DATA_ERROR: logical table of http://e.org/#T exceeded the query timeout of 1 s (1 s)
+PGJDBC URL [sin parámetros] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC URL [?options=-c%20default_transaction_read_only%3Doff] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+PGJDBC URL [?readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Doff] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+PGJDBC URL [?readOnlyMode=ignore] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC URL [?readOnly=false] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC TRAMPA [?readOnlyMode=ignore&options=-c%20search_path%3Dtrampa,pg_catalog,public%20-c%20default_transaction_read_only%3Doff] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+PGJDBC TRAMPA [?readOnlyMode=ignore&currentSchema=trampa,pg_catalog,public&options=-c%20default_transaction_read_only%3Doff] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+PGJDBC PARSE extendido [SELECT 'a\'; INSERT INTO prueba VALUES (99) --'] sentencias según el divisor (scs=off)=1; standard_conforming_strings del servidor=on -> rechazada, SQLSTATE 42601: ERROR: cannot insert multiple commands into a prepared statement; filas en prueba=0
+PGJDBC PARSE simple [SELECT 'a\'; INSERT INTO prueba VALUES (99) --'] sentencias según el divisor (scs=off)=1; standard_conforming_strings del servidor=on -> aceptada; filas en prueba=1
+PGJDBC conexión del conector (autocommit=false, readOnly=true) -> INSERT rechazado, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction
+PGJDBC autocommit=true readOnly=true driver=42.6.0 servidor=15.19 (Debian 15.19-1.pgdg13+2) -> INSERT aceptado; filas en prueba=1
+PGJDBC SALTEO A [SELECT 1 AS a_$x$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 AS b_$x$] filtro -> rechazada: ';' is not allowed: a mapping query must be a single statement; executeQuery por la conexión del conector -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+PGJDBC SALTEO B [SELECT $é$ ' $é$ ; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 1 --'] filtro -> rechazada: ';' is not allowed: a mapping query must be a single statement; executeQuery por la conexión del conector -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+PGJDBC SALTEO C [SELECT 1 --\r; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT; SELECT 2] filtro -> rechazada: ';' is not allowed: a mapping query must be a single statement; executeQuery por la conexión del conector -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+PGJDBC COMPROBACION executeQuery [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas en prueba=0
+PGJDBC COMPROBACION execute [SELECT 1; COMMIT; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25006: ERROR: cannot execute INSERT in a read-only transaction; filas en prueba=0
+PGJDBC COMPROBACION executeQuery [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> rechazada, SQLSTATE 0100E: Multiple ResultSets were returned by the query.; filas en prueba=1
+PGJDBC COMPROBACION execute [SELECT 1; COMMIT; BEGIN READ WRITE; INSERT INTO prueba VALUES (99); COMMIT] -> aceptada; filas en prueba=1
+PGJDBC COMPROBACION executeQuery [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas en prueba=0
+PGJDBC COMPROBACION execute [SELECT 1; SET TRANSACTION READ WRITE; INSERT INTO prueba VALUES (99)] -> rechazada, SQLSTATE 25001: ERROR: transaction read-write mode must be set before any query; filas en prueba=0
+PGJDBC PARAM entorno PGOPTIONS=null
+PGJDBC PARAM [sin parámetros] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?currentSchema=public] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?ApplicationName=prueba] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?assumeMinServerVersion=9.0] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?assumeMinServerVersion=15] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?autosave=always] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?autosave=conservative] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?autosave=always&cleanupSavepoints=true] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?replication=database] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?stringtype=unspecified] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Don%20-c%20default_transaction_read_only%3Doff] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+PGJDBC PARAM [?readOnlyMode=ignore&options=-c%20default_transaction_read_only%3Doff%20-c%20default_transaction_read_only%3Don] default_ro=on tx_ro=on; [INSERT INTO prueba VALUES (1)] rechazada 25006 filas=0; [SELECT escribe()] rechazada 25006 filas=0
+PGJDBC PARAM [?readOnlyMode=ignore&options=-c%20transaction_read_only%3Doff] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+PGJDBC PARAM [?readOnlyMode=ignore&options=-c%20session_replication_role%3Dreplica] conexión rechazada: default_transaction_read_only=off after connecting: the connector URL cannot change the read-only settings
+# surefire:
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.534 s -- in org.protys.ws.service.ERPReadOnlyConnectionIntegrationTest
+# código de salida de maven: 0

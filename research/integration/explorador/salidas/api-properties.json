@@ -1,0 +1,4726 @@
+{
+ "resumen": {
+  "modulo": "Canonical_Catalog_Integrated",
+  "propiedades_de_objeto": {
+   "raices": 103,
+   "nombres_raices": [
+    "acquiredBy",
+    "allocationForOperation",
+    "appliesTo",
+    "assignsResource",
+    "belongsToProcess",
+    "bridgesFlowToActivity",
+    "canBeConsultedBy",
+    "cleanedResource",
+    "componentOf",
+    "composedBy",
+    "composes",
+    "computedForProcess",
+    "consumesMaterial",
+    "consumesResource",
+    "definedBy",
+    "emits",
+    "employedBy",
+    "employs",
+    "eventForProcess",
+    "executedBy",
+    "executedByResource",
+    "executesActivity",
+    "facilityInBoundary",
+    "flowRefersToProduct",
+    "forIndicator",
+    "forLot",
+    "forOperation",
+    "hasActivity",
+    "hasBehaviour",
+    "hasCapability",
+    "hasCapability",
+    "hasCarbonFootprint",
+    "hasCategory",
+    "hasCertification",
+    "hasCharacterizationFactor",
+    "hasEmissionFactor",
+    "hasEmissionFactor",
+    "hasEmittedFlow",
+    "hasFormulation",
+    "hasFunctionalUnit",
+    "hasGHGContribution",
+    "hasImpact",
+    "hasInput",
+    "hasInventoryFlow",
+    "hasInventoryRepresentation",
+    "hasMaintenance",
+    "hasMeasurement",
+    "hasMeasurement",
+    "hasNonConformity",
+    "hasParameter",
+    "hasPlan",
+    "hasProcess",
+    "hasProcessPlan",
+    "hasRecordedInputFlowForLot",
+    "hasResource",
+    "hasRole",
+    "hasShelfLife",
+    "hasStageResource",
+    "hasSystemBoundary",
+    "hasThreshold",
+    "hasVOCContent",
+    "hasWaterFootprint",
+    "includesActivity",
+    "indicatorForLot",
+    "inputFlowForResource",
+    "inventoryForPlan",
+    "inventoryForProcess",
+    "involve",
+    "isComposedOF",
+    "isHeldBy",
+    "isInputToActivity",
+    "isOutputOfActivity",
+    "isPartOf",
+    "locatedAt",
+    "manages",
+    "nextLot",
+    "partOfProcess",
+    "planProduces",
+    "precedes",
+    "precedes",
+    "precedesEvent",
+    "processedOn",
+    "producedBy",
+    "produces",
+    "producesLot",
+    "producesProduct",
+    "producesResource",
+    "providedBy",
+    "qualityForLot",
+    "refersToMaterial",
+    "requiresCleaningBetween",
+    "requiresResource",
+    "requiresResource",
+    "resourceCurrentState",
+    "responsibleOperator",
+    "specifiedBy",
+    "subloadOfOperation",
+    "suppliesTo",
+    "usedBy",
+    "usesCharacterizationFactor",
+    "usesEmissionFactor",
+    "usesResource",
+    "usesResource"
+   ],
+   "propiedades_distintas": 116,
+   "nodos_del_arbol": 116,
+   "profundidad_maxima_por_nodos": 2,
+   "profundidad_maxima_por_aristas": 1,
+   "declaradas_por_el_servicio": 116
+  },
+  "propiedades_de_datos": {
+   "raices": 107,
+   "nombres_raices": [
+    "availabilityPercent",
+    "availabilityPercent",
+    "batchQuantity",
+    "capacityLiters",
+    "capacityLitersPerHour",
+    "capacityTonsPerMonth",
+    "capacityUnitsPerMinute",
+    "capacityUnitsPerMinute",
+    "carbonFootprintKgCO2eq",
+    "certificationLevel",
+    "consumesEnergyKWh",
+    "consumesWaterL",
+    "cycleTime",
+    "cycleTimeMinutes",
+    "densityKgPerL",
+    "duration",
+    "durationMinutes",
+    "endTimeSeconds",
+    "energyConsumptionKW",
+    "energyConsumptionMJ",
+    "energyInputKWh",
+    "energyKWh",
+    "establishedDate",
+    "eventTimeSeconds",
+    "experienceYears",
+    "factorUnit",
+    "factorUnit",
+    "factorValue",
+    "factorValue",
+    "functionalUnit",
+    "ghgKgCO2e",
+    "glassTransitionTemp",
+    "hasDescription",
+    "hasEcoScore",
+    "hasEfficiency",
+    "hasEfficiency",
+    "hasEnvironmentalImpact",
+    "hasFunction",
+    "hasFunctionalUnitQuantity",
+    "hasGHGImpactKgCO2e",
+    "hasIndicatorValue",
+    "hasLotGHGImpact",
+    "hasName",
+    "hasPriorVersion",
+    "hasQualityStatus",
+    "hasURI",
+    "hasValue",
+    "hasVersion",
+    "impactThreshold",
+    "impactUnit",
+    "indicatorCategory",
+    "indicatorValue",
+    "inputMassKg",
+    "inputQuantity",
+    "lifecycleStage",
+    "location",
+    "maintenanceFrequencyDays",
+    "maintenanceStatus",
+    "materialFactorKgCO2ePerKg",
+    "materialQuantityKg",
+    "modifiedInVersion",
+    "numberOfEmployees",
+    "OEEPercent",
+    "oeePercent",
+    "operationIndicatorRatio",
+    "operationSequence",
+    "organizationCode",
+    "outputMassKg",
+    "outputQuantity",
+    "outputVolumeL",
+    "particleSize",
+    "powerKW",
+    "producesQuantity",
+    "productFamily",
+    "productFamilyCode",
+    "propagatedQualityStatus",
+    "purityPercent",
+    "qualityStatus",
+    "registeredLossKg",
+    "scenarioRole",
+    "setupTimeMinutes",
+    "shelfLifeMonths",
+    "skillCategory",
+    "skillCode",
+    "solidContent",
+    "speedRPM",
+    "stageIndex",
+    "startTimeSeconds",
+    "subloadDurationMinutes",
+    "subloadVolumeL",
+    "temperatureCelsius",
+    "thresholdCategory",
+    "thresholdUnit",
+    "thresholdValue",
+    "throughput",
+    "timestamp",
+    "unit",
+    "viscosity",
+    "VOCContentGperLiter",
+    "volatileOrganicCompounds",
+    "waterFootprintLiters",
+    "waterFootprintLPerKg",
+    "waterL",
+    "yearOfExperience",
+    "yield",
+    "yieldPercent",
+    "yieldPercent"
+   ],
+   "propiedades_distintas": 107,
+   "nodos_del_arbol": 107,
+   "profundidad_maxima_por_nodos": 1,
+   "profundidad_maxima_por_aristas": 0,
+   "declaradas_por_el_servicio": 107
+  },
+  "propiedades_de_anotacion": 0,
+  "en_los_dos_grupos": [],
+  "forma_de_contar_la_profundidad": "por nodos: raíz = 1; por aristas: raíz = 0 (niveles de subPropertyOf bajo las raíces)"
+ },
+ "respuesta": {
+  "objectProperties": [
+   {
+    "uri": "http://w3id.org/protys/ontology/product#acquiredBy",
+    "localName": "acquiredBy",
+    "label": "acquiredBy",
+    "comment": "Asociación local de Product con Customer, declarados como dominio y rango de acquiredBy. Permite registrar vínculos de adquisición sin imponer cardinalidades mínimas o máximas ni una multiplicidad formal n:n.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Product",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Customer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#allocationForOperation",
+    "localName": "allocationForOperation",
+    "label": "allocationForOperation",
+    "comment": "Optional relation for an explicitly supplied allocation procedure. Painting scenario performs no allocation among coproducts; only a separate illustrative fixture exercises the relation.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#AllocationProcedure",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#allocationForOperation",
+      "localName": "allocationForOperation",
+      "label": "allocationForOperation",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#allocationForOperation"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#appliesTo",
+    "localName": "appliesTo",
+    "label": "appliesTo",
+    "comment": "Un impacto o aspecto ambiental aplica a un componente o proceso.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#assignsResource",
+    "localName": "assignsResource",
+    "label": "assignsResource",
+    "comment": "Un plan de proceso asigna recursos (regla R09).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessPlan",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#belongsToProcess",
+    "localName": "belongsToProcess",
+    "label": "belongsToProcess",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#bridgesFlowToActivity",
+    "localName": "bridgesFlowToActivity",
+    "label": "bridgesFlowToActivity",
+    "comment": "Puente entre un flujo de inventario ISO 14040 y una actividad ISO 15531 (cabeza de R20).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#canBeConsultedBy",
+    "localName": "canBeConsultedBy",
+    "label": "canBeConsultedBy",
+    "comment": "Asociación local de Activity con Role, declarados como dominio y rango de canBeConsultedBy, para representar roles que pueden consultar actividades. No impone una multiplicidad formal n:n ni constituye por sí sola un mecanismo ejecutado de control de acceso.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Role",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#cleanedResource",
+    "localName": "cleanedResource",
+    "label": "cleanedResource",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#componentOf",
+    "localName": "componentOf",
+    "label": "componentOf",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/process#composedBy",
+    "localName": "composedBy",
+    "label": "composedBy",
+    "comment": "Asociación local de core:Process con Process_Activity, declarados como dominio y rango de composedBy. Los axiomas actuales de esta propiedad no imponen una cardinalidad mínima 1 ni una agregación 1..n.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/process#Process_Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/product#composes",
+    "localName": "composes",
+    "label": "composes",
+    "comment": "Asociación local de Production_Component con Product, declarados como dominio y rango de composes. No impone cardinalidades mínimas o máximas ni una multiplicidad formal n:n.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Production_Component",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Product",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/product#isComposedOF"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#computedForProcess",
+    "localName": "computedForProcess",
+    "label": "computedForProcess",
+    "comment": "Indicador de impacto calculado para un proceso (patrón de validación R07).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#consumesMaterial",
+    "localName": "consumesMaterial",
+    "label": "consumesMaterial",
+    "comment": "Una actividad consume un material (regla R20).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#consumesResource",
+    "localName": "consumesResource",
+    "label": "consumesResource",
+    "comment": "La actividad consume el recurso durante su ejecución.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/product#definedBy",
+    "localName": "definedBy",
+    "label": "definedBy",
+    "comment": "Asociación local de Production_Item con Product_Information, declarados como dominio y rango de definedBy. Los axiomas actuales no imponen una cardinalidad mínima 1 ni una agregación 1..n.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Production_Item",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Product_Information",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#emits",
+    "localName": "emits",
+    "label": "emits",
+    "comment": "Salida elemental de un proceso unitario hacia la naturaleza; no se utiliza para representar compras de materias primas del escenario.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#UnitProcess",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ElementaryFlow",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#employedBy",
+    "localName": "employedBy",
+    "label": "employedBy",
+    "comment": "Inversa de employs.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/paint-ext#employs"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#employs",
+    "localName": "employs",
+    "label": "employs",
+    "comment": "Una organización emplea personas.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Person",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/paint-ext#employedBy"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#eventForProcess",
+    "localName": "eventForProcess",
+    "label": "eventForProcess",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#executedBy",
+    "localName": "executedBy",
+    "label": "executedBy",
+    "comment": "Una WorkOrder es ejecutada por al menos un recurso (también usada por R14 para el operador responsable).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#WorkOrder",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#executedByResource",
+    "localName": "executedByResource",
+    "label": "executedByResource",
+    "comment": "El recurso ejecuta directamente la actividad.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#executesActivity",
+    "localName": "executesActivity",
+    "label": "executesActivity",
+    "comment": "Una orden de trabajo (ejecución de actividad) ejecuta una operación (regla R14).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#WorkOrder",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#facilityInBoundary",
+    "localName": "facilityInBoundary",
+    "label": "facilityInBoundary",
+    "comment": "A separately identified boundary describes the selected scope for an assessed facility; a facility is not the boundary criteria.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingFacility",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#SystemBoundary",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#facilityInBoundary",
+      "localName": "facilityInBoundary",
+      "label": "facilityInBoundary",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#facilityInBoundary"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#flowRefersToProduct",
+    "localName": "flowRefersToProduct",
+    "label": "flowRefersToProduct",
+    "comment": "Flow record refers to a distinct product/material entity; a purchased commodity flow is not the commodity itself.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Product",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#flowRefersToProduct",
+      "localName": "flowRefersToProduct",
+      "label": "flowRefersToProduct",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#flowRefersToProduct"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#forIndicator",
+    "localName": "forIndicator",
+    "label": "forIndicator",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#forLot",
+    "localName": "forLot",
+    "label": "forLot",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#forOperation",
+    "localName": "forOperation",
+    "label": "forOperation",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasActivity",
+    "localName": "hasActivity",
+    "label": "hasActivity",
+    "comment": "Trazabilidad lote a actividades/operaciones (regla R21).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#hasBehaviour",
+    "localName": "hasBehaviour",
+    "label": "hasBehaviour",
+    "comment": "Asociación local de core:Resource con Behaviour, declarados como dominio y rango de hasBehaviour. No exige que cada recurso tenga un comportamiento registrado ni impone una cardinalidad; la referencia a ISO 10303-49 es de contexto.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Behaviour",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasCapability",
+    "localName": "hasCapability",
+    "label": "hasCapability",
+    "comment": "Un recurso posee una capacidad de manufactura (cabeza de la regla R12).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingCapability",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/paint-ext#hasSkill",
+      "localName": "hasSkill",
+      "label": "hasSkill",
+      "comment": "Habilidad de un recurso humano, modelada como capacidad de manufactura. Subpropiedad de iso15531:hasCapability.",
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [
+       {
+        "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingCapability",
+        "operator": null,
+        "members": []
+       }
+      ],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/iso15531#hasCapability"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#hasCapability",
+    "localName": "hasCapability",
+    "label": "hasCapability",
+    "comment": "Asociación local de core:Resource con Capability, declarados como dominio y rango de hasCapability. No exige que cada recurso tenga una capacidad registrada ni impone una cardinalidad; la referencia a ISO 10303-49 es de contexto.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Capability",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasCarbonFootprint",
+    "localName": "hasCarbonFootprint",
+    "label": "hasCarbonFootprint",
+    "comment": "Indicador de huella de carbono asociado a un producto (individuo de iso14040:ImpactIndicator).",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasCategory",
+    "localName": "hasCategory",
+    "label": "hasCategory",
+    "comment": "Categoría de impacto de un indicador ambiental.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactCategory",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasCertification",
+    "localName": "hasCertification",
+    "label": "hasCertification",
+    "comment": "Certificación de un recurso humano.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasCharacterizationFactor",
+    "localName": "hasCharacterizationFactor",
+    "label": "hasCharacterizationFactor",
+    "comment": "Propiedad histórica con rango CharacterizationFactor para asociar un sujeto con un factor de caracterización LCIA. R06 utiliza research:hasEmissionFactor y research:usesEmissionFactor para los factores del escenario; no utiliza esta propiedad para convertirlos en factores de caracterización.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#CharacterizationFactor",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasEmissionFactor",
+    "localName": "hasEmissionFactor",
+    "label": "hasEmissionFactor",
+    "comment": "Propiedad histórica del vocabulario que refiere a CharacterizationFactor; los factores eléctricos/materiales del escenario se representan por research:hasEmissionFactor sin reclasificarlos como factoresLCIA.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#CharacterizationFactor",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasEmissionFactor",
+    "localName": "hasEmissionFactor",
+    "label": "hasEmissionFactor",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#hasEmittedFlow",
+    "localName": "hasEmittedFlow",
+    "label": "hasEmittedFlow",
+    "comment": "IRI histórica conservada para salidas elementales; no se utiliza para las entradas compradas del escenario. R03 produce alignment:hasRecordedInputFlowForLot.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ElementaryFlow",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasFormulation",
+    "localName": "hasFormulation",
+    "label": "hasFormulation",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasFunctionalUnit",
+    "localName": "hasFunctionalUnit",
+    "label": "hasFunctionalUnit",
+    "comment": "Propiedad funcional: como máximo una unidad funcional por sujeto. La clase LCAStudy incorpora además una cardinalidad exacta1; bajo mundo abierto eso no prueba que exista un registro nombrado completo en la instantánea.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#LCAStudy",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#FunctionalUnit",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [
+     "FUNCTIONAL"
+    ],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasGHGContribution",
+    "localName": "hasGHGContribution",
+    "label": "hasGHGContribution",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasImpact",
+    "localName": "hasImpact",
+    "label": "hasImpact",
+    "comment": "Asocia un proceso o lote con un indicador de impacto de su proceso (R05); la asociación no calcula una suma. Las contribuciones eléctricas se identifican por operación con research:hasGHGContribution y se agregan en consultas.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasInput",
+    "localName": "hasInput",
+    "label": "hasInput",
+    "comment": "Entrada material de una actividad (patrón de validación R16).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasInventoryFlow",
+    "localName": "hasInventoryFlow",
+    "label": "hasInventoryFlow",
+    "comment": "Flujo registrado del inventario: puede ser intercambio elemental con naturaleza o ProductFlow dentro de la tecnosfera, con tipo y dirección explicitados en cada caso.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": null,
+      "operator": "unionOf",
+      "members": [
+       "http://w3id.org/protys/ontology/iso14040#ElementaryFlow",
+       "http://w3id.org/protys/ontology/iso14040#ProductFlow"
+      ]
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation",
+    "localName": "hasInventoryRepresentation",
+    "label": "hasInventoryRepresentation",
+    "comment": "A manufacturing execution has a separately identified LCI black-box representation, only for the declared production boundary. No universal class inclusion.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#UnitProcess",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#hasInventoryRepresentation",
+      "localName": "hasInventoryRepresentation",
+      "label": "hasInventoryRepresentation",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#hasInventoryRepresentation"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasMaintenance",
+    "localName": "hasMaintenance",
+    "label": "hasMaintenance",
+    "comment": "Asocia un recurso con un registro de mantenimiento. Sólo el estado research:maintenanceStatus ACTIVE de la instantánea permite R15; los registros PLANNED, COMPLETED o sin estado no implican indisponibilidad. No se infiere vigencia mediante fechas ni se retractan tipos al cambiar una instantánea.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasMeasurement",
+    "localName": "hasMeasurement",
+    "label": "hasMeasurement",
+    "comment": "Medición asociada a una actividad de control de calidad (patrón de validación R19). Declarada en la capa de alineamiento para no alterar el módulo ISO 15531.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Quality_Control_Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasMeasurement",
+    "localName": "hasMeasurement",
+    "label": "hasMeasurement",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasNonConformity",
+    "localName": "hasNonConformity",
+    "label": "hasNonConformity",
+    "comment": "Un lote presenta una no conformidad de calidad (regla R18).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#QualityAttribute",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/process#hasParameter",
+    "localName": "hasParameter",
+    "label": "hasParameter",
+    "comment": "Procedure y Procedure_Activity están vinculados a Parameters (agregación).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": null,
+      "operator": "unionOf",
+      "members": [
+       "http://w3id.org/protys/ontology/process#Procedure",
+       "http://w3id.org/protys/ontology/process#Procedure_Activity"
+      ]
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/process#Parameters",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasPlan",
+    "localName": "hasPlan",
+    "label": "hasPlan",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasProcess",
+    "localName": "hasProcess",
+    "label": "hasProcess",
+    "comment": "Un lote se asocia a los procesos por los que transita (regla R05).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasProcessPlan",
+    "localName": "hasProcessPlan",
+    "label": "hasProcessPlan",
+    "comment": "Vincula un producto con el proceso/plan que lo fabrica.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#hasRecordedInputFlowForLot",
+    "localName": "hasRecordedInputFlowForLot",
+    "label": "hasRecordedInputFlowForLot",
+    "comment": "R03 associates recorded purchased input flow with the lot through the manufacturing execution and its separately identified LCI representation; no emissions are asserted.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#hasRecordedInputFlowForLot",
+      "localName": "hasRecordedInputFlowForLot",
+      "label": "hasRecordedInputFlowForLot",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#hasRecordedInputFlowForLot"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasResource",
+    "localName": "hasResource",
+    "label": "hasResource",
+    "comment": "Propiedad de conveniencia: un Process dispone de un Resource. Inversa de usedBy.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/core#usedBy"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#hasRole",
+    "localName": "hasRole",
+    "label": "hasRole",
+    "comment": "Asociación local de Person con Role, declarados como dominio y rango de hasRole. Permite registrar roles vinculados a capacidades sin imponer una cardinalidad mínima 1 ni una agregación 1..n.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Person",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Role",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasShelfLife",
+    "localName": "hasShelfLife",
+    "label": "hasShelfLife",
+    "comment": "Especificación de vida útil asociada a un producto.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasStageResource",
+    "localName": "hasStageResource",
+    "label": "hasStageResource",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasSystemBoundary",
+    "localName": "hasSystemBoundary",
+    "label": "hasSystemBoundary",
+    "comment": "Frontera del sistema de un estudio de ACV.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#LCAStudy",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#SystemBoundary",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#hasThreshold",
+    "localName": "hasThreshold",
+    "label": "hasThreshold",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasVOCContent",
+    "localName": "hasVOCContent",
+    "label": "hasVOCContent",
+    "comment": "Indicador de contenido de VOC asociado a un producto.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasWaterFootprint",
+    "localName": "hasWaterFootprint",
+    "label": "hasWaterFootprint",
+    "comment": "Indicador de huella hídrica asociado a un producto.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#includesActivity",
+    "localName": "includesActivity",
+    "label": "includesActivity",
+    "comment": "Un plan de proceso incluye operaciones/actividades (regla R09).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessPlan",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#indicatorForLot",
+    "localName": "indicatorForLot",
+    "label": "indicatorForLot",
+    "comment": "Environmental indicator and quality record independently refer to the same lot via indicatorForLot and qualityForLot. Their values and types remain distinct.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#indicatorForLot",
+      "localName": "indicatorForLot",
+      "label": "indicatorForLot",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#indicatorForLot"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#inputFlowForResource",
+    "localName": "inputFlowForResource",
+    "label": "inputFlowForResource",
+    "comment": "Purchased inputs are technosphere ProductFlow records linked to consumed material resources; consumption never implies an elementary nature exchange.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ProductFlow",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#inputFlowForResource",
+      "localName": "inputFlowForResource",
+      "label": "inputFlowForResource",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#inputFlowForResource"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#inventoryForPlan",
+    "localName": "inventoryForPlan",
+    "label": "inventoryForPlan",
+    "comment": "A partial production inventory record refers to its manufacturing plan; planning and inventory records are separately identified.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#LifeCycleInventory",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessPlan",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#inventoryForPlan",
+      "localName": "inventoryForPlan",
+      "label": "inventoryForPlan",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#inventoryForPlan"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#inventoryForProcess",
+    "localName": "inventoryForProcess",
+    "label": "inventoryForProcess",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#involve",
+    "localName": "involve",
+    "label": "involve",
+    "comment": "Asociación local entre Enterprise y Process, declarados como dominio y rango de involve. Representa la vinculación de una empresa con sus procesos; no se presenta como reproducción literal de una relación de ISO 15531 o ISO 18629 ni impone una cantidad mínima de procesos.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Enterprise",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#hasProcess",
+      "localName": "hasProcess",
+      "label": "hasProcess",
+      "comment": "Propiedad de conveniencia: relaciona una entidad con un proceso que contiene o realiza. Subpropiedad de involve para el caso Enterprise-Process.",
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [
+       {
+        "uri": "http://w3id.org/protys/ontology/core#Process",
+        "operator": null,
+        "members": []
+       }
+      ],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/core#involve"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/product#isComposedOF",
+    "localName": "isComposedOF",
+    "label": "isComposedOF",
+    "comment": "Asociación local de Product con sus Production_Components, inversa de composes. La composición de productos a partir de componentes se inspira en Bruno (2015), sección III.A; no se presenta como una definición literal universal de ISO 10303.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Product",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/product#Production_Component",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/product#composes"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#isHeldBy",
+    "localName": "isHeldBy",
+    "label": "isHeldBy",
+    "comment": "Vincula una entidad (típicamente un Resource) con la Enterprise o instalación que la posee o alberga.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/paint-ext#belongsTo",
+      "localName": "belongsTo",
+      "label": "belongsTo",
+      "comment": "Pertenencia de un recurso/actividad a una unidad organizacional. Subpropiedad de core:isHeldBy.",
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/core#isHeldBy"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#isInputToActivity",
+    "localName": "isInputToActivity",
+    "label": "isInputToActivity",
+    "comment": "Un File es entrada de una Activity (se adopta el nombre isInputToActivity).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#File",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#isOutputOfActivity",
+    "localName": "isOutputOfActivity",
+    "label": "isOutputOfActivity",
+    "comment": "Un File es salida de una Activity.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#File",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/enterprise#isPartOf",
+    "localName": "isPartOf",
+    "label": "isPartOf",
+    "comment": "Agregación jerárquica entre niveles organizacionales (Station en Cell, Cell en Shop, Shop en Factory, Factory en Enterprise).",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [
+     "TRANSITIVE"
+    ],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/paint-ext#partOfOrganization",
+      "localName": "partOfOrganization",
+      "label": "partOfOrganization",
+      "comment": "Una unidad organizacional es parte de otra. Subpropiedad de enterprise:isPartOf.",
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/enterprise#isPartOf"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/enterprise#locatedAt",
+    "localName": "locatedAt",
+    "label": "locatedAt",
+    "comment": "Relaciona Enterprise (y sus instalaciones) con Location para especificar la ubicación geográfica.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/enterprise#Location",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#manages",
+    "localName": "manages",
+    "label": "manages",
+    "comment": "Una unidad organizacional o persona gestiona otra entidad.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#nextLot",
+    "localName": "nextLot",
+    "label": "nextLot",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#partOfProcess",
+    "localName": "partOfProcess",
+    "label": "partOfProcess",
+    "comment": "Una operación es parte de un proceso de manufactura (regla R02).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#planProduces",
+    "localName": "planProduces",
+    "label": "planProduces",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#precedes",
+    "localName": "precedes",
+    "label": "precedes",
+    "comment": "Orden entre procesos: un Process precede a otro Process en el plan de proceso.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#precedes",
+    "localName": "precedes",
+    "label": "precedes",
+    "comment": "Precedencia entre lotes u operaciones en la campaña de producción (reglas R17 y patrón R26).",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#precedesEvent",
+    "localName": "precedesEvent",
+    "label": "precedesEvent",
+    "comment": "Precedencia de eventos MES con marcas numéricas en segundos desde un origen común y pertenecientes al mismo lote y proceso (R13).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingData",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingData",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#processedOn",
+    "localName": "processedOn",
+    "label": "processedOn",
+    "comment": "Un lote se procesa sobre un equipo (regla R17).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#EquipmentResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#producedBy",
+    "localName": "producedBy",
+    "label": "producedBy",
+    "comment": "Un Product es producido por un Process.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Product",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/core#produces"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#produces",
+    "localName": "produces",
+    "label": "produces",
+    "comment": "Inversa de producedBy: un Process produce un Product.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Product",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/core#producedBy"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#producesLot",
+    "localName": "producesLot",
+    "label": "producesLot",
+    "comment": "Una WorkOrder produce un Lot (reglas R03 y R23).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#WorkOrder",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#producesProduct",
+    "localName": "producesProduct",
+    "label": "producesProduct",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#producesResource",
+    "localName": "producesResource",
+    "label": "producesResource",
+    "comment": "La actividad genera o modifica el recurso como resultado.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#providedBy",
+    "localName": "providedBy",
+    "label": "providedBy",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#qualityForLot",
+    "localName": "qualityForLot",
+    "label": "qualityForLot",
+    "comment": "Quality and environmental records share lot context without class equivalence.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#QualityAttribute",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#qualityForLot",
+      "localName": "qualityForLot",
+      "label": "qualityForLot",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [],
+      "ranges": [],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [
+       "http://w3id.org/protys/ontology/alignment#qualityForLot"
+      ],
+      "subproperties": []
+     }
+    ]
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#refersToMaterial",
+    "localName": "refersToMaterial",
+    "label": "refersToMaterial",
+    "comment": "Un flujo de inventario refiere a un material concreto (reglas R06 y R20).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": null,
+      "operator": "unionOf",
+      "members": [
+       "http://w3id.org/protys/ontology/iso14040#ElementaryFlow",
+       "http://w3id.org/protys/ontology/iso14040#ProductFlow"
+      ]
+     }
+    ],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#requiresCleaningBetween",
+    "localName": "requiresCleaningBetween",
+    "label": "requiresCleaningBetween",
+    "comment": "Se requiere limpieza entre dos lotes de familias incompatibles procesados en el mismo equipo (cabeza de la regla R17).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#requiresResource",
+    "localName": "requiresResource",
+    "label": "requiresResource",
+    "comment": "Una operación requiere un recurso de manufactura (regla R12).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#requiresResource",
+    "localName": "requiresResource",
+    "label": "requiresResource",
+    "comment": "La actividad requiere el recurso pero no necesariamente lo ejecuta.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#resourceCurrentState",
+    "localName": "resourceCurrentState",
+    "label": "resourceCurrentState",
+    "comment": "Estado registrado de un recurso de manufactura. El estado consumido no convierte el recurso en ElementaryFlow ni lo identifica con un registro de flujo.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ResourceState",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#responsibleOperator",
+    "localName": "responsibleOperator",
+    "label": "responsibleOperator",
+    "comment": "Operador responsable de una actividad, para trazabilidad (cabeza de la regla R14).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#HumanResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/process#specifiedBy",
+    "localName": "specifiedBy",
+    "label": "specifiedBy",
+    "comment": "Un Process está especificado por un Procedure.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/process#Procedure",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#subloadOfOperation",
+    "localName": "subloadOfOperation",
+    "label": "subloadOfOperation",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#suppliesTo",
+    "localName": "suppliesTo",
+    "label": "suppliesTo",
+    "comment": "Un proveedor suministra a una organización.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/paint-ext#Supplier",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#usedBy",
+    "localName": "usedBy",
+    "label": "usedBy",
+    "comment": "Un Resource es usado por un Process.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Process",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [
+     "http://w3id.org/protys/ontology/core#hasResource"
+    ],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#usesCharacterizationFactor",
+    "localName": "usesCharacterizationFactor",
+    "label": "usesCharacterizationFactor",
+    "comment": "Asocia un flujo de inventario o un indicador con su factor de caracterización; la fabricación de materias primas queda fuera del inventario eléctrico de Q06.",
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#CharacterizationFactor",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#usesEmissionFactor",
+    "localName": "usesEmissionFactor",
+    "label": "usesEmissionFactor",
+    "comment": null,
+    "type": "OBJECT",
+    "domains": [],
+    "ranges": [],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#usesResource",
+    "localName": "usesResource",
+    "label": "usesResource",
+    "comment": "Una actividad usa un recurso (cabeza de la regla R09).",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/resource#usesResource",
+    "localName": "usesResource",
+    "label": "usesResource",
+    "comment": "La actividad utiliza el recurso sin consumirlo.",
+    "type": "OBJECT",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/resource#Activity",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://w3id.org/protys/ontology/core#Resource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   }
+  ],
+  "dataProperties": [
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#availabilityPercent",
+    "localName": "availabilityPercent",
+    "label": "availabilityPercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#availabilityPercent",
+    "localName": "availabilityPercent",
+    "label": "availabilityPercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#batchQuantity",
+    "localName": "batchQuantity",
+    "label": "batchQuantity",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#capacityLiters",
+    "localName": "capacityLiters",
+    "label": "capacityLiters",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#capacityLitersPerHour",
+    "localName": "capacityLitersPerHour",
+    "label": "capacityLitersPerHour",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#capacityTonsPerMonth",
+    "localName": "capacityTonsPerMonth",
+    "label": "capacityTonsPerMonth",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#capacityUnitsPerMinute",
+    "localName": "capacityUnitsPerMinute",
+    "label": "capacityUnitsPerMinute",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#capacityUnitsPerMinute",
+    "localName": "capacityUnitsPerMinute",
+    "label": "capacityUnitsPerMinute",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#carbonFootprintKgCO2eq",
+    "localName": "carbonFootprintKgCO2eq",
+    "label": "carbonFootprintKgCO2eq",
+    "comment": "Huella de carbono en kg CO2-eq por kg de material (usada por las instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#certificationLevel",
+    "localName": "certificationLevel",
+    "label": "certificationLevel",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#consumesEnergyKWh",
+    "localName": "consumesEnergyKWh",
+    "label": "consumesEnergyKWh",
+    "comment": "Consumo energético de una actividad en kWh (reglas R01 y R21).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#consumesWaterL",
+    "localName": "consumesWaterL",
+    "label": "consumesWaterL",
+    "comment": "Consumo de agua de una actividad en litros (regla R02).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#cycleTime",
+    "localName": "cycleTime",
+    "label": "cycleTime",
+    "comment": "Duración de ciclo de una operación en minutos (R23); R12 utiliza el tipo explícito FineGrindingOperation.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#cycleTimeMinutes",
+    "localName": "cycleTimeMinutes",
+    "label": "cycleTimeMinutes",
+    "comment": "Tiempo de ciclo en minutos (instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#densityKgPerL",
+    "localName": "densityKgPerL",
+    "label": "densityKgPerL",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#duration",
+    "localName": "duration",
+    "label": "duration",
+    "comment": "Duración de una actividad (regla R11).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#durationMinutes",
+    "localName": "durationMinutes",
+    "label": "durationMinutes",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#endTimeSeconds",
+    "localName": "endTimeSeconds",
+    "label": "endTimeSeconds",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#energyConsumptionKW",
+    "localName": "energyConsumptionKW",
+    "label": "energyConsumptionKW",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#energyConsumptionMJ",
+    "localName": "energyConsumptionMJ",
+    "label": "energyConsumptionMJ",
+    "comment": "Consumo energético en MJ (usada por las instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#energyInputKWh",
+    "localName": "energyInputKWh",
+    "label": "energyInputKWh",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#energyKWh",
+    "localName": "energyKWh",
+    "label": "energyKWh",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#establishedDate",
+    "localName": "establishedDate",
+    "label": "establishedDate",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#eventTimeSeconds",
+    "localName": "eventTimeSeconds",
+    "label": "eventTimeSeconds",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#experienceYears",
+    "localName": "experienceYears",
+    "label": "experienceYears",
+    "comment": "Años de experiencia de un recurso humano (instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#HumanResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#factorUnit",
+    "localName": "factorUnit",
+    "label": "factorUnit",
+    "comment": "Unidad textual de un CharacterizationFactor, declarado como dominio de esta propiedad histórica. Los factores eléctricos y materiales del escenario usan research:factorUnit, con unidades del alcance declarado.",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#CharacterizationFactor",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#factorUnit",
+    "localName": "factorUnit",
+    "label": "factorUnit",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#factorValue",
+    "localName": "factorValue",
+    "label": "factorValue",
+    "comment": "Valor numérico decimal de un CharacterizationFactor, declarado como dominio de esta propiedad histórica. Los factores eléctricos y materiales del escenario usan research:factorValue; R01 y R21 no usan esta propiedad de caracterización LCIA.",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#CharacterizationFactor",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#factorValue",
+    "localName": "factorValue",
+    "label": "factorValue",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#functionalUnit",
+    "localName": "functionalUnit",
+    "label": "functionalUnit",
+    "comment": "Unidad funcional declarada de un lote (regla R08).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#ghgKgCO2e",
+    "localName": "ghgKgCO2e",
+    "label": "ghgKgCO2e",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#glassTransitionTemp",
+    "localName": "glassTransitionTemp",
+    "label": "glassTransitionTemp",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasDescription",
+    "localName": "hasDescription",
+    "label": "hasDescription",
+    "comment": "Descripción textual de una entidad.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#hasEcoScore",
+    "localName": "hasEcoScore",
+    "label": "hasEcoScore",
+    "comment": "IRI histórica conservada para compatibilidad; no es salida de las reglas activas. R23 registra una razón por operación e indicador en research:operationIndicatorRatio, sin normalización.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#hasEfficiency",
+    "localName": "hasEfficiency",
+    "label": "hasEfficiency",
+    "comment": "Razón de rendimiento másico porcentual sobre duración positiva en minutos (R11). No es un índice ambiental normalizado ni una prueba de optimización.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasEfficiency",
+    "localName": "hasEfficiency",
+    "label": "hasEfficiency",
+    "comment": "IRI histórica conservada; la regla R11 activa produce alignment:hasEfficiency, razón de rendimiento porcentual sobre duración positiva.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasEnvironmentalImpact",
+    "localName": "hasEnvironmentalImpact",
+    "label": "hasEnvironmentalImpact",
+    "comment": "Propiedad histórica para un valor ambiental numérico agregado. La consulta Q01 actual calcula la suma de contribuciones eléctricas por operación; no materializa esta propiedad como resultado ni representa un ACV completo.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasFunction",
+    "localName": "hasFunction",
+    "label": "hasFunction",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasFunctionalUnitQuantity",
+    "localName": "hasFunctionalUnitQuantity",
+    "label": "hasFunctionalUnitQuantity",
+    "comment": "Cantidad expresada en la unidad funcional, para comparación entre lotes (cabeza de la regla R08).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasGHGImpactKgCO2e",
+    "localName": "hasGHGImpactKgCO2e",
+    "label": "hasGHGImpactKgCO2e",
+    "comment": "Indicador GHG en kg CO2e derivado del consumo energético y el factor de emisión (cabeza de la regla R01).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#hasIndicatorValue",
+    "localName": "hasIndicatorValue",
+    "label": "hasIndicatorValue",
+    "comment": "Valor numérico de un indicador de impacto (regla R04).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasLotGHGImpact",
+    "localName": "hasLotGHGImpact",
+    "label": "hasLotGHGImpact",
+    "comment": "IRI histórica conservada; no es la salida activa de R21. Las contribuciones se identifican por research:hasGHGContribution y se suman en consultas.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasName",
+    "localName": "hasName",
+    "label": "hasName",
+    "comment": "Nombre o identificador textual de una entidad.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasPriorVersion",
+    "localName": "hasPriorVersion",
+    "label": "hasPriorVersion",
+    "comment": "Versión anterior de un término o entidad, usada por Q21; no redefine la pregunta de competencia P5.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#hasQualityStatus",
+    "localName": "hasQualityStatus",
+    "label": "hasQualityStatus",
+    "comment": "Estado de calidad de un lote (regla R10).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasURI",
+    "localName": "hasURI",
+    "label": "hasURI",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#hasValue",
+    "localName": "hasValue",
+    "label": "hasValue",
+    "comment": "Valor numérico de un indicador o especificación del caso.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#hasVersion",
+    "localName": "hasVersion",
+    "label": "hasVersion",
+    "comment": "Versión vigente de un término o entidad (consulta Q21 y regla R25); P5 corresponde al producto generado por un plan de proceso.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/alignment#impactThreshold",
+    "localName": "impactThreshold",
+    "label": "impactThreshold",
+    "comment": "Parámetro histórico genérico conservado por compatibilidad; R04 del catálogo canónico utiliza research:ThresholdRecord con valor, unidad y categoría acoplados en el mismo registro. No se usa GlobalConfig para combinar umbrales de distintas magnitudes.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#impactUnit",
+    "localName": "impactUnit",
+    "label": "impactUnit",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#indicatorCategory",
+    "localName": "indicatorCategory",
+    "label": "indicatorCategory",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#indicatorValue",
+    "localName": "indicatorValue",
+    "label": "indicatorValue",
+    "comment": "Valor numérico de un indicador de impacto (variante léxica usada por la regla R23; equivalente a hasIndicatorValue).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso14040#ImpactIndicator",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#inputMassKg",
+    "localName": "inputMassKg",
+    "label": "inputMassKg",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#inputQuantity",
+    "localName": "inputQuantity",
+    "label": "inputQuantity",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#lifecycleStage",
+    "localName": "lifecycleStage",
+    "label": "lifecycleStage",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#location",
+    "localName": "location",
+    "label": "location",
+    "comment": "Ubicación textual; la versión conceptual es enterprise:locatedAt hacia enterprise:Location.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#maintenanceFrequencyDays",
+    "localName": "maintenanceFrequencyDays",
+    "label": "maintenanceFrequencyDays",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#maintenanceStatus",
+    "localName": "maintenanceStatus",
+    "label": "maintenanceStatus",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#materialFactorKgCO2ePerKg",
+    "localName": "materialFactorKgCO2ePerKg",
+    "label": "materialFactorKgCO2ePerKg",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#materialQuantityKg",
+    "localName": "materialQuantityKg",
+    "label": "materialQuantityKg",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/core#modifiedInVersion",
+    "localName": "modifiedInVersion",
+    "label": "modifiedInVersion",
+    "comment": "Versión de modificación de un término o factor, usada porR25; la preguntaP5 corresponde al producto generado por un plan.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#numberOfEmployees",
+    "localName": "numberOfEmployees",
+    "label": "numberOfEmployees",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#OEEPercent",
+    "localName": "OEEPercent",
+    "label": "OEEPercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#oeePercent",
+    "localName": "oeePercent",
+    "label": "oeePercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#operationIndicatorRatio",
+    "localName": "operationIndicatorRatio",
+    "label": "operationIndicatorRatio",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#operationSequence",
+    "localName": "operationSequence",
+    "label": "operationSequence",
+    "comment": "Secuencia de una operación dentro del plan (instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#organizationCode",
+    "localName": "organizationCode",
+    "label": "organizationCode",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#outputMassKg",
+    "localName": "outputMassKg",
+    "label": "outputMassKg",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#outputQuantity",
+    "localName": "outputQuantity",
+    "label": "outputQuantity",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#outputVolumeL",
+    "localName": "outputVolumeL",
+    "label": "outputVolumeL",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#particleSize",
+    "localName": "particleSize",
+    "label": "particleSize",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#powerKW",
+    "localName": "powerKW",
+    "label": "powerKW",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#producesQuantity",
+    "localName": "producesQuantity",
+    "label": "producesQuantity",
+    "comment": "Cantidad producida por un lote (regla R08).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#productFamily",
+    "localName": "productFamily",
+    "label": "productFamily",
+    "comment": "Nombre legible de la familia del lote. El código entero research:productFamilyCode representa la misma categoría para comparación operativa en R17 con el motor declarado.",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#Lot",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#productFamilyCode",
+    "localName": "productFamilyCode",
+    "label": "productFamilyCode",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#propagatedQualityStatus",
+    "localName": "propagatedQualityStatus",
+    "label": "propagatedQualityStatus",
+    "comment": "Estado de calidad registrado como propagable sobre el mismo lote (R10); no crea ni modifica el producto final.",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#purityPercent",
+    "localName": "purityPercent",
+    "label": "purityPercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#qualityStatus",
+    "localName": "qualityStatus",
+    "label": "qualityStatus",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#registeredLossKg",
+    "localName": "registeredLossKg",
+    "label": "registeredLossKg",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#scenarioRole",
+    "localName": "scenarioRole",
+    "label": "scenarioRole",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#setupTimeMinutes",
+    "localName": "setupTimeMinutes",
+    "label": "setupTimeMinutes",
+    "comment": "Tiempo de preparación en minutos (instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#shelfLifeMonths",
+    "localName": "shelfLifeMonths",
+    "label": "shelfLifeMonths",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#skillCategory",
+    "localName": "skillCategory",
+    "label": "skillCategory",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#skillCode",
+    "localName": "skillCode",
+    "label": "skillCode",
+    "comment": "Código de habilidad de un recurso humano (instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#HumanResource",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#solidContent",
+    "localName": "solidContent",
+    "label": "solidContent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#speedRPM",
+    "localName": "speedRPM",
+    "label": "speedRPM",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#stageIndex",
+    "localName": "stageIndex",
+    "label": "stageIndex",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#startTimeSeconds",
+    "localName": "startTimeSeconds",
+    "label": "startTimeSeconds",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#subloadDurationMinutes",
+    "localName": "subloadDurationMinutes",
+    "label": "subloadDurationMinutes",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#subloadVolumeL",
+    "localName": "subloadVolumeL",
+    "label": "subloadVolumeL",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#temperatureCelsius",
+    "localName": "temperatureCelsius",
+    "label": "temperatureCelsius",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#thresholdCategory",
+    "localName": "thresholdCategory",
+    "label": "thresholdCategory",
+    "comment": null,
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#ThresholdRecord",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [
+     "FUNCTIONAL"
+    ],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#thresholdUnit",
+    "localName": "thresholdUnit",
+    "label": "thresholdUnit",
+    "comment": null,
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#ThresholdRecord",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [
+     "FUNCTIONAL"
+    ],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#thresholdValue",
+    "localName": "thresholdValue",
+    "label": "thresholdValue",
+    "comment": null,
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/research#ThresholdRecord",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [
+     "FUNCTIONAL"
+    ],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#throughput",
+    "localName": "throughput",
+    "label": "throughput",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#timestamp",
+    "localName": "timestamp",
+    "label": "timestamp",
+    "comment": "Marca temporal de un evento MES (regla R13).",
+    "type": "DATA",
+    "domains": [
+     {
+      "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingData",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#unit",
+    "localName": "unit",
+    "label": "unit",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#string",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#viscosity",
+    "localName": "viscosity",
+    "label": "viscosity",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#VOCContentGperLiter",
+    "localName": "VOCContentGperLiter",
+    "label": "VOCContentGperLiter",
+    "comment": "Contenido de compuestos orgánicos volátiles en g/L (usada por las instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#volatileOrganicCompounds",
+    "localName": "volatileOrganicCompounds",
+    "label": "volatileOrganicCompounds",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso14040#waterFootprintLiters",
+    "localName": "waterFootprintLiters",
+    "label": "waterFootprintLiters",
+    "comment": "Huella hídrica en litros (usada por las instancias del caso de estudio).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#waterFootprintLPerKg",
+    "localName": "waterFootprintLPerKg",
+    "label": "waterFootprintLPerKg",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#waterL",
+    "localName": "waterL",
+    "label": "waterL",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#yearOfExperience",
+    "localName": "yearOfExperience",
+    "label": "yearOfExperience",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#integer",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/iso15531#yield",
+    "localName": "yield",
+    "label": "yield",
+    "comment": "Rendimiento de una actividad (regla R11).",
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/paint-ext#yieldPercent",
+    "localName": "yieldPercent",
+    "label": "yieldPercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   },
+   {
+    "uri": "http://w3id.org/protys/ontology/research#yieldPercent",
+    "localName": "yieldPercent",
+    "label": "yieldPercent",
+    "comment": null,
+    "type": "DATA",
+    "domains": [],
+    "ranges": [
+     {
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal",
+      "operator": null,
+      "members": []
+     }
+    ],
+    "inverseOf": [],
+    "characteristics": [],
+    "superPropertyUris": [],
+    "subproperties": []
+   }
+  ],
+  "objectPropertyCount": 116,
+  "dataPropertyCount": 107,
+  "annotationPropertyCount": 0
+ }
+}

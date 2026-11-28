@@ -1,0 +1,24 @@
+# commit 6b58c680392628cb42133b33e707465815d23b0f; CI=true react-scripts test --watchAll=false --runInBand (node v24.18.0, 2026-11-28T04:29:19Z)
+PASS src/components/explorer/OntologyExplorer.test.jsx
+PASS src/components/wizard/WizardFlow.test.jsx
+PASS src/components/dashboard/Dashboard.test.jsx
+PASS src/NavToggleIcon.test.jsx
+PASS src/components/explorer/PropertyExplorer.test.jsx
+PASS src/components/erp/ErpIntegration.test.jsx
+PASS src/components/alignment/Alignment.test.jsx
+PASS src/BackendStatus.test.jsx
+PASS src/components/sparql/SparqlConsole.test.jsx
+PASS src/components/wizard/Wizard.test.jsx
+PASS src/hooks/useERP.test.jsx
+PASS src/components/alignment/CleaningContextStatus.test.jsx
+PASS src/components/alignment/NumericIntegrityStatus.test.jsx
+PASS src/services/validationState.test.js
+PASS src/services/api.test.js
+PASS src/hooks/useSparql.test.js
+PASS src/components/alignment/ContextIntegrityStatus.test.jsx
+
+Test Suites: 17 passed, 17 total
+Tests:       96 passed, 96 total
+Snapshots:   0 total
+Time:        2.165 s
+Ran all test suites.

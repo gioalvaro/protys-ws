@@ -1,0 +1,5 @@
+OK A2b-explorador-jerarquia-selector.png
+OK A3b-explorador-detalle-clase-propiedades.png
+OK A9a-explorador-propiedades.png
+OK A9b-explorador-propiedad-subpropiedad.png
+OK A9c-explorador-propiedad-dominio-union.png

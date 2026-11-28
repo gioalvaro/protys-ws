@@ -1,0 +1,1 @@
+{"modulo": "Canonical_Catalog_Integrated", "tipo_de_respuesta": "list", "raices": 65, "clases_distintas": 128, "profundidad_maxima": 4, "nodos_con_type_class": null}

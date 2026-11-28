@@ -1,0 +1,11 @@
+v1.1.0 (E-13): {'raices': 65, 'clases_distintas': 128, 'nodos_del_arbol': 131, 'profundidad_maxima_por_nodos': 4, 'profundidad_maxima_por_aristas': 3}
+esta versión:  {'raices': 65, 'clases_distintas': 128, 'nodos_del_arbol': 131, 'profundidad_maxima_por_nodos': 4, 'profundidad_maxima_por_aristas': 3}
+Mismo árbol (mismas clases en las mismas posiciones y el mismo orden): sí
+Campos nuevos en cada clase: ninguno; otros campos que cambian además de propertyCount, objectProperties y dataProperties (sin contar los hijos): ninguno
+objectProperties: null en 131 de 131 nodos en v1.1.0; lista en 131 en esta versión, no vacía en 30
+dataProperties: null en 131 de 131 nodos en v1.1.0; lista en 131 en esta versión, no vacía en 6
+Clases con propertyCount distinto: 4
+  Procedure_Activity: 0 -> 1; entra hasParameter (la clase forma parte de una unión declarada como dominio)
+  ProductFlow: 3 -> 4; entra refersToMaterial (la clase forma parte de una unión declarada como dominio)
+  ElementaryFlow: 0 -> 1; entra refersToMaterial (la clase forma parte de una unión declarada como dominio)
+  Procedure: 0 -> 1; entra hasParameter (la clase forma parte de una unión declarada como dominio)

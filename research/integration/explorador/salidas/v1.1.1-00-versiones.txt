@@ -1,0 +1,7 @@
+fecha_utc=2026-11-28T04:28:06Z
+commit=6b58c680392628cb42133b33e707465815d23b0f
+cambios_sin_commit=0
+python=Python 3.9.6
+rdflib=7.6.0
+imagen[protys-backend]=protys-v110-backend:maintenance id=sha256:245775657ff398569a980e8d2c9638a54aa049b9177afd75dc2e9c34a02aae94
+imagen[protys-frontend]=protys-v110-protys-frontend id=sha256:a90d6d2cc448b0aa6123c3f561cd63a5b64bdd4456984ed5e6d18bfe726b9ec3

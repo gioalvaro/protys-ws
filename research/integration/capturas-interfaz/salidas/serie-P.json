@@ -1,0 +1,47 @@
+{
+ "r": {
+  "serie": "P",
+  "chromium": "156.0.8078.4",
+  "dialogos": [],
+  "detalle_Procedure": "Select Ontology Module\n-- Select a module --\nCanonical_Catalog_Integrated\nClasses\nProperties\nSearch Classes\nClass Hierarchy\nActivity\nProcedure\nBack to hierarchy\nProcedure\n\nhttp://w3id.org/protys/ontology/process#Procedure\n\nDescription\n\nMétodo o protocolo para ejecutar un proceso en la conceptualización local. La propiedad specifiedBy declara core:Process como dominio y Procedure como rango. Esa asociación propuesta no se atribuye a una definición literal de ISO 10303 sin una cláusula normativa identificada.\n\nSUPERCLASSES\n\n0\n\nSUBCLASSES\n\n0\n\nProperties whose declared domain includes this class (1)\nhasParameter\nobject\n\nDeclared domain: Procedure ∪ Procedure_Activity\n\nIndividuals (0)\n\nNo individuals of this class.\n\nAdd Individual",
+  "grupos": [
+   "OBJECT PROPERTIES\n116",
+   "DATA PROPERTIES\n107"
+  ],
+  "detalle_produces": "produces\n\nhttp://w3id.org/protys/ontology/core#produces\n\nObject property\nDescription\n\nInversa de producedBy: un Process produce un Product.\n\nDomain\nProceso\nRange\nProducto\nSuperproperties\n\nNone\n\nSubproperties\n\nNone\n\nInverse\nproducedBy\nCharacteristics\n\nNone declared",
+  "detalle_involve": "involve\n\nhttp://w3id.org/protys/ontology/core#involve\n\nObject property\nDescription\n\nAsociación local entre Enterprise y Process, declarados como dominio y rango de involve. Representa la vinculación de una empresa con sus procesos; no se presenta como reproducción literal de una relación de ISO 15531 o ISO 18629 ni impone una cantidad mínima de procesos.\n\nDomain\nEmpresa\nRange\nProceso\nSuperproperties\n\nNone\n\nSubproperties\nhasProcess\nInverse\n\nNone\n\nCharacteristics\n\nNone declared",
+  "detalle_hasParameter": "hasParameter\n\nhttp://w3id.org/protys/ontology/process#hasParameter\n\nObject property\nDescription\n\nProcedure y Procedure_Activity están vinculados a Parameters (agregación).\n\nDomain\nProcedure ∪ Procedure_Activity\nRange\nParameters\nSuperproperties\n\nNone\n\nSubproperties\n\nNone\n\nInverse\n\nNone\n\nCharacteristics\n\nNone declared"
+ },
+ "capturas": [
+  {
+   "archivo": "A2b-explorador-jerarquia-selector.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-28T04:35:28.071Z",
+   "pasos": "Ontology Explorer → «Canonical_Catalog_Integrated» (vista «Classes») → abrir Proceso, Artificial_Process, Recurso y Device → volver al comienzo de la página."
+  },
+  {
+   "archivo": "A3b-explorador-detalle-clase-propiedades.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-28T04:35:38.230Z",
+   "pasos": "Ontology Explorer → «Canonical_Catalog_Integrated» → filtrar «Procedure» → elegir Procedure."
+  },
+  {
+   "archivo": "A9a-explorador-propiedades.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-28T04:35:49.141Z",
+   "pasos": "Ontology Explorer → «Canonical_Catalog_Integrated» → «Properties» → filtrar «produc» → elegir produces."
+  },
+  {
+   "archivo": "A9b-explorador-propiedad-subpropiedad.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-28T04:35:57.829Z",
+   "pasos": "La misma vista → filtrar «involve» → abrir involve → elegir involve (subpropiedad hasProcess)."
+  },
+  {
+   "archivo": "A9c-explorador-propiedad-dominio-union.png",
+   "url": "http://127.0.0.1:38081/explorer",
+   "utc": "2026-11-28T04:36:05.680Z",
+   "pasos": "La misma vista → filtrar «hasParameter» → elegir hasParameter (dominio declarado como unión)."
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+fecha_utc=2026-11-28T04:34:56Z
+commit=3ee72b87a5fc7a25487fad5c0c4b1d4bcbda91de
+cambios_sin_commit=0
+node=v24.18.0
+playwright=1.58.2
+imagen[protys-backend]=protys-v110-backend:maintenance id=sha256:3c832794df8f28314c449e0dcaf607d0d131bc327f84c9c4819116a7673dc2d2
+imagen[protys-frontend]=protys-v110-protys-frontend id=sha256:a90d6d2cc448b0aa6123c3f561cd63a5b64bdd4456984ed5e6d18bfe726b9ec3

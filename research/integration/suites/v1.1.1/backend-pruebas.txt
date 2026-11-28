@@ -1,0 +1,40 @@
+# commit 6b58c680392628cb42133b33e707465815d23b0f
+# cd backend && ./mvnw test  (JDK 17.0.20.1, 2026-11-28T04:28:27Z)
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.863 s -- in org.protys.ws.repository.StandardIncorporationSessionRepositoryTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.048 s -- in org.protys.ws.controller.IndividualControllerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.235 s -- in org.protys.ws.controller.AlignmentControllerTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.247 s -- in org.protys.ws.controller.ERPControllerTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.252 s -- in org.protys.ws.controller.SPARQLControllerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 s -- in org.protys.ws.controller.StandardWizardControllerTest
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.177 s -- in org.protys.ws.controller.OntologyControllerTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 s -- in org.protys.ws.controller.ERPConnectorContractTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.338 s -- in org.protys.ws.service.WizardSessionRulesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.436 s -- in org.protys.ws.service.PaintCaseInstancesP6P7IntegrationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.732 s -- in org.protys.ws.service.WizardPersistenceIntegrationTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s -- in org.protys.ws.service.ERPGraphPublicationTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.715 s -- in org.protys.ws.service.WizardRuleExecutionIntegrationTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 s -- in org.protys.ws.service.OntologyModuleFormatTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 s -- in org.protys.ws.service.AlignmentDataGraphsTest
+Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.064 s -- in org.protys.ws.service.SqlQueryGuardTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 s -- in org.protys.ws.service.WizardSelectionRegressionTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in org.protys.ws.service.AlignmentRuleUploadTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.protys.ws.service.OntologyPropertyHierarchyTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 s -- in org.protys.ws.service.R2RMLProcessorTypesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in org.protys.ws.service.AlignmentDefinitionTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in org.protys.ws.service.WizardInstanceDataTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 s -- in org.protys.ws.service.SwrlTextTest
+Tests run: 63, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.163 s -- in org.protys.ws.service.R2RMLW3CTestSuiteTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 s -- in org.protys.ws.service.SPARQLServiceExportTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in org.protys.ws.service.ERPConnectorR2RMLTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.566 s -- in org.protys.ws.service.ERPGraphCompensationIntegrationTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in org.protys.ws.service.ERPConnectorServiceTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 s -- in org.protys.ws.service.AlignmentFailureInvalidationTest
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 s -- in org.protys.ws.service.WizardSessionSafetyTest
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.120 s -- in org.protys.ws.service.ERPConnectorIntegrityTest
+Tests run: 17, Failures: 0, Errors: 0, Skipped: 17, Time elapsed: 0.005 s -- in org.protys.ws.service.ERPReadOnlyConnectionIntegrationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.470 s -- in org.protys.ws.service.ERPMaterializationIntegrationTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in org.protys.ws.service.OntologyServiceTest
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.75 s -- in org.protys.ws.service.ReasoningServiceIntegrationTest
+Tests run: 298, Failures: 0, Errors: 0, Skipped: 17
+BUILD SUCCESS
+Total time:  50.563 s

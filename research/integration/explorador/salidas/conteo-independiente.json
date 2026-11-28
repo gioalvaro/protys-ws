@@ -1,0 +1,588 @@
+{
+ "catalogo": "research/catalog.json",
+ "archivos_integrated": [
+  "ontologies/core-concepts.owl",
+  "ontologies/product-module.owl",
+  "ontologies/process-module.owl",
+  "ontologies/resource-module.owl",
+  "ontologies/enterprise-module.owl",
+  "research/model/research-profile.owl",
+  "ontologies/iso15531-module.owl",
+  "research/model/manufacturing-profile.owl",
+  "ontologies/iso14040-module.owl",
+  "research/model/environmental-profile.owl",
+  "ontologies/paint-case-extension.owl",
+  "research/data/functional.ttl",
+  "ontologies/alignment-rules.owl"
+ ],
+ "A_ocho_modulos": {
+  "filas": [
+   {
+    "modulo": "Núcleo",
+    "archivo": "ontologies/core-concepts.owl",
+    "clases_locales": 4,
+    "clases_nuevas": 4,
+    "objeto": 8,
+    "datos": 4,
+    "anotacion": 0,
+    "tabla_3_11": [
+     4,
+     4,
+     8,
+     4
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "Producto",
+    "archivo": "ontologies/product-module.owl",
+    "clases_locales": 11,
+    "clases_nuevas": 11,
+    "objeto": 4,
+    "datos": 0,
+    "anotacion": 0,
+    "tabla_3_11": [
+     11,
+     11,
+     4,
+     0
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "Proceso",
+    "archivo": "ontologies/process-module.owl",
+    "clases_locales": 8,
+    "clases_nuevas": 8,
+    "objeto": 3,
+    "datos": 0,
+    "anotacion": 0,
+    "tabla_3_11": [
+     8,
+     8,
+     3,
+     0
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "Recursos",
+    "archivo": "ontologies/resource-module.owl",
+    "clases_locales": 15,
+    "clases_nuevas": 15,
+    "objeto": 11,
+    "datos": 0,
+    "anotacion": 0,
+    "tabla_3_11": [
+     15,
+     15,
+     11,
+     0
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "Empresa",
+    "archivo": "ontologies/enterprise-module.owl",
+    "clases_locales": 5,
+    "clases_nuevas": 5,
+    "objeto": 2,
+    "datos": 0,
+    "anotacion": 0,
+    "tabla_3_11": [
+     5,
+     5,
+     2,
+     0
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "ISO15531",
+    "archivo": "ontologies/iso15531-module.owl",
+    "clases_locales": 18,
+    "clases_nuevas": 18,
+    "objeto": 21,
+    "datos": 16,
+    "anotacion": 0,
+    "tabla_3_11": [
+     18,
+     18,
+     21,
+     16
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "ISO14040",
+    "archivo": "ontologies/iso14040-module.owl",
+    "clases_locales": 15,
+    "clases_nuevas": 15,
+    "objeto": 11,
+    "datos": 12,
+    "anotacion": 0,
+    "tabla_3_11": [
+     15,
+     15,
+     11,
+     12
+    ],
+    "coincide": true
+   },
+   {
+    "modulo": "Alineamiento",
+    "archivo": "ontologies/alignment-rules.owl",
+    "clases_locales": 11,
+    "clases_nuevas": 11,
+    "objeto": 21,
+    "datos": 6,
+    "anotacion": 0,
+    "tabla_3_11": [
+     11,
+     11,
+     21,
+     6
+    ],
+    "coincide": true
+   }
+  ],
+  "total": [
+   87,
+   81,
+   38
+  ],
+  "tabla_3_11_total": [
+   87,
+   81,
+   38
+  ]
+ },
+ "B_integrated": {
+  "pasos": [
+   {
+    "archivo": "ontologies/core-concepts.owl",
+    "clases": 4,
+    "objeto": 8,
+    "datos": 4,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/product-module.owl",
+    "clases": 11,
+    "objeto": 4,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/process-module.owl",
+    "clases": 8,
+    "objeto": 3,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/resource-module.owl",
+    "clases": 15,
+    "objeto": 11,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/enterprise-module.owl",
+    "clases": 5,
+    "objeto": 2,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "research/model/research-profile.owl",
+    "clases": 9,
+    "objeto": 29,
+    "datos": 37,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/iso15531-module.owl",
+    "clases": 18,
+    "objeto": 21,
+    "datos": 16,
+    "anotacion": 0
+   },
+   {
+    "archivo": "research/model/manufacturing-profile.owl",
+    "clases": 4,
+    "objeto": 1,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/iso14040-module.owl",
+    "clases": 15,
+    "objeto": 11,
+    "datos": 12,
+    "anotacion": 0
+   },
+   {
+    "archivo": "research/model/environmental-profile.owl",
+    "clases": 1,
+    "objeto": 0,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/paint-case-extension.owl",
+    "clases": 30,
+    "objeto": 14,
+    "datos": 33,
+    "anotacion": 0
+   },
+   {
+    "archivo": "research/data/functional.ttl",
+    "clases": 0,
+    "objeto": 0,
+    "datos": 0,
+    "anotacion": 0
+   },
+   {
+    "archivo": "ontologies/alignment-rules.owl",
+    "clases": 8,
+    "objeto": 12,
+    "datos": 5,
+    "anotacion": 0
+   }
+  ],
+  "total": [
+   128,
+   116,
+   107
+  ],
+  "anotacion": 0
+ },
+ "C_h3_extended": {
+  "pasos": [
+   {
+    "archivo": "ontologies/iso10303-ap242-fragment.owl",
+    "clases": 6,
+    "objeto": 3,
+    "datos": 2,
+    "anotacion": 0,
+    "detalle": {
+     "clases": [
+      "Configuration_Item",
+      "PilotComponentRecord",
+      "PilotProductRecord",
+      "Product_Definition",
+      "Product_Definition_Formation",
+      "Shape_Representation"
+     ],
+     "objeto": [
+      "definesFormation",
+      "hasShapeRepresentation",
+      "managesConfigurationOf"
+     ],
+     "datos": [
+      "definitionId",
+      "versionId"
+     ]
+    }
+   },
+   {
+    "archivo": "research/data/automotive.ttl",
+    "clases": 0,
+    "objeto": 0,
+    "datos": 0,
+    "anotacion": 0,
+    "detalle": {
+     "clases": [],
+     "objeto": [],
+     "datos": []
+    }
+   },
+   {
+    "archivo": "ontologies/iso10303-alignment-rules.owl",
+    "clases": 0,
+    "objeto": 0,
+    "datos": 0,
+    "anotacion": 0,
+    "detalle": {
+     "clases": [],
+     "objeto": [],
+     "datos": []
+    }
+   }
+  ],
+  "total": [
+   134,
+   119,
+   109
+  ],
+  "tesis": [
+   134,
+   119,
+   109
+  ]
+ },
+ "D_fuera_de_los_arboles": {
+  "caracteristica_sin_tipo": [],
+  "predicados_sin_declarar": [],
+  "referidas_sin_declarar": []
+ },
+ "E_comparacion": {
+  "objeto": {
+   "rdflib": 116,
+   "servicio": 116,
+   "servicio_declara": 116,
+   "solo_rdflib": [],
+   "solo_servicio": [],
+   "raices_rdflib": 103,
+   "raices_servicio": 103,
+   "profundidad_rdflib": 2,
+   "profundidad_servicio": 2,
+   "coincide": true
+  },
+  "datos": {
+   "rdflib": 107,
+   "servicio": 107,
+   "servicio_declara": 107,
+   "solo_rdflib": [],
+   "solo_servicio": [],
+   "raices_rdflib": 107,
+   "raices_servicio": 107,
+   "profundidad_rdflib": 1,
+   "profundidad_servicio": 1,
+   "coincide": true
+  },
+  "anotacion": {
+   "rdflib": 0,
+   "servicio": 0
+  }
+ },
+ "E_arboles_rdflib": {
+  "objeto": {
+   "raices": 103,
+   "nombres_raices": [
+    "allocationForOperation",
+    "facilityInBoundary",
+    "flowRefersToProduct",
+    "hasEmittedFlow",
+    "hasInventoryRepresentation",
+    "hasRecordedInputFlowForLot",
+    "indicatorForLot",
+    "inputFlowForResource",
+    "inventoryForPlan",
+    "qualityForLot",
+    "bridgesFlowToActivity",
+    "hasResource",
+    "involve",
+    "isHeldBy",
+    "precedes",
+    "producedBy",
+    "produces",
+    "usedBy",
+    "isPartOf",
+    "locatedAt",
+    "appliesTo",
+    "computedForProcess",
+    "emits",
+    "hasCharacterizationFactor",
+    "hasEmissionFactor",
+    "hasFunctionalUnit",
+    "hasImpact",
+    "hasInventoryFlow",
+    "hasSystemBoundary",
+    "refersToMaterial",
+    "usesCharacterizationFactor",
+    "assignsResource",
+    "consumesMaterial",
+    "executedBy",
+    "executesActivity",
+    "hasActivity",
+    "hasCapability",
+    "hasInput",
+    "hasMaintenance",
+    "hasMeasurement",
+    "hasNonConformity",
+    "hasProcess",
+    "includesActivity",
+    "partOfProcess",
+    "precedes",
+    "precedesEvent",
+    "processedOn",
+    "producesLot",
+    "requiresCleaningBetween",
+    "requiresResource",
+    "resourceCurrentState",
+    "responsibleOperator",
+    "usesResource",
+    "employedBy",
+    "employs",
+    "hasCarbonFootprint",
+    "hasCategory",
+    "hasCertification",
+    "hasProcessPlan",
+    "hasShelfLife",
+    "hasVOCContent",
+    "hasWaterFootprint",
+    "manages",
+    "suppliesTo",
+    "composedBy",
+    "hasParameter",
+    "specifiedBy",
+    "acquiredBy",
+    "composes",
+    "definedBy",
+    "isComposedOF",
+    "belongsToProcess",
+    "cleanedResource",
+    "componentOf",
+    "eventForProcess",
+    "forIndicator",
+    "forLot",
+    "forOperation",
+    "hasEmissionFactor",
+    "hasFormulation",
+    "hasGHGContribution",
+    "hasMeasurement",
+    "hasPlan",
+    "hasStageResource",
+    "hasThreshold",
+    "inventoryForProcess",
+    "nextLot",
+    "planProduces",
+    "producesProduct",
+    "providedBy",
+    "subloadOfOperation",
+    "usesEmissionFactor",
+    "canBeConsultedBy",
+    "consumesResource",
+    "executedByResource",
+    "hasBehaviour",
+    "hasCapability",
+    "hasRole",
+    "isInputToActivity",
+    "isOutputOfActivity",
+    "producesResource",
+    "requiresResource",
+    "usesResource"
+   ],
+   "profundidad_maxima_por_nodos": 2,
+   "profundidad_maxima_por_aristas": 1,
+   "sin_raiz_alcanzable": 0
+  },
+  "datos": {
+   "raices": 107,
+   "nombres_raices": [
+    "hasEcoScore",
+    "hasEfficiency",
+    "impactThreshold",
+    "hasDescription",
+    "hasEfficiency",
+    "hasLotGHGImpact",
+    "hasName",
+    "hasPriorVersion",
+    "hasVersion",
+    "modifiedInVersion",
+    "VOCContentGperLiter",
+    "carbonFootprintKgCO2eq",
+    "energyConsumptionMJ",
+    "energyInputKWh",
+    "factorUnit",
+    "factorValue",
+    "hasEnvironmentalImpact",
+    "hasFunctionalUnitQuantity",
+    "hasGHGImpactKgCO2e",
+    "hasIndicatorValue",
+    "indicatorValue",
+    "waterFootprintLiters",
+    "consumesEnergyKWh",
+    "consumesWaterL",
+    "cycleTime",
+    "cycleTimeMinutes",
+    "duration",
+    "experienceYears",
+    "functionalUnit",
+    "hasQualityStatus",
+    "operationSequence",
+    "producesQuantity",
+    "productFamily",
+    "propagatedQualityStatus",
+    "setupTimeMinutes",
+    "skillCode",
+    "timestamp",
+    "yield",
+    "OEEPercent",
+    "availabilityPercent",
+    "batchQuantity",
+    "capacityLitersPerHour",
+    "capacityTonsPerMonth",
+    "capacityUnitsPerMinute",
+    "certificationLevel",
+    "durationMinutes",
+    "energyConsumptionKW",
+    "establishedDate",
+    "glassTransitionTemp",
+    "hasFunction",
+    "hasURI",
+    "hasValue",
+    "impactUnit",
+    "inputQuantity",
+    "location",
+    "maintenanceFrequencyDays",
+    "numberOfEmployees",
+    "organizationCode",
+    "outputQuantity",
+    "particleSize",
+    "purityPercent",
+    "shelfLifeMonths",
+    "skillCategory",
+    "solidContent",
+    "speedRPM",
+    "temperatureCelsius",
+    "throughput",
+    "viscosity",
+    "volatileOrganicCompounds",
+    "yearOfExperience",
+    "yieldPercent",
+    "availabilityPercent",
+    "capacityLiters",
+    "capacityUnitsPerMinute",
+    "densityKgPerL",
+    "endTimeSeconds",
+    "energyKWh",
+    "eventTimeSeconds",
+    "factorUnit",
+    "factorValue",
+    "ghgKgCO2e",
+    "indicatorCategory",
+    "inputMassKg",
+    "lifecycleStage",
+    "maintenanceStatus",
+    "materialFactorKgCO2ePerKg",
+    "materialQuantityKg",
+    "oeePercent",
+    "operationIndicatorRatio",
+    "outputMassKg",
+    "outputVolumeL",
+    "powerKW",
+    "productFamilyCode",
+    "qualityStatus",
+    "registeredLossKg",
+    "scenarioRole",
+    "stageIndex",
+    "startTimeSeconds",
+    "subloadDurationMinutes",
+    "subloadVolumeL",
+    "thresholdCategory",
+    "thresholdUnit",
+    "thresholdValue",
+    "unit",
+    "waterFootprintLPerKg",
+    "waterL",
+    "yieldPercent"
+   ],
+   "profundidad_maxima_por_nodos": 1,
+   "profundidad_maxima_por_aristas": 0,
+   "sin_raiz_alcanzable": 0
+  }
+ }
+}
