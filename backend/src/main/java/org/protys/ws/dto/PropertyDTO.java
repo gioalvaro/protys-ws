@@ -2,9 +2,14 @@ package org.protys.ws.dto;
 
 import lombok.*;
 
+import java.util.List;
+
 /**
- * DTO for ontology property information.
- * Represents both datatype properties and object properties with their constraints.
+ * Propiedad de objeto o de datos tal como está declarada en el grafo de un módulo (sin inferencia).
+ *
+ * En el árbol de GET /api/ontology/modules/{id}/properties cada nodo trae sus subpropiedades en
+ * {@code subproperties}. En las listas de {@link OntologyClassDTO} la propiedad va sin subpropiedades
+ * ({@code subproperties} es null) y con sus dominios completos, aunque la clase entre por una unión.
  */
 @Data
 @Builder
@@ -12,37 +17,34 @@ import lombok.*;
 @AllArgsConstructor
 public class PropertyDTO {
 
+    public static final String OBJECT = "OBJECT";
+    public static final String DATA = "DATA";
+
     private String uri;
 
     private String localName;
 
     private String label;
 
-    private String domain;
+    private String comment;
 
-    private String range;
+    /** {@link #OBJECT} (owl:ObjectProperty) o {@link #DATA} (owl:DatatypeProperty). */
+    private String type;
 
-    @Builder.Default
-    private Boolean functional = false;
+    /** Cada rdfs:domain declarado; si hay varios, van todos (no son alternativas). */
+    private List<DomainRangeDTO> domains;
 
-    /**
-     * Get the human-readable label, falling back to localName if not available.
-     */
-    public String getDisplayName() {
-        return label != null && !label.isBlank() ? label : localName;
-    }
+    /** Cada rdfs:range declarado; si hay varios, van todos. */
+    private List<DomainRangeDTO> ranges;
 
-    /**
-     * Determine if this is a datatype property (range is a datatype).
-     */
-    public boolean isDataProperty() {
-        return range != null && (
-                range.contains("xsd#") ||
-                        range.contains("rdfs#Literal") ||
-                        range.contains("string") ||
-                        range.contains("int") ||
-                        range.contains("boolean") ||
-                        range.contains("date")
-        );
-    }
+    /** Propiedades declaradas como inversas con owl:inverseOf, en cualquiera de los dos sentidos. */
+    private List<String> inverseOf;
+
+    /** FUNCTIONAL, INVERSE_FUNCTIONAL, TRANSITIVE o SYMMETRIC, según los tipos declarados. */
+    private List<String> characteristics;
+
+    /** Superpropiedades nombradas (rdfs:subPropertyOf), del módulo o de otros. */
+    private List<String> superPropertyUris;
+
+    private List<PropertyDTO> subproperties;
 }

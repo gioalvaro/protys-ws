@@ -29,6 +29,8 @@ import org.protys.ws.dto.DashboardStats;
 import org.protys.ws.dto.OntologyClassDTO;
 import org.protys.ws.dto.OntologyIndividualDTO;
 import org.protys.ws.dto.OntologyModuleDTO;
+import org.protys.ws.dto.ModulePropertiesDTO;
+import org.protys.ws.dto.PropertyDTO;
 import org.protys.ws.exception.ProtysFusekiException;
 import org.protys.ws.exception.ProtysMappingException;
 import org.protys.ws.repository.OntologyModuleRepository;
@@ -170,21 +172,43 @@ public class OntologyService {
             if (!hasNamedParent) roots.add(cls);
         }
 
-        Comparator<Resource> byLabel = Comparator.comparing((Resource r) -> classLabel(model, r).toLowerCase())
+        Comparator<Resource> byLabel = Comparator.comparing((Resource r) -> label(model, r).toLowerCase())
                 .thenComparing(Resource::getURI);
         roots.sort(byLabel);
         children.values().forEach(list -> list.sort(byLabel));
 
+        PropertyHierarchy properties = new PropertyHierarchy(model, r -> label(model, r));
+        Map<Resource, List<PropertyDTO>> objectByDomain = properties.byDomainClass(PropertyDTO.OBJECT);
+        Map<Resource, List<PropertyDTO>> dataByDomain = properties.byDomainClass(PropertyDTO.DATA);
+
         Set<Resource> reached = new HashSet<>();
         List<OntologyClassDTO> result = new ArrayList<>();
-        for (Resource root : roots) result.add(buildClassNode(model, root, children, new HashSet<>(), reached));
+        for (Resource root : roots) result.add(buildClassNode(model, root, children, objectByDomain, dataByDomain, new HashSet<>(), reached));
         // Clases que sólo forman parte de un ciclo: no tienen raíz alcanzable.
         List<Resource> unreached = classes.stream().filter(c -> !reached.contains(c)).sorted(byLabel).toList();
         for (Resource cls : unreached) {
-            if (!reached.contains(cls)) result.add(buildClassNode(model, cls, children, new HashSet<>(), reached));
+            if (!reached.contains(cls)) result.add(buildClassNode(model, cls, children, objectByDomain, dataByDomain, new HashSet<>(), reached));
         }
 
         log.info("Class hierarchy built for module {}: {} classes, {} roots", moduleId, classes.size(), result.size());
+        return result;
+    }
+
+    /**
+     * Devuelve los árboles de propiedades de objeto y de datos de un módulo, leídos del grafo declarado
+     * sin inferencia (ver {@link PropertyHierarchy}), y la cantidad de propiedades de anotación.
+     *
+     * @param moduleId the OntologyModule ID
+     * @return raíces de cada árbol ordenadas por etiqueta y después por IRI (listas vacías si no hay)
+     */
+    @Transactional(readOnly = true)
+    public ModulePropertiesDTO getPropertyHierarchy(UUID moduleId) {
+        OntologyModule module = ontologyModuleRepository.findById(moduleId)
+                .orElseThrow(() -> new org.protys.ws.exception.ModuleNotFoundException(moduleId));
+        Model model = fusekiService.getModel(module.getNamedGraph());
+        ModulePropertiesDTO result = new PropertyHierarchy(model, r -> label(model, r)).build();
+        log.info("Property hierarchy built for module {}: {} object, {} data, {} annotation properties", moduleId,
+                result.getObjectPropertyCount(), result.getDataPropertyCount(), result.getAnnotationPropertyCount());
         return result;
     }
 
@@ -196,7 +220,7 @@ public class OntologyService {
         return parents;
     }
 
-    private String classLabel(Model model, Resource cls) {
+    private String label(Model model, Resource cls) {
         String fallback = null;
         for (String lang : List.of("", "es", "en")) {
             StmtIterator it = model.listStatements(cls, RDFS.label, (RDFNode) null);
@@ -215,20 +239,24 @@ public class OntologyService {
 
     /** Arma el nodo y sus subclases; {@code path} corta ciclos, {@code reached} registra lo visitado. */
     private OntologyClassDTO buildClassNode(Model model, Resource cls, Map<Resource, List<Resource>> children,
+                                            Map<Resource, List<PropertyDTO>> objectByDomain,
+                                            Map<Resource, List<PropertyDTO>> dataByDomain,
                                             Set<Resource> path, Set<Resource> reached) {
         reached.add(cls);
         path.add(cls);
         OntologyClassDTO dto = new OntologyClassDTO();
         dto.setUri(cls.getURI());
         dto.setLocalName(cls.getLocalName());
-        dto.setLabel(classLabel(model, cls));
+        dto.setLabel(label(model, cls));
         Statement comment = cls.getProperty(RDFS.comment);
         if (comment != null && comment.getObject().isLiteral()) dto.setDescription(comment.getString());
         dto.setSuperClassUris(namedSuperClasses(model, cls).stream().map(Resource::getURI).sorted().toList());
-        dto.setPropertyCount(model.listSubjectsWithProperty(RDFS.domain, cls).toList().size());
+        dto.setObjectProperties(objectByDomain.getOrDefault(cls, List.of()));
+        dto.setDataProperties(dataByDomain.getOrDefault(cls, List.of()));
+        dto.setPropertyCount(dto.getObjectProperties().size() + dto.getDataProperties().size());
         List<OntologyClassDTO> subclasses = new ArrayList<>();
         for (Resource child : children.getOrDefault(cls, List.of())) {
-            if (!path.contains(child)) subclasses.add(buildClassNode(model, child, children, path, reached));
+            if (!path.contains(child)) subclasses.add(buildClassNode(model, child, children, objectByDomain, dataByDomain, path, reached));
         }
         dto.setSubclasses(subclasses);
         path.remove(cls);

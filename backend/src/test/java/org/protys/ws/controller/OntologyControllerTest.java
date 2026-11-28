@@ -177,6 +177,28 @@ class OntologyControllerTest {
                 .andExpect(jsonPath("$.error").value("Module not found: " + moduleId));
     }
 
+    /** GET /api/ontology/modules/{id}/properties: los dos árboles y los conteos; 404 si el módulo no existe. */
+    @Test
+    void propertiesDevuelveLosDosArbolesY404SiElModuloNoExiste() throws Exception {
+        UUID moduleId = UUID.randomUUID();
+        org.protys.ws.dto.PropertyDTO hasPart = org.protys.ws.dto.PropertyDTO.builder()
+                .uri("http://example.org/hasPart").type("OBJECT").subproperties(List.of()).build();
+        when(ontologyService.getPropertyHierarchy(moduleId)).thenReturn(org.protys.ws.dto.ModulePropertiesDTO.builder()
+                .objectProperties(List.of(hasPart)).dataProperties(List.of())
+                .objectPropertyCount(1).dataPropertyCount(0).annotationPropertyCount(2).build());
+        mockMvc.perform(get("/api/ontology/modules/{id}/properties", moduleId))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.objectProperties", hasSize(1)))
+                .andExpect(jsonPath("$.objectProperties[0].type", equalTo("OBJECT")))
+                .andExpect(jsonPath("$.dataProperties", hasSize(0)))
+                .andExpect(jsonPath("$.annotationPropertyCount", equalTo(2)));
+        UUID missing = UUID.randomUUID();
+        when(ontologyService.getPropertyHierarchy(missing)).thenThrow(new org.protys.ws.exception.ModuleNotFoundException(missing));
+        mockMvc.perform(get("/api/ontology/modules/{id}/properties", missing))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error").value("Module not found: " + missing));
+    }
+
     /**
      * Test POST /api/ontology/modules/{id}/validate with consistent module.
      */

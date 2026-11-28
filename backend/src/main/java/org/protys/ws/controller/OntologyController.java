@@ -82,6 +82,20 @@ public class OntologyController {
         }
     }
 
+    @GetMapping("/modules/{id}/properties")
+    @Operation(summary = "Get property hierarchy", description = "Árboles de propiedades de objeto y de datos del módulo (raíces con sus subpropiedades en el campo subproperties), leídos del grafo declarado sin inferencia, y la cantidad de propiedades de anotación, que no entran a los árboles.")
+    public ResponseEntity<?> getPropertyHierarchy(@PathVariable UUID id) {
+        log.info("Fetching property hierarchy for module: {}", id);
+        try {
+            return ResponseEntity.ok(ontologyService.getPropertyHierarchy(id));
+        } catch (org.protys.ws.exception.ModuleNotFoundException missing) {
+            return notFound(missing);
+        } catch (Exception e) {
+            log.error("Error retrieving property hierarchy", e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
     // Los individuos se gestionan en IndividualController (/api/ontology/individuals, IRI en el parámetro uri).
 
     // Validation Endpoint

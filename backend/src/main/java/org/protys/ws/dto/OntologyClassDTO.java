@@ -23,6 +23,7 @@ public class OntologyClassDTO {
 
     private String description;
 
+    /** Cantidad de propiedades de objeto y de datos cuyo dominio declarado incluye la clase. */
     private Integer propertyCount;
 
     private List<OntologyClassDTO> subclasses;
@@ -31,8 +32,13 @@ public class OntologyClassDTO {
 
     private List<OntologyIndividualDTO> individuals;
 
+    /**
+     * Propiedades de datos cuyo dominio declarado incluye la clase: la clase es uno de sus rdfs:domain
+     * o forma parte de una unión declarada como dominio. Cada una trae sus dominios completos.
+     */
     private List<PropertyDTO> dataProperties;
 
+    /** Igual que {@link #dataProperties}, para las propiedades de objeto. */
     private List<PropertyDTO> objectProperties;
 
     /**
