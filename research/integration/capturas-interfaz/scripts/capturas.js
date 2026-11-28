@@ -1,7 +1,8 @@
-// Capturas de la interfaz de PROTYS-WS. Uso: node capturas.js A|B|C
+// Capturas de la interfaz de PROTYS-WS. Uso: node capturas.js A|B|C|P
 //   A: red integrada sin el piloto (tablero, explorador, consola SPARQL, alineamiento, razonamiento, conectores).
 //   B: incorporación del piloto ISO 10303 con el asistente, paso por paso, y el explorador con el piloto.
 //   C: conectores ERP materializados y la consulta que cruza los dos ERP (plataforma con los ERP de prueba).
+//   P: explorador con el selector «Classes | Properties» (v1.1.1): vista de clases y vista de propiedades.
 // Ventana 1440×900 con deviceScaleFactor 2 (PNG de 2880×1800), colorScheme light. PROTYS_WEB fija la URL base.
 const fs = require('fs');
 const path = require('path');
@@ -142,12 +143,47 @@ async function serieC(p, r) {
   await captura(p, 'C2b-consulta-cruzada.png', `La misma pantalla, desplazada hasta el final: «${r.cruzada}».`, { esperarAvisos: false });
 }
 
+async function serieP(p, r) {
+  // Sin desplazar la página, para que se vean el selector «Classes | Properties» y el panel de detalle.
+  // Vista de clases con el selector: abrir Proceso, Artificial_Process, Recurso y Device, como en A2.
+  await moduloExplorador(p, 'Canonical_Catalog_Integrated');
+  for (const n of ['Proceso', 'Artificial_Process', 'Recurso', 'Device']) await expandir(p, n);
+  await captura(p, 'A2b-explorador-jerarquia-selector.png', 'Ontology Explorer → «Canonical_Catalog_Integrated» (vista «Classes») → abrir Proceso, Artificial_Process, Recurso y Device; sin desplazar.');
+
+  // Detalle de una clase con la lista de propiedades cuyo dominio declarado la incluye (aquí, por una unión).
+  await moduloExplorador(p, 'Canonical_Catalog_Integrated');
+  await p.getByPlaceholder('Filter class hierarchy...').fill('Procedure'); await quieto(p);
+  await nodo(p, 'Procedure').click(); await quieto(p);
+  r.detalle_Procedure = (await p.locator('main').innerText()).slice(0, 2000);
+  await captura(p, 'A3b-explorador-detalle-clase-propiedades.png', 'Ontology Explorer → «Canonical_Catalog_Integrated» → filtrar «Procedure» → elegir Procedure.');
+
+  // Vista de propiedades: los dos grupos, con produces elegida (dominio, rango e inversa).
+  await moduloExplorador(p, 'Canonical_Catalog_Integrated');
+  await p.getByRole('tab', { name: 'Properties' }).click(); await quieto(p);
+  r.grupos = await p.locator('[data-testid^=property-group-] > button').allInnerTexts();
+  await p.getByPlaceholder('Filter properties...').fill('produc'); await quieto(p);
+  await nodo(p, 'produces').click(); await quieto(p);
+  r.detalle_produces = await p.locator('[data-testid=property-detail]').innerText();
+  await captura(p, 'A9a-explorador-propiedades.png', 'Ontology Explorer → «Canonical_Catalog_Integrated» → «Properties» → filtrar «produc» → elegir produces.');
+
+  // Una propiedad con subpropiedad y otra con dominio anónimo (unión).
+  await p.getByPlaceholder('Filter properties...').fill('involve'); await quieto(p);
+  await expandir(p, 'involve');
+  await nodo(p, 'involve').click(); await quieto(p);
+  r.detalle_involve = await p.locator('[data-testid=property-detail]').innerText();
+  await captura(p, 'A9b-explorador-propiedad-subpropiedad.png', 'La misma vista → filtrar «involve» → abrir involve → elegir involve (subpropiedad hasProcess).');
+  await p.getByPlaceholder('Filter properties...').fill('hasParameter'); await quieto(p);
+  await nodo(p, 'hasParameter').click(); await quieto(p);
+  r.detalle_hasParameter = await p.locator('[data-testid=property-detail]').innerText();
+  await captura(p, 'A9c-explorador-propiedad-dominio-union.png', 'La misma vista → filtrar «hasParameter» → elegir hasParameter (dominio declarado como unión).');
+}
+
 (async () => {
   const serie = process.argv[2];
   const { b, p, version } = await abrir();
   const dialogos = []; p.on('dialog', d => { dialogos.push(d.message()); d.dismiss(); });
   const r = { serie, chromium: version, dialogos };
-  await ({ A: serieA, B: serieB, C: serieC })[serie](p, r);
+  await ({ A: serieA, B: serieB, C: serieC, P: serieP })[serie](p, r);
   fs.mkdirSync(path.join(OUTDIR, '..', 'salidas'), { recursive: true });
   fs.writeFileSync(path.join(OUTDIR, '..', 'salidas', `serie-${serie}.json`), JSON.stringify({ r, capturas: log }, null, 1));
   await b.close();
