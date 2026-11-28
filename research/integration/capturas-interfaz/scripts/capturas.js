@@ -148,7 +148,9 @@ async function serieP(p, r) {
   // Vista de clases con el selector: abrir Proceso, Artificial_Process, Recurso y Device, como en A2.
   await moduloExplorador(p, 'Canonical_Catalog_Integrated');
   for (const n of ['Proceso', 'Artificial_Process', 'Recurso', 'Device']) await expandir(p, n);
-  await captura(p, 'A2b-explorador-jerarquia-selector.png', 'Ontology Explorer → «Canonical_Catalog_Integrated» (vista «Classes») → abrir Proceso, Artificial_Process, Recurso y Device; sin desplazar.');
+  // Al abrir los nodos la página se desplaza; se vuelve al comienzo para que se vean el módulo, el selector y la búsqueda.
+  await p.evaluate(() => window.scrollTo(0, 0)); await p.waitForTimeout(500);
+  await captura(p, 'A2b-explorador-jerarquia-selector.png', 'Ontology Explorer → «Canonical_Catalog_Integrated» (vista «Classes») → abrir Proceso, Artificial_Process, Recurso y Device → volver al comienzo de la página.');
 
   // Detalle de una clase con la lista de propiedades cuyo dominio declarado la incluye (aquí, por una unión).
   await moduloExplorador(p, 'Canonical_Catalog_Integrated');
