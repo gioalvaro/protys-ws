@@ -177,7 +177,7 @@ function App() {
             {/* Right side actions */}
             <div className="flex items-center gap-4">
               <div className="px-3 py-1 bg-protys-50 text-protys-700 rounded-full text-xs font-medium">
-                v1.1.0
+                v1.1.1
               </div>
             </div>
           </div>
