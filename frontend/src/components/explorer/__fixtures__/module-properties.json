@@ -1,0 +1,153 @@
+{
+  "objectProperties": [
+    {
+      "uri": "http://w3id.org/protys/ontology/core#hasPart",
+      "localName": "hasPart",
+      "label": "has part",
+      "comment": "Composición de procesos.",
+      "type": "OBJECT",
+      "domains": [
+        {
+          "uri": "http://w3id.org/protys/ontology/core#Process",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "ranges": [
+        {
+          "uri": "http://w3id.org/protys/ontology/core#Process",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "inverseOf": [
+        "http://w3id.org/protys/ontology/core#partOf"
+      ],
+      "characteristics": [
+        "TRANSITIVE"
+      ],
+      "superPropertyUris": [],
+      "subproperties": [
+        {
+          "uri": "http://w3id.org/protys/ontology/iso15531#hasOperation",
+          "localName": "hasOperation",
+          "label": "has operation",
+          "comment": null,
+          "type": "OBJECT",
+          "domains": [
+            {
+              "uri": "http://w3id.org/protys/ontology/iso15531#ManufacturingProcess",
+              "operator": null,
+              "members": []
+            }
+          ],
+          "ranges": [
+            {
+              "uri": "http://w3id.org/protys/ontology/iso15531#ProcessOperation",
+              "operator": null,
+              "members": []
+            }
+          ],
+          "inverseOf": [],
+          "characteristics": [],
+          "superPropertyUris": [
+            "http://w3id.org/protys/ontology/core#hasPart"
+          ],
+          "subproperties": []
+        }
+      ]
+    },
+    {
+      "uri": "http://w3id.org/protys/ontology/enterprise#locatedAt",
+      "localName": "locatedAt",
+      "label": "located at",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [
+        {
+          "uri": null,
+          "operator": "unionOf",
+          "members": [
+            "http://w3id.org/protys/ontology/core#Enterprise",
+            "http://w3id.org/protys/ontology/enterprise#Station"
+          ]
+        }
+      ],
+      "ranges": [
+        {
+          "uri": "http://w3id.org/protys/ontology/enterprise#Station",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "inverseOf": [],
+      "characteristics": [],
+      "superPropertyUris": [],
+      "subproperties": []
+    },
+    {
+      "uri": "http://w3id.org/protys/ontology/core#partOf",
+      "localName": "partOf",
+      "label": "part of",
+      "comment": null,
+      "type": "OBJECT",
+      "domains": [
+        {
+          "uri": "http://w3id.org/protys/ontology/core#Process",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "ranges": [
+        {
+          "uri": "http://w3id.org/protys/ontology/core#Process",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "inverseOf": [
+        "http://w3id.org/protys/ontology/core#hasPart"
+      ],
+      "characteristics": [],
+      "superPropertyUris": [],
+      "subproperties": []
+    }
+  ],
+  "dataProperties": [
+    {
+      "uri": "http://w3id.org/protys/ontology/core#identifier",
+      "localName": "identifier",
+      "label": "identifier",
+      "comment": null,
+      "type": "DATA",
+      "domains": [
+        {
+          "uri": "http://w3id.org/protys/ontology/core#Enterprise",
+          "operator": null,
+          "members": []
+        },
+        {
+          "uri": "http://w3id.org/protys/ontology/core#Process",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "ranges": [
+        {
+          "uri": "http://www.w3.org/2001/XMLSchema#string",
+          "operator": null,
+          "members": []
+        }
+      ],
+      "inverseOf": [],
+      "characteristics": [
+        "FUNCTIONAL"
+      ],
+      "superPropertyUris": [],
+      "subproperties": []
+    }
+  ],
+  "objectPropertyCount": 4,
+  "dataPropertyCount": 1,
+  "annotationPropertyCount": 0
+}

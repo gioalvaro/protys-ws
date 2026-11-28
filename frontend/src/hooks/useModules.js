@@ -32,6 +32,21 @@ export const useClassHierarchy = (moduleId, options = {}) => {
 };
 
 /**
+ * Árboles de propiedades de objeto y de datos de un módulo (GET /api/ontology/modules/{id}/properties)
+ */
+export const usePropertyHierarchy = (moduleId, options = {}) => {
+  return useQuery({
+    queryKey: ['modules', moduleId, 'properties'],
+    queryFn: async () => {
+      return await ontologyAPI.getPropertyHierarchy(moduleId);
+    },
+    enabled: !!moduleId,
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    ...options,
+  });
+};
+
+/**
  * Mutation for uploading an ontology module file
  */
 export const useUploadModule = () => {

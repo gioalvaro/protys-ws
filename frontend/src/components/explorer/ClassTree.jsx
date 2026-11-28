@@ -4,6 +4,7 @@ import {
   ChevronDownIcon,
   SparklesIcon,
   CircleStackIcon,
+  ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 
 const shortName = uri => (uri || '').split(/[#/]/).filter(Boolean).pop() || uri;
@@ -30,6 +31,7 @@ function ClassTree({
   onSelect,
   selectedUri,
   loading = false,
+  error = false,
   searchQuery = '',
 }) {
   const filterTree = (node, query) => {
@@ -53,6 +55,15 @@ function ClassTree({
         {[1, 2, 3, 4, 5].map((i) => (
           <div key={i} className="h-8 bg-gray-200 rounded skeleton"></div>
         ))}
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-8 text-red-600" role="alert">
+        <ExclamationTriangleIcon className="w-8 h-8 mx-auto mb-2 text-red-400" />
+        <p className="text-sm">Could not load the class hierarchy</p>
       </div>
     );
   }

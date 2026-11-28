@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import {
   TrashIcon,
@@ -10,6 +10,7 @@ import {
 import {
   useModules,
   useClassHierarchy,
+  usePropertyHierarchy,
   useClassIndividuals,
   useIndividual,
   useCreateIndividual,
@@ -18,7 +19,17 @@ import {
   useUndoIndividualEdit,
   validationSummary,
 } from '../../hooks/useModules';
-import ClassTree from './ClassTree';
+import ClassTree, { normalizeHierarchy } from './ClassTree';
+import PropertyTree, { normalizeProperties } from './PropertyTree';
+import PropertyDetail, { DomainRange } from './PropertyDetail';
+
+/** Mapa IRI → nodo de un árbol (cada nodo con sus hijos en "children"). */
+function indexTree(roots) {
+  const map = new Map();
+  const visit = node => { if (!map.has(node.uri)) map.set(node.uri, node); node.children.forEach(visit); };
+  roots.forEach(visit);
+  return map;
+}
 
 const OPERATION_TEXT = { CREATE: 'Individual created', UPDATE: 'Individual updated', DELETE: 'Individual deleted', UNDO: 'Edit undone' };
 
@@ -36,12 +47,24 @@ function OntologyExplorer() {
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddIndividual, setShowAddIndividual] = useState(false);
   const [lastEdit, setLastEdit] = useState(null);
+  const [view, setView] = useState('classes');
+  const [selectedProperty, setSelectedProperty] = useState(null);
 
   const { data: modules, isLoading: modulesLoading } = useModules();
 
-  const { data: hierarchy, isLoading: hierarchyLoading } = useClassHierarchy(
+  const { data: hierarchy, isLoading: hierarchyLoading, isError: hierarchyError } = useClassHierarchy(
     selectedModule?.id
   );
+  // Las propiedades se piden recién cuando se abre la vista de propiedades.
+  const { data: propertyData, isLoading: propertiesLoading, isError: propertiesError } = usePropertyHierarchy(
+    selectedModule?.id,
+    { enabled: !!selectedModule?.id && view === 'properties' }
+  );
+  const classIndex = useMemo(() => indexTree(normalizeHierarchy(hierarchy)), [hierarchy]);
+  const propertyIndex = useMemo(() => {
+    const tree = normalizeProperties(propertyData);
+    return indexTree([...tree.objectProperties, ...tree.dataProperties]);
+  }, [propertyData]);
 
   const undoMutation = useUndoIndividualEdit();
 
@@ -54,6 +77,18 @@ function OntologyExplorer() {
     setSelectedNode(node);
     setSelectedIndividual(null);
   };
+
+  const openClass = (node) => {
+    setView('classes');
+    selectClass(node);
+  };
+
+  const openProperty = (property) => {
+    setView('properties');
+    setSelectedProperty(property);
+  };
+
+  const shownProperty = selectedProperty && (propertyIndex.get(selectedProperty.uri) || selectedProperty);
 
   const undoLastEdit = () => {
     undoMutation.mutate(lastEdit.editId, {
@@ -82,6 +117,7 @@ function OntologyExplorer() {
                 setSelectedModule(module);
                 setSelectedNode(null);
                 setSelectedIndividual(null);
+                setSelectedProperty(null);
               }}
               className="input"
             >
@@ -95,13 +131,32 @@ function OntologyExplorer() {
           )}
         </div>
 
+        {/* View selector */}
+        {selectedModule && (
+          <div className="card p-1 flex" role="tablist" aria-label="Explorer view">
+            {[['classes', 'Classes'], ['properties', 'Properties']].map(([key, text]) => (
+              <button
+                key={key}
+                role="tab"
+                aria-selected={view === key}
+                onClick={() => setView(key)}
+                className={`flex-1 px-3 py-1.5 text-sm font-medium rounded ${
+                  view === key ? 'bg-protys-600 text-white' : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {text}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Search */}
         {selectedModule && (
           <div className="card p-4">
-            <label className="label">Search Classes</label>
+            <label className="label">{view === 'classes' ? 'Search Classes' : 'Search Properties'}</label>
             <input
               type="text"
-              placeholder="Filter class hierarchy..."
+              placeholder={view === 'classes' ? 'Filter class hierarchy...' : 'Filter properties...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="input"
@@ -110,7 +165,7 @@ function OntologyExplorer() {
         )}
 
         {/* Class Tree */}
-        {selectedModule && (
+        {selectedModule && view === 'classes' && (
           <div className="card p-4 flex-1 overflow-y-auto">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">Class Hierarchy</h3>
             <ClassTree
@@ -118,6 +173,22 @@ function OntologyExplorer() {
               onSelect={selectClass}
               selectedUri={selectedNode?.uri}
               loading={hierarchyLoading}
+              error={hierarchyError}
+              searchQuery={searchQuery}
+            />
+          </div>
+        )}
+
+        {/* Property Trees */}
+        {selectedModule && view === 'properties' && (
+          <div className="card p-4 flex-1 overflow-y-auto">
+            <h3 className="text-sm font-semibold text-gray-900 mb-3">Property Hierarchy</h3>
+            <PropertyTree
+              data={propertyData}
+              onSelect={setSelectedProperty}
+              selectedUri={selectedProperty?.uri}
+              loading={propertiesLoading}
+              error={propertiesError}
               searchQuery={searchQuery}
             />
           </div>
@@ -125,7 +196,7 @@ function OntologyExplorer() {
 
         {!selectedModule && (
           <div className="card p-4 flex-1 flex items-center justify-center text-gray-500">
-            <p className="text-sm">Select a module to browse classes</p>
+            <p className="text-sm">Select a module to browse classes and properties</p>
           </div>
         )}
       </div>
@@ -135,7 +206,32 @@ function OntologyExplorer() {
         {lastEdit && (
           <EditResult result={lastEdit} undoing={undoMutation.isPending} onUndo={undoLastEdit} onClose={() => setLastEdit(null)} />
         )}
-        {selectedNode ? (
+        {view === 'properties' ? (
+          shownProperty ? (
+            <>
+              <button
+                onClick={() => setSelectedProperty(null)}
+                className="flex items-center gap-2 text-protys-600 hover:text-protys-700 text-sm font-medium"
+              >
+                <ArrowLeftIcon className="w-4 h-4" />
+                Back to properties
+              </button>
+              <div className="card p-6 flex-1 overflow-y-auto">
+                <PropertyDetail
+                  property={shownProperty}
+                  classes={classIndex}
+                  properties={propertyIndex}
+                  onSelectClass={openClass}
+                  onSelectProperty={setSelectedProperty}
+                />
+              </div>
+            </>
+          ) : (
+            <div className="card p-6 min-h-[10rem] flex items-center justify-center text-gray-500 lg:sticky lg:top-0">
+              <p className="text-sm">Select a property to view details</p>
+            </div>
+          )
+        ) : selectedNode ? (
           <>
             <button
               onClick={() => (selectedIndividual ? setSelectedIndividual(null) : setSelectedNode(null))}
@@ -155,6 +251,9 @@ function OntologyExplorer() {
               ) : (
                 <ClassDetail
                   node={selectedNode}
+                  classes={classIndex}
+                  onSelectClass={openClass}
+                  onSelectProperty={openProperty}
                   onAddIndividual={() => setShowAddIndividual(true)}
                   onSelectIndividual={setSelectedIndividual}
                 />
@@ -221,7 +320,7 @@ export function EditResult({ result, undoing, onUndo, onClose }) {
   );
 }
 
-function ClassDetail({ node, onAddIndividual, onSelectIndividual }) {
+function ClassDetail({ node, classes, onSelectClass, onSelectProperty, onAddIndividual, onSelectIndividual }) {
   return (
     <div className="space-y-6">
       <div>
@@ -260,19 +359,7 @@ function ClassDetail({ node, onAddIndividual, onSelectIndividual }) {
         </div>
       )}
 
-      {node.properties && node.properties.length > 0 && (
-        <div>
-          <h3 className="text-sm font-semibold text-gray-900 mb-2">Properties</h3>
-          <div className="space-y-1">
-            {node.properties.map((prop, idx) => (
-              <div key={idx} className="text-sm text-gray-700 px-3 py-2 bg-gray-50 rounded flex justify-between">
-                <span>{prop.label || prop.name}</span>
-                <span className="text-xs text-gray-500">{prop.type}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      <ClassProperties node={node} classes={classes} onSelectClass={onSelectClass} onSelectProperty={onSelectProperty} />
 
       <ClassIndividuals classUri={node.uri} onSelect={onSelectIndividual} />
 
@@ -283,6 +370,54 @@ function ClassDetail({ node, onAddIndividual, onSelectIndividual }) {
         <UserPlusIcon className="w-4 h-4" />
         Add Individual
       </button>
+    </div>
+  );
+}
+
+/**
+ * Propiedades cuyo dominio declarado incluye la clase. Cada una muestra su dominio completo como está
+ * declarado: si la clase entra por una unión se ve la unión, y si hay varios rdfs:domain se listan todos.
+ */
+function ClassProperties({ node, classes, onSelectClass, onSelectProperty }) {
+  const props = [...(node.objectProperties || []), ...(node.dataProperties || [])];
+  return (
+    <div>
+      <h3 className="text-sm font-semibold text-gray-900 mb-2">
+        Properties whose declared domain includes this class ({props.length})
+      </h3>
+      {props.length > 0 ? (
+        <ul className="space-y-1" data-testid="class-properties">
+          {props.map(prop => {
+            const domains = prop.domains || [];
+            return (
+              <li key={prop.uri} className="text-sm px-3 py-2 bg-gray-50 rounded">
+                <div className="flex justify-between gap-2">
+                  <button onClick={() => onSelectProperty(prop)} className="text-protys-600 hover:underline text-left" title={prop.uri}>
+                    {prop.label || prop.localName}
+                  </button>
+                  <span className="text-xs text-gray-500 shrink-0">{prop.type === 'OBJECT' ? 'object' : 'data'}</span>
+                </div>
+                {domains.length === 1 ? (
+                  <p className="text-xs text-gray-600 mt-0.5">
+                    Declared domain: <DomainRange term={domains[0]} classes={classes} onSelectClass={onSelectClass} />
+                  </p>
+                ) : (
+                  <div className="text-xs text-gray-600 mt-0.5">
+                    Declared domains ({domains.length}, each one applies):
+                    <ul className="list-disc pl-5">
+                      {domains.map((d, i) => (
+                        <li key={i}><DomainRange term={d} classes={classes} onSelectClass={onSelectClass} /></li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className="text-sm text-gray-500">No property declares this class in its domain.</p>
+      )}
     </div>
   );
 }

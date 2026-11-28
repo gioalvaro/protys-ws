@@ -89,6 +89,12 @@ export const ontologyAPI = {
     return response.data;
   },
 
+  // GET /api/ontology/modules/{id}/properties
+  getPropertyHierarchy: async (moduleId) => {
+    const response = await apiClient.get(`/ontology/modules/${moduleId}/properties`);
+    return response.data;
+  },
+
   // Individuos: el IRI viaja siempre en el parámetro de consulta "uri" (axios lo codifica).
   // GET /api/ontology/individuals?classUri=
   listIndividuals: async (classUri) => {
